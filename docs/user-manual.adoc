@@ -1,0 +1,88 @@
+// rvm use 2.1@runtime
+// asciidoctor -D /tmp/ -a data-uri -a stem user-manual.adoc
+= Anypoint Connector Certification Process
+:doctype: book
+:compat-mode:
+:page-layout!:
+:toc: left
+:toclevels: 2
+:imagesdir: ../images
+:compat-mode!:
+
+== Introduction
+
+MuleSoft has expanded the Anypoint™ Connector offering to enable third-party developers and partners to develop Anypoint Connectors.
+All connectors enrolled in the MuleSoft Partner Program must go through a mandatory periodic Certification Process. The Certification Process has been developed to assess the quality of connectors, to ensure that connectors published on the MuleSoft Web page follow industry best practices for development, and to promote trust.
+All connectors built by external developers and/or partners go through a Certification Process conducted by MuleSoft’s internal team. Once a connector passes certification, the connector is branded as a MuleSoft-certified connector and published on the MuleSoft web site. 
+
+== Scope
+
+The scope of the certification process depends on the composition of the connector. Our approach is to test all parts of the connector to ensure that our mutual customers and their platforms are not put at risk. The items below are a list of the high-level testing performed on each connector during the certification process:
+
+. Automated code scan
+. Manual code review and black box testing
+. Manual and automated tests review
+. Repository structure review
+. Documentation review
+. Compatibility review
+
+= Certification Workflow
+
+[certificationWorkflow]
+
+include::certification-workflow.adoc[]
+
+= Code Coverage Guidelines
+
+[coverageGuidelines]
+
+include::coverage-guidelines.adoc[]
+
+= Continuous Integration in CloudBees
+
+[cloudbees]
+
+include::cloudbees.adoc[]
+
+= Static Code Analysis with SonarQube
+
+[sonar]
+
+include::sonar.adoc[]
+
+= Developement Guidelines
+
+[devGuidelines]
+
+include::developement-guidelines.adoc[]
+
+= Functional QA Guidelines
+
+[functionalQAGuidelines]
+
+include::functional-qa-guidelines.adoc[]
+
+= Studio Functional Test Plugin
+
+[functional-test-plugin]
+
+include::functional-test-plugin.adoc[]
+
+= Studio Interoperability QA Guidelines
+
+[studioInteroperabilityQAGuidelines]
+
+== Hola
+
+= Studio Interoperability Test Plugin
+
+[interoperability-test-plugin]
+
+== Hola
+
+
+
+
+
+
+

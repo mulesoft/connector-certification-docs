@@ -1,0 +1,88 @@
+== Introduction
+Most automatic validations on your connector’s code are done with SonarQube, an open source static code analysis tool. To perform these validations yourself, install and configure a SonarQube server with rules specific to the certification process. If you are certifying multiple connectors, you can reuse the same server.
+
+== Installing SonarQube
+The quickest way to get SonarQube up and running is to install it locally with an embedded database. If you wish to use a standalone database or a more advanced configuration, see the related SonarQube Eclipse Plugin Setup documentation.
+
+You need a server running Oracle JRE 6 or higher. (OpenJRE or other distributions are not supported by SonarQube.)
+
+. Download and extract our SonarQube 4.5 distribution (all platforms). This includes our custom quality profile and everything you need to get started.
+. Run __<installDir>/bin/<yourOS>/sonar.sh__ start or __<installDir>\bin\<yourOS>\StartSonar.bat__ if on Windows. The server might take a while to start even after the “Started SonarQube” message appears.
+. Browse to http://localhost:9000.
+. Log in with the following credentials:
+.. Username: admin
+.. Password: admin
+
+== Performing Your First Analysis
+
+For the first run of your project, go to the project’s root folder and run:
+```
+mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test -Dmaven.test.failure.ignore=true -Dtest=RegressionTestSuite -D<connector>_CREDENTIALS=automation-credentials.properties && mvn install && mvn sonar:sonar 
+
+mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.test.failure.ignore=true && mvn sonar:sonar
+```
+
+This creates the project in your sonar installation, allowing you to use the Eclipse SonarQube plugin from inside your Anypoint Studio. Using this plugin is the recommended way, but is always possible to run the inspections manually with * mvn sonar:sonar *.
+
+If you are experiencing false positive issues, you can disable the inspection using //NOSONAR comment at the end of a line which has the issue on a case-by-case basis. Every use of //NOSONAR is recorded by SonarQube as an Info issue so you can track its usage in your connector’s code. 
+
+NOTE: The use of //NOSONAR comments should only be used when there is full certainty that this inspection is a false positive.
+
+For example, suppose you have an incorrectly capitalized method that you can’t change. This is normally a blocker issue:
+
+image::{imagesdir}/sonar-1.png[]
+
+After adding the //NOSONAR marker, this is no longer a blocker issue, but is marked as Info so you can track the usage of //NOSONAR throughout your project:
+
+image::{imagesdir}/sonar-2.png[]
+
+== SonarQube Eclipse Plugin Setup
+
+. Open Anypoint Studio, then select Help > Install New Software.
+
+image::{imagesdir}/sonar-3.png[]
+
+
+. In the Work with text box, fill in the update site URL: 
+SonarQube Integration for Eclipse (update-site) - http://dist.sonar-ide.codehaus.org/eclipse/
+
+image::{imagesdir}/sonar-4.png[]
+
+
+. Check the SonarQube Java option.
+. After completing the installation, restart Anypoint Studio.
+. Open Anypoint Studio’s preferences, and browse to the SonarQube section. Expand it, and select the Servers subsection. Click Add and fill in the URL and credentials for your server (by default, admin/admin).
+
+image::{imagesdir}/sonar-5.png[]
+
+Click the *Test connection* button to ensure that your settings are correct.
+
+. To associate your project on the SonarQube server, perform a full analysis once. You can do this by running mvn sonar:sonar in your Connector project.
+
+You should perform this full analysis from a machine that is on the same network as the SonarQube database, otherwise it might take very long to complete.
+
+When your project finishes analyzing, in Studio right-click your connector project and click *Configure > Associate with SonarQube*. Because your project was analyzed with Maven, the association detects automatically. 
+
+image::{imagesdir}/sonar-6.png[]
+
+. After association, your project is analysed with SonarQube and the results are shown on the SonarQube issues tab. Also, the Package Explorer and file editor display error and warning icons according to the issues on your project.
+
+New issues introduced since the previous analysis are marked as errors, while existing issues are marked as warnings. This is a cosmetic difference only, which helps to highlight new technical debt being introduced in your code before you check it in.
+
+. To analyse your project again, right-click it and click *SonarQube > Analyse*.
+
+== Quality Profile Rules
+SonarQube classifies each issue with a severity:
+* Blocker: Bugs or unacceptable programming practices. Your connector cannot have blocker issues to be certified. You must correct all issues.
+* Critical: They cover violated conventions that should be fixed. Certification is not blocked by this type of inspection, but it’s highly recommended to fix them.
+* Major:  These inspections fall in a similar category to the critical issues but with lower priority.
+* Minor: Correctness, clarity or performance issues that do not impact your connector’s functionality significantly.
+* Info: Keeps track of useful information that might otherwise go unnoticed.
+
+To see the full list of rules checked by SonarQube, browse to the Anypoint Connectors Certification quality profile through the web UI.
+
+
+
+
+
+

@@ -1,0 +1,73 @@
+
+== Certification Process Overview
+
+The Partner engagement and Certification Process for publishing connectors consists of these stages: 
+
+. On-Board
+. Develop Guidelines
+. Certify
+.. Prepare for the Certification Process
+.. Certification Workflow
+.. Results
+. Publish
+
+image::{imagesdir}/certification-workflow-1.png[]
+
+== Develop Guidelines
+
+During the development process, MuleSoft and a third-party partner, based on a pre-existing partnership agreement, begin the development process.
+Support documentation:
+* Development Guidelines
+* Functional QA Guidelines
+* Studio Interoperability QA Guidelines
+* Documentation Guidelines
+
+== Certification Workflow
+=== New Version Release
+
+Every connector release will require go over the following list of steps to be certified:
+
+image::{imagesdir}/certification-workflow-2.png[]
+
+* Legal engagement: Before submitting for Certification, enroll your connector in the MuleSoft Partner Program. If you do not enroll, please contact your MuleSoft Account Executive.
+* Source Code Access and Sandbox Credentials: As part of the certification, MuleSoft will internally run a continue build tests execution and run a set of code inspections to validate the quality of the connector. The next actions are required:
+GitHub account read access must be granted to the user connectors-cert-ci (connectors-cert-ci@mulesoft.com)
+In case of being required, provide the Sandbox credentials a .properties used for the testing execution.
+Create a git tag with the tentative release version of the connector.
+* Email Notification: Start the Certification Process for your connector by sending an email with the format described in Appendix A. For existing connectors ready for a security review, include the current Appendix A information link in your email. 
+* Presentation Demo: The objective of this demo is to go over the functional aspects of the connectors, overview of the system to be connected, underlying integration technology (REST/WSDL/SDK). The audience of this meeting will be Product Managers , Connectors Engineers Leads and QA. 
+* Complete Certification Checklist: Before the connector could start the certification process, it’s responsibility of the partner to validate that all the certification artifacts and requirements have been accomplished. All the required actions are described in the following template and should be completed before submitting the connector for certification. 
+* Certification Compliance Verification: Once all the previous steps have been completed, Mule engineering team will start running the certification and creating a set of recommendations to be completed before the connector could be released. This is an iterative process where it’s highly probable that our engineering team will have questions about the connector usage. It’s strongly recommended to allocate some time from developers in case of any question arise. Once all the certification criteria has been meet, the connector is ready to move to the next stage. 
+* Support Training: Mule Support team will provide T1 support and will help the customer to isolated the issue to identify if the issue is a Mule issue or a connector issue. The objective of this birth view training is to provide to the support team a general understanding of the connector and tools that help to isolate the problem.
+* Upload to Library: Connector will be upload in the https://www.mulesoft.com/library[Mule Connectors Library]. After your connector passes the Certification Process, MuleSoft sends you an estimated date for when your connector will appear on the MuleSoft web site. As part of this process, the following information need to be provided:
+
+** High Level description of the connector. SalesForce connector could be use a template example: https://www.mulesoft.com/library#!/salesforce-integration-connector?types=connector
+** URL to Release Notes
+** URL to Functional documentation of the connector
+** URL to DevKit generated documentation
+
+== Random Testing
+
+MuleSoft reserves the right to conduct random tests on published connectors. If we find a connector that deviates from any of our requirements, we notify you and provide a timeframe to remedy the issue. In extreme cases, we may remove the connector from our web site.
+
+== Release Re-Certification
+
+Mule ESB and Mule Studio have a release cadence of 3 month cycles. Even the fact that Mule ESB and Mule Studio will be focus on maintaining forward compatibility for all develop connectors there is a small probability that issues related to classloader problems or data mapping could arise. Due to that, it’s required that a regression testing using the released version of Mule ESB and Mule Studio be executed. Early access to binaries will be provided to run the re-certification. It’s important to point out that the certification must be run over the already released connector
+
+== Appendix A
+=== Start Certification Process Email Template
+
+----
+Email to: connectors-certification@mulesoft.com
+Subject: Request for certification: <Connector Service Name>
+
+Body:
+
+Request for certification: <Connector Service Name>
+Original use cases: <link to the original use cases provided by MuleSoft>
+GitHub repo: <GitHub repository link>
+Out of scope: <Justification for items marked out of scope or not applicable> 
+(API limitations, user permissions, etc.)
+Documentation: <links to documentation>
+----
+
