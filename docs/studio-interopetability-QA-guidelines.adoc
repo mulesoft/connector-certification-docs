@@ -1,0 +1,766 @@
+== Purpose 
+
+Based on these guidelines, partners should analyze the connector under test and provide a test suite build from these generic test cases (only a document with general and operation­specific test cases titles) with all tests in "Passed" status.
+
+== OAuth Authentication
+=== OAuth - Global Configuration Element
+
+==== Preconditions
+* Mule project was created and is open.
+* Connector code is available in order to review configurations.
+
+==== Steps
+* *Step 1:* 
+.. Place an HTTP endpoint on the canvas
+.. Drop the desired connector inside the flow.
+.. Select it and click the Config Reference Edit button.
+
+----
+Expected Result:
+
+ * Connector class attributes marked as @Configurable display.
+ * consumerKey and consumerSecret are annotated with @OAuthConsumerKey and @OAuthConsumerSecret.
+----
+
+* *Step 2:* Enter valid credentials and save.
+----
+Expected Result:
+Global Configuration element is created and saved.
+----
+
+
+=== OAuth - Project Arrangement and Configuration Verification
+
+Build this test case to serve as the basis for the next set of test cases.
+
+==== Preconditions
+
+* Global element was already created for the connector and valid OAuth credentials (consumerKey, consumerSecret, and callback URL) have been entered.
+*  Connector code is available in order to review configurations.
+
+==== Steps
+
+* *Step 1:* Arrange a flow in the following way:
+.. Place an HTTP endpoint on the canvas.
+.. Drop two consecutive connectors in the flow.
+.. Drop a Logger after the last connector.
+.. Finally, add a Set Payload element after the
+logger.
+
+----
+Expected Result: 
+
+Flow arrangement looks similar to this:
+----
+
+image::{imagesdir}/qa-guidelines/qa-guidelines-1.png[]
+
+
+* *Step 2:* On the HTTP endpoint, set a path value of "authorize".
+* *Step 3:*
+.. Select the first connector.
+.. Look for the Authorize operation.
+
+----
+Expected Result: 
+Authorize operation is found.
+----
+
+* *Step 4:*
+.. Select the Authorize operation.
+.. Check the General section.
+
+----
+Input fields are found for:
+* State (only for OAuth2)
+* Access Token URL
+* Authorization URL
+----
+
+
+* *Step 5:* Look for the authorizationParameters inside the OAuth annotation.
+----
+Expected Result:
+Each of the annotations on authorizationParameters are reflected in the Additional Authorization Parameters section. If none, the section is not displayed at all.
+----
+
+* *Step 6:* In case of OAuth2m set a state value of "testState". Click *Save*
+
+* *Step 7:* On the second connector, select any operation (besides Authorize and Unauthorize) and configure it. Then click *Save*.
+
+* *Step 8:* Set "Operation payload is #[message.payload]" as the Logger message value. Then click *Save*.
+
+* *Step 9:* Arrange a flow in the following way:
+.. Place an HTTP endpoint on the canvas.
+.. Drop a connector in the flow.
+.. Drop a Logger after the last connector.
+.. Finally, add a Set Payload element after the logger.
+
+----
+Expected Result:
+Flow arrangement looks similar to this:
+----
+
+image::{imagesdir}/qa-guidelines/qa-guidelines-2.png[]
+
+* *Step 10:* On the HTTP endpoint, set a path value of "anoperation".
+
+* *Step 11:* On the connector, select any operation (besides Authorize and Unauthorize) and configure it. Then click *Save*.
+
+* *Step 12:* Set "Operation payload is #[message.payload]" as the Logger message value. Then click *Save*.
+
+* *Step 13:* Arrange a flow in the following way:
+.. Place an HTTP endpoint on the canvas.
+.. Drop a connector in the flow.
+.. Drop a Logger after the last connector.
+.. Finally, add a Set Payload element after the
+logger.
+
+----
+Expected Result:
+
+Flow arrangement looks similar to this:
+image::{imagesdir}/qa-guidelines/qa-guidelines-3.png[]
+----
+￼
+* *Step 14:* On the connector, look for the Unauthorize operation.
+----
+Expected Result:
+Unauthorize operation is found.
+----
+
+* *Step 15:* Select the Unauthorize operation. Then click *Save*.
+
+* *Step 16:* Set "Done." on all Set Payload elements Values. Then click *Save*.
+----
+Expected Result:
+
+Example of the flows on the project .mflow :
+
+<flow name="authorize" doc:name="authorize">
+	<http:inbound-endpoint exchange-pattern="request-response" host="localhost"
+	port="${http.port}" path="authorize" doc:name="HTTP"/>
+
+	<sfdc:authorize config-ref="Salesforce__OAuth_" display="POPUP" 
+	doc:name="Authorize" />
+
+	<!-- <sfdc:authorize config-ref="Salesforce__OAuth_" display="POPUP" 
+	doc:name="Authorize"/> -->
+
+	<sfdc:get-user-info config-ref="Salesforce__OAuth_" doc:name="Get user info" >
+	</sfdc:get-user-info>
+
+	<logger message="#[message.payload]" level="INFO" doc:name="Logger"/>
+	<set-payload value="Done." doc:name="Set Payload"/>
+</flow>
+
+<flow name="aConnectorOperation" doc:name="aConnectorOperation">
+	<http:inbound-endpoint exchange-pattern="request-response" 
+	host="localhost" port="8081" path="anoperation" doc:name="HTTP"/>
+	<sfdc:describe-global config-ref="Salesforce__OAuth_" doc:name="Describe global"/>
+	<logger message="#[message.payload]" level="INFO" doc:name="Logger"/> 
+	<set-payload value="Done." doc:name="Set Payload"/> 
+</flow>
+
+<flow name="unauthorize" doc:name="unauthorize">
+	<http:inbound-endpoint exchange-pattern="request-response" 
+	host="localhost" port="8081" path="unauthorize" doc:name="HTTP"/>
+	<sfdc:unauthorize config-ref="Salesforce__OAuth_" doc:name="Unauthorize"/> 
+	<set-payload value="Done." doc:name="Set Payload"/>
+ </flow>
+----
+
+=== OAuth - Authorized Connector Requests
+==== Preconditions
+
+* Global element was already created for the connector and valid OAuth credentials (consumerKey, consumerSecret and callback URL) have been entered.
+* OAuth ­ Project arrangement and configuration verifications test case was completed successfully
+* Connector code is available in order to review configurations.
+
+==== Steps
+
+* *Step 1:*
+.. Run the app and hit the authorize endpoint.
+.. Complete the OAuth dance.
+----
+Expected Result:
+* Redirects to the authorization URL of the service provider, which occurs according to authorizationParameters.
+* Access is granted.
+* Callback URL is shown in the browser address bar.
+----
+
+* *Step 2:*
+Check the console.
+----
+Expected Result:
+Operation payload is logged.
+
+This implies that the logic contained in the @OAuthPostAuthorization to establish connections to make requests was executed.
+Check the State parameter
+----
+* *Step 3:*
+.. Hit the anoperation endpoint.
+.. Check the console.
+----
+Expected Result:
+Operation payload is logged.
+
+This implies that Mule included the access token (contained within the parameters annotated with @OAuthAccessToken) in the request to the service provider.
+----
+
+* *Step 4:* 
+.. Hit the unauthorize endpoint.
+.. Check the console.
+
+----
+Expected Result:
+OAuth session is killed.
+----
+
+=== OAuth - Unauthorize Connector Requests
+==== Preconditions
+* Global element was already created for the connector and valid OAuth credentials (consumerKey, consumerSecret and callback URL) have been entered.
+* OAuth ­ Project arrangement and configuration verifications test case was completed successfully
+* Connector code is available in order to review configurations.
+
+==== Steps
+* *Step 1:* Run the app and hit the anoperation endpoint.
+----
+Expected Result:
+The consumer operation throws a NotAuthorizedException.
+----
+* *Step 2:*
+.. Hit the authorize endpoint.
+.. Complete the OAuth dance.
+.. Check the console.
+----
+Expected Result:
+Operation payload is logged.
+----
+
+* *Step 3:*
+.. Hit the unauthorize endpoint.
+.. Check the console.
+----
+Expected Result:
+OAuth session is killed.
+----
+
+* *Step 4:*
+.. Hit the anoperation endpoint.
+.. Check the console.
+----
+Expected Result:
+The consumer operation throws a NotAuthorizedException.
+----
+
+* *Step 5:*
+.. Hit the unauthorize endpoint.
+.. Check the console.
+----
+Expected Result:
+Flow is run. No exception is thrown.
+----
+
+=== OAuth - Access Token Expiration
+==== Preconditions
+* Global element was already created for the connector and valid OAuth credentials (consumerKey, consumerSecret and callback URL) have been entered.
+* OAuth ­ Project arrangement and configuration verifications test case completed successfully.
+* Connector code is available in order to review configurations.
+* Regular expression for the expirationRegex parameter was specified on the OAuth2 annotation.
+
+==== Steps
+* *Step 1:*
+.. Hit the authorize endpoint.
+.. Complete the OAuth dance.
+.. Check the console.
+----
+Expected Result:
+Operation payload is logged.
+----
+
+* *Step 2:* Meet access token expiration criteria.
+
+* *Step 3:* Hit the anoperation endpoint.
+----
+Expected Result:
+Expiration is detected and OAuth dance is triggered.
+----
+
+* *Step 4:*
+.. Complete the OAuth dance.
+.. Check the console.
+
+----
+Expected Result:
+Operation payload is logged.
+----
+
+=== OAuth - Operation Not Supported Due to Scope Parameter
+==== Preconditions
+* Global element was already created for the connector and valid OAuth credentials (consumerKey, consumerSecret and callback URL) have been entered.
+* OAuth ­ Project arrangement and configuration verifications test case was completed successfully.
+* Connector code is available in order to review configurations.
+* Connector declares a @OAuthScope attribute.
+
+==== Steps
+
+* *Step 1:* Open the Global Configuration element of the Connector and set a valid Scope value that's not supported by the operation on the authorize flow.
+----
+Expected Result:
+Scope value is overridden.
+----
+
+* *Step 2:*
+.. Run the app and hit the authorize endpoint.
+.. Complete the OAuth dance.
+----
+Expected Result:
+* Redirects to the authorization URL of the service provider that occurs according to authorizationParameters
+* Access is granted.
+* Callback URL is shown in the browser
+address bar.
+----
+
+* *Step 3:* Check the console.
+----
+Expected Result:
+No permission to access resource error displays.
+----
+
+* *Step 4:*
+.. Hit the unauthorize endpoint.
+.. Check the console.
+----
+Expected Result:
+OAuth session is killed.
+----
+
+== Anypoint Studio Interoperability Testing
+== Anypoint Studio Installation 
+
+=== Anypoint Studio - Installation Wizard
+
+==== Preconditions
+* Anypoint Studio is installed on the local machine.
+* Connector already available on the update site.
+
+==== Steps 
+
+* *Step 1:* In Anypoint Studio click *Help > Install New Software*
+
+* *Step 2:* From the *Work with* dropdown select *Anypoint Studio Connectors Update Site*
+----
+Expected Result:
+Connector categories are listed.
+----
+* *Step 3:* Search for the <connectorName>.
+----
+Expected Result:
+Connector matching criteria displays. Format should be:
+<connectorCategory>
+Mule <connectorName> Connector (Mule 3.5+)
+Mule <connectorName> Connector Anypoint Studio Extension
+Refer to screenshot.
+----
+image::{imagesdir}/qa-guidelines/qa-guidelines-4.png[]
+
+* *Step 4:* Click the connector.
+----
+Expected Result:
+Details text area updates to display connector information.
+----
+
+* *Step 5:*: Check the connector version and click Next.
+----
+Expected Result:
+Install Details step displays.
+----
+
+* *Step 6:* Click Next.
+----
+Expected Result:
+Review Licenses step displays. The license text content loads and applies to the connector category.
+----
+
+* *Step 7:* Click Finish.
+----
+Expected Result:
+Installation starts. No unsigned content warning is displayed during installation.
+Anypoint Studio is restarted after installation.
+----
+image::{imagesdir}/qa-guidelines/qa-guidelines-5.png[]
+
+
+* *Step 8:* After Anypoint Studio finishes loading, search for <connectorName>.
+----
+Expected Result:
+Connector displays under the Connectors category.
+----
+
+=== Anypoint Studio - Icons
+==== Preconditions
+* Anypoint Studio is installed on the local machine.
+* Connector already installed.
+
+==== Steps
+* *Step 1:* Search for the <connectorName>.
+----
+Expected Result:
+Icon displays on the Palette, which relates to the service the connector connects to.
+----
+
+* *Step 2:* Drop a Flow element on the canvas. Afterwards select the connector from the Palette and place it within the Flow.
+----
+Expected Result:
+Icon displays and relates to the service the connector connects to.
+----
+
+* *Step 3:* If MessageSources are supported by the connector drag the connector from the Palette to the Canvas.
+----
+Expected Result:
+Message Source icon for the connector displays.
+----
+
+== Multiple Extensions
+=== Anypoint Studio - Multiple Extensions Installed - 3.5.x Server Runtime
+==== Preconditions
+* Anypoint Studio is installed on the local machine.
+* 3.5.0 runtime project was created.
+* 3.5.0 and 3.4.x version of the connector are already installed.
+
+* *Step 1:*
+.. Search for the <connectorName>.
+.. Drop a Flow element on the canvas.
+
+* *Step 2:* Drag the connector from the Palette and place it within the Flow.
+----
+Expected Result:
+Select a version ... dialog appears.
+----
+
+* *Step 3:* Click Use newest
+----
+Expected Result:
+* Connector is added to the canvas.
+* Connector related library is added to project.
+Version corresponds to the 3.5.0 connector.
+image::{imagesdir}/qa-guidelines/qa-guidelines-6.png[]
+----
+
+* *Step 4:* Secondary click on the connector and select remove libraries for project.
+----
+Expected Result:
+Library is removed from project.
+----
+
+* *Step 5:*
+.. Remove the connector from the canvas.
+.. Drag the connector from the Palette and place it within the Flow.
+----
+Expected Result:
+Select a version ... dialog appears.
+----
+
+* *Step 6:* Click Choose manually.
+----
+Expected Result:
+* Connector is added to the canvas.
+* Connector related library is added to project.
+Version corresponds to the 3.5.x connector.
+
+image::{imagesdir}/qa-guidelines/qa-guidelines-7.png[]
+----
+
+* *Step 7:*￼ Secondary click on the connector and select remove libraries for project.
+----
+Expected Result:
+Library is removed from the project.
+----
+
+* *Step 8:*
+.. Remove the connector from the canvas.
+.. Drag the connector from the Palette and place it within the Flow.
+----
+Expected Result:
+Select a version ... dialog appears.
+----
+
+* *Step 9:* Click Choose manually.
+----
+Expected Result:
+* Select extension version screen displays.
+* For the 3.5.0 version, check that the library version matches the one previously displayed.
+* For the 3.4.x version, schema version displays.
+----
+image::{imagesdir}/qa-guidelines/qa-guidelines-8.png[]
+
+
+* *Step 9:* Randomly select one of options and click Ok.
+----
+Expected Result:
+Connector is added to the canvas. Check that the library version matches the one previously displayed for that version.
+----
+
+=== Anypoint Studio - Multiple Extensions Installed - 3.5.x Server Runtime - Message Sources
+=== Anypoint Studio - Multiple Extensions Installed - 3.4.x Server Runtime
+=== Anypoint Studio - Multiple Extensions Installed - 3.4.x Connector Running on 3.5.x Server Runtime
+
+== Global Element Properties
+=== Global Element Properties - Basic Authentication Connectors - Hidden Password Text
+==== Steps
+
+* *Step 1:* Open Global Element.
+* *Step 2:* Populate password field.
+----
+Expected Result:
+Password field’s text is hidden by default.
+----
+
+== Connectivity
+This is part of connection management.
+
+=== OAuth Connectors
+==== Connectivity - OAuth Connectors - Test Connectivity Button Not Available
+[cols=".^10%,.^45%,.^45%"]
+|===
+|Step|Description|Expected Result
+
+|1|Open Global Configuration element.|Test connectivity ... button is not available.
+|===
+
+
+=== Non-OAuth connectors
+For the following tests, the connector has connectivity.
+
+==== Connectivity - Non-OAuth Connectors - Positive - String Values
+
+[cols=".^10%,.^45%,.^45%"]
+|===
+|Step|Description|Expected Result
+
+|1|Open Global Configuration element.|Test connectivity ... button is available.
+|2|Populate all Connection mandatory fields with valid credentials and click the Test connectivity ... button.|Test connection successful is returned.
+|===
+
+==== Connectivity - Non-OAuth Connectors - Positive - Placeholders as Credentials
+*Preconditions*
+
+* mule.properties file contains properties values that are under src/main/resources.
+* Property placeholder element referencing mule.properties was created.
+
+[cols=".^10%,.^45%,.^45%"]
+|===
+|Step|Description|Expected Result
+
+|1| Open Global Configuration element.| Test connectivity ... button is available.
+|2| Populate all Connection mandatory fields with property placeholders and click the Test connectivity ... button.| Test connection successful is returned.
+|===
+
+==== Connectivity - Non-OAuth Connectors - Negative - Invalid Credentials
+
+[cols=".^10%,.^45%,.^45%"]
+|===
+|Step|Description|Expected Result
+
+|1|Open Global Configuration element.| Test connectivity ... button is available.
+|2|One at the time, enter an invalid value on each of the Connection mandatory fields and click the Test connectivity ... button.| Test connection failed is returned. org.mule.api.ConnectionException is raised stating a useful error message to the user.
+|===
+
+==== Connectivity - Non-OAuth Connectors - Negative - Empty Fields
+
+[cols=".^10%,.^45%,.^45%"]
+|===
+|Step|Description|Expected Result
+
+|1|Open Global Configuration element.| Test connectivity ... button is available.
+|2 | One at the time, leave empty the value of one of the Connection mandatory fields and click the Test connectivity ... button.| Test connection failed is returned. org.mule.api.ConnectionException is raised stating a useful error message to the user.
+|===
+
+== Metadata
+=== Dynamic Metadata
+Supported by Non­OAuth connectors.
+
+==== Dynamic Metadata - Enable DataSense - Positive - String Values
+[cols=".^10%,.^45%,.^45%"]
+|===
+|Step|Description|Expected Result
+
+|1|Open Global Configuration element.| Enable DataSense checkbox displays and is checked by default.
+|2|Populate all Connection mandatory fields with valid credentials and click Ok.| Getting DataSense metadata types finishes successfully and configuration is saved.
+|===
+
+==== Dynamic Metadata - Enable DataSense - Positive - Placeholders as Credentials
+*Preconditions*
+
+* mule.properties file contains properties values that are under src/main/resources.
+* Property placeholder element referencing mule.properties was created.
+
+[cols=".^10%,.^45%,.^45%"]
+|===
+|Step|Description|Expected Result
+
+|1|Open Global Configuration element.| Enable DataSense checkbox displays and is checked by default
+|2|Populate all Connection mandatory fields with property placeholders and click the Test connectivity ... button.| Getting DataSense metadata types finishes successfully and configuration is saved.
+|===
+
+Run the following set of test cases at operation level. For each of the connector operations, evaluate which set of the following test cases applies. Also, take into account that more than one attribute of an operation supports this configuration.
+[cols=".^10%,.^45%,.^45%"]
+|===
+|Step|Description|Expected Result
+
+|1|Open Global Configuration element.| Enable DataSense checkbox displays and is checked by default.
+|2|Populate all Connection mandatory fields with property placeholders and click OK.| Getting DataSense metadata types doesn't display and the configuration is saved.
+|===
+
+==== Dynamic Metadata - Enable DataSense - Positive - Disable DataSense
+
+[cols=".^10%,.^45%,.^45%"]
+|===
+|Step|Description|Expected Result
+
+|1|Open *Global Configuration element*.|*Enable DataSense* checkbox displays and is checked by default.
+|2|Populate all *Connection* mandatory fields with valid credentials.|
+|3|Uncheck Enable DataSense checkbox.|
+|4|Click *OK*.|Getting DataSense metadata types doesn't display and the configuration is saved.
+
+|===
+
+==== Dynamic Metadata - Enable DataSense - Negative - Invalid Credentials
+[cols=".^10%,.^45%,.^45%"]
+|===
+|Step|Description|Expected Result
+
+|1|Open Global Configuration element.|Enable DataSense checkbox displays and is checked by default.
+|2|One at the time, leave empty the value of one of the Connection mandatory fields and click OK.|Getting DataSense metadata types fails. org.mule.api.ConnectionException is raised stating a useful error message to the user.
+|===
+The http://mulesoft.github.io/marketo-connector/mule/marketo-config.html#sync-lead[sync­lead operation of the Marketo connector] is used to demonstrate.
+
+==== Dynamic Metadata - XML Generation - Custom Entities and Fields - Object Attributes Defined Through the Object Builder
+*Preconditions*
+
+* On the connector, Global Configuration DataSense is enabled and DataSense metadata types were fetched successfully.
+* In the Anypoint Studio canvas, place a connector building block inside a flow.
+* Connector was selected.
+* Operation under test consumes an entity for which a custom entity or custom fields on an entity were defined on the service.
+* No DataSense metadata was fetched for the operation under test.
+
+[cols=".^10%,.^45%,.^45%"]
+|===
+|Step|Description|Expected Result
+
+|1|On the General tab select the corresponding Config reference.|
+|2|Select the operation.|
+|3|Select an Object type (if not already defined by default by the operation) that's custom or has a custom field.|List of Object types display based on the retrieved metadata from the service.
+|4|For the child elements, select the Create Objects manually option and click the ... button.| Getting DataSense metadata ... popup displays. Object builder displays Objects fields. Defined custom field displays among them.
+|5|Populate the desired object fields and click OK.|
+|6|Save and change to the *Configuration XML* view.| 
+Operation configuration is reflected on the XML. Example XML: 
+----
+<marketo:sync-lead config-ref="Marketo" doc:name="Marketo">
+<marketo:lead-record >
+<marketo:lead-record key="City">#[flowVars['City']]</marketo:lead-r ecord>
+<marketo:lead-record key="AnnualRevenue">#[flowVars['AnnualRevenue' ]]</marketo:lead-record>
+<marketo:lead-record key="Department">#[flowVars['Department']]</ma rketo:lead-record>
+<marketo:lead-record key="Company">#[flowVars['Company']]</marketo: lead-record>
+</marketo:lead-record> </marketo:sync-lead>
+----
+|===
+
+=== Static Metadata
+In case of static metadata, Anypoint Studio retrieves the POJO, List<POJO>, or Map<String,POJO>attribute from the connector code.
+
+OAuth connectors with static metadata support: 
+
+* Salesforce (Non­OAuth)
+
+==== Static Metadata - Non DataSense-Enabled
+[cols=".^10%,.^45%,.^45%"]
+|===
+|Step|Description|Expected Result
+
+|1|Open Global Configuration element.| Enable DataSense checkbox is not displayed.
+|===
+
+Run the following set of test cases at operation level. For each of the connector operations, evaluate which set of the following test cases applies. Also, take into account that more than one attribute of an operation supports this configuration.
+
+==== Static Metadata - XML Generation - Object Attributes Defined Through the Object Builder
+*Preconditions*
+
+* On the connector Global Configuration, DataSense metadata types were fetched successfully.
+* In the Anypoint Studio canvas, a connector building block was placed inside a flow.
+* Connector is selected.
+* No DataSense metadata was fetched for the operation under test.
+
+[cols=".^10%,.^45%,.^45%"]
+|===
+|Step|Description|Expected Result
+
+|1|On the General tab, select the corresponding Config reference.|
+|2|Select the operation.|
+|3|Randomly select an Object type (if not already defined by default by the operation).| Object types are based on the metadata retrieved from the connector.
+|4|For the child elements, select the Create Objects manually option and click the ... (browse) button.|Getting DataSense metadata ... popup displays. Object builder displays Objects fields.
+|5|Populate the desired object fields and click OK.|
+|6|Save and change to the Configuration XML view.| Operation configuration is reflected on the XML.
+|===
+
+=== Metadata / XML Generation
+==== Metadata - XML Generation - Non-OAuth - Positive - Object Attributes Not Defined
+*Preconditions*
+
+* For Non­OAuth connectors that support dynamic metadata, on the connector Global Configuration DataSense was enabled and DataSense metadata types were fetched successfully.
+* In the Anypoint Studio canvas, a connector building block was placed inside of a flow.
+* Connector was selected.
+* No DataSense metadata was fetched for the operation under test yet.
+
+[cols=".^10%,.^45%,.^45%"]
+|===
+|Step|Description|Expected Result
+
+|1|On the General tab select the corresponding Config reference.|
+|2|Select the operation.|
+|3|Randomly select an Object type (if not already defined by default by the operation).|
+|4|As child elements, select the None option.|
+|5|Save|
+|6|Save and change to the Configuration XML view.| Getting DataSense metadata ... popup displays.
+|===
+
+==== Metadata - XML Generation - Non-OAuth - Positive - Object Attributes Passed by Reference
+*Preconditions*
+
+* For Non­OAuth connectors that support dynamic metadata, on the connector Global Configuration, DataSense was enabled and DataSense metadata types were fetched successfully.
+* In the Anypoint Studio canvas, a connector building block was placed inside a flow.
+* Connector was selected.
+* No DataSense metadata was fetched for the operation under test.
+
+[cols=".^10%,.^45%,.^45%"]
+|===
+|Step|Description|Expected Result
+
+|1|On the General tab select the corresponding Config reference.|
+|2|Select the operation.|
+|3|Randomly select an Object type (if not already defined by default by the operation).|
+|4|For the child elements, select the From Message option and enter #[flowVars['objectRef']]as the value.|
+|5|Save.| Getting DataSense metadata ... popup displays.
+|6|Change to the Configuration XML view.|
+Operation configuration is reflected on the XML. Example XML: +
+
++
+----
+<code>
+<marketo:sync-lead config-ref="Marketo" doc:name="Marketo">
+<marketo:lead-record ref="#[flowVars['leadRecordRef']]"/>
+</marketo:sync-lead>
+</code>
+----
++
+
+|===
+
+==== No Metadata
+This is defined by the argument types and return types of the API. If all of them are either primitive types or of type InputStream, the connector falls in the No metadata category.
+
+
+
+
+

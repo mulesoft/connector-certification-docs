@@ -1,13 +1,13 @@
-// rvm use 2.1@runtime
-// asciidoctor -D /tmp/ -a data-uri -a stem user-manual.adoc
-= Anypoint Connector Certification Process
 :doctype: book
 :compat-mode:
 :page-layout!:
 :toc: left
-:toclevels: 2
+:toc-title: 
 :imagesdir: ../images
 :compat-mode!:
+:linkcss:
+
+= Anypoint Connector Certification Process
 
 == Introduction
 
@@ -38,12 +38,6 @@ include::certification-workflow.adoc[]
 
 include::coverage-guidelines.adoc[]
 
-= Continuous Integration in CloudBees
-
-[cloudbees]
-
-include::cloudbees.adoc[]
-
 = Static Code Analysis with SonarQube
 
 [sonar]
@@ -70,15 +64,16 @@ include::functional-test-plugin.adoc[]
 
 = Studio Interoperability QA Guidelines
 
-[studioInteroperabilityQAGuidelines]
+[studio-interopetability-QA-guidelines]
 
-== Hola
+include::studio-interopetability-QA-guidelines.adoc[]
+include::studio-interopetability-QA-guidelines-2.adoc[]
 
 = Studio Interoperability Test Plugin
 
 [interoperability-test-plugin]
 
-== Hola
+== Section Pending
 
 
 
