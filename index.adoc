@@ -9,6 +9,8 @@
 
 = Anypoint Connector Certification Process
 
+*version 0.1*
+
 == Introduction
 
 MuleSoft has expanded the Anypoint™ Connector offering to enable third-party developers and partners to develop Anypoint Connectors.
