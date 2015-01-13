@@ -3,7 +3,7 @@
 :page-layout!:
 :toc: left
 :toc-title: 
-:imagesdir: ../images
+:imagesdir: images
 :compat-mode!:
 :linkcss:
 
@@ -30,50 +30,50 @@ The scope of the certification process depends on the composition of the connect
 
 [certificationWorkflow]
 
-include::certification-workflow.adoc[]
+include::docs/certification-workflow.adoc[]
 
 = Code Coverage Guidelines
 
 [coverageGuidelines]
 
-include::coverage-guidelines.adoc[]
+include::docs/coverage-guidelines.adoc[]
 
 = Static Code Analysis with SonarQube
 
 [sonar]
 
-include::sonar.adoc[]
+include::docs/sonar.adoc[]
 
 = Developement Guidelines
 
 [devGuidelines]
 
-include::developement-guidelines.adoc[]
+include::docs/developement-guidelines.adoc[]
 
 = Functional QA Guidelines
 
 [functionalQAGuidelines]
 
-include::functional-qa-guidelines.adoc[]
+include::docs/functional-qa-guidelines.adoc[]
 
 = Studio Functional Test Plugin
 
 [functional-test-plugin]
 
-include::functional-test-plugin.adoc[]
+include::docs/functional-test-plugin.adoc[]
 
 = Studio Interoperability QA Guidelines
 
 [studio-interopetability-QA-guidelines]
 
-include::studio-interopetability-QA-guidelines.adoc[]
-include::studio-interopetability-QA-guidelines-2.adoc[]
+include::docs/studio-interopetability-QA-guidelines.adoc[]
+include::docs/studio-interopetability-QA-guidelines-2.adoc[]
 
 = Studio Interoperability Test Plugin
 
 [interoperability-test-plugin]
 
-include::studio-interopetability-test-plugin.adoc[]
+include::docs/studio-interopetability-test-plugin.adoc[]
 
 
 
