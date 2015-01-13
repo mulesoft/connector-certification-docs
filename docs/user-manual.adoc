@@ -73,7 +73,8 @@ include::studio-interopetability-QA-guidelines-2.adoc[]
 
 [interoperability-test-plugin]
 
-== Section Pending
+include::studio-interopetability-test-plugin.adoc[]
+
 
 
 
