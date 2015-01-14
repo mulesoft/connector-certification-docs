@@ -17,10 +17,11 @@ image::{imagesdir}/certification-workflow-1.png[]
 
 During the development process, MuleSoft and a third-party partner, based on a pre-existing partnership agreement, begin the development process.
 Support documentation:
-* Development Guidelines
-* Functional QA Guidelines
-* Studio Interoperability QA Guidelines
-* Documentation Guidelines
+
+* #_development[Development]
+* #_automatic_functional_qa[Automatic Functional QA]
+* #_studio_interoperability_qa[Studio Interoperability QA]
+* Documentation
 
 == Certification Workflow
 === New Version Release

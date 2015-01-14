@@ -3,7 +3,7 @@
 :page-layout!:
 :toc: left
 :toc-title: 
-:imagesdir: images
+:imagesdir: assets
 :compat-mode!:
 :linkcss:
 
@@ -11,7 +11,7 @@
 
 *version 0.1*
 
-== Introduction
+= Introduction
 
 MuleSoft has expanded the Anypoint™ Connector offering to enable third-party developers and partners to develop Anypoint Connectors.
 All connectors enrolled in the MuleSoft Partner Program must go through a mandatory periodic Certification Process. The Certification Process has been developed to assess the quality of connectors, to ensure that connectors published on the MuleSoft Web page follow industry best practices for development, and to promote trust.
@@ -34,25 +34,14 @@ The scope of the certification process depends on the composition of the connect
 
 include::docs/certification-workflow.adoc[]
 
-= Code Coverage Guidelines
 
-[coverageGuidelines]
-
-include::docs/coverage-guidelines.adoc[]
-
-= Static Code Analysis with SonarQube
-
-[sonar]
-
-include::docs/sonar.adoc[]
-
-= Developement Guidelines
+= Development 
 
 [devGuidelines]
 
 include::docs/developement-guidelines.adoc[]
 
-= Functional QA Guidelines
+= Automatic Functional QA 
 
 [functionalQAGuidelines]
 
@@ -64,18 +53,30 @@ include::docs/functional-qa-guidelines.adoc[]
 
 include::docs/functional-test-plugin.adoc[]
 
-= Studio Interoperability QA Guidelines
-
-[studio-interopetability-QA-guidelines]
-
-include::docs/studio-interopetability-QA-guidelines.adoc[]
-include::docs/studio-interopetability-QA-guidelines-2.adoc[]
-
 = Studio Interoperability Test Plugin
 
 [interoperability-test-plugin]
 
 include::docs/studio-interopetability-test-plugin.adoc[]
+
+= Code Coverage
+
+[coverageGuidelines]
+
+include::docs/coverage-guidelines.adoc[]
+
+= Static Code Analysis with SonarQube
+
+[sonar]
+
+include::docs/sonar.adoc[]
+
+= Studio Interoperability QA
+
+[studio-interopetability-QA-guidelines]
+
+include::docs/studio-interopetability-QA-guidelines.adoc[]
+include::docs/studio-interopetability-QA-guidelines-2.adoc[]
 
 
 
