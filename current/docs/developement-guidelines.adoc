@@ -43,7 +43,8 @@ After you install the Studio Plugin, run the Project Structure Check plugin to v
 
 To run the plugin, add this execution to your connector’s pom.xml file: 
 
-```
+[source,xml]
+----
 <build>
     ...
     <plugins>
@@ -65,7 +66,7 @@ To run the plugin, add this execution to your connector’s pom.xml file:
     </plugins>
     ...
 </build>
-```
+----
 
 == DataMapper Compliance
 To have the best experience in Anypoint Studio, connectors must be DataMapper compliant. To achieve this, all operations must follow these recommendations.
@@ -146,7 +147,8 @@ If your connector is open source
 
 == Appendix A
 === README.md Template
-```
+
+----
 # [Name] Anypoint Connector
 # ---------------------------------------------------
 [Connector description including destination service or application]
@@ -177,7 +179,7 @@ Salesforce Metadata API
 You can access the full documentation <here>.
 
 ### Reporting Issues
-```
+----
 
 (Only for open source connectors)
 We use GitHub:Issues for tracking issues with this connector. You can report new issues at this link https://github.com/mulesoft/<connector-repository-name>/issues.
@@ -241,16 +243,16 @@ Please copy CPAL 1.0 from Appendix D
 . *README.md*: Readme file for the connector. See below for details.
 
 . *pom.xml*: Ensure you are referencing mule-devkit-parent in your pom.xml.
-```
+
+[source,xml]
+----
 <parent>
     <groupId>org.mule.tools.devkit</groupId>
     <artifactId>mule-devkit-parent</artifactId>
     <version>{devkit.version}</version>
 </parent>
-```
+----
 
 == Appendix D
-=== Common Public Attribution License Version 1.0 (CPAL)
 
-see legals ??? 
-
+https://docs.google.com/document/d/1A3X8tSxtqyc9ifWdJeiktBYJHmvQyOPzuIcCVYkQkXg/edit?usp=sharing[Common Public Attribution License Version 1.0 (CPAL)]

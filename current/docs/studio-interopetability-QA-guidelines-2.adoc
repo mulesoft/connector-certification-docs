@@ -12,6 +12,8 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-9.png[]
 
 * *Step 5:* 
 Save and change to the Configuration XML view.
+
+[source,xml]
 ----
 Expected Result: XML for the operation was generated using the ref attribute.
 Example XML:
@@ -33,6 +35,8 @@ Example:
 image::{imagesdir}/qa-guidelines/qa-guidelines-10.png[]
 
 * *Step 8:* Save and change to the Configuration XML view.
+
+[source,xml]
 ----
 Expected Result: 
 XML for the operation was generated defining each of the POJO attributes.
@@ -80,8 +84,8 @@ Order of operation attributes should be the same as in the API. Attributes gener
 ----
 Expected Result:
 Operation required attributes values display as missing.
-image::{imagesdir}/qa-guidelines/qa-guidelines-11.png[]
 ----
+image::{imagesdir}/qa-guidelines/qa-guidelines-11.png[]
 
 * *Step 3:* Look for the operation in the API docs.
 ----
@@ -94,8 +98,8 @@ Required attributes match with the ones marked as such in the Mule Properties Vi
 ----
 Expected Result:
 'Required attribute not defined' error is logged.
-image::{imagesdir}/qa-guidelines/qa-guidelines-12.png[]
 ----
+image::{imagesdir}/qa-guidelines/qa-guidelines-12.png[]
 
 === Message Sources
 Methods annotated with @Source(). They are common for connectors to services with streaming APIs.
@@ -112,8 +116,8 @@ Methods annotated with @Source(). They are common for connectors to services wit
 ----
 Expected Result:
 Connector is created as endpoint to a flow.
-image::{imagesdir}/qa-guidelines/qa-guidelines-13.png[]
 ----
+image::{imagesdir}/qa-guidelines/qa-guidelines-13.png[]
 
 * *Step 2:* 
 .. Place a Logger next to it.
@@ -130,6 +134,7 @@ Operations on the dropdown match to methods marked as @Source on the connector c
 
 * *Step 4:*  Select the Message Source under test and configure it appropriately.
 
+[source,xml]
 ----
 Expected Result:
 
@@ -139,6 +144,7 @@ Example of a Mule flow:
 	<logger level="INFO" message="New account notification received: #[message.payload]" doc:name="Notification"/> 
 </flow>
 ----
+
 * *Step 5:* 
 .. Run the Mule app.
 .. Check the Console.
@@ -183,6 +189,7 @@ Metadata is fetched for both configurations.
 ----
 * *Step 2:* Select the DataMapper building block.
 * *Step 3:* Check the Input panel.
+[source,java]
 ----
 Expected Result:
  Mule automatically prescribes the output of the operation for any of the following return types:
@@ -197,6 +204,7 @@ Check that values match the operation signature.
 ----
 
 * *Step 4:* Check the Output panel.
+[source,java]
 ----
 Expected Result:
 Mule automatically prescribes the input of the operation only for an attribute of the following type:
@@ -365,9 +373,9 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-16.png[]
 Expected Result:
 
 * For attribute marked @Query *Native Query Language* and *DataSense Query Language* option in dropdown displays.
+----
 
 image::{imagesdir}/qa-guidelines/qa-guidelines-17.png[]
-----
 
 * *Step 2:* Click the Query Builder ...
 ----
@@ -428,6 +436,8 @@ Click *OK*.|Query Text is populated reflecting query values.
 *@MetaDataKeyRetriever* and *@MetaDataRetriever* annotated methods sets service specific configuration for Query Builder.
 By default a Field "query configuration" (isWhereCapable, isSelectCapable, isOrderByCapable) are all true unless overridden by the service metadata.
 Example:
+
+[source,java]
 ----
 // sObject isFromCapable (available in Types)
 // public DefaultMetaDataKey(java.lang.String id, java.lang.String displayName, boolean isFromCapable);
@@ -519,14 +529,16 @@ Connector supports Auto­Paging if a least one of its operations is annotated as
 Expected Result:
 
 Paging section containing a Fetch Size input field is displayed in the General tab of the connector view.
+----
 
 image::{imagesdir}/qa-guidelines/qa-guidelines-18.png[]
 
 Fetch Size value is 100 by default.
-----
+
 
 * *Step 2:* Enter a Fetch Size value other than 100. Save and change to the Configuration XML view.
 
+[source,xml]
 ----
 Expected Result:
 
@@ -569,28 +581,24 @@ Metadata is fetched for the selected operation.
 * *Step 3:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then click Save.
 
 * *Step 4:* Set "Done." as the Set Payload element Value. Then Click Save.
+[source,xml]
 ----
 Example of a complete flow result:
 
 <flow name="features-autopaging-certFlow1"
 doc:name="features-autopaging-certFlow1">
-  	<http:inbound-endpoint
-	exchange-pattern="request-response"
-	host="localhost" port="8081" doc:name="HTTP"
-	path="contacts"/>
+  	<http:inbound-endpoint exchange-pattern="request-response"
+	host="localhost" port="8081" doc:name="HTTP" path="contacts"/>
   
-  	<google-contacts:authorize
-	config-ref="Google_Contacts"
+  	<google-contacts:authorize config-ref="Google_Contacts"
 	doc:name="Authorize"/>
   
-  	<google-contacts:get-contacts
-	config-ref="Google_Contacts" doc:name="Get contacts"
-	updatedMax="2000-09-29T18:46:19-0700" 
-	datetimeFormat="yyyy-MM-dd'T'HH:mm:ssZ"/>
+  	<google-contacts:get-contacts config-ref="Google_Contacts" doc:name="Get contacts" updatedMax="2000-09-29T18:46:19-0700" datetimeFormat="yyyy-MM-dd'T'HH:mm:ssZ"/>
   
    	<foreach doc:name="For Each">
   	   <logger message="For element #[flowVars['counter']] payload is #[message.payload]" level="INFO" doc:name="Logger"/>
 	</foreach>
+
    <set-payload value="Done." doc:name="SetPayload"/>
 </flow>
 ----
@@ -659,31 +667,28 @@ Mapping creates.
 * *Step 7:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then click Save.
 
 * *Step 8:* Set "Done." as the Set payload element Value. Then click Save.
+
+[source,xml]
 ----
 Example of a complete result flow:
+
 <flow name="features-autopaging-salesforceFlow1"
 doc:name="features-autopaging-salesforceFlow1">
- 	<http:inbound-endpoint
-	exchange-pattern="request-response"
-	host="localhost" port="8081" path="apforeach"
-	doc:name="HTTP"/>
+ 	<http:inbound-endpoint exchange-pattern="request-response" 
+ 	host="localhost" port="8081" path="apforeach" doc:name="HTTP"/>
 	 
-	 <sfdc:query config-ref="Salesforce" query="dsql:SELECT
-	CreatedById,CreatedDate,Description,OwnerId
-	FROM Account LIMIT 3" doc:name="Query"
-	fetchSize="2"/>
+	 <sfdc:query config-ref="Salesforce" query="dsql:SELECT CreatedById,CreatedDate,Description,OwnerId FROM Account LIMIT 3" 
+	 doc:name="Query" fetchSize="2"/>
 
-	<logger message="### Total amount of elements
-	retrieved is #[payload.size()]" level="INFO"
-	doc:name="Size"/>
+	<logger message="### Total amount of elements retrieved is #[payload.size()]" 
+	level="INFO" doc:name="Size"/>
 	
 	<foreach doc:name="For Each">
-	   <data-mapper:transform config-ref="account_to_map"
-	    doc:name="Account To Map"/>
-	   <logger message="For element
-		#[flowVars['counter']]  payload is
+	   <data-mapper:transform config-ref="account_to_map" doc:name="Account To Map"/>
+	   <logger message="For element #[flowVars['counter']]  payload is
 		#[message.payload]" doc:name="Records"/>
 	</foreach>
+
 	<set-payload value="Done." doc:name="Set Payload"/>
 </flow>
 ----
@@ -840,28 +845,25 @@ Mapping creates.
 * *Step 5:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then click Save.
 
 * *Step 6:* Set "Done." as the Set Payload element Value. Then click Save.
+
+[source,xml]
 ----
 Example of a complete flow:
+
 <flow name="features-autopaging-datamapper-complianceFlow3"
 doc:name="features-autopaging-datamapper-compl
 ianceFlow3">
-	<http:inbound-endpoint
-	exchange-pattern="request-response"
-	host="localhost" port="8081" doc:name="HTTP"
-	path="foreachdm"/>
+	<http:inbound-endpoint exchange-pattern="request-response"
+	host="localhost" port="8081" doc:name="HTTP" path="foreachdm"/>
   	
-  	<google-contacts:authorize
-	config-ref="Google_Contacts"
-	doc:name="Authorize"/>
+  	<google-contacts:authorize config-ref="Google_Contacts"
+  	doc:name="Authorize"/>
   	
-  	<google-contacts:get-groups
-	config-ref="Google_Contacts" doc:name="Get
-	groups"/>
+  	<google-contacts:get-groups config-ref="Google_Contacts" 
+  	doc:name="Get groups"/>
   
-  	<logger message="### Total amount of
-	elements retrieved is
-	#[message.payload.size()]" level="INFO"
-	doc:name="Size"/>
+  	<logger message="### Total amount of elements retrieved is
+	#[message.payload.size()]" level="INFO" doc:name="Size"/>
   	
   	<foreach doc:name="For Each">
     	<data-mapper:transform doc:name="DataMapper"/>
@@ -937,10 +939,11 @@ Mapping is created.
 
 * *Step 6:*  Set "Done." as the Set Payload element Value. Then Click Save.
 
+[source,xml]
 ----
 Example of a complete flow:
-<flow
-name="features-autopaging-datamapper-complianc
+
+<flow name="features-autopaging-datamapper-complianc
 eFlow3"
 doc:name="features-autopaging-datamapper-compl
 ianceFlow3">
@@ -1147,10 +1150,11 @@ Mapping creates.
 * *Step 5:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then Click Save.
 
 * *Step 6:* Set "Done." as the Set Payload element Value. Then Click Save.
+[source,xml]
 ----
 Example of a complete flow:
-<flow
-name="features-autopaging-salesforceFlow1"
+
+<flow name="features-autopaging-salesforceFlow1"
 doc:name="features-autopaging-salesforceFlow1">
     <http:inbound-endpoint
 	exchange-pattern="request-response"
@@ -1248,10 +1252,11 @@ Mapping creates.
 * *Step 5:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then Click Save.
 
 * *Step 6:* Set "Done." as the Set Payload element Value. Then Click Save.
+[source,xml]
 ----
 Example of a complete flow:
-<flow
-name="features-autopaging-salesforceFlow1"
+
+<flow name="features-autopaging-salesforceFlow1"
 doc:name="features-autopaging-salesforceFlow1">
   	<http:inbound-endpoint
 	exchange-pattern="request-response"
@@ -1505,12 +1510,14 @@ Mapping creates.
 * *Step 5:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then Click Save.
 
 * *Step 6:* Set "Done." as the Set Payload element Value. Then Click Save.
+
+[source,xml]
 ----
 Example of a complete flow:
-<flow
-name="features-autopaging-salesforceFlow3"
-doc:name="features-autopaging-salesforceFlow3"
->
+
+<flow name="features-autopaging-salesforceFlow3"
+doc:name="features-autopaging-salesforceFlow3">
+
   	<http:inbound-endpoint
 	exchange-pattern="request-response"
 	host="localhost" port="8081" doc:name="HTTP"/>
@@ -1569,6 +1576,7 @@ Make sure the domain on the Deploy to CloudHub dialog matches the one set for th
 
 image::{imagesdir}/qa-guidelines/qa-guidelines-37.png[]
 
+[source,xml]
 ----
 <facebook:config-with-oauth name="Facebook" doc:name="Facebook" 
 consumerKey="206589772847469" consumerSecret="14b75847e7c9cca4159b3314b39fcd43">
@@ -1582,6 +1590,7 @@ Also make sure that the Mule version is the one under test.
 ---
 
 *Facebook Example*
+[source,xml]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
 <mule xmlns:json="http://www.mulesoft.org/schema/mule/json"
@@ -1622,6 +1631,7 @@ Note: remotePort should not be part of the config, and that the ${http.port} pla
 . Generate keystore.jks running this command: *keytool -genkey -alias mule -keyalg RSA -keystore keystore.jks*
 . Place keystore.jks it in src/resources.
 
+[source,xml]
 ----
 <?xml version="1.0" encoding="UTF-8"?>
 <mule xmlns:https="http://www.mulesoft.org/schema/mule/https"

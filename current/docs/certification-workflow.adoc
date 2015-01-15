@@ -18,10 +18,10 @@ image::{imagesdir}/certification-workflow-1.png[]
 During the development process, MuleSoft and a third-party partner, based on a pre-existing partnership agreement, begin the development process.
 Support documentation:
 
-* #_development[Development]
-* #_automatic_functional_qa[Automatic Functional QA]
-* #_studio_interoperability_qa[Studio Interoperability QA]
-* Documentation
+* http://mulesoft.github.io/anypoint-connector-certification-process-documentation/current/user-manual.html#_development[Development]
+* http://mulesoft.github.io/anypoint-connector-certification-process-documentation/current/user-manual.html_automatic_functional_qa[Automatic Functional QA]
+* http://mulesoft.github.io/anypoint-connector-certification-process-documentation/current/user-manual.html#_studio_interoperability_qa[Studio Interoperability QA]
+* http://mulesoft.github.io/anypoint-connector-certification-process-documentation/current/user-manual.html#_studio_interoperability_qa[Documentation]
 
 == Certification Workflow
 === New Version Release

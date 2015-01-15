@@ -132,6 +132,8 @@ Unauthorize operation is found.
 * *Step 15:* Select the Unauthorize operation. Then click *Save*.
 
 * *Step 16:* Set "Done." on all Set Payload elements Values. Then click *Save*.
+
+[source,xml]
 ----
 Expected Result:
 
@@ -342,6 +344,7 @@ OAuth session is killed.
 === Anypoint Studio - Installation Wizard
 
 ==== Preconditions
+
 * Anypoint Studio is installed on the local machine.
 * Connector already available on the update site.
 
@@ -445,8 +448,8 @@ Expected Result:
 * Connector is added to the canvas.
 * Connector related library is added to project.
 Version corresponds to the 3.5.0 connector.
-image::{imagesdir}/qa-guidelines/qa-guidelines-6.png[]
 ----
+image::{imagesdir}/qa-guidelines/qa-guidelines-6.png[]
 
 * *Step 4:* Secondary click on the connector and select remove libraries for project.
 ----
@@ -742,20 +745,19 @@ Run the following set of test cases at operation level. For each of the connecto
 |3|Randomly select an Object type (if not already defined by default by the operation).|
 |4|For the child elements, select the From Message option and enter #[flowVars['objectRef']]as the value.|
 |5|Save.| Getting DataSense metadata ... popup displays.
-|6|Change to the Configuration XML view.|
-Operation configuration is reflected on the XML. Example XML: +
-
-+
-----
-<code>
-<marketo:sync-lead config-ref="Marketo" doc:name="Marketo">
-<marketo:lead-record ref="#[flowVars['leadRecordRef']]"/>
-</marketo:sync-lead>
-</code>
-----
-+
+|6|Change to the Configuration XML view.| Operation configuration is reflected on the XML. Example XML above
 
 |===
+
+[source,xml]
+----
+<code>
+	<marketo:sync-lead config-ref="Marketo" doc:name="Marketo">
+	<marketo:lead-record ref="#[flowVars['leadRecordRef']]"/>
+	</marketo:sync-lead>
+</code>
+----
+
 
 ==== No Metadata
 This is defined by the argument types and return types of the API. If all of them are either primitive types or of type InputStream, the connector falls in the No metadata category.

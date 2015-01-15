@@ -6,6 +6,7 @@
 :imagesdir: assets
 :compat-mode!:
 :linkcss:
+:source-highlighter: coderay
 
 = Anypoint Connector Certification Process
 
@@ -78,10 +79,18 @@ include::docs/sonar.adoc[]
 include::docs/studio-interopetability-QA-guidelines.adoc[]
 include::docs/studio-interopetability-QA-guidelines-2.adoc[]
 
+= Templates
+== Anypoint Connectors Documentation Template
 
+https://docs.google.com/document/d/1YDHz9ce0Ot4VIq6CM9vPPh20t4QMs7osfqa-szIO5Xc/edit?usp=sharing[Documentation Template]
 
+== Anypoint Connectors Release Notes Template
 
+https://docs.google.com/a/mulesoft.com/document/d/1rXQEzr06WQRo4O8jDb37fT4X04zvhIyVr_0xpSj5ENw/edit?usp=sharing[Release Notes Template]
 
+== Anypoint Connectors Manual Test Suite Template
+
+https://docs.google.com/a/mulesoft.com/spreadsheets/d/1xqwGw5msku30sfjx6bpJDP9wZZ15cP2TcEzEq6pM9QM/edit?usp=sharing[Manual Test Suite Template]
 
 
 

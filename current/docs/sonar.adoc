@@ -16,11 +16,15 @@ You need a server running Oracle JRE 6 or higher. (OpenJRE or other distribution
 == Performing Your First Analysis
 
 For the first run of your project, go to the project’s root folder and run:
-```
-mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test -Dmaven.test.failure.ignore=true -Dtest=RegressionTestSuite -D<connector>_CREDENTIALS=automation-credentials.properties && mvn install && mvn sonar:sonar 
+----
+mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test -Dmaven.test.failure.ignore=true 
+	-Dtest=RegressionTestSuite -D<connector>_CREDENTIALS=automation-credentials.properties 
+&& mvn install && mvn sonar:sonar 
 
-mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.test.failure.ignore=true && mvn sonar:sonar
-```
+mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install 
+	-Dmaven.test.failure.ignore=true 
+&& mvn sonar:sonar
+----
 
 This creates the project in your sonar installation, allowing you to use the Eclipse SonarQube plugin from inside your Anypoint Studio. Using this plugin is the recommended way, but is always possible to run the inspections manually with * mvn sonar:sonar *.
 
@@ -73,6 +77,7 @@ New issues introduced since the previous analysis are marked as errors, while ex
 
 == Quality Profile Rules
 SonarQube classifies each issue with a severity:
+
 * Blocker: Bugs or unacceptable programming practices. Your connector cannot have blocker issues to be certified. You must correct all issues.
 * Critical: They cover violated conventions that should be fixed. Certification is not blocked by this type of inspection, but it’s highly recommended to fix them.
 * Major:  These inspections fall in a similar category to the critical issues but with lower priority.
