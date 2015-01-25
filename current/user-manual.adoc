@@ -18,9 +18,8 @@ MuleSoft has expanded the Anypoint™ Connector offering to enable third-party d
 All connectors enrolled in the MuleSoft Partner Program must go through a mandatory periodic Certification Process. The Certification Process has been developed to assess the quality of connectors, to ensure that connectors published on the MuleSoft Web page follow industry best practices for development, and to promote trust.
 All connectors built by external developers and/or partners go through a Certification Process conducted by MuleSoft’s internal team. Once a connector passes certification, the connector is branded as a MuleSoft-certified connector and published on the MuleSoft web site. 
 
-== Scope
-
-The scope of the certification process depends on the composition of the connector. Our approach is to test all parts of the connector to ensure that our mutual customers and their platforms are not put at risk. The items below are a list of the high-level testing performed on each connector during the certification process:
+The scope of the certification process depends on the composition of the connector. Our approach is to test all parts of the connector to ensure that our mutual customers and their platforms are not put at risk.
+The items below are a list of the high-level testing performed on each connector during the certification process:
 
 . Automated code scan
 . Manual code review and black box testing
@@ -28,13 +27,15 @@ The scope of the certification process depends on the composition of the connect
 . Repository structure review
 . Documentation review
 . Compatibility review
+. Static code Analysis
 
-= Certification Workflow
+In the following sections, each one of the topics to be completed as part of the certification will be described.
 
-[certificationWorkflow]
+= Certification Process
 
-include::docs/certification-workflow.adoc[]
+[certification_process]
 
+include::docs/certification-process.adoc[]
 
 = Development 
 
@@ -70,7 +71,7 @@ include::docs/coverage-guidelines.adoc[]
 
 [sonar]
 
-include::docs/sonar.adoc[]
+include::docs/static-code-analysis-with-sonarqube.adoc[]
 
 = Studio Interoperability QA
 

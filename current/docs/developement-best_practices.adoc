@@ -1,17 +1,4 @@
-== GitHub
-MuleSoft develops its software using GitHub repositories. Those who collaborate with MuleSoft also must use GitHub. MuleSoft creates GitHub repositories for you, public repositories for open source, and private repositories for commercially licensed connectors. After creating your GitHub repositories, MuleSoft gives you their permissions.
-
-== Development
-To best understand the development lifecycle, refer to the http://www.mulesoft.org/documentation/display/current/Anypoint+Connector+DevKit[documentation page].
-
-== Tools
-To develop connectors, download and install:
-. http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html[JDK 7] 
-. http://maven.apache.org/download.cgi[Apache Maven]
-. http://www.mulesoft.org/download-mule-esb-community-edition[Anypoint Studio]
-. https://www.mulesoft.org/documentation/display/current/Installing+DevKit+Software#InstallingDevKitSoftware-devplugin[Anypoint Devkit Plugin for Studio]
-
-== QA 
+== QA
 Use http://www.mulesoft.org/documentation/display/current/Developing+DevKit+Connector+Tests[Developing DevKit Connector Tests] to build a test suite using the style of the https://docs.google.com/a/mulesoft.com/spreadsheet/ccc?key=0AvgooFprI9W5dGM2WXZpaTU4bWtRdFVLUGdkcnNIVEE&usp=drive_web#gid=21[Connector interoperability test suite template]. Prior to entering the certification phase, all test cases in this test suite must run and achieve "Passed" status.
 
 . Interoperability testing for a connector covers the following scenarios (if applicable):
@@ -43,7 +30,7 @@ After you install the Studio Plugin, run the Project Structure Check plugin to v
 
 To run the plugin, add this execution to your connector’s pom.xml file: 
 
-[source,xml]
+[source,xml] 
 ----
 <build>
     ...

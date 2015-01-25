@@ -1,0 +1,3 @@
+== Architecture Template
+
+ @Define this document.

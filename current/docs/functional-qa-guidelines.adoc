@@ -1,4 +1,5 @@
 == Introduction
+
 This document explains how to automate functional test cases on Connectors.
 
 == Approach Explanation

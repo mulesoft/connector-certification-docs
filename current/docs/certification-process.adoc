@@ -1,0 +1,116 @@
+
+== Certification Process
+
+The partner Engagement and Certification Process for publishing connectors consists of these stages:
+
+. On-Board
+.. Legal Engagement
+. Develop
+.. Leaning Anypoint™ Connector DevKit
+.. Mandatory Development Practices
+.. Design Specification Review
+. Certify
+.. Prerequisites
+.. Certifying
+.. Results
+. Publish
+
+image::{imagesdir}/certification-workflow-1.png[]
+
+=== Stage 1: OnBoard
+
+=== 1.1 Legal Engagement
+
+During the development process, MuleSoft and a third-party partner, based on a pre-existing partnership agreement, begin the development process.
+
+=== Stage 2: Developing The Connector
+
+==== 2.1 Leaning Anypoint™ Connector DevKit
+
+The MuleSoft Anypoint™ Connector DevKit is the tool for developing Anypoint Connectors. It provides the following features to help you develop or maintain a connector:
+
+. Visual design and implementation using Anypoint Studio with an Eclipse-oriented interface that helps simplify and speed up development
+. Maven support for development and building
+. Connector development and packaging tools
+. Authentication support for multiple types of authentication like OAuth and Basic Authentication
+. DataSense support to acquire metadata from endpoints
+. Extensive testing capability
+. Examples, training, and support to simplify startup and solve issues
+. Provides Batch, query pagination, and DataSense Query Language support
+
+There is plenty of documentation on Internet about DevKit. Here is a set of links that it could be useful as starting point:
+
+    * Connector Development Essential: http://training.mulesoft.com/instructor-led-training/connector-development-essentials-private-class-ilt
+    * Official DevKit Documentation: http://www.mulesoft.org/documentation/display/current/Anypoint+Connector+DevKit
+    * DevKit Tutorial: http://www.mulesoft.org/documentation/display/current/Tutorial+-+Barn+Connector
+    * Community Forum: http://forum.mulesoft.org/mulesoft/products/mulesoft_anypoint_connectors
+
+@Todo: Any ideas ?
+
+==== 2.2  Mandatory Practices
+
+In order to quality of the connectors developed, there are a set of practices and artifacts that need to be delivered as part of the connectors development.
+Each one of the following practices are aimed to cover different quality aspects:
+
+* http://mulesoft.github.io/anypoint-connector-certification-process-documentation/current/user-manual.html#_development_best_practices[Development Best Practices]
+* http://mulesoft.github.io/anypoint-connector-certification-process-documentation/current/user-manual.html_automatic_functional_qa[Connector Test Automation]
+* http://mulesoft.github.io/anypoint-connector-certification-process-documentation/current/user-manual.html#_studio_interoperability_qa[Studio Interoperability Testing]
+* http://mulesoft.github.io/anypoint-connector-certification-process-documentation/current/user-manual.html#_documentation[Documentation]
+* http://mulesoft.github.io/anypoint-connector-certification-process-documentation/current/user-manual.html#_static_code_analysis[Static Code Analysis]
+* http://mulesoft.github.io/anypoint-connector-certification-process-documentation/current/user-manual.html#_code_coverage[Code Coverage]
+
+==== 2.3 Design Specification Review
+
+@Todo: Create an Architecture Certification Template
+
+== 3 Certify
+
+At this stage, the connector is really to go over the final stage of the certification.
+
+ image::{imagesdir}/certification-workflow-2.png[]
+
+=== 3.1 Prerequisites
+
+Before Mule start the certification process, there are a set of prerequisites to be satisfied:
+
+* *Design Specification Approved:* Design Specification has been approved and all suggested correction has been completed.
+* *Source Code Access and Sandbox Credentials:* As part of the certification, MuleSoft will internally run a continue build tests execution and run a set of code inspections to validate the quality of the connector. The next actions are required:
+** GitHub account read access must be granted to the user connectors-cert-ci (connectors-cert-ci@mulesoft.com)
+** In case of being required, provide the Sandbox credentials a .properties used for the testing execution.
+** Create a release branch that will contain all the fixes and suggested during the certification. It should follows the naming convention "release/v<version-number>". Once the certification process has been completed, all the changes will be merged into the master branch and a tag will all the change must be created. It's strongly encourage to follow GitFlow branching practices.
+* *Maven Dependencies:* It's important that the following things be satisfied:
+** Connector must be a final version, It could not be an SNAPSHOT
+** There must not be SNAPSHOT dependencies
+** External dependencies must be located in well know public repositories.
+* *Presentation Demo:* The objective of this demo is to go over the functional aspects of the connectors, overview of the system to be connected, underlying integration technology (REST/WSDL/SDK). The audience of this meeting will be Product Managers , Connectors Engineers Leads and QA.
+* *Complete Certification Checklist:* Before the connector could start the certification process, it’s responsibility of the partner to validate that all the certification artifacts and requirements have been accomplished. All the required actions are described in the following template and should be completed before submitting the connector for certification. Certification checklist could be found here: @Todo: URL to the checklist
+* *Connector documentation:* There must be a public access to the connectors documentation.
+* *Visioning:*   
+
+=== 3.2 Certifying
+
+Once all the previous steps have been completed, MuleSoft engineering team will start running the certification and creating a set of recommendations to be completed before the connector could be released. This is an iterative process where it’s highly probable that our engineering team will have questions about the connector usage. It’s strongly recommended to allocate some time from developers in case of any question arise. Once all the certification criteria has been meet, the connector is ready to move to the next stage. As part of this, the connector forum will be used a the communication chanel between the partner an MuleSoft.
+
+MuleSoft will provide a tentative day for starting the certification. We strongly encourage to allocate some development time to start working on the suggested connections and changes. If there is not active partner engagement and activity on fixing the issue in a period of 7 days, the certification will be suspended and a new tentative day will be assigned.
+
+MuleSoft will provide a CloudBees (http://www.cloudbees.com) private account that the partner will use to monitor the nightly tests execution and static code analysis reports. It's responsibility of the partner to monitor warranty sandbox maintenance and successful tests results.
+
+MuleSoft reserves the right to conduct random tests on published connectors. If we find a connector that deviates from any of our requirements, we notify you and provide a timeframe to remedy the issue. In extreme cases, we may remove the connector from our web site.
+
+@Todo: Define new releases criteria.
+
+
+=== 3.3 Results
+
+
+* *Support Training:* Mule Support team will provide T1 support and will help the customer to isolated the issue to identify if the issue is a Mule issue or a connector issue. The objective of this birth view training is to provide to the support team a general understanding of the connector and tools that help to isolate the problem.
+* *Upload to Library:* Connector will be upload in the https://www.mulesoft.com/library[Mule Connectors Library]. After your connector passes the Certification Process, MuleSoft sends you an estimated date for when your connector will appear on the MuleSoft web site. As part of this process, the following information need to be provided:
+** High Level description of the connector. SalesForce connector could be use a template example: https://www.mulesoft.com/library#!/salesforce-integration-connector?types=connector
+** URL to Release Notes
+** URL to Functional documentation of the connector
+** URL to DevKit generated documentation
+
+
+== Release Re-Certification
+
+Mule ESB and Mule Studio have a release cadence of 3 month cycles. Even the fact that Mule ESB and Mule Studio will be focus on maintaining forward compatibility for all develop connectors there is a small probability that issues related to classloader problems or data mapping could arise. Due to that, it’s required that a regression testing using the released version of Mule ESB and Mule Studio be executed. Early access to binaries will be provided to run the re-certification. It’s important to point out that the certification must be run over the already released connector
