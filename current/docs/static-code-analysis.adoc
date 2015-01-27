@@ -78,8 +78,7 @@ New issues introduced since the previous analysis are marked as errors, while ex
 == Quality Profile Rules
 SonarQube classifies each issue with a severity:
 
-* Blocker: Bugs or unacceptable programming practices. Your connector cannot have blocker issues to be certified. You must correct all issues.
-* Critical: They cover violated conventions that should be fixed. Certification is not blocked by this type of inspection, but it’s highly recommended to fix them.
+* Blocker & Critical: Bugs or unacceptable programming practices. Your connector cannot have blocker or Critical issues to be certified. You must correct all issues.
 * Major:  These inspections fall in a similar category to the critical issues but with lower priority.
 * Minor: Correctness, clarity or performance issues that do not impact your connector’s functionality significantly.
 * Info: Keeps track of useful information that might otherwise go unnoticed.
