@@ -85,7 +85,7 @@ Before Mule start the certification process, there are a set of prerequisites to
 * *Presentation Demo:* The objective of this demo is to go over the functional aspects of the connectors, overview of the system to be connected, underlying integration technology (REST/WSDL/SDK). The audience of this meeting will be Product Managers , Connectors Engineers Leads and QA.
 * *Complete Certification Checklist:* Before the connector could start the certification process, it’s responsibility of the partner to validate that all the certification artifacts and requirements have been accomplished. All the required actions are described in the following template and should be completed before submitting the connector for certification. Certification checklist could be found here: @Todo: URL to the checklist
 * *Connector documentation:* There must be a public access to the connectors documentation.
-* *Visioning:*   
+* *Versioning:* Connectors must follow versioning best practices. Given a version number MAJOR.MINOR.PATCH increment MAJOR version when you make incompatible API changes,increment MINOR version when you add functionality in a backwards-compatible manner, and increment PATCH version when you make backwards-compatible bug fixes.
 
 === 3.2 Certifying
 
@@ -109,6 +109,10 @@ MuleSoft reserves the right to conduct random tests on published connectors. If 
 ** URL to Release Notes
 ** URL to Functional documentation of the connector
 ** URL to DevKit generated documentation
+
+=== 4 Publish
+
+Finally, the connector will be available in MueSoft Connector Library (https://www.mulesoft.com/library)
 
 
 == Release Re-Certification

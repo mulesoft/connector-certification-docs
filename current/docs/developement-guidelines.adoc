@@ -1,4 +1,4 @@
-== QA
+== Functional Automation Tests
 Use http://www.mulesoft.org/documentation/display/current/Developing+DevKit+Connector+Tests[Developing DevKit Connector Tests] to build a test suite using the style of the https://docs.google.com/a/mulesoft.com/spreadsheet/ccc?key=0AvgooFprI9W5dGM2WXZpaTU4bWtRdFVLUGdkcnNIVEE&usp=drive_web#gid=21[Connector interoperability test suite template]. Prior to entering the certification phase, all test cases in this test suite must run and achieve "Passed" status.
 
 . Interoperability testing for a connector covers the following scenarios (if applicable):

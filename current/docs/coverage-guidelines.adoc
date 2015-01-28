@@ -25,7 +25,7 @@ image::{imagesdir}/coverage-guidelines-3.png[]
 
 Every connector method must have unit or automation tests. A connector fails certification if it does not have all its message processors, message sources, and custom transformers covered by unit tests or automation tests. Also, all the utility classes that are part of a connector must have a high level of code coverage. 
 
-=== Code coverage must be no less than 60%.
+=== Code coverage must be no less than 70%.
 
 Testing your processors gives you a good indication of the quality of your connector. When you build automation tests, you are using your own connector to connect to an API. If you find it hard to test all cases of a message processor, then consider separating your message processors into smaller ones, if possible. 
 
