@@ -27,7 +27,7 @@ The items below are a list of the high-level testing performed on each connector
 . Repository structure review
 . Documentation review
 . Compatibility review
-. Static code Analysis
+. Static code analysis
 
 In the following sections, each one of the topics to be completed as part of the certification will be described.
 
@@ -43,7 +43,7 @@ include::docs/certification-process.adoc[]
 
 include::docs/developement-guidelines.adoc[]
 
-= Automatic Functional QA 
+= Automated Functional Testing
 
 [functionalQAGuidelines]
 
@@ -79,6 +79,7 @@ include::docs/static-code-analysis-with-sonarqube.adoc[]
 
 include::docs/studio-interopetability-QA-guidelines.adoc[]
 include::docs/studio-interopetability-QA-guidelines-2.adoc[]
+
 
 = Templates
 == Anypoint Connectors Documentation Template
