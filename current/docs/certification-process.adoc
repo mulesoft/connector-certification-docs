@@ -1,6 +1,4 @@
 
-== Certification Process
-
 The partner Engagement and Certification Process for publishing connectors consists of these stages:
 
 . On-Board
@@ -63,11 +61,11 @@ Each one of the following practices are aimed to cover different quality aspects
 
 @Todo: Create an Architecture Certification Template
 
-== 3 Certify
+== Stage 3: Certify
 
 At this stage, the connector is really to go over the final stage of the certification.
 
- image::{imagesdir}/certification-workflow-2.png[]
+image::{imagesdir}/certification-workflow-2.png[]
 
 === 3.1 Prerequisites
 
@@ -110,7 +108,7 @@ MuleSoft reserves the right to conduct random tests on published connectors. If 
 ** URL to Functional documentation of the connector
 ** URL to DevKit generated documentation
 
-=== 4 Publish
+=== Stage 4: Publish
 
 Finally, the connector will be available in MueSoft Connector Library (https://www.mulesoft.com/library)
 

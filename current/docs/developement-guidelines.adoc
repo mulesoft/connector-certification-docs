@@ -30,7 +30,7 @@ After you install the Studio Plugin, run the Project Structure Check plugin to v
 
 To run the plugin, add this execution to your connector’s pom.xml file: 
 
-[source,xml] 
+[source,xml]
 ----
 <build>
     ...
