@@ -18,8 +18,10 @@
 <li><a href="#_introduction">Introduction</a></li>
 <li><a href="#_certification_process">Certification Process</a>
 <ul class="sectlevel1">
-<li><a href="#_certification_process_2">Certification Process</a></li>
-<li><a href="#_3_certify">3 Certify</a></li>
+<li><a href="#_stage_1_onboard">Stage 1: OnBoard</a></li>
+<li><a href="#_stage_2_developing_the_connector">Stage 2: Developing The Connector</a></li>
+<li><a href="#_stage_3_certify">Stage 3: Certify</a></li>
+<li><a href="#_stage_4_publish">Stage 4: Publish</a></li>
 <li><a href="#_release_re_certification">Release Re-Certification</a></li>
 </ul>
 </li>
@@ -169,9 +171,6 @@ The items below are a list of the high-level testing performed on each connector
 <div class="sect1">
 <h2 id="_certification_process">Certification Process</h2>
 <div class="sectionbody">
-<div class="sect1">
-<h2 id="_certification_process_2">Certification Process</h2>
-<div class="sectionbody">
 <div class="paragraph">
 <p>The partner Engagement and Certification Process for publishing connectors consists of these stages:</p>
 </div>
@@ -229,17 +228,17 @@ The items below are a list of the high-level testing performed on each connector
 <img src="assets/assets/certification-workflow-1.png" alt="certification workflow 1">
 </div>
 </div>
+<div class="sect1">
+<h2 id="_stage_1_onboard">Stage 1: OnBoard</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="_stage_1_onboard">Stage 1: OnBoard</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_1_1_legal_engagement">1.1 Legal Engagement</h3>
+<h3 id="_legal_engagement">Legal Engagement</h3>
 <div class="paragraph">
 <p>During the development process, MuleSoft and a third-party partner, based on a pre-existing partnership agreement, begin the development process.</p>
 </div>
-<div class="sect3">
-<h4 id="_1_1_leaning_anypoint_connector_devkit">1.1 Leaning Anypoint™ Connector DevKit</h4>
+</div>
+<div class="sect2">
+<h3 id="_1_1_leaning_anypoint_connector_devkit">1.1 Leaning Anypoint™ Connector DevKit</h3>
 <div class="paragraph">
 <p>The MuleSoft Anypoint™ Connector DevKit is the tool for developing Anypoint Connectors. It provides the following features to help you develop or maintain a connector:</p>
 </div>
@@ -295,10 +294,12 @@ The items below are a list of the high-level testing performed on each connector
 </div>
 </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="_stage_2_developing_the_connector">Stage 2: Developing The Connector</h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="_stage_2_developing_the_connector">Stage 2: Developing The Connector</h3>
-<div class="sect3">
-<h4 id="_2_1_mandatory_practices">2.1  Mandatory Practices</h4>
+<h3 id="_2_1_mandatory_practices">2.1  Mandatory Practices</h3>
 <div class="paragraph">
 <p>In order to quality of the connectors developed, there are a set of practices and artifacts that need to be delivered as part of the connectors development.
 Each one of the following practices are aimed to cover different quality aspects:</p>
@@ -326,24 +327,23 @@ Each one of the following practices are aimed to cover different quality aspects
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_2_2_design_specification_review">2.2 Design Specification Review</h4>
+<div class="sect2">
+<h3 id="_2_2_design_specification_review">2.2 Design Specification Review</h3>
 <div class="paragraph">
 <p>@Todo: Create an Architecture Certification Template</p>
 </div>
 </div>
 </div>
 </div>
-</div>
 <div class="sect1">
-<h2 id="_3_certify">3 Certify</h2>
+<h2 id="_stage_3_certify">Stage 3: Certify</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>At this stage, the connector is really to go over the final stage of the certification.</p>
 </div>
-<div class="literalblock">
+<div class="imageblock">
 <div class="content">
-<pre>image::{imagesdir}/certification-workflow-2.png[]</pre>
+<img src="assets/assets/certification-workflow-2.png" alt="certification workflow 2">
 </div>
 </div>
 <div class="sect2">
@@ -450,11 +450,13 @@ Each one of the following practices are aimed to cover different quality aspects
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_4_publish">4 Publish</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stage_4_publish">Stage 4: Publish</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Finally, the connector will be available in MueSoft Connector Library (<a href="https://www.mulesoft.com/library" class="bare">https://www.mulesoft.com/library</a>)</p>
-</div>
 </div>
 </div>
 </div>
@@ -559,32 +561,29 @@ Each one of the following practices are aimed to cover different quality aspects
 <div class="paragraph">
 <p>To run the plugin, add this execution to your connector’s pom.xml file:</p>
 </div>
-<div class="paragraph">
-<p>[source,xml] </p>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre>&lt;build&gt;
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;build&gt;</span>
     ...
-    &lt;plugins&gt;
+    <span class="tag">&lt;plugins&gt;</span>
         ...
-       &lt;plugin&gt;
-            &lt;groupId&gt;org.mule.certification&lt;/groupId&gt;
-            &lt;artifactId&gt;project-structure-validation&lt;/artifactId&gt;
-            &lt;version&gt;1.0.4&lt;/version&gt;
-            &lt;executions&gt;
-                &lt;execution&gt;
-                    &lt;phase&gt;package&lt;/phase&gt;
-                    &lt;goals&gt;
-                        &lt;goal&gt;y&lt;/goal&gt;
-                    &lt;/goals&gt;
-                &lt;/execution&gt;
-            &lt;/executions&gt;
-        &lt;/plugin&gt;
+       <span class="tag">&lt;plugin&gt;</span>
+            <span class="tag">&lt;groupId&gt;</span>org.mule.certification<span class="tag">&lt;/groupId&gt;</span>
+            <span class="tag">&lt;artifactId&gt;</span>project-structure-validation<span class="tag">&lt;/artifactId&gt;</span>
+            <span class="tag">&lt;version&gt;</span>1.0.4<span class="tag">&lt;/version&gt;</span>
+            <span class="tag">&lt;executions&gt;</span>
+                <span class="tag">&lt;execution&gt;</span>
+                    <span class="tag">&lt;phase&gt;</span>package<span class="tag">&lt;/phase&gt;</span>
+                    <span class="tag">&lt;goals&gt;</span>
+                        <span class="tag">&lt;goal&gt;</span>y<span class="tag">&lt;/goal&gt;</span>
+                    <span class="tag">&lt;/goals&gt;</span>
+                <span class="tag">&lt;/execution&gt;</span>
+            <span class="tag">&lt;/executions&gt;</span>
+        <span class="tag">&lt;/plugin&gt;</span>
         ...
-    &lt;/plugins&gt;
+    <span class="tag">&lt;/plugins&gt;</span>
     ...
-&lt;/build&gt;</pre>
+<span class="tag">&lt;/build&gt;</span></code></pre>
 </div>
 </div>
 </div>
@@ -8479,7 +8478,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-02-02 13:25:57 ART
+Last updated 2015-02-02 14:58:10 EST
 </div>
 </div>
 </body>
