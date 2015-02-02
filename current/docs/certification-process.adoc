@@ -15,13 +15,13 @@ The partner Engagement and Certification Process for publishing connectors consi
 
 image::{imagesdir}/certification-workflow-1.png[]
 
-=== Stage 1: OnBoard
+== Stage 1: OnBoard
 
-=== 1.1 Legal Engagement
+=== Legal Engagement
 
 During the development process, MuleSoft and a third-party partner, based on a pre-existing partnership agreement, begin the development process.
 
-==== 1.1 Leaning Anypoint™ Connector DevKit
+=== 1.1 Leaning Anypoint™ Connector DevKit
 
 The MuleSoft Anypoint™ Connector DevKit is the tool for developing Anypoint Connectors. It provides the following features to help you develop or maintain a connector:
 
@@ -43,9 +43,9 @@ There is plenty of documentation on Internet about DevKit. Here is a set of link
 
 @Todo: Any ideas ?
 
-=== Stage 2: Developing The Connector
+== Stage 2: Developing The Connector
 
-==== 2.1  Mandatory Practices
+=== 2.1  Mandatory Practices
 
 In order to quality of the connectors developed, there are a set of practices and artifacts that need to be delivered as part of the connectors development.
 Each one of the following practices are aimed to cover different quality aspects:
@@ -57,7 +57,7 @@ Each one of the following practices are aimed to cover different quality aspects
 * http://mulesoft.github.io/anypoint-connector-certification-process-documentation/current/user-manual.html#_static_code_analysis[Static Code Analysis]
 * http://mulesoft.github.io/anypoint-connector-certification-process-documentation/current/user-manual.html#_code_coverage[Code Coverage]
 
-==== 2.2 Design Specification Review
+=== 2.2 Design Specification Review
 
 @Todo: Create an Architecture Certification Template
 
@@ -108,7 +108,7 @@ MuleSoft reserves the right to conduct random tests on published connectors. If 
 ** URL to Functional documentation of the connector
 ** URL to DevKit generated documentation
 
-=== Stage 4: Publish
+== Stage 4: Publish
 
 Finally, the connector will be available in MueSoft Connector Library (https://www.mulesoft.com/library)
 
