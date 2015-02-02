@@ -12,6 +12,7 @@
 
 *version 0.1*
 
+[intro]
 = Introduction
 
 MuleSoft has expanded the Anypoint™ Connector offering to enable third-party developers and partners to develop Anypoint Connectors.
@@ -31,51 +32,44 @@ The items below are a list of the high-level testing performed on each connector
 
 In the following sections, each one of the topics to be completed as part of the certification will be described.
 
-= Certification Process
 
-[certification_process]
+[certificationProcess]
+= Certification Process
 
 include::docs/certification-process.adoc[]
 
-= Development 
-
 [devGuidelines]
+= Development 
 
 include::docs/developement-guidelines.adoc[]
 
-= Automated Functional Testing
-
 [functionalQAGuidelines]
+= Automated Functional Testing
 
 include::docs/functional-qa-guidelines.adoc[]
 
-= Studio Functional Test Plugin
-
 [functional-test-plugin]
+= Studio Functional Test Plugin
 
 include::docs/functional-test-plugin.adoc[]
 
-= Studio Interoperability Test Plugin
-
 [interoperability-test-plugin]
+= Studio Interoperability Test Plugin
 
 include::docs/studio-interopetability-test-plugin.adoc[]
 
-= Code Coverage
-
 [coverageGuidelines]
+= Code Coverage
 
 include::docs/coverage-guidelines.adoc[]
 
-= Static Code Analysis with SonarQube
-
 [sonar]
+= Static Code Analysis with SonarQube
 
 include::docs/static-code-analysis-with-sonarqube.adoc[]
 
-= Studio Interoperability QA
-
 [studio-interopetability-QA-guidelines]
+= Studio Interoperability QA
 
 include::docs/studio-interopetability-QA-guidelines.adoc[]
 include::docs/studio-interopetability-QA-guidelines-2.adoc[]
