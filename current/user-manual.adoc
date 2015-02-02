@@ -2,7 +2,7 @@
 :compat-mode:
 :page-layout!:
 :toc: left
-:toc-title: 
+:toclevels: 1
 :imagesdir: assets
 :compat-mode!:
 :linkcss:
