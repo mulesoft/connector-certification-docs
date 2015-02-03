@@ -13,7 +13,8 @@ The partner Engagement and Certification Process for publishing connectors consi
 .. Results
 . Publish
 
-image::{imagesdir}/certification-workflow-1.png[]
+image::{imagesdir}/certification-process-1.png[]
+
 
 == Stage 1: OnBoard
 
@@ -64,8 +65,6 @@ Each one of the following practices are aimed to cover different quality aspects
 == Stage 3: Certify
 
 At this stage, the connector is really to go over the final stage of the certification.
-
-image::{imagesdir}/certification-workflow-2.png[]
 
 === 3.1 Prerequisites
 
