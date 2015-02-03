@@ -7184,6 +7184,9 @@ img {
   color: #00a3e0;
   font-weight: bold;
 }
+#toc > ul > li > a {
+  font-weight: bold;
+}
 #toc ul {
   padding-left: 20px;
   list-style: none;
