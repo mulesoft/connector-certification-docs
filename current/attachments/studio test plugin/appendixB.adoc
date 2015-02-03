@@ -1,0 +1,53 @@
+
+== Appendix B: Plugin Result Files 
+The following files show the differences between the two files: +
+https://gist.github.com/alegmarra/cc81e680165c9406c84d
+
+=== TestData (Basic File)
+This file contains a detailed description of the connector processors and configs, the fields each of them receives, the hierarchy of child objects, and information about the element representation in AnyPoint Studio.
+
+==== Processor Tags
+<get-contacts> and <save-contact> represent each one a processor present in the connector. Everything inside this tag references this particular processor.
+
+==== Attributes, Optional, and Required Tags
+Represents the parameters the processor receives that are not childElements. An <optional> tag indicates that the parameter has been annotated as @Optional in the processors declaration, while a <required> tag marks the parameter as mandatory for every execution.
+
+Node attributes like caption, group, javaType, and type, indicate the properties of each parameter and its representation in Studio. Group, caption, and type are needed to find the element in the Studio UI, and successfully populate the form.
+
+==== ChildElements tag
+Allows a complete description of the object. This element has a direct mapping with the description done manually in Studio. This elements can be, optional or required, with the same meaning as before.
+
+The “complex” definitions implies each field populates separately, while a “useReference” definition references an object described separately in the flow, just like we do in Studio.
+ 
+=== TestData Overrides (Overrides File)
+This template is a merge between a subset of the basic file, and the output from the annotations processor, resulting in a file with not only the whole structure of the connector, for each config and processor, all the required fields are declared, but also a description of the connector and its processors properties. 
+
+The empty attributes and childElements tags mean that this particular processor has no required parameters. 
+
+==== Connector Properties
+
+|===
+|*Property*|*Description*
+
+|Connectivity Support|Indicates if the connector implements connectivity testing.
+|OAuth Authentication|Indicates if the connector implements OAuth authentication.
+|DataSense Enabled|Indicates if the connector supports DataSense.
+|Metadata|Declares the kind of metadata the connector supports. Valid values are:  
+|Transformer|Indicates if the connector is available also as a transformer
+|===
+
+==== Processor Properties
+
+|===
+|*Property*|*Description*
+
+|DataMapper|Declares the expected types for datamapper to retrieve from the connector. The DataMapper fields are completed from the connectors code during the testdata generation. 
+
+Attributes:“input" represents the value you expect to see in the DataMapper input group when you drop the connector before the DataMapper box. The “output” represents the same but when the connector is after the DM.
+If the connector supports dynamic metadata, the values populated in the generation should be modified in order to reflect the correct object in the operation For example, if you do a getUsers operation and expect a List<User>, the “User” type should be replaced in
+the List<Map<String, Object>> declaration.
+|Auto Paging|Indicates the processor implements auto paging.
+|Query Support|Indicates the processor has at least one attribute annotated as @Query.
+|===
+
+

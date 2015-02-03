@@ -1,0 +1,150 @@
+= Anypoint Connectors Release Notes Template
+
+The following is a proposed connector documentation template for documenting MuleSoft (and perhaps 3rd party) connectors. When completed, a tech writer will work with the development teams to bring existing and new connector documentation to this standard. Please review and add your comments. Thanks!  
+
+Note: Horizontal lines show sections, but won’t be in the actual documents.
+
+---
+
+= NameOf Connector
+One sentence description.
+
+---
+
+== Contents:
+
+. Introduction
+.. Prerequisites
+... Namespace
+... Schema Location
+.. Requirements
+.. Dependencies
+... Versions
+... Consumers
+
+. Installing & Configuring
+.. Installing
+.. Configuring
+.. Upgrading from a Previous Version
+
+. Using This Connector
+.. Use Cases
+.. Best Practices
+.. Tips
+.. Integration Patterns
+.. Adding to a Flow
+.. Query Types
+.. Increasing Performance
+
+. Example Use Case
+.. Studio Visual Editor | XML Editor
+.. Example Code
+
+. See Also
+
+---
+
+== Introduction 
+
+Description and concepts +
+Integration with other MS capabilities +
+
+=== Prerequisites
+
+This document assumes that you are familiar with … +
+To use the this connector, … +
+
+*Namespace*
+
+`xmlns:<connector>="++http://www.mulesoft.org/schema/mule/<connector>"`
+
+*Schema Location*
+
+`xsi:schemaLocation="`
+
+
+=== Requirements
+
+Hardware, software, and technical requirements. 
+
+=== Dependencies
+
+What MuleSoft software is required to get this connector to work? +
+
+*Versions* +
+
+What versions of JAR files and MS software is required  ?. What is the version sandbox version during the testing ? +
+
+*Consumers* +
+What software is required to user this connector? 
+
+=== Compatibility Matrix
+What system versions is supported ?. Patches/APIs versions
+
+---
+
+== Installing and Configuring 
+
+=== Installing
+
+How do you install this connector? 
+
+=== Configuring
+
+What do you set on configuration? +
+
+=== Updating From an Older Version
+
+What needs to be configured when updating from a previous version of this connector?  +
+Are there configuration items for previous MuleSoft software for this connector?
+ 
+---
+
+== Using This Connector
+
+Outbound, inbound, streaming outbound  +
+
+=== Use Cases 
+List use cases for this connector +
+
+=== Best Practices
+To take full advantage of the functionality … +
+
+=== Tips
+* <Information from Support>
+ 
+=== Integration Patterns
+
+___ recognizes these integration patterns for connecting with other systems… 
+
+=== Adding to a Flow
+
+Use a ____ Connector in your application -> flowchart +
+
+=== Query Types
+
+If talking to a database, what queries are allowed by this connector? +
+
+=== Increasing Performance
+
+What can you set in the connector to increase performance?
+
+---
+
+== Example Use Case
+
+Explain what this example is for. 
+
+=== Studio Visual Editor | XML Editor
+
+Explain how to create this case with Studio visual editor and XML editor +
+
+=== Code Example
+
+Number code example lines and explain blocks of lines
+ 
+---
+
+=== See Also
+
+ * Access full reference documentation for the ___ connector…
