@@ -35,10 +35,7 @@
 <li><a href="#_connector_demo_or_templates">Connector Demo or Templates</a></li>
 <li><a href="#_documentation">Documentation</a></li>
 <li><a href="#_licensing">Licensing</a></li>
-<li><a href="#_appendix_a">Appendix A</a></li>
-<li><a href="#_appendix_b">Appendix B</a></li>
-<li><a href="#_appendix_c">Appendix C</a></li>
-<li><a href="#_appendix_d">Appendix D</a></li>
+<li><a href="#_appendix">Appendix</a></li>
 </ul>
 </li>
 <li><a href="#_automated_functional_testing">Automated Functional Testing</a>
@@ -52,7 +49,7 @@
 <li><a href="#_test_cases_classification">Test Cases Classification</a></li>
 <li><a href="#_testing_inbound_endpoints">Testing Inbound Endpoints</a></li>
 <li><a href="#_setting_up_oauth_authentication">Setting Up OAuth Authentication</a></li>
-<li><a href="#_appendix_debugging">Appendix: Debugging</a></li>
+<li><a href="#_appendix_2">Appendix</a></li>
 </ul>
 </li>
 <li><a href="#_studio_functional_test_plugin">Studio Functional Test Plugin</a>
@@ -68,9 +65,7 @@
 <li><a href="#_glossary">Glossary</a></li>
 <li><a href="#_installation_2">Installation</a></li>
 <li><a href="#_interop_test_run_tutorial">Interop Test Run Tutorial</a></li>
-<li><a href="#_appendix_a_usage_without_studio">Appendix A: Usage without Studio</a></li>
-<li><a href="#_appendix_b_plugin_result_files">Appendix B: Plugin Result Files</a></li>
-<li><a href="#_project_details">Project Details</a></li>
+<li><a href="#_appendix_3">Appendix</a></li>
 </ul>
 </li>
 <li><a href="#_code_coverage">Code Coverage</a>
@@ -677,7 +672,9 @@ Only use a map if your data:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code>@Default("#[payload]")</code></pre>
+<pre class="CodeRay highlight"><code data-lang="java">---
+<span class="annotation">@Default</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">#[payload]</span><span class="delimiter">&quot;</span></span>)
+---</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -728,167 +725,23 @@ Only use a map if your data:
 </div>
 </div>
 <div class="sect1">
-<h2 id="_appendix_a">Appendix A</h2>
+<h2 id="_appendix">Appendix</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_readme_md_template">README.md Template</h3>
-<div class="listingblock">
-<div class="content">
-<pre># [Name] Anypoint Connector
-# ---------------------------------------------------
-[Connector description including destination service or application]
-
-### Author
-Example:
-MuleSoft Inc.
-
-### Supported Mule runtime versions
-Examples:
-Mule 3.4.x, 3.5.x
-Mule 3.4.1
-
-### [Destination service or application name] supported versions
-Example:
-Oracle E-Business Suite 12.1 and above.
-
-### Service or application supported modules
-Example:
-Oracle CRM
-Oracle Financials
-or
-Salesforce API v.24
-Salesforce Metadata API
-
-### Installation
-
-You can access the full documentation &lt;here&gt;.
-
-### Reporting Issues</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>(Only for open source connectors)
-We use GitHub:Issues for tracking issues with this connector. You can report new issues at this link <a href="https://github.com/mulesoft/&lt;connector-repository-name&gt;/issues" class="bare">https://github.com/mulesoft/&lt;connector-repository-name&gt;/issues</a>.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_appendix_b">Appendix B</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_changelog_md_template">CHANGELOG.md Template</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code># [Connector name] Release Notes
-# --------------------------------------------------------------------
-### Date: &lt;DD-MMM-YYYY&gt;
-Example: 24-Jan-2014
-
-### Version:
-&lt;connector version&gt; (default value: 0.1)
-
-### Supported API versions:
-Example: Salesforce Bulk API v.28, SOAP API V.28 (include links to API docs)
-
-### Supported Mule Runtime Versions:
-Example: 3.4.x, 3.5.0
-
-### New Features and Functionality
-(default value: Initial version)
-Example: Added support for Query. https://github.com/mulesoft/salesforce-connector/issues/61
-
-### Closed Issues in this release
-(include issue link when possible)
-Example: Fixed problem with lost telefone on Bulk Update (CLDCONNECT-123).
-
-### Known Issues in this release
-Example: Session ID expires after 30 days. https://github.com/mulesoft/salesforce-connector/issues/62</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_appendix_c">Appendix C</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_connector_project_directory_layout">Connector Project Directory Layout</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>/demo</strong>: Contains demo Mule application covering use cases functionality.</p>
+<p>[Appendix A]</p>
 </li>
 <li>
-<p><strong>/doc</strong>: Contains documentation for the connector, such as descriptions of the service’s specific API calls or similar. The main file should be called
-The documentation should be written using markdown follow the Documentation Template and it should be called user_manual.md.
-VIDEO_TRANSCRIPT.md (optional)
-Contains video tutorial transcription. The video tutorial highlights the connector functionality in a real use case scenario and is uploaded to MuleSoft‘s YouTube account</p>
+<p>[Appendix C]</p>
 </li>
 <li>
-<p><strong>/icons</strong>: Contains icons for the connector using 24x16, 18x32, or 300x300 pixels.</p>
+<p>[Appendix B]</p>
 </li>
 <li>
-<p><strong>/src</strong>: Contains the source code for the connector including tests cases source code and results.</p>
-</li>
-<li>
-<p><strong>LICENSE_HEADER.txt</strong>:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>For closed source connectors - Mulesoft :
-(c) 2003-2014 MuleSoft, Inc. This software is protected under international copyright law. All use of this software is subject to MuleSoft&#8217;s Master Subscription Agreement (or other Terms of Service) separately entered into between you and MuleSoft. If such an agreement is not in place, you may not use the software.</p>
-</li>
-<li>
-<p>For open source connectors:
-(c) 2003-2014 MuleSoft, Inc. The software in this package is published under the terms of the CPAL v1.0 license, a copy of which has been included with this distribution in the LICENSE.md file.</p>
+<p>[Appendix D]</p>
 </li>
 </ol>
-</div>
-</li>
-<li>
-<p><strong>LICENSE.md</strong>:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>For closed source connectors:
-(c) 2003-2014 MuleSoft, Inc. This software is protected under international copyright law. All use of this software is subject to MuleSoft&#8217;s Master Subscription Agreement (or other Terms of Service) separately entered into between you and MuleSoft. If such an agreement is not in place, you may not use the software.</p>
-</li>
-<li>
-<p>For open source connectors:
-Please copy CPAL 1.0 from Appendix D</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p><strong>CHANGELOG.md</strong>: Change log file containing the changes introduced in each released version of the connector. See below for details</p>
-</li>
-<li>
-<p><strong>README.md</strong>: Readme file for the connector. See below for details.</p>
-</li>
-<li>
-<p><strong>pom.xml</strong>: Ensure you are referencing mule-devkit-parent in your pom.xml.</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;parent&gt;</span>
-    <span class="tag">&lt;groupId&gt;</span>org.mule.tools.devkit<span class="tag">&lt;/groupId&gt;</span>
-    <span class="tag">&lt;artifactId&gt;</span>mule-devkit-parent<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>{devkit.version}<span class="tag">&lt;/version&gt;</span>
-<span class="tag">&lt;/parent&gt;</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_appendix_d">Appendix D</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><a href="https://docs.google.com/document/d/1A3X8tSxtqyc9ifWdJeiktBYJHmvQyOPzuIcCVYkQkXg/edit?usp=sharing">Common Public Attribution License Version 1.0 (CPAL)</a></p>
 </div>
 </div>
 </div>
@@ -1832,72 +1685,9 @@ mvn -Dtest=GetDailyTrendsTestCases#testGetDailyTrendsParametrized test</code></p
 </div>
 </div>
 <div class="sect1">
-<h2 id="_appendix_debugging">Appendix: Debugging</h2>
+<h2 id="_appendix_2">Appendix</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_setting_test_timeout">Setting Test Timeout</h3>
-<div class="paragraph">
-<p>Either in the &lt;ConnectorName&gt;TestParent</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">// Sets global timeout</span>
-<span class="annotation">@Rule</span>
-<span class="directive">public</span> Timeout globalTimeout = <span class="keyword">new</span> Timeout(<span class="integer">300000</span>);</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Or if using Eclipse in <strong>Preferences &gt; Java &gt; Installed JREs</strong>, edit the JRE and add -Dmule.test.timeoutSecs=300 to the Default VM arguments.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_viewing_inbound_and_outbound_messages_in_cxf">Viewing Inbound and Outbound Messages in CXF</h3>
-<div class="paragraph">
-<p>Place the following files into <em>/&lt;connector-project&gt;/src/test/resources</em> folder:</p>
-</div>
-<div class="sect3">
-<h4 id="_log4j_properties">log4j.properties</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code>#default properties to initialise log4j
-log4j.rootLogger=INFO, A1
-log4j.appender.A1=org.apache.log4j.ConsoleAppender
-log4j.appender.A1.layout= org.apache.log4j.PatternLayout
-log4j.appender.A1.layout.ConversionPattern= [%d{MM-dd HH:mm:ss}] %-5p %c{1} [%t]: %m%n
 
-#settings for specific packages
-#log4j.logger.org.mule = DEBUG
-
-#CXF is used heavily by Mule for web services
-log4j.logger.org.apache.cxf = DEBUG
-#log4j.logger.org.apache.jcp = DEBUG
-#log4j.logger.org.apache.ws.security = DEBUG
-log4j.logger.org.apache.cxf.interceptor.LoggingInInterceptor = DEBUG, console
-log4j.logger.org.apache.cxf.interceptor.LoggingOutInterceptor = DEBUG, console</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_cxf_xml">cxf.xml</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="tag">&lt;beans</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.springframework.org/schema/beans</span><span class="delimiter">&quot;</span></span>
-      <span class="attribute-name">xmlns:xsi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XMLSchema-instance</span><span class="delimiter">&quot;</span></span>
-      <span class="attribute-name">xmlns:cxf</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://cxf.apache.org/core</span><span class="delimiter">&quot;</span></span>
-      <span class="attribute-name">xsi:schemaLocation</span>=<span class="string"><span class="delimiter">&quot;</span>
-<span class="content">http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd</span>
-<span class="content">http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-   <span class="tag">&lt;cxf:bus&gt;</span>
-      <span class="tag">&lt;cxf:features&gt;</span>
-         <span class="tag">&lt;cxf:logging</span><span class="tag">/&gt;</span>
-      <span class="tag">&lt;/cxf:features&gt;</span>
-   <span class="tag">&lt;/cxf:bus&gt;</span>
-<span class="tag">&lt;/beans&gt;</span></code></pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -2370,357 +2160,17 @@ For example, with dynamic metadata, if you have:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_appendix_a_usage_without_studio">Appendix A: Usage without Studio</h2>
+<h2 id="_appendix_3">Appendix</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_annotations_processor">Annotations Processor</h3>
-<div class="paragraph">
-<p>When the profile is invoked, a custom annotations parser is hooked into the compilation. This processor goes through the connector and its processor code and annotations, retrieving information about the connectors properties, the return types of each processor, etc.</p>
-</div>
-<div class="paragraph">
-<p>For example, this is the output for the NetSuite connector&#8217;s properties:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
-    <span class="tag">&lt;connectivity-support&gt;</span>true<span class="tag">&lt;/connectivity-support&gt;</span>
-    <span class="tag">&lt;OAuth-authentication&gt;</span>false<span class="tag">&lt;/OAuth-authentication&gt;</span>
-    <span class="tag">&lt;transformer&gt;</span>false<span class="tag">&lt;/transformer&gt;</span>
-    <span class="tag">&lt;datasense-enabled&gt;</span>true<span class="tag">&lt;/datasense-enabled&gt;</span>
-    <span class="tag">&lt;metadata&gt;</span>dynamic<span class="tag">&lt;/metadata&gt;</span>
-<span class="tag">&lt;/properties&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This data is found in the root directory of the connector&#8217;s project, with the name_ annotations-output.xml. _</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_testdata_maven_plugin">TestData Maven Plugin</h3>
-<div class="paragraph">
-<p>This plugin takes the output files from the annotations processor, the DevKit’s generated schema and editors file, and a credentials file.</p>
-</div>
-<div class="paragraph">
-<p>The only file that should be fed to the plugin via the command line is the credentials file, needed to identify the required connection fields. Also through the command line, the output file name can be defined.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_usage">Usage</h3>
-<div class="paragraph">
-<p>To generate the testdata files, build the connector with these arguments:</p>
-</div>
-<div class="paragraph">
-<p><strong>mvn clean package -P testdata-generator -Dtype=interop &lt;params&gt;&#8230;&#8203;</strong></p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Valid options:
--DcredentialsFile=”path/to/credentials”
--DoutputFile=”nameOfOutputFile.xml”
--DlogLevel=debug
--DreplaceAll=true</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The results of this command are the following files (see Files section for details):</p>
-</div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>_- nameOfOutputFile.xml _
-Basic data retrieved from the connector. Provides a complete view of every processor and all its attributes.</p>
+<p>[Appendix A: Usage without Studio]</p>
 </li>
 <li>
-<p><em>- nameOfOutputFile-override.xml</em>
-Presents a subset of the data found in the previous file, with only the required fields, but adds information about the connector and processor features and properties</p>
+<p>[Appendix B: Plugin Result Files]</p>
 </li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Both create in _src/test/resources/generated. _</p>
-</div>
-<div class="paragraph">
-<p>If the <strong><em>replaceAll</em>*<em> </em>flag is set, *existing files</strong> in the path with the same name <strong>are</strong> completely <strong>overwritten</strong>.</p>
-</div>
-<div class="paragraph">
-<p>The format of the credentials file should be: <em>connectorName.fieldName=fieldValue</em></p>
-</div>
-<div class="paragraph">
-<p>For example, for salesforce we have:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>salesforce.username=user
-salesforce.password=psswrd
-salesforce.securityToken=token
-salesforce.url=https://login.salesforce.com/services/Soap/u/28.0</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The convention to follow is src/test/resouces/salesforce-credentials.properties.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_tests_run_from_console">Tests Run From Console</h3>
-<div class="paragraph">
-<p>In the connector root folder, run:<br>
-	<strong>mvn org.mule.connectors.interop:interop-ce-runtime-generation:create</strong></p>
-</div>
-<div class="paragraph">
-<p>Followed by:<br>
-	<strong>mvn org.mule.connectors.interop:interop-ce-runtime-generation:run -D[options]</strong></p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre>Valid options:
--DtestConnect -DtestDMapper -DtestXml
--DtestDataPath=...
--DtestDataOverridePath=...</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_appendix_b_plugin_result_files">Appendix B: Plugin Result Files</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The following files show the differences between the two files:<br>
-<a href="https://gist.github.com/alegmarra/cc81e680165c9406c84d" class="bare">https://gist.github.com/alegmarra/cc81e680165c9406c84d</a></p>
-</div>
-<div class="sect2">
-<h3 id="_testdata_basic_file">TestData (Basic File)</h3>
-<div class="paragraph">
-<p>This file contains a detailed description of the connector processors and configs, the fields each of them receives, the hierarchy of child objects, and information about the element representation in AnyPoint Studio.</p>
-</div>
-<div class="sect3">
-<h4 id="_processor_tags">Processor Tags</h4>
-<div class="paragraph">
-<p>&lt;get-contacts&gt; and &lt;save-contact&gt; represent each one a processor present in the connector. Everything inside this tag references this particular processor.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_attributes_optional_and_required_tags">Attributes, Optional, and Required Tags</h4>
-<div class="paragraph">
-<p>Represents the parameters the processor receives that are not childElements. An &lt;optional&gt; tag indicates that the parameter has been annotated as @Optional in the processors declaration, while a &lt;required&gt; tag marks the parameter as mandatory for every execution.</p>
-</div>
-<div class="paragraph">
-<p>Node attributes like caption, group, javaType, and type, indicate the properties of each parameter and its representation in Studio. Group, caption, and type are needed to find the element in the Studio UI, and successfully populate the form.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_childelements_tag">ChildElements tag</h4>
-<div class="paragraph">
-<p>Allows a complete description of the object. This element has a direct mapping with the description done manually in Studio. This elements can be, optional or required, with the same meaning as before.</p>
-</div>
-<div class="paragraph">
-<p>The “complex” definitions implies each field populates separately, while a “useReference” definition references an object described separately in the flow, just like we do in Studio.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_testdata_overrides_overrides_file">TestData Overrides (Overrides File)</h3>
-<div class="paragraph">
-<p>This template is a merge between a subset of the basic file, and the output from the annotations processor, resulting in a file with not only the whole structure of the connector, for each config and processor, all the required fields are declared, but also a description of the connector and its processors properties.</p>
-</div>
-<div class="paragraph">
-<p>The empty attributes and childElements tags mean that this particular processor has no required parameters.</p>
-</div>
-<div class="sect3">
-<h4 id="_connector_properties">Connector Properties</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"><strong>Property</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Connectivity Support</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Indicates if the connector implements connectivity testing.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OAuth Authentication</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Indicates if the connector implements OAuth authentication.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DataSense Enabled</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Indicates if the connector supports DataSense.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Metadata</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Declares the kind of metadata the connector supports. Valid values are:</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Transformer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Indicates if the connector is available also as a transformer</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_processor_properties">Processor Properties</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"><strong>Property</strong></th>
-<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DataMapper</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Declares the expected types for datamapper to retrieve from the connector. The DataMapper fields are completed from the connectors code during the testdata generation.
-</p><p class="tableblock">Attributes:“input" represents the value you expect to see in the DataMapper input group when you drop the connector before the DataMapper box. The “output” represents the same but when the connector is after the DM.
-If the connector supports dynamic metadata, the values populated in the generation should be modified in order to reflect the correct object in the operation For example, if you do a getUsers operation and expect a List&lt;User&gt;, the “User” type should be replaced in
-the List&lt;Map&lt;String, Object&gt;&gt; declaration.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Auto Paging</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Indicates the processor implements auto paging.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Query Support</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Indicates the processor has at least one attribute annotated as @Query.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_project_details">Project Details</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_rules_and_conditional_execution">Rules and Conditional Execution</h3>
-<div class="sect3">
-<h4 id="_conditionalexecutionrule">ConditionalExecutionRule</h4>
-<div class="paragraph">
-<p>Based on a <u>jUnit rule</u>, it relates to the annotations present on the code. The ConnectorsTestCase abstract class declares a @ClassRule of this type, and also every subclass declares a @Rule. The ClassRules execute before each class is run, and common Rules execute before each method invokes.</p>
-</div>
-<div class="paragraph">
-<p>This gracefully skips tests and test classes, by adding an annotation @ConditionalExecutionRule and the conditions it must verify and deny. For example, these testsl run only if the connector has no metadata and doesn’t use OAuth authentication:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ConditionalExecutionRule</span>( verify = { HasNoMetadata.class },
-                                      deny = { UsesOAuthConfiguration.class })
-        <span class="annotation">@Test</span>
-        <span class="directive">public</span> <span class="type">void</span> myConditionalTest(){
-        ...
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_rules_conditions">Rules Conditions</h4>
-<div class="paragraph">
-<p>Rule conditions are the classes fed to the conditional executions annotation. The conditions encapsulate the logic around its title.</p>
-</div>
-<div class="paragraph">
-<p>For example, instead of skipping a test by saying:<br>
-<code>assumeThat(!processor.getRequiredAttributes().isEmpty());</code></p>
-</div>
-<div class="paragraph">
-<p>Create a condition that implements <em>RuleCondition</em> encapsulating the logic. Then, we can annotate the tests with a ConditionalExecution annotation, with the same result than before:<br>
-<code>@ConditionalExecutionRule( verify = { ProcessorHasRequiredFields.class }}</code></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_test_suites">Test Suites</h3>
-<div class="sect3">
-<h4 id="_connectortestsuite">ConnectorTestSuite</h4>
-<div class="paragraph">
-<p>Use with the jUnit suite class, grouping together the TestClasses to be run with the data from a single connector. Declare which connector to test by passing the routes to its testdata files.</p>
-</div>
-<div class="paragraph">
-<p>It’s important to add all available test classes (below), since this suite is the same for every connector. The next section shows how tests that are not applicable are skipped based on the connectors properties.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_test_cases">Test Cases</h4>
-<div class="paragraph">
-<p>The test cases covered so far include ConnectivityTesting, DamapperCompliance, and XmlGeneration, as described in the Connectors QA Guideline. Each of these classes inherit from ConnectorTestCases, which provides utility methods and scaffolding that simplifies test writing.</p>
-</div>
-<div class="paragraph">
-<p>In every class we have a me	thod annotated with <u>@Parameters</u>, that injects the parameterized data one element at a time for the suite to run.</p>
-</div>
-<div class="paragraph">
-<p>For example, the tests in DatamapperTestCases class run once for each<br>
-processor present in the connector. This can be seen in the method dataProvider, that returns a collection with pairs of (processorName, processorInstance), which are exactly the pair of values its constructor receives.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_connectivitytestcases">ConnectivityTestCases</h4>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>-testConnectivity_InvalidCredentials</strong>: Populates the configuration with invalid credentials, running the connectivity test once for each field. Every run has only one invalid value.</p>
-</li>
-<li>
-<p><strong>-testConnectivity_NoneRequiredSet</strong>: Leaves all the required fields of the configuration empty</p>
-</li>
-<li>
-<p><strong>-testConnectivity_ValidCredentials</strong>: Populates the configuration with valid credentials in all the required fields.</p>
-</li>
-<li>
-<p><strong>-testConnectivityButtonIsAvailable</strong>: Verifies the "Test Connectivity" button is visible in the config dialog</p>
-</li>
-<li>
-<p><strong>-testPasswordFieldHasHiddenText</strong>: Verifies the password field does not show the input in plain text</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_datamappertestcases">DatamapperTestCases</h4>
-<div class="paragraph">
-<p><em>Precondition</em>: The configuration and operation are populated with valid data in all the required fields.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>-testEmptyMetadataRetrieved()</strong>:Runs only if the connector doesn’t have static nor dynamic metadata. Verifies neither input nor output types are retrieved with datamapper.</p>
-</li>
-<li>
-<p><strong>-testOverrideMetadata_Input()</strong>: As described in the Connectors QA Guideline, verifies that manual override allows the selection of the expected type.</p>
-</li>
-<li>
-<p><strong>-testOverrideMetadata_Output()</strong>: Idem input.</p>
-</li>
-<li>
-<p><strong>-testPerceptiveFlowDesign()</strong>: As described in the Connectors QA Guideline, verifies the Datamapper automatic metadata population is achieved with the expected values.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_xmlgenerationtestcases">XmlGenerationTestCases</h4>
-<div class="ulist">
-<ul>
-<li>
-<p>-<strong>testXmlAllRequiredSet_DefinedAttributes_NoErrorFound()</strong>: Populates the operation required attributes with valid values using the complex type definition of the child elements (if the operation has any).</p>
-</li>
-<li>
-<p><strong>-testXmlAllRequiredSet_ReferencedAttributes_NoErrorFound()</strong>: Populates the operation required attributes with valid values using the referenced type definition of the child elements (if the operation has any).</p>
-</li>
-<li>
-<p><strong>-testXmlNoneRequiredSet_ErrorsFound()</strong>: Leaves all the required fields empty, so errors should be found.</p>
-</li>
-</ul>
-</div>
-</div>
+</ol>
 </div>
 </div>
 </div>
@@ -8473,7 +7923,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-02-03 10:06:48 EST
+Last updated 2015-02-03 13:17:23 EST
 </div>
 </div>
 </body>
