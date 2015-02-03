@@ -78,11 +78,11 @@ include::docs/studio-interopetability-QA-guidelines-2.adoc[]
 = Templates
 == Anypoint Connectors Documentation Template
 
-https://docs.google.com/document/d/1YDHz9ce0Ot4VIq6CM9vPPh20t4QMs7osfqa-szIO5Xc/edit?usp=sharing[Documentation Template]
+https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/documentationTemplate.adoc[Documentation Template]
 
 == Anypoint Connectors Release Notes Template
 
-https://docs.google.com/a/mulesoft.com/document/d/1rXQEzr06WQRo4O8jDb37fT4X04zvhIyVr_0xpSj5ENw/edit?usp=sharing[Release Notes Template]
+https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/releaseNotesTemplate.adoc[Release Notes Template]
 
 == Anypoint Connectors Manual Test Suite Template
 
