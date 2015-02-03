@@ -6,11 +6,18 @@ body {
   	margin: 0;
 }
 
-
-.content {
+.left-side{
+	margin-right: 57%;
 	text-align: center;
-	margin-top: 100px;
-	margin-bottom: 30px;
+	float: right;
+	text-align: right;
+	vertical-align: center;
+	margin-top: 4%;
+}
+
+.right-side{
+	margin-left: 45%;
+	position: absolute;
 }
 
 .content h1 {
@@ -23,8 +30,10 @@ ul {
 
 a {
 	line-height: 1.5em;
+	font-size: 16px;
 	text-decoration: none;
 	color: white;
+	padding-left: 10px;
 }
 
 a:hover{
@@ -45,7 +54,16 @@ a:hover{
   font-weight: 300;
 }
 
-.menu {
-	text-align: center;
-	font-size: 18px;
+.title{
+	color: rgb(16, 140, 221) !important;
+	margin-left: 40px;
+}
+
+.version {
+	text-align: right;
+	color: white
+}
+
+.middle {
+    margin-top: 14%;
 }
