@@ -4,7 +4,7 @@ The partner Engagement and Certification Process for publishing connectors consi
 . On-Board
 .. Legal Engagement
 .. Leaning Anypoint™ Connector DevKit
-. Develop
+. Development
 .. Mandatory Development Practices
 .. Design Specification Review
 . Certify
@@ -44,7 +44,7 @@ There is plenty of documentation on Internet about DevKit. Here is a set of link
 
 @Todo: Any ideas ?
 
-== Stage 2: Developing The Connector
+== Stage 2: Development
 
 === 2.1  Mandatory Practices
 
@@ -61,6 +61,7 @@ Each one of the following practices are aimed to cover different quality aspects
 === 2.2 Design Specification Review
 
 @Todo: Create an Architecture Certification Template
+doc name : design-template.adoc
 
 == Stage 3: Certify
 
