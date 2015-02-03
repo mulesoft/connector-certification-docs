@@ -7270,6 +7270,12 @@ table.tableblock .table {
   margin-left: 280px;
   padding: 20px;
 }
+#content > .sect1 > h2 {
+  color: #006892;
+  font-size: xx-large;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
 pre {
   margin: 10px 30px 10px 10px;
 }
