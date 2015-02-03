@@ -136,8 +136,8 @@ Provide release notes as part of the documentation following the guidelines ment
 If your connector is open source 
 
 == Appendix 
-. [Appendix A]
-. [Appendix C]
-. [Appendix B]
-. [Appendix D]
+. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixA.adoc[Appendix A]
+. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixB.adoc[Appendix B]
+. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixC.adoc[Appendix C]
+. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixD.adoc[Appendix D]
 

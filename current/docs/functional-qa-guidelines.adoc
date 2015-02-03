@@ -605,4 +605,4 @@ mvn -Dtest=SmokeTestSuite -Dmule.test.timeoutSecs=180 -DSALESFORCE_CREDENTIALS=h
 
 == Appendix
 
-[Appendix A: Debugging]
+https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/automated%20funcional%20testing/appendixA.adoc[Appendix A: Debugging]

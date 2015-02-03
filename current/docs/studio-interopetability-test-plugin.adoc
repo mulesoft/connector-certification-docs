@@ -177,6 +177,7 @@ The results appear in target/surefire-reports, and provide jUnit results using t
 
 == Appendix
 
-. [Appendix A: Usage without Studio]
-. [Appendix B: Plugin Result Files]
+. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/studio%20test%20plugin/appendixA.adoc[Appendix A: Usage without Studio]
+. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/studio%20test%20plugin/appendixB.adoc[Appendix B: Plugin Result Files]
+. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/studio%20test%20plugin/projectDetails.adoc[Project Details]
 
