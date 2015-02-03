@@ -462,7 +462,312 @@ public class RegressionTestSuite {
 }
 ----
 
-== Testing Inbound Endpoints
+== DataSense (Dynamic metadata)
+
+First of all create the DataSenseTestCases class on the connector functional test suite package
+
+=== @MetaDataKeyRetriever method 
+
+. Add a testGetMetaDataKeys() method
+. In the AutomationSpringBeans create a map bean containing the data for the getMetadata() test methods method. 
+.* It should contain the number of keys associated with the sandbox (expectedMetaDataKeysCount)
+.* A list of maps whose fields follow the MetaDataKey format and represent MetaDataKeys for entities identified as critical.
+
+[source,xml]
+----
+<util:map id="getMetaDataKeysTestData" map-class="java.util.HashMap" key-type="java.lang.String"
+          value-type="java.lang.Object" scope="prototype">
+    <entry key="expectedMetaDataKeysCount" value="10"/>
+    <entry key="expectedMetaDataKeys">
+        <list value-type="java.util.HashMap">
+          <map key-type="java.lang.String" value-type="java.lang.Object">
+              <entry key="displayName" value="CI_POSITION_DATA#Find"/>
+              <entry key="id" value="CI_POSITION_DATA#Find"/>
+              <entry key="category" value="InvokeCategory"/>
+          </map>
+          <map key-type="java.lang.String" value-type="java.lang.Object">
+              <entry key="displayName" value="CI_POSITION_DATA#Create"/>
+              <entry key="id" value="CI_PERSONAL_DATA#Create"/>
+              <entry key="category" value="InvokeCategory"/>
+          </map>
+       </list>
+    </entry>
+</util:map>
+----
+
+. To the DataSenseTestCases class add the following test cases
+
+[source,java]
+----
+@Before
+public void setUp() throws Exception {
+    initializeTestRunMessage("getMetaDataKeysTestData");
+}
+
+@Test
+@Category({RegressionTests.class, SmokeTests.class})
+public void testGetMetaDataKeysSuccess() {
+  assertGetMetaDataKeysSuccess("PeopleSoft");
+}
+
+@Test
+@Category({RegressionTests.class, SmokeTests.class})
+public void testGetMetaDataKeysAmount() {     
+  List<MetaDataKey> retrievedMetadataKeys = getMetaDataKeyList("PeopleSoft");
+    assertEquals(retrievedMetadataKeys.size(), Integer.parseInt((String) getTestRunMessageValue("expectedMetaDataKeysCount")));
+}
+
+@Test
+@Category({RegressionTests.class, SmokeTests.class})
+public void testGetMetaDataKeysContainsKeys() {
+    assertMetaDataKeysContainsKeys("PeopleSoft", (List<HashMap<String, String>>) getTestRunMessageValue("expectedMetaDataKeys"));
+}
+----
+
+If additional testing wants to be performed mule-connector-case provides a set of methods for MetaData testing.
+* assertGetMetaDataKeysSuccess
+* getMetaDataKeyList
+* assertMetaDataKeysContainsKeys
+
+
+=== @MetaDataRetriever method
+
+==== Test getMetaData entity retrieval for all MetaDataKeys
+
+. Add a Timeout rule on the DataSenseTestCases class to avoid the testGetMetaData from not completing its execution
+. Add a testGetMetadata() method to the DataSenseTestCases class
+
+[source,java]
+----
+@Rule
+public Timeout globalTimeout = new Timeout(360000);
+
+@Test
+public void testGetMetaData() {
+  List<MetaDataKey> metaDataKeys = getMetaDataKeyList("Salesforce");
+  Iterator<MetaDataKey> iterator = metaDataKeys.iterator();
+  
+  while (iterator.hasNext()) {
+    MetaDataKey metaDataKey = iterator.next(); 
+    Result<MetaData> metaData = connector.getMetaData(metaDataKey);
+    assertTrue(Result.Status.SUCCESS.equals(metaData.getStatus()));
+  }
+
+}
+----
+
+==== Test getMetaData method logic for a given entity
+
+Add a GetMetaDataTestCases test class for all test related to input and output MetaData for target processors and entities.
+
+To check the MetaData model implemented on the connector select an entity that exercises it.
+
+First you'll need to define the method/entity under test and add it to your automation-test-flows.xml file
+
+[source,xml]
+----
+<flow name="get-metadata-find" >
+    <peoplesoft:invoke-operation type="CI_POSITION_DATA#Find" config-ref="PeopleSoft" doc:name="PeopleSoft">
+        <peoplesoft:params/>
+    </peoplesoft:invoke-operation>
+</flow>
+----
+
+Using getOutputMetaDataPayload retrieve the MetaDataModel and cast it in order to check how the entities are described
+
+[source,java]
+----
+    @Test
+    @Category({RegressionTests.class, SmokeTests.class})
+    public void testGetMetaDataCI_POSITION_DATAType() {
+        try {
+            MetaDataModel payload = getOutputMetaDataPayload("get-metadata-find");
+            DefinedMapMetaDataModel definedMapMetaDataModel = (DefinedMapMetaDataModel) ((ListMetaDataModel) payload).getElementModel();
+            List<MetaDataField> fields = definedMapMetaDataModel.getFields();
+            assertEquals(7, fields.size());
+        } catch (Exception e) {
+            fail(ConnectorTestUtils.getStackTrace(e));
+        }
+    }
+
+----
+
+=== Grouping Types
+
+For the testGetMetaDataKeysContainsKeys() test select entities that would have different category fields values because of their @MetaDataCategory class origin.
+
+[source,xml]
+----
+<list value-type="java.util.HashMap">
+  <map key-type="java.lang.String" value-type="java.lang.Object">
+      <entry key="displayName" value="Account"/>
+      <entry key="id" value="AccountId"/>
+      <entry key="category" value="CategoryA"/>
+  </map>
+  <map key-type="java.lang.String" value-type="java.lang.Object">
+      <entry key="displayName" value="Account"/>
+      <entry key="id" value="AccountId"/>
+      <entry key="category" value="CategoryB"/>
+  </map>
+</list>
+----
+
+Besides take one processor as representative of each @MetaDataCategory class (check their @MetaDataScope attribute value for that) and test their MetaData input and output behaviour by selecting the most representative entity.
+
+[source,java]
+----
+    @Processor
+    @MetaDataScope(InvokeCategory.class)
+    public List<Map<String, Object>> invokeOperation(@MetaDataKeyParam String type, @Default("#[payload]") Map<String, Object> params) {
+----
+
+[source,xml]
+----
+<flow name="get-meta-data-get" >
+    <peoplesoft:invoke-operation type="CI_POSITION_DATA#Get" config-ref="PeopleSoft" doc:name="PeopleSoft">
+        <peoplesoft:params/>
+    </peoplesoft:invoke-operation>
+</flow>
+----
+
+[source,java]
+----
+@Test
+@Category({RegressionTests.class, SmokeTests.class})
+public void testGetProcessorIsMetaDataEnabled() {
+  assertIsMetaDataEnabled("get-meta-data-get");
+}
+
+@Test
+@Category({RegressionTests.class, SmokeTests.class})
+public void testGetMetaDataGetInputMetaData() {
+  try {
+    assertFirstLevelInputMetaDataSuccess("get-meta-data-get", DataType.MAP);
+  } catch (Exception e) {
+    fail(ConnectorTestUtils.getStackTrace(e));
+  }
+}
+
+@Test
+@Category({RegressionTests.class, SmokeTests.class})
+public void testGetMetaDataGetOutputMetaData() {
+  try {
+    assertListFirstLevelOutputMetaDataSuccess("get-meta-data-get", DataType.MAP.toString());
+  } catch (Exception e) {
+    fail(ConnectorTestUtils.getStackTrace(e));
+  }
+}
+----
+
+=== MetaDataOutputRetriever
+
+In case that an @MetaDataOutputRetriever method is implemented test cases for it should be written with assertions on the input and output MetaData of the operations affected by its logic.
+
+=== Input MetaData Negative cases
+Logic added to handle requests to retrieve input MetaData passing an invalid type should be covered also on the GetMetaDataTestCases class.
+Follow the approach of adding specific flows containing processors with an invalid type and requesting its input MetaData
+
+Error message should relate to the connector domain.
+
+== Test Connection
+
+. Add the necessary config elements to support test configuration negative cases to the automation-test-flows.xml file. Config elements name convention is as follows: Test_Connection_Negative_<Particular_Case>. See an example below.
+
+[source,xml]
+----
+<mongo:config name="Mongo_DB" username="${mongo.username}"
+    password="${mongo.password}" host="${mongo.host}" port="${mongo.port}"
+    database="${mongo.database}" doc:name="Mongo DB" connectionsPerHost="4"
+    maxWaitTime="5000">
+    <mongo:connection-pooling-profile
+        maxActive="2" initialisationPolicy="INITIALISE_ONE" exhaustedAction="WHEN_EXHAUSTED_WAIT"
+        maxWait="5000" />
+</mongo:config>
+
+<mongo:config name="Test_Connection_Negative_Invalid_Username" username="INVALID_USERNAME"
+    password="${mongo.password}" host="${mongo.host}" port="${mongo.port}"
+    database="${mongo.database}" doc:name="Mongo DB" connectionsPerHost="4"
+    maxWaitTime="5000">
+    <mongo:connection-pooling-profile
+        maxActive="2" initialisationPolicy="INITIALISE_ONE" exhaustedAction="WHEN_EXHAUSTED_WAIT"
+        maxWait="5000" />
+</mongo:config>
+
+ ...
+----
+
+. Create the ConnectTestCases class
+. Add a positive and any necessary negative tests
+
+[source,java]
+----
+import org.mule.common.Result;
+import org.mule.common.TestResult;
+import org.mule.common.Testable;
+
+@Test
+public void testConnectInvalidUsername() throws Exception {
+    TestResult testResult =  getGlobalElementTestable("Test_Connection_Negative_Invalid_Username").test();
+    assertEquals(Result.Status.FAILURE, testResult.getStatus());
+    assertEquals("INVALID_CREDENTIALS", testResult.getFailureType().getName());
+    assertEquals("Couldn't connect with the given credentials", testResult.getMessage());
+}
+
+@Test
+public void testConnectSuccess() throws Exception {
+    TestResult testResult =  ((Testable) getGlobalElementTestable("Mongo_DB")).test();
+    assertEquals(Result.Status.SUCCESS, testResult.getStatus());
+}
+----
+
+== Transformers
+
+. For each transformer add a flow to the automation-test-flows.xml.
+
+[source,xml]
+----
+<flow name="db-object-to-json-transformer">
+    <mongo:dbobject-to-json doc:name="Mongo DB"/>
+</flow>
+
+----
+
+. Create a TransformersTestCases class
+. Call an operation that would return an object of the <typeFrom> type
+. Insert that type on the payload
+. Call the flow containing the transformer
+. Cast or parse the returned to the <typeTo> class.
+. No exceptions should be risen when tests are run.
+
+[source,java]
+----
+@Test
+public void testDbObjectToJSONTransformer() {
+
+  GridFSInputFile operationPayload = null;
+
+  try {
+
+    File file = folder.newFile(getTestRunMessageValue("filename").toString());
+
+    upsertOnTestRunMessage("filename", "filename");
+    upsertOnTestRunMessage("metadataRef", new BasicDBObject());
+    upsertOnTestRunMessage("payloadContent", file);
+
+    operationPayload = runFlowAndGetPayload("create-file-from-payload");
+
+    upsertOnTestRunMessage("payloadContent", operationPayload);
+
+    Object json = JSON.parse((String) runFlowAndGetPayload("db-object-to-json-transformer"));
+
+  } catch (Exception e) {
+    fail(ConnectorTestUtils.getStackTrace(e));
+  }
+
+}
+----
+
+== Testing Inbound Endpoints (@Sources)
 For now, inbound endpoint testing must be done by adding a http://www.mulesoft.org/documentation/display/current/VM+Transport+Reference[VM endpoint] in the flow that has the inbound endpoint we want to test. A VM endpoint is essentially an in-memory queue (hence the name VM, because they are handled by the JVM) addressable by a URL that stores messages until they are processed. By storing the messages received by the inbound endpoint in a VM queue, we can retrieve them in the test case and make assertions on them.
 
 For example, if we want to test SQS’s Receive Messages operation, we need two flows: a flow that actually sends the message, and another flow with the Receive Messages inbound endpoint, as such:
