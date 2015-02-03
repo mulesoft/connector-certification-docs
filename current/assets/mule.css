@@ -7179,6 +7179,11 @@ img {
   background-color: transparent;
   text-decoration: none;
 }
+#toc > ul > li:before {
+  content: "● ";
+  color: #00a3e0;
+  font-weight: bold;
+}
 #toc ul {
   padding-left: 20px;
   list-style: none;
@@ -7326,6 +7331,14 @@ pre {
   src: url("fonts/muleicons.eot?#iefix") format("embedded-opentype"), url("fonts/muleicons.woff") format("woff"), url("fonts/muleicons.ttf") format("truetype"), url("fonts/muleicons.svg?#muleicons") format("svg");
   font-weight: normal;
   font-style: normal;
+}
+#toctitle {
+  color: #e0e0e0;
+  font-family: Ubuntu;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: center;
+  padding-bottom: 10px;
 }
 #preamble {
   text-align: right;
