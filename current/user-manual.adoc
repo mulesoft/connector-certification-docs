@@ -76,7 +76,7 @@ include::docs/static-code-analysis-with-sonarqube.adoc[]
 include::docs/studio-interopetability-QA-guidelines.adoc[]
 include::docs/studio-interopetability-QA-guidelines-2.adoc[]
 
-
+[templates]
 = Templates
 == Anypoint Connectors Documentation Template
 
