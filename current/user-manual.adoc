@@ -39,7 +39,9 @@ In the following sections, each one of the topics to be completed as part of the
 include::docs/certification-process.adoc[]
 
 [devGuidelines]
-= Development 
+= Development
+
+This section is about best development practices, these are a set of rules that the connector development community has learned over time which can help improve the quality of your connector.
 
 include::docs/developement-guidelines.adoc[]
 
