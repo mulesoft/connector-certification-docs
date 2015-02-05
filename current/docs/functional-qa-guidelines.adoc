@@ -40,17 +40,16 @@ mule-devkit-parent contains the framework version property (that can, if necessa
 [source,xml]
 ----
 <properties>
-	...
-	<connector.test.version>2.0.6</connector.test.version>
-  ...
+   ...
+   <connector.test.version>2.0.6</connector.test.version>
 </properties>
 
 <!-- Mule Connector Test Framework -->
 <dependency>
-	<groupId>org.mule.modules</groupId>
-	<artifactId>mule-connector-test</artifactId>
-  <version>${connector.test.version}</version>
-	<scope>test</scope>
+   <groupId>org.mule.modules</groupId>
+   <artifactId>mule-connector-test</artifactId>
+   <version>${connector.test.version}</version>
+   <scope>test</scope>
 </dependency>
 ----
 
