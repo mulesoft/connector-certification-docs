@@ -29,7 +29,8 @@
 <ul class="sectlevel1">
 <li><a href="#_code_conventions">Code Conventions</a></li>
 <li><a href="#_directory_structure">Directory Structure</a></li>
-<li><a href="#_project_structure_check_tool">Project Structure Check Tool</a></li>
+<li><a href="#_maven_conventions_and_setup">Maven Conventions and Setup</a></li>
+<li><a href="#_best_practices">Best Practices</a></li>
 <li><a href="#_datamapper_compliance">DataMapper Compliance</a></li>
 <li><a href="#_connector_demo_example">Connector Demo Example</a></li>
 <li><a href="#_documentation">Documentation</a></li>
@@ -492,13 +493,34 @@ Each one of the following practices are aimed to cover different quality aspects
 </div>
 </div>
 <div class="sect1">
-<h2 id="_project_structure_check_tool">Project Structure Check Tool</h2>
+<h2 id="_maven_conventions_and_setup">Maven Conventions and Setup</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>After you install the Studio Plugin, run the Project Structure Check plugin to validate that the structure of your project is correct.</p>
+<p>The following section describes set of convenitions and best practices to follow at the time to define your connector Maven project structure.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_best_practices">Best Practices</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>To run the plugin, add this execution to your connector’s pom.xml file:</p>
+<p>These are mandatory practices to be honored:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Do not overwrite org.mule.tools.devkit:mule-devkit-parent properties.</p>
+</li>
+<li>
+<p>Do not reference SNAPSHOT dependencies either in plugins or dependencies.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_project_structure_validation">Project Structure Validation</h3>
+<div class="paragraph">
+<p>The following plugin must be configure as part of the connectors pom.xml. I will be responsible for validating the project structure.
+Copy and paste the following snippets in your connector pom.xml:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -523,6 +545,7 @@ Each one of the following practices are aimed to cover different quality aspects
     <span class="tag">&lt;/plugins&gt;</span>
     ...
 <span class="tag">&lt;/build&gt;</span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -8282,7 +8305,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-02-05 18:25:18 EST
+Last updated 2015-02-05 18:46:53 EST
 </div>
 </div>
 </body>
