@@ -1,8 +1,5 @@
 == Code Coverage and SonarQube
 
-SonarQube is a tool that helps developers identify hot spots in code, bad code quality, technical debt, as well as define a number of other issues. To release a connector, you must fix blocker and critical issues.
-
-Important: Only download SonarQube from here because the distribution contains code guidelines specifically for Anypoint Cloud Connectors. To release a connector, test every message processor in the connector using the Connector Test Framework. For guidelines on how to build your tests using this framework, see Functional QA Guidelines.
 
 Generate a code coverage report in SonarQube with this command:
 

@@ -54,7 +54,7 @@ Each one of the following practices are aimed to cover different quality aspects
 
 * http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_development_best_practices[Development Best Practices]
 
-* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html##_automated_functional_testing[Automated Functional Testing]
+* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_automated_functional_testing[Automated Functional Testing]
 
 * http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_studio_interoperability_qa[Studio Interoperability Testing]
 

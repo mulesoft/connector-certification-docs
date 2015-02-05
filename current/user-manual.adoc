@@ -56,15 +56,10 @@ include::docs/functional-test-plugin.adoc[]
 
 include::docs/studio-interopetability-test-plugin.adoc[]
 
-[coverageGuidelines]
-= Code Coverage
-
-include::docs/coverage-guidelines.adoc[]
-
 [sonar]
 = Static Code Analysis with SonarQube
 
-include::docs/static-code-analysis-with-sonarqube.adoc[]
+include::docs/sonarqube.adoc[]
 
 [studio-interopetability-QA-guidelines]
 = Studio Interoperability QA
