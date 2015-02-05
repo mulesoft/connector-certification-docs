@@ -31,7 +31,7 @@
 <li><a href="#_directory_structure">Directory Structure</a></li>
 <li><a href="#_project_structure_check_tool">Project Structure Check Tool</a></li>
 <li><a href="#_datamapper_compliance">DataMapper Compliance</a></li>
-<li><a href="#_connector_demo_or_templates">Connector Demo or Templates</a></li>
+<li><a href="#_connector_demo_example">Connector Demo Example</a></li>
 <li><a href="#_documentation">Documentation</a></li>
 <li><a href="#_licensing">Licensing</a></li>
 <li><a href="#_appendix">Appendix</a></li>
@@ -114,7 +114,7 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>version 0.1</strong></p>
+<p><strong>version 0.9</strong></p>
 </div>
 </div>
 </div>
@@ -211,9 +211,6 @@ The items below are a list of the high-level testing performed on each connector
 <li>
 <p>Publish</p>
 </li>
-<li>
-<p>Re-Certification</p>
-</li>
 </ol>
 </div>
 <div class="imageblock">
@@ -291,50 +288,14 @@ The items below are a list of the high-level testing performed on each connector
 <h2 id="_stage_2_development">Stage 2: Development</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_2_1_computer_prerequisites">2.1 Computer Prerequisites</h3>
+<h3 id="_2_1_design_specification_review">2.1 Design Specification Review</h3>
 <div class="paragraph">
-<p>To start developing your connector using DevKit you must have installed:</p>
+<p>The spirit of this document is to help the MuleSoft certification team to have an initial context about the connector to be develop.
+MuleSoft certification team will use this document as a starting point to provide feedback and tips about the best use of DevKit and suggesting development patterns.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><a href="http://maven.apache.org/download.cgi">Apache Maven</a></p>
-</li>
-<li>
-<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html#jdk-7u2-oth-JPR">Oracle JDK 1.7</a></p>
-</li>
-<li>
-<p><a href="http://www.mulesoft.org/download-mule-esb-community-edition">MuleSoft Anypoint Studio</a></p>
-</li>
-<li>
-<p>Anypoint DevKit Plugin</p>
-</li>
-</ol>
-</div>
-<div class="sect3">
-<h4 id="_to_install_the_devkit_plugin_follow_these_steps">To install the DevKit plugin Follow these steps</h4>
 <div class="paragraph">
-<p>On the Runner Platform’s Anypoint Studio installation:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Click Help &gt; Install New Software.</p>
-</li>
-<li>
-<p>Click Anypoint Addons Update Site from the Work with drop-down</p>
-</li>
-<li>
-<p>Note: If this item is not in the dropdown, click Add and specify the name, and for the URL, use: <a href="http://studio.mulesoft.org/r3/addons/beta" class="bare">http://studio.mulesoft.org/r3/addons/beta</a></p>
-</li>
-<li>
-<p>Click the checkbox for Anypoint DevKit Plugin, and click Next, Next, Finish.</p>
-</li>
-<li>
-<p>Restart Anypoint Studio when prompted.</p>
-</li>
-</ol>
-</div>
+<p>The follow template must be used as starting point
+<a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/designSpecificationTemplate.adoc">Design Specification Template</a></p>
 </div>
 </div>
 <div class="sect2">
@@ -392,7 +353,7 @@ Each one of the following practices are aimed to cover different quality aspects
 <p>In case of being required, provide the Sandbox credentials a .properties used for the testing execution.</p>
 </li>
 <li>
-<p>Create a release branch that will contain all the fixes and suggested during the certification. It should follows the naming convention <em>"release/v&lt;version-number&gt;"</em>. Once the certification process has been completed, all the changes will be merged into the master branch and a tag will all the change must be created. It&#8217;s strongly encourage to follow GitFlow branching practices.</p>
+<p>Create a release branch that will contain all the fixes and suggested during the certification. It should follows the naming convention "release/v&lt;version-number&gt;". Once the certification process has been completed, all the changes will be merged into the master branch and a tag will all the change must be created. It&#8217;s strongly encourage to follow GitFlow branching practices.</p>
 </li>
 </ul>
 </div>
@@ -402,10 +363,10 @@ Each one of the following practices are aimed to cover different quality aspects
 <div class="ulist">
 <ul>
 <li>
-<p>Connector must be a final version, It could not be a <strong>SNAPSHOT</strong> version.</p>
+<p>Connector must be a final version, It could not be an SNAPSHOT</p>
 </li>
 <li>
-<p>There must not be <strong>SNAPSHOT</strong> dependencies.</p>
+<p>There must not be SNAPSHOT dependencies</p>
 </li>
 <li>
 <p>External dependencies must be located in well know public repositories.</p>
@@ -668,7 +629,7 @@ Only use a map if your data:
 </div>
 </div>
 <div class="sect1">
-<h2 id="_connector_demo_or_templates">Connector Demo or Templates</h2>
+<h2 id="_connector_demo_example">Connector Demo Example</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>A Mule application&#8217;s endpoints allow a user to interact with the service and API using the connector. Endpoints are committed to the GitHub repository along with source code. Use services or API use cases to determine which connector operations to select.</p>
@@ -8321,7 +8282,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-02-05 16:18:53 EST
+Last updated 2015-02-05 16:34:25 EST
 </div>
 </div>
 </body>
