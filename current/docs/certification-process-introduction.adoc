@@ -13,6 +13,8 @@ The partner Engagement and Certification Process for publishing connectors consi
 .. Certifying
 .. Results
 . Publish
+. Re-Certification
+
 
 image::{imagesdir}/certification-process-1.png[]
 
@@ -43,14 +45,32 @@ There is plenty of documentation on Internet about DevKit. Here is a set of link
     * DevKit Tutorial: http://www.mulesoft.org/documentation/display/current/Tutorial+-+Barn+Connector
     * Community Forum: http://forum.mulesoft.org/mulesoft/products/mulesoft_anypoint_connectors
 
-// @Todo: Any ideas ?
+// @Todo: Any ideas ?  Lacks of good documentation about the product, Maybe a Tutorial link could help.
 
 == Stage 2: Development
 
-=== 2.1 Design Specification Review
+// === 2.1 Design Specification Review
 
-// @Todo: Create an Architecture Certification Template
-doc name : design-template.adoc
+// @Todo: Create an Architecture Certification Template @ doc name : design-template.adoc
+
+=== 2.1 Computer Prerequisites
+
+To start developing your connector using DevKit you must have installed:
+
+. http://maven.apache.org/download.cgi[Apache Maven]
+. http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html#jdk-7u2-oth-JPR[Oracle JDK 1.7]
+. http://www.mulesoft.org/download-mule-esb-community-edition[MuleSoft Anypoint Studio]
+. Anypoint DevKit Plugin
+
+==== To install the DevKit plugin Follow these steps 
+
+On the Runner Platform’s Anypoint Studio installation:
+
+. Click Help > Install New Software. 
+. Click Anypoint Addons Update Site from the Work with drop-down
+. Note: If this item is not in the dropdown, click Add and specify the name, and for the URL, use: http://studio.mulesoft.org/r3/addons/beta 
+. Click the checkbox for Anypoint DevKit Plugin, and click Next, Next, Finish. 
+. Restart Anypoint Studio when prompted.
 
 === 2.2  Mandatory Practices
 
@@ -63,11 +83,10 @@ Each one of the following practices are aimed to cover different quality aspects
 
 * http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_studio_interoperability_qa[ Anypoint Studio  Interoperability Testing]
 
-* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_templates[Documentation]
+* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_static_code_analysis_with_sonarqube[Static Code Analysis & Code Coverage]
 
-* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_static_code_analysis_with_sonarqube[Static Code Analysis]
+* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_templates[Connector Release Notes & Documentation]
 
-* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_code_coverage[Code Coverage]
 
 == Stage 3: Certify
 
@@ -81,10 +100,10 @@ Before Mule start the certification process, there are a set of prerequisites to
 * *Source Code Access and Sandbox Credentials:* As part of the certification, MuleSoft will internally run a continue build tests execution and run a set of code inspections to validate the quality of the connector. The next actions are required:
 ** GitHub account read access must be granted to the user connectors-cert-ci (connectors-cert-ci@mulesoft.com)
 ** In case of being required, provide the Sandbox credentials a .properties used for the testing execution.
-** Create a release branch that will contain all the fixes and suggested during the certification. It should follows the naming convention "release/v<version-number>". Once the certification process has been completed, all the changes will be merged into the master branch and a tag will all the change must be created. It's strongly encourage to follow GitFlow branching practices.
+** Create a release branch that will contain all the fixes and suggested during the certification. It should follows the naming convention __"release/v<version-number>"__. Once the certification process has been completed, all the changes will be merged into the master branch and a tag will all the change must be created. It's strongly encourage to follow GitFlow branching practices.
 * *Maven Dependencies:* It's important that the following things be satisfied:
-** Connector must be a final version, It could not be an SNAPSHOT
-** There must not be SNAPSHOT dependencies
+** Connector must be a final version, It could not be a *SNAPSHOT* version.
+** There must not be *SNAPSHOT* dependencies.
 ** External dependencies must be located in well know public repositories.
 * *Presentation Demo:* The objective of this demo is to go over the functional aspects of the connectors, overview of the system to be connected, underlying integration technology (REST/WSDL/SDK). The audience of this meeting will be Product Managers , Connectors Engineers Leads and QA.
 * *Complete Certification Checklist:* Before the connector could start the certification process, it’s responsibility of the partner to validate that all the certification artifacts and requirements have been accomplished. All the required actions are described in the following template and should be completed before submitting the connector for certification. Certification checklist could be found https://drive.google.com/open?id=0B8N265C555thOG5HZDRTOTEtUXM&authuser=0[here]
@@ -110,7 +129,7 @@ MuleSoft reserves the right to conduct random tests on published connectors. If 
 * *Support Training:* Mule Support team will provide T1 support and will help the customer to isolated the issue to identify if the issue is a Mule issue or a connector issue. The objective of this birth view training is to provide to the support team a general understanding of the connector and tools that help to isolate the problem.
 * *Upload to Library:* Connector will be upload in the https://www.mulesoft.com/library[Mule Connectors Library]. After your connector passes the Certification Process, MuleSoft sends you an estimated date for when your connector will appear on the MuleSoft web site. As part of this process, the following information need to be provided:
 ** High Level description of the connector. SalesForce connector could be use a template example: https://www.mulesoft.com/library#!/salesforce-integration-connector?types=connector
-** URL to Release Notes
+** URL to Release Notes 
 ** URL to Functional documentation of the connector
 ** URL to DevKit generated documentation
 
