@@ -1,6 +1,7 @@
 This section explains how to automate functional test cases on Connectors.
 
 == Approach Explanation
+---
 === Objectives
 . Automation test suite integrated to the connector.
 . Real sandbox and Mule server used when running the tests.
@@ -24,6 +25,7 @@ This section explains how to automate functional test cases on Connectors.
 . *Use a regression suite* to include at least one test case for each operation. Take input on this kind of test from a Mule Message, ensure a test is fully parameterized, and only modify data from the AutomationSpringBeans.xml file.
 
 == mule-connector-test framework
+---
 === Objectives
 . Provide consistent test suite implementation through the different connectors business models.
 . Increase code reusability.
@@ -117,6 +119,7 @@ Run different sets of tests with the aid of runners. Test cases are classified i
 . *Regression*: Positive test on the operation attributes that you pass from a Message.
 
 == Suite Implementation
+---
 === Test Development Environment Set Up
 After building a connector, add *target/generated-sources/mule* to the project build path. You may need to add other generated sources to the build path depending on the connector (such as target/generated-sources/cxf).
 
@@ -844,6 +847,7 @@ This information can also be seen in the JavaDoc for this method.
 This is a preliminary way to implement this functionality because ideally there should be no need to manually add endpoints to flows in order to test them. See https://www.google.com/url?q=https%3A%2F%2Fwww.mulesoft.org%2Fjira%2Fbrowse%2FCLDCONNECT-1472&sa=D&sntz=1&usg=AFQjCNEsSvDUicqmL7DHFD5Ch01mWqa4zg[CLDCONNECT-1472] for more information.
 
 == Setting Up OAuth Authentication
+---
 Manually generate the accessToken and pass this along with the credentials to the service to run the test suite.
 
 Let's use Facebook as example:
@@ -922,6 +926,5 @@ mvn -Dtest=SmokeTestSuite -Dmule.test.timeoutSecs=180 -DSALESFORCE_CREDENTIALS=h
 ```
 
 == Appendix
----
 
 https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/automated%20funcional%20testing/appendixA.adoc[Appendix A: Debugging]
