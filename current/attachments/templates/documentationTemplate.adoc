@@ -55,15 +55,6 @@ Integration with other MS capabilities
 This document assumes that you are familiar with … +
 To use the this connector, … +
 
-*Namespace*
-
-`xmlns:<connector>="++http://www.mulesoft.org/schema/mule/<connector>"`
-
-*Schema Location*
-
-`xsi:schemaLocation="`
-
-
 === Requirements
 
 Hardware, software, and technical requirements. 
