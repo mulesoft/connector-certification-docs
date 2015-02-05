@@ -19,11 +19,11 @@ image::{imagesdir}/certification-process-1.png[]
 
 == Stage 1: OnBoard
 
-=== Legal Engagement
+=== 1.1 Legal Engagement
 
 During the development process, MuleSoft and a third-party partner, based on a pre-existing partnership agreement, begin the development process.
 
-=== 1.1 Leaning Anypoint™ Connector DevKit
+=== 1.2 Leaning Anypoint™ Connector DevKit
 
 The MuleSoft Anypoint™ Connector DevKit is the tool for developing Anypoint Connectors. It provides the following features to help you develop or maintain a connector:
 
@@ -47,7 +47,12 @@ There is plenty of documentation on Internet about DevKit. Here is a set of link
 
 == Stage 2: Development
 
-=== 2.1  Mandatory Practices
+=== 2.1 Design Specification Review
+
+@Todo: Create an Architecture Certification Template
+doc name : design-template.adoc
+
+=== 2.2  Mandatory Practices
 
 In order to quality of the connectors developed, there are a set of practices and artifacts that need to be delivered as part of the connectors development.
 Each one of the following practices are aimed to cover different quality aspects:
@@ -56,18 +61,13 @@ Each one of the following practices are aimed to cover different quality aspects
 
 * http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_automated_functional_testing[Automated Functional Testing]
 
-* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_studio_interoperability_qa[Studio Interoperability Testing]
+* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_studio_interoperability_qa[ Anypoint Studio  Interoperability Testing]
 
 * http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_templates[Documentation]
 
 * http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_static_code_analysis_with_sonarqube[Static Code Analysis]
 
 * http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_code_coverage[Code Coverage]
-
-=== 2.2 Design Specification Review
-
-@Todo: Create an Architecture Certification Template
-doc name : design-template.adoc
 
 == Stage 3: Certify
 
@@ -121,4 +121,4 @@ Finally, the connector will be available in MueSoft Connector Library (https://w
 
 == Release Re-Certification
 
-Mule ESB and Mule Studio have a release cadence of 3 month cycles. Even the fact that Mule ESB and Mule Studio will be focus on maintaining forward compatibility for all develop connectors there is a small probability that issues related to classloader problems or data mapping could arise. Due to that, it’s required that a regression testing using the released version of Mule ESB and Mule Studio be executed. Early access to binaries will be provided to run the re-certification. It’s important to point out that the certification must be run over the already released connector
+Mule ESB and Anypoint Studio have a release cadence of 3 month cycles. Even the fact that Mule ESB and Mule Studio will be focus on maintaining forward compatibility for all develop connectors there is a small probability that issues related to classloader problems or data mapping could arise. Due to that, it’s required that a regression testing using the released version of Mule ESB and Mule Studio be executed. Early access to binaries will be provided to run the re-certification. It’s important to point out that the certification must be run over the already released connector

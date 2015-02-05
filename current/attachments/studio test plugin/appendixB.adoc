@@ -12,12 +12,12 @@ This file contains a detailed description of the connector processors and config
 ==== Attributes, Optional, and Required Tags
 Represents the parameters the processor receives that are not childElements. An <optional> tag indicates that the parameter has been annotated as @Optional in the processors declaration, while a <required> tag marks the parameter as mandatory for every execution.
 
-Node attributes like caption, group, javaType, and type, indicate the properties of each parameter and its representation in Studio. Group, caption, and type are needed to find the element in the Studio UI, and successfully populate the form.
+Node attributes like caption, group, javaType, and type, indicate the properties of each parameter and its representation in  Anypoint Studio . Group, caption, and type are needed to find the element in the  Anypoint Studio  UI, and successfully populate the form.
 
 ==== ChildElements tag
-Allows a complete description of the object. This element has a direct mapping with the description done manually in Studio. This elements can be, optional or required, with the same meaning as before.
+Allows a complete description of the object. This element has a direct mapping with the description done manually in  Anypoint Studio . This elements can be, optional or required, with the same meaning as before.
 
-The “complex” definitions implies each field populates separately, while a “useReference” definition references an object described separately in the flow, just like we do in Studio.
+The “complex” definitions implies each field populates separately, while a “useReference” definition references an object described separately in the flow, just like we do in  Anypoint Studio .
  
 === TestData Overrides (Overrides File)
 This template is a merge between a subset of the basic file, and the output from the annotations processor, resulting in a file with not only the whole structure of the connector, for each config and processor, all the required fields are declared, but also a description of the connector and its processors properties. 

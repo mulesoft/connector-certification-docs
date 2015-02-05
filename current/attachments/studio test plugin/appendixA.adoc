@@ -1,5 +1,5 @@
 
-== Appendix A: Usage without Studio
+== Appendix A: Usage without  Anypoint Studio
 
 === Annotations Processor
 When the profile is invoked, a custom annotations parser is hooked into the compilation. This processor goes through the connector and its processor code and annotations, retrieving information about the connectors properties, the return types of each processor, etc.

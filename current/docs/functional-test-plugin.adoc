@@ -1,10 +1,10 @@
 == Description
 The framework described in this document consists of a series of automation tools, which let you run interoperability tests on a connector in Anypoint Studio. The framework covers Connectivity, Datamapper Compliance, and XML Generation tests, as described in the Connectors QA Guidelines. The data used by these tests is generated using not only a connector's code, but also the output files in the DevKit, in particular the schema and editors file.
 
-== Studio Plugin
+== Anypoint Studio Plugin
 === Glossary of Terms
 Runner Platform: Host where the test run takes place.
-Target Platform: The platform (in terms of Studio plugins) on which tests are going to that you run. 
+Target Platform: The platform (in terms of Anypoint Studio plugins) on which tests are going to that you run.
 CUT: Connector under test
 *-test-data.xml
 *-test-data-override.xml
@@ -28,7 +28,7 @@ Follow these steps on the Runner Platform's Anypoint Studio installation:
 
 === Plugin Execution
 
-With your connector imported in Studio, right-click the project name in Package Explorer and click *Anypoint Connector > Generate Tests*.
+With your connector imported in Anypoint Studio, right-click the project name in Package Explorer and click *Anypoint Connector > Generate Tests*.
 	
 image::{imagesdir}/functional-test-plugin-1.png[]
 

@@ -109,7 +109,8 @@ Creation criteria:
 . Consider basic error handling in the Mule app.
 
 == Documentation
-Ensure that a connector’s documentation is legible and follows this template.
+
+Ensure that a connector’s documentation is legible and follows the connector documentation template https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/documentation Template.adoc[Documentation Template]
 
 MuleSoft generates a Javadoc technical reference by DevKit through Javadoc, based on the comments inside your code.
 

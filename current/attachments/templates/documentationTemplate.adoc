@@ -35,7 +35,7 @@ One sentence description.
 .. Increasing Performance
 
 . Example Use Case
-.. Studio Visual Editor | XML Editor
+..  Anypoint Studio  Visual Editor | XML Editor
 .. Example Code
 
 . See Also
@@ -127,9 +127,9 @@ What can you set in the connector to increase performance?
 
 Explain what this example is for. 
 
-=== Studio Visual Editor | XML Editor
+===  Anypoint Studio  Visual Editor | XML Editor
 
-Explain how to create this case with Studio visual editor and XML editor +
+Explain how to create this case with  Anypoint Studio  visual editor and XML editor +
 
 === Code Example
 

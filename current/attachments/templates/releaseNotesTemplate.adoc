@@ -59,7 +59,7 @@ Examples might include
 . Changes in the version of the connected systems to be able to work
 . When the connector suffers structural changes (i.e monolythic connectors now many update sites) we should also inform the split and why and how to update from one to the other.
 . Specific instructions if the connector is running in CloudHub (like changing the Mule Runtime version, etc)
-. The first list of steps is for in-place upgrades, probably just updating via Maven or Studio and re deploying.
+. The first list of steps is for in-place upgrades, probably just updating via Maven or  Anypoint Studio  and re deploying.
 . The second list is for the connectors that are older and require additional steps.
 . Some of this might not apply (i.e. a connector is backwards compatible with all released versions or there is no previous version)
 
