@@ -11,10 +11,24 @@ __Note__: Do not use Mule internal APIs for coding connectors.
 == Directory Structure
 Your connector project directory structure must follow the conventions described in __Appendix C__. If you create your connector project using the DevKit Studio Plugin, the structure generates by default.
 
-== Project Structure Check Tool
-After you install the Studio Plugin, run the Project Structure Check plugin to validate that the structure of your project is correct.
+== Maven Conventions and Setup
 
-To run the plugin, add this execution to your connector’s pom.xml file: 
+The following section describes set of convenitions and best practices to follow at the time to define your connector Maven project structure.
+
+== Best Practices
+
+These are mandatory practices to be honored:
+
+* Do not overwrite org.mule.tools.devkit:mule-devkit-parent properties.
+* Do not reference SNAPSHOT dependencies either in plugins or dependencies.
+
+// == Multimodule Layout
+// @Todo: Alejandro: could you please complete this section ?
+
+=== Project Structure Validation
+
+The following plugin must be configure as part of the connectors pom.xml. I will be responsible for validating the project structure.
+Copy and paste the following snippets in your connector pom.xml:
 
 [source,xml]
 ----
