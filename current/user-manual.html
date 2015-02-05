@@ -39,7 +39,6 @@
 </li>
 <li><a href="#_automated_functional_testing">Automated Functional Testing</a>
 <ul class="sectlevel1">
-<li><a href="#_introduction_2">Introduction</a></li>
 <li><a href="#_approach_explanation">Approach Explanation</a></li>
 <li><a href="#_mule_connector_test_framework">mule-connector-test framework</a></li>
 <li><a href="#_framework_and_test_suite_components">Framework and Test Suite Components</a></li>
@@ -63,7 +62,7 @@
 </li>
 <li><a href="#_studio_interoperability_test_plugin">Studio Interoperability Test Plugin</a>
 <ul class="sectlevel1">
-<li><a href="#_introduction_3">Introduction</a></li>
+<li><a href="#_introduction_2">Introduction</a></li>
 <li><a href="#_glossary">Glossary</a></li>
 <li><a href="#_installation_2">Installation</a></li>
 <li><a href="#_interop_test_run_tutorial">Interop Test Run Tutorial</a></li>
@@ -212,6 +211,9 @@ The items below are a list of the high-level testing performed on each connector
 <li>
 <p>Publish</p>
 </li>
+<li>
+<p>Re-Certification</p>
+</li>
 </ol>
 </div>
 <div class="imageblock">
@@ -282,9 +284,6 @@ The items below are a list of the high-level testing performed on each connector
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>@Todo: Any ideas ?</p>
-</div>
 </div>
 </div>
 </div>
@@ -292,10 +291,50 @@ The items below are a list of the high-level testing performed on each connector
 <h2 id="_stage_2_development">Stage 2: Development</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_2_1_design_specification_review">2.1 Design Specification Review</h3>
+<h3 id="_2_1_computer_prerequisites">2.1 Computer Prerequisites</h3>
 <div class="paragraph">
-<p>@Todo: Create an Architecture Certification Template
-doc name : design-template.adoc</p>
+<p>To start developing your connector using DevKit you must have installed:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="http://maven.apache.org/download.cgi">Apache Maven</a></p>
+</li>
+<li>
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html#jdk-7u2-oth-JPR">Oracle JDK 1.7</a></p>
+</li>
+<li>
+<p><a href="http://www.mulesoft.org/download-mule-esb-community-edition">MuleSoft Anypoint Studio</a></p>
+</li>
+<li>
+<p>Anypoint DevKit Plugin</p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="_to_install_the_devkit_plugin_follow_these_steps">To install the DevKit plugin Follow these steps</h4>
+<div class="paragraph">
+<p>On the Runner Platform’s Anypoint Studio installation:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click Help &gt; Install New Software.</p>
+</li>
+<li>
+<p>Click Anypoint Addons Update Site from the Work with drop-down</p>
+</li>
+<li>
+<p>Note: If this item is not in the dropdown, click Add and specify the name, and for the URL, use: <a href="http://studio.mulesoft.org/r3/addons/beta" class="bare">http://studio.mulesoft.org/r3/addons/beta</a></p>
+</li>
+<li>
+<p>Click the checkbox for Anypoint DevKit Plugin, and click Next, Next, Finish.</p>
+</li>
+<li>
+<p>Restart Anypoint Studio when prompted.</p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -316,13 +355,10 @@ Each one of the following practices are aimed to cover different quality aspects
 <p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_studio_interoperability_qa"> Anypoint Studio  Interoperability Testing</a></p>
 </li>
 <li>
-<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_templates">Documentation</a></p>
+<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_static_code_analysis_with_sonarqube">Static Code Analysis &amp; Code Coverage</a></p>
 </li>
 <li>
-<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_static_code_analysis_with_sonarqube">Static Code Analysis</a></p>
-</li>
-<li>
-<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_code_coverage">Code Coverage</a></p>
+<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_templates">Connector Release Notes &amp; Documentation</a></p>
 </li>
 </ul>
 </div>
@@ -356,7 +392,7 @@ Each one of the following practices are aimed to cover different quality aspects
 <p>In case of being required, provide the Sandbox credentials a .properties used for the testing execution.</p>
 </li>
 <li>
-<p>Create a release branch that will contain all the fixes and suggested during the certification. It should follows the naming convention "release/v&lt;version-number&gt;". Once the certification process has been completed, all the changes will be merged into the master branch and a tag will all the change must be created. It&#8217;s strongly encourage to follow GitFlow branching practices.</p>
+<p>Create a release branch that will contain all the fixes and suggested during the certification. It should follows the naming convention <em>"release/v&lt;version-number&gt;"</em>. Once the certification process has been completed, all the changes will be merged into the master branch and a tag will all the change must be created. It&#8217;s strongly encourage to follow GitFlow branching practices.</p>
 </li>
 </ul>
 </div>
@@ -366,10 +402,10 @@ Each one of the following practices are aimed to cover different quality aspects
 <div class="ulist">
 <ul>
 <li>
-<p>Connector must be a final version, It could not be an SNAPSHOT</p>
+<p>Connector must be a final version, It could not be a <strong>SNAPSHOT</strong> version.</p>
 </li>
 <li>
-<p>There must not be SNAPSHOT dependencies</p>
+<p>There must not be <strong>SNAPSHOT</strong> dependencies.</p>
 </li>
 <li>
 <p>External dependencies must be located in well know public repositories.</p>
@@ -381,7 +417,7 @@ Each one of the following practices are aimed to cover different quality aspects
 <p><strong>Presentation Demo:</strong> The objective of this demo is to go over the functional aspects of the connectors, overview of the system to be connected, underlying integration technology (REST/WSDL/SDK). The audience of this meeting will be Product Managers , Connectors Engineers Leads and QA.</p>
 </li>
 <li>
-<p><strong>Complete Certification Checklist:</strong> Before the connector could start the certification process, it’s responsibility of the partner to validate that all the certification artifacts and requirements have been accomplished. All the required actions are described in the following template and should be completed before submitting the connector for certification. Certification checklist could be found here: @Todo: URL to the checklist</p>
+<p><strong>Complete Certification Checklist:</strong> Before the connector could start the certification process, it’s responsibility of the partner to validate that all the certification artifacts and requirements have been accomplished. All the required actions are described in the following template and should be completed before submitting the connector for certification. Certification checklist could be found <a href="https://drive.google.com/open?id=0B8N265C555thOG5HZDRTOTEtUXM&amp;authuser=0">here</a></p>
 </li>
 <li>
 <p><strong>Connector documentation:</strong> There must be a public access to the connectors documentation.</p>
@@ -405,9 +441,6 @@ Each one of the following practices are aimed to cover different quality aspects
 </div>
 <div class="paragraph">
 <p>MuleSoft reserves the right to conduct random tests on published connectors. If we find a connector that deviates from any of our requirements, we notify you and provide a timeframe to remedy the issue. In extreme cases, we may remove the connector from our web site.</p>
-</div>
-<div class="paragraph">
-<p>@Todo: Define new releases criteria.</p>
 </div>
 </div>
 <div class="sect2">
@@ -701,17 +734,13 @@ Only use a map if your data:
 <div class="sect1">
 <h2 id="_automated_functional_testing">Automated Functional Testing</h2>
 <div class="sectionbody">
-<div class="sect1">
-<h2 id="_introduction_2">Introduction</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>This document explains how to automate functional test cases on Connectors.</p>
-</div>
-</div>
+<p>This section explains how to automate functional test cases on Connectors.</p>
 </div>
 <div class="sect1">
 <h2 id="_approach_explanation">Approach Explanation</h2>
 <div class="sectionbody">
+<hr>
 <div class="sect2">
 <h3 id="_objectives">Objectives</h3>
 <div class="olist arabic">
@@ -739,7 +768,7 @@ Only use a map if your data:
 <p>Launch and shut a Mule instance for each test to ensure isolation from the rest of a suite.</p>
 </li>
 <li>
-<p>Use the setUp() method to create a test fixture prior to running an actual test.</p>
+<p>Use the <code>setUp()</code> method to create a test fixture prior to running an actual test.</p>
 </li>
 <li>
 <p>Create entities to test each operation.</p>
@@ -786,6 +815,7 @@ Only use a map if your data:
 <div class="sect1">
 <h2 id="_mule_connector_test_framework">mule-connector-test framework</h2>
 <div class="sectionbody">
+<hr>
 <div class="sect2">
 <h3 id="_objectives_2">Objectives</h3>
 <div class="olist arabic">
@@ -822,16 +852,16 @@ Only use a map if your data:
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
-          ...
-          <span class="tag">&lt;connector.test.version&gt;</span>2.0.6<span class="tag">&lt;/connector.test.version&gt;</span>
+   ...
+   <span class="tag">&lt;connector.test.version&gt;</span>2.0.6<span class="tag">&lt;/connector.test.version&gt;</span>
 <span class="tag">&lt;/properties&gt;</span>
 
 <span class="comment">&lt;!-- Mule Connector Test Framework --&gt;</span>
 <span class="tag">&lt;dependency&gt;</span>
-          <span class="tag">&lt;groupId&gt;</span>org.mule.modules<span class="tag">&lt;/groupId&gt;</span>
-          <span class="tag">&lt;artifactId&gt;</span>mule-connector-test<span class="tag">&lt;/artifactId&gt;</span>
-         <span class="tag">&lt;version&gt;</span>${connector.test.version}<span class="tag">&lt;/version&gt;</span>
-          <span class="tag">&lt;scope&gt;</span>test<span class="tag">&lt;/scope&gt;</span>
+   <span class="tag">&lt;groupId&gt;</span>org.mule.modules<span class="tag">&lt;/groupId&gt;</span>
+   <span class="tag">&lt;artifactId&gt;</span>mule-connector-test<span class="tag">&lt;/artifactId&gt;</span>
+   <span class="tag">&lt;version&gt;</span>${connector.test.version}<span class="tag">&lt;/version&gt;</span>
+   <span class="tag">&lt;scope&gt;</span>test<span class="tag">&lt;/scope&gt;</span>
 <span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
@@ -841,16 +871,17 @@ Only use a map if your data:
 <div class="sect1">
 <h2 id="_framework_and_test_suite_components">Framework and Test Suite Components</h2>
 <div class="sectionbody">
+<hr>
 <div class="sect2">
 <h3 id="_connectortestcase_class">ConnectorTestCase Class</h3>
 <div class="paragraph">
-<p>ConnectorTestCase class inherits from org.mule.tck.junit4.FunctionalTestCase and wraps FunctionalTestCase methods into methods that both facilitate automating connectors operations use cases and enforce a uniform approach on the construction of test suites. ConnectorTestCase is by &lt;Connector&gt;TestParent.java and this class is the parent test class for all of the test cases.</p>
+<p>ConnectorTestCase class inherits from <strong>org.mule.tck.junit4.FunctionalTestCase</strong> and wraps FunctionalTestCase methods into methods that both facilitate automating connectors operations use cases and enforce a uniform approach on the construction of test suites. ConnectorTestCase is by <strong>&lt;Connector&gt;TestParent.java</strong> and this class is the parent test class for all of the test cases.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_connectortestutils_class">ConnectorTestUtils Class</h3>
 <div class="paragraph">
-<p>Provides methods for working with NullPayload, initializing random test data and also manipulating the date in the Spring file. Also enhances the exception message that displays for more accurate debugging.</p>
+<p>Provides methods for working with <em>NullPayload</em>, initializing random test data and also manipulating the date in the Spring file. Also enhances the exception message that displays for more accurate debugging.</p>
 </div>
 </div>
 <div class="sect2">
@@ -871,7 +902,7 @@ Only use a map if your data:
 <p><strong>Note:</strong> Do not allow automation tests to be automatically run by Maven because the tests require credentials. Follow the naming conventions for an automation test.</p>
 </div>
 <div class="paragraph">
-<p>Each operation in the connector has an &lt;OperationName&gt;TestCases.java class that contains its related test cases. The sequence of operations called along the @Before-@Test-@After cycle make an operation use case.</p>
+<p>Each operation in the connector has an <strong>&lt;OperationName&gt;TestCases.java</strong> class that contains its related test cases. The sequence of operations called along the <strong>@Before-@Test-@After</strong> cycle make an operation use case.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -911,13 +942,13 @@ Only use a map if your data:
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>AutomationSpringBeans.xml contains the maps and POJOs required by the tests to run.</p>
+<p><strong>AutomationSpringBeans.xml</strong> contains the maps and POJOs required by the tests to run.</p>
 </li>
 <li>
-<p>automation-test-flows.xml is a collection of flows, each containing a connector operation, that invoke on the tests.</p>
+<p><strong>automation-test-flows.xml</strong> is a collection of flows, each containing a connector operation, that invoke on the tests.</p>
 </li>
 <li>
-<p>automation-credentials.properties stores the connector credentials and authenticated user related information.</p>
+<p><strong>automation-credentials.properties</strong> stores the connector credentials and authenticated user related information.</p>
 </li>
 </ol>
 </div>
@@ -930,10 +961,10 @@ Only use a map if your data:
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Smoke: Tests that verify operations used on @Before and @After methods, thus assuring that it makes sense to run a test suite.</p>
+<p><strong>Smoke</strong>: Tests that verify operations used on @Before and @After methods, thus assuring that it makes sense to run a test suite.</p>
 </li>
 <li>
-<p>Regression: Positive test on the operation attributes that you pass from a Message.</p>
+<p><strong>Regression</strong>: Positive test on the operation attributes that you pass from a Message.</p>
 </li>
 </ol>
 </div>
@@ -943,13 +974,14 @@ Only use a map if your data:
 <div class="sect1">
 <h2 id="_suite_implementation">Suite Implementation</h2>
 <div class="sectionbody">
+<hr>
 <div class="sect2">
 <h3 id="_test_development_environment_set_up">Test Development Environment Set Up</h3>
 <div class="paragraph">
-<p>After building a connector, add target/generated-sources/mule to the project build path. You may need to add other generated sources to the build path depending on the connector (such as target/generated-sources/cxf).</p>
+<p>After building a connector, add <strong>target/generated-sources/mule</strong> to the project build path. You may need to add other generated sources to the build path depending on the connector (such as target/generated-sources/cxf).</p>
 </div>
 <div class="paragraph">
-<p>If a connector is <strong>Standard</strong>, add a muleLicenseKey.lic to the src/test/resources folder and remove it prior to committing your changes.</p>
+<p>If a connector is <strong>Standard</strong>, add a <strong>muleLicenseKey.lic</strong> to the <strong>src/test/resources</strong> folder and remove it prior to committing your changes.</p>
 </div>
 </div>
 <div class="sect2">
@@ -957,26 +989,26 @@ Only use a map if your data:
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>org.mule.modules.&lt;connector-project&gt;.automation contains the &lt;Connector&gt;TestParent and the SmokeTests and RegressionTests categories interfaces.</p>
+<p><strong>org.mule.modules.&lt;connector-project&gt;.automation</strong> contains the <strong>&lt;Connector&gt;TestParent</strong> and the <em>SmokeTests</em> and <em>RegressionTests</em> categories interfaces.</p>
 </li>
 <li>
-<p>org.mule.modules.&lt;connector-project&gt;.automation.testrunners contains the runners (RegressionTestSuite, SmokeTestSuite).</p>
+<p><strong>org.mule.modules.&lt;connector-project&gt;.automation.testrunners</strong> contains the runners (RegressionTestSuite, SmokeTestSuite).</p>
 </li>
 <li>
-<p>org.mule.modules.&lt;connector-project&gt;.automation.testcases contains the functional test cases exclusively.</p>
+<p><strong>org.mule.modules.&lt;connector-project&gt;.automation.testcases</strong> contains the functional test cases exclusively.</p>
 </li>
 <li>
-<p>&lt;connector-project&gt;/src/test/resources contains automation flows, credentials and Spring beans files:</p>
+<p><strong>&lt;connector-project&gt;/src/test/resources</strong> contains automation flows, credentials and Spring beans files:</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>AutomationSpringBeans.xml</p>
+<p><strong>AutomationSpringBeans.xml</strong></p>
 </li>
 <li>
-<p>automation-test-flows.xml</p>
+<p><strong>automation-test-flows.xml</strong></p>
 </li>
 <li>
-<p>automation-credentials.properties</p>
+<p><strong>automation-credentials.properties</strong></p>
 </li>
 </ol>
 </div>
@@ -987,9 +1019,13 @@ Only use a map if your data:
 <div class="sect2">
 <h3 id="_automation_flows">Automation Flows</h3>
 <div class="paragraph">
-<p>For each operation, place a maximum of two flows in the automation-test-flows file. One flow is for mandatory attributes. This ensures that you implement all mandatory arguments in a connector and if applicable, use another flow with all attributes (mandatory and optional), to build a more general case for the operation.
-=== automation-test-flows.xml and Operation Attributes
-Each operation in the connector has at least a corresponding flow in the automation-test-flows file. The flow and its associated operation should be thought of as resources that can be called from multiple tests. Flow names are the same as the operation they contain or at least start with the name of the operation they contain, for example:</p>
+<p>For each operation, place a maximum of two flows in the <strong>automation-test-flows</strong> file. One flow is for mandatory attributes. This ensures that you implement all mandatory arguments in a connector and if applicable, use another flow with all attributes (mandatory and optional), to build a more general case for the operation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_automation_test_flows_xml_and_operation_attributes">automation-test-flows.xml and Operation Attributes</h3>
+<div class="paragraph">
+<p>Each operation in the connector has at least a corresponding flow in the automation-test-flows file. The flow and its associated operation should be thought of as resources that can be called from multiple tests. Flow names are the same as the operation they contain or at least start with the name of the operation they contain, for example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1008,10 +1044,20 @@ Each operation in the connector has at least a corresponding flow in the automat
 </div>
 </div>
 <div class="paragraph">
-<p>Populate operation attributes as:
-<code>attributeName="<mark>[flowVars.attributeName]" `
-Or as:
-`&lt;taleo:&lt;entityName&gt; ref="</mark>[flowVars.&lt;entityName&gt;Ref]"/&gt;</code></p>
+<p>Populate operation attributes as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">attributeName=&quot;#[flowVars.attributeName]&quot;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;taleo:</span><span class="error">&lt;</span><span class="attribute-name">entityName</span><span class="tag">&gt;</span> ref=&quot;#[flowVars.<span class="tag">&lt;entityName&gt;</span>Ref]&quot;/<span class="error">&gt;</span></code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>In the case of being given the choice of passing non-primitive types (e.g. POJOs, List&lt;POJOs&gt;, Map&lt;POJOs&gt;, etc.) either from the payload, by reference, or by manually creating it using Anypoint Studio, either taking the value from the payload or by reference should be selected.</p>
@@ -1047,16 +1093,19 @@ Or as:
 <div class="sect2">
 <h3 id="_keeping_headers_updated">Keeping Headers Updated</h3>
 <div class="paragraph">
-<p>Change the connector version to current to avoid breaking the configuration XML file, for example, from:
-<code><a href="http://www.mulesoft.org/schema/mule/taleo/1.0-SNAPSHOT/mule-taleo.xsd" class="bare">http://www.mulesoft.org/schema/mule/taleo/1.0-SNAPSHOT/mule-taleo.xsd</a></code>
-To:
-<code><a href="http://www.mulesoft.org/schema/mule/taleo/current/mule-taleo.xsd" class="bare">http://www.mulesoft.org/schema/mule/taleo/current/mule-taleo.xsd</a></code></p>
+<p>Change the connector version to current to avoid breaking the configuration XML file, for example,</p>
+</div>
+<div class="paragraph">
+<p>from: <code><a href="http://www.mulesoft.org/schema/mule/taleo/1.0-SNAPSHOT/mule-taleo.xsd" class="bare">http://www.mulesoft.org/schema/mule/taleo/1.0-SNAPSHOT/mule-taleo.xsd</a></code></p>
+</div>
+<div class="paragraph">
+<p>To: <code><a href="http://www.mulesoft.org/schema/mule/taleo/current/mule-taleo.xsd" class="bare">http://www.mulesoft.org/schema/mule/taleo/current/mule-taleo.xsd</a></code></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_credentials">Credentials</h3>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
 <p>Choose connector credentials from the automation-credential.properties file during test development, or if tests are to be run from within Eclipse.</p>
 </li>
@@ -1064,7 +1113,7 @@ To:
 <p>Populate the config element field with placeholders using:
 <code>configRefAttribute="${serviceName.configRefAttribute}"</code></p>
 </li>
-</ol>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1073,18 +1122,17 @@ To:
   <span class="attribute-name">key</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${marketo.key}</span><span class="delimiter">&quot;</span></span>
   <span class="attribute-name">endpointUrl</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${marketo.endpointUrl}</span><span class="delimiter">&quot;</span></span>
   <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Marketo</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;marketo:connection-pooling-profile</span>
-     <span class="attribute-name">initialisationPolicy</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INITIALISE_ONE</span><span class="delimiter">&quot;</span></span>
+  <span class="tag">&lt;marketo:connection-pooling-profile</span> <span class="attribute-name">initialisationPolicy</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INITIALISE_ONE</span><span class="delimiter">&quot;</span></span>
      <span class="attribute-name">exhaustedAction</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">WHEN_EXHAUSTED_GROW</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/marketo:config&gt;</span></code></pre>
 </div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
 <p>Create a Property placeholder that references automation-credentials.properties or add the following as an attribute to the Mule node:</p>
 </li>
-</ol>
+</ul>
 </div>
 <div class="paragraph">
 <p><code>xmlns:context="http://www.springframework.org/schema/context"</code></p>
@@ -1095,12 +1143,12 @@ To:
 <div class="paragraph">
 <p><code>&lt;context:property-placeholder location="automation-credentials.properties" /&gt;</code></p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
 <p>Prior to committing, change the location value to:</p>
 </li>
-</ol>
+</ul>
 </div>
 <div class="paragraph">
 <p><code>&lt;context:property-placeholder location="${&lt;CONNECTOR_NAME&gt;_CREDENTIALS}" /&gt;</code></p>
@@ -1275,6 +1323,7 @@ taleo.userId=42</code></pre>
 <div class="sect1">
 <h2 id="_test_methods">Test Methods</h2>
 <div class="sectionbody">
+<hr>
 <div class="sect2">
 <h3 id="_good_test_case_qualities">Good Test Case Qualities</h3>
 <div class="olist arabic">
@@ -1409,6 +1458,7 @@ The frameworks enforces:
 <div class="sect1">
 <h2 id="_test_cases_classification">Test Cases Classification</h2>
 <div class="sectionbody">
+<hr>
 <div class="paragraph">
 <p>Tests are categorized using @Category annotation on top of the test method signatures.</p>
 </div>
@@ -1449,6 +1499,7 @@ The frameworks enforces:
 <div class="sect1">
 <h2 id="_datasense_dynamic_metadata">DataSense (Dynamic metadata)</h2>
 <div class="sectionbody">
+<hr>
 <div class="paragraph">
 <p>First of all create the DataSenseTestCases class on the connector functional test suite package</p>
 </div>
@@ -1693,6 +1744,7 @@ Follow the approach of adding specific flows containing processors with an inval
 <div class="sect1">
 <h2 id="_test_connection">Test Connection</h2>
 <div class="sectionbody">
+<hr>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1759,6 +1811,7 @@ Follow the approach of adding specific flows containing processors with an inval
 <div class="sect1">
 <h2 id="_transformers">Transformers</h2>
 <div class="sectionbody">
+<hr>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1828,6 +1881,7 @@ Follow the approach of adding specific flows containing processors with an inval
 <div class="sect1">
 <h2 id="_testing_inbound_endpoints_sources">Testing Inbound Endpoints (@Sources)</h2>
 <div class="sectionbody">
+<hr>
 <div class="paragraph">
 <p>For now, inbound endpoint testing must be done by adding a <a href="http://www.mulesoft.org/documentation/display/current/VM+Transport+Reference">VM endpoint</a> in the flow that has the inbound endpoint we want to test. A VM endpoint is essentially an in-memory queue (hence the name VM, because they are handled by the JVM) addressable by a URL that stores messages until they are processed. By storing the messages received by the inbound endpoint in a VM queue, we can retrieve them in the test case and make assertions on them.</p>
 </div>
@@ -1904,6 +1958,7 @@ Follow the approach of adding specific flows containing processors with an inval
 <div class="sect1">
 <h2 id="_setting_up_oauth_authentication">Setting Up OAuth Authentication</h2>
 <div class="sectionbody">
+<hr>
 <div class="paragraph">
 <p>Manually generate the accessToken and pass this along with the credentials to the service to run the test suite.</p>
 </div>
@@ -2139,7 +2194,7 @@ CUT: Connector under test
 <h2 id="_studio_interoperability_test_plugin">Studio Interoperability Test Plugin</h2>
 <div class="sectionbody">
 <div class="sect1">
-<h2 id="_introduction_3">Introduction</h2>
+<h2 id="_introduction_2">Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The following framework consists of a series of automation tools, which allow you to run interoperability tests on a connector in Anypoint Studio. The data used by these tests  generates using not only the connectors code, but also DevKit output files, in particular the schema and editors file.</p>
@@ -8266,7 +8321,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-02-05 11:35:56 EST
+Last updated 2015-02-05 16:18:53 EST
 </div>
 </div>
 </body>
