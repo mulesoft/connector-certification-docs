@@ -15,7 +15,7 @@ Your connector project directory structure must follow the conventions described
 
 The following section describes set of convenitions and best practices to follow at the time to define your connector Maven project structure.
 
-== Best Practices
+=== Best Practices
 
 These are mandatory practices to be honored:
 
