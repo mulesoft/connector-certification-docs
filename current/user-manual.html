@@ -57,7 +57,7 @@
 <li><a href="#_studio_functional_test_plugin">Studio Functional Test Plugin</a>
 <ul class="sectlevel1">
 <li><a href="#_description">Description</a></li>
-<li><a href="#_studio_plugin">Studio Plugin</a></li>
+<li><a href="#_anypoint_studio_plugin">Anypoint Studio Plugin</a></li>
 <li><a href="#_generating_functional_tests">Generating Functional Tests</a></li>
 </ul>
 </li>
@@ -70,20 +70,15 @@
 <li><a href="#_appendix_3">Appendix</a></li>
 </ul>
 </li>
-<li><a href="#_code_coverage">Code Coverage</a>
-<ul class="sectlevel1">
-<li><a href="#_code_coverage_and_sonarqube">Code Coverage and SonarQube</a></li>
-<li><a href="#_studio_plugin_code_coverage_report">Studio Plugin Code Coverage Report</a></li>
-<li><a href="#_code_quality_review_guideline">Code Quality Review Guideline</a></li>
-</ul>
-</li>
 <li><a href="#_static_code_analysis_with_sonarqube">Static Code Analysis with SonarQube</a>
 <ul class="sectlevel1">
-<li><a href="#_introduction_4">Introduction</a></li>
 <li><a href="#_installing_sonarqube">Installing SonarQube</a></li>
 <li><a href="#_performing_your_first_analysis">Performing Your First Analysis</a></li>
 <li><a href="#_sonarqube_eclipse_plugin_setup">SonarQube Eclipse Plugin Setup</a></li>
 <li><a href="#_quality_profile_rules">Quality Profile Rules</a></li>
+<li><a href="#_code_coverage">Code Coverage</a></li>
+<li><a href="#_studio_plugin_code_coverage_report">Studio Plugin Code Coverage Report</a></li>
+<li><a href="#_code_quality_review_guideline">Code Quality Review Guideline</a></li>
 </ul>
 </li>
 <li><a href="#_studio_interoperability_qa">Studio Interoperability QA</a>
@@ -110,6 +105,7 @@
 <li><a href="#_anypoint_connectors_documentation_template">Anypoint Connectors Documentation Template</a></li>
 <li><a href="#_anypoint_connectors_release_notes_template">Anypoint Connectors Release Notes Template</a></li>
 <li><a href="#_anypoint_connectors_manual_test_suite_template">Anypoint Connectors Manual Test Suite Template</a></li>
+<li><a href="#_certification_checklist">Certification Checklist</a></li>
 </ul>
 </li>
 </ul>
@@ -229,13 +225,13 @@ The items below are a list of the high-level testing performed on each connector
 <h2 id="_stage_1_onboard">Stage 1: OnBoard</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_legal_engagement">Legal Engagement</h3>
+<h3 id="_1_1_legal_engagement">1.1 Legal Engagement</h3>
 <div class="paragraph">
 <p>During the development process, MuleSoft and a third-party partner, based on a pre-existing partnership agreement, begin the development process.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_1_1_leaning_anypoint_connector_devkit">1.1 Leaning Anypoint™ Connector DevKit</h3>
+<h3 id="_1_2_leaning_anypoint_connector_devkit">1.2 Leaning Anypoint™ Connector DevKit</h3>
 <div class="paragraph">
 <p>The MuleSoft Anypoint™ Connector DevKit is the tool for developing Anypoint Connectors. It provides the following features to help you develop or maintain a connector:</p>
 </div>
@@ -296,7 +292,14 @@ The items below are a list of the high-level testing performed on each connector
 <h2 id="_stage_2_development">Stage 2: Development</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_2_1_mandatory_practices">2.1  Mandatory Practices</h3>
+<h3 id="_2_1_design_specification_review">2.1 Design Specification Review</h3>
+<div class="paragraph">
+<p>@Todo: Create an Architecture Certification Template
+doc name : design-template.adoc</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_2_mandatory_practices">2.2  Mandatory Practices</h3>
 <div class="paragraph">
 <p>In order to quality of the connectors developed, there are a set of practices and artifacts that need to be delivered as part of the connectors development.
 Each one of the following practices are aimed to cover different quality aspects:</p>
@@ -307,10 +310,10 @@ Each one of the following practices are aimed to cover different quality aspects
 <p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_development_best_practices">Development Best Practices</a></p>
 </li>
 <li>
-<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html##_automated_functional_testing">Automated Functional Testing</a></p>
+<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_automated_functional_testing">Automated Functional Testing</a></p>
 </li>
 <li>
-<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_studio_interoperability_qa">Studio Interoperability Testing</a></p>
+<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_studio_interoperability_qa"> Anypoint Studio  Interoperability Testing</a></p>
 </li>
 <li>
 <p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_templates">Documentation</a></p>
@@ -322,13 +325,6 @@ Each one of the following practices are aimed to cover different quality aspects
 <p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_code_coverage">Code Coverage</a></p>
 </li>
 </ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_2_2_design_specification_review">2.2 Design Specification Review</h3>
-<div class="paragraph">
-<p>@Todo: Create an Architecture Certification Template
-doc name : design-template.adoc</p>
 </div>
 </div>
 </div>
@@ -457,7 +453,7 @@ doc name : design-template.adoc</p>
 <h2 id="_release_re_certification">Release Re-Certification</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Mule ESB and Mule Studio have a release cadence of 3 month cycles. Even the fact that Mule ESB and Mule Studio will be focus on maintaining forward compatibility for all develop connectors there is a small probability that issues related to classloader problems or data mapping could arise. Due to that, it’s required that a regression testing using the released version of Mule ESB and Mule Studio be executed. Early access to binaries will be provided to run the re-certification. It’s important to point out that the certification must be run over the already released connector</p>
+<p>Mule ESB and Anypoint Studio have a release cadence of 3 month cycles. Even the fact that Mule ESB and Mule Studio will be focus on maintaining forward compatibility for all develop connectors there is a small probability that issues related to classloader problems or data mapping could arise. Due to that, it’s required that a regression testing using the released version of Mule ESB and Mule Studio be executed. Early access to binaries will be provided to run the re-certification. It’s important to point out that the certification must be run over the already released connector</p>
 </div>
 </div>
 </div>
@@ -661,7 +657,7 @@ Only use a map if your data:
 <h2 id="_documentation">Documentation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Ensure that a connector’s documentation is legible and follows this template.</p>
+<p>Ensure that a connector’s documentation is legible and follows the connector documentation template <a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/documentation" class="bare">https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/documentation</a> Template.adoc[Documentation Template]</p>
 </div>
 <div class="paragraph">
 <p>MuleSoft generates a Javadoc technical reference by DevKit through Javadoc, based on the comments inside your code.</p>
@@ -2040,13 +2036,13 @@ mvn -Dtest=GetDailyTrendsTestCases#testGetDailyTrendsParametrized test</code></p
 </div>
 </div>
 <div class="sect1">
-<h2 id="_studio_plugin">Studio Plugin</h2>
+<h2 id="_anypoint_studio_plugin">Anypoint Studio Plugin</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_glossary_of_terms">Glossary of Terms</h3>
 <div class="paragraph">
 <p>Runner Platform: Host where the test run takes place.
-Target Platform: The platform (in terms of Studio plugins) on which tests are going to that you run.
+Target Platform: The platform (in terms of Anypoint Studio plugins) on which tests are going to that you run.
 CUT: Connector under test
 *-test-data.xml
 *-test-data-override.xml</p>
@@ -2089,7 +2085,7 @@ CUT: Connector under test
 <div class="sect2">
 <h3 id="_plugin_execution">Plugin Execution</h3>
 <div class="paragraph">
-<p>With your connector imported in Studio, right-click the project name in Package Explorer and click <strong>Anypoint Connector &gt; Generate Tests</strong>.</p>
+<p>With your connector imported in Anypoint Studio, right-click the project name in Package Explorer and click <strong>Anypoint Connector &gt; Generate Tests</strong>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -2516,188 +2512,16 @@ For example, with dynamic metadata, if you have:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_code_coverage">Code Coverage</h2>
-<div class="sectionbody">
-<div class="sect1">
-<h2 id="_code_coverage_and_sonarqube">Code Coverage and SonarQube</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>SonarQube is a tool that helps developers identify hot spots in code, bad code quality, technical debt, as well as define a number of other issues. To release a connector, you must fix blocker and critical issues.</p>
-</div>
-<div class="paragraph">
-<p>Important: Only download SonarQube from here because the distribution contains code guidelines specifically for Anypoint Cloud Connectors. To release a connector, test every message processor in the connector using the Connector Test Framework. For guidelines on how to build your tests using this framework, see Functional QA Guidelines.</p>
-</div>
-<div class="paragraph">
-<p>Generate a code coverage report in SonarQube with this command:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install
-	-Dmaven.test.failure.ignore=true &amp;&amp; mvn sonar:sonar</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>After this command finishes executing, Sonar displays a report with the name of your connector. For example, this screenshot shows the Salesforce connector’s Sonar report after running every Unit test and Functional test:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/coverage-guidelines-1.png" alt="coverage guidelines 1">
-</div>
-</div>
-<div class="paragraph">
-<p>Delving further into the project details shows you a code coverage percentage on a per-class basis.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/coverage-guidelines-2.png" alt="coverage guidelines 2">
-</div>
-</div>
-<div class="paragraph">
-<p>Delving even further, it shows you the exact lines that are covered by tests and those that are not.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/coverage-guidelines-3.png" alt="coverage guidelines 3">
-</div>
-</div>
-<div class="paragraph">
-<p>Every connector method must have unit or automation tests. A connector fails certification if it does not have all its message processors, message sources, and custom transformers covered by unit tests or automation tests. Also, all the utility classes that are part of a connector must have a high level of code coverage.</p>
-</div>
-<div class="sect2">
-<h3 id="_code_coverage_must_be_no_less_than_70">Code coverage must be no less than 70%.</h3>
-<div class="paragraph">
-<p>Testing your processors gives you a good indication of the quality of your connector. When you build automation tests, you are using your own connector to connect to an API. If you find it hard to test all cases of a message processor, then consider separating your message processors into smaller ones, if possible.</p>
-</div>
-<div class="paragraph">
-<p>If your connector bases its processing around metadata, test every possible metadata entry that the API supports. As an example, the Salesforce connector supports multiple SFDC objects (such as Account, Contact, Lead etc.), but it only contains one “create” operation. Create a unit test for every metadata object to ensure proper compatibility with the message processor.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_studio_plugin_code_coverage_report">Studio Plugin Code Coverage Report</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The Studio DevKit plugin rapidly generates a coverage report that shows you which operations are covered by functional tests and those that are not.</p>
-</div>
-<div class="paragraph">
-<p>To generate a coverage report, run every functional test in your connector. Right-click your project name in Package Explorer and click <strong>Anypoint Connector &gt; Test Coverage Report</strong>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/coverage-guidelines-4.png" alt="coverage guidelines 4">
-</div>
-</div>
-<div class="paragraph">
-<p>A Maven build process generates an HTML page that lists all the operations your tests cover and those without coverage:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/coverage-guidelines-5.png" alt="coverage guidelines 5">
-</div>
-</div>
-<div class="sect2">
-<h3 id="_ignoring_classes_from_testing">Ignoring Classes from Testing</h3>
-<div class="paragraph">
-<p>You should <strong>NEVER</strong> prevent classes from being tested unless there is good reason. If you feel that there is a need to ignore classes from inspection, contact either Mariano Quintela, or Paulo Gustavo Veiga. Unless explicitly stated in the code comments or in some form of internal documentation, assume that all code must be inspected. Any ignored classes or packages without proper explanation should be inspected and any blocker or critical issues that arise should be resolved, <strong>and tested</strong> by the developer before the connector is released.</p>
-</div>
-<div class="paragraph">
-<p>There are a number of ways of ignoring classes that you do not want inspected by SonarQube:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Method level ignore:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Methods can be ignored by adding a //NOSONAR comment next to the method declaration. Example:</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> someMethodToNotInspect() { <span class="comment">//NOSONAR</span></code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Class level ignore</p>
-<div class="ulist">
-<ul>
-<li>
-<p>It may be the case that whole classes need to be ignored because they’re not in the control of the developer. As an example, the SFDC Connector contains classes from the SFDC JAR. These had to be modified slightly to include no-args constructors for DataSense reasons. As a result, these classes have to be ignored since the code quality is not in control of the SFDC Connector developer.</p>
-</li>
-<li>
-<p>Classes can be completely ignored by adding // NOSONAR next to the class level definition. Example:</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MyClassThatShouldntBeInspected</span> { <span class="comment">// NOSONAR</span></code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Package level ignore</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Whole packages can be ignored by adding the “sonar.exclusions” property inside the pom.xml file. Example:</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
-        <span class="tag">&lt;sonar.exclusions&gt;</span>src/main/java/com/sforce/**/*<span class="tag">&lt;/sonar.exclusions&gt;</span>
-<span class="tag">&lt;/properties&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This ignores any file under the com.sforce package under src/main/java.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_code_quality_review_guideline">Code Quality Review Guideline</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This is a hard area to tackle because typically, the person running certification is different from the one implementing the connector and writing tests for it. As a result, you might inspect the code and be completely lost.</p>
-</div>
-<div class="paragraph">
-<p>If code documentation is not sufficient, point this out to the developer and PM.</p>
-</div>
-<div class="paragraph">
-<p>As you try to understand the code, you might run into certain code pieces that you’re not sure why they’re there. As an example, PeopleSoft contained synchronous code and some time was spent by the developer understanding why they were there. It turns out that they were not needed, and were causing a degree of locking when working with concurrent requests. If you think that there are code blocks that feel out of place, mention it to the developer or PM.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="_static_code_analysis_with_sonarqube">Static Code Analysis with SonarQube</h2>
 <div class="sectionbody">
-<div class="sect1">
-<h2 id="_introduction_4">Introduction</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>Most automatic validations on your connector’s code are done with SonarQube, an open source static code analysis tool. To perform these validations yourself, install and configure a SonarQube server with rules specific to the certification process. If you are certifying multiple connectors, you can reuse the same server.</p>
+<p>Most automatic validations on your connector’s code are done with SonarQube, an open source static code analysis tool that helps developers identify hot spots in code, bad code quality, technical debt, as well as define a number of other issues. To release a connector, you must fix blocker and critical issues.</p>
 </div>
+<div class="paragraph">
+<p>To perform these validations yourself, install and configure a the SonarQube server that we provide with rules specific to the certification process. If you are certifying multiple connectors, you can reuse the same server.</p>
 </div>
+<div class="paragraph">
+<p>Note: For guidelines on how to build your tests using this framework, see <a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_automated_functional_testing">Automated Functional Testing</a>.</p>
 </div>
 <div class="sect1">
 <h2 id="_installing_sonarqube">Installing SonarQube</h2>
@@ -2711,7 +2535,7 @@ For example, with dynamic metadata, if you have:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Download and extract our SonarQube 4.5 distribution (all platforms). This includes our custom quality profile and everything you need to get started.</p>
+<p>Download and extract <a href="https://drive.google.com/open?id=0B8N265C555thQWNPYkQ4cnFBQlU&amp;authuser=0">our SonarQube 4.5 distribution</a> (all platforms). This includes our custom quality profile and everything you need to get started.</p>
 </li>
 <li>
 <p>Run <em>&lt;installDir&gt;/bin/&lt;yourOS&gt;/sonar.sh</em> start or <em>&lt;installDir&gt;\bin\&lt;yourOS&gt;\StartSonar.bat</em> if on Windows. The server might take a while to start even after the “Started SonarQube” message appears.</p>
@@ -2899,6 +2723,171 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 </div>
 <div class="paragraph">
 <p>To see the full list of rules checked by SonarQube, browse to the Anypoint Connectors Certification quality profile through the web UI.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_code_coverage">Code Coverage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>SonarQube also lets you manage Code Coverage reports of your connector.</p>
+</div>
+<div class="paragraph">
+<p>Generate a code coverage report in SonarQube with this command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install
+	-Dmaven.test.failure.ignore=true &amp;&amp; mvn sonar:sonar</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After this command finishes executing, Sonar displays a report with the name of your connector. For example, this screenshot shows the Salesforce connector’s Sonar report after running every Unit test and Functional test:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/coverage-guidelines-1.png" alt="coverage guidelines 1">
+</div>
+</div>
+<div class="paragraph">
+<p>Delving further into the project details shows you a code coverage percentage on a per-class basis.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/coverage-guidelines-2.png" alt="coverage guidelines 2">
+</div>
+</div>
+<div class="paragraph">
+<p>Delving even further, it shows you the exact lines that are covered by tests and those that are not.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/coverage-guidelines-3.png" alt="coverage guidelines 3">
+</div>
+</div>
+<div class="paragraph">
+<p>Every connector method must have unit or automation tests. A connector fails certification if it does not have all its message processors, message sources, and custom transformers covered by unit tests or automation tests. Also, all the utility classes that are part of a connector must have a high level of code coverage.</p>
+</div>
+<div class="sect2">
+<h3 id="_code_coverage_must_be_no_less_than_70">Code coverage must be no less than 70%.</h3>
+<div class="paragraph">
+<p>Testing your processors gives you a good indication of the quality of your connector. When you build automation tests, you are using your own connector to connect to an API. If you find it hard to test all cases of a message processor, then consider separating your message processors into smaller ones, if possible.</p>
+</div>
+<div class="paragraph">
+<p>If your connector bases its processing around metadata, test every possible metadata entry that the API supports. As an example, the Salesforce connector supports multiple SFDC objects (such as Account, Contact, Lead etc.), but it only contains one “create” operation. Create a unit test for every metadata object to ensure proper compatibility with the message processor.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_studio_plugin_code_coverage_report">Studio Plugin Code Coverage Report</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Studio DevKit plugin rapidly generates a coverage report that shows you which operations are covered by functional tests and those that are not.</p>
+</div>
+<div class="paragraph">
+<p>To generate a coverage report, run every functional test in your connector. Right-click your project name in Package Explorer and click <strong>Anypoint Connector &gt; Test Coverage Report</strong>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/coverage-guidelines-4.png" alt="coverage guidelines 4">
+</div>
+</div>
+<div class="paragraph">
+<p>A Maven build process generates an HTML page that lists all the operations your tests cover and those without coverage:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/coverage-guidelines-5.png" alt="coverage guidelines 5">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ignoring_classes_from_testing">Ignoring Classes from Testing</h3>
+<div class="paragraph">
+<p>You should <strong>NEVER</strong> prevent classes from being tested unless there is good reason. If you feel that there is a need to ignore classes from inspection, contact either Mariano Quintela, or Paulo Gustavo Veiga. Unless explicitly stated in the code comments or in some form of internal documentation, assume that all code must be inspected. Any ignored classes or packages without proper explanation should be inspected and any blocker or critical issues that arise should be resolved, <strong>and tested</strong> by the developer before the connector is released.</p>
+</div>
+<div class="paragraph">
+<p>There are a number of ways of ignoring classes that you do not want inspected by SonarQube:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Method level ignore:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Methods can be ignored by adding a //NOSONAR comment next to the method declaration. Example:</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> someMethodToNotInspect() { <span class="comment">//NOSONAR</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Class level ignore</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It may be the case that whole classes need to be ignored because they’re not in the control of the developer. As an example, the SFDC Connector contains classes from the SFDC JAR. These had to be modified slightly to include no-args constructors for DataSense reasons. As a result, these classes have to be ignored since the code quality is not in control of the SFDC Connector developer.</p>
+</li>
+<li>
+<p>Classes can be completely ignored by adding // NOSONAR next to the class level definition. Example:</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MyClassThatShouldntBeInspected</span> { <span class="comment">// NOSONAR</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Package level ignore</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Whole packages can be ignored by adding the “sonar.exclusions” property inside the pom.xml file. Example:</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
+        <span class="tag">&lt;sonar.exclusions&gt;</span>src/main/java/com/sforce/**/*<span class="tag">&lt;/sonar.exclusions&gt;</span>
+<span class="tag">&lt;/properties&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This ignores any file under the com.sforce package under src/main/java.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_code_quality_review_guideline">Code Quality Review Guideline</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is a hard area to tackle because typically, the person running certification is different from the one implementing the connector and writing tests for it. As a result, you might inspect the code and be completely lost.</p>
+</div>
+<div class="paragraph">
+<p>If code documentation is not sufficient, point this out to the developer and PM.</p>
+</div>
+<div class="paragraph">
+<p>As you try to understand the code, you might run into certain code pieces that you’re not sure why they’re there. As an example, PeopleSoft contained synchronous code and some time was spent by the developer understanding why they were there. It turns out that they were not needed, and were causing a degree of locking when working with concurrent requests. If you think that there are code blocks that feel out of place, mention it to the developer or PM.</p>
 </div>
 </div>
 </div>
@@ -8261,12 +8250,23 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_certification_checklist">Certification Checklist</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Download and complete the document along the process.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://drive.google.com/open?id=0B8N265C555thOG5HZDRTOTEtUXM&amp;authuser=0">Checklist</a></p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-02-05 08:53:50 EST
+Last updated 2015-02-05 11:35:56 EST
 </div>
 </div>
 </body>
