@@ -32,14 +32,10 @@ The items below are a list of the high-level testing performed on each connector
 
 In the following sections, each one of the topics to be completed as part of the certification will be described.
 
-
-[certificationProcess]
-= Certification Process
-
 include::docs/certification-process.adoc[]
 
 [devGuidelines]
-= Development
+= Development Best Practices
 
 This section is about best development practices, these are a set of rules that the connector development community has learned over time which can help improve the quality of your connector.
 

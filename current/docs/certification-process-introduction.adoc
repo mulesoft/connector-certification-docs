@@ -1,3 +1,4 @@
+== About Certification Process
 
 The partner Engagement and Certification Process for publishing connectors consists of these stages:
 
@@ -51,12 +52,17 @@ There is plenty of documentation on Internet about DevKit. Here is a set of link
 In order to quality of the connectors developed, there are a set of practices and artifacts that need to be delivered as part of the connectors development.
 Each one of the following practices are aimed to cover different quality aspects:
 
-* http://mulesoft.github.io/anypoint-connector-certification-process-documentation/current/user-manual.html#_development_best_practices[Development Best Practices]
-* http://mulesoft.github.io/anypoint-connector-certification-process-documentation/current/user-manual.html_automatic_functional_qa[Connector Test Automation]
-* http://mulesoft.github.io/anypoint-connector-certification-process-documentation/current/user-manual.html#_studio_interoperability_qa[Studio Interoperability Testing]
-* http://mulesoft.github.io/anypoint-connector-certification-process-documentation/current/user-manual.html#_documentation[Documentation]
-* http://mulesoft.github.io/anypoint-connector-certification-process-documentation/current/user-manual.html#_static_code_analysis[Static Code Analysis]
-* http://mulesoft.github.io/anypoint-connector-certification-process-documentation/current/user-manual.html#_code_coverage[Code Coverage]
+* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_development_best_practices[Development Best Practices]
+
+* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html##_automated_functional_testing[Automated Functional Testing]
+
+* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_studio_interoperability_qa[Studio Interoperability Testing]
+
+* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_templates[Documentation]
+
+* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_static_code_analysis_with_sonarqube[Static Code Analysis]
+
+* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_code_coverage[Code Coverage]
 
 === 2.2 Design Specification Review
 
