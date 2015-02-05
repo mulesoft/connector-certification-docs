@@ -15,8 +15,6 @@ One sentence description.
 
 . Introduction
 .. Prerequisites
-... Namespace
-... Schema Location
 .. Requirements
 .. Dependencies
 ... Versions
@@ -46,22 +44,16 @@ One sentence description.
 
 == Introduction 
 
-Description and concepts +
-Integration with other MS capabilities +
+Description and concepts.
+Overview of the system.
+High level description how the connector is providing the connectivity. SOAP/REST/Proprietary protocol. ?
+Description of the main concepts of the system. 
+Integration with other MS capabilities
 
 === Prerequisites
 
 This document assumes that you are familiar with … +
 To use the this connector, … +
-
-*Namespace*
-
-`xmlns:<connector>="++http://www.mulesoft.org/schema/mule/<connector>"`
-
-*Schema Location*
-
-`xsi:schemaLocation="`
-
 
 === Requirements
 
