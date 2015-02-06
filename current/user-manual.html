@@ -35,14 +35,13 @@
 <li><a href="#_appendix">Appendix</a></li>
 </ul>
 </li>
-<li><a href="#_static_code_analysis_using_sonarqube">Static Code Analysis using SonarQube</a>
+<li><a href="#_static_code_analysis_and_coverage">Static Code Analysis and Coverage</a>
 <ul class="sectlevel1">
 <li><a href="#_installing_sonarqube">Installing SonarQube</a></li>
 <li><a href="#_performing_your_first_analysis">Performing Your First Analysis</a></li>
 <li><a href="#_sonarqube_eclipse_plugin_setup">SonarQube Eclipse Plugin Setup</a></li>
 <li><a href="#_quality_profile_rules">Quality Profile Rules</a></li>
 <li><a href="#_code_coverage">Code Coverage</a></li>
-<li><a href="#_studio_plugin_code_coverage_report">Studio Plugin Code Coverage Report</a></li>
 <li><a href="#_code_quality_review_guideline">Code Quality Review Guideline</a></li>
 </ul>
 </li>
@@ -50,6 +49,7 @@
 <ul class="sectlevel1">
 <li><a href="#_approach_explanation">Approach Explanation</a></li>
 <li><a href="#_mule_connector_test_framework">mule-connector-test framework</a></li>
+<li><a href="#_generate_functional_tests_scaffolding_and_data_using_devkit_plugin">Generate Functional Tests Scaffolding and Data using DevKit Plugin</a></li>
 <li><a href="#_framework_and_test_suite_components">Framework and Test Suite Components</a></li>
 <li><a href="#_suite_implementation">Suite Implementation</a></li>
 <li><a href="#_test_methods">Test Methods</a></li>
@@ -72,16 +72,16 @@
 <li><a href="#_global_element_properties">Global Element Properties</a></li>
 <li><a href="#_connectivity">Connectivity</a></li>
 <li><a href="#_metadata">Metadata</a></li>
-</ul>
-</li>
-<li><a href="#_cloudhub_interoperability_testing">CloudHub Interoperability Testing</a>
-<ul class="sectlevel1">
 <li><a href="#_xml_generation">XML Generation</a></li>
 <li><a href="#_datamapper_compliance_2">DataMapper Compliance</a></li>
 <li><a href="#_datasense_query_editor_dsql">DataSense Query Editor / DSQL</a></li>
 <li><a href="#_auto_paging">Auto-Paging</a></li>
 <li><a href="#_non_query_operations">Non-Query Operations</a></li>
 <li><a href="#_auto_paging_dsql_interoperability">Auto-Paging DSQL Interoperability</a></li>
+</ul>
+</li>
+<li><a href="#_cloudhub_interoperability_testing">CloudHub Interoperability Testing</a>
+<ul class="sectlevel1">
 <li><a href="#_cloudhub_interoperability">CloudHub Interoperability</a></li>
 </ul>
 </li>
@@ -90,15 +90,6 @@
 <li><a href="#_description">Description</a></li>
 <li><a href="#_anypoint_studio_plugin">Anypoint Studio Plugin</a></li>
 <li><a href="#_generating_functional_tests">Generating Functional Tests</a></li>
-</ul>
-</li>
-<li><a href="#_generate_test_data_using_devkit_plugin">Generate Test Data using DevKit Plugin</a>
-<ul class="sectlevel1">
-<li><a href="#_introduction_2">Introduction</a></li>
-<li><a href="#_glossary">Glossary</a></li>
-<li><a href="#_installation_2">Installation</a></li>
-<li><a href="#_interop_test_run_tutorial">Interop Test Run Tutorial</a></li>
-<li><a href="#_appendix_3">Appendix</a></li>
 </ul>
 </li>
 <li><a href="#_templates">Templates</a>
@@ -785,7 +776,7 @@ Only use a map if your data:
 </div>
 </div>
 </div>
-<h1 id="_static_code_analysis_using_sonarqube" class="sect0">Static Code Analysis using SonarQube</h1>
+<h1 id="_static_code_analysis_and_coverage" class="sect0">Static Code Analysis and Coverage</h1>
 <div class="openblock partintro">
 <div class="content">
 <hr>
@@ -1054,30 +1045,6 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 <p>If your connector bases its processing around metadata, test every possible metadata entry that the API supports. As an example, the Salesforce connector supports multiple SFDC objects (such as Account, Contact, Lead etc.), but it only contains one “create” operation. Create a unit test for every metadata object to ensure proper compatibility with the message processor.</p>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_studio_plugin_code_coverage_report">Studio Plugin Code Coverage Report</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The Studio DevKit plugin rapidly generates a coverage report that shows you which operations are covered by functional tests and those that are not.</p>
-</div>
-<div class="paragraph">
-<p>To generate a coverage report, run every functional test in your connector. Right-click your project name in Package Explorer and click <strong>Anypoint Connector &gt; Test Coverage Report</strong>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/coverage-guidelines-4.png" alt="coverage guidelines 4">
-</div>
-</div>
-<div class="paragraph">
-<p>A Maven build process generates an HTML page that lists all the operations your tests cover and those without coverage:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/coverage-guidelines-5.png" alt="coverage guidelines 5">
-</div>
-</div>
 <div class="sect2">
 <h3 id="_ignoring_classes_from_testing">Ignoring Classes from Testing</h3>
 <div class="paragraph">
@@ -1282,27 +1249,13 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 <p>Use cases are built as a sequence of connector operations calls. Prior to running a use case, initialize a TestRunMessage and load the data required by the use case. After you invoke an operation, turn the content of the TestRunMessage into a MuleEvent before an operation consumes the content. Apply asserts to the payload of the operation under the test.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_maven_dependency">Maven Dependency</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_generate_functional_tests_scaffolding_and_data_using_devkit_plugin">Generate Functional Tests Scaffolding and Data using DevKit Plugin</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>mule-devkit-parent contains the framework version property (that can, if necessary, be overridden on the connector pom) and its dependency node.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
-   ...
-   <span class="tag">&lt;connector.test.version&gt;</span>2.0.6<span class="tag">&lt;/connector.test.version&gt;</span>
-<span class="tag">&lt;/properties&gt;</span>
-
-<span class="comment">&lt;!-- Mule Connector Test Framework --&gt;</span>
-<span class="tag">&lt;dependency&gt;</span>
-   <span class="tag">&lt;groupId&gt;</span>org.mule.modules<span class="tag">&lt;/groupId&gt;</span>
-   <span class="tag">&lt;artifactId&gt;</span>mule-connector-test<span class="tag">&lt;/artifactId&gt;</span>
-   <span class="tag">&lt;version&gt;</span>${connector.test.version}<span class="tag">&lt;/version&gt;</span>
-   <span class="tag">&lt;scope&gt;</span>test<span class="tag">&lt;/scope&gt;</span>
-<span class="tag">&lt;/dependency&gt;</span></code></pre>
-</div>
-</div>
+<p>Unresolved directive in docs/functional-tests-automation.adoc - include::docs/devkit-plugin-generate-test-data-action.adoc[]</p>
 </div>
 </div>
 </div>
@@ -4401,12 +4354,6 @@ Password field’s text is hidden by default.</pre>
 </div>
 </div>
 </div>
-<h1 id="_cloudhub_interoperability_testing" class="sect0">CloudHub Interoperability Testing</h1>
-<div class="openblock partintro">
-<div class="content">
-<hr>
-</div>
-</div>
 <div class="sect1">
 <h2 id="_xml_generation">XML Generation</h2>
 <div class="sectionbody">
@@ -4701,8 +4648,8 @@ Operations on the dropdown match to methods marked as @Source on the connector c
 
 Example of a Mule flow:
 <span class="tag">&lt;flow</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">SubscribeToTopic</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">SubscribeToTopic</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-        <span class="tag">&lt;sfdc:subscribe-topic</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Salesforce</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">topic</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/ContactsDemo</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Subscribe To newAccountMessages Topic</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-        <span class="tag">&lt;logger</span> <span class="attribute-name">level</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INFO</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">New account notification received: #[message.payload]</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Notification</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;sfdc:subscribe-topic</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Salesforce</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">topic</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/ContactsDemo</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Subscribe To newAccountMessages Topic</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;logger</span> <span class="attribute-name">level</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INFO</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">New account notification received: #[message.payload]</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Notification</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/flow&gt;</span></code></pre>
 </div>
 </div>
@@ -5755,17 +5702,17 @@ Metadata is fetched for the selected operation.</pre>
 
 &lt;flow name="features-autopaging-certFlow1"
 doc:name="features-autopaging-certFlow1"&gt;
-  	&lt;http:inbound-endpoint exchange-pattern="request-response"
-	host="localhost" port="8081" doc:name="HTTP" path="contacts"/&gt;
+    &lt;http:inbound-endpoint exchange-pattern="request-response"
+  host="localhost" port="8081" doc:name="HTTP" path="contacts"/&gt;
 
-  	&lt;google-contacts:authorize config-ref="Google_Contacts"
-	doc:name="Authorize"/&gt;
+    &lt;google-contacts:authorize config-ref="Google_Contacts"
+  doc:name="Authorize"/&gt;
 
-  	&lt;google-contacts:get-contacts config-ref="Google_Contacts" doc:name="Get contacts" updatedMax="2000-09-29T18:46:19-0700" datetimeFormat="yyyy-MM-dd'T'HH:mm:ssZ"/&gt;
+    &lt;google-contacts:get-contacts config-ref="Google_Contacts" doc:name="Get contacts" updatedMax="2000-09-29T18:46:19-0700" datetimeFormat="yyyy-MM-dd'T'HH:mm:ssZ"/&gt;
 
-   	&lt;foreach doc:name="For Each"&gt;
-  	   &lt;logger message="For element #[flowVars['counter']] payload is #[message.payload]" level="INFO" doc:name="Logger"/&gt;
-	&lt;/foreach&gt;
+     &lt;foreach doc:name="For Each"&gt;
+       &lt;logger message="For element #[flowVars['counter']] payload is #[message.payload]" level="INFO" doc:name="Logger"/&gt;
+  &lt;/foreach&gt;
 
    &lt;set-payload value="Done." doc:name="SetPayload"/&gt;
 &lt;/flow&gt;</pre>
@@ -5917,22 +5864,22 @@ Mapping creates.</pre>
 
 <span class="tag">&lt;flow</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">features-autopaging-salesforceFlow1</span><span class="delimiter">&quot;</span></span>
 <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">features-autopaging-salesforceFlow1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-         <span class="tag">&lt;http:inbound-endpoint</span> <span class="attribute-name">exchange-pattern</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">request-response</span><span class="delimiter">&quot;</span></span>
-         <span class="attribute-name">host</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">port</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">8081</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">path</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">apforeach</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">HTTP</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+   <span class="tag">&lt;http:inbound-endpoint</span> <span class="attribute-name">exchange-pattern</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">request-response</span><span class="delimiter">&quot;</span></span>
+   <span class="attribute-name">host</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">port</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">8081</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">path</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">apforeach</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">HTTP</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-         <span class="tag">&lt;sfdc:query</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Salesforce</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">query</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dsql:SELECT CreatedById,CreatedDate,Description,OwnerId FROM Account LIMIT 3</span><span class="delimiter">&quot;</span></span>
-         <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Query</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">fetchSize</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+   <span class="tag">&lt;sfdc:query</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Salesforce</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">query</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">dsql:SELECT CreatedById,CreatedDate,Description,OwnerId FROM Account LIMIT 3</span><span class="delimiter">&quot;</span></span>
+   <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Query</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">fetchSize</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-        <span class="tag">&lt;logger</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">### Total amount of elements retrieved is #[payload.size()]</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">level</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INFO</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Size</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;logger</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">### Total amount of elements retrieved is #[payload.size()]</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">level</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INFO</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Size</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-        <span class="tag">&lt;foreach</span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">For Each</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-           <span class="tag">&lt;data-mapper:transform</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">account_to_map</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Account To Map</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-           <span class="tag">&lt;logger</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">For element #[flowVars['counter']]  payload is</span>
-                <span class="content">#[message.payload]</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Records</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-        <span class="tag">&lt;/foreach&gt;</span>
+  <span class="tag">&lt;foreach</span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">For Each</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+     <span class="tag">&lt;data-mapper:transform</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">account_to_map</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Account To Map</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+     <span class="tag">&lt;logger</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">For element #[flowVars['counter']]  payload is</span>
+    <span class="content">#[message.payload]</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Records</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;/foreach&gt;</span>
 
-        <span class="tag">&lt;set-payload</span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Done.</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Set Payload</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;set-payload</span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Done.</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Set Payload</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/flow&gt;</span></code></pre>
 </div>
 </div>
@@ -6287,25 +6234,25 @@ Mapping creates.</p>
 <span class="tag">&lt;flow</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">features-autopaging-datamapper-complianceFlow3</span><span class="delimiter">&quot;</span></span>
 <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">features-autopaging-datamapper-compl</span>
 <span class="content">ianceFlow3</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-        <span class="tag">&lt;http:inbound-endpoint</span> <span class="attribute-name">exchange-pattern</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">request-response</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">host</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">port</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">8081</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">HTTP</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">path</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">foreachdm</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;http:inbound-endpoint</span> <span class="attribute-name">exchange-pattern</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">request-response</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">host</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">port</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">8081</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">HTTP</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">path</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">foreachdm</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-          <span class="tag">&lt;google-contacts:authorize</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Google_Contacts</span><span class="delimiter">&quot;</span></span>
-          <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Authorize</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;google-contacts:authorize</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Google_Contacts</span><span class="delimiter">&quot;</span></span>
+    <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Authorize</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-          <span class="tag">&lt;google-contacts:get-groups</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Google_Contacts</span><span class="delimiter">&quot;</span></span>
-          <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Get groups</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;google-contacts:get-groups</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Google_Contacts</span><span class="delimiter">&quot;</span></span>
+    <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Get groups</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-          <span class="tag">&lt;logger</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">### Total amount of elements retrieved is</span>
-        <span class="content">#[message.payload.size()]</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">level</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INFO</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Size</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;logger</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">### Total amount of elements retrieved is</span>
+  <span class="content">#[message.payload.size()]</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">level</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INFO</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Size</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-          <span class="tag">&lt;foreach</span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">For Each</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-            <span class="tag">&lt;data-mapper:transform</span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DataMapper</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-            <span class="tag">&lt;logger</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">For element #[flowVars['counter']] payload is</span>
-                <span class="content">#[message.payload]</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Records</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-        <span class="tag">&lt;/foreach&gt;</span>
+    <span class="tag">&lt;foreach</span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">For Each</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;data-mapper:transform</span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DataMapper</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+      <span class="tag">&lt;logger</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">For element #[flowVars['counter']] payload is</span>
+    <span class="content">#[message.payload]</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Records</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;/foreach&gt;</span>
 
-          <span class="tag">&lt;set-payload</span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Set Payload</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Done.</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;set-payload</span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Set Payload</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Done.</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/flow&gt;</span></code></pre>
 </div>
 </div>
@@ -6463,32 +6410,32 @@ Mapping is created.</pre>
 <span class="content">eFlow3</span><span class="delimiter">&quot;</span></span>
 <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">features-autopaging-datamapper-compl</span>
 <span class="content">ianceFlow3</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-          <span class="tag">&lt;http:inbound-endpoint</span>
-        <span class="attribute-name">exchange-pattern</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">request-response</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">host</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">port</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">8081</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">HTTP</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">path</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">foreachdm</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;http:inbound-endpoint</span>
+  <span class="attribute-name">exchange-pattern</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">request-response</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">host</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">port</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">8081</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">HTTP</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">path</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">foreachdm</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-          <span class="tag">&lt;google-contacts:authorize</span>
-        <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Google_Contacts</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Authorize</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;google-contacts:authorize</span>
+  <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Google_Contacts</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Authorize</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-          <span class="tag">&lt;google-contacts:get-groups</span>
-        <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Google_Contacts</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Get</span>
-        <span class="content">groups</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;google-contacts:get-groups</span>
+  <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Google_Contacts</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Get</span>
+  <span class="content">groups</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-          <span class="tag">&lt;logger</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">### Total amount of</span>
-        <span class="content">elements retrieved is</span>
-        <span class="content">#[message.payload.size()]</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">level</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INFO</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Size</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;logger</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">### Total amount of</span>
+  <span class="content">elements retrieved is</span>
+  <span class="content">#[message.payload.size()]</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">level</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INFO</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Size</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-        <span class="tag">&lt;foreach</span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">For Each</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-                    <span class="tag">&lt;data-mapper:transform</span>
-                        <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DataMapper</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-                    <span class="tag">&lt;logger</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">For element</span>
-                        <span class="content">#[flowVars['counter']]  payload is</span>
-                        <span class="content">#[message.payload]</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Records</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-        <span class="tag">&lt;/foreach&gt;</span>
-          <span class="tag">&lt;set-payload</span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Set Payload</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Done.</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;foreach</span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">For Each</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;data-mapper:transform</span>
+      <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">DataMapper</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;logger</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">For element</span>
+      <span class="content">#[flowVars['counter']]  payload is</span>
+      <span class="content">#[message.payload]</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Records</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;/foreach&gt;</span>
+    <span class="tag">&lt;set-payload</span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Set Payload</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Done.</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/flow&gt;</span></code></pre>
 </div>
 </div>
@@ -6918,29 +6865,29 @@ Mapping creates.</pre>
 &lt;flow name="features-autopaging-salesforceFlow1"
 doc:name="features-autopaging-salesforceFlow1"&gt;
     &lt;http:inbound-endpoint
-	exchange-pattern="request-response"
-	host="localhost" port="8081" path="apforeach"
-	doc:name="HTTP"/&gt;
+  exchange-pattern="request-response"
+  host="localhost" port="8081" path="apforeach"
+  doc:name="HTTP"/&gt;
 
     &lt;sfdc:query config-ref="Salesforce"
-	query="dsql:SELECT
-	CreatedById,CreatedDate,Description,OwnerId
-	FROM Account LIMIT 3" doc:name="Query"
-	fetchSize="2"/&gt;
+  query="dsql:SELECT
+  CreatedById,CreatedDate,Description,OwnerId
+  FROM Account LIMIT 3" doc:name="Query"
+  fetchSize="2"/&gt;
 
     &lt;logger message="### Total amount of
-	elements retrieved is
-	#[message.payload.size()]" level="INFO"
-	doc:name="Size"/&gt;
+  elements retrieved is
+  #[message.payload.size()]" level="INFO"
+  doc:name="Size"/&gt;
 
     &lt;foreach doc:name="For Each"&gt;
         &lt;data-mapper:transform
-		config-ref="account_to_map" doc:name="Account
-		To Map"/&gt;
+    config-ref="account_to_map" doc:name="Account
+    To Map"/&gt;
 
         &lt;logger message="For element
-		#[flowVars['counter']]  payload is
-		#[message.payload]" doc:name="Records"/&gt;
+    #[flowVars['counter']]  payload is
+    #[message.payload]" doc:name="Records"/&gt;
     &lt;/foreach&gt;
 
     &lt;set-payload value="Done." doc:name="Set Payload"/&gt;
@@ -7104,33 +7051,33 @@ Mapping creates.</pre>
 
 &lt;flow name="features-autopaging-salesforceFlow1"
 doc:name="features-autopaging-salesforceFlow1"&gt;
-  	&lt;http:inbound-endpoint
-	exchange-pattern="request-response"
-	host="localhost" port="8081" path="apforeach"
-	doc:name="HTTP"/&gt;
+    &lt;http:inbound-endpoint
+  exchange-pattern="request-response"
+  host="localhost" port="8081" path="apforeach"
+  doc:name="HTTP"/&gt;
 
-   	&lt;sfdc:query config-ref="Salesforce"
-	query="dsql:SELECT
-	CreatedById,CreatedDate,Description,OwnerId
-	FROM Account LIMIT 3" doc:name="Query"
-	fetchSize="2"/&gt;
+     &lt;sfdc:query config-ref="Salesforce"
+  query="dsql:SELECT
+  CreatedById,CreatedDate,Description,OwnerId
+  FROM Account LIMIT 3" doc:name="Query"
+  fetchSize="2"/&gt;
 
-   	&lt;logger message="### Total amount of
-	elements retrieved is
-	#[message.payload.size()]" level="INFO"
-	doc:name="Size"/&gt;
+     &lt;logger message="### Total amount of
+  elements retrieved is
+  #[message.payload.size()]" level="INFO"
+  doc:name="Size"/&gt;
 
    &lt;foreach doc:name="For Each"&gt;
-     	&lt;data-mapper:transform
-		config-ref="account_to_map" doc:name="Account To Map"/&gt;
+       &lt;data-mapper:transform
+    config-ref="account_to_map" doc:name="Account To Map"/&gt;
 
-    	&lt;logger message="For element
-		#[flowVars['counter']]  payload is
-		#[message.payload]" doc:name="Records"/&gt;
-	&lt;/foreach&gt;
+      &lt;logger message="For element
+    #[flowVars['counter']]  payload is
+    #[message.payload]" doc:name="Records"/&gt;
+  &lt;/foreach&gt;
 
-	&lt;set-payload value="Done." doc:name="Set
-	Payload"/&gt;
+  &lt;set-payload value="Done." doc:name="Set
+  Payload"/&gt;
 &lt;/flow&gt;</pre>
 </div>
 </div>
@@ -7650,28 +7597,28 @@ Mapping creates.</pre>
 <span class="tag">&lt;flow</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">features-autopaging-salesforceFlow3</span><span class="delimiter">&quot;</span></span>
 <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">features-autopaging-salesforceFlow3</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
 
-          <span class="tag">&lt;http:inbound-endpoint</span>
-        <span class="attribute-name">exchange-pattern</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">request-response</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">host</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">port</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">8081</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">HTTP</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;http:inbound-endpoint</span>
+  <span class="attribute-name">exchange-pattern</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">request-response</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">host</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">localhost</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">port</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">8081</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">HTTP</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-          <span class="tag">&lt;sfdc:query</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Salesforce</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">query</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT</span>
-        <span class="content">AccountSource,BillingCity,BillingLongitude,CratedDate</span>
-        <span class="content">FROM Account</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Salesforce</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;sfdc:query</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Salesforce</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">query</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT</span>
+  <span class="content">AccountSource,BillingCity,BillingLongitude,CratedDate</span>
+  <span class="content">FROM Account</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Salesforce</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-        <span class="tag">&lt;logger</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">### Total amount of elements retrieved is</span>
-        <span class="content">#[message.payload.size()]</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">level</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INFO</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Size</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;logger</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">### Total amount of elements retrieved is</span>
+  <span class="content">#[message.payload.size()]</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">level</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">INFO</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Size</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-          <span class="tag">&lt;foreach</span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">For Each</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-            <span class="tag">&lt;data-mapper:transform</span>
-                <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">account_to_map_1</span><span class="delimiter">&quot;</span></span>
-                <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Account To Map</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;foreach</span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">For Each</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+      <span class="tag">&lt;data-mapper:transform</span>
+    <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">account_to_map_1</span><span class="delimiter">&quot;</span></span>
+    <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Account To Map</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 
-            <span class="tag">&lt;logger</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">For element</span>
-                <span class="content">#[flowVars['counter']]  payload is</span>
-                <span class="content">#[message.payload]</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Records</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-        <span class="tag">&lt;/foreach&gt;</span>
+      <span class="tag">&lt;logger</span> <span class="attribute-name">message</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">For element</span>
+    <span class="content">#[flowVars['counter']]  payload is</span>
+    <span class="content">#[message.payload]</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Records</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;/foreach&gt;</span>
   <span class="tag">&lt;set-payload</span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Done.</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Set Payload</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
 <span class="tag">&lt;/flow&gt;</span></code></pre>
 </div>
@@ -7710,6 +7657,12 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 </div>
 </div>
+</div>
+</div>
+<h1 id="_cloudhub_interoperability_testing" class="sect0">CloudHub Interoperability Testing</h1>
+<div class="openblock partintro">
+<div class="content">
+<hr>
 </div>
 </div>
 <div class="sect1">
@@ -7768,8 +7721,8 @@ Note: You can override the getTotalResults() method in the connector in case of 
 <span class="content">http://www.mulesoft.org/schema/mule/facebook</span>
 <span class="content">http://www.mulesoft.org/schema/mule/facebook/current/mule-facebook.xsd</span>
 <span class="content">http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-    <span class="tag">&lt;facebook:config-with-oauth</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Facebook</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Facebook</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">consumerKey</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">206589772847469</span><span class="delimiter">&quot;</span></span>
-<span class="attribute-name">consumerSecret</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">14b75847e7c9cca4159b3314b39fcd43</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;facebook:config-with-oauth</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Facebook</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Facebook</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">consumerKey</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${facebook.consumerKey}</span><span class="delimiter">&quot;</span></span>
+<span class="attribute-name">consumerSecret</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${facebook.consumerSecret}</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
         <span class="tag">&lt;facebook:oauth-callback-config</span> <span class="attribute-name">domain</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">facebookoauth.stg.cloudhub.io</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">localPort</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${http.port}</span><span class="delimiter">&quot;</span></span>
 <span class="attribute-name">path</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">callback</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
     <span class="tag">&lt;/facebook:config-with-oauth&gt;</span>
@@ -7818,8 +7771,8 @@ Note: You can override the getTotalResults() method in the connector in case of 
 <span class="content">http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
 ￼￼38
 <span class="tag">&lt;sfdc:config-with-oauth</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Salesforce__OAuth_</span><span class="delimiter">&quot;</span></span>
-<span class="attribute-name">consumerKey</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">3MVG9A2kN3Bn17huQMwGJWNHZUJ2eLycO_pQJMoGtGEUlVbGLkyO9EsUTEkTbf2ZnwyVhMiz0vSWvfVk7Ayws</span><span class="delimiter">&quot;</span></span>
-<span class="attribute-name">consumerSecret</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2313136062079803806</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Salesforce (OAuth)</span><span class="delimiter">&quot;</span></span> <span class="tag">&gt;</span>
+<span class="attribute-name">consumerKey</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${salesforce.consumerKey}</span><span class="delimiter">&quot;</span></span>
+<span class="attribute-name">consumerSecret</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${salesforce.consumerSecret}</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Salesforce (OAuth)</span><span class="delimiter">&quot;</span></span> <span class="tag">&gt;</span>
         <span class="tag">&lt;sfdc:oauth-callback-config</span> <span class="attribute-name">domain</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">salesforceoauth.qa2.cloudhub.io</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">localPort</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${https.port}</span><span class="delimiter">&quot;</span></span>
 <span class="attribute-name">path</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">oauthcallback</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">connector-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https_connector</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
     <span class="tag">&lt;/sfdc:config-with-oauth&gt;</span>
@@ -7953,383 +7906,6 @@ CUT: Connector under test
 </div>
 </div>
 </div>
-<h1 id="_generate_test_data_using_devkit_plugin" class="sect0">Generate Test Data using DevKit Plugin</h1>
-<div class="openblock partintro">
-<div class="content">
-<hr>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_introduction_2">Introduction</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The following framework consists of a series of automation tools, which allow you to run interoperability tests on a connector in Anypoint Studio. The data used by these tests  generates using not only the connectors code, but also DevKit output files, in particular the schema and editors file.</p>
-</div>
-<div class="paragraph">
-<p>All cases described in the <a href="https://docs.google.com/a/mulesoft.com/document/d/1HIiE8akbyr-jdfS-XJUZo45JL0J6G2OmQY_jO4rEkz4">Interoperability Test Guidelines</a> should be considered depending on the connector’s nature. This means, all the applicable test cases detailed there must be covered for a full interoperability test of the connector.</p>
-</div>
-<div class="paragraph">
-<p><strong>Note</strong>: The Anypoint Studio plugin covers only the following cases:
- * Connectivity testing
- * Datamapper compliance
- * Xml generation</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_glossary">Glossary</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Runner platform: Host where the test run will take place.</p>
-</li>
-<li>
-<p>Target platform: Describes the platform (in terms of Studio plugins) on which tests are going to we run.</p>
-</li>
-<li>
-<p>CUT: Connector under test</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>*-test-data.xml<br></p>
-</li>
-<li>
-<p>*-test-data-override.xml</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_installation_2">Installation</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_step_1_check_system_requirements_2">Step 1: Check System Requirements</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html">JDK 7</a></p>
-</li>
-<li>
-<p><a href="http://maven.apache.org/download.cgi">Apache Maven</a></p>
-</li>
-<li>
-<p><a href="http://www.mulesoft.org/download-mule-esb-community-edition">Anypoint Studio</a></p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_step_2_anypoint_devkit_plugin_2">Step 2: Anypoint Devkit Plugin</h3>
-<div class="paragraph">
-<p>Follow these steps on the Runner Platform&#8217;s Anypoint Studio installation:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Click <strong>Help</strong> &gt; <strong>Install New Software</strong>.</p>
-</li>
-<li>
-<p>Click <strong>Anypoint Addons Update Site</strong> from the <strong>Work with</strong> drop-down. <strong>Note</strong>: If this item is not in the dropdown, click <strong>Add</strong> and specify the name, and for the URL, use: <a href="http://studio.mulesoft.org/r3/addons/beta" class="bare">http://studio.mulesoft.org/r3/addons/beta</a></p>
-</li>
-<li>
-<p>Click the checkbox for <strong>Anypoint DevKit Plugin</strong>, and click <strong>Next, Next</strong>, <strong>Finish</strong>.</p>
-</li>
-<li>
-<p>Restart Anypoint Studio when prompted.</p>
-</li>
-<li>
-<p>Confirm you have Maven installed:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Open the Anypoint Studio preferences (on a Mac, click <strong>Anypoint Studio</strong> &gt; <strong>Preferences</strong>, on a Windows computer, click <strong>Window</strong> &gt; <strong>Preferences</strong>).</p>
-</li>
-<li>
-<p>Navigate to <strong>Anypoint Studio</strong> &gt; <strong>Maven Settings</strong> and ensure that the Maven installation home directory points to the directory where you installed Maven.</p>
-</li>
-<li>
-<p>Click <strong>Test Maven Configuration</strong> to ensure that Maven is correctly configured.</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_interop_test_run_tutorial">Interop Test Run Tutorial</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_step_1_anypoint_connector_project_in_workspace">Step 1: Anypoint Connector Project in Workspace</h3>
-<div class="paragraph">
-<p>If you have an existing connector project, import it into Anypoint Studio with this command: <code>mvn eclipse:eclipse</code><br>
-Import the project as <strong>Anypoint Connector Project from External Location</strong></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_step_2_generating_test_data_files">Step 2: Generating Test Data Files</h3>
-<div class="paragraph">
-<p>If you are not familiar with testData files used for interop testing, refer to Appendix B.<br>
-Right-click the name of your connector in the Package Explorer and click <br>
-<strong>Anypoint Connector &gt; Generate Tests</strong>:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/test-plugin-1.png" alt="test plugin 1">
-</div>
-</div>
-<div class="paragraph">
-<p>The <strong>Tests Scaffolding Generation</strong> dialog lets you select the operations in scope and the different files type of tests, functional or interoperability, that the required test data files generate:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/test-plugin-2.png" alt="test plugin 2">
-</div>
-</div>
-<div class="paragraph">
-<p>Interop Test Data Generation setup:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Click the <strong>Select All</strong> button. The generation considers all available message processors of the connector.</p>
-</li>
-<li>
-<p>Under Studio Interop Tests, check <strong>Generate Interop Test Data Files</strong></p>
-</li>
-<li>
-<p>Leave the default test data filename <strong>interop-testdata.xml</strong> or define one of your own. The default behavior in case of finding matching filenames on the output folder is to update them.</p>
-</li>
-<li>
-<p>Credentials File expected input is the path to a .properties file, which is used to determine which Configuration Element fields are required for authentication. The effects of this can be seen on the &lt;connectorName&gt;-testData-override.xml file. For example .properties contains:</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>salesforce.username=salesforce.username.value +
-salesforce.password=salesforce.password.value +
-salesforce.securityToken=salesforce.securityToken.value +
-salesforce.url=salesforce.url.value</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This generates a config element on the &lt;connectorName&gt;-testData-override.xml file such as:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;config</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">config</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;attributes&gt;</span>
-    <span class="tag">&lt;attribute</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">username</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">use</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Username</span><span class="delimiter">&quot;</span></span>
-      <span class="attribute-name">group</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Connection</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">javaType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java.lang.String</span><span class="delimiter">&quot;</span></span>
-      <span class="attribute-name">prefix</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">salesforce</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>salesforce.username.value<span class="tag">&lt;/attribute&gt;</span>
-    <span class="tag">&lt;attribute</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">use</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Password</span><span class="delimiter">&quot;</span></span>
-      <span class="attribute-name">group</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Connection</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">javaType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java.lang.String</span><span class="delimiter">&quot;</span></span>
-      <span class="attribute-name">prefix</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">salesforce</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>salesforce.password.value<span class="tag">&lt;/attribute&gt;</span>
-    <span class="tag">&lt;attribute</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">securityToken</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">use</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Security Token</span><span class="delimiter">&quot;</span></span>
-      <span class="attribute-name">group</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Connection</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">javaType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java.lang.String</span><span class="delimiter">&quot;</span></span>
-      <span class="attribute-name">prefix</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">salesforce</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>salesforce.securityToken.value<span class="tag">&lt;/attribute&gt;</span>
-    <span class="tag">&lt;attribute</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">url</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">use</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Url</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">group</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Connection</span><span class="delimiter">&quot;</span></span>
-      <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">javaType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java.lang.String</span><span class="delimiter">&quot;</span></span>
-      <span class="attribute-name">default</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://login.salesforce.com/services/Soap/u/31.0</span><span class="delimiter">&quot;</span></span>
-      <span class="attribute-name">prefix</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">salesforce</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>salesforce.url.value<span class="tag">&lt;/attribute&gt;</span>
-  <span class="tag">&lt;/attributes&gt;</span>
-<span class="tag">&lt;/config&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The result of this command should be the following files (see Files section for details): <br>
-_- nameOfOutputFile.xml _<br>
-Basic data retrieved from the connector. Provides a complete view of every processor and all its attributes.</p>
-</div>
-<div class="paragraph">
-<p><em>- nameOfOutputFile-override.xml</em><br>
-Presents a subset of the data found in the previous file, with only the required fields, but adds information about the connector and processor features and properties</p>
-</div>
-<div class="paragraph">
-<p>For this tutorial, &lt;testDataFilename&gt;.xml and &lt;testDataFilename&gt;-override.xml files are the result of the Tests Scaffolding Generation process for Studio Interop Tests. Generated files are placed on src/test/resources/generated.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_step_3_customizing_test_data_files">Step 3: Customizing Test Data Files</h3>
-<div class="paragraph">
-<p>After the testData and testData-override files are created (details about this files in Appendix), the next step is to populate the content from your domain model. This implies the completion of valid inputs for the operations and configurations, and the validation of the retrieved data.</p>
-</div>
-<div class="sect3">
-<h4 id="_attention_points">Attention Points</h4>
-<div class="ulist">
-<ul>
-<li>
-<p>Properties detected must be checked and asserted:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>The fact that the connector has connectivity support must be validated. If your connector does not support connectivity, but it was detected as a supported feature, you’ll have to double check your code.</p>
-</li>
-<li>
-<p>If the connector has OAuth support, then connectivity detection must be false.</p>
-</li>
-<li>
-<p>If the connector has OAuth support, then metadata detection should not be dynamic.</p>
-</li>
-<li>
-<p>For each processor, <em>query-support</em> and <em>auto-paging</em> properties should be coherent with the expected values.</p>
-</li>
-<li>
-<p>Required fields, both in the config and in the processors should be coherent with the expected values declared in the processor declaration. Those annotated with @Optional should be <em>optional</em>, everything else should be <em>required</em>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Datamapper input/output fields:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Datamapper Input and Output attributes in each processor represent the values you expect to see at design time when you drop the connector before and after a datamapper element. This values should be empty only if you expect to see nothing in DataMapper.</p>
-</li>
-<li>
-<p>In a dynamic metadata case, the value of input/output attributes will be bound to the value with which the operation is feeded.
-For example, with dynamic metadata, if you have:</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
-        <span class="tag">&lt;datamapper</span> <span class="attribute-name">input</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">List</span><span class="entity">&amp;lt;</span><span class="content">SaveResult</span><span class="entity">&amp;gt;</span><span class="delimiter">&quot;</span></span><span class="attribute-name">output</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">List</span><span class="entity">&amp;lt;</span><span class="content">Map</span><span class="entity">&amp;gt;</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-<span class="tag">&lt;/properties&gt;</span>
-<span class="tag">&lt;attributes&gt;</span>
-        <span class="tag">&lt;attribute</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">use</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">sObject Type</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">group</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Information</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">type-chooser</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">javaType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java.lang.String</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-        <span class="tag">&lt;/attribute&gt;</span>
-<span class="tag">&lt;/attributes&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The output value is bounded to the value declared in the type chooser as follows:</p>
-</div>
-<div class="paragraph">
-<p><strong>Case Account</strong></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
-        <span class="tag">&lt;datamapper</span> <span class="attribute-name">input</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">List</span><span class="entity">&amp;lt;</span><span class="content">SaveResult</span><span class="entity">&amp;gt;</span><span class="delimiter">&quot;</span></span><span class="attribute-name">output</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">List</span><span class="entity">&amp;lt;</span><span class="content">Account</span><span class="entity">&amp;gt;</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-<span class="tag">&lt;/properties&gt;</span>
-<span class="tag">&lt;attributes&gt;</span>
-        <span class="tag">&lt;attribute</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">use</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">sObject Type</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">group</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Information</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">type-chooser</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">javaType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java.lang.String</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> Account (Account)
-        <span class="tag">&lt;/attribute&gt;</span>
-<span class="tag">&lt;/attributes&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Case Contact</strong></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
-        <span class="tag">&lt;datamapper</span> <span class="attribute-name">input</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">List</span><span class="entity">&amp;lt;</span><span class="content">SaveResult</span><span class="entity">&amp;gt;</span><span class="delimiter">&quot;</span></span><span class="attribute-name">output</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">List</span><span class="entity">&amp;lt;</span><span class="content">Contact</span><span class="entity">&amp;gt;</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-<span class="tag">&lt;/properties&gt;</span>
-<span class="tag">&lt;attributes&gt;</span>
-        <span class="tag">&lt;attribute</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">use</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">sObject Type</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">group</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Information</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">type-chooser</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">javaType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java.lang.String</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> Contact (Contact)
-        <span class="tag">&lt;/attribute&gt;</span>
-<span class="tag">&lt;/attributes&gt;</span></code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>If metadata model is static, then the expected value should be the initial one, with <em>“List&lt;Map&gt;”</em> as the output value.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_step_4_run_interop_tests">Step 4: Run Interop Tests</h3>
-<div class="paragraph">
-<p>In Studio, right-click the project and click <strong>Anypoint Connector *&gt;</strong> Run Interop Tests*:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/test-plugin-3.png" alt="test plugin 3">
-</div>
-</div>
-<div class="paragraph">
-<p>The Interop Remote Runner Properties menu shows the existing testData files that were created previously, and a set of options:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Tests to run:  Select which kind of test to run on your connector.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Connectivity</p>
-</li>
-<li>
-<p>Data Mapper</p>
-</li>
-<li>
-<p>Xml Generation</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Verbose Mode</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Enables debugging logs on the test runs</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/test-plugin-4.png" alt="test plugin 4">
-</div>
-</div>
-<div class="paragraph">
-<p>The results appear in target/surefire-reports, and provide jUnit results using the XML result file.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_appendix_3">Appendix</h2>
-<div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/studio%20test%20plugin/appendixA.adoc">Appendix A: Usage without Studio</a></p>
-</li>
-<li>
-<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/studio%20test%20plugin/appendixB.adoc">Appendix B: Plugin Result Files</a></p>
-</li>
-<li>
-<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/studio%20test%20plugin/projectDetails.adoc">Project Details</a></p>
-</li>
-</ol>
-</div>
-</div>
-</div>
 <h1 id="_templates" class="sect0">Templates</h1>
 <div class="openblock partintro">
 <div class="content">
@@ -8374,7 +7950,7 @@ For example, with dynamic metadata, if you have:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-02-06 14:45:22 EST
+Last updated 2015-02-06 16:10:21 EST
 </div>
 </div>
 </body>
