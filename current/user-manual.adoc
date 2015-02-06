@@ -43,11 +43,11 @@ This section is about best development practices, these are a set of rules that 
 
 include::docs/development-best-practices.adoc[]
 
-// [static-code-analysis-using-sonarqube]
-= Static Code Analysis using SonarQube
+// [static-code-analysis-and-coverage]
+= Static Code Analysis and Coverage
 ---
 
-include::docs/static-code-analysis-using-sonarqube.adoc[]
+include::docs/static-code-analysis-and-coverage.adoc[]
 
 // [functionalQAGuidelines]
 = Functional Tests Automation
@@ -74,11 +74,6 @@ include::docs/cloudhub-interoperability-testing.adoc[]
 
 include::docs/devkit-plugin-run-interop-tests-action.adoc[]
 
-// [functional-test-plugin]
-= Generate Test Data using DevKit Plugin
----
-
-include::docs/devkit-plugin-generate-test-data-action.adoc[]
 
 // [templates]
 = Templates

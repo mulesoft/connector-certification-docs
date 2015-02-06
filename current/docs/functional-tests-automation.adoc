@@ -34,24 +34,9 @@ This section explains how to automate functional test cases on Connectors.
 === Concepts
 Use cases are built as a sequence of connector operations calls. Prior to running a use case, initialize a TestRunMessage and load the data required by the use case. After you invoke an operation, turn the content of the TestRunMessage into a MuleEvent before an operation consumes the content. Apply asserts to the payload of the operation under the test.
 
-=== Maven Dependency
-mule-devkit-parent contains the framework version property (that can, if necessary, be overridden on the connector pom) and its dependency node.
+== Generate Functional Tests Scaffolding and Data using DevKit Plugin
 
-[source,xml]
-----
-<properties>
-   ...
-   <connector.test.version>2.0.6</connector.test.version>
-</properties>
-
-<!-- Mule Connector Test Framework -->
-<dependency>
-   <groupId>org.mule.modules</groupId>
-   <artifactId>mule-connector-test</artifactId>
-   <version>${connector.test.version}</version>
-   <scope>test</scope>
-</dependency>
-----
+include::docs/devkit-plugin-generate-test-data-action.adoc[]
 
 == Framework and Test Suite Components
 

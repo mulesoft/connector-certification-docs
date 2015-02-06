@@ -1,4 +1,4 @@
-== Purpose 
+== Purpose
 
 Based on these guidelines, partners should analyze the connector under test and provide a test suite build from these generic test cases (only a document with general and operation­specific test cases titles) with all tests in "Passed" status.
 
@@ -10,7 +10,7 @@ Based on these guidelines, partners should analyze the connector under test and 
 * Connector code is available in order to review configurations.
 
 ==== Steps
-* *Step 1:* 
+* *Step 1:*
 .. Place an HTTP endpoint on the canvas
 .. Drop the desired connector inside the flow.
 .. Select it and click the Config Reference Edit button.
@@ -48,7 +48,7 @@ Build this test case to serve as the basis for the next set of test cases.
 logger.
 
 ----
-Expected Result: 
+Expected Result:
 
 Flow arrangement looks similar to this:
 ----
@@ -62,7 +62,7 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-1.png[]
 .. Look for the Authorize operation.
 
 ----
-Expected Result: 
+Expected Result:
 Authorize operation is found.
 ----
 
@@ -143,10 +143,10 @@ Example of the flows on the project .mflow :
 	<http:inbound-endpoint exchange-pattern="request-response" host="localhost"
 	port="${http.port}" path="authorize" doc:name="HTTP"/>
 
-	<sfdc:authorize config-ref="Salesforce__OAuth_" display="POPUP" 
+	<sfdc:authorize config-ref="Salesforce__OAuth_" display="POPUP"
 	doc:name="Authorize" />
 
-	<!-- <sfdc:authorize config-ref="Salesforce__OAuth_" display="POPUP" 
+	<!-- <sfdc:authorize config-ref="Salesforce__OAuth_" display="POPUP"
 	doc:name="Authorize"/> -->
 
 	<sfdc:get-user-info config-ref="Salesforce__OAuth_" doc:name="Get user info" >
@@ -157,17 +157,17 @@ Example of the flows on the project .mflow :
 </flow>
 
 <flow name="aConnectorOperation" doc:name="aConnectorOperation">
-	<http:inbound-endpoint exchange-pattern="request-response" 
+	<http:inbound-endpoint exchange-pattern="request-response"
 	host="localhost" port="8081" path="anoperation" doc:name="HTTP"/>
 	<sfdc:describe-global config-ref="Salesforce__OAuth_" doc:name="Describe global"/>
-	<logger message="#[message.payload]" level="INFO" doc:name="Logger"/> 
-	<set-payload value="Done." doc:name="Set Payload"/> 
+	<logger message="#[message.payload]" level="INFO" doc:name="Logger"/>
+	<set-payload value="Done." doc:name="Set Payload"/>
 </flow>
 
 <flow name="unauthorize" doc:name="unauthorize">
-	<http:inbound-endpoint exchange-pattern="request-response" 
+	<http:inbound-endpoint exchange-pattern="request-response"
 	host="localhost" port="8081" path="unauthorize" doc:name="HTTP"/>
-	<sfdc:unauthorize config-ref="Salesforce__OAuth_" doc:name="Unauthorize"/> 
+	<sfdc:unauthorize config-ref="Salesforce__OAuth_" doc:name="Unauthorize"/>
 	<set-payload value="Done." doc:name="Set Payload"/>
  </flow>
 ----
@@ -210,7 +210,7 @@ Operation payload is logged.
 This implies that Mule included the access token (contained within the parameters annotated with @OAuthAccessToken) in the request to the service provider.
 ----
 
-* *Step 4:* 
+* *Step 4:*
 .. Hit the unauthorize endpoint.
 .. Check the console.
 
@@ -339,7 +339,7 @@ OAuth session is killed.
 ----
 
 == Anypoint Studio Interoperability Testing
-== Anypoint Studio Installation 
+== Anypoint Studio Installation
 
 === Anypoint Studio - Installation Wizard
 
@@ -348,7 +348,7 @@ OAuth session is killed.
 * Anypoint Studio is installed on the local machine.
 * Connector already available on the update site.
 
-==== Steps 
+==== Steps
 
 * *Step 1:* In Anypoint Studio click *Help > Install New Software*
 
@@ -657,8 +657,8 @@ The http://mulesoft.github.io/marketo-connector/mule/marketo-config.html#sync-le
 |3|Select an Object type (if not already defined by default by the operation) that's custom or has a custom field.|List of Object types display based on the retrieved metadata from the service.
 |4|For the child elements, select the Create Objects manually option and click the ... button.| Getting DataSense metadata ... popup displays. Object builder displays Objects fields. Defined custom field displays among them.
 |5|Populate the desired object fields and click OK.|
-|6|Save and change to the *Configuration XML* view.| 
-Operation configuration is reflected on the XML. Example XML: 
+|6|Save and change to the *Configuration XML* view.|
+Operation configuration is reflected on the XML. Example XML:
 ----
 <marketo:sync-lead config-ref="Marketo" doc:name="Marketo">
 <marketo:lead-record >
@@ -673,7 +673,7 @@ Operation configuration is reflected on the XML. Example XML:
 === Static Metadata
 In case of static metadata, Anypoint Studio retrieves the POJO, List<POJO>, or Map<String,POJO>attribute from the connector code.
 
-OAuth connectors with static metadata support: 
+OAuth connectors with static metadata support:
 
 * Salesforce (Non­OAuth)
 
@@ -764,5 +764,1567 @@ This is defined by the argument types and return types of the API. If all of the
 
 
 
+== XML Generation
+=== XML Generation - POJO by ‘Reference or expression’ or ‘Define attributes’
+==== Steps
+
+* *Step 1:* On the General tab select the corresponding Config reference.
+* *Step 2:* Select the operation.
+* *Step 3:* For the POJO no option is available by default.
+
+* *Step 4:* Select the Reference or expression option and enter #[flowVars[‘ref’]]as the value.
+Example:
+image::{imagesdir}/qa-guidelines/qa-guidelines-9.png[]
+
+* *Step 5:*
+Save and change to the Configuration XML view.
+
+[source,xml]
+----
+Expected Result: XML for the operation was generated using the ref attribute.
+Example XML:
+
+<sfdc:batch-info config-ref="Salesforce" doc:name="Salesforce" >
+<sfdc:batch-info ref="#[flowVars['batchInfoRef']]"/> </sfdc:batch-info>
+----
+
+* *Step 6:* Return to the Message Flow view, click the connector.
+----
+Expected Result:
+
+Same operation is selected, Reference or expression is selected for the POJO and the value was stored.
+----
+
+* *Step 7:*
+￼For the same POJO select the Define attributes option and enter #[flowVars[‘pojoAttribute’]] for the Id and Job Id values.
+Example:
+image::{imagesdir}/qa-guidelines/qa-guidelines-10.png[]
+
+* *Step 8:* Save and change to the Configuration XML view.
+
+[source,xml]
+----
+Expected Result:
+XML for the operation was generated defining each of the POJO attributes.
+Example XML:
+<sfdc:batch-info config-ref="Salesforce" doc:name="Salesforce" >
+<sfdc:batch-info id="#[flowVars['id']]" jobId="#[flowVars['jobId']]" state="Completed"/>
+</sfdc:batch-info>
+----
+* *Step 9:*  Return to the Message Flow view, click on the connector.
+----
+Expected Result:
+
+Same operation is selected, Define attributes is selected for the POJO and the attributes values were stored.
+----
+
+=== XML Generation - Attribute Names Consistency
+Operations attributes names should be the same as the ones from the API, but in case, this rule introduces inconsistencies among operations; then the parameter name should be corrected in the connector. As an example:
+
+|===
+|Library/API method| Expected result
+|org.eclipse.egit.github.core. +
+service.GistService.del eteGist(String gistId)| @Processor +
+public void deleteGist(String gistId) throws IOException { +
+... }
+|org.eclipse.egit.github.core. +
+service.GistService.get Gist(String id)| @Processor +
+public Gist getGist(String gistId) throws IOException { +
+... }
+|===
+
+=== XML Generation - Attribute Order
+Order of operation attributes should be the same as in the API. Attributes generated in the wrong order cause errors in the XML at runtime.
+
+=== XML generation - Required Attribute Value not Defined
+==== Preconditions
+
+* Applies to operations directly exposing fields (with no default value) on the Mule Properties View.
+* In the Anypoint Studio canvas a connector building block was placed inside of a flow.
+* Connector is selected.
+
+==== Steps
+* *Step 1:* On the General tab select the corresponding Config reference.
+
+* *Step 2:* Select the operation.
+----
+Expected Result:
+Operation required attributes values display as missing.
+----
+image::{imagesdir}/qa-guidelines/qa-guidelines-11.png[]
+
+* *Step 3:* Look for the operation in the API docs.
+----
+Expected Result:
+Required attributes match with the ones marked as such in the Mule Properties View.
+----
+
+* *Step 4:* Back in Anypoint Studio, change to the Problems tab.
+
+----
+Expected Result:
+'Required attribute not defined' error is logged.
+----
+image::{imagesdir}/qa-guidelines/qa-guidelines-12.png[]
+
+=== Message Sources
+Methods annotated with @Source(). They are common for connectors to services with streaming APIs.
+
+==== Preconditions
+
+* Mule project was created and is open.
+* Global Configuration element is already created with valid credentials to the service.
+* Connector code is available in order to review configurations
+
+==== Steps
+
+* *Step 1:* Pull the desired connector to the canvas.
+----
+Expected Result:
+Connector is created as endpoint to a flow.
+----
+image::{imagesdir}/qa-guidelines/qa-guidelines-13.png[]
+
+* *Step 2:*
+.. Place a Logger next to it.
+.. Set "Message Source received `#[message.payload]" as its Message.`
+
+* *Step 3:*
+.. Set the Global Configuration Element to the connector.
+.. Check the available operations.
+----
+Expected Result:
+
+Operations on the dropdown match to methods marked as @Source on the connector code.
+----
+
+* *Step 4:*  Select the Message Source under test and configure it appropriately.
+
+[source,xml]
+----
+Expected Result:
+
+Example of a Mule flow:
+<flow name="SubscribeToTopic" doc:name="SubscribeToTopic">
+  <sfdc:subscribe-topic config-ref="Salesforce" topic="/ContactsDemo" doc:name="Subscribe To newAccountMessages Topic"/>
+  <logger level="INFO" message="New account notification received: #[message.payload]" doc:name="Notification"/>
+</flow>
+----
+
+* *Step 5:*
+.. Run the Mule app.
+.. Check the Console.
+----
+Expected Result:
+
+Initialization message is logged:
+INFO 2014-01-1317:59:17,210[HttpClient-29] org.mule.modules.salesforce.SalesforceBayeuxClient: subscribing /topic/ContactsDemo for the first time
+----
+
+* *Step 6:*
+.. Trigger the event the Message Source is expecting.
+.. Check the Console.
+
+----
+Expected Result:
+
+Message Source response was logged.
+----
+
+== DataMapper Compliance
+DataMapper automatic metadata population is defined by the message processor attributes’ annotations as well as the message processor's return type.
+
+In the case of POJO operation attributes, at least one of them must be marked as `@Optional`. `@Default("#[payload]")` causes data to be automatically picked up in DataMapper.
+
+If custom fields can be defined for objects in the service domain, choose them for testing DataMapper compatibility.
 
 
+=== DataMapper Compliance - Dynamics/Static Metadata - Perceptive Flow Design
+
+==== Preconditions
+
+* In the connector code @Connect contains metaData = MetaDataSwitch.OFF
+* Flow contains a connector-datamapper-connector building block arrangement that is on the canvas.
+
+==== Steps
+
+* *Step 1:* Configure both connectors with the same operation.
+----
+Expected Result:
+Metadata is fetched for both configurations.
+----
+* *Step 2:* Select the DataMapper building block.
+* *Step 3:* Check the Input panel.
+[source,java]
+----
+Expected Result:
+ Mule automatically prescribes the output of the operation for any of the following return types:
+* Map
+* POJO
+* List<Map>
+* List<String>
+* List<POJO>
+* List<List<String>>
+
+Check that values match the operation signature.
+----
+
+* *Step 4:* Check the Output panel.
+[source,java]
+----
+Expected Result:
+Mule automatically prescribes the input of the operation only for an attribute of the following type:
+* Map
+* POJO
+* List<Map>
+* List<String>
+* List<POJO>
+* List<List<String>>
+
+Check that it's marked as `@Default("#[payload]")` (for connectors older than 3.5.0-M4). The correct annotations should be `@Optional @Default(“#[payload]”)`
+----
+* *Step 5:*  Check the operation attributes in the API docs.
+----
+Expected Result:
+The attribute marked as `@Default("#[payload]")` (for connectors older than 3.5.0-M4). The correct annotations should be `@Optional @Default(“#[payload]”)` (aka PRIMARY argument) should be:
+* An entity related to the service in case more than one applies.
+* An entity that can't be created and is necessarily another operation return type (if applicable) .
+----
+
+=== DataMapper Compliance - Generate Mapping From the Return Type
+==== Preconditions
+
+* Flow contains a connector­datamapper building block arrangement that is on the canvas.
+
+[cols="10,45,45"]
+|===
+|Steps|Description|Expected result
+
+|1|Configure the connector with an operation returning POJO / List<POJO>, Map<String,POJO>, or List<Map<String, Object>>.|Metadata is fetched for both configurations.
+|2|Select the DataMapper building block.|
+|3|Check the Input panel.|Values are pre­populated.
+|4|In the Output panel select Type XML.|
+|5|Click on the User Defined radio button.|
+|6|Click Generate default.|
+|7|Generate mapping using default XML schema|Relationship is established.
+|===
+
+=== DataMapper Compliance - Generate Mapping to Operation Attribute
+==== Preconditions
+
+* Flow contains a datamapper­connector building block arrangement that is on the canvas.
+
+[cols="10,45,45"]
+|===
+|Steps|Description|Expected result
+
+|1|Configure the connector with an operation that has either a POJO / List<POJO>, Map<String,POJO>, or List<Map<String, Object>> as its main argument.|Metadata is fetched for both configurations.
+|2|Select the DataMapper building block.|
+|3|Check the Output panel.|Values were pre­populated.
+|4|In the Input panel select Type XML.|
+|5|Click on the User Defined radio button.|
+|6|Click Generate default.|
+|7|Generate mapping using default XML schema|Relationship is established.
+|===
+
+=== DataMapper Compliance - Override Metadata
+==== Preconditions
+
+* Flow contains a connector­datamapper­connector building block arrangement that is on the canvas.
+
+
+[cols="10,45,45"]
+|===
+|Steps|Description|Expected result
+
+|1|Configure both connectors with the same operation.|Metadata is fetched for both configurations.
+|2|Select the DataMapper building block.|
+|3|Check the Input and Output panel.|Values were pre­populated.
+||The following steps are to be repeated for both the Output Panel and Input panel.|
+|4|Override the provided metadata by clicking Change Type.|
+|5|Select the connector from the Connector dropdown.|
+|6|Make sure By Operation is selected and select the operation under test from the Operation dropdown.|
+|7|Click the Object dropdown.|Operation return type is available in the dropdown.
+|===
+
+=== DataMapper Compliance - Dynamic Metadata - Custom Entities/Fields
+This test case applies to connectors to services that support custom entities or custom fields in their entities.
+
+==== Preconditions
+
+* On the Global Configuration, DataSense is enabled and DataSense metadata types were fetched.
+* Flow contains a connector­datamapper­connector building block arrangement that is on the canvas.
+* Operation either consumes or returns an entity for which a custom entity or custom fields on an entity were defined on the service.
+
+==== Steps
+
+* *Step 1:* Configure both connectors with the same operation. For type, select the custom entity under test or the entity for which custom fields were defined on the sandbox.
+For example:
+image::{imagesdir}/qa-guidelines/qa-guidelines-14.png[]
+
+----
+Expected Result:
+
+Metadata is fetched for both configurations.
+----
+
+* *Step 2:* Select the DataMapper building block.
+----
+Expected Result:
+
+Values were pre­populated and relate to the entity under test.
+----
+
+* *The following step is to be run for either the Output Panel/Input panel.*
+
+* *Step 3:* Generate a mapping (use a default map on the counter panel if necessary).
+
+----
+Expected Result:
+
+Relationship is established.
+DataMapper displays the custom entity or the custom fields of the entity under test.
+----
+image::{imagesdir}/qa-guidelines/qa-guidelines-15.png[]
+
+=== DataMapper Compliance - No Metadata - Perceptive Flow Design
+==== Preconditions
+
+* In the connector code @Connect contains metaData = MetaDataSwitch.OFF
+* Flow contains a connector­datamapper­connector building block arrangement that is on the canvas.
+
+
+[cols="10,45,45"]
+|===
+|Steps|Description|Expected result
+
+|1|Configure both connectors with the same operation.|Metadata is fetched for both configurations.
+|2|Select the DataMapper building block.|
+|3|Check the Input panel.|No values display.
+|4|Check the Output panel.|No values display.
+|===
+
+== DataSense Query Editor / DSQL
+Connectors QA scope limits to check if feature reflects connector specific configuration values.
+As example use the Dynamics connector (MessageProcessor expects XML thus everything is overridden).
+
+=== DataSense Query Editor - OAuth Connector - Only NQL Query Option Available
+==== Preconditions
+
+* Flow contains a connector building block that is on the canvas and its Global Configuration element was selected as Config Reference.
+
+* *Step 1:* Select corresponding operation for message processor with attribute marked @Query.
+
+----
+Expected Result:
+
+* For attribute marked @Query only Native Query Language option in dropdown displays.
+----
+
+image::{imagesdir}/qa-guidelines/qa-guidelines-16.png[]
+
+----
+* Return type dropdown does not display.
+----
+
+=== DataSense Query Editor - Non-OAuth Connector - DSQL and NQL Query Options Available
+
+==== Preconditions
+
+* Flow contains a connector building block that is on the canvas and its Global Configuration element was selected as Config Reference.
+
+* *Step 1:* Select corresponding operation for message processor with attribute marked @Query.
+
+----
+Expected Result:
+
+* For attribute marked @Query *Native Query Language* and *DataSense Query Language* option in dropdown displays.
+----
+
+image::{imagesdir}/qa-guidelines/qa-guidelines-17.png[]
+
+* *Step 2:* Click the Query Builder ...
+----
+Expected Result:
+
+Query Builder opens.
+----
+
+=== DataSense Query Editor - Non-OAuth connector - Query by NQL
+==== Preconditions
+
+* Flow contains a connector building block that is on the canvas, and its config­element is already set.
+* A DataMapper building block has been placed next to the connector building block.
+
+[cols="10,45,45"]
+|===
+|Steps|Description|Expected result
+
+|1|Select corresponding operation for message processor with attribute marked @Query.|For attribute marked @Query Native Query Language and DataSense Query Language options are displayed in the Language dropdown.
+|2|Select NQL as Language.|Check that Return type dropdown displays.
+|3|Make a Return type selection and then save.|
+|4|Click the DataMapper element.|DataMapper is prepopulated according to Return type option selection (List<Return type>).
+|===
+
+=== DataSense Query Editor - Non-OAuth Connector - @Query Default Values
+==== Preconditions
+
+* Flow contains a connector building block that is on the canvas and its Global Configuration element was selected as Config Reference.
+* No parameters are passed to the @Query annotation.
+
+[cols="10,45,45"]
+|===
+|Steps|Description|Expected result
+
+|1|Select corresponding operation for message processor with attribute marked @Query and click on the Query Builder ...|Order By dropdown, Limit, and Offset fields are available.
+|2|Build a query that applies two filters and makes use of the Order By, Limit, and Offset values.
+Click *OK*.|Query Text is populated reflecting query values.
+|===
+
+=== DataSense Query Editor - Non-OAuth Connector - Query Builder Reflects @Query Configuration
+==== Preconditions
+
+* Flow contains a connector building block that is on the canvas and its Global Configuration element was selected as Config Reference.
+* Parameters are passed to the @Query annotation.
+
+[cols="10,45,45"]
+|===
+|Steps|Description|Expected result
+
+|1|Select corresponding operation for message processor with attribute marked @Query and click on the Query Builder ...|Order By dropdown, Limit, and Offset fields are available only if not passed as false to the annotation. Example: +
+`@Query(limit = false, offset = false, orderBy = false)`
+|2|Build a query that applies two filters. Click OK.|Query Text is populated. OR or AND operator is displayed between filters depending on configuration. Example:
+`@Query(disabledOperators = QueryOperator.OR)`
+|===
+
+=== DataSense Query Editor - Non-OAuth connector - Query builder reflects service metadata configuration
+
+*@MetaDataKeyRetriever* and *@MetaDataRetriever* annotated methods sets service specific configuration for Query Builder.
+By default a Field "query configuration" (isWhereCapable, isSelectCapable, isOrderByCapable) are all true unless overridden by the service metadata.
+Example:
+
+[source,java]
+----
+// sObject isFromCapable (available in Types)
+// public DefaultMetaDataKey(java.lang.String id, java.lang.String displayName, boolean isFromCapable);
+new DefaultMetaDataKey(sobject.getName(), sobject.getLabel(), sobject.isQueryable())
+// sObject attribute available in Fields and appears on the Filter dropdown depending on the service.
+dynamicObject.addSimpleField(field.getName(), dataType).isWhereCapable(field.isFilterable());
+// sObject attribute available in Fields and appears on the Order By dropdown depending on the service.
+dynamicObject.addSimpleField(field.getName(), dataType).isOrderByCapable(f.isSortable());
+----
+==== Preconditions
+
+* Flow contains a connector building block that is on the canvas and its Global Configuration element was selected as Config Reference.
+
+==== Steps
+
+* *Step 1:* Select corresponding operation for message processor with attribute marked @Query and click on the *Query Builder ...*
+
+----
+Expected Result:
+
+Query Builder opens.
+----
+
+* *Step 2:* From service documentation derive equivalence classes such:
+
+* Types not from­capable.
+* Fields not filterable.
+* Fields not sortable.
+* Fields not selectable.
+* ...
+
+Select a representative value for each class.
+
+----
+Expected Result:
+
+Object Builder reflects values.
+----
+
+=== DSQL - Non-OAuth Connector - Query Translation
+Method annotated as @QueryTranslator contains logic to translate DSQL queries into NQL in case clauses or operators do not match those predefined by DSQL. +
+Visitor classes (can be recognized by the extends DefaultQueryVisitor extends DefaultOperatorVisitor) that handle the mapping from a DSQL query into the service Native Query Language. +
+SELECT, WHERE, OPERATORS and ORDERBY values can be overridden.
+
+==== Preconditions
+
+* Flow contains a connector building block that is on the canvas and its Global Configuration element was selected as Config Reference.
+
+[cols="10,45,45"]
+|===
+|Steps|Description|Expected result
+
+|1|Select corresponding operation for message processor with attribute marked @Query and click on the Query Builder ...|Query Builder is displayed.
+|2|Build queries using query builder that make use of clauses and operators whose values are been overridden by the connector.|Query Text is populated in DSQL format.
+|3|Change from DSQL to NQL and check that the translation has been made correctly.|Clauses and operators and correctly translated.
+|===
+
+=== DSQL - Non-OAuth Connector - Query Equivalence
+==== Preconditions
+
+* Flow contains a connector building block that is on the canvas and its Global Configuration element was selected as Config Reference.
+
+[cols="10,45,45"]
+|===
+|Steps|Description|Expected result
+
+|1|Select corresponding operation for message processor with attribute marked @Query and click the Query Builder ...|Query Builder is displayed.
+|2|Build a query using query builder that make use of clauses and operators whose values are been overridden by the connector.|Query Text is populated in DSQL format.
+|3| Run the Mule application. Then Hit the endpoint to retrieve results.|Take note of the query results
+|4|Stop the application.|
+|5|Change from DSQL to NQL and check that the translation has been made correctly.
+|Clauses and operators and correctly translated.
+|6| Run the Mule application. Then Hit the endpoint to retrieve results.|Query results are the same than the ones on the DSQL query.
+|===
+
+== Auto-Paging
+Connector supports Auto­Paging if a least one of its operations is annotated as @Paged and returns a PagingDelegate. The following test cases apply to Non­query, DSQL and NQL operations.
+
+=== Auto-Paging - Fetch Size Parameter
+==== Preconditions
+
+* Flow contains a connector building block that is on the canvas and its Global Configuration element was selected as Config Reference.
+
+==== Steps
+
+* *Step 1:* Select an operation whose return type is PagingDelegate<SomeEntity>.
+
+----
+Expected Result:
+
+Paging section containing a Fetch Size input field is displayed in the General tab of the connector view.
+----
+
+image::{imagesdir}/qa-guidelines/qa-guidelines-18.png[]
+
+Fetch Size value is 100 by default.
+
+
+* *Step 2:* Enter a Fetch Size value other than 100. Save and change to the Configuration XML view.
+
+[source,xml]
+----
+Expected Result:
+
+fetchSize attribute is on the operation XML.
+<google-contacts:get-contacts config-ref="Google_Contacts" doc:name="Google Contacts" fetchSize="30"/>
+----
+
+=== Auto-Paging - Empty Collection
+====￼Preconditions
+
+* Global Configuration element was already crea
+
+==== Steps
+* *Step 1:* Arrange a flow as follows:
+.. Place an HTTP endpoint on the canvas.
+.. Drop the desired connector in the flow.
+.. Next to the connector place a For Each scope.
+.. Inside the For Each place a Logger element.
+.. After the For Each place a Set Payload element.
+
+----
+Expected Result:
+
+Flow arrangement looks similar to this:
+----
+image::{imagesdir}/qa-guidelines/qa-guidelines-19.png[]
+
+
+* *Step 2:*
+.. On the connector, select an operation whose return type is PagingDelegate<SomeEntity>.
+.. Set parameter values such as no records are returned by the operation.
+.. Click Save.
+
+----
+Expected Result:
+
+Metadata is fetched for the selected operation.
+----
+
+* *Step 3:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then click Save.
+
+* *Step 4:* Set "Done." as the Set Payload element Value. Then Click Save.
+[source,xml]
+----
+Example of a complete flow result:
+
+<flow name="features-autopaging-certFlow1"
+doc:name="features-autopaging-certFlow1">
+    <http:inbound-endpoint exchange-pattern="request-response"
+  host="localhost" port="8081" doc:name="HTTP" path="contacts"/>
+
+    <google-contacts:authorize config-ref="Google_Contacts"
+  doc:name="Authorize"/>
+
+    <google-contacts:get-contacts config-ref="Google_Contacts" doc:name="Get contacts" updatedMax="2000-09-29T18:46:19-0700" datetimeFormat="yyyy-MM-dd'T'HH:mm:ssZ"/>
+
+     <foreach doc:name="For Each">
+       <logger message="For element #[flowVars['counter']] payload is #[message.payload]" level="INFO" doc:name="Logger"/>
+  </foreach>
+
+   <set-payload value="Done." doc:name="SetPayload"/>
+</flow>
+----
+
+* *Step 5:* Run the app and hit the flow endpoint. Check the console afterwards.
+----
+Expected Result:
+
+org.mule.routing.Foreach$CollectionMapSplitter: Splitter returns no results. If this is not expected, check your split expression.
+Logs to the console.
+----
+
+=== Auto-Paging - Abort Iteration
+Verify that after processing current element, iteration is terminated.
+====￼Preconditions
+
+* Global Configuration element has been created with valid credentials to the service.
+
+==== Steps
+
+* *Step 1:* Arrange a flow as follows:
+.. Place an HTTP endpoint on the canvas.
+.. Drop the desired connector in the flow.
+.. Next to the connector, place the Logger element.
+.. Next to the Logger put a For Each scope.
+.. Inside the For Each, place a Logger, a DataMapper, and another Logger.
+.. Following the For Each, place a Set Payload element.
+
+----
+Expected Result:
+
+Flow arrangement looks similar to this:
+----
+image::{imagesdir}/qa-guidelines/qa-guidelines-20.png[]
+
+
+* *Step 2:*
+.. On the connector select an operation whose return type is
+PagingDelegate<SomeEntity>.
+.. Open Query Builder and generate a simple
+query such as: SELECT CreatedById,CreatedDate,Description, OwnerId FROM Account LIMIT 3.
+.. Set a fetchSize value of 1 or lower than the amount the amount of records been returned.
+.. Click Save.
+
+----
+Expected Result:
+
+Metadata fetches for the selected operation.
+----
+
+* *Step 3:*  Set "### Total amount of elements retrieved is
+#[message.payload.size()]" as the first
+Logger message value. Then click Save.
+
+* *Step 4:* Select the For Each and set rootMessage as its "Root Message Variable Name". Then click Save.
+
+* *Step 5:* Set "Closing the iterator: #[flowVars['rootMessage'].getPayload ().close()]" as the message value for the first Logger within the For Each. Then click Save.
+
+* *Step 6:*  On the DataMapper element, create a mapping to a Default `Map<k,v>` object.
+----
+Expected Result:
+
+Mapping creates.
+----
+
+* *Step 7:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then click Save.
+
+* *Step 8:* Set "Done." as the Set payload element Value. Then click Save.
+
+[source,xml]
+----
+Example of a complete result flow:
+
+<flow name="features-autopaging-salesforceFlow1"
+doc:name="features-autopaging-salesforceFlow1">
+   <http:inbound-endpoint exchange-pattern="request-response"
+   host="localhost" port="8081" path="apforeach" doc:name="HTTP"/>
+
+   <sfdc:query config-ref="Salesforce" query="dsql:SELECT CreatedById,CreatedDate,Description,OwnerId FROM Account LIMIT 3"
+   doc:name="Query" fetchSize="2"/>
+
+  <logger message="### Total amount of elements retrieved is #[payload.size()]"
+  level="INFO" doc:name="Size"/>
+
+  <foreach doc:name="For Each">
+     <data-mapper:transform config-ref="account_to_map" doc:name="Account To Map"/>
+     <logger message="For element #[flowVars['counter']]  payload is
+    #[message.payload]" doc:name="Records"/>
+  </foreach>
+
+  <set-payload value="Done." doc:name="Set Payload"/>
+</flow>
+----
+
+* *Step 10:*  Run the app and hit the flow endpoint.
+* *Step 11:*  Look for the messages logged by the Records Logger on the console.
+
+----
+Expected Result:
+
+Only a message for the first record logs.
+----
+
+== Non-Query Operations
+As example, use Google Contacts connectors.
+
+=== Auto-Paging - Non-Query Operation - Auto-Paged Output Handling - DataMapper
+PagingDelegate is typed thus it's expected to work together with DataMapper.
+====￼Preconditions
+
+* Global Configuration element was already created with valid credentials to the service.
+
+==== Steps
+
+* *Step 1:* Arrange a flow as follows:
+.. Place an HTTP endpoint on the canvas.
+.. Drop the desired connector in the flow.
+.. Next to the connector, place a DataMapper element.
+
+----
+Expected Result:
+----
+image::{imagesdir}/qa-guidelines/qa-guidelines-21.png[]
+
+* *Step 2:* On the connector, select an operation whose return type is PagingDelegate<SomeEntity>. Then click Save.
+
+----
+Expected Result:
+
+Metadata fetches for the selected operation.w
+----
+
+* *Step 3:*
+Click the DataMapper element.
+----
+Expected Result:
+
+Mule automatically prescribes the output of the operation as List<SomeEntity>. The type is in the connector code, for example: `List<GoogleContactEntry>`
+for an operation returns: `PagingDelegate<GoogleContactEntry>`
+----
+
+* *Step 4:* In the Output Panel select:
+.. Type: Map<k,v>
+.. Click User Defined
+.. Click Generate default
+.. Click Create mapping
+
+----
+Expected Result:
+
+Mapping creates.
+----
+
+=== Auto-Paging - Non-Query Operation - Auto-Paged Output Handling - Foreach Combined with DataMapper
+
+==== Preconditions
+
+* Global Configuration element was already created with valid credentials to the service.
+
+==== Steps
+
+* *Step 1:* Arrange a flow as follows:
+.. Place an HTTP endpoint on the canvas.
+.. Drop the desired connector in the flow.
+.. Next to the connector, place a For Each scope.
+.. Inside the For Each, place a DataMapper element.
+
+----
+Expected Result:
+----
+
+image::{imagesdir}/qa-guidelines/qa-guidelines-22.png[]
+
+* *Step 2:* On the connector, select an operation whose return type is PagingDelegate<SomeEntity>. Then click Save.
+----
+Expected Result:
+
+Metadata fetches for the selected operation.w
+----
+
+* *Step 3:*
+Click the DataMapper element.
+----
+Expected Result:
+
+Mule automatically prescribes the output of the operation as `SomeEntity`.
+The type is in the connector code, for example: `GoogleContactEntry` for an operation returns: `PagingDelegate<GoogleContactEntry>`
+----
+
+* *Step 4:* In the Output Panel select:
+.. Type: Map<k,v>
+.. Click User Defined
+.. Click Generate default
+.. Click Create mapping
+
+----
+Expected Result:
+
+Mapping creates.
+----
+
+=== Auto-Paging - Non-Query Operation - Pagination is Applied
+
+==== Preconditions
+
+* Global Configuration element was already created with valid credentials to the service.
+
+==== Steps
+
+* *Step 1:* Arrange a flow as follows::
+.. Place an HTTP endpoint on the canvas.
+.. Drop the desired connector in the flow.
+.. Next to the connector place Logger element.
+.. Next to the Logger put a For each element.
+.. Inside the For each place a DataMapper and then a Logger next to it.
+.. After the For Each place a Set payload element.
+
+----
+Expected Result
+
+Flow arrangement looks similar to this:
+----
+image::{imagesdir}/qa-guidelines/qa-guidelines-23.png[]
+
+
+* *Step 2:*
+.. On the connector, select an operation whose return type is PagingDelegate<SomeEntity>.
+.. Set a fetchSize value of 1 or lower than the amount of records that's going to be retrieved.
+.. Click Save.
+
+----
+Expected Result:
+
+Metadata fetches for the selected operation.
+----
+
+* *Step 3:* Set "### Total amount of elements retrieved is
+#[message.payload.size()]" as the
+Logger message value. Then click Save.
+
+* *Step 4:* On the DataMapper element, create a mapping to a Default Map<k,v> object.
+Mapping creates.
+
+* *Step 5:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then click Save.
+
+* *Step 6:* Set "Done." as the Set Payload element Value. Then click Save.
+
+[source,xml]
+----
+Example of a complete flow:
+
+<flow name="features-autopaging-datamapper-complianceFlow3"
+doc:name="features-autopaging-datamapper-compl
+ianceFlow3">
+  <http:inbound-endpoint exchange-pattern="request-response"
+  host="localhost" port="8081" doc:name="HTTP" path="foreachdm"/>
+
+    <google-contacts:authorize config-ref="Google_Contacts"
+    doc:name="Authorize"/>
+
+    <google-contacts:get-groups config-ref="Google_Contacts"
+    doc:name="Get groups"/>
+
+    <logger message="### Total amount of elements retrieved is
+  #[message.payload.size()]" level="INFO" doc:name="Size"/>
+
+    <foreach doc:name="For Each">
+      <data-mapper:transform doc:name="DataMapper"/>
+      <logger message="For element #[flowVars['counter']] payload is
+    #[message.payload]" doc:name="Records"/>
+  </foreach>
+
+    <set-payload doc:name="Set Payload" value="Done."/>
+</flow>
+----
+
+* *Step 7:* Run the app and hit the flow endpoint.
+
+* *Step 8:* Look for the messages logged by the Records Logger on the console.
+----
+Expected Result:
+
+For each record a "For element ... " message was logged displaying its payload.
+----
+
+* *Step 9:* Look for the message of the Size Logger on the console.
+----
+Expected Result:
+
+Amount of elements retrieved equals number of records returned.
+
+Note: You can override the getTotalResults() method in the connector in case of service constraints.For this case, a value of ­1 is returns if the size can't be provided.
+----
+
+=== Auto-Paging - Non-Query Operation - Pagination is Not Applied
+==== Preconditions
+
+* Global Configuration element was already created with valid credentials to the service.
+
+==== Steps
+
+* *Step 1:* Arrange a flow as follows::
+.. Place an HTTP endpoint on the canvas.
+.. Drop the desired connector in the flow.
+.. Next to the connector, place a Logger element.
+.. Next to the Logger, place a For Each scope.
+.. Inside the For Each, place a DataMapper and then a Logger next to it.
+.. After the For Each, place a Set Payload element.
+----
+Expected Result:
+
+Flow arrangement looks similar to this:
+----
+
+image::{imagesdir}/qa-guidelines/qa-guidelines-24.png[]
+
+* *Step 2:*
+.. On the connector, select an operation whose return type is PagingDelegate<SomeEntity>.
+.. Set a fetchSize higher than amount of existing records.
+.. Click Save.
+----
+Expected Result:
+
+Metadata fetches for the selected operation.
+----
+* *Step 3:*  Set "### Total amount of elements retrieved is
+#[message.payload.size()]" as the
+Logger message value. Then click Save.
+
+* *Step 4:* On the DataMapper element, create a mapping to a Default Map<k,v> object.
+----
+Expected Result:
+
+Mapping is created.
+----
+
+* *Step 5:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then Click Save.
+
+* *Step 6:*  Set "Done." as the Set Payload element Value. Then Click Save.
+
+[source,xml]
+----
+Example of a complete flow:
+
+<flow name="features-autopaging-datamapper-complianc
+eFlow3"
+doc:name="features-autopaging-datamapper-compl
+ianceFlow3">
+    <http:inbound-endpoint
+  exchange-pattern="request-response"
+  host="localhost" port="8081" doc:name="HTTP"
+  path="foreachdm"/>
+
+    <google-contacts:authorize
+  config-ref="Google_Contacts"
+  doc:name="Authorize"/>
+
+    <google-contacts:get-groups
+  config-ref="Google_Contacts" doc:name="Get
+  groups"/>
+
+    <logger message="### Total amount of
+  elements retrieved is
+  #[message.payload.size()]" level="INFO"
+  doc:name="Size"/>
+
+  <foreach doc:name="For Each">
+        <data-mapper:transform
+      doc:name="DataMapper"/>
+        <logger message="For element
+      #[flowVars['counter']]  payload is
+      #[message.payload]" doc:name="Records"/>
+  </foreach>
+    <set-payload doc:name="Set Payload" value="Done."/>
+</flow>
+----
+
+* *Step 7:* Look for the messages logged by the Records Logger on the console.
+----
+Expected Result:
+
+For each record a "For element ... " message was logged displaying its payload.
+----
+
+* *Step 8:*  Look for the message of the Size Logger on the console.
+----
+Amount of elements retrieved equals number of records returned.
+
+Note: You can override the getTotalResults() method in the connector in case of service constraints.For this case, a value of ­1 is returns if size can't be provided.
+----
+
+== Auto-Paging DSQL Interoperability
+An example that uses the Salesforce/NetSuite connectors.
+
+=== DataSense Query Language
+
+=== Auto-Paging - DSQL - Auto-Paged Output Handling - DataMapper
+
+==== Preconditions
+
+* Global Configuration Element was already created with valid credentials to the service.
+
+==== Steps
+
+* *Step 1:* Arrange a flow as follows:
+.. Place an HTTP endpoint on the canvas.
+.. Drop the desired connector in the flow.
+.. Next to the connector, place a DataMapper element.
+
+----
+Expected Result:
+----
+
+image::{imagesdir}/qa-guidelines/qa-guidelines-25.png[]
+
+* *Step 2:*
+.. On the connector select an operation whose return type is PagingDelegate<SomeEntity> and has one of its parameters annotated with @Query.
+.. Select DataSense Query Language as Language.
+.. Using Object Builder create a simple query involving a couple of fields, for example: SELECT AccountSource,BillingCity,BillingLon gitude,CreatedDate FROM Account.
+.. Click Save.
+
+----
+Expected Result:
+
+Metadata is fetched for the selected operation.
+----
+
+* *Step 3:* Click on the DataMapper element.
+----
+Expected Result:
+
+Mule automatically prescribes the output of the operation as List<SomeEntity>. The type is in the connector code, for example: PagingDelegate<Map<String, Object>>
+for an operation returns: PagingDelegate<Map<String, Object>>
+----
+
+* *Step 4:* In the Output Pane select:
+.. Type: Map<k,v>
+.. Click User Defined
+.. Click Generate default
+.. Click Create mapping
+
+----
+Expected Result:
+
+Mapping involving only the fields been queried is created.
+----
+
+image::{imagesdir}/qa-guidelines/qa-guidelines-26.png[]
+
+=== Auto-Paging - DSQL - Auto-Paged Output Handling - Foreach Combined with DataMapper
+
+==== Preconditions
+
+* Global Configuration element was already created with valid credentials to the service.
+
+==== Steps
+
+* *Step 1:* Arrange a flow as follows:
+.. Place an HTTP endpoint on the canvas.
+.. Drop the desired connector in the flow.
+.. Next to the connector, place a For Each scope.
+.. Inside the For each place a DataMapper element.
+
+----
+Expected Result:
+----
+image::{imagesdir}/qa-guidelines/qa-guidelines-27.png[]
+
+
+* *Step 2:*
+.. On the connector select an operation whose return type is
+PagingDelegate<SomeEntity> and has one of its parameters annotated with @Query.
+.. Select DataSense Query Language as Language.
+.. Using Object Builder create a simple query involving a couple of fields, for example: SELECT AccountSource,BillingCity,BillingLon gitude,CreatedDate FROM Account
+.. Click Save.
+----
+Expected Result:
+
+Metadata fetches for the selected operation.
+----
+
+* *Step 3:* Click the DataMapper element.
+----
+Expected Result:
+
+Mule automatically prescribes the output of the operation as List<SomeEntity>. The type is in the connector code, for example: PagingDelegate<Map<String, Object>>
+for an operation returns: PagingDelegate<Map<String, Object>>
+----
+
+* *Step 4:* In the Output Pane select:
+.. Type: Map<k,v>
+.. Click User Defined
+.. Click Generate default
+.. Click Create mapping
+
+----
+Expected Result:
+
+Mapping involving only the fields being queried is created.
+----
+image::{imagesdir}/qa-guidelines/qa-guidelines-28.png[]
+
+=== Auto-Paging - DSQL - Pagination is Applied
+
+==== Preconditions
+
+* Global Configuration element was already created with valid credentials to the service.
+
+==== Steps
+
+* *Step 1:* Arrange a flow as follows:
+.. Place an HTTP endpoint on the canvas.
+.. Drop the desired connector in the flow.
+.. Next to the connector place Logger element.
+.. Next to the Logger put a For Each scope.
+.. Inside the For Each place a DataMapper and then a Logger next to it.
+.. After the For Each, place a Set Payload element.
+----
+Expected Result:
+
+Flow arrangement looks similar to this:
+----
+
+image::{imagesdir}/qa-guidelines/qa-guidelines-29.png[]
+
+* *Step 2:*
+.. On the connector, select an operation whose return type is PagingDelegate<SomeEntity>.
+.. Open Query Builder and generate a simple query such as: SELECT. CreatedById,CreatedDate,Descripti on,OwnerId FROM Account LIMIT 3
+.. Set a fetchSize value of 1 or lower than the amount of records being returned.
+.. Click Save.
+----
+Expected Result:
+￼
+Metadata fetches for the selected operation.
+----
+
+* *Step 3:*
+.. Set "### Total amount of elements retrieved is
+#[message.payload.size()]" as the
+Logger message value. Then Click Save.
+
+* *Step 4:* On the DataMapper element creating a mapping to a Default Map<k,v> object.
+----
+Expected Result:
+
+Mapping creates.
+----
+
+* *Step 5:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then Click Save.
+
+* *Step 6:* Set "Done." as the Set Payload element Value. Then Click Save.
+[source,xml]
+----
+Example of a complete flow:
+
+<flow name="features-autopaging-salesforceFlow1"
+doc:name="features-autopaging-salesforceFlow1">
+    <http:inbound-endpoint
+  exchange-pattern="request-response"
+  host="localhost" port="8081" path="apforeach"
+  doc:name="HTTP"/>
+
+    <sfdc:query config-ref="Salesforce"
+  query="dsql:SELECT
+  CreatedById,CreatedDate,Description,OwnerId
+  FROM Account LIMIT 3" doc:name="Query"
+  fetchSize="2"/>
+
+    <logger message="### Total amount of
+  elements retrieved is
+  #[message.payload.size()]" level="INFO"
+  doc:name="Size"/>
+
+    <foreach doc:name="For Each">
+        <data-mapper:transform
+    config-ref="account_to_map" doc:name="Account
+    To Map"/>
+
+        <logger message="For element
+    #[flowVars['counter']]  payload is
+    #[message.payload]" doc:name="Records"/>
+    </foreach>
+
+    <set-payload value="Done." doc:name="Set Payload"/>
+</flow>
+----
+
+* *Step 7:* Run the app and hit the flow endpoint.
+* *Step 8:* Look for the messages logged by the Records Logger on the console.
+----
+Expected Result:
+
+For each record a "For element ... " message was logged displaying its payload.
+----
+
+* *Step 9:*  Look for the message of the Size Logger on the console.
+----
+Expected Result:
+
+Amount of elements retrieved equals number of records returned.
+----
+
+=== Auto-Paging - DSQL - Pagination is Not Applied
+
+==== Preconditions
+
+* Global Configuration element was already created with valid credentials to the service.
+
+==== Steps
+
+* *Step 1:* Arrange a flow as follows:
+.. Place an HTTP endpoint on the canvas.
+.. Drop the desired connector in the flow.
+.. Next to the connector, place Logger element.
+.. Next to the Logger, place a For Each scope.
+.. Inside the For Each, place a DataMapper
+and then a Logger next to it.
+.. After the For Each, place a Set Payload
+element.
+----
+Expected Result:
+
+Flow arrangement looks similar to this:
+----
+image::{imagesdir}/qa-guidelines/qa-guidelines-30.png[]
+
+* *Step 2:*
+.. On the connector, select an operation whose return type is
+PagingDelegate<SomeEntity>.
+.. Open Query Builder and generate a simple
+query such as: SELECT CreatedById,CreatedDate,Description, OwnerId FROM Account LIMIT 1
+.. Set a fetchSize value higher than the amount of records being returned.
+.. Click Save.
+----
+Expected Result:
+
+Metadata is fetched for the selected operation.
+----
+
+* *Step 3:* Set "### Total amount of elements retrieved is
+#[message.payload.size()]" as the
+Logger message value. Then Click Save.
+
+* *Step 4:* On the DataMapper element create a mapping to a Default Map<k,v> object.
+----
+Expected Result:
+
+Mapping creates.
+----
+
+* *Step 5:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then Click Save.
+
+* *Step 6:* Set "Done." as the Set Payload element Value. Then Click Save.
+[source,xml]
+----
+Example of a complete flow:
+
+<flow name="features-autopaging-salesforceFlow1"
+doc:name="features-autopaging-salesforceFlow1">
+    <http:inbound-endpoint
+  exchange-pattern="request-response"
+  host="localhost" port="8081" path="apforeach"
+  doc:name="HTTP"/>
+
+     <sfdc:query config-ref="Salesforce"
+  query="dsql:SELECT
+  CreatedById,CreatedDate,Description,OwnerId
+  FROM Account LIMIT 3" doc:name="Query"
+  fetchSize="2"/>
+
+     <logger message="### Total amount of
+  elements retrieved is
+  #[message.payload.size()]" level="INFO"
+  doc:name="Size"/>
+
+   <foreach doc:name="For Each">
+       <data-mapper:transform
+    config-ref="account_to_map" doc:name="Account To Map"/>
+
+      <logger message="For element
+    #[flowVars['counter']]  payload is
+    #[message.payload]" doc:name="Records"/>
+  </foreach>
+
+  <set-payload value="Done." doc:name="Set
+  Payload"/>
+</flow>
+----
+
+* *Step 7:* Run the app and hit the flow endpoint.
+* *Step 8:* Look for the messages logged by the Records Logger on the console.
+----
+Expected Result:
+
+For each record a "For element ... " message was logged displaying its payload.
+----
+
+* *Step 9:* Look for the message of the Size Logger on the console.
+----
+Expected Result:
+
+Amount of elements retrieved equals number of records returned.
+Note: You can override the getTotalResults() method in the connector in case of service constraints.
+----
+
+=== Native Query Language
+
+=== Auto-Paging - NQL - Auto-Paged Output Handling - DataMapper
+
+==== Preconditions
+
+* Global Configuration element was already created with valid credentials to the service.
+
+* *Step 1:* Arrange a flow as follows:
+.. Place an HTTP endpoint on the canvas.
+.. Drop the desired connector in the flow.
+.. Next to the connector, place a DataMapper element.
+
+----
+Expected Result:
+----
+
+image::{imagesdir}/qa-guidelines/qa-guidelines-31.png[]
+
+* *Step 2:*
+.. On the connector select an operation whose return type is PagingDelegate<SomeEntity> and has one of its parameters annotated with @Query.
+.. Select Native Query Language as Language.
+.. Enter a simple query as Query Text: SELECT
+   AccountSource,BillingCity,BillingLon
+   gitude,CreatedDate FROM Account
+.. As Return type select the same Object as stated in the FROM field of the query.
+.. Click Save.
+----
+Expected Result:
+
+Metadata is fetched for the selected operation.
+----
+
+* *Step 3:*
+Click the DataMapper element.
+----
+Expected Result:
+
+Mule automatically prescribes the output of the operation as List<SomeEntity>. The type is in the connector code, for example: PagingDelegate<Map<String, Object>> for an operation returns: PagingDelegate<Map<String, Object>>
+----
+
+* *Step 4:* In the Output Pane select:
+.. Type: Map<k,v>
+.. Click User Defined
+.. Click Generate default
+.. Click Create mapping
+----
+Expected Result:
+
+Mapping involving only the fields been queried is created.
+----
+image::{imagesdir}/qa-guidelines/qa-guidelines-32.png[]
+
+=== Auto-Paging - NQL - Auto-Paged Output Handling - Foreach Combined with DataMapper
+
+==== Preconditions
+
+* Global Configuration element was already created with valid credentials to the service.
+
+* *Step 1:* Arrange a flow as follows:
+.. Place an HTTP endpoint on the canvas.
+.. Drop the desired connector in the flow.
+.. Next to the connector, place a For Each element.
+.. Inside the For Each place a DataMapper element.
+
+* *Step 2:* On the connector select an operation whose return type is PagingDelegate<SomeEntity> and has one of its parameters annotated with @Query.
+.. Select Native Query Language as Language.
+.. Enter a simple query as Query Text: SELECT
+       AccountSource,BillingCity,BillingLon
+       gitude,CreatedDate FROM Account
+.. As Return type, select the same Object as stated in the FROM field of the query.
+.. Click Save.
+----
+Expected Result:
+
+Metadata is fetched for the selected operation.
+----
+
+* *Step 3:*  Click the DataMapper element.
+----
+Expected Result:
+
+Mule automatically prescribes the output of the operation as List<SomeEntity>. The type is in the connector code, for example: PagingDelegate<Map<String, Object>>
+for an operation returns: PagingDelegate<Map<String, Object>>
+----
+* *Step 4:*  In the Output Pane select:
+.. Type: Map<k,v>
+.. Click User Defined
+.. Click Generate default
+.. Click Create mapping
+----
+Expected Result:
+
+Mapping involving only the fields been queried is created.
+----
+image::{imagesdir}/qa-guidelines/qa-guidelines-33.png[]
+
+=== Auto-Paging - NQL - Pagination is Applied
+
+==== Preconditions
+
+* Global Configuration element was already created with valid credentials to the service.
+
+* *Step 1:*  Arrange a flow as follows:
+.. Place an HTTP endpoint on the canvas.
+.. Drop the desired connector in the flow.
+.. Next to the connector, place a Logger element.
+.. Next to the Logger, place a For Each element.
+.. Inside the For Each, place a DataMapper and then a Logger next to it.
+.. After the For Each, place a Set Payload element.
+￼
+----
+Flow arrangement looks similar to this:
+----
+image::{imagesdir}/qa-guidelines/qa-guidelines-34.png[]
+
+* *Step 2:*
+.. On the connector select an operation whose return type is PagingDelegate<SomeEntity>.
+.. Select Native Query Language as Language.
+.. Enter a simple query as Query Text: SELECT
+   AccountSource,BillingCity,BillingLon
+   gitude,CreatedDate FROM Account
+.. As Return type select the same Object as stated in the FROM field of the query.
+.. Set a fetchSize value of 1 or lower than the amount the amount of records been returned.
+.. Click Save.
+----
+Expected Result:
+
+Metadata is fetched for the selected operation.
+----
+
+* *Step 3:* Set "### Total amount of elements retrieved is
+#[message.payload.size()]" as the
+Logger message value. Then Click Save.
+
+* *Step 4:*  On the DataMapper element creating a mapping to a Default Map<k,v> object.
+----
+Expected Result:
+
+Mapping is created.
+----
+
+* *Step 5:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then Click Save.
+
+* *Step 6:* Set "Done." as the Set Payload element Value. Then Click Save.
+
+* *Step 7:* Run the app and hit the flow endpoint.
+
+* *Step 8:*   Look for the messages logged by the Records Logger on the console.
+----
+Expected Result:
+
+For each record a "For element ... " message was logged displaying its payload.
+----
+
+* *Step 9:* Look for the message of the Size Logger on the console.
+----
+Expected Result:
+
+Amount of elements retrieved equals number of records returned.
+----
+
+=== Auto-Paging - NQL - Pagination is Not Applied
+
+==== Preconditions
+
+* Global Configuration element was already created with valid credentials to the service.
+
+* *Step 1:* Arrange a flow as follows:
+.. Place an HTTP endpoint on the canvas.
+.. Drop the desired connector in the flow.
+.. Next to the connector, place a Logger element.
+.. Next to the Logger, place a For Each element.
+.. Inside the For Each, place a DataMapper and then a Logger next to it.
+.. After the For Each, place a Set Payload element.
+----
+Flow arrangement looks similar to this:
+
+----
+image::{imagesdir}/qa-guidelines/qa-guidelines-35.png[]
+
+
+* *Step 2:*
+.. On the connector, select an operation whose return type is PagingDelegate<SomeEntity>.
+Metadata fetches for the selected operation.
+.. Open Query Builder and generate a simple query such as: SELECT CreatedById,CreatedDate,Descripti on,OwnerId FROM Account LIMIT 1
+.. Set a fetchSize value higher than the amount of records been returned.
+.. Click Save.
+
+
+* *Step 3:* Set "### Amount of elements retrieved is #[message.payload.size()]" as the
+Logger message value. Then Click Save.
+
+
+* *Step 4:*  On the DataMapper element creating a mapping to a Default Map<k,v> object.
+
+----
+Expected Result:
+
+Mapping creates.
+----
+
+
+* *Step 5:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then Click Save.
+
+* *Step 6:* Set "Done." as the Set Payload element Value. Then Click Save.
+
+[source,xml]
+----
+Example of a complete flow:
+
+<flow name="features-autopaging-salesforceFlow3"
+doc:name="features-autopaging-salesforceFlow3">
+
+    <http:inbound-endpoint
+  exchange-pattern="request-response"
+  host="localhost" port="8081" doc:name="HTTP"/>
+
+    <sfdc:query config-ref="Salesforce"
+  query="SELECT
+  AccountSource,BillingCity,BillingLongitude,CratedDate
+  FROM Account" doc:name="Salesforce"/>
+
+  <logger message="### Total amount of elements retrieved is
+  #[message.payload.size()]" level="INFO"
+  doc:name="Size"/>
+
+    <foreach doc:name="For Each">
+      <data-mapper:transform
+    config-ref="account_to_map_1"
+    doc:name="Account To Map"/>
+
+      <logger message="For element
+    #[flowVars['counter']]  payload is
+    #[message.payload]" doc:name="Records"/>
+  </foreach>
+  <set-payload value="Done." doc:name="Set Payload"/>
+</flow>
+----
+
+* *Step 7:* Run the app and hit the flow endpoint.
+
+
+* *Step 8:* Look for the messages logged by the Records Logger on the console.
+----
+Expected Result:
+
+For each record a "For element ... " message was logged displaying its payload.
+----
+
+
+* *Step 9:* Look for the message of the Size Logger on the console.
+----
+Expected Result:
+
+Amount of elements retrieved equals number of records returned.
+Note: You can override the getTotalResults() method in the connector in case of service constraints.
+----

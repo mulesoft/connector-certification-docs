@@ -21,18 +21,18 @@ You need a server running Oracle JRE 6 or higher. (OpenJRE or other distribution
 
 For the first run of your project, go to the project’s root folder and run:
 ----
-mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test -Dmaven.test.failure.ignore=true 
-	-Dtest=RegressionTestSuite -D<connector>_CREDENTIALS=automation-credentials.properties 
-&& mvn install && mvn sonar:sonar 
+mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test -Dmaven.test.failure.ignore=true
+	-Dtest=RegressionTestSuite -D<connector>_CREDENTIALS=automation-credentials.properties
+&& mvn install && mvn sonar:sonar
 
-mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install 
-	-Dmaven.test.failure.ignore=true 
+mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install
+	-Dmaven.test.failure.ignore=true
 && mvn sonar:sonar
 ----
 
 This creates the project in your sonar installation, allowing you to use the Eclipse SonarQube plugin from inside your Anypoint Studio. Using this plugin is the recommended way, but is always possible to run the inspections manually with * mvn sonar:sonar *.
 
-If you are experiencing false positive issues, you can disable the inspection using //NOSONAR comment at the end of a line which has the issue on a case-by-case basis. Every use of //NOSONAR is recorded by SonarQube as an Info issue so you can track its usage in your connector’s code. 
+If you are experiencing false positive issues, you can disable the inspection using //NOSONAR comment at the end of a line which has the issue on a case-by-case basis. Every use of //NOSONAR is recorded by SonarQube as an Info issue so you can track its usage in your connector’s code.
 
 NOTE: The use of //NOSONAR comments should only be used when there is full certainty that this inspection is a false positive.
 
@@ -51,7 +51,7 @@ image::{imagesdir}/sonar-2.png[]
 image::{imagesdir}/sonar-3.png[]
 
 
-. In the Work with text box, fill in the update site URL: 
+. In the Work with text box, fill in the update site URL:
 SonarQube Integration for Eclipse (update-site) - http://dist.sonar-ide.codehaus.org/eclipse/
 
 image::{imagesdir}/sonar-4.png[]
@@ -69,7 +69,7 @@ Click the *Test connection* button to ensure that your settings are correct.
 
 You should perform this full analysis from a machine that is on the same network as the SonarQube database, otherwise it might take very long to complete.
 
-When your project finishes analyzing, in Studio right-click your connector project and click *Configure > Associate with SonarQube*. Because your project was analyzed with Maven, the association detects automatically. 
+When your project finishes analyzing, in Studio right-click your connector project and click *Configure > Associate with SonarQube*. Because your project was analyzed with Maven, the association detects automatically.
 
 image::{imagesdir}/sonar-6.png[]
 
@@ -97,7 +97,7 @@ SonarQube also lets you manage Code Coverage reports of your connector.
 Generate a code coverage report in SonarQube with this command:
 
 ----
-mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install 
+mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install
 	-Dmaven.test.failure.ignore=true && mvn sonar:sonar
 ----
 
@@ -105,55 +105,42 @@ After this command finishes executing, Sonar displays a report with the name of 
 
 image::{imagesdir}/coverage-guidelines-1.png[]
 
-Delving further into the project details shows you a code coverage percentage on a per-class basis. 
+Delving further into the project details shows you a code coverage percentage on a per-class basis.
 
 image::{imagesdir}/coverage-guidelines-2.png[]
 
-Delving even further, it shows you the exact lines that are covered by tests and those that are not. 
+Delving even further, it shows you the exact lines that are covered by tests and those that are not.
 
 image::{imagesdir}/coverage-guidelines-3.png[]
 
-Every connector method must have unit or automation tests. A connector fails certification if it does not have all its message processors, message sources, and custom transformers covered by unit tests or automation tests. Also, all the utility classes that are part of a connector must have a high level of code coverage. 
+Every connector method must have unit or automation tests. A connector fails certification if it does not have all its message processors, message sources, and custom transformers covered by unit tests or automation tests. Also, all the utility classes that are part of a connector must have a high level of code coverage.
 
 === Code coverage must be no less than 70%.
 
-Testing your processors gives you a good indication of the quality of your connector. When you build automation tests, you are using your own connector to connect to an API. If you find it hard to test all cases of a message processor, then consider separating your message processors into smaller ones, if possible. 
+Testing your processors gives you a good indication of the quality of your connector. When you build automation tests, you are using your own connector to connect to an API. If you find it hard to test all cases of a message processor, then consider separating your message processors into smaller ones, if possible.
 
 If your connector bases its processing around metadata, test every possible metadata entry that the API supports. As an example, the Salesforce connector supports multiple SFDC objects (such as Account, Contact, Lead etc.), but it only contains one “create” operation. Create a unit test for every metadata object to ensure proper compatibility with the message processor.
-
-== Studio Plugin Code Coverage Report
-
-The Studio DevKit plugin rapidly generates a coverage report that shows you which operations are covered by functional tests and those that are not. 
-
-To generate a coverage report, run every functional test in your connector. Right-click your project name in Package Explorer and click *Anypoint Connector > Test Coverage Report*. 
-
-image::{imagesdir}/coverage-guidelines-4.png[]
-
-A Maven build process generates an HTML page that lists all the operations your tests cover and those without coverage:
-
-image::{imagesdir}/coverage-guidelines-5.png[]
-
 
 === Ignoring Classes from Testing
 
 You should *NEVER* prevent classes from being tested unless there is good reason. If you feel that there is a need to ignore classes from inspection, contact either Mariano Quintela, or Paulo Gustavo Veiga. Unless explicitly stated in the code comments or in some form of internal documentation, assume that all code must be inspected. Any ignored classes or packages without proper explanation should be inspected and any blocker or critical issues that arise should be resolved, *and tested* by the developer before the connector is released.
 
 There are a number of ways of ignoring classes that you do not want inspected by SonarQube:
-	
-* Method level ignore:  
+
+* Method level ignore:
 ** Methods can be ignored by adding a //NOSONAR comment next to the method declaration. Example:
 
 [source,java]
-----	
+----
 public void someMethodToNotInspect() { //NOSONAR
 ----
 * Class level ignore
-** It may be the case that whole classes need to be ignored because they’re not in the control of the developer. As an example, the SFDC Connector contains classes from the SFDC JAR. These had to be modified slightly to include no-args constructors for DataSense reasons. As a result, these classes have to be ignored since the code quality is not in control of the SFDC Connector developer. 
+** It may be the case that whole classes need to be ignored because they’re not in the control of the developer. As an example, the SFDC Connector contains classes from the SFDC JAR. These had to be modified slightly to include no-args constructors for DataSense reasons. As a result, these classes have to be ignored since the code quality is not in control of the SFDC Connector developer.
 
 ** Classes can be completely ignored by adding // NOSONAR next to the class level definition. Example:
 
 [source,java]
-----	
+----
 public class MyClassThatShouldntBeInspected { // NOSONAR
 ----
 
@@ -161,22 +148,19 @@ public class MyClassThatShouldntBeInspected { // NOSONAR
 ** Whole packages can be ignored by adding the “sonar.exclusions” property inside the pom.xml file. Example:
 
 [source,xml]
-----	
+----
 <properties>
 	<sonar.exclusions>src/main/java/com/sforce/**/*</sonar.exclusions>
 </properties>
 ----
 
-This ignores any file under the com.sforce package under src/main/java. 
+This ignores any file under the com.sforce package under src/main/java.
 
 
 == Code Quality Review Guideline
 
-This is a hard area to tackle because typically, the person running certification is different from the one implementing the connector and writing tests for it. As a result, you might inspect the code and be completely lost. 
+This is a hard area to tackle because typically, the person running certification is different from the one implementing the connector and writing tests for it. As a result, you might inspect the code and be completely lost.
 
 If code documentation is not sufficient, point this out to the developer and PM.
 
 As you try to understand the code, you might run into certain code pieces that you’re not sure why they’re there. As an example, PeopleSoft contained synchronous code and some time was spent by the developer understanding why they were there. It turns out that they were not needed, and were causing a degree of locking when working with concurrent requests. If you think that there are code blocks that feel out of place, mention it to the developer or PM.
-
-
-
