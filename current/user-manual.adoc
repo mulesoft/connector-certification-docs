@@ -12,8 +12,9 @@
 
 *version 0.9*
 
-[intro]
+// [intro]
 = Introduction
+---
 
 MuleSoft has expanded the Anypoint™ Connector offering to enable third-party developers and partners to develop Anypoint Connectors.
 All connectors enrolled in the MuleSoft Partner Program must go through a mandatory periodic Certification Process. The Certification Process has been developed to assess the quality of connectors, to ensure that connectors published on the MuleSoft Web page follow industry best practices for development, and to promote trust.
@@ -34,41 +35,48 @@ In the following sections, each one of the topics to be completed as part of the
 
 include::docs/certification-process-introduction.adoc[]
 
-[devGuidelines]
+// [devGuidelines]
 = Coding Standards and Best Practices
+---
 
 This section is about best development practices, these are a set of rules that the connector development community has learned over time which can help improve the quality of your connector.
 
 include::docs/developement-best-practices.adoc[]
 
-[functionalQAGuidelines]
+// [functionalQAGuidelines]
 = Automated Functional Testing
+---
 
 include::docs/functional-qa-guidelines.adoc[]
 
-[functional-test-plugin]
+// [functional-test-plugin]
 = Studio Functional Test Plugin
+---
 
 include::docs/functional-test-plugin.adoc[]
 
-[interoperability-test-plugin]
+// [interoperability-test-plugin]
 = Studio Interoperability Test Plugin
+---
 
 include::docs/studio-interopetability-test-plugin.adoc[]
 
-[sonar]
+// [sonar]
 = Static Code Analysis with SonarQube
+---
 
 include::docs/sonarqube.adoc[]
 
-[studio-interopetability-QA-guidelines]
+// [studio-interopetability-QA-guidelines]
 = Studio Interoperability QA
+---
 
 include::docs/studio-interopetability-QA-guidelines.adoc[]
 include::docs/studio-interopetability-QA-guidelines-2.adoc[]
 
-[templates]
+// [templates]
 = Templates
+---
 == Anypoint Connectors Documentation Template
 
 https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/documentationTemplate.adoc[Documentation Template]

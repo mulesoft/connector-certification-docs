@@ -7127,6 +7127,28 @@ table > tbody > tr.reset-border > td {
 .mulesoft-datepicker i.glyphicon.glyphicon-chevron-right:before {
   content: "\f102";
 }
+h1 {
+  font-size: 40px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  color: #006892;
+}
+h2 {
+  font-size: 30px;
+  color: #414042;
+}
+h3 {
+  font-size: 25px;
+  color: #646569;
+}
+h4 {
+  font-size: 20px;
+  color: #646569;
+}
+h5 {
+  font-size: 16px;
+  color: #97999b;
+}
 img {
   display: block;
   margin-left: 50px;
@@ -7178,6 +7200,14 @@ img {
   color: #00a3e0;
   background-color: transparent;
   text-decoration: none;
+}
+#toc > ul > li:before {
+  content: "● ";
+  color: #00a3e0;
+  font-weight: bold;
+}
+#toc > ul > li > a {
+  font-weight: bold;
 }
 #toc ul {
   padding-left: 20px;
@@ -7326,6 +7356,14 @@ pre {
   src: url("fonts/muleicons.eot?#iefix") format("embedded-opentype"), url("fonts/muleicons.woff") format("woff"), url("fonts/muleicons.ttf") format("truetype"), url("fonts/muleicons.svg?#muleicons") format("svg");
   font-weight: normal;
   font-style: normal;
+}
+#toctitle {
+  color: #e0e0e0;
+  font-family: Ubuntu;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: center;
+  padding-bottom: 10px;
 }
 #preamble {
   text-align: right;
