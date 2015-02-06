@@ -61,8 +61,9 @@ include::docs/functional-test-plugin.adoc[]
 
 include::docs/studio-interopetability-test-plugin.adoc[]
 
+
 // [sonar]
-= Static Code Analysis with SonarQube
+= Static Code Analysis and Code Coverage
 ---
 
 include::docs/sonarqube.adoc[]
