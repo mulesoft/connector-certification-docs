@@ -21,8 +21,9 @@ More details about this could be found in the section http://mulesoft.github.io/
 The following section describes set of conventions and best practices to follow at the time to define your connector Maven project structure.
 
 === Best Practices
+Despite a connector's code could be 100% sure, and it works perfectly fine in an isolated environment, every connector we build must work in a Mule environment.
 
-These are mandatory practices to be honored:
+This means that a some constraints could apply, here are the key ones:
 
 * Follow Maven default name conventions http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html
 * Do not overwrite org.mule.tools.devkit:mule-devkit-parent properties.
@@ -30,6 +31,91 @@ These are mandatory practices to be honored:
 
 // == Multimodule Layout
 // @Todo: Alejandro: could you please complete this section ?
+
+=== *Avoid caching*
+Connectors should not hold state, unless is strictly necessary. Several APIs are actually hosted in cloud environments, and therefore caching states ends up in having untrusted data in the connector.
+There are a few cases where the connector might need to save some data of the current API while working on it, which leads into caching.
+
+For those scenarios where *the connector needs caching no matter what, the following code should be used*:
+
+[source,java]
+----
+// 1) the connector ask for the manager of the Object Store
+@Inject
+protected ObjectStoreManager objectStoreManager;
+----
+And then use the manager to get/create a custom Object Store as follow:
+[source,java]
+----
+// 2) the connector ask mule for the Object Store represented by "some ID"
+ObjectStore<? extends Serializable> os = objectStoreManager.getObjectStore("some ID");
+// 3) then it uses it
+os.store("key", "value");
+----
+
+Other way to achieve caching could be through temporal files, but it might depend on the use case.
+
+=== *Avoid spawning threads*
+Same as caching, spawning threads is not recommended in a connector as a common API lives in the cloud. This means that a connector won't improve its throughput with more threads, because every communication with the API means more HTTP requests/responses. Although we don't recommend using threads, as caching, there might be custom cases where they are actually needed.
+
+For those scenarios where *the connector needs to spawn threads* you should use a http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ExecutorService.html[Executor Service].
+
+=== *Reading resources from within the connector*
+When reading resources that are bundled with the connector, the usual `getClass().getResourceAsStream("custom-file-to-read.txt")` will work great. But if the file `"custom-file-to-read.txt"` can actually be parametrized through the mule application, then other mechanism should be used.
+
+Let's say that for your connector, a file can be feeded from the src/main/resources folder (again, this file comes from Studio, not from the connector), the following code should be used:
+[source,java]
+----
+// 1) the connector ask for the manager of the mule context
+@Inject
+protected MuleContext muleContext;
+----
+Then read the resources as follow:
+[source,java]
+----
+ClassLoader classLoader = muleContext.getExecutionClassLoader();
+URL resourceURL = classLoader.getResource("custom-file-to-read.txt");
+----
+Where `"custom-file-to-read.txt"` is the file to be read from the mule app in `src/main/resources/custom-file-to-read.txt`.
+
+=== *Mule dependencies*
+Adding dependencies in your connector should be careful task, as it might collide with mule ones.
+So, a few constraints might apply, such as:
+
+1. When adding mule artefacts, always use `<scope>provided</scope>`
+2. When adding artefacts that might collide with mule, choose the versions that are in the current mule version your connector is going to work with. Some of those artefacts are: cxf, jersey, spring, guava, etc.
+
+=== *Shading*
+For some corner cases, you might need to add a dependency that does collide with mule ones. For those scenarios, we strongly recommend you to use the same version of the library as mule does, and if this is an impossible taks, then change your library to another one.
+If you still need that custom library that collides with mule, then shading could work for you.
+
+You need to modify your connector's `pom.xml` file to add the shading plugin in order to achieve 2 things: 1) add the custom jar into the connector's one and 2) rename the packages of the library into a new one in order to avoid collisions.
+
+The following snippet should work when using a library that the full qualified name of the packages are `org.some.library` and the artefact id is `custom-artefact-id`
+
+[source, xml]
+----
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-shade-plugin</artifactId>
+    <version>2.3</version>
+    <configuration>
+        <!-- custom shade configuration -->
+        <artifactSet>
+            <includes>
+                <include>org.some.library:custom-artefact-id</include>
+            </includes>
+        </artifactSet>
+        <relocations>
+            <relocation>
+                <pattern>org.some.library</pattern>
+                <shadedPattern>org.some.library.new.pakage.name.shade</shadedPattern>
+            </relocation>
+        </relocations>
+    </configuration>
+</plugin>
+----
+
 
 === Connector Structure
 
@@ -79,7 +165,7 @@ Any argument, returned or received, must be one of the following data types:
 
 These types must be part of the method signature so that DataMapper can auto-recognize the types in it's mapping UI.
 
-__Important__: Only use a map if you cannot use a POJO. 
+__Important__: Only use a map if you cannot use a POJO.
 Only use a map if your data:
 . Is schemaless, for example if created using MongoDB.
 . Has user customizable schemas, if created with Salesforce.
@@ -100,7 +186,7 @@ All operations must have a single object to take input from DataMapper. The obje
 
 |void createInvoice(Invoice invoice)| createInvoice(Header header, List<LineItems> lineItems)
 |void upsert(List<Map> sobjects, String type, String externalFieldId)| N/A - Multiple arguments are still needed!
-|GetTaxResult getTax(TaxRequest request)| 
+|GetTaxResult getTax(TaxRequest request)|
 ```public GetTaxResult getTax(String companyCode, +
     AvalaraDocumentType docType, +
     @Optional String docCode, +
@@ -151,4 +237,3 @@ Creation criteria:
 . https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixB.adoc[Appendix B]
 . https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixC.adoc[Appendix C]
 . https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixD.adoc[Appendix D]
-
