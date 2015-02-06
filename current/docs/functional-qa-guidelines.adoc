@@ -1,7 +1,6 @@
 This section explains how to automate functional test cases on Connectors.
 
 == Approach Explanation
----
 === Objectives
 . Automation test suite integrated to the connector.
 . Real sandbox and Mule server used when running the tests.
@@ -25,7 +24,6 @@ This section explains how to automate functional test cases on Connectors.
 . *Use a regression suite* to include at least one test case for each operation. Take input on this kind of test from a Mule Message, ensure a test is fully parameterized, and only modify data from the AutomationSpringBeans.xml file.
 
 == mule-connector-test framework
----
 === Objectives
 . Provide consistent test suite implementation through the different connectors business models.
 . Increase code reusability.
@@ -56,7 +54,7 @@ mule-devkit-parent contains the framework version property (that can, if necessa
 ----
 
 == Framework and Test Suite Components
----
+
 === ConnectorTestCase Class
 ConnectorTestCase class inherits from *org.mule.tck.junit4.FunctionalTestCase* and wraps FunctionalTestCase methods into methods that both facilitate automating connectors operations use cases and enforce a uniform approach on the construction of test suites. ConnectorTestCase is by *<Connector>TestParent.java* and this class is the parent test class for all of the test cases.
 
@@ -119,7 +117,7 @@ Run different sets of tests with the aid of runners. Test cases are classified i
 . *Regression*: Positive test on the operation attributes that you pass from a Message.
 
 == Suite Implementation
----
+
 === Test Development Environment Set Up
 After building a connector, add *target/generated-sources/mule* to the project build path. You may need to add other generated sources to the build path depending on the connector (such as target/generated-sources/cxf).
 
@@ -357,7 +355,7 @@ taleo.userId=42
 ----
 
 == Test Methods
----
+
 === Good Test Case Qualities
 . Flexibility: All data setup changes (for example, entity type changes) can be performed from the Spring file without modifying the tests.
 . Only runtime generated values should be handled in a test, everything else should be declared in the AutomationSpringBeans file.
@@ -443,7 +441,7 @@ If an exception is thrown on the @Test, the test is listed as failed.
 ----
 
 == Test Cases Classification
----
+
 Tests are categorized using @Category annotation on top of the test method signatures.
 
 [source,java]
@@ -475,7 +473,7 @@ public class RegressionTestSuite {
 ----
 
 == DataSense (Dynamic metadata)
----
+
 
 First of all create the DataSenseTestCases class on the connector functional test suite package
 
@@ -683,7 +681,7 @@ Follow the approach of adding specific flows containing processors with an inval
 Error message should relate to the connector domain.
 
 == Test Connection
----
+
 
 . Add the necessary config elements to support test configuration negative cases to the automation-test-flows.xml file. Config elements name convention is as follows: Test_Connection_Negative_<Particular_Case>. See an example below.
 
@@ -735,7 +733,7 @@ public void testConnectSuccess() throws Exception {
 ----
 
 == Transformers
----
+
 
 . For each transformer add a flow to the automation-test-flows.xml.
 
@@ -783,7 +781,7 @@ public void testDbObjectToJSONTransformer() {
 ----
 
 == Testing Inbound Endpoints (@Sources)
----
+
 For now, inbound endpoint testing must be done by adding a http://www.mulesoft.org/documentation/display/current/VM+Transport+Reference[VM endpoint] in the flow that has the inbound endpoint we want to test. A VM endpoint is essentially an in-memory queue (hence the name VM, because they are handled by the JVM) addressable by a URL that stores messages until they are processed. By storing the messages received by the inbound endpoint in a VM queue, we can retrieve them in the test case and make assertions on them.
 
 For example, if we want to test SQS’s Receive Messages operation, we need two flows: a flow that actually sends the message, and another flow with the Receive Messages inbound endpoint, as such:
