@@ -18,7 +18,7 @@
 
 MuleSoft has expanded the Anypoint™ Connector offering to enable third-party developers and partners to develop Anypoint Connectors.
 All connectors enrolled in the MuleSoft Partner Program must go through a mandatory periodic Certification Process. The Certification Process has been developed to assess the quality of connectors, to ensure that connectors published on the MuleSoft Web page follow industry best practices for development, and to promote trust.
-All connectors built by external developers and/or partners go through a Certification Process conducted by MuleSoft’s internal team. Once a connector passes certification, the connector is branded as a MuleSoft-certified connector and published on the MuleSoft web site. 
+All connectors built by external developers and/or partners go through a Certification Process conducted by MuleSoft’s internal team. Once a connector passes certification, the connector is branded as a MuleSoft-certified connector and published on the MuleSoft web site.
 
 The scope of the certification process depends on the composition of the connector. Our approach is to test all parts of the connector to ensure that our mutual customers and their platforms are not put at risk.
 The items below are a list of the high-level testing performed on each connector during the certification process:
@@ -43,6 +43,12 @@ This section is about best development practices, these are a set of rules that 
 
 include::docs/developement-best-practices.adoc[]
 
+// [sonar]
+= Static Code Analysis and Code Coverage
+---
+
+include::docs/sonarqube.adoc[]
+
 // [functionalQAGuidelines]
 = Automated Functional Testing
 ---
@@ -60,13 +66,6 @@ include::docs/functional-test-plugin.adoc[]
 ---
 
 include::docs/studio-interopetability-test-plugin.adoc[]
-
-
-// [sonar]
-= Static Code Analysis and Code Coverage
----
-
-include::docs/sonarqube.adoc[]
 
 // [studio-interopetability-QA-guidelines]
 = Studio Interoperability QA
