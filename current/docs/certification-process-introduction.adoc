@@ -2,20 +2,7 @@
 
 The partner Engagement and Certification Process for publishing connectors consists of these stages:
 
-. On-Board
-.. Legal Engagement
-.. Leaning Anypoint™ Connector DevKit
-. Development
-.. Mandatory Development Practices
-.. Design Specification Review
-. Certify
-.. Prerequisites
-.. Certifying
-.. Results
-. Publish
-
 image::{imagesdir}/certification-process-1.png[]
-
 
 == Stage 1: OnBoard
 
@@ -61,14 +48,10 @@ https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attac
 In order to quality of the connectors developed, there are a set of practices and artifacts that need to be delivered as part of the connectors development.
 Each one of the following practices are aimed to cover different quality aspects:
 
-* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_development_best_practices[Development Best Practices]
-
-* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_automated_functional_testing[Automated Functional Testing]
-
-* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_studio_interoperability_qa[ Anypoint Studio  Interoperability Testing]
-
+* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_development_best_practices[Coding Standards and Best Practices]
 * http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_static_code_analysis_with_sonarqube[Static Code Analysis & Code Coverage]
-
+* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_automated_functional_testing[Automated Functional Testing]
+* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_studio_interoperability_qa[ Anypoint Studio  Interoperability Testing]
 * http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_templates[Connector Release Notes & Documentation]
 
 
