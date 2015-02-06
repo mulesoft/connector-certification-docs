@@ -842,8 +842,6 @@ The parameters for runFlowAndWaitForResponseVM are as follows:
 
 This information can also be seen in the JavaDoc for this method.
 
-This is a preliminary way to implement this functionality because ideally there should be no need to manually add endpoints to flows in order to test them. See https://www.google.com/url?q=https%3A%2F%2Fwww.mulesoft.org%2Fjira%2Fbrowse%2FCLDCONNECT-1472&sa=D&sntz=1&usg=AFQjCNEsSvDUicqmL7DHFD5Ch01mWqa4zg[CLDCONNECT-1472] for more information.
-
 == Setting Up OAuth Authentication
 ---
 Manually generate the accessToken and pass this along with the credentials to the service to run the test suite.
