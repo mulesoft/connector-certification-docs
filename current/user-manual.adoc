@@ -41,38 +41,44 @@ include::docs/certification-process-introduction.adoc[]
 
 This section is about best development practices, these are a set of rules that the connector development community has learned over time which can help improve the quality of your connector.
 
-include::docs/developement-best-practices.adoc[]
+include::docs/development-best-practices.adoc[]
 
-// [sonar]
-= Static Code Analysis and Code Coverage
+// [static-code-analysis-using-sonarqube]
+= Static Code Analysis using SonarQube
 ---
 
-include::docs/sonarqube.adoc[]
+include::docs/static-code-analysis-using-sonarqube.adoc[]
 
 // [functionalQAGuidelines]
-= Automated Functional Testing
+= Functional Tests Automation
 ---
 
-include::docs/functional-qa-guidelines.adoc[]
+include::docs/functional-tests-automation.adoc[]
 
-// [functional-test-plugin]
-= Studio Functional Test Plugin
+
+// [anypoint-studio-interoperability-testing]
+= Anypoint Studio Interoperability Testing
 ---
 
-include::docs/functional-test-plugin.adoc[]
+include::docs/anypoint-studio-interoperability-testing.adoc[]
+
+// [cloudhub-interoperability-testing]
+= CloudHub Interoperability Testing
+---
+
+include::docs/cloudhub-interoperability-testing.adoc[]
 
 // [interoperability-test-plugin]
-= Studio Interoperability Test Plugin
+= Run Interop Tests using DevKit Plugin
 ---
 
-include::docs/studio-interopetability-test-plugin.adoc[]
+include::docs/devkit-plugin-run-interop-tests-action.adoc[]
 
-// [studio-interopetability-QA-guidelines]
-= Studio Interoperability QA
+// [functional-test-plugin]
+= Generate Test Data using DevKit Plugin
 ---
 
-include::docs/studio-interopetability-QA-guidelines.adoc[]
-include::docs/studio-interopetability-QA-guidelines-2.adoc[]
+include::docs/devkit-plugin-generate-test-data-action.adoc[]
 
 // [templates]
 = Templates
