@@ -25,14 +25,13 @@
 <li><a href="#_release_re_certification">Release Re-Certification</a></li>
 </ul>
 </li>
-<li><a href="#_development_best_practices">Development Best Practices</a>
+<li><a href="#_coding_standards_and_best_practices">Coding Standards and Best Practices</a>
 <ul class="sectlevel1">
 <li><a href="#_code_conventions">Code Conventions</a></li>
-<li><a href="#_directory_structure">Directory Structure</a></li>
+<li><a href="#_standard_java_coding_conventions">Standard Java Coding Conventions</a></li>
 <li><a href="#_maven_conventions_and_setup">Maven Conventions and Setup</a></li>
-<li><a href="#_datamapper_compliance">DataMapper Compliance</a></li>
+<li><a href="#_devkit_standards_and_best_practices">DevKit Standards and Best Practices</a></li>
 <li><a href="#_connector_demo_example">Connector Demo Example</a></li>
-<li><a href="#_documentation">Documentation</a></li>
 <li><a href="#_appendix">Appendix</a></li>
 </ul>
 </li>
@@ -163,55 +162,6 @@ The items below are a list of the high-level testing performed on each connector
 <div class="paragraph">
 <p>The partner Engagement and Certification Process for publishing connectors consists of these stages:</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>On-Board</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Legal Engagement</p>
-</li>
-<li>
-<p>Leaning Anypoint™ Connector DevKit</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Development</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Mandatory Development Practices</p>
-</li>
-<li>
-<p>Design Specification Review</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Certify</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Prerequisites</p>
-</li>
-<li>
-<p>Certifying</p>
-</li>
-<li>
-<p>Results</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Publish</p>
-</li>
-</ol>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="assets/assets/certification-process-1.png" alt="certification process 1">
@@ -306,16 +256,16 @@ Each one of the following practices are aimed to cover different quality aspects
 <div class="ulist">
 <ul>
 <li>
-<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_development_best_practices">Development Best Practices</a></p>
+<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_development_best_practices">Coding Standards and Best Practices</a></p>
+</li>
+<li>
+<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_static_code_analysis_with_sonarqube">Static Code Analysis &amp; Code Coverage</a></p>
 </li>
 <li>
 <p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_automated_functional_testing">Automated Functional Testing</a></p>
 </li>
 <li>
 <p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_studio_interoperability_qa"> Anypoint Studio  Interoperability Testing</a></p>
-</li>
-<li>
-<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_static_code_analysis_with_sonarqube">Static Code Analysis &amp; Code Coverage</a></p>
 </li>
 <li>
 <p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_templates">Connector Release Notes &amp; Documentation</a></p>
@@ -453,7 +403,7 @@ Each one of the following practices are aimed to cover different quality aspects
 </div>
 </div>
 <div class="sect1">
-<h2 id="_development_best_practices">Development Best Practices</h2>
+<h2 id="_coding_standards_and_best_practices">Coding Standards and Best Practices</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section is about best development practices, these are a set of rules that the connector development community has learned over time which can help improve the quality of your connector.</p>
@@ -464,29 +414,26 @@ Each one of the following practices are aimed to cover different quality aspects
 <div class="paragraph">
 <p>This sections covers the following areas:</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Standard Java coding conventions.</p>
-</li>
-<li>
-<p>Devkit and connector coding conventions.</p>
-</li>
-<li>
-<p>Static code analysis review is enforced by <a href="http://www.methodsandtools.com/tools/tools.php?sonar">Sonar</a>. To install a local instance, see <em>Anypoint Connectors Static Code Analysis</em>.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>Standard Java Coding Conventions
+. DevKit Standards and Best Practices
+. Maven Conventions and Setup
+. Connector Demo Example</p>
 </div>
 <div class="paragraph">
-<p><em>Note</em>: Do not use Mule internal APIs for coding connectors.</p>
+<p>It&#8217;s important to point out that in the following steps of the certification most of this practices will be validated using automated tools such as SonarQue.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_directory_structure">Directory Structure</h2>
+<h2 id="_standard_java_coding_conventions">Standard Java Coding Conventions</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_static_analysis_rules">Static Analysis Rules</h3>
 <div class="paragraph">
-<p>Your connector project directory structure must follow the conventions described in <em>Appendix C</em>. If you create your connector project using the DevKit Studio Plugin, the structure generates by default.</p>
+<p>We have defined as set of static inspections rules that are enforced by SonarQube. This rules are aimed to detect potential bugs and bad coding practices.
+More details about this could be found in the section <a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_static_code_analysis_with_sonarqube">Static Code Analysis &amp; Code Coverage</a></p>
+</div>
 </div>
 </div>
 </div>
@@ -494,7 +441,7 @@ Each one of the following practices are aimed to cover different quality aspects
 <h2 id="_maven_conventions_and_setup">Maven Conventions and Setup</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The following section describes set of convenitions and best practices to follow at the time to define your connector Maven project structure.</p>
+<p>The following section describes set of conventions and best practices to follow at the time to define your connector Maven project structure.</p>
 </div>
 <div class="sect2">
 <h3 id="_best_practices">Best Practices</h3>
@@ -503,6 +450,9 @@ Each one of the following practices are aimed to cover different quality aspects
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p>Follow Maven default name conventions <a href="http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html" class="bare">http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html</a></p>
+</li>
 <li>
 <p>Do not overwrite org.mule.tools.devkit:mule-devkit-parent properties.</p>
 </li>
@@ -513,9 +463,13 @@ Each one of the following practices are aimed to cover different quality aspects
 </div>
 </div>
 <div class="sect2">
-<h3 id="_project_structure_validation">Project Structure Validation</h3>
+<h3 id="_connector_structure">Connector Structure</h3>
 <div class="paragraph">
-<p>The following plugin must be configure as part of the connectors pom.xml. I will be responsible for validating the project structure.
+<p>If you create your connector project using the DevKit Studio Plugin, the structure generates by default is the recommended approach.
+If you are interested in more details, the project directory structure are described in the <em>Appendix C</em>.</p>
+</div>
+<div class="paragraph">
+<p>In order to provide automatic enforcement of this rules, the following plugin must be configure as part of the connectors pom.xml. I will be responsible for validating the project structure.
 Copy and paste the following snippets in your connector pom.xml:</p>
 </div>
 <div class="listingblock">
@@ -547,8 +501,10 @@ Copy and paste the following snippets in your connector pom.xml:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_datamapper_compliance">DataMapper Compliance</h2>
+<h2 id="_devkit_standards_and_best_practices">DevKit Standards and Best Practices</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_datamapper_compliance">DataMapper Compliance</h3>
 <div class="paragraph">
 <p>To have the best experience in Anypoint Studio, connectors must be DataMapper compliant. To achieve this, all operations must follow these recommendations.</p>
 </div>
@@ -633,6 +589,7 @@ Only use a map if your data:
 </tr>
 </tbody>
 </table>
+</div>
 <div class="sect2">
 <h3 id="_annotations">Annotations</h3>
 <div class="paragraph">
@@ -643,6 +600,15 @@ Only use a map if your data:
 </div>
 <div class="paragraph">
 <p>This way DataMapper knows which argument in the operation to use for mapping.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_devkit_generated_api_doc">DevKit Generated API Doc</h3>
+<div class="paragraph">
+<p>Connector documentation is composed of two different type of documentation: DevKit Generated DevKit API Doc and the Connector Documentation.</p>
+</div>
+<div class="paragraph">
+<p>DevKit API Doc is automatically generated by DevKit based on the JavaDoc documentation at the connector class. This is one of the most important information used by the developer at the time of of using the connector.</p>
 </div>
 </div>
 </div>
@@ -663,14 +629,6 @@ Only use a map if your data:
 . Consider implementing a CRUD (or similar) use case with chained processors whose payloads get logged into the Studio console (for example, <a href="https://github.com/mulesoft/s3-connector/tree/master/demo/s3connectorstudiodemo">S3</a>).
 . Use DataMapper for Standard or Premium connectors' CRUD (or a similar) use case if API methods attributes and/or return types allow it.
 . Consider basic error handling in the Mule app.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_documentation">Documentation</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>MuleSoft generates a Javadoc technical reference by DevKit through Javadoc, based on the comments inside your code. Provide release notes as part of the documentation following the guidelines mentioned in CHANGELOG.md (see Appendix B).</p>
 </div>
 </div>
 </div>
@@ -8287,7 +8245,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-02-05 18:49:20 EST
+Last updated 2015-02-06 10:06:07 EST
 </div>
 </div>
 </body>
