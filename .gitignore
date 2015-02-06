@@ -1,1 +1,15 @@
+#Generated html file
+user-manual.html
+
+#Coderay plugin in atom
+coderay-asciidoctor.css
+
+# Mac
+.DS_Store
+
+# IntelliJ Idea files
+*.iml
+*.ipr
+*.iws
 .idea
+

@@ -3,10 +3,67 @@
 This sections covers the following areas:
 
 . Standard Java coding conventions.
-. Devkit and connector coding conventions.
+. DevKit and connector coding conventions.
 . Static code analysis review is enforced by http://www.methodsandtools.com/tools/tools.php?sonar[Sonar]. To install a local instance, see __Anypoint Connectors Static Code Analysis__.
 
 __Note__: Do not use Mule internal APIs for coding connectors.
+
+
+== Best Practices
+Despite a connector's code could be 100% sure, and it works perfectly fine in an isolated environment, every connector we build must work in a Mule environment.
+
+This means that a some constraints could apply, here are the key ones:
+
+=== *Avoid caching*
+Connectors should not hold state, unless is strictly necessary. Several APIs are actually hosted in cloud environments, and therefore caching states ends up in having untrusted data in the connector.
+There are a few cases where the connector might need to save some data of the current API while working on it, which leads into caching.
+
+For those scenarios where *the connector needs caching no matter what, the following code should be used*:
+
+[source,java]
+----
+// 1) the connector ask for the manager of the Object Store
+@Inject
+protected ObjectStoreManager objectStoreManager;
+----
+And then use the manager to get/create a custom Object Store as follow:
+[source,java]
+----
+// 2) the connector ask mule for the Object Store represented by "some ID"
+ObjectStore<? extends Serializable> os = objectStoreManager.getObjectStore("some ID");
+// 3) then it uses it
+os.store("key", "value");
+----
+
+Other way to achieve caching could be through temporal files, but it might depend on the use case.
+
+=== *Avoid spawning threads*
+Same as caching, spawning threads is not recommended in a connector as a common API lives in the cloud. This means that a connector won't improve its throughput with more threads, because every communication with the API means more HTTP requests/responses. Although we don't recommend using threads, as caching, there might be custom cases where they are actually needed.
+
+For those scenarios where *the connector needs to spawn threads* you should use a http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ExecutorService.html[Executor Service].
+
+
+=== *Reading resources from within the connector*
+When reading resources that are bundled with the connector, the usual `getClass().getResourceAsStream("custom-file-to-read.txt")` will work great. But if the file `"custom-file-to-read.txt"` can actually be parametrized through the mule application, then other mechanism should be used.
+
+Let's say that for your connector, a file can be feeded from the src/main/resources folder (again, this file comes from Studio, not from the connector), the following code should be used:
+[source,java]
+----
+// 1) the connector ask for the manager of the mule context
+@Inject
+protected MuleContext muleContext;
+----
+Then read the resources as follow:
+[source,java]
+----
+ClassLoader classLoader = muleContext.getExecutionClassLoader();
+URL resourceURL = classLoader.getResource("custom-file-to-read.txt");
+----
+Where `"custom-file-to-read.txt"` is the file to be read from the mule app in `src/main/resources/custom-file-to-read.txt`.
+
+=== *Mule dependencies*
+
+=== *XXXXXXXXXX*
 
 == Directory Structure
 Your connector project directory structure must follow the conventions described in __Appendix C__. If you create your connector project using the DevKit Studio Plugin, the structure generates by default.
@@ -14,7 +71,7 @@ Your connector project directory structure must follow the conventions described
 == Project Structure Check Tool
 After you install the Studio Plugin, run the Project Structure Check plugin to validate that the structure of your project is correct.
 
-To run the plugin, add this execution to your connector’s pom.xml file: 
+To run the plugin, add this execution to your connector’s pom.xml file:
 
 [source,xml]
 ----
@@ -54,7 +111,7 @@ Any argument, returned or received, must be one of the following data types:
 
 These types must be part of the method signature so that DataMapper can auto-recognize the types in it's mapping UI.
 
-__Important__: Only use a map if you cannot use a POJO. 
+__Important__: Only use a map if you cannot use a POJO.
 Only use a map if your data:
 . Is schemaless, for example if created using MongoDB.
 . Has user customizable schemas, if created with Salesforce.
@@ -75,7 +132,7 @@ All operations must have a single object to take input from DataMapper. The obje
 
 |void createInvoice(Invoice invoice)| createInvoice(Header header, List<LineItems> lineItems)
 |void upsert(List<Map> sobjects, String type, String externalFieldId)| N/A - Multiple arguments are still needed!
-|GetTaxResult getTax(TaxRequest request)| 
+|GetTaxResult getTax(TaxRequest request)|
 ```public GetTaxResult getTax(String companyCode, +
     AvalaraDocumentType docType, +
     @Optional String docCode, +
@@ -104,8 +161,8 @@ Creation criteria:
 . Ensure that flow names and message processors display names that make the use case easy to understand.
 . Provide instructions on how to run the app in the README.md file of the GitHub demo (example https://github.com/mulesoft/sqs-connector/tree/master/demo[SQS]).
 . Expose a set of endpoints that the user can access following the steps in the README.md to reproduce a use case. An example is the https://github.com/mulesoft/sqs-connector/tree/master/demo[SQS] demo.
-. Consider implementing a CRUD (or similar) use case with chained processors whose payloads get logged into the Studio console (for example, https://github.com/mulesoft/s3-connector/tree/master/demo/s3connectorstudiodemo[S3]). 
-. Use DataMapper for Standard or Premium connectors' CRUD (or a similar) use case if API methods attributes and/or return types allow it. 
+. Consider implementing a CRUD (or similar) use case with chained processors whose payloads get logged into the Studio console (for example, https://github.com/mulesoft/s3-connector/tree/master/demo/s3connectorstudiodemo[S3]).
+. Use DataMapper for Standard or Premium connectors' CRUD (or a similar) use case if API methods attributes and/or return types allow it.
 . Consider basic error handling in the Mule app.
 
 == Documentation
@@ -117,11 +174,10 @@ MuleSoft generates a Javadoc technical reference by DevKit through Javadoc, base
 Provide release notes as part of the documentation following the guidelines mentioned in CHANGELOG.md (see Appendix B).
 
 == Licensing
-If your connector is open source 
+If your connector is open source
 
-== Appendix 
+== Appendix
 . https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixA.adoc[Appendix A]
 . https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixB.adoc[Appendix B]
 . https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixC.adoc[Appendix C]
 . https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixD.adoc[Appendix D]
-
