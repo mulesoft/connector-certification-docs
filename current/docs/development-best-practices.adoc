@@ -206,6 +206,9 @@ If you have multiple arguments, annotate the Primary argument with:
 
 This way DataMapper knows which argument in the operation to use for mapping.
 
+=== No Warning during compilation
+
+DevKit does a intensive analysis of the used annotations and semantic of them in conjunction with others. It’s important the the code is free of compilation warning to help on the maintainability of the code and to follow good practices.
 === DevKit Generated API Doc
 
 Connector documentation is composed of two different type of documentation: DevKit Generated DevKit API Doc and the Connector Documentation.
