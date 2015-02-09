@@ -32,6 +32,25 @@
 <li><a href="#_maven_conventions_and_setup">Maven Conventions and Setup</a></li>
 <li><a href="#_devkit_standards_and_best_practices">DevKit Standards and Best Practices</a></li>
 <li><a href="#_connector_demo_example">Connector Demo Example</a></li>
+</ul>
+</li>
+<li><a href="#_functional_tests_automation">Functional Tests Automation</a>
+<ul class="sectlevel1">
+<li><a href="#_approach_explanation">Approach Explanation</a></li>
+<li><a href="#_mule_connector_test_framework">mule-connector-test framework</a></li>
+<li><a href="#_generate_functional_tests_scaffolding_and_data_using_devkit_plugin">Generate Functional Tests Scaffolding and Data using DevKit Plugin</a></li>
+<li><a href="#_description">Description</a></li>
+<li><a href="#_anypoint_studio_plugin">Anypoint Studio Plugin</a></li>
+<li><a href="#_generating_functional_tests">Generating Functional Tests</a></li>
+<li><a href="#_framework_and_test_suite_components">Framework and Test Suite Components</a></li>
+<li><a href="#_suite_implementation">Suite Implementation</a></li>
+<li><a href="#_test_methods">Test Methods</a></li>
+<li><a href="#_test_cases_classification">Test Cases Classification</a></li>
+<li><a href="#_datasense_dynamic_metadata">DataSense (Dynamic metadata)</a></li>
+<li><a href="#_test_connection">Test Connection</a></li>
+<li><a href="#_transformers">Transformers</a></li>
+<li><a href="#_testing_inbound_endpoints_sources">Testing Inbound Endpoints (@Sources)</a></li>
+<li><a href="#_setting_up_oauth_authentication">Setting Up OAuth Authentication</a></li>
 <li><a href="#_appendix">Appendix</a></li>
 </ul>
 </li>
@@ -45,26 +64,10 @@
 <li><a href="#_code_quality_review_guideline">Code Quality Review Guideline</a></li>
 </ul>
 </li>
-<li><a href="#_functional_tests_automation">Functional Tests Automation</a>
-<ul class="sectlevel1">
-<li><a href="#_approach_explanation">Approach Explanation</a></li>
-<li><a href="#_mule_connector_test_framework">mule-connector-test framework</a></li>
-<li><a href="#_generate_functional_tests_scaffolding_and_data_using_devkit_plugin">Generate Functional Tests Scaffolding and Data using DevKit Plugin</a></li>
-<li><a href="#_framework_and_test_suite_components">Framework and Test Suite Components</a></li>
-<li><a href="#_suite_implementation">Suite Implementation</a></li>
-<li><a href="#_test_methods">Test Methods</a></li>
-<li><a href="#_test_cases_classification">Test Cases Classification</a></li>
-<li><a href="#_datasense_dynamic_metadata">DataSense (Dynamic metadata)</a></li>
-<li><a href="#_test_connection">Test Connection</a></li>
-<li><a href="#_transformers">Transformers</a></li>
-<li><a href="#_testing_inbound_endpoints_sources">Testing Inbound Endpoints (@Sources)</a></li>
-<li><a href="#_setting_up_oauth_authentication">Setting Up OAuth Authentication</a></li>
-<li><a href="#_appendix_2">Appendix</a></li>
-</ul>
-</li>
 <li><a href="#_anypoint_studio_interoperability_testing">Anypoint Studio Interoperability Testing</a>
 <ul class="sectlevel1">
 <li><a href="#_purpose">Purpose</a></li>
+<li><a href="#_running_automated_interop_tests_using_devkit_plugin">Running Automated Interop Tests using DevKit Plugin</a></li>
 <li><a href="#_oauth_authentication">OAuth Authentication</a></li>
 <li><a href="#_anypoint_studio_interoperability_testing_2">Anypoint Studio Interoperability Testing</a></li>
 <li><a href="#_anypoint_studio_installation">Anypoint Studio Installation</a></li>
@@ -85,19 +88,12 @@
 <li><a href="#_cloudhub_interoperability">CloudHub Interoperability</a></li>
 </ul>
 </li>
-<li><a href="#_run_interop_tests_using_devkit_plugin">Run Interop Tests using DevKit Plugin</a>
+<li><a href="#_appendixes">Appendixes</a>
 <ul class="sectlevel1">
-<li><a href="#_description">Description</a></li>
-<li><a href="#_anypoint_studio_plugin">Anypoint Studio Plugin</a></li>
-<li><a href="#_generating_functional_tests">Generating Functional Tests</a></li>
-</ul>
-</li>
-<li><a href="#_templates">Templates</a>
-<ul class="sectlevel1">
-<li><a href="#_anypoint_connectors_documentation_template">Anypoint Connectors Documentation Template</a></li>
-<li><a href="#_anypoint_connectors_release_notes_template">Anypoint Connectors Release Notes Template</a></li>
-<li><a href="#_anypoint_connectors_manual_test_suite_template">Anypoint Connectors Manual Test Suite Template</a></li>
-<li><a href="#_certification_checklist">Certification Checklist</a></li>
+<li><a href="#_appendix_a_anypoint_connectors_documentation_template">Appendix A: Anypoint Connectors Documentation Template</a></li>
+<li><a href="#_appendix_b_anypoint_connectors_release_notes_template">Appendix B: Anypoint Connectors Release Notes Template</a></li>
+<li><a href="#_appendix_c_anypoint_connectors_manual_test_suite_template">Appendix C: Anypoint Connectors Manual Test Suite Template</a></li>
+<li><a href="#_appendix_d_certification_checklist">Appendix D: Certification Checklist</a></li>
 </ul>
 </li>
 </ul>
@@ -759,386 +755,6 @@ Only use a map if your data:
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_appendix">Appendix</h2>
-<div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixA.adoc">Appendix A</a></p>
-</li>
-<li>
-<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixB.adoc">Appendix B</a></p>
-</li>
-<li>
-<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixC.adoc">Appendix C</a></p>
-</li>
-<li>
-<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixD.adoc">Appendix D</a></p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<h1 id="_static_code_analysis_and_coverage" class="sect0">Static Code Analysis and Coverage</h1>
-<div class="openblock partintro">
-<div class="content">
-<hr>
-<div class="paragraph">
-<p>Most automatic validations on your connector’s code are done with SonarQube, an open source static code analysis tool that helps developers identify hot spots in code, bad code quality, technical debt, as well as define a number of other issues. To release a connector, you must fix blocker and critical issues.</p>
-</div>
-<div class="paragraph">
-<p>To perform these validations yourself, install and configure a the SonarQube server that we provide with rules specific to the certification process. If you are certifying multiple connectors, you can reuse the same server.</p>
-</div>
-<div class="paragraph">
-<p>Note: For guidelines on how to build your tests using this framework, see <a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_automated_functional_testing">Automated Functional Testing</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_installing_sonarqube">Installing SonarQube</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The quickest way to get SonarQube up and running is to install it locally with an embedded database. If you wish to use a standalone database or a more advanced configuration, see the related SonarQube Eclipse Plugin Setup documentation.</p>
-</div>
-<div class="paragraph">
-<p>You need a server running Oracle JRE 6 or higher. (OpenJRE or other distributions are not supported by SonarQube.)</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Download and extract <a href="https://drive.google.com/open?id=0B8N265C555thQWNPYkQ4cnFBQlU&amp;authuser=0">our SonarQube 4.5 distribution</a> (all platforms). This includes our custom quality profile and everything you need to get started.</p>
-</li>
-<li>
-<p>Run <em>&lt;installDir&gt;/bin/&lt;yourOS&gt;/sonar.sh</em> start or <em>&lt;installDir&gt;\bin\&lt;yourOS&gt;\StartSonar.bat</em> if on Windows. The server might take a while to start even after the “Started SonarQube” message appears.</p>
-</li>
-<li>
-<p>Browse to <a href="http://localhost:9000" class="bare">http://localhost:9000</a>.</p>
-</li>
-<li>
-<p>Log in with the following credentials:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Username: admin</p>
-</li>
-<li>
-<p>Password: admin</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_performing_your_first_analysis">Performing Your First Analysis</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>For the first run of your project, go to the project’s root folder and run:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test -Dmaven.test.failure.ignore=true
-	-Dtest=RegressionTestSuite -D&lt;connector&gt;_CREDENTIALS=automation-credentials.properties
-&amp;&amp; mvn install &amp;&amp; mvn sonar:sonar
-
-mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install
-	-Dmaven.test.failure.ignore=true
-&amp;&amp; mvn sonar:sonar</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This creates the project in your sonar installation, allowing you to use the Eclipse SonarQube plugin from inside your Anypoint Studio. Using this plugin is the recommended way, but is always possible to run the inspections manually with * mvn sonar:sonar *.</p>
-</div>
-<div class="paragraph">
-<p>If you are experiencing false positive issues, you can disable the inspection using //NOSONAR comment at the end of a line which has the issue on a case-by-case basis. Every use of //NOSONAR is recorded by SonarQube as an Info issue so you can track its usage in your connector’s code.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-The use of //NOSONAR comments should only be used when there is full certainty that this inspection is a false positive.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>For example, suppose you have an incorrectly capitalized method that you can’t change. This is normally a blocker issue:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/sonar-1.png" alt="sonar 1">
-</div>
-</div>
-<div class="paragraph">
-<p>After adding the //NOSONAR marker, this is no longer a blocker issue, but is marked as Info so you can track the usage of //NOSONAR throughout your project:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/sonar-2.png" alt="sonar 2">
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_sonarqube_eclipse_plugin_setup">SonarQube Eclipse Plugin Setup</h2>
-<div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Open Anypoint Studio, then select Help &gt; Install New Software.</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/sonar-3.png" alt="sonar 3">
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>In the Work with text box, fill in the update site URL:
-SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide.codehaus.org/eclipse/" class="bare">http://dist.sonar-ide.codehaus.org/eclipse/</a></p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/sonar-4.png" alt="sonar 4">
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Check the SonarQube Java option.</p>
-</li>
-<li>
-<p>After completing the installation, restart Anypoint Studio.</p>
-</li>
-<li>
-<p>Open Anypoint Studio’s preferences, and browse to the SonarQube section. Expand it, and select the Servers subsection. Click Add and fill in the URL and credentials for your server (by default, admin/admin).</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/sonar-5.png" alt="sonar 5">
-</div>
-</div>
-<div class="paragraph">
-<p>Click the <strong>Test connection</strong> button to ensure that your settings are correct.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>To associate your project on the SonarQube server, perform a full analysis once. You can do this by running mvn sonar:sonar in your Connector project.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>You should perform this full analysis from a machine that is on the same network as the SonarQube database, otherwise it might take very long to complete.</p>
-</div>
-<div class="paragraph">
-<p>When your project finishes analyzing, in Studio right-click your connector project and click <strong>Configure &gt; Associate with SonarQube</strong>. Because your project was analyzed with Maven, the association detects automatically.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/sonar-6.png" alt="sonar 6">
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>After association, your project is analysed with SonarQube and the results are shown on the SonarQube issues tab. Also, the Package Explorer and file editor display error and warning icons according to the issues on your project.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>New issues introduced since the previous analysis are marked as errors, while existing issues are marked as warnings. This is a cosmetic difference only, which helps to highlight new technical debt being introduced in your code before you check it in.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>To analyse your project again, right-click it and click <strong>SonarQube &gt; Analyse</strong>.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_quality_profile_rules">Quality Profile Rules</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>SonarQube classifies each issue with a severity:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Blocker &amp; Critical: Bugs or unacceptable programming practices. Your connector cannot have blocker or Critical issues to be certified. You must correct all issues.</p>
-</li>
-<li>
-<p>Major:  These inspections fall in a similar category to the critical issues but with lower priority.</p>
-</li>
-<li>
-<p>Minor: Correctness, clarity or performance issues that do not impact your connector’s functionality significantly.</p>
-</li>
-<li>
-<p>Info: Keeps track of useful information that might otherwise go unnoticed.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>To see the full list of rules checked by SonarQube, browse to the Anypoint Connectors Certification quality profile through the web UI.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_code_coverage">Code Coverage</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>SonarQube also lets you manage Code Coverage reports of your connector.</p>
-</div>
-<div class="paragraph">
-<p>Generate a code coverage report in SonarQube with this command:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install
-	-Dmaven.test.failure.ignore=true &amp;&amp; mvn sonar:sonar</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>After this command finishes executing, Sonar displays a report with the name of your connector. For example, this screenshot shows the Salesforce connector’s Sonar report after running every Unit test and Functional test:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/coverage-guidelines-1.png" alt="coverage guidelines 1">
-</div>
-</div>
-<div class="paragraph">
-<p>Delving further into the project details shows you a code coverage percentage on a per-class basis.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/coverage-guidelines-2.png" alt="coverage guidelines 2">
-</div>
-</div>
-<div class="paragraph">
-<p>Delving even further, it shows you the exact lines that are covered by tests and those that are not.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/coverage-guidelines-3.png" alt="coverage guidelines 3">
-</div>
-</div>
-<div class="paragraph">
-<p>Every connector method must have unit or automation tests. A connector fails certification if it does not have all its message processors, message sources, and custom transformers covered by unit tests or automation tests. Also, all the utility classes that are part of a connector must have a high level of code coverage.</p>
-</div>
-<div class="sect2">
-<h3 id="_code_coverage_must_be_no_less_than_70">Code coverage must be no less than 70%.</h3>
-<div class="paragraph">
-<p>Testing your processors gives you a good indication of the quality of your connector. When you build automation tests, you are using your own connector to connect to an API. If you find it hard to test all cases of a message processor, then consider separating your message processors into smaller ones, if possible.</p>
-</div>
-<div class="paragraph">
-<p>If your connector bases its processing around metadata, test every possible metadata entry that the API supports. As an example, the Salesforce connector supports multiple SFDC objects (such as Account, Contact, Lead etc.), but it only contains one “create” operation. Create a unit test for every metadata object to ensure proper compatibility with the message processor.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_ignoring_classes_from_testing">Ignoring Classes from Testing</h3>
-<div class="paragraph">
-<p>You should <strong>NEVER</strong> prevent classes from being tested unless there is good reason. If you feel that there is a need to ignore classes from inspection, contact either Mariano Quintela, or Paulo Gustavo Veiga. Unless explicitly stated in the code comments or in some form of internal documentation, assume that all code must be inspected. Any ignored classes or packages without proper explanation should be inspected and any blocker or critical issues that arise should be resolved, <strong>and tested</strong> by the developer before the connector is released.</p>
-</div>
-<div class="paragraph">
-<p>There are a number of ways of ignoring classes that you do not want inspected by SonarQube:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Method level ignore:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Methods can be ignored by adding a //NOSONAR comment next to the method declaration. Example:</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> someMethodToNotInspect() { <span class="comment">//NOSONAR</span></code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Class level ignore</p>
-<div class="ulist">
-<ul>
-<li>
-<p>It may be the case that whole classes need to be ignored because they’re not in the control of the developer. As an example, the SFDC Connector contains classes from the SFDC JAR. These had to be modified slightly to include no-args constructors for DataSense reasons. As a result, these classes have to be ignored since the code quality is not in control of the SFDC Connector developer.</p>
-</li>
-<li>
-<p>Classes can be completely ignored by adding // NOSONAR next to the class level definition. Example:</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MyClassThatShouldntBeInspected</span> { <span class="comment">// NOSONAR</span></code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Package level ignore</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Whole packages can be ignored by adding the “sonar.exclusions” property inside the pom.xml file. Example:</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
-        <span class="tag">&lt;sonar.exclusions&gt;</span>src/main/java/com/sforce/**/*<span class="tag">&lt;/sonar.exclusions&gt;</span>
-<span class="tag">&lt;/properties&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This ignores any file under the com.sforce package under src/main/java.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_code_quality_review_guideline">Code Quality Review Guideline</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This is a hard area to tackle because typically, the person running certification is different from the one implementing the connector and writing tests for it. As a result, you might inspect the code and be completely lost.</p>
-</div>
-<div class="paragraph">
-<p>If code documentation is not sufficient, point this out to the developer and PM.</p>
-</div>
-<div class="paragraph">
-<p>As you try to understand the code, you might run into certain code pieces that you’re not sure why they’re there. As an example, PeopleSoft contained synchronous code and some time was spent by the developer understanding why they were there. It turns out that they were not needed, and were causing a degree of locking when working with concurrent requests. If you think that there are code blocks that feel out of place, mention it to the developer or PM.</p>
-</div>
-</div>
-</div>
 <h1 id="_functional_tests_automation" class="sect0">Functional Tests Automation</h1>
 <div class="openblock partintro">
 <div class="content">
@@ -1247,19 +863,125 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 </ol>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_concepts">Concepts</h3>
-<div class="paragraph">
-<p>Use cases are built as a sequence of connector operations calls. Prior to running a use case, initialize a TestRunMessage and load the data required by the use case. After you invoke an operation, turn the content of the TestRunMessage into a MuleEvent before an operation consumes the content. Apply asserts to the payload of the operation under the test.</p>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_generate_functional_tests_scaffolding_and_data_using_devkit_plugin">Generate Functional Tests Scaffolding and Data using DevKit Plugin</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Unresolved directive in docs/functional-tests-automation.adoc - include::docs/devkit-plugin-generate-test-data-action.adoc[]</p>
+<p>DevKit Plugin provides mule-connector-test test data generation for functional test cases.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The framework described in this document consists of a series of automation tools, which let you run interoperability tests on a connector in Anypoint Studio. The framework covers Connectivity, Datamapper Compliance, and XML Generation tests, as described in the Connectors QA Guidelines. The data used by these tests is generated using not only a connector&#8217;s code, but also the output files in the DevKit, in particular the schema and editors file.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_anypoint_studio_plugin">Anypoint Studio Plugin</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_glossary_of_terms">Glossary of Terms</h3>
+<div class="paragraph">
+<p>Runner Platform: Host where the test run takes place.
+Target Platform: The platform (in terms of Anypoint Studio plugins) on which tests are going to that you run.
+CUT: Connector under test
+*-test-data.xml
+*-test-data-override.xml</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_installation">Installation</h3>
+<div class="sect3">
+<h4 id="_step_1_check_system_requirements">Step 1: Check System Requirements</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="http://maven.apache.org/download.cgi">Maven 3.2</a> or Greater</p>
+</li>
+<li>
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html">Java 1.7</a></p>
+</li>
+<li>
+<p><a href="http://www.mulesoft.org/download-mule-esb-community-edition">Anypoint Studio</a></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_2_anypoint_devkit_plugin">Step 2: Anypoint Devkit Plugin</h4>
+<div class="paragraph">
+<p>Follow these steps on the Runner Platform&#8217;s Anypoint Studio installation:
+. Click Help &gt; Install New Software.
+. Click Anypoint Addons Update Site from the Work with drop-down. Note: If this item is not in the dropdown, click Add and specify the name, and for the URL, use: <a href="http://studio.mulesoft.org/r3/addons/beta" class="bare">http://studio.mulesoft.org/r3/addons/beta</a>
+. Click the checkbox for Anypoint DevKit Plugin, and click <strong>Next, Next, Finish</strong>.
+. Restart Anypoint Studio when prompted.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_generating_functional_tests">Generating Functional Tests</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_plugin_execution">Plugin Execution</h3>
+<div class="paragraph">
+<p>With your connector imported in Anypoint Studio, right-click the project name in Package Explorer and click <strong>Anypoint Connector &gt; Generate Tests</strong>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/functional-test-plugin-1.png" alt="functional test plugin 1">
+</div>
+</div>
+<div class="paragraph">
+<p>The Test Scaffolding Generation dialog appears:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/functional-test-plugin-2.png" alt="functional test plugin 2">
+</div>
+</div>
+<div class="paragraph">
+<p>This lists:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Processors found in the connector.</p>
+</li>
+<li>
+<p>The Generate Test Case Scaffolding option: This generates the TestCases.java classes, one for each processor, along with the classes you need to use the Functional Test Framework.</p>
+</li>
+<li>
+<p>The Generate Functional Test Data Files option: This generates the automation-test-flow.xml and AutomationSpringBeans.xml files.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If a conflict exists between the existing files and the files you want to generate, a popup appears asking if the file should be replaced, or updated with the information related to new processors. This does not cover cases of signature change in the processor definition, nor updating naming convention on existing Java classes.</p>
+</div>
+<div class="paragraph">
+<p>Generated Files</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/functional-test-plugin-3.png" alt="functional test plugin 3">
+</div>
+</div>
+<div class="paragraph">
+<p>Output files can be found under src/test/resources/generated. The actual convention is to have the files under src/test/resources, and the generated path is only expected to store files during development or those with constant modification.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_concepts">Concepts</h3>
+<div class="paragraph">
+<p>Use cases are built as a sequence of connector operations calls. Prior to running a use case, initialize a TestRunMessage and load the data required by the use case. After you invoke an operation, turn the content of the TestRunMessage into a MuleEvent before an operation consumes the content. Apply asserts to the payload of the operation under the test.</p>
+</div>
 </div>
 </div>
 </div>
@@ -2454,10 +2176,369 @@ mvn -Dtest=GetDailyTrendsTestCases#testGetDailyTrendsParametrized test</code></p
 </div>
 </div>
 <div class="sect1">
-<h2 id="_appendix_2">Appendix</h2>
+<h2 id="_appendix">Appendix</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/automated%20funcional%20testing/appendixA.adoc">Appendix A: Debugging</a></p>
+</div>
+</div>
+</div>
+<h1 id="_static_code_analysis_and_coverage" class="sect0">Static Code Analysis and Coverage</h1>
+<div class="openblock partintro">
+<div class="content">
+<hr>
+<div class="paragraph">
+<p>Most automatic validations on your connector’s code are done with SonarQube, an open source static code analysis tool that helps developers identify hot spots in code, bad code quality, technical debt, as well as define a number of other issues. To release a connector, you must fix blocker and critical issues.</p>
+</div>
+<div class="paragraph">
+<p>To perform these validations yourself, install and configure a the SonarQube server that we provide with rules specific to the certification process. If you are certifying multiple connectors, you can reuse the same server.</p>
+</div>
+<div class="paragraph">
+<p>Note: For guidelines on how to build your tests using this framework, see <a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_automated_functional_testing">Automated Functional Testing</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installing_sonarqube">Installing SonarQube</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The quickest way to get SonarQube up and running is to install it locally with an embedded database. If you wish to use a standalone database or a more advanced configuration, see the related SonarQube Eclipse Plugin Setup documentation.</p>
+</div>
+<div class="paragraph">
+<p>You need a server running Oracle JRE 6 or higher. (OpenJRE or other distributions are not supported by SonarQube.)</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download and extract <a href="https://drive.google.com/open?id=0B8N265C555thQWNPYkQ4cnFBQlU&amp;authuser=0">our SonarQube 4.5 distribution</a> (all platforms). This includes our custom quality profile and everything you need to get started.</p>
+</li>
+<li>
+<p>Run <em>&lt;installDir&gt;/bin/&lt;yourOS&gt;/sonar.sh</em> start or <em>&lt;installDir&gt;\bin\&lt;yourOS&gt;\StartSonar.bat</em> if on Windows. The server might take a while to start even after the “Started SonarQube” message appears.</p>
+</li>
+<li>
+<p>Browse to <a href="http://localhost:9000" class="bare">http://localhost:9000</a>.</p>
+</li>
+<li>
+<p>Log in with the following credentials:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Username: admin</p>
+</li>
+<li>
+<p>Password: admin</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_performing_your_first_analysis">Performing Your First Analysis</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For the first run of your project, go to the project’s root folder and run:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test -Dmaven.test.failure.ignore=true
+	-Dtest=RegressionTestSuite -D&lt;connector&gt;_CREDENTIALS=automation-credentials.properties
+&amp;&amp; mvn install &amp;&amp; mvn sonar:sonar
+
+mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install
+	-Dmaven.test.failure.ignore=true
+&amp;&amp; mvn sonar:sonar</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This creates the project in your sonar installation, allowing you to use the Eclipse SonarQube plugin from inside your Anypoint Studio. Using this plugin is the recommended way, but is always possible to run the inspections manually with * mvn sonar:sonar *.</p>
+</div>
+<div class="paragraph">
+<p>If you are experiencing false positive issues, you can disable the inspection using //NOSONAR comment at the end of a line which has the issue on a case-by-case basis. Every use of //NOSONAR is recorded by SonarQube as an Info issue so you can track its usage in your connector’s code.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The use of //NOSONAR comments should only be used when there is full certainty that this inspection is a false positive.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For example, suppose you have an incorrectly capitalized method that you can’t change. This is normally a blocker issue:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/sonar-1.png" alt="sonar 1">
+</div>
+</div>
+<div class="paragraph">
+<p>After adding the //NOSONAR marker, this is no longer a blocker issue, but is marked as Info so you can track the usage of //NOSONAR throughout your project:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/sonar-2.png" alt="sonar 2">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sonarqube_eclipse_plugin_setup">SonarQube Eclipse Plugin Setup</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open Anypoint Studio, then select Help &gt; Install New Software.</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/sonar-3.png" alt="sonar 3">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the Work with text box, fill in the update site URL:
+SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide.codehaus.org/eclipse/" class="bare">http://dist.sonar-ide.codehaus.org/eclipse/</a></p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/sonar-4.png" alt="sonar 4">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Check the SonarQube Java option.</p>
+</li>
+<li>
+<p>After completing the installation, restart Anypoint Studio.</p>
+</li>
+<li>
+<p>Open Anypoint Studio’s preferences, and browse to the SonarQube section. Expand it, and select the Servers subsection. Click Add and fill in the URL and credentials for your server (by default, admin/admin).</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/sonar-5.png" alt="sonar 5">
+</div>
+</div>
+<div class="paragraph">
+<p>Click the <strong>Test connection</strong> button to ensure that your settings are correct.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>To associate your project on the SonarQube server, perform a full analysis once. You can do this by running mvn sonar:sonar in your Connector project.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You should perform this full analysis from a machine that is on the same network as the SonarQube database, otherwise it might take very long to complete.</p>
+</div>
+<div class="paragraph">
+<p>When your project finishes analyzing, in Studio right-click your connector project and click <strong>Configure &gt; Associate with SonarQube</strong>. Because your project was analyzed with Maven, the association detects automatically.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/sonar-6.png" alt="sonar 6">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>After association, your project is analysed with SonarQube and the results are shown on the SonarQube issues tab. Also, the Package Explorer and file editor display error and warning icons according to the issues on your project.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>New issues introduced since the previous analysis are marked as errors, while existing issues are marked as warnings. This is a cosmetic difference only, which helps to highlight new technical debt being introduced in your code before you check it in.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>To analyse your project again, right-click it and click <strong>SonarQube &gt; Analyse</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_quality_profile_rules">Quality Profile Rules</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>SonarQube classifies each issue with a severity:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Blocker &amp; Critical: Bugs or unacceptable programming practices. Your connector cannot have blocker or Critical issues to be certified. You must correct all issues.</p>
+</li>
+<li>
+<p>Major:  These inspections fall in a similar category to the critical issues but with lower priority.</p>
+</li>
+<li>
+<p>Minor: Correctness, clarity or performance issues that do not impact your connector’s functionality significantly.</p>
+</li>
+<li>
+<p>Info: Keeps track of useful information that might otherwise go unnoticed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To see the full list of rules checked by SonarQube, browse to the Anypoint Connectors Certification quality profile through the web UI.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_code_coverage">Code Coverage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>SonarQube also lets you manage Code Coverage reports of your connector.</p>
+</div>
+<div class="paragraph">
+<p>Generate a code coverage report in SonarQube with this command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install
+	-Dmaven.test.failure.ignore=true &amp;&amp; mvn sonar:sonar</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After this command finishes executing, Sonar displays a report with the name of your connector. For example, this screenshot shows the Salesforce connector’s Sonar report after running every Unit test and Functional test:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/coverage-guidelines-1.png" alt="coverage guidelines 1">
+</div>
+</div>
+<div class="paragraph">
+<p>Delving further into the project details shows you a code coverage percentage on a per-class basis.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/coverage-guidelines-2.png" alt="coverage guidelines 2">
+</div>
+</div>
+<div class="paragraph">
+<p>Delving even further, it shows you the exact lines that are covered by tests and those that are not.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/coverage-guidelines-3.png" alt="coverage guidelines 3">
+</div>
+</div>
+<div class="paragraph">
+<p>Every connector method must have unit or automation tests. A connector fails certification if it does not have all its message processors, message sources, and custom transformers covered by unit tests or automation tests. Also, all the utility classes that are part of a connector must have a high level of code coverage.</p>
+</div>
+<div class="sect2">
+<h3 id="_code_coverage_must_be_no_less_than_70">Code coverage must be no less than 70%.</h3>
+<div class="paragraph">
+<p>Testing your processors gives you a good indication of the quality of your connector. When you build automation tests, you are using your own connector to connect to an API. If you find it hard to test all cases of a message processor, then consider separating your message processors into smaller ones, if possible.</p>
+</div>
+<div class="paragraph">
+<p>If your connector bases its processing around metadata, test every possible metadata entry that the API supports. As an example, the Salesforce connector supports multiple SFDC objects (such as Account, Contact, Lead etc.), but it only contains one “create” operation. Create a unit test for every metadata object to ensure proper compatibility with the message processor.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ignoring_classes_from_testing">Ignoring Classes from Testing</h3>
+<div class="paragraph">
+<p>You should <strong>NEVER</strong> prevent classes from being tested unless there is good reason. If you feel that there is a need to ignore classes from inspection, contact either Mariano Quintela, or Paulo Gustavo Veiga. Unless explicitly stated in the code comments or in some form of internal documentation, assume that all code must be inspected. Any ignored classes or packages without proper explanation should be inspected and any blocker or critical issues that arise should be resolved, <strong>and tested</strong> by the developer before the connector is released.</p>
+</div>
+<div class="paragraph">
+<p>There are a number of ways of ignoring classes that you do not want inspected by SonarQube:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Method level ignore:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Methods can be ignored by adding a //NOSONAR comment next to the method declaration. Example:</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> someMethodToNotInspect() { <span class="comment">//NOSONAR</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Class level ignore</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It may be the case that whole classes need to be ignored because they’re not in the control of the developer. As an example, the SFDC Connector contains classes from the SFDC JAR. These had to be modified slightly to include no-args constructors for DataSense reasons. As a result, these classes have to be ignored since the code quality is not in control of the SFDC Connector developer.</p>
+</li>
+<li>
+<p>Classes can be completely ignored by adding // NOSONAR next to the class level definition. Example:</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MyClassThatShouldntBeInspected</span> { <span class="comment">// NOSONAR</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Package level ignore</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Whole packages can be ignored by adding the “sonar.exclusions” property inside the pom.xml file. Example:</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
+        <span class="tag">&lt;sonar.exclusions&gt;</span>src/main/java/com/sforce/**/*<span class="tag">&lt;/sonar.exclusions&gt;</span>
+<span class="tag">&lt;/properties&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This ignores any file under the com.sforce package under src/main/java.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_code_quality_review_guideline">Code Quality Review Guideline</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is a hard area to tackle because typically, the person running certification is different from the one implementing the connector and writing tests for it. As a result, you might inspect the code and be completely lost.</p>
+</div>
+<div class="paragraph">
+<p>If code documentation is not sufficient, point this out to the developer and PM.</p>
+</div>
+<div class="paragraph">
+<p>As you try to understand the code, you might run into certain code pieces that you’re not sure why they’re there. As an example, PeopleSoft contained synchronous code and some time was spent by the developer understanding why they were there. It turns out that they were not needed, and were causing a degree of locking when working with concurrent requests. If you think that there are code blocks that feel out of place, mention it to the developer or PM.</p>
 </div>
 </div>
 </div>
@@ -2472,6 +2553,472 @@ mvn -Dtest=GetDailyTrendsTestCases#testGetDailyTrendsParametrized test</code></p
 <div class="sectionbody">
 <div class="paragraph">
 <p>Based on these guidelines, partners should analyze the connector under test and provide a test suite build from these generic test cases (only a document with general and operation­specific test cases titles) with all tests in "Passed" status.</p>
+</div>
+<div class="paragraph">
+<p>Specific test cases from the Interop Test guideline are automated and their execution in Anypoint Studio using the DevKit Plugin is described next.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_running_automated_interop_tests_using_devkit_plugin">Running Automated Interop Tests using DevKit Plugin</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_introduction_2">Introduction</h3>
+<div class="paragraph">
+<p>The following framework consists of a series of automation tools, which allow you to run interoperability tests on a connector in Anypoint Studio. The data used by these tests  generates using not only the connectors code, but also DevKit output files, in particular the schema and editors file.</p>
+</div>
+<div class="paragraph">
+<p>All cases described in the <a href="https://docs.google.com/a/mulesoft.com/document/d/1HIiE8akbyr-jdfS-XJUZo45JL0J6G2OmQY_jO4rEkz4">Interoperability Test Guidelines</a> should be considered depending on the connector’s nature. This means, all the applicable test cases detailed there must be covered for a full interoperability test of the connector.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong>: The Anypoint Studio plugin covers only the following cases:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Connectivity testing</p>
+</li>
+<li>
+<p>Datamapper compliance</p>
+</li>
+<li>
+<p>Xml generation</p>
+</li>
+<li>
+<p>DataSense testing</p>
+</li>
+<li>
+<p>OAuth Static DataSense</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_installation_2">Installation</h3>
+<div class="sect3">
+<h4 id="_step_1_check_requirements">Step 1: Check  Requirements</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html">JDK 7</a></p>
+</li>
+<li>
+<p><a href="http://maven.apache.org/download.cgi">Apache Maven</a></p>
+</li>
+<li>
+<p><a href="http://www.mulesoft.org/download-mule-esb-community-edition">Anypoint Studio</a></p>
+</li>
+<li>
+<p>DevKit Plugin</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_interop_test_tutorial">Interop Test Tutorial</h3>
+<div class="sect3">
+<h4 id="_step_1_anypoint_connector_project_in_workspace">Step 1: Anypoint Connector Project in Workspace</h4>
+<div class="paragraph">
+<p>Open your connector in Anypoint Studio, if you don&#8217;t have it imported, import the project as <strong>Anypoint Connector Project from External Location</strong></p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+If you never opened you connector proyect into Anypoint Studio, open a terminal and run this command in your connector root folder: <code>mvn eclipse:eclipse</code><br>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_2_generating_test_data_files">Step 2: Generating Test Data Files</h4>
+<div class="paragraph">
+<p>If you are not familiar with testData files used for interop testing, refer to Appendix B.<br>
+Right-click the name of your connector in the Package Explorer and click <br>
+<strong>Anypoint Connector &gt; Generate Tests</strong>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/test-plugin-1.png" alt="test plugin 1">
+</div>
+</div>
+<div class="paragraph">
+<p>The <strong>Tests Scaffolding Generation</strong> dialog lets you select the operations in scope and the different files type of tests, functional or interoperability, that the required test data files generate:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/test-plugin-2.png" alt="test plugin 2">
+</div>
+</div>
+<div class="paragraph">
+<p>Interop Test Data Generation setup:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click the <strong>Select All</strong> button. The generation considers all available message processors of the connector.</p>
+</li>
+<li>
+<p>Under Studio Interop Tests, check <strong>Generate Interop Test Data Files</strong></p>
+</li>
+<li>
+<p>Leave the default test data filename <strong>interop-testdata.xml</strong> or define one of your own. The default behavior in case of finding matching filenames on the output folder is to update them.</p>
+</li>
+<li>
+<p><strong>(Optional)</strong> "Credentials File" expected input is the path to a .properties file, which is used to determine which Configuration Element fields are required for authentication. The effects of this can be seen on the <strong>interop-testData-override.xml</strong> file. For example .properties contains:</p>
+<div class="listingblock">
+<div class="content">
+<pre>salesforce.username=value
+salesforce.password=value
+salesforce.securityToken=value
+salesforce.url=value</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Click <strong>Finish</strong>, if you already have any interop-testada file, you will be asked if you want to <strong>Update</strong> or <strong>Replace</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The result of the Tests Scaffolding Generation process are be the following files (see Files section for details):</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+Generated files are placed on <strong>src/test/resources/</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<strong><em>interop-testdata.xml</em></strong>
+</td>
+<td class="hdlist2">
+<p>Basic data retrieved from the connector. Provides a complete view of every processor and all its attributes.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<strong><em>interop-testdata-override.xml</em></strong>
+</td>
+<td class="hdlist2">
+<p>Presents a subset of the data found in the previous file, with only the required fields, but adds information about the connector and processor features and properties</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example of <strong>interop-testdata-override.xml</strong> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;</span>
+<span class="tag">&lt;connector</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Salesforce</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                <span class="tag">&lt;properties&gt;</span>
+                                <span class="tag">&lt;connectivity-support&gt;</span>true<span class="tag">&lt;/connectivity-support&gt;</span>
+                                <span class="tag">&lt;OAuth-authentication&gt;</span>false<span class="tag">&lt;/OAuth-authentication&gt;</span>
+                                <span class="tag">&lt;metadata&gt;</span>dynamic<span class="tag">&lt;/metadata&gt;</span>
+                                <span class="tag">&lt;datasense-enabled&gt;</span>true<span class="tag">&lt;/datasense-enabled&gt;</span>
+                                <span class="tag">&lt;transformer&gt;</span>false<span class="tag">&lt;/transformer&gt;</span>
+                <span class="tag">&lt;/properties&gt;</span>
+                <span class="tag">&lt;global-config</span> <span class="attribute-name">credentialsFile</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">salesforce-credentials.properties</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                <span class="tag">&lt;config</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">config</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;attributes&gt;</span>
+                                                                <span class="tag">&lt;attribute</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">username</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">use</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Username</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">group</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Connection</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">javaType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java.lang.String</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">prefix</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">salesforce</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>${salesforce.username}<span class="tag">&lt;/attribute&gt;</span>
+                                                                <span class="tag">&lt;attribute</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">use</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Password</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">group</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Connection</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">password</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">javaType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java.lang.String</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">prefix</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">salesforce</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>${salesforce.password}<span class="tag">&lt;/attribute&gt;</span>
+                                                                <span class="tag">&lt;attribute</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">securityToken</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">use</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Security Token</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">group</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Connection</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">javaType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java.lang.String</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">prefix</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">salesforce</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>${salesforce.securityToken}<span class="tag">&lt;/attribute&gt;</span>
+                                                                <span class="tag">&lt;attribute</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">url</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">use</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Url</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">group</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Connection</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">javaType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java.lang.String</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">default</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://login.salesforce.com/services/Soap/u/31.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">prefix</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">salesforce</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>${salesforce.url}<span class="tag">&lt;/attribute&gt;</span>
+                                                <span class="tag">&lt;/attributes&gt;</span>
+                                <span class="tag">&lt;/config&gt;</span>
+                                <span class="tag">&lt;config</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">config-with-oauth</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+                <span class="tag">&lt;/global-config&gt;</span>
+                <span class="tag">&lt;message-processors&gt;</span>
+                                <span class="tag">&lt;processor</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">search</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">search</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Search</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;properties&gt;</span>
+                                                                <span class="tag">&lt;datamapper</span> <span class="attribute-name">input</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">List</span><span class="entity">&amp;lt;</span><span class="content">Map</span><span class="entity">&amp;gt;</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">output</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Map</span><span class="entity">&amp;lt;</span><span class="content">SalesforceHeader,Object</span><span class="entity">&amp;gt;</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+                                                                <span class="tag">&lt;auto-paging&gt;</span>false<span class="tag">&lt;/auto-paging&gt;</span>
+                                                                <span class="tag">&lt;query-support&gt;</span>false<span class="tag">&lt;/query-support&gt;</span>
+                                                <span class="tag">&lt;/properties&gt;</span>
+                                                <span class="tag">&lt;attributes&gt;</span>
+                                                                <span class="tag">&lt;attribute</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">query</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">use</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Query</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">group</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Query</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">javaType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java.lang.String</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/attribute&gt;</span>
+                                                <span class="tag">&lt;/attributes&gt;</span>
+                                <span class="tag">&lt;/processor&gt;</span>
+                <span class="tag">&lt;/message-processors&gt;</span>
+<span class="tag">&lt;/connector&gt;</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The generated file have 3 principal parts:</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_interop_testdata_file_parts">Interop testdata file parts</h4>
+<div class="sect4">
+<h5 id="_properties">Properties</h5>
+<div class="paragraph">
+<p>Are the features supported by the connector.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>connectivity-support</strong>: [true/false]</p>
+</li>
+<li>
+<p><strong>OAuth-authentication</strong>: [true/false]</p>
+</li>
+<li>
+<p><strong>metadata</strong>: [static/dynamic]</p>
+</li>
+<li>
+<p><strong>datasense-enabled</strong>: [true/false]</p>
+</li>
+<li>
+<p><strong>transformer</strong>: [true/false]</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
+                <span class="tag">&lt;connectivity-support&gt;</span>true<span class="tag">&lt;/connectivity-support&gt;</span>
+                <span class="tag">&lt;OAuth-authentication&gt;</span>false<span class="tag">&lt;/OAuth-authentication&gt;</span>
+                <span class="tag">&lt;metadata&gt;</span>dynamic<span class="tag">&lt;/metadata&gt;</span>
+                <span class="tag">&lt;datasense-enabled&gt;</span>true<span class="tag">&lt;/datasense-enabled&gt;</span>
+                <span class="tag">&lt;transformer&gt;</span>false<span class="tag">&lt;/transformer&gt;</span>
+<span class="tag">&lt;/properties&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_global_config">Global-config</h5>
+<div class="paragraph">
+<p>Is the list of the configurations of the connector, each configuration describes the all needed attributes and their values</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;config</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">connection-management-config</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                <span class="tag">&lt;attributes&gt;</span>
+                                <span class="tag">&lt;attribute</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">username</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">use</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Username</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">group</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Connection</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">javaType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java.lang.String</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">prefix</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">salesforce</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>MyUsernameValue<span class="tag">&lt;/attribute&gt;</span>
+                <span class="tag">&lt;/attributes&gt;</span>
+<span class="tag">&lt;/config&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_message_processors">Message-processors</h5>
+<div class="paragraph">
+<p>Is the list of message processors defined in the connector. Each one describes their attributes, and Input &amp; Output types:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;message-processors&gt;</span>
+                                <span class="tag">&lt;processor</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">myProcessor</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlName</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">my-processor</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">My processor</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                                                <span class="tag">&lt;properties&gt;</span>
+                                                                <span class="tag">&lt;datamapper</span> <span class="attribute-name">input</span>=<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">output</span>=<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+                                                                <span class="tag">&lt;auto-paging&gt;</span>false<span class="tag">&lt;/auto-paging&gt;</span>
+                                                                <span class="tag">&lt;query-support&gt;</span>false<span class="tag">&lt;/query-support&gt;</span>
+                                                <span class="tag">&lt;/properties&gt;</span>
+                                                <span class="tag">&lt;attributes&gt;</span>
+                                                                <span class="tag">&lt;attribute</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">content</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">use</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Content</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">group</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">General</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">javaType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java.lang.String</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>content<span class="tag">&lt;/attribute&gt;</span>
+                                                <span class="tag">&lt;/attributes&gt;</span>
+                                <span class="tag">&lt;/processor&gt;</span>
+<span class="tag">&lt;/message-processors&gt;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_3_customizing_test_data_files">Step 3: Customizing Test Data Files</h4>
+<div class="paragraph">
+<p>After the testData and testData-override files are created (details about this files in Appendix), the next step is to populate the content from your domain model. This implies the completion of valid inputs for the operations and configurations, and the validation of the retrieved data.</p>
+</div>
+<div class="sect4">
+<h5 id="_attention_points">Attention Points</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Properties detected must be checked and asserted:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The fact that the connector has connectivity support must be validated. If your connector does not support connectivity, but it was detected as a supported feature, you’ll have to double check your code.</p>
+</li>
+<li>
+<p>If the connector has OAuth support, then connectivity detection must be false.</p>
+</li>
+<li>
+<p>If the connector has OAuth support, then metadata detection should not be dynamic.</p>
+</li>
+<li>
+<p>For each processor, <em>query-support</em> and <em>auto-paging</em> properties should be coherent with the expected values.</p>
+</li>
+<li>
+<p>Required fields, both in the config and in the processors should be coherent with the expected values declared in the processor declaration. Those annotated with @Optional should be <em>optional</em>, everything else should be <em>required</em>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Datamapper input/output fields:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Datamapper Input and Output attributes in each processor represent the values you expect to see at design time when you drop the connector before and after a datamapper element. This values should be empty only if you expect to see nothing in DataMapper.</p>
+</li>
+<li>
+<p>In a dynamic metadata case, the value of input/output attributes will be bound to the value with which the operation is feeded.
+For example, with dynamic metadata, if you have:</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
+        <span class="tag">&lt;datamapper</span> <span class="attribute-name">input</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">List</span><span class="entity">&amp;lt;</span><span class="content">SaveResult</span><span class="entity">&amp;gt;</span><span class="delimiter">&quot;</span></span><span class="attribute-name">output</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">List</span><span class="entity">&amp;lt;</span><span class="content">Map</span><span class="entity">&amp;gt;</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/properties&gt;</span>
+<span class="tag">&lt;attributes&gt;</span>
+        <span class="tag">&lt;attribute</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">use</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">sObject Type</span><span class="delimiter">&quot;</span></span>
+        <span class="attribute-name">group</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Information</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">type-chooser</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">javaType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java.lang.String</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;/attribute&gt;</span>
+<span class="tag">&lt;/attributes&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The output value is bounded to the value declared in the type chooser as follows:</p>
+</div>
+<div class="paragraph">
+<p><strong>Case Account</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
+        <span class="tag">&lt;datamapper</span> <span class="attribute-name">input</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">List</span><span class="entity">&amp;lt;</span><span class="content">SaveResult</span><span class="entity">&amp;gt;</span><span class="delimiter">&quot;</span></span><span class="attribute-name">output</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">List</span><span class="entity">&amp;lt;</span><span class="content">Account</span><span class="entity">&amp;gt;</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/properties&gt;</span>
+<span class="tag">&lt;attributes&gt;</span>
+        <span class="tag">&lt;attribute</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">use</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">sObject Type</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">group</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Information</span><span class="delimiter">&quot;</span></span>
+        <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">type-chooser</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">javaType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java.lang.String</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> Account (Account)
+        <span class="tag">&lt;/attribute&gt;</span>
+<span class="tag">&lt;/attributes&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Case Contact</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
+        <span class="tag">&lt;datamapper</span> <span class="attribute-name">input</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">List</span><span class="entity">&amp;lt;</span><span class="content">SaveResult</span><span class="entity">&amp;gt;</span><span class="delimiter">&quot;</span></span><span class="attribute-name">output</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">List</span><span class="entity">&amp;lt;</span><span class="content">Contact</span><span class="entity">&amp;gt;</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;/properties&gt;</span>
+<span class="tag">&lt;attributes&gt;</span>
+        <span class="tag">&lt;attribute</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">use</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">required</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">caption</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">sObject Type</span><span class="delimiter">&quot;</span></span>
+        <span class="attribute-name">group</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Information</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">type-chooser</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">javaType</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java.lang.String</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> Contact (Contact)
+        <span class="tag">&lt;/attribute&gt;</span>
+<span class="tag">&lt;/attributes&gt;</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If metadata model is static, then the expected value should be the initial one, with <em>“List&lt;Map&gt;”</em> as the output value.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_step_4_run_interop_tests">Step 4: Run Interop Tests</h4>
+<div class="paragraph">
+<p>In Studio, right-click the project and click <strong>Anypoint Connector *&gt;</strong> Run Interop Tests*:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/test-plugin-3.png" alt="test plugin 3">
+</div>
+</div>
+<div class="paragraph">
+<p>The Interop Remote Runner Properties menu shows the existing testData files that were created previously, and a set of options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Tests to run:  Select which kind of test to run on your connector.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Connectivity</p>
+</li>
+<li>
+<p>Data Mapper</p>
+</li>
+<li>
+<p>Xml Generation</p>
+</li>
+<li>
+<p>DataSense testing</p>
+</li>
+<li>
+<p>OAuth Static DataSense</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Verbose Mode</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Enables debugging logs on the test runs</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/test-plugin-4.png" alt="test plugin 4">
+</div>
+</div>
+<div class="paragraph">
+<p>The results appear in target/surefire-reports, and provide jUnit results using the XML result file.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_appendix_2">Appendix</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/studio%20test%20plugin/appendixA.adoc">Appendix A: Usage without Studio</a></p>
+</li>
+<li>
+<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/studio%20test%20plugin/appendixB.adoc">Appendix B: Plugin Result Files</a></p>
+</li>
+<li>
+<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/studio%20test%20plugin/projectDetails.adoc">Project Details</a></p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 </div>
@@ -7798,134 +8345,38 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 </div>
 </div>
-<h1 id="_run_interop_tests_using_devkit_plugin" class="sect0">Run Interop Tests using DevKit Plugin</h1>
+<h1 id="_appendixes" class="sect0">Appendixes</h1>
 <div class="openblock partintro">
 <div class="content">
 <hr>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_description">Description</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The framework described in this document consists of a series of automation tools, which let you run interoperability tests on a connector in Anypoint Studio. The framework covers Connectivity, Datamapper Compliance, and XML Generation tests, as described in the Connectors QA Guidelines. The data used by these tests is generated using not only a connector&#8217;s code, but also the output files in the DevKit, in particular the schema and editors file.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_anypoint_studio_plugin">Anypoint Studio Plugin</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_glossary_of_terms">Glossary of Terms</h3>
-<div class="paragraph">
-<p>Runner Platform: Host where the test run takes place.
-Target Platform: The platform (in terms of Anypoint Studio plugins) on which tests are going to that you run.
-CUT: Connector under test
-*-test-data.xml
-*-test-data-override.xml</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_installation">Installation</h3>
-<div class="sect3">
-<h4 id="_step_1_check_system_requirements">Step 1: Check System Requirements</h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><a href="http://maven.apache.org/download.cgi">Maven 3.2</a> or Greater</p>
-</li>
-<li>
-<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html">Java 1.7</a></p>
-</li>
-<li>
-<p><a href="http://www.mulesoft.org/download-mule-esb-community-edition">Anypoint Studio</a></p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_step_2_anypoint_devkit_plugin">Step 2: Anypoint Devkit Plugin</h4>
-<div class="paragraph">
-<p>Follow these steps on the Runner Platform&#8217;s Anypoint Studio installation:
-. Click Help &gt; Install New Software.
-. Click Anypoint Addons Update Site from the Work with drop-down. Note: If this item is not in the dropdown, click Add and specify the name, and for the URL, use: <a href="http://studio.mulesoft.org/r3/addons/beta" class="bare">http://studio.mulesoft.org/r3/addons/beta</a>
-. Click the checkbox for Anypoint DevKit Plugin, and click <strong>Next, Next, Finish</strong>.
-. Restart Anypoint Studio when prompted.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_generating_functional_tests">Generating Functional Tests</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_plugin_execution">Plugin Execution</h3>
-<div class="paragraph">
-<p>With your connector imported in Anypoint Studio, right-click the project name in Package Explorer and click <strong>Anypoint Connector &gt; Generate Tests</strong>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/functional-test-plugin-1.png" alt="functional test plugin 1">
-</div>
-</div>
-<div class="paragraph">
-<p>The Test Scaffolding Generation dialog appears:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/functional-test-plugin-2.png" alt="functional test plugin 2">
-</div>
-</div>
-<div class="paragraph">
-<p>This lists:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Processors found in the connector.</p>
-</li>
-<li>
-<p>The Generate Test Case Scaffolding option: This generates the TestCases.java classes, one for each processor, along with the classes you need to use the Functional Test Framework.</p>
-</li>
-<li>
-<p>The Generate Functional Test Data Files option: This generates the automation-test-flow.xml and AutomationSpringBeans.xml files.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>If a conflict exists between the existing files and the files you want to generate, a popup appears asking if the file should be replaced, or updated with the information related to new processors. This does not cover cases of signature change in the processor definition, nor updating naming convention on existing Java classes.</p>
-</div>
-<div class="paragraph">
-<p>Generated Files</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/functional-test-plugin-3.png" alt="functional test plugin 3">
-</div>
-</div>
-<div class="paragraph">
-<p>Output files can be found under src/test/resources/generated. The actual convention is to have the files under src/test/resources, and the generated path is only expected to store files during development or those with constant modification.</p>
-</div>
-</div>
-</div>
-</div>
-<h1 id="_templates" class="sect0">Templates</h1>
-<div class="openblock partintro">
-<div class="content">
-<hr>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_anypoint_connectors_documentation_template">Anypoint Connectors Documentation Template</h2>
+<h2 id="_appendix_a_anypoint_connectors_documentation_template">Appendix A: Anypoint Connectors Documentation Template</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/documentationTemplate.adoc">Documentation Template</a></p>
 </div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixA.adoc">Appendix A</a></p>
+</li>
+<li>
+<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixB.adoc">Appendix B</a></p>
+</li>
+<li>
+<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixC.adoc">Appendix C</a></p>
+</li>
+<li>
+<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixD.adoc">Appendix D</a></p>
+</li>
+</ol>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_anypoint_connectors_release_notes_template">Anypoint Connectors Release Notes Template</h2>
+<h2 id="_appendix_b_anypoint_connectors_release_notes_template">Appendix B: Anypoint Connectors Release Notes Template</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/releaseNotesTemplate.adoc">Release Notes Template</a></p>
@@ -7933,7 +8384,7 @@ CUT: Connector under test
 </div>
 </div>
 <div class="sect1">
-<h2 id="_anypoint_connectors_manual_test_suite_template">Anypoint Connectors Manual Test Suite Template</h2>
+<h2 id="_appendix_c_anypoint_connectors_manual_test_suite_template">Appendix C: Anypoint Connectors Manual Test Suite Template</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="https://docs.google.com/a/mulesoft.com/spreadsheets/d/1xqwGw5msku30sfjx6bpJDP9wZZ15cP2TcEzEq6pM9QM/edit?usp=sharing">Manual Test Suite Template</a></p>
@@ -7941,7 +8392,7 @@ CUT: Connector under test
 </div>
 </div>
 <div class="sect1">
-<h2 id="_certification_checklist">Certification Checklist</h2>
+<h2 id="_appendix_d_certification_checklist">Appendix D: Certification Checklist</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Download and complete the document along the process.</p>
@@ -7954,7 +8405,7 @@ CUT: Connector under test
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-02-09 13:51:51 EST
+Last updated 2015-02-09 15:05:35 EST
 </div>
 </div>
 </body>
