@@ -35,7 +35,7 @@ This section explains how to automate functional test cases on Connectors.
 
 DevKit Plugin provides mule-connector-test test data generation for functional test cases.
 
-include::devkit-plugin-generate-test-data-action.adoc[]
+include::devkit-plugin-functional-test-data-generation.adoc[]
 
 
 === Concepts
