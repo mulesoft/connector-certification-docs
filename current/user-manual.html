@@ -15,7 +15,7 @@
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel0">
-<li><a href="#_introduction">Introduction</a>
+<li><a href="#intro">Introduction</a>
 <ul class="sectlevel1">
 <li><a href="#_about_certification_process">About Certification Process</a></li>
 <li><a href="#_stage_1_onboard">Stage 1: OnBoard</a></li>
@@ -25,7 +25,7 @@
 <li><a href="#_release_re_certification">Release Re-Certification</a></li>
 </ul>
 </li>
-<li><a href="#_coding_standards_and_best_practices">Coding Standards and Best Practices</a>
+<li><a href="#development-best-practices">Coding Standards and Best Practices</a>
 <ul class="sectlevel1">
 <li><a href="#_code_conventions">Code Conventions</a></li>
 <li><a href="#_standard_java_coding_conventions">Standard Java Coding Conventions</a></li>
@@ -34,7 +34,7 @@
 <li><a href="#_connector_demo_example">Connector Demo Example</a></li>
 </ul>
 </li>
-<li><a href="#_functional_tests_automation">Functional Tests Automation</a>
+<li><a href="#functional_tests_automation">Functional Tests Automation</a>
 <ul class="sectlevel1">
 <li><a href="#_approach_explanation">Approach Explanation</a></li>
 <li><a href="#_mule_connector_test_framework">mule-connector-test framework</a></li>
@@ -51,10 +51,9 @@
 <li><a href="#_transformers">Transformers</a></li>
 <li><a href="#_testing_inbound_endpoints_sources">Testing Inbound Endpoints (@Sources)</a></li>
 <li><a href="#_setting_up_oauth_authentication">Setting Up OAuth Authentication</a></li>
-<li><a href="#_appendix">Appendix</a></li>
 </ul>
 </li>
-<li><a href="#_static_code_analysis_and_coverage">Static Code Analysis and Coverage</a>
+<li><a href="#static-code-analysis-and-coverage">Static Code Analysis and Coverage</a>
 <ul class="sectlevel1">
 <li><a href="#_installing_sonarqube">Installing SonarQube</a></li>
 <li><a href="#_performing_your_first_analysis">Performing Your First Analysis</a></li>
@@ -64,12 +63,12 @@
 <li><a href="#_code_quality_review_guideline">Code Quality Review Guideline</a></li>
 </ul>
 </li>
-<li><a href="#_anypoint_studio_interoperability_testing">Anypoint Studio Interoperability Testing</a>
+<li><a href="#anypoint-studio-interoperability-testing">Anypoint Studio Interoperability Testing</a>
 <ul class="sectlevel1">
 <li><a href="#_purpose">Purpose</a></li>
 <li><a href="#_running_automated_interop_tests_using_devkit_plugin">Running Automated Interop Tests using DevKit Plugin</a></li>
 <li><a href="#_oauth_authentication">OAuth Authentication</a></li>
-<li><a href="#_anypoint_studio_interoperability_testing_2">Anypoint Studio Interoperability Testing</a></li>
+<li><a href="#_anypoint_studio_interoperability_testing">Anypoint Studio Interoperability Testing</a></li>
 <li><a href="#_anypoint_studio_installation">Anypoint Studio Installation</a></li>
 <li><a href="#_multiple_extensions">Multiple Extensions</a></li>
 <li><a href="#_global_element_properties">Global Element Properties</a></li>
@@ -83,17 +82,19 @@
 <li><a href="#_auto_paging_dsql_interoperability">Auto-Paging DSQL Interoperability</a></li>
 </ul>
 </li>
-<li><a href="#_cloudhub_interoperability_testing">CloudHub Interoperability Testing</a>
+<li><a href="#cloudhub-interoperability-testing">CloudHub Interoperability Testing</a>
 <ul class="sectlevel1">
 <li><a href="#_cloudhub_interoperability">CloudHub Interoperability</a></li>
 </ul>
 </li>
-<li><a href="#_appendixes">Appendixes</a>
+<li><a href="#appendixes">Appendixes</a>
 <ul class="sectlevel1">
 <li><a href="#_appendix_a_anypoint_connectors_documentation_template">Appendix A: Anypoint Connectors Documentation Template</a></li>
-<li><a href="#_appendix_b_anypoint_connectors_release_notes_template">Appendix B: Anypoint Connectors Release Notes Template</a></li>
-<li><a href="#_appendix_c_anypoint_connectors_manual_test_suite_template">Appendix C: Anypoint Connectors Manual Test Suite Template</a></li>
-<li><a href="#_appendix_d_certification_checklist">Appendix D: Certification Checklist</a></li>
+<li><a href="#_appendix_b_functional_tests_automation">Appendix B: Functional Tests Automation</a></li>
+<li><a href="#_appendix_c_anypoint_studio_interoperability_testing">Appendix C: Anypoint Studio Interoperability Testing</a></li>
+<li><a href="#_appendix_d_anypoint_connectors_release_notes_template">Appendix D: Anypoint Connectors Release Notes Template</a></li>
+<li><a href="#_appendix_e_anypoint_connectors_manual_test_suite_template">Appendix E: Anypoint Connectors Manual Test Suite Template</a></li>
+<li><a href="#_appendix_f_certification_checklist">Appendix F: Certification Checklist</a></li>
 </ul>
 </li>
 </ul>
@@ -107,7 +108,7 @@
 </div>
 </div>
 </div>
-<h1 id="_introduction" class="sect0">Introduction</h1>
+<h1 id="intro" class="sect0">Introduction</h1>
 <div class="openblock partintro">
 <div class="content">
 <hr>
@@ -394,7 +395,7 @@ Each one of the following practices are aimed to cover different quality aspects
 </div>
 </div>
 </div>
-<h1 id="_coding_standards_and_best_practices" class="sect0">Coding Standards and Best Practices</h1>
+<h1 id="development-best-practices" class="sect0">Coding Standards and Best Practices</h1>
 <div class="openblock partintro">
 <div class="content">
 <hr>
@@ -755,7 +756,7 @@ Only use a map if your data:
 </div>
 </div>
 </div>
-<h1 id="_functional_tests_automation" class="sect0">Functional Tests Automation</h1>
+<h1 id="functional_tests_automation" class="sect0">Functional Tests Automation</h1>
 <div class="openblock partintro">
 <div class="content">
 <hr>
@@ -2175,15 +2176,7 @@ mvn -Dtest=GetDailyTrendsTestCases#testGetDailyTrendsParametrized test</code></p
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_appendix">Appendix</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/automated%20funcional%20testing/appendixA.adoc">Appendix A: Debugging</a></p>
-</div>
-</div>
-</div>
-<h1 id="_static_code_analysis_and_coverage" class="sect0">Static Code Analysis and Coverage</h1>
+<h1 id="static-code-analysis-and-coverage" class="sect0">Static Code Analysis and Coverage</h1>
 <div class="openblock partintro">
 <div class="content">
 <hr>
@@ -2542,7 +2535,7 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 </div>
 </div>
 </div>
-<h1 id="_anypoint_studio_interoperability_testing" class="sect0">Anypoint Studio Interoperability Testing</h1>
+<h1 id="anypoint-studio-interoperability-testing" class="sect0">Anypoint Studio Interoperability Testing</h1>
 <div class="openblock partintro">
 <div class="content">
 <hr>
@@ -2563,7 +2556,7 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 <h2 id="_running_automated_interop_tests_using_devkit_plugin">Running Automated Interop Tests using DevKit Plugin</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_introduction_2">Introduction</h3>
+<h3 id="_introduction">Introduction</h3>
 <div class="paragraph">
 <p>The following framework consists of a series of automation tools, which allow you to run interoperability tests on a connector in Anypoint Studio. The data used by these tests  generates using not only the connectors code, but also DevKit output files, in particular the schema and editors file.</p>
 </div>
@@ -3002,22 +2995,6 @@ For example, with dynamic metadata, if you have:</p>
 <div class="paragraph">
 <p>The results appear in target/surefire-reports, and provide jUnit results using the XML result file.</p>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_appendix_2">Appendix</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/studio%20test%20plugin/appendixA.adoc">Appendix A: Usage without Studio</a></p>
-</li>
-<li>
-<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/studio%20test%20plugin/appendixB.adoc">Appendix B: Plugin Result Files</a></p>
-</li>
-<li>
-<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/studio%20test%20plugin/projectDetails.adoc">Project Details</a></p>
-</li>
-</ol>
 </div>
 </div>
 </div>
@@ -3785,7 +3762,7 @@ OAuth session is killed.</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_anypoint_studio_interoperability_testing_2">Anypoint Studio Interoperability Testing</h2>
+<h2 id="_anypoint_studio_interoperability_testing">Anypoint Studio Interoperability Testing</h2>
 <div class="sectionbody">
 
 </div>
@@ -8210,7 +8187,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 </div>
 </div>
-<h1 id="_cloudhub_interoperability_testing" class="sect0">CloudHub Interoperability Testing</h1>
+<h1 id="cloudhub-interoperability-testing" class="sect0">CloudHub Interoperability Testing</h1>
 <div class="openblock partintro">
 <div class="content">
 <hr>
@@ -8345,7 +8322,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 </div>
 </div>
-<h1 id="_appendixes" class="sect0">Appendixes</h1>
+<h1 id="appendixes" class="sect0">Appendixes</h1>
 <div class="openblock partintro">
 <div class="content">
 <hr>
@@ -8354,37 +8331,68 @@ Note: You can override the getTotalResults() method in the connector in case of 
 <div class="sect1">
 <h2 id="_appendix_a_anypoint_connectors_documentation_template">Appendix A: Anypoint Connectors Documentation Template</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/documentationTemplate.adoc">Documentation Template</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="attachments/documentationTemplate.adoc">Documentation Template</a></p>
+</li>
+<li>
+<p><a href="attachments/readme.adoc">README.md Template</a></p>
+</li>
+<li>
+<p><a href="attachments/project-directory-layout.adoc">Connector Project Directory Layout</a></p>
+</li>
+</ul>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixA.adoc">Appendix A</a></p>
+<p><a href="attachments/CPAL.adoc">Common Public Attribution License Version 1.0 (CPAL)</a></p>
 </li>
-<li>
-<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixB.adoc">Appendix B</a></p>
-</li>
-<li>
-<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixC.adoc">Appendix C</a></p>
-</li>
-<li>
-<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixD.adoc">Appendix D</a></p>
-</li>
-</ol>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_appendix_b_anypoint_connectors_release_notes_template">Appendix B: Anypoint Connectors Release Notes Template</h2>
+<h2 id="_appendix_b_functional_tests_automation">Appendix B: Functional Tests Automation</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>attachments/debugging.adoc[Debugging]</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_appendix_c_anypoint_studio_interoperability_testing">Appendix C: Anypoint Studio Interoperability Testing</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>attachments/usage-without-anypoint-studio.adoc[Usage without Anypoint Studio]</p>
+</li>
+<li>
+<p>attachments/plugin-result-files.adoc[Plugin Result Files]</p>
+</li>
+<li>
+<p>attachments/project-details.adoc[Project Details]</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_appendix_d_anypoint_connectors_release_notes_template">Appendix D: Anypoint Connectors Release Notes Template</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/releaseNotesTemplate.adoc">Release Notes Template</a></p>
+<p><a href="attachments/releaseNotesTemplate.adoc">Release Notes Template</a></p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_appendix_c_anypoint_connectors_manual_test_suite_template">Appendix C: Anypoint Connectors Manual Test Suite Template</h2>
+<h2 id="_appendix_e_anypoint_connectors_manual_test_suite_template">Appendix E: Anypoint Connectors Manual Test Suite Template</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><a href="https://docs.google.com/a/mulesoft.com/spreadsheets/d/1xqwGw5msku30sfjx6bpJDP9wZZ15cP2TcEzEq6pM9QM/edit?usp=sharing">Manual Test Suite Template</a></p>
@@ -8392,20 +8400,17 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_appendix_d_certification_checklist">Appendix D: Certification Checklist</h2>
+<h2 id="_appendix_f_certification_checklist">Appendix F: Certification Checklist</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Download and complete the document along the process.</p>
-</div>
-<div class="paragraph">
-<p><a href="https://drive.google.com/file/d/0B8N265C555thOG5HZDRTOTEtUXM/view?usp=sharing" class="bare">https://drive.google.com/file/d/0B8N265C555thOG5HZDRTOTEtUXM/view?usp=sharing</a></p>
+<p>Download and complete the <a href="https://drive.google.com/file/d/0B8N265C555thOG5HZDRTOTEtUXM/view?usp=sharing">document</a> along the process.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-02-09 15:05:35 EST
+Last updated 2015-02-09 15:42:19 EST
 </div>
 </div>
 </body>
