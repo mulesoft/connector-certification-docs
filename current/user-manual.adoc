@@ -88,13 +88,13 @@ include::docs/cloudhub-interoperability-testing.adoc[]
 
 == Appendix B: Functional Tests Automation
 
-* attachments/debugging.adoc[Debugging]
+* link:attachments/debugging.adoc[Debugging]
 
 == Appendix C: Anypoint Studio Interoperability Testing
 
-* attachments/usage-without-anypoint-studio.adoc[Usage without Anypoint Studio]
-* attachments/plugin-result-files.adoc[Plugin Result Files]
-* attachments/project-details.adoc[Project Details]
+* link:attachments/usage-without-anypoint-studio.adoc[Usage without Anypoint Studio]
+* link:attachments/plugin-result-files.adoc[Plugin Result Files]
+* link:attachments/project-details.adoc[Project Details]
 
 
 == Appendix D: Anypoint Connectors Release Notes Template
