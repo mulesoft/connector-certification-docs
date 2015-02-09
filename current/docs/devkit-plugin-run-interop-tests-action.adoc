@@ -235,8 +235,3 @@ image::{imagesdir}/test-plugin-4.png[]
 
 The results appear in target/surefire-reports, and provide jUnit results using the XML result file.
 
-== Appendix
-
-. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/studio%20test%20plugin/appendixA.adoc[Appendix A: Usage without Studio]
-. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/studio%20test%20plugin/appendixB.adoc[Appendix B: Plugin Result Files]
-. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/studio%20test%20plugin/projectDetails.adoc[Project Details]

@@ -910,6 +910,3 @@ Or:
 mvn -Dtest=SmokeTestSuite -Dmule.test.timeoutSecs=180 -DSALESFORCE_CREDENTIALS=http://172.16.20.35/automation/salesforce/automation-credentials.properties test
 ```
 
-== Appendix
-
-https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/automated%20funcional%20testing/appendixA.adoc[Appendix A: Debugging]

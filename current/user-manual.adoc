@@ -12,7 +12,7 @@
 
 *version 0.9*
 
-// [intro]
+[[intro]]
 = Introduction
 ---
 
@@ -35,7 +35,7 @@ In the following sections, each one of the topics to be completed as part of the
 
 include::docs/certification-process-introduction.adoc[]
 
-// [development-best-practices]
+[[development-best-practices]]
 = Coding Standards and Best Practices
 ---
 
@@ -43,59 +43,70 @@ This section is about best development practices, these are a set of rules that 
 
 include::docs/development-best-practices.adoc[]
 
-
-// [functional_tests_automation]
+[[functional_tests_automation]]
 = Functional Tests Automation
 ---
 
 include::docs/functional-tests-automation.adoc[]
 
-// [static-code-analysis-and-coverage]
+[[static-code-analysis-and-coverage]]
 = Static Code Analysis and Coverage
 ---
 
 include::docs/static-code-analysis-and-coverage.adoc[]
 
 
-// [anypoint-studio-interoperability-testing]
+[[anypoint-studio-interoperability-testing]]
 = Anypoint Studio Interoperability Testing
 ---
 
 include::docs/anypoint-studio-interoperability-testing.adoc[]
 
-// [cloudhub-interoperability-testing]
+[[cloudhub-interoperability-testing]]
 = CloudHub Interoperability Testing
 ---
 
 include::docs/cloudhub-interoperability-testing.adoc[]
 
 
-// [templates]
+[[appendixes]]
 = Appendixes
-
-
 ---
+
 == Appendix A: Anypoint Connectors Documentation Template
 
-https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/documentationTemplate.adoc[Documentation Template]
+* link:attachments/documentationTemplate.adoc[Documentation Template]
+
+* link:attachments/readme.adoc[README.md Template]
+
+* link:attachments/project-directory-layout.adoc[Connector Project Directory Layout]
+
+// * link:attachments/[Appendix C] TODO missing appedix?
+
+* link:attachments/CPAL.adoc[Common Public Attribution License Version 1.0 (CPAL)]
 
 
-. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixA.adoc[Appendix A]
-. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixB.adoc[Appendix B]
-. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixC.adoc[Appendix C]
-. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixD.adoc[Appendix D]
+== Appendix B: Functional Tests Automation
+
+* attachments/debugging.adoc[Debugging]
+
+== Appendix C: Anypoint Studio Interoperability Testing
+
+* attachments/usage-without-anypoint-studio.adoc[Usage without Anypoint Studio]
+* attachments/plugin-result-files.adoc[Plugin Result Files]
+* attachments/project-details.adoc[Project Details]
 
 
-== Appendix B: Anypoint Connectors Release Notes Template
+== Appendix D: Anypoint Connectors Release Notes Template
 
-https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/releaseNotesTemplate.adoc[Release Notes Template]
+link:attachments/releaseNotesTemplate.adoc[Release Notes Template]
 
-== Appendix C: Anypoint Connectors Manual Test Suite Template
+== Appendix E: Anypoint Connectors Manual Test Suite Template
 
 https://docs.google.com/a/mulesoft.com/spreadsheets/d/1xqwGw5msku30sfjx6bpJDP9wZZ15cP2TcEzEq6pM9QM/edit?usp=sharing[Manual Test Suite Template]
 
-== Appendix D: Certification Checklist
+== Appendix F: Certification Checklist
 
-Download and complete the document along the process.
+Download and complete the https://drive.google.com/file/d/0B8N265C555thOG5HZDRTOTEtUXM/view?usp=sharing[document] along the process.
 
-https://drive.google.com/file/d/0B8N265C555thOG5HZDRTOTEtUXM/view?usp=sharing
+
