@@ -1,0 +1,7 @@
+URL publica para todos los docs
+
+Secciones
+  Documentacion del connector, apuntar al template
+  Api docs
+  Release notes (apuntar al template)
+  Libraries description (exchanges)

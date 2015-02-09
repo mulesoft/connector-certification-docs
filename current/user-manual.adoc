@@ -35,7 +35,7 @@ In the following sections, each one of the topics to be completed as part of the
 
 include::docs/certification-process-introduction.adoc[]
 
-// [devGuidelines]
+// [development-best-practices]
 = Coding Standards and Best Practices
 ---
 
@@ -43,17 +43,18 @@ This section is about best development practices, these are a set of rules that 
 
 include::docs/development-best-practices.adoc[]
 
+
+// [functional_tests_automation]
+= Functional Tests Automation
+---
+
+include::docs/functional-tests-automation.adoc[]
+
 // [static-code-analysis-and-coverage]
 = Static Code Analysis and Coverage
 ---
 
 include::docs/static-code-analysis-and-coverage.adoc[]
-
-// [functionalQAGuidelines]
-= Functional Tests Automation
----
-
-include::docs/functional-tests-automation.adoc[]
 
 
 // [anypoint-studio-interoperability-testing]
@@ -68,29 +69,32 @@ include::docs/anypoint-studio-interoperability-testing.adoc[]
 
 include::docs/cloudhub-interoperability-testing.adoc[]
 
-// [interoperability-test-plugin]
-= Run Interop Tests using DevKit Plugin
----
-
-include::docs/devkit-plugin-run-interop-tests-action.adoc[]
-
 
 // [templates]
-= Templates
+= Appendixes
+
+
 ---
-== Anypoint Connectors Documentation Template
+== Appendix A: Anypoint Connectors Documentation Template
 
 https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/documentationTemplate.adoc[Documentation Template]
 
-== Anypoint Connectors Release Notes Template
+
+. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixA.adoc[Appendix A]
+. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixB.adoc[Appendix B]
+. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixC.adoc[Appendix C]
+. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixD.adoc[Appendix D]
+
+
+== Appendix B: Anypoint Connectors Release Notes Template
 
 https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/releaseNotesTemplate.adoc[Release Notes Template]
 
-== Anypoint Connectors Manual Test Suite Template
+== Appendix C: Anypoint Connectors Manual Test Suite Template
 
 https://docs.google.com/a/mulesoft.com/spreadsheets/d/1xqwGw5msku30sfjx6bpJDP9wZZ15cP2TcEzEq6pM9QM/edit?usp=sharing[Manual Test Suite Template]
 
-== Certification Checklist
+== Appendix D: Certification Checklist
 
 Download and complete the document along the process.
 

@@ -1,8 +1,29 @@
-== Introduction
-The following framework consists of a series of automation tools, which allow you to run interoperability tests on a connector in Anypoint Studio. The data used by these tests  generates using not only the connectors code, but also DevKit output files, in particular the schema and editors file.
+== Description
+The framework described in this document consists of a series of automation tools, which let you run interoperability tests on a connector in Anypoint Studio. The framework covers Connectivity, Datamapper Compliance, and XML Generation tests, as described in the Connectors QA Guidelines. The data used by these tests is generated using not only a connector's code, but also the output files in the DevKit, in particular the schema and editors file.
 
-All cases described in the https://docs.google.com/a/mulesoft.com/document/d/1HIiE8akbyr-jdfS-XJUZo45JL0J6G2OmQY_jO4rEkz4[Interoperability Test Guidelines] should be considered depending on the connector’s nature. This means, all the applicable test cases detailed there must be covered for a full interoperability test of the connector.
+== Anypoint Studio Plugin
+=== Glossary of Terms
+Runner Platform: Host where the test run takes place.
+Target Platform: The platform (in terms of Anypoint Studio plugins) on which tests are going to that you run.
+CUT: Connector under test
+*-test-data.xml
+*-test-data-override.xml
 
+=== Installation
+
+==== Step 1: Check System Requirements
+. http://maven.apache.org/download.cgi[Maven 3.2] or Greater
+. http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html[Java 1.7]
+. http://www.mulesoft.org/download-mule-esb-community-edition[Anypoint Studio]
+
+==== Step 2: Anypoint Devkit Plugin
+Follow these steps on the Runner Platform's Anypoint Studio installation:
+. Click Help > Install New Software.
+. Click Anypoint Addons Update Site from the Work with drop-down. Note: If this item is not in the dropdown, click Add and specify the name, and for the URL, use: http://studio.mulesoft.org/r3/addons/beta
+. Click the checkbox for Anypoint DevKit Plugin, and click *Next, Next, Finish*.
+. Restart Anypoint Studio when prompted.
+
+<<<<<<< HEAD
 *Note*: The Anypoint Studio plugin covers only the following cases:
 
  * Connectivity testing
@@ -240,3 +261,35 @@ The results appear in target/surefire-reports, and provide jUnit results using t
 . https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/studio%20test%20plugin/appendixA.adoc[Appendix A: Usage without Studio]
 . https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/studio%20test%20plugin/appendixB.adoc[Appendix B: Plugin Result Files]
 . https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/studio%20test%20plugin/projectDetails.adoc[Project Details]
+=======
+
+== Generating Functional Tests
+
+=== Plugin Execution
+
+With your connector imported in Anypoint Studio, right-click the project name in Package Explorer and click *Anypoint Connector > Generate Tests*.
+
+image::{imagesdir}/functional-test-plugin-1.png[]
+
+
+
+The Test Scaffolding Generation dialog appears:
+
+image::{imagesdir}/functional-test-plugin-2.png[]
+
+This lists:
+
+. Processors found in the connector.
+
+. The Generate Test Case Scaffolding option: This generates the TestCases.java classes, one for each processor, along with the classes you need to use the Functional Test Framework.
+
+. The Generate Functional Test Data Files option: This generates the automation-test-flow.xml and AutomationSpringBeans.xml files.
+
+If a conflict exists between the existing files and the files you want to generate, a popup appears asking if the file should be replaced, or updated with the information related to new processors. This does not cover cases of signature change in the processor definition, nor updating naming convention on existing Java classes.
+
+Generated Files
+
+image::{imagesdir}/functional-test-plugin-3.png[]
+
+Output files can be found under src/test/resources/generated. The actual convention is to have the files under src/test/resources, and the generated path is only expected to store files during development or those with constant modification.
+>>>>>>> Fixed functional-test data generation and interop test run includes
