@@ -43,6 +43,12 @@ This section is about best development practices, these are a set of rules that 
 
 include::docs/development-best-practices.adoc[]
 
+[[documentation]]
+= Documentation deliverables
+---
+
+include::docs/documentation.adoc[]
+
 [[functional_tests_automation]]
 = Functional Tests Automation
 ---
@@ -92,9 +98,15 @@ include::docs/cloudhub-interoperability-testing.adoc[]
 
 == Appendix C: Anypoint Studio Interoperability Testing
 
+<<<<<<< HEAD
 * link:attachments/usage-without-anypoint-studio.html[Usage without Anypoint Studio]
 * link:attachments/plugin-result-files.html[Plugin Result Files]
 * link:attachments/project-details.html[Project Details]
+=======
+* link:attachments/usage-without-anypoint-studio.adoc[Usage without Anypoint Studio]
+* link:attachments/plugin-result-files.adoc[Plugin Result Files]
+* link:attachments/project-details.adoc[Project Details]
+>>>>>>> b5f75f545a40aa100cf03dc1b03915ac2778b5bc
 
 == Appendix D: Anypoint Connectors Release Notes Template
 
@@ -104,8 +116,10 @@ include::docs/cloudhub-interoperability-testing.adoc[]
 
 * https://docs.google.com/a/mulesoft.com/spreadsheets/d/1xqwGw5msku30sfjx6bpJDP9wZZ15cP2TcEzEq6pM9QM/edit?usp=sharing[Manual Test Suite Template]
 
-== Appendix F: Certification Checklist
+== Appendix F: Certification Checklists
 
-* Download and complete the https://drive.google.com/file/d/0B8N265C555thOG5HZDRTOTEtUXM/view?usp=sharing[document] along the process.
+Download and complete the Connector Certification Checklist and its related Manual Interop Test Run Checklist according to the cases derived from analising your connector based on the Interoperability QA Guidelines.
 
+* https://drive.google.com/file/d/0B8N265C555thOG5HZDRTOTEtUXM/view?usp=sharing[Connector Certification Checklist]
 
+* https://docs.google.com/a/mulesoft.com/spreadsheets/d/1hIIzxexrGDKuBdtwyZLFr2PeC7bBUY6P-x0dF4YX2T0/edit#gid=21[Manual Interop Test Run Checklist]
