@@ -111,7 +111,7 @@ MuleSoft reserves the right to conduct random tests on published connectors. If 
 
 == Stage 4: Publish
 
-Finally, the connector will be available in MueSoft Connector Library (https://www.mulesoft.com/library)
+Finally, the connector will be available in https://www.mulesoft.com/library[MuleSoft Connector Library]
 
 
 == Release Re-Certification
