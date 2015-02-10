@@ -21,7 +21,7 @@
 <li><a href="#_stage_1_on_board">Stage 1: On-Board</a></li>
 <li><a href="#_stage_2_development">Stage 2: Development</a></li>
 <li><a href="#_stage_3_certification">Stage 3: Certification</a></li>
-<li><a href="#_stage_4_publish">Stage 4: Publish</a></li>
+<li><a href="#_stage_4_publishing">Stage 4: Publishing</a></li>
 <li><a href="#_release_re_certification">Release Re-Certification</a></li>
 </ul>
 </li>
@@ -39,7 +39,7 @@
 <li><a href="#_documentation">Documentation</a></li>
 </ul>
 </li>
-<li><a href="#functional-tests-automation">Development: Functional Tests Automation</a>
+<li><a href="#functional_tests_automation">Development: Functional Tests Automation</a>
 <ul class="sectlevel1">
 <li><a href="#_approach_explanation">Approach Explanation</a></li>
 <li><a href="#_mule_connector_test_framework">mule-connector-test framework</a></li>
@@ -58,16 +58,7 @@
 <li><a href="#_setting_up_oauth_authentication">Setting Up OAuth Authentication</a></li>
 </ul>
 </li>
-<li><a href="#static-code-analysis-and-coverage">Development: Static Code Analysis and Coverage</a>
-<ul class="sectlevel1">
-<li><a href="#_installing_sonarqube">Installing SonarQube</a></li>
-<li><a href="#_performing_your_first_analysis">Performing Your First Analysis</a></li>
-<li><a href="#_sonarqube_eclipse_plugin_setup">SonarQube Eclipse Plugin Setup</a></li>
-<li><a href="#_quality_profile_rules">Quality Profile Rules</a></li>
-<li><a href="#_code_coverage">Code Coverage</a></li>
-<li><a href="#_code_quality_review_guideline">Code Quality Review Guideline</a></li>
-</ul>
-</li>
+<li><a href="#static-code-analysis-and-coverage">Development: Static Code Analysis and Coverage</a></li>
 <li><a href="#anypoint-studio-interoperability-testing">Development: Anypoint Studio Interoperability Testing</a>
 <ul class="sectlevel1">
 <li><a href="#_purpose">Purpose</a></li>
@@ -92,6 +83,7 @@
 <li><a href="#_cloudhub_interoperability">CloudHub Interoperability</a></li>
 </ul>
 </li>
+<li><a href="#_development_interoperability_testing_using_devkit_plugin">Development: Interoperability Testing using DevKit Plugin</a></li>
 <li><a href="#appendixes">Development: Appendixes</a>
 <ul class="sectlevel1">
 <li><a href="#_development_appendix_a_anypoint_connectors_documentation_template">Development Appendix A: Anypoint Connectors Documentation Template</a></li>
@@ -120,10 +112,10 @@
 <p>MuleSoft has expanded the Anypoint™ Connector platform enabling partners, from out MuleSoft Partner Program, and third-party development groups, to develop Anypoint connectors.</p>
 </div>
 <div class="paragraph">
-<p>Every connector in the MuleSoft Anypoint Platform must go through a mandatory <strong>Certification Process</strong> before final release. The certification process has been conceived to assess the overall quality of all available connectors, ensuring that every connector published in the MuleSoft&#8217;s connectors repository strictly follow industry best practices. As a result of this certification process, we are able to define a high quality threshold for every Mulesoft connector available in the platform.</p>
+<p>Every connector in the MuleSoft Anypoint Platform must go through a mandatory <strong>Certification Process</strong> before final release. The certification process has been conceived to assess the overall quality of all available connectors, ensuring that every connector published in the MuleSoft Connectors library strictly follow industry best practices. As a result of this certification process, we are able to define a high quality threshold for every Mulesoft connector available in the platform.</p>
 </div>
 <div class="paragraph">
-<p>All available connectors, either built by our partners or by our internal development team, go through the certification process, which is carried out by Mulesoft&#8217;s internal team. Once a connector passes certification, it is branded as a MuleSoft-certified connector and published in the MuleSoft&#8217;s connectors repository.</p>
+<p>All available connectors, either built by our partners or by our internal development team, go through the certification process, which is carried out by Mulesoft&#8217;s internal team. Once a connector passes certification, it is branded as a MuleSoft-certified connector and published in the MuleSoft Connectors library.</p>
 </div>
 <div class="paragraph">
 <p>The scope of this process mainly depends on the composition of the connector, where a more complex connector will require further step in the certification process. Our approach is to test every functional block of the connector prior releasing.</p>
@@ -143,7 +135,7 @@
 <p>Certification: The certification process per-se, carried out by a MuleSoft.</p>
 </li>
 <li>
-<p>Publishing: Considers the final deployment of the certified connector within MuleSoft&#8217;s connectors repository.</p>
+<p>Publishing: Considers the final deployment of the certified connector within MuleSoft Connectors library.</p>
 </li>
 </ol>
 </div>
@@ -211,7 +203,7 @@
 </ol>
 </div>
 <div class="paragraph">
-<p>Here is a set of links that it could be useful as a starting point:</p>
+<p>Here is a set of useful links as a starting point:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -236,41 +228,44 @@
 <h2 id="_stage_2_development">Stage 2: Development</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The development phase</p>
+<p>The development stage is one of the two major phases, mostly ocurring in the development team side. Since the Mulesoft team have relatively low control of this stage, we require every developer to follow a strict set of practices, which we called <strong>Mandatory Practices</strong>.</p>
 </div>
 <div class="sect2">
 <h3 id="_2_1_design_specification_review">2.1 Design Specification Review</h3>
 <div class="paragraph">
-<p>The spirit of this document is to help the MuleSoft certification team to have an initial context about the connector to be develop.
-MuleSoft certification team will use this document as a starting point to provide feedback and tips about the best use of DevKit and suggesting development patterns.</p>
+<p>The <em>design specification review</em> phase, within the development stage, primary assists developers and designers to clarify the functional behaviour of the connector, provides extensive use cases, ranging from normal ones to border-cases ones, and finally includes an overall architecture design. It is strongly recommended that developers, as well as designers, consider this step as mandatory, taking into consideration the <em>Design Specification Document</em>, available at:</p>
 </div>
 <div class="paragraph">
-<p>The follow template must be used as starting point
-<a href="attachments/designSpecificationTemplate.html">Design Specification Template</a></p>
+<p><a href="https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/designSpecificationTemplate.adoc">Design Specification Template</a></p>
+</div>
+<div class="paragraph">
+<p>This design specification document is one of the two <em>Exit Criteria Documents</em> needed by the Mulesoft team. The second document is a <em>Certification Checklist Document</em>, which corroborates that every mandatory practice have been accomplished and every deliverable have been issued. This ckecklist need to be completed before submitting the connector for certification. The checklist is available at:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://drive.google.com/file/d/0B8N265C555thOG5HZDRTOTEtUXM/view?usp=sharing">Certification Checklist</a></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_2_2_mandatory_practices">2.2  Mandatory Practices</h3>
+<h3 id="_2_2_mandatory_practices">2.2 Mandatory Practices</h3>
 <div class="paragraph">
-<p>In order to quality of the connectors developed, there are a set of practices and artifacts that need to be delivered as part of the connectors development.
-Each one of the following practices are aimed to cover different quality aspects:</p>
+<p>These practices assure an overall product quality, ranging from coding standars to documentation. The Mulesoft team requires every practice to be strictly followed by the development team and to produce the required deliverables, such as release notes.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#development-best-practices">Coding Standards and Best Practices</a></p>
+<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_coding_standards_and_best_practices">Coding Standards and Best Practices</a></p>
 </li>
 <li>
-<p><a href="#static-code-analysis-and-coverage">Static Code Analysis and Code Coverage</a></p>
+<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_static_code_analysis_with_sonarqube">Static Code Analysis and Code Coverage</a></p>
 </li>
 <li>
-<p><a href="#functional-tests-automation">Automated Functional Testing</a></p>
+<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_automated_functional_testing">Automated Functional Testing</a></p>
 </li>
 <li>
-<p><a href="#anypoint-studio-interoperability-testing">Anypoint Studio Interoperability Testing</a></p>
+<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_studio_interoperability_qa">Anypoint Studio  Interoperability Testing</a></p>
 </li>
 <li>
-<p><a href="#appendixes">Connector Release Notes &amp; Documentation</a></p>
+<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_templates">Connector Release Notes &amp; Documentation</a></p>
 </li>
 </ul>
 </div>
@@ -281,43 +276,71 @@ Each one of the following practices are aimed to cover different quality aspects
 <h2 id="_stage_3_certification">Stage 3: Certification</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>At this stage, the connector is really to go over the final stage of the certification.</p>
+<p>The certification stage, on the contrary to the development stage, occurs mostly in the Mulesoft side. This includes different high-level objectives, such as:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Automated code scan</p>
+</li>
+<li>
+<p>Manual code review and black box testing</p>
+</li>
+<li>
+<p>Manual and automated tests review</p>
+</li>
+<li>
+<p>Repository structure review</p>
+</li>
+<li>
+<p>Documentation review</p>
+</li>
+<li>
+<p>Runtime-compatibility review</p>
+</li>
+<li>
+<p>Static code analysis</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Certification includes a prerequisites step, where a wide set of properties are checked and validated. These properties includes GitHub credentials, Maven dependencies and versioning, among others.</p>
 </div>
 <div class="sect2">
 <h3 id="_3_1_prerequisites">3.1 Prerequisites</h3>
 <div class="paragraph">
-<p>Before Mule start the certification process, there are a set of prerequisites to be satisfied:</p>
+<p>Before the Mulesoft team starts the certification stage, there are a set of prerequisites to be satisfied:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Design Specification Approved:</strong> Design Specification has been approved and all suggested correction has been completed.</p>
+<p><strong>Design Specification Approved:</strong> The Design Specification Document has been approved and all suggested corrections have been taken into consideration.</p>
 </li>
 <li>
-<p><strong>Source Code Access and Sandbox Credentials:</strong> As part of the certification, MuleSoft will internally run a continue build tests execution and run a set of code inspections to validate the quality of the connector. The next actions are required:</p>
+<p><strong>Source Code Access and Sandbox Credentials:</strong> As part of the certification process, the MuleSoft team will internally run a continue build tests execution and run a set of code inspections to validate the quality of the connector. The following actions are required:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>GitHub account read access must be granted to the user connectors-cert-ci (<a href="mailto:connectors-cert-ci@mulesoft.com">connectors-cert-ci@mulesoft.com</a>)</p>
+<p>GitHub account read access must be granted to the user connectors-cert-ci (connectors-cert-ci at mulesoft dot com).</p>
 </li>
 <li>
-<p>In case of being required, provide the Sandbox credentials a .properties used for the testing execution.</p>
+<p>In case of being required, provide the Sandbox credentials used for the testing execution.</p>
 </li>
 <li>
-<p>Create a release branch that will contain all the fixes and suggested during the certification. It should follows the naming convention "release/v&lt;version-number&gt;". Once the certification process has been completed, all the changes will be merged into the master branch and a tag will all the change must be created. It&#8217;s strongly encourage to follow GitFlow branching practices.</p>
+<p>Create a release branch that will contain all the fixes and suggested produced during the certification process. It should follows the naming convention "release/v&lt;version-number&gt;". Once the certification process has been completed, all the changes will be merged into the master branch and a tag, with all the change, need to be created. It&#8217;s strongly encourage to follow GitFlow branching practices.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Maven Dependencies:</strong> It&#8217;s important that the following things be satisfied:</p>
+<p><strong>Maven Dependencies:</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Connector must be a final version, It could not be an SNAPSHOT</p>
+<p>The connector must be a final version, It could not be an SNAPSHOT</p>
 </li>
 <li>
-<p>There must not be SNAPSHOT dependencies</p>
+<p>There must not be any SNAPSHOT dependencies</p>
 </li>
 <li>
 <p>External dependencies must be located in well know public repositories.</p>
@@ -326,33 +349,33 @@ Each one of the following practices are aimed to cover different quality aspects
 </div>
 </li>
 <li>
-<p><strong>Presentation Demo:</strong> The objective of this demo is to go over the functional aspects of the connectors, overview of the system to be connected, underlying integration technology (REST/WSDL/SDK). The audience of this meeting will be Product Managers , Connectors Engineers Leads and QA.</p>
+<p><strong>Presentation Demo:</strong> The objective of this demo is to go over the functional aspects of the connectors, overview of the system to be connected and underlying integration technology (REST/WSDL/SDK). The audience of this meeting will mainly be Product Managers, Connectors Engineers Leads and QA members.</p>
 </li>
 <li>
-<p><strong>Complete Certification Checklist:</strong> Before the connector could start the certification process, it’s responsibility of the partner to validate that all the certification artifacts and requirements have been accomplished. All the required actions are described in the following template and should be completed before submitting the connector for certification. Certification checklist could be found <a href="https://drive.google.com/file/d/0B8N265C555thOG5HZDRTOTEtUXM/view?usp=sharing">here</a></p>
+<p><strong>Complete Certification Checklist</strong></p>
 </li>
 <li>
 <p><strong>Connector documentation:</strong> There must be a public access to the connectors documentation.</p>
 </li>
 <li>
-<p><strong>Versioning:</strong> Connectors must follow versioning best practices. Given a version number MAJOR.MINOR.PATCH increment MAJOR version when you make incompatible API changes,increment MINOR version when you add functionality in a backwards-compatible manner, and increment PATCH version when you make backwards-compatible bug fixes.</p>
+<p><strong>Versioning:</strong> Connectors must follow versioning best practices. Given a version number MAJOR.MINOR.PATCH increment MAJOR version when you make incompatible API changes, increment MINOR version when you add functionality in a backwards-compatible manner, and increment PATCH version when you make backwards-compatible bug fixes.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_3_2_certifying">3.2 Certifying</h3>
+<h3 id="_3_2_certification">3.2 Certification</h3>
 <div class="paragraph">
-<p>Once all the previous steps have been completed, MuleSoft engineering team will start running the certification and creating a set of recommendations to be completed before the connector could be released. This is an iterative process where it’s highly probable that our engineering team will have questions about the connector usage. It’s strongly recommended to allocate some time from developers in case of any question arise. Once all the certification criteria has been meet, the connector is ready to move to the next stage. As part of this, the connector forum will be used a the communication chanel between the partner an MuleSoft.</p>
+<p>Once all the previous steps have been completed, The MuleSoft team will start the certification process, which is by nature an iterative process. The Mulesoft team in charge will reporte different recommendations, which should be taken into consideration by the connector developemnt team, otherwise the certification will fail.</p>
 </div>
 <div class="paragraph">
-<p>MuleSoft will provide a tentative day for starting the certification. We strongly encourage to allocate some development time to start working on the suggested connections and changes. If there is not active partner engagement and activity on fixing the issue in a period of 7 days, the certification will be suspended and a new tentative day will be assigned.</p>
+<p>The Mulesoft team will define a tentative starting date for the certification process, where we strongly recommend that the connector developer team allocate different time windows to respond to our recommendations. Once all the recommendations have been resolved and implemented, the certification process ends. However, if there is no active engagement in solving the reported recommendations within a seven-days period, the whole certification process will be suspended and a new tentative starting date will be defined.</p>
 </div>
 <div class="paragraph">
-<p>MuleSoft will provide a CloudBees (<a href="http://www.cloudbees.com" class="bare">http://www.cloudbees.com</a>) private account that the partner will use to monitor the nightly tests execution and static code analysis reports. It&#8217;s responsibility of the partner to monitor warranty sandbox maintenance and successful tests results.</p>
+<p>The Mulesoft team provides a CloudBees (<a href="http://www.cloudbees.com" class="bare">http://www.cloudbees.com</a>) dedicated account that the connector development team can use to monitor tests executions and static code analysis reports.</p>
 </div>
 <div class="paragraph">
-<p>MuleSoft reserves the right to conduct random tests on published connectors. If we find a connector that deviates from any of our requirements, we notify you and provide a timeframe to remedy the issue. In extreme cases, we may remove the connector from our web site.</p>
+<p>It is important to mention that the main communication channel between the Mulesoft team and the connector team is the Mulesoft connector forum, part of the Mulesoft forum community.</p>
 </div>
 </div>
 <div class="sect2">
@@ -360,14 +383,14 @@ Each one of the following practices are aimed to cover different quality aspects
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Support Training:</strong> Mule Support team will provide T1 support and will help the customer to isolated the issue to identify if the issue is a Mule issue or a connector issue. The objective of this birth view training is to provide to the support team a general understanding of the connector and tools that help to isolate the problem.</p>
+<p><strong>Support Training:</strong> Mule Support team will provide T1 support and will help the customer to isolated the issue and identify it if the issue is a Mule issue or a connector issue. The objective of this birth view training is to provide to the support team a general understanding of the connector and tools that help to isolate the problem.</p>
 </li>
 <li>
-<p><strong>Upload to Library:</strong> Connector will be upload in the <a href="https://www.mulesoft.com/library">Mule Connectors Library</a>. After your connector passes the Certification Process, MuleSoft sends you an estimated date for when your connector will appear on the MuleSoft web site. As part of this process, the following information need to be provided:</p>
+<p><strong>Upload to Mulesoft Connector Library:</strong> Certified connector will be upload in the <a href="https://www.mulesoft.com/library">Mule Connectors Library</a>. After your connector passes the certification process, MuleSoft sends you an estimated date for when your connector will appear on the MuleSoft web site. As part of this process, the following information need to be provided:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>High Level description of the connector. SalesForce connector could be use a template example: <a href="https://www.mulesoft.com/library#!/salesforce-integration-connector?types=connector" class="bare">https://www.mulesoft.com/library#!/salesforce-integration-connector?types=connector</a></p>
+<p>High level description of the connector. As an example, the SalesForce connector can be use as a template: <a href="https://www.mulesoft.com/library#!/salesforce-integration-connector?types=connector" class="bare">https://www.mulesoft.com/library#!/salesforce-integration-connector?types=connector</a></p>
 </li>
 <li>
 <p>URL to Release Notes</p>
@@ -387,10 +410,10 @@ Each one of the following practices are aimed to cover different quality aspects
 </div>
 </div>
 <div class="sect1">
-<h2 id="_stage_4_publish">Stage 4: Publish</h2>
+<h2 id="_stage_4_publishing">Stage 4: Publishing</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Finally, the connector will be available in <a href="https://www.mulesoft.com/library">MuleSoft Connector Library</a></p>
+<p>The final stage in the connector lifecycle model is Publishing, which is mainly carried out in the Mulesoft team side. Once the certification process has been successfully completed, the connector will be deployed and published in the Mulesoft Connector Library.</p>
 </div>
 </div>
 </div>
@@ -398,17 +421,17 @@ Each one of the following practices are aimed to cover different quality aspects
 <h2 id="_release_re_certification">Release Re-Certification</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Mule ESB and Anypoint Studio have a release cadence of 3 month cycles. Even the fact that Mule ESB and Mule Studio will be focus on maintaining forward compatibility for all develop connectors there is a small probability that issues related to classloader problems or data mapping could arise. Due to that, it’s required that a regression testing using the released version of Mule ESB and Mule Studio be executed. Early access to binaries will be provided to run the re-certification. It’s important to point out that the certification must be run over the already released connector</p>
+<p>Mule ESB and Anypoint Studio have a release cycle of three month, where the Mulesoft team needs to assure that previously published connectors keep working in new releases. Due to class-loading issues and data-mapping problems, already published connectors might not work in new Mule ESB versions. Therefore, prior to Mule ESB and Anypoint Studio releases, regression tests need to be run in order to assure full forward compatibility.</p>
+</div>
+<div class="paragraph">
+<p>If regression testing fails, it is up to the connector development team to decide whether the connector will support or not newer versions of Mule ESB and Anypoint Studio.</p>
 </div>
 </div>
 </div>
 <h1 id="development-best-practices" class="sect0">Development: Coding Standards and Best Practices</h1>
 <div class="openblock partintro">
 <div class="content">
-<hr>
-<div class="paragraph">
-<p>This section is about best development practices, these are a set of rules that the connector development community has learned over time which can help improve the quality of your connector.</p>
-</div>
+This section is about best development practices, these are a set of rules that the connector development community has learned over time which can help improve the quality of your connector.
 </div>
 </div>
 <div class="sect1">
@@ -764,11 +787,6 @@ Only use a map if your data:
 </div>
 </div>
 <h1 id="documentation" class="sect0">Documentation deliverables</h1>
-<div class="openblock partintro">
-<div class="content">
-<hr>
-</div>
-</div>
 <div class="sect1">
 <h2 id="_documentation">Documentation</h2>
 <div class="sectionbody">
@@ -806,13 +824,10 @@ Only use a map if your data:
 </div>
 </div>
 </div>
-<h1 id="functional-tests-automation" class="sect0">Development: Functional Tests Automation</h1>
+<h1 id="functional_tests_automation" class="sect0">Development: Functional Tests Automation</h1>
 <div class="openblock partintro">
 <div class="content">
-<hr>
-<div class="paragraph">
-<p>This section explains how to automate functional test cases on Connectors.</p>
-</div>
+This section explains how to automate functional test cases on Connectors.
 </div>
 </div>
 <div class="sect1">
@@ -2227,402 +2242,8 @@ mvn -Dtest=GetDailyTrendsTestCases#testGetDailyTrendsParametrized test</code></p
 </div>
 </div>
 <h1 id="static-code-analysis-and-coverage" class="sect0">Development: Static Code Analysis and Coverage</h1>
-<div class="openblock partintro">
-<div class="content">
-<hr>
-<div class="paragraph">
-<p>Most automatic validations on your connector’s code are done with SonarQube, an open source static code analysis tool that helps developers identify hot spots in code, bad code quality, technical debt, as well as define a number of other issues. To release a connector, you must fix blocker and critical issues.</p>
-</div>
-<div class="paragraph">
-<p>To perform these validations yourself, install and configure a the SonarQube server that we provide with rules specific to the certification process. If you are certifying multiple connectors, you can reuse the same server.</p>
-</div>
-<div class="paragraph">
-<p>Note: For guidelines on how to build your tests using this framework, see <a href="#functional-tests-automation">Automated Functional Testing</a></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_installing_sonarqube">Installing SonarQube</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The quickest way to get SonarQube up and running is to install it locally with an embedded database. If you wish to use a standalone database or a more advanced configuration, see the related SonarQube Eclipse Plugin Setup documentation.</p>
-</div>
-<div class="paragraph">
-<p>You need a server running Oracle JRE 6 or higher. (OpenJRE or other distributions are not supported by SonarQube.)</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Download and extract the latest version of <a href="http://www.sonarqube.org/downloads">SonarQube</a>(all platforms).</p>
-</li>
-<li>
-<p>Run <em>&lt;installDir&gt;/bin/&lt;yourOS&gt;/sonar.sh start</em> or <em>&lt;installDir&gt;\bin\&lt;yourOS&gt;\StartSonar.bat</em> if on Windows. The server might take a while to start even after the “Started SonarQube” message appears.</p>
-</li>
-<li>
-<p>Browse to <a href="http://localhost:9000" class="bare">http://localhost:9000</a>.</p>
-</li>
-<li>
-<p>Log in with the following credentials:</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Username: admin</p>
-</li>
-<li>
-<p>Password: admin</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Download our <a href="https://drive.google.com/uc?export=download&amp;id=0B8N265C555thaXBSV256SkZtMlk">Custom Quality Profile</a></p>
-</li>
-<li>
-<p>Go to the <strong>Quality Profiles</strong> tab and Click <strong>Create</strong>.</p>
-</li>
-<li>
-<p>Then choose the <a href="https://drive.google.com/uc?export=download&amp;id=0B8N265C555thaXBSV256SkZtMlk">Quality Profile</a> file that you downloaded, name it "Anypoint Connectors Profile" and click <strong>Create</strong>.</p>
-</li>
-<li>
-<p>When you see the profile in the list click in <strong>Set as Default</strong>.</p>
-</li>
-<li>
-<p>Finally you need to set the exclusions, to set this go to <strong>Settings</strong> and click <strong>Exclusions</strong>.</p>
-</li>
-<li>
-<p>In the <strong>Code Coverage</strong> tab add <em>target/**</em></p>
-</li>
-<li>
-<p>Click <strong>Add Value</strong>  and click <strong>Save Code Coverage Settings</strong>.</p>
-</li>
-<li>
-<p>In the <strong>Files</strong> tab add <em>target/**</em> under <em>Global Source File Exclusions</em> and <em>Global Test File Exclusions</em>.</p>
-</li>
-<li>
-<p>Finally, click <strong>Add Value</strong> in both and click <strong>Save Files Settings</strong>.</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/sonar-01.png" alt="sonar 01">
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_performing_your_first_analysis">Performing Your First Analysis</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>For the first run of your project, go to the project’s root folder and run:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test -Dmaven.test.failure.ignore=true
-	-Dtest=RegressionTestSuite -D&lt;connector&gt;_CREDENTIALS=automation-credentials.properties
-&amp;&amp; mvn install &amp;&amp; mvn sonar:sonar
 
-mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install
-	-Dmaven.test.failure.ignore=true
-&amp;&amp; mvn sonar:sonar</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This creates the project in your sonar installation, allowing you to use the Eclipse SonarQube plugin from inside your Anypoint Studio. Using this plugin is the recommended way, but is always possible to run the inspections manually with * mvn sonar:sonar *.</p>
-</div>
-<div class="paragraph">
-<p>If you are experiencing false positive issues, you can disable the inspection using //NOSONAR comment at the end of a line which has the issue on a case-by-case basis. Every use of //NOSONAR is recorded by SonarQube as an Info issue so you can track its usage in your connector’s code.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-The use of //NOSONAR comments should only be used when there is full certainty that this inspection is a false positive.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>For example, suppose you have an incorrectly capitalized method that you can’t change. This is normally a blocker issue:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/sonar-1.png" alt="sonar 1">
-</div>
-</div>
-<div class="paragraph">
-<p>After adding the //NOSONAR marker, this is no longer a blocker issue, but is marked as Info so you can track the usage of //NOSONAR throughout your project:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/sonar-2.png" alt="sonar 2">
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_sonarqube_eclipse_plugin_setup">SonarQube Eclipse Plugin Setup</h2>
-<div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Open Anypoint Studio, then select Help &gt; Install New Software.</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/sonar-3.png" alt="sonar 3">
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>In the Work with text box, fill in the update site URL:
-SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide.codehaus.org/eclipse/" class="bare">http://dist.sonar-ide.codehaus.org/eclipse/</a></p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/sonar-4.png" alt="sonar 4">
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Check the SonarQube Java option.</p>
-</li>
-<li>
-<p>After completing the installation, restart Anypoint Studio.</p>
-</li>
-<li>
-<p>Open Anypoint Studio’s preferences, and browse to the SonarQube section. Expand it, and select the Servers subsection. Click Add and fill in the URL and credentials for your server (by default, admin/admin).</p>
-</li>
-</ol>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/sonar-5.png" alt="sonar 5">
-</div>
-</div>
-<div class="paragraph">
-<p>Click the <strong>Test connection</strong> button to ensure that your settings are correct.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>To associate your project on the SonarQube server, perform a full analysis once. You can do this by running mvn sonar:sonar in your Connector project.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>You should perform this full analysis from a machine that is on the same network as the SonarQube database, otherwise it might take very long to complete.</p>
-</div>
-<div class="paragraph">
-<p>When your project finishes analyzing, in Studio right-click your connector project and click <strong>Configure &gt; Associate with SonarQube</strong>. Because your project was analyzed with Maven, the association detects automatically.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/sonar-6.png" alt="sonar 6">
-</div>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>After association, your project is analysed with SonarQube and the results are shown on the SonarQube issues tab. Also, the Package Explorer and file editor display error and warning icons according to the issues on your project.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>New issues introduced since the previous analysis are marked as errors, while existing issues are marked as warnings. This is a cosmetic difference only, which helps to highlight new technical debt being introduced in your code before you check it in.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>To analyse your project again, right-click it and click <strong>SonarQube &gt; Analyse</strong>.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_quality_profile_rules">Quality Profile Rules</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>SonarQube classifies each issue with a severity:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Blocker &amp; Critical: Bugs or unacceptable programming practices. Your connector cannot have blocker or Critical issues to be certified. You must correct all issues.</p>
-</li>
-<li>
-<p>Major:  These inspections fall in a similar category to the critical issues but with lower priority.</p>
-</li>
-<li>
-<p>Minor: Correctness, clarity or performance issues that do not impact your connector’s functionality significantly.</p>
-</li>
-<li>
-<p>Info: Keeps track of useful information that might otherwise go unnoticed.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>To see the full list of rules checked by SonarQube, browse to the Anypoint Connectors Certification quality profile through the web UI.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_code_coverage">Code Coverage</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>SonarQube also lets you manage Code Coverage reports of your connector.</p>
-</div>
-<div class="paragraph">
-<p>Generate a code coverage report in SonarQube with this command:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install
-	-Dmaven.test.failure.ignore=true &amp;&amp; mvn sonar:sonar</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>After this command finishes executing, Sonar displays a report with the name of your connector. For example, this screenshot shows the Salesforce connector’s Sonar report after running every Unit test and Functional test:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/coverage-guidelines-1.png" alt="coverage guidelines 1">
-</div>
-</div>
-<div class="paragraph">
-<p>Delving further into the project details shows you a code coverage percentage on a per-class basis.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/coverage-guidelines-2.png" alt="coverage guidelines 2">
-</div>
-</div>
-<div class="paragraph">
-<p>Delving even further, it shows you the exact lines that are covered by tests and those that are not.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="assets/assets/coverage-guidelines-3.png" alt="coverage guidelines 3">
-</div>
-</div>
-<div class="paragraph">
-<p>Every connector method must have unit or automation tests. A connector fails certification if it does not have all its message processors, message sources, and custom transformers covered by unit tests or automation tests. Also, all the utility classes that are part of a connector must have a high level of code coverage.</p>
-</div>
-<div class="sect2">
-<h3 id="_code_coverage_must_be_no_less_than_70">Code coverage must be no less than 70%.</h3>
-<div class="paragraph">
-<p>Testing your processors gives you a good indication of the quality of your connector. When you build automation tests, you are using your own connector to connect to an API. If you find it hard to test all cases of a message processor, then consider separating your message processors into smaller ones, if possible.</p>
-</div>
-<div class="paragraph">
-<p>If your connector bases its processing around metadata, test every possible metadata entry that the API supports. As an example, the Salesforce connector supports multiple SFDC objects (such as Account, Contact, Lead etc.), but it only contains one “create” operation. Create a unit test for every metadata object to ensure proper compatibility with the message processor.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_ignoring_classes_from_testing">Ignoring Classes from Testing</h3>
-<div class="paragraph">
-<p>You should <strong>NEVER</strong> prevent classes from being tested unless there is good reason. If you feel that there is a need to ignore classes from inspection, contact either Mariano Quintela, or Paulo Gustavo Veiga. Unless explicitly stated in the code comments or in some form of internal documentation, assume that all code must be inspected. Any ignored classes or packages without proper explanation should be inspected and any blocker or critical issues that arise should be resolved, <strong>and tested</strong> by the developer before the connector is released.</p>
-</div>
-<div class="paragraph">
-<p>There are a number of ways of ignoring classes that you do not want inspected by SonarQube:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Method level ignore:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Methods can be ignored by adding a //NOSONAR comment next to the method declaration. Example:</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> someMethodToNotInspect() { <span class="comment">//NOSONAR</span></code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Class level ignore</p>
-<div class="ulist">
-<ul>
-<li>
-<p>It may be the case that whole classes need to be ignored because they’re not in the control of the developer. As an example, the SFDC Connector contains classes from the SFDC JAR. These had to be modified slightly to include no-args constructors for DataSense reasons. As a result, these classes have to be ignored since the code quality is not in control of the SFDC Connector developer.</p>
-</li>
-<li>
-<p>Classes can be completely ignored by adding // NOSONAR next to the class level definition. Example:</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MyClassThatShouldntBeInspected</span> { <span class="comment">// NOSONAR</span></code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Package level ignore</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Whole packages can be ignored by adding the “sonar.exclusions” property inside the pom.xml file. Example:</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;properties&gt;</span>
-        <span class="tag">&lt;sonar.exclusions&gt;</span>src/main/java/com/sforce/**/*<span class="tag">&lt;/sonar.exclusions&gt;</span>
-<span class="tag">&lt;/properties&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This ignores any file under the com.sforce package under src/main/java.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_code_quality_review_guideline">Code Quality Review Guideline</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This is a hard area to tackle because typically, the person running certification is different from the one implementing the connector and writing tests for it. As a result, you might inspect the code and be completely lost.</p>
-</div>
-<div class="paragraph">
-<p>If code documentation is not sufficient, point this out to the developer and PM.</p>
-</div>
-<div class="paragraph">
-<p>As you try to understand the code, you might run into certain code pieces that you’re not sure why they’re there. As an example, PeopleSoft contained synchronous code and some time was spent by the developer understanding why they were there. It turns out that they were not needed, and were causing a degree of locking when working with concurrent requests. If you think that there are code blocks that feel out of place, mention it to the developer or PM.</p>
-</div>
-</div>
-</div>
 <h1 id="anypoint-studio-interoperability-testing" class="sect0">Development: Anypoint Studio Interoperability Testing</h1>
-<div class="openblock partintro">
-<div class="content">
-<hr>
-</div>
-</div>
 <div class="sect1">
 <h2 id="_purpose">Purpose</h2>
 <div class="sectionbody">
@@ -8270,11 +7891,6 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 </div>
 <h1 id="cloudhub-interoperability-testing" class="sect0">Development: CloudHub Interoperability Testing</h1>
-<div class="openblock partintro">
-<div class="content">
-<hr>
-</div>
-</div>
 <div class="sect1">
 <h2 id="_cloudhub_interoperability">CloudHub Interoperability</h2>
 <div class="sectionbody">
@@ -8404,12 +8020,9 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 </div>
 </div>
+<h1 id="_development_interoperability_testing_using_devkit_plugin" class="sect0">Development: Interoperability Testing using DevKit Plugin</h1>
+
 <h1 id="appendixes" class="sect0">Development: Appendixes</h1>
-<div class="openblock partintro">
-<div class="content">
-<hr>
-</div>
-</div>
 <div class="sect1">
 <h2 id="_development_appendix_a_anypoint_connectors_documentation_template">Development Appendix A: Anypoint Connectors Documentation Template</h2>
 <div class="sectionbody">
@@ -8479,7 +8092,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://drive.google.com/uc?export=download&amp;id=0B8N265C555thOGhVd1B6eXFiUDA">Manual Test Suite Template</a></p>
+<p><a href="https://docs.google.com/a/mulesoft.com/spreadsheets/d/1xqwGw5msku30sfjx6bpJDP9wZZ15cP2TcEzEq6pM9QM/edit?usp=sharing">Manual Test Suite Template</a></p>
 </li>
 </ul>
 </div>
@@ -8494,10 +8107,10 @@ Note: You can override the getTotalResults() method in the connector in case of 
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://drive.google.com/uc?export=download&amp;id=0B8N265C555thOG5HZDRTOTEtUXM">Connector Certification Checklist</a></p>
+<p><a href="https://drive.google.com/file/d/0B8N265C555thOG5HZDRTOTEtUXM/view?usp=sharing">Connector Certification Checklist</a></p>
 </li>
 <li>
-<p><a href="https://drive.google.com/uc?export=download&amp;id=0B8N265C555thNW0tMElvejlVVGc">Manual Interop Test Run Checklist</a></p>
+<p><a href="https://docs.google.com/a/mulesoft.com/spreadsheets/d/1hIIzxexrGDKuBdtwyZLFr2PeC7bBUY6P-x0dF4YX2T0/edit#gid=21">Manual Interop Test Run Checklist</a></p>
 </li>
 </ul>
 </div>
@@ -8506,7 +8119,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-02-10 15:34:06 EST
+Last updated 2015-02-10 15:48:37 EST
 </div>
 </div>
 </body>
