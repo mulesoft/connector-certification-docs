@@ -87,8 +87,6 @@ include::docs/cloudhub-interoperability-testing.adoc[]
 
 * link:attachments/project-directory-layout.html[Connector Project Directory Layout]
 
-// * link:attachments/[Appendix C] TODO missing appedix?
-
 * link:attachments/CPAL.html[Common Public Attribution License Version 1.0 (CPAL)]
 
 
@@ -98,15 +96,10 @@ include::docs/cloudhub-interoperability-testing.adoc[]
 
 == Appendix C: Anypoint Studio Interoperability Testing
 
-<<<<<<< HEAD
 * link:attachments/usage-without-anypoint-studio.html[Usage without Anypoint Studio]
 * link:attachments/plugin-result-files.html[Plugin Result Files]
 * link:attachments/project-details.html[Project Details]
-=======
-* link:attachments/usage-without-anypoint-studio.adoc[Usage without Anypoint Studio]
-* link:attachments/plugin-result-files.adoc[Plugin Result Files]
-* link:attachments/project-details.adoc[Project Details]
->>>>>>> b5f75f545a40aa100cf03dc1b03915ac2778b5bc
+
 
 == Appendix D: Anypoint Connectors Release Notes Template
 
