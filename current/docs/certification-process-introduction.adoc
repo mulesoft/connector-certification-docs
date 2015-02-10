@@ -28,7 +28,7 @@ There is plenty of documentation on Internet about DevKit. Here is a set of link
     * Connector Development Essential: http://training.mulesoft.com/instructor-led-training/connector-development-essentials-private-class-ilt
     * Official DevKit Documentation: http://www.mulesoft.org/documentation/display/current/Anypoint+Connector+DevKit
     * DevKit Tutorial: http://www.mulesoft.org/documentation/display/current/Tutorial+-+Barn+Connector
-    * Community Forum: http://forum.mulesoft.org/mulesoft/products/mulesoft_anypoint_connectors
+    * Community Forum: http://forum.mulesoft.org/mulesoft/products/mulesoft_anypoint_devkit
 
 // @Todo: Any ideas ?
 
