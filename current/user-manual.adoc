@@ -39,11 +39,7 @@ Within these stages, we only take into consideration the second and third: Devel
 
 
 
-
-
 //The following list gathers different high-level objectives to be acomplished during the certification of an Anypoint connector.
-
-
 
 
 //. Automated code scan
@@ -61,7 +57,7 @@ include::docs/certification-process-introduction.adoc[]
 
 [[development-best-practices]]
 = Development: Coding Standards and Best Practices
-
+---
 
 This section is about best development practices, these are a set of rules that the connector development community has learned over time which can help improve the quality of your connector.
 
@@ -70,40 +66,35 @@ include::docs/development-best-practices.adoc[]
 [[documentation]]
 = Documentation deliverables
 ---
-
 include::docs/documentation.adoc[]
 
 
 [[functional-tests-automation]]
 = Development: Functional Tests Automation
+---
 
 include::docs/functional-tests-automation.adoc[]
 
 [[static-code-analysis-and-coverage]]
 = Development: Static Code Analysis and Coverage
-
+---
 
 [[anypoint-studio-interoperability-testing]]
 = Development: Anypoint Studio Interoperability Testing
-
+---
 
 include::docs/anypoint-studio-interoperability-testing.adoc[]
 
-
 [[cloudhub-interoperability-testing]]
 = Development: CloudHub Interoperability Testing
-
+---
 
 include::docs/cloudhub-interoperability-testing.adoc[]
 
 
-// [interoperability-test-plugin]
-= Development: Interoperability Testing using DevKit Plugin
-
-
 [[appendixes]]
 = Development: Appendixes
-
+---
 
 == Development Appendix A: Anypoint Connectors Documentation Template
 
@@ -141,10 +132,10 @@ include::docs/cloudhub-interoperability-testing.adoc[]
 
 == Development Appendix F: Certification Checklists
 
-
 Download and complete the Connector Certification Checklist and its related Manual Interop Test Run Checklist according to the cases derived from analising your connector based on the Interoperability QA Guidelines.
 
+* https://drive.google.com/uc?export=download&id=0B8N265C555thOG5HZDRTOTEtUXM[Connector Certification Checklist]
 
-* https://drive.google.com/file/d/0B8N265C555thOG5HZDRTOTEtUXM/view?usp=sharing[Connector Certification Checklist]
+* https://drive.google.com/uc?export=download&id=0B8N265C555thNW0tMElvejlVVGc[Manual Interop Test Run Checklist]
 
-* https://docs.google.com/a/mulesoft.com/spreadsheets/d/1hIIzxexrGDKuBdtwyZLFr2PeC7bBUY6P-x0dF4YX2T0/edit#gid=21[Manual Interop Test Run Checklist]
+
