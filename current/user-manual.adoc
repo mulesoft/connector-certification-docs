@@ -79,6 +79,8 @@ include::docs/functional-tests-automation.adoc[]
 = Development: Static Code Analysis and Coverage
 ---
 
+include::docs/static-code-analysis-and-coverage.adoc[]
+
 [[anypoint-studio-interoperability-testing]]
 = Development: Anypoint Studio Interoperability Testing
 ---
@@ -106,7 +108,6 @@ include::docs/cloudhub-interoperability-testing.adoc[]
 
 * link:attachments/CPAL.html[Common Public Attribution License Version 1.0 (CPAL)]
 
-
 == Development Appendix B: Functional Tests Automation
 
 * link:attachments/debugging.html[Debugging]
@@ -117,18 +118,13 @@ include::docs/cloudhub-interoperability-testing.adoc[]
 * link:attachments/plugin-result-files.html[Plugin Result Files]
 * link:attachments/project-details.html[Project Details]
 
-
-
 == Development Appendix D: Anypoint Connectors Release Notes Template
 
-
 * link:attachments/releaseNotesTemplate.html[Release Notes Template]
-
 
 == Development Appendix E: Anypoint Connectors Manual Test Suite Template
 
 * https://docs.google.com/a/mulesoft.com/spreadsheets/d/1xqwGw5msku30sfjx6bpJDP9wZZ15cP2TcEzEq6pM9QM/edit?usp=sharing[Manual Test Suite Template]
-
 
 == Development Appendix F: Certification Checklists
 
