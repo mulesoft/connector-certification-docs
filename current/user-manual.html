@@ -2237,7 +2237,7 @@ mvn -Dtest=GetDailyTrendsTestCases#testGetDailyTrendsParametrized test</code></p
 <p>To perform these validations yourself, install and configure a the SonarQube server that we provide with rules specific to the certification process. If you are certifying multiple connectors, you can reuse the same server.</p>
 </div>
 <div class="paragraph">
-<p>Note: For guidelines on how to build your tests using this framework, see <a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_automated_functional_testing">Automated Functional Testing</a>.</p>
+<p>Note: For guidelines on how to build your tests using this framework, see <a href="#functional-tests-automation">Automated Functional Testing</a></p>
 </div>
 </div>
 </div>
@@ -2253,10 +2253,10 @@ mvn -Dtest=GetDailyTrendsTestCases#testGetDailyTrendsParametrized test</code></p
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Download and extract <a href="https://drive.google.com/open?id=0B8N265C555thQWNPYkQ4cnFBQlU&amp;authuser=0">our SonarQube 4.5 distribution</a> (all platforms). This includes our custom quality profile and everything you need to get started.</p>
+<p>Download and extract the latest version of <a href="http://www.sonarqube.org/downloads">SonarQube</a>(all platforms).</p>
 </li>
 <li>
-<p>Run <em>&lt;installDir&gt;/bin/&lt;yourOS&gt;/sonar.sh</em> start or <em>&lt;installDir&gt;\bin\&lt;yourOS&gt;\StartSonar.bat</em> if on Windows. The server might take a while to start even after the “Started SonarQube” message appears.</p>
+<p>Run <em>&lt;installDir&gt;/bin/&lt;yourOS&gt;/sonar.sh start</em> or <em>&lt;installDir&gt;\bin\&lt;yourOS&gt;\StartSonar.bat</em> if on Windows. The server might take a while to start even after the “Started SonarQube” message appears.</p>
 </li>
 <li>
 <p>Browse to <a href="http://localhost:9000" class="bare">http://localhost:9000</a>.</p>
@@ -2274,7 +2274,39 @@ mvn -Dtest=GetDailyTrendsTestCases#testGetDailyTrendsParametrized test</code></p
 </ol>
 </div>
 </li>
+<li>
+<p>Download our <a href="https://drive.google.com/uc?export=download&amp;id=0B8N265C555thaXBSV256SkZtMlk">Custom Quality Profile</a></p>
+</li>
+<li>
+<p>Go to the <strong>Quality Profiles</strong> tab and Click <strong>Create</strong>.</p>
+</li>
+<li>
+<p>Then choose the <a href="https://drive.google.com/uc?export=download&amp;id=0B8N265C555thaXBSV256SkZtMlk">Quality Profile</a> file that you downloaded, name it "Anypoint Connectors Profile" and click <strong>Create</strong>.</p>
+</li>
+<li>
+<p>When you see the profile in the list click in <strong>Set as Default</strong>.</p>
+</li>
+<li>
+<p>Finally you need to set the exclusions, to set this go to <strong>Settings</strong> and click <strong>Exclusions</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Code Coverage</strong> tab add <em>target/**</em></p>
+</li>
+<li>
+<p>Click <strong>Add Value</strong>  and click <strong>Save Code Coverage Settings</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Files</strong> tab add <em>target/**</em> under <em>Global Source File Exclusions</em> and <em>Global Test File Exclusions</em>.</p>
+</li>
+<li>
+<p>Finally, click <strong>Add Value</strong> in both and click <strong>Save Files Settings</strong>.</p>
+</li>
 </ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="assets/assets/sonar-01.png" alt="sonar 01">
+</div>
 </div>
 </div>
 </div>
@@ -8474,7 +8506,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-02-10 12:59:00 EST
+Last updated 2015-02-10 15:34:06 EST
 </div>
 </div>
 </body>
