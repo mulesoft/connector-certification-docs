@@ -1,29 +1,36 @@
-== About Certification Process
+== About the *Connector Lifecycle Model*
 
-The partner Engagement and Certification Process for publishing connectors consists of these stages:
+As previously mentioned, this lifecycle consists in the following stages:
+
+//The partner Engagement and Certification Process for publishing connectors consists of these stages:
 
 image::{imagesdir}/certification-process-1.png[]
 
-== Stage 1: OnBoard
+== Stage 1: On-Board
+
+This first stage consists mainly on the legal matters involving the development of a connector for MuleSoft. This stage includes as well a learning phase of the default framework for developing connectors, the Anypoint™ Connector DevKit.       nnhhhhhy vyh vb tgf
 
 === 1.1 Legal Engagement
 
-During the development process, MuleSoft and a third-party partner, based on a pre-existing partnership agreement, begin the development process.
+Both sides, MuleSoft and a Service Integrator (_SI_), state the guidelines and expected product before starting development. 
 
-=== 1.2 Leaning Anypoint™ Connector DevKit
 
-The MuleSoft Anypoint™ Connector DevKit is the tool for developing Anypoint Connectors. It provides the following features to help you develop or maintain a connector:
+//During the development process, MuleSoft and a third-party partner, based on a pre-existing partnership agreement, begin the development process.
 
-. Visual design and implementation using Anypoint Studio with an Eclipse-oriented interface that helps simplify and speed up development
+=== 1.2 Learning Anypoint™ Connector DevKit
+
+The MuleSoft Anypoint™ Connector DevKit is the default tool for developing Anypoint connectors. It provides a vast set of features to help you develop and further mantain your connector. Features include, but are not limited to:
+
+. Visual design and implementation using Anypoint Studio with an Eclipse-oriented interface that simplifies and speed up development
 . Maven support for development and building
 . Connector development and packaging tools
 . Authentication support for multiple types of authentication like OAuth and Basic Authentication
 . DataSense support to acquire metadata from endpoints
 . Extensive testing capability
-. Examples, training, and support to simplify startup and solve issues
-. Provides Batch, query pagination, and DataSense Query Language support
+. Examples, training, and support to simplify startup
+. Provides batch, query pagination, and DataSense Query Language support
 
-There is plenty of documentation on Internet about DevKit. Here is a set of links that it could be useful as starting point:
+Here is a set of links that it could be useful as a starting point:
 
     * Connector Development Essential: http://training.mulesoft.com/instructor-led-training/connector-development-essentials-private-class-ilt
     * Official DevKit Documentation: http://www.mulesoft.org/documentation/display/current/Anypoint+Connector+DevKit
@@ -55,7 +62,7 @@ Each one of the following practices are aimed to cover different quality aspects
 * http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_templates[Connector Release Notes & Documentation]
 
 
-== Stage 3: Certify
+== Stage 3: Certification
 
 At this stage, the connector is really to go over the final stage of the certification.
 

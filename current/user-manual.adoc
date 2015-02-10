@@ -13,30 +13,52 @@
 *version 0.9*
 
 // [intro]
-= Introduction
+= Certification: Introduction
 ---
 
-MuleSoft has expanded the Anypoint™ Connector offering to enable third-party developers and partners to develop Anypoint Connectors.
-All connectors enrolled in the MuleSoft Partner Program must go through a mandatory periodic Certification Process. The Certification Process has been developed to assess the quality of connectors, to ensure that connectors published on the MuleSoft Web page follow industry best practices for development, and to promote trust.
-All connectors built by external developers and/or partners go through a Certification Process conducted by MuleSoft’s internal team. Once a connector passes certification, the connector is branded as a MuleSoft-certified connector and published on the MuleSoft web site.
+MuleSoft has expanded the Anypoint™ Connector platform enabling partners, from out MuleSoft Partner Program, and third-party development groups, to develop Anypoint connectors.
 
-The scope of the certification process depends on the composition of the connector. Our approach is to test all parts of the connector to ensure that our mutual customers and their platforms are not put at risk.
-The items below are a list of the high-level testing performed on each connector during the certification process:
+Every connector in the MuleSoft Anypoint Platform must go through a mandatory *Certification Process* before final release. The certification process has been conceived to assess the overall quality of all available connectors, ensuring that every connector published in the MuleSoft's connectors repository strictly follow industry best practices. As a result of this certification process, we are able to define a high quality threshold for every Mulesoft connector available in the platform.
 
-. Automated code scan
-. Manual code review and black box testing
-. Manual and automated tests review
-. Repository structure review
-. Documentation review
-. Compatibility review
-. Static code analysis
+All available connectors, either built by our partners or by our internal development team, go through the certification process, which is carried out by Mulesoft's internal team. Once a connector passes certification, it is branded as a MuleSoft-certified connector and published in the MuleSoft's connectors repository.
 
-In the following sections, each one of the topics to be completed as part of the certification will be described.
+
+The scope of this process mainly depends on the composition of the connector, where a more complex connector will require further step in the certification process. Our approach is to test every functional block of the connector prior releasing.
+
+
+
+This document first introduces the entire *connector lifecycle model*, which includes four different stages: On-board, Development, Certification and Publishing.
+
+. On-board: Takes into consideration the legal engagement between a third-party development group, or partner, and MuleSoft.
+. Development: Development phase, considering strictly testing methodologies.
+. Certification: The certification process per-se, carried out by a MuleSoft.
+. Publishing: Considers the final deployment of the certified connector within MuleSoft's connectors repository. 
+
+Within these stages, we only take into consideration the second and third: Development and Certification. The first stage in out of the scope of this document, while the last one hardly requires interaction from the developer's side and therefore it will be omitted.
+
+
+
+
+
+//The following list gathers different high-level objectives to be acomplished during the certification of an Anypoint connector.
+
+
+
+
+//. Automated code scan
+//. Manual code review and black box testing
+//. Manual and automated tests review
+//. Repository structure review
+//. Documentation review
+//. Runtime-compatibility review
+//. Static code analysis
+
+
 
 include::docs/certification-process-introduction.adoc[]
 
 // [devGuidelines]
-= Coding Standards and Best Practices
+= Development: Coding Standards and Best Practices
 ---
 
 This section is about best development practices, these are a set of rules that the connector development community has learned over time which can help improve the quality of your connector.
@@ -44,53 +66,53 @@ This section is about best development practices, these are a set of rules that 
 include::docs/development-best-practices.adoc[]
 
 // [static-code-analysis-and-coverage]
-= Static Code Analysis and Coverage
+= Development: Static Code Analysis and Coverage
 ---
 
 include::docs/static-code-analysis-and-coverage.adoc[]
 
 // [functionalQAGuidelines]
-= Functional Tests Automation
+= Development: Functional Testing Automation
 ---
 
 include::docs/functional-tests-automation.adoc[]
 
 
 // [anypoint-studio-interoperability-testing]
-= Anypoint Studio Interoperability Testing
+= Development: Anypoint Studio Interoperability Testing
 ---
 
 include::docs/anypoint-studio-interoperability-testing.adoc[]
 
 // [cloudhub-interoperability-testing]
-= CloudHub Interoperability Testing
+= Development: CloudHub Interoperability Testing
 ---
 
 include::docs/cloudhub-interoperability-testing.adoc[]
 
 // [interoperability-test-plugin]
-= Run Interop Tests using DevKit Plugin
+= Development: Interoperability Testing using DevKit Plugin
 ---
 
 include::docs/devkit-plugin-run-interop-tests-action.adoc[]
 
 
 // [templates]
-= Templates
+= Anypoint Connectors Documentation
 ---
-== Anypoint Connectors Documentation Template
+== Development: Anypoint Connectors Documentation Template
 
 https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/documentationTemplate.adoc[Documentation Template]
 
-== Anypoint Connectors Release Notes Template
+== Development: Anypoint Connectors Release Notes Template
 
 https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/releaseNotesTemplate.adoc[Release Notes Template]
 
-== Anypoint Connectors Manual Test Suite Template
+== Development: Anypoint Connectors Manual Test Suite Template
 
 https://docs.google.com/a/mulesoft.com/spreadsheets/d/1xqwGw5msku30sfjx6bpJDP9wZZ15cP2TcEzEq6pM9QM/edit?usp=sharing[Manual Test Suite Template]
 
-== Certification Checklist
+== Development: Certification Checklist
 
 Download and complete the document along the process.
 
