@@ -75,38 +75,37 @@ include::docs/cloudhub-interoperability-testing.adoc[]
 
 == Appendix A: Anypoint Connectors Documentation Template
 
-* link:attachments/documentationTemplate.adoc[Documentation Template]
+* link:attachments/documentationTemplate.html[Documentation Template]
 
-* link:attachments/readme.adoc[README.md Template]
+* link:attachments/readme.html[README.md Template]
 
-* link:attachments/project-directory-layout.adoc[Connector Project Directory Layout]
+* link:attachments/project-directory-layout.html[Connector Project Directory Layout]
 
 // * link:attachments/[Appendix C] TODO missing appedix?
 
-* link:attachments/CPAL.adoc[Common Public Attribution License Version 1.0 (CPAL)]
+* link:attachments/CPAL.html[Common Public Attribution License Version 1.0 (CPAL)]
 
 
 == Appendix B: Functional Tests Automation
 
-* link:attachments/debugging.adoc[Debugging]
+* link:attachments/debugging.html[Debugging]
 
 == Appendix C: Anypoint Studio Interoperability Testing
 
-* link:attachments/usage-without-anypoint-studio.adoc[Usage without Anypoint Studio]
-* link:attachments/plugin-result-files.adoc[Plugin Result Files]
-* link:attachments/project-details.adoc[Project Details]
-
+* link:attachments/usage-without-anypoint-studio.html[Usage without Anypoint Studio]
+* link:attachments/plugin-result-files.html[Plugin Result Files]
+* link:attachments/project-details.html[Project Details]
 
 == Appendix D: Anypoint Connectors Release Notes Template
 
-link:attachments/releaseNotesTemplate.adoc[Release Notes Template]
+* link:attachments/releaseNotesTemplate.html[Release Notes Template]
 
 == Appendix E: Anypoint Connectors Manual Test Suite Template
 
-https://docs.google.com/a/mulesoft.com/spreadsheets/d/1xqwGw5msku30sfjx6bpJDP9wZZ15cP2TcEzEq6pM9QM/edit?usp=sharing[Manual Test Suite Template]
+* https://docs.google.com/a/mulesoft.com/spreadsheets/d/1xqwGw5msku30sfjx6bpJDP9wZZ15cP2TcEzEq6pM9QM/edit?usp=sharing[Manual Test Suite Template]
 
 == Appendix F: Certification Checklist
 
-Download and complete the https://drive.google.com/file/d/0B8N265C555thOG5HZDRTOTEtUXM/view?usp=sharing[document] along the process.
+* Download and complete the https://drive.google.com/file/d/0B8N265C555thOG5HZDRTOTEtUXM/view?usp=sharing[document] along the process.
 
 
