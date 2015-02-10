@@ -1,7 +1,7 @@
 == Introduction
 The following framework consists of a series of automation tools, which allow you to run interoperability tests on a connector in Anypoint Studio. The data used by these tests  generates using not only the connectors code, but also DevKit output files, in particular the schema and editors file.
 
-All cases described in the https://docs.google.com/a/mulesoft.com/document/d/1HIiE8akbyr-jdfS-XJUZo45JL0J6G2OmQY_jO4rEkz4[Interoperability Test Guidelines] should be considered depending on the connector’s nature. This means, all the applicable test cases detailed there must be covered for a full interoperability test of the connector.
+All cases described in the following section should be considered depending on the connector’s nature. This means, all the applicable test cases detailed there must be covered for a full interoperability test of the connector.
 
 *Note*: The Anypoint Studio plugin covers only the following cases:
 
@@ -234,4 +234,3 @@ The Interop Remote Runner Properties menu shows the existing testData files that
 image::{imagesdir}/test-plugin-4.png[]
 
 The results appear in target/surefire-reports, and provide jUnit results using the XML result file.
-
