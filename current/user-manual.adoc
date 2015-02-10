@@ -49,7 +49,7 @@ include::docs/development-best-practices.adoc[]
 
 include::docs/documentation.adoc[]
 
-[[functional_tests_automation]]
+[[functional-tests-automation]]
 = Functional Tests Automation
 ---
 

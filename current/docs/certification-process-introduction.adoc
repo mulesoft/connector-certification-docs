@@ -40,7 +40,7 @@ The spirit of this document is to help the MuleSoft certification team to have a
 MuleSoft certification team will use this document as a starting point to provide feedback and tips about the best use of DevKit and suggesting development patterns.
 
 The follow template must be used as starting point
-https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/designSpecificationTemplate.adoc[Design Specification Template]
+link:attachments/designSpecificationTemplate.html[Design Specification Template]
 
 
 === 2.2  Mandatory Practices
@@ -48,11 +48,11 @@ https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attac
 In order to quality of the connectors developed, there are a set of practices and artifacts that need to be delivered as part of the connectors development.
 Each one of the following practices are aimed to cover different quality aspects:
 
-* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_coding_standards_and_best_practices[Coding Standards and Best Practices]
-* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_static_code_analysis_with_sonarqube[Static Code Analysis and Code Coverage]
-* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_automated_functional_testing[Automated Functional Testing]
-* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_studio_interoperability_qa[ Anypoint Studio  Interoperability Testing]
-* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_templates[Connector Release Notes & Documentation]
+* <<development-best-practices,Coding Standards and Best Practices>>
+* <<static-code-analysis-and-coverage,Static Code Analysis and Code Coverage>>
+* <<functional-tests-automation,Automated Functional Testing>>
+* <<anypoint-studio-interoperability-testing,Anypoint Studio Interoperability Testing>>
+* <<appendixes,Connector Release Notes & Documentation>>
 
 
 == Stage 3: Certify
