@@ -124,7 +124,7 @@ include::docs/cloudhub-interoperability-testing.adoc[]
 
 == Development Appendix E: Anypoint Connectors Manual Test Suite Template
 
-* https://docs.google.com/a/mulesoft.com/spreadsheets/d/1xqwGw5msku30sfjx6bpJDP9wZZ15cP2TcEzEq6pM9QM/edit?usp=sharing[Manual Test Suite Template]
+* https://drive.google.com/uc?export=download&id=0B8N265C555thOGhVd1B6eXFiUDA[Manual Test Suite Template]
 
 == Development Appendix F: Certification Checklists
 
