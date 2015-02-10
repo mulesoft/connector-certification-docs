@@ -1,56 +1,237 @@
-== Description
-The framework described in this document consists of a series of automation tools, which let you run interoperability tests on a connector in Anypoint Studio. The framework covers Connectivity, Datamapper Compliance, and XML Generation tests, as described in the Connectors QA Guidelines. The data used by these tests is generated using not only a connector's code, but also the output files in the DevKit, in particular the schema and editors file.
+== Introduction
+The following framework consists of a series of automation tools, which allow you to run interoperability tests on a connector in Anypoint Studio. The data used by these tests  generates using not only the connectors code, but also DevKit output files, in particular the schema and editors file.
 
-== Anypoint Studio Plugin
-=== Glossary of Terms
-Runner Platform: Host where the test run takes place.
-Target Platform: The platform (in terms of Anypoint Studio plugins) on which tests are going to that you run.
-CUT: Connector under test
-*-test-data.xml
-*-test-data-override.xml
+All cases described in the https://docs.google.com/a/mulesoft.com/document/d/1HIiE8akbyr-jdfS-XJUZo45JL0J6G2OmQY_jO4rEkz4[Interoperability Test Guidelines] should be considered depending on the connector’s nature. This means, all the applicable test cases detailed there must be covered for a full interoperability test of the connector.
 
-=== Installation 
+*Note*: The Anypoint Studio plugin covers only the following cases:
 
-==== Step 1: Check System Requirements
-. http://maven.apache.org/download.cgi[Maven 3.2] or Greater
-. http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html[Java 1.7]
+* Connectivity testing
+* Datamapper compliance
+* Xml generation
+* DataSense testing
+* OAuth Static DataSense
+
+== Installation
+
+=== Step 1: Check  Requirements
+. http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html[JDK 7]
+. http://maven.apache.org/download.cgi[Apache Maven]
 . http://www.mulesoft.org/download-mule-esb-community-edition[Anypoint Studio]
+. DevKit Plugin
 
-==== Step 2: Anypoint Devkit Plugin
-Follow these steps on the Runner Platform's Anypoint Studio installation:
-. Click Help > Install New Software.
-. Click Anypoint Addons Update Site from the Work with drop-down. Note: If this item is not in the dropdown, click Add and specify the name, and for the URL, use: http://studio.mulesoft.org/r3/addons/beta
-. Click the checkbox for Anypoint DevKit Plugin, and click *Next, Next, Finish*. 
-. Restart Anypoint Studio when prompted.
+== Interop Test Tutorial
+=== Step 1: Anypoint Connector Project in Workspace
+Open your connector in Anypoint Studio, if you don't have it imported, import the project as *Anypoint Connector Project from External Location*
 
-
-== Generating Functional Tests
-
-=== Plugin Execution
-
-With your connector imported in Anypoint Studio, right-click the project name in Package Explorer and click *Anypoint Connector > Generate Tests*.
-	
-image::{imagesdir}/functional-test-plugin-1.png[]
+WARNING: If you never opened you connector proyect into Anypoint Studio, open a terminal and run this command in your connector root folder: `mvn eclipse:eclipse` +
 
 
+=== Step 2: Generating Test Data Files
+If you are not familiar with testData files used for interop testing, refer to Appendix B. +
+Right-click the name of your connector in the Package Explorer and click  +
+*Anypoint Connector > Generate Tests*:
 
-The Test Scaffolding Generation dialog appears:
+image::{imagesdir}/test-plugin-1.png[]
 
-image::{imagesdir}/functional-test-plugin-2.png[]
+The *Tests Scaffolding Generation* dialog lets you select the operations in scope and the different files type of tests, functional or interoperability, that the required test data files generate:
 
-This lists:
+image::{imagesdir}/test-plugin-2.png[]
 
-. Processors found in the connector.
+Interop Test Data Generation setup:
 
-. The Generate Test Case Scaffolding option: This generates the TestCases.java classes, one for each processor, along with the classes you need to use the Functional Test Framework.
+. Click the *Select All* button. The generation considers all available message processors of the connector.
+. Under Studio Interop Tests, check *Generate Interop Test Data Files*
+. Leave the default test data filename *interop-testdata.xml* or define one of your own. The default behavior in case of finding matching filenames on the output folder is to update them.
+. *(Optional)* "Credentials File" expected input is the path to a .properties file, which is used to determine which Configuration Element fields are required for authentication. The effects of this can be seen on the *interop-testData-override.xml* file. For example .properties contains:
++
+----
+salesforce.username=value
+salesforce.password=value
+salesforce.securityToken=value
+salesforce.url=value
+----
+. Click *Finish*, if you already have any interop-testada file, you will be asked if you want to *Update* or *Replace*.
 
-. The Generate Functional Test Data Files option: This generates the automation-test-flow.xml and AutomationSpringBeans.xml files.
-	
-If a conflict exists between the existing files and the files you want to generate, a popup appears asking if the file should be replaced, or updated with the information related to new processors. This does not cover cases of signature change in the processor definition, nor updating naming convention on existing Java classes.
+The result of the Tests Scaffolding Generation process are be the following files (see Files section for details):
 
-Generated Files 
+NOTE: Generated files are placed on *src/test/resources/*.
 
-image::{imagesdir}/functional-test-plugin-3.png[]
+[horizontal]
+*_interop-testdata.xml_*:: Basic data retrieved from the connector. Provides a complete view of every processor and all its attributes.
 
-Output files can be found under src/test/resources/generated. The actual convention is to have the files under src/test/resources, and the generated path is only expected to store files during development or those with constant modification.
+
+*_interop-testdata-override.xml_*:: Presents a subset of the data found in the previous file, with only the required fields, but adds information about the connector and processor features and properties
+
+Example of *interop-testdata-override.xml* :
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<connector name="Salesforce">
+		<properties>
+				<connectivity-support>true</connectivity-support>
+				<OAuth-authentication>false</OAuth-authentication>
+				<metadata>dynamic</metadata>
+				<datasense-enabled>true</datasense-enabled>
+				<transformer>false</transformer>
+		</properties>
+		<global-config credentialsFile="salesforce-credentials.properties">
+				<config name="config">
+						<attributes>
+								<attribute name="username" use="required" caption="Username" group="Connection" type="string" javaType="java.lang.String" prefix="salesforce">${salesforce.username}</attribute>
+								<attribute name="password" use="required" caption="Password" group="Connection" type="password" javaType="java.lang.String" prefix="salesforce">${salesforce.password}</attribute>
+								<attribute name="securityToken" use="required" caption="Security Token" group="Connection" type="string" javaType="java.lang.String" prefix="salesforce">${salesforce.securityToken}</attribute>
+								<attribute name="url" use="required" caption="Url" group="Connection" type="string" javaType="java.lang.String" default="https://login.salesforce.com/services/Soap/u/31.0" prefix="salesforce">${salesforce.url}</attribute>
+						</attributes>
+				</config>
+				<config name="config-with-oauth"/>
+		</global-config>
+		<message-processors>
+				<processor name="search" xmlName="search" caption="Search">
+						<properties>
+								<datamapper input="List&lt;Map&gt;" output="Map&lt;SalesforceHeader,Object&gt;"/>
+								<auto-paging>false</auto-paging>
+								<query-support>false</query-support>
+						</properties>
+						<attributes>
+								<attribute name="query" use="required" caption="Query" group="Query" type="string" javaType="java.lang.String"></attribute>
+						</attributes>
+				</processor>
+		</message-processors>
+</connector>
+
+----
+
+* The generated file have 3 principal parts:
+
+=== Interop testdata file parts
+==== Properties
+Are the features supported by the connector.
+
+. *connectivity-support*: [true/false]
+. *OAuth-authentication*: [true/false]
+. *metadata*: [static/dynamic]
+. *datasense-enabled*: [true/false]
+. *transformer*: [true/false]
+
+[source, xml]
+----
+<properties>
+		<connectivity-support>true</connectivity-support>
+		<OAuth-authentication>false</OAuth-authentication>
+		<metadata>dynamic</metadata>
+		<datasense-enabled>true</datasense-enabled>
+		<transformer>false</transformer>
+</properties>
+----
+
+==== Global-config
+Is the list of the configurations of the connector, each configuration describes the all needed attributes and their values
+[source,xml]
+----
+<config name="connection-management-config">
+		<attributes>
+				<attribute name="username" use="required" caption="Username" group="Connection" type="string" javaType="java.lang.String" prefix="salesforce">MyUsernameValue</attribute>
+		</attributes>
+</config>
+----
+==== Message-processors
+Is the list of message processors defined in the connector. Each one describes their attributes, and Input & Output types:
+
+[source, xml]
+----
+<message-processors>
+				<processor name="myProcessor" xmlName="my-processor" caption="My processor">
+						<properties>
+								<datamapper input="" output=""/>
+								<auto-paging>false</auto-paging>
+								<query-support>false</query-support>
+						</properties>
+						<attributes>
+								<attribute name="content" use="required" caption="Content" group="General" type="string" javaType="java.lang.String">content</attribute>
+						</attributes>
+				</processor>
+</message-processors>
+----
+
+
+=== Step 3: Customizing Test Data Files
+After the testData and testData-override files are created (details about this files in Appendix), the next step is to populate the content from your domain model. This implies the completion of valid inputs for the operations and configurations, and the validation of the retrieved data.
+
+==== Attention Points
+* Properties detected must be checked and asserted:
+** The fact that the connector has connectivity support must be validated. If your connector does not support connectivity, but it was detected as a supported feature, you’ll have to double check your code.
+** If the connector has OAuth support, then connectivity detection must be false.
+** If the connector has OAuth support, then metadata detection should not be dynamic.
+** For each processor, _query-support_ and _auto-paging_ properties should be coherent with the expected values.
+** Required fields, both in the config and in the processors should be coherent with the expected values declared in the processor declaration. Those annotated with @Optional should be _optional_, everything else should be _required_.
+
+* Datamapper input/output fields:
+** Datamapper Input and Output attributes in each processor represent the values you expect to see at design time when you drop the connector before and after a datamapper element. This values should be empty only if you expect to see nothing in DataMapper.
+** In a dynamic metadata case, the value of input/output attributes will be bound to the value with which the operation is feeded.
+For example, with dynamic metadata, if you have:
+
+[source,xml]
+----
+<properties>
+	<datamapper input="List&lt;SaveResult&gt;"output="List&lt;Map&gt;"/>
+</properties>
+<attributes>
+	<attribute name="type" use="required" caption="sObject Type"
+	group="Information" type="type-chooser" javaType="java.lang.String">
+	</attribute>
+</attributes>
+----
+The output value is bounded to the value declared in the type chooser as follows:
+
+*Case Account*
+
+[source,xml]
+----
+<properties>
+	<datamapper input="List&lt;SaveResult&gt;"output="List&lt;Account&gt;"/>
+</properties>
+<attributes>
+	<attribute name="type" use="required" caption="sObject Type" group="Information"
+	type="type-chooser" javaType="java.lang.String"> Account (Account)
+	</attribute>
+</attributes>
+----
+
+*Case Contact*
+
+[source,xml]
+----
+<properties>
+	<datamapper input="List&lt;SaveResult&gt;"output="List&lt;Contact&gt;"/>
+</properties>
+<attributes>
+	<attribute name="type" use="required" caption="sObject Type"
+	group="Information" type="type-chooser" javaType="java.lang.String"> Contact (Contact)
+	</attribute>
+</attributes>
+----
+
+** If metadata model is static, then the expected value should be the initial one, with _“List<Map>”_ as the output value.
+
+=== Step 4: Run Interop Tests
+
+In Studio, right-click the project and click *Anypoint Connector *>* Run Interop Tests*:
+
+image::{imagesdir}/test-plugin-3.png[]
+
+The Interop Remote Runner Properties menu shows the existing testData files that were created previously, and a set of options:
+
+* Tests to run:  Select which kind of test to run on your connector.
+** Connectivity
+** Data Mapper
+** Xml Generation
+** DataSense testing
+** OAuth Static DataSense
+
+* Verbose Mode
+** Enables debugging logs on the test runs
+
+image::{imagesdir}/test-plugin-4.png[]
+
+The results appear in target/surefire-reports, and provide jUnit results using the XML result file.
 

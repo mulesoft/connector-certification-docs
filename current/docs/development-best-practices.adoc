@@ -234,9 +234,3 @@ Creation criteria:
 . Consider implementing a CRUD (or similar) use case with chained processors whose payloads get logged into the Studio console (for example, https://github.com/mulesoft/s3-connector/tree/master/demo/s3connectorstudiodemo[S3]).
 . Use DataMapper for Standard or Premium connectors' CRUD (or a similar) use case if API methods attributes and/or return types allow it.
 . Consider basic error handling in the Mule app.
-
-== Appendix
-. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixA.adoc[Appendix A]
-. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixB.adoc[Appendix B]
-. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixC.adoc[Appendix C]
-. https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/development/appendixD.adoc[Appendix D]

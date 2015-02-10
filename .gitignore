@@ -1,5 +1,5 @@
-#Generated html file
-user-manual.html
+#Generated html files
+*.html
 
 #Coderay plugin in atom
 coderay-asciidoctor.css
@@ -12,4 +12,5 @@ coderay-asciidoctor.css
 *.ipr
 *.iws
 .idea
+
 

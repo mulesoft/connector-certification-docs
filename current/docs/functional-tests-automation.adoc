@@ -31,12 +31,16 @@ This section explains how to automate functional test cases on Connectors.
 . Reduce maintenance cost.
 . Increase robustness by isolating test suite implementation from Mule classes changes.
 
+== Generate Functional Tests Scaffolding and Data using DevKit Plugin
+
+DevKit Plugin provides mule-connector-test test data generation for functional test cases.
+
+include::devkit-plugin-functional-test-data-generation.adoc[]
+
+
 === Concepts
 Use cases are built as a sequence of connector operations calls. Prior to running a use case, initialize a TestRunMessage and load the data required by the use case. After you invoke an operation, turn the content of the TestRunMessage into a MuleEvent before an operation consumes the content. Apply asserts to the payload of the operation under the test.
 
-== Generate Functional Tests Scaffolding and Data using DevKit Plugin
-
-include::docs/devkit-plugin-generate-test-data-action.adoc[]
 
 == Framework and Test Suite Components
 
@@ -906,6 +910,3 @@ Or:
 mvn -Dtest=SmokeTestSuite -Dmule.test.timeoutSecs=180 -DSALESFORCE_CREDENTIALS=http://172.16.20.35/automation/salesforce/automation-credentials.properties test
 ```
 
-== Appendix
-
-https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/automated%20funcional%20testing/appendixA.adoc[Appendix A: Debugging]

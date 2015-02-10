@@ -8,7 +8,7 @@ image::{imagesdir}/certification-process-1.png[]
 
 == Stage 1: On-Board
 
-This first stage consists mainly on the legal matters involving the development of a connector for MuleSoft. This stage includes as well a learning phase of the default framework for developing connectors, the Anypoint™ Connector DevKit.       nnhhhhhy vyh vb tgf
+This first stage consists mainly on the legal matters involving the development of a connector for MuleSoft. This stage includes as well a learning phase of the default framework for developing connectors, the Anypoint™ Connector DevKit.
 
 === 1.1 Legal Engagement
 
@@ -40,6 +40,8 @@ Here is a set of links that it could be useful as a starting point:
 // @Todo: Any ideas ?
 
 == Stage 2: Development
+
+The development phase
 
 === 2.1 Design Specification Review
 

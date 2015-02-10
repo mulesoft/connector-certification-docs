@@ -2,6 +2,16 @@
 
 Based on these guidelines, partners should analyze the connector under test and provide a test suite build from these generic test cases (only a document with general and operation­specific test cases titles) with all tests in "Passed" status.
 
+Specific test cases from the Interop Test guideline are automated and their execution in Anypoint Studio using the DevKit Plugin is described next.
+
+== Running Automated Interop Tests using DevKit Plugin
+
+:leveloffset: 1
+
+include::devkit-plugin-run-interop-tests-action.adoc[]
+
+:leveloffset: 0
+
 == OAuth Authentication
 === OAuth - Global Configuration Element
 
