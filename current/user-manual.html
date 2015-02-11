@@ -91,7 +91,7 @@
 <li><a href="#_development_appendix_c_anypoint_studio_interoperability_testing">Development Appendix C: Anypoint Studio Interoperability Testing</a></li>
 <li><a href="#_development_appendix_d_anypoint_connectors_release_notes_template">Development Appendix D: Anypoint Connectors Release Notes Template</a></li>
 <li><a href="#_development_appendix_e_anypoint_connectors_manual_test_suite_template">Development Appendix E: Anypoint Connectors Manual Test Suite Template</a></li>
-<li><a href="#_development_appendix_f_certification_checklists">Development Appendix F: Certification Checklists</a></li>
+<li><a href="#certification-checklist">Development Appendix F: Certification Checklists</a></li>
 </ul>
 </li>
 </ul>
@@ -352,7 +352,7 @@
 <p><strong>Presentation Demo:</strong> The objective of this demo is to go over the functional aspects of the connectors, overview of the system to be connected and underlying integration technology (REST/WSDL/SDK). The audience of this meeting will mainly be Product Managers, Connectors Engineers Leads and QA members.</p>
 </li>
 <li>
-<p><strong>Complete Certification Checklist</strong></p>
+<p>*Complete <a href="#certification-checklist">Certification Checklist</a> *</p>
 </li>
 <li>
 <p><strong>Connector documentation:</strong> There must be a public access to the connectors documentation.</p>
@@ -390,7 +390,14 @@
 <div class="ulist">
 <ul>
 <li>
-<p>High level description of the connector. As an example, the SalesForce connector can be use as a template: <a href="https://www.mulesoft.com/library#!/salesforce-integration-connector?types=connector" class="bare">https://www.mulesoft.com/library#!/salesforce-integration-connector?types=connector</a></p>
+<p>High level description of the connector.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.mulesoft.com/library#!/salesforce-integration-connector?types=connector">SalesForce Connector</a> could be used as template example.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>URL to Release Notes</p>
@@ -458,7 +465,7 @@ This section is about best development practices, these are a set of rules that 
 <h3 id="_static_analysis_rules">Static Analysis Rules</h3>
 <div class="paragraph">
 <p>We have defined as set of static inspections rules that are enforced by SonarQube. This rules are aimed to detect potential bugs and bad coding practices.
-More details about this could be found in the section <a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_static_code_analysis_with_sonarqube">Static Code Analysis &amp; Code Coverage</a></p>
+More details about this could be found in the section <a href="#static-code-analysis-and-coverage">Static Code Analysis &amp; Code Coverage</a></p>
 </div>
 </div>
 </div>
@@ -480,7 +487,7 @@ More details about this could be found in the section <a href="http://mulesoft.g
 <div class="ulist">
 <ul>
 <li>
-<p>Follow Maven default name conventions <a href="http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html" class="bare">http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html</a></p>
+<p>Follow <a href="http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html">Maven default name conventions</a></p>
 </li>
 <li>
 <p>Do not overwrite org.mule.tools.devkit:mule-devkit-parent properties.</p>
@@ -8099,7 +8106,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_development_appendix_f_certification_checklists">Development Appendix F: Certification Checklists</h2>
+<h2 id="certification-checklist">Development Appendix F: Certification Checklists</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Download and complete the Connector Certification Checklist and its related Manual Interop Test Run Checklist according to the cases derived from analising your connector based on the Interoperability QA Guidelines.</p>
@@ -8119,7 +8126,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-02-10 16:13:07 EST
+Last updated 2015-02-11 07:28:42 EST
 </div>
 </div>
 </body>
