@@ -126,6 +126,7 @@ include::docs/cloudhub-interoperability-testing.adoc[]
 
 * https://drive.google.com/uc?export=download&id=0B8N265C555thOGhVd1B6eXFiUDA[Manual Test Suite Template]
 
+[[certification-checklist]]
 == Development Appendix F: Certification Checklists
 
 Download and complete the Connector Certification Checklist and its related Manual Interop Test Run Checklist according to the cases derived from analising your connector based on the Interoperability QA Guidelines.

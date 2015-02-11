@@ -82,7 +82,7 @@ Before Mule start the certification process, there are a set of prerequisites to
 ** There must not be SNAPSHOT dependencies
 ** External dependencies must be located in well know public repositories.
 * *Presentation Demo:* The objective of this demo is to go over the functional aspects of the connectors, overview of the system to be connected, underlying integration technology (REST/WSDL/SDK). The audience of this meeting will be Product Managers , Connectors Engineers Leads and QA.
-* *Complete Certification Checklist:* Before the connector could start the certification process, it’s responsibility of the partner to validate that all the certification artifacts and requirements have been accomplished. All the required actions are described in the following template and should be completed before submitting the connector for certification. Certification checklist could be found https://drive.google.com/file/d/0B8N265C555thOG5HZDRTOTEtUXM/view?usp=sharing[here]
+* *Complete Certification Checklist:* Before the connector could start the certification process, it’s responsibility of the partner to validate that all the certification artifacts and requirements have been accomplished. All the required actions are described in the following template and should be completed before submitting the connector for certification. Certification checklist could be found <<certification-checklist,here>>
 * *Connector documentation:* There must be a public access to the connectors documentation.
 * *Versioning:* Connectors must follow versioning best practices. Given a version number MAJOR.MINOR.PATCH increment MAJOR version when you make incompatible API changes,increment MINOR version when you add functionality in a backwards-compatible manner, and increment PATCH version when you make backwards-compatible bug fixes.
 
@@ -104,7 +104,8 @@ MuleSoft reserves the right to conduct random tests on published connectors. If 
 
 * *Support Training:* Mule Support team will provide T1 support and will help the customer to isolated the issue to identify if the issue is a Mule issue or a connector issue. The objective of this birth view training is to provide to the support team a general understanding of the connector and tools that help to isolate the problem.
 * *Upload to Library:* Connector will be upload in the https://www.mulesoft.com/library[Mule Connectors Library]. After your connector passes the Certification Process, MuleSoft sends you an estimated date for when your connector will appear on the MuleSoft web site. As part of this process, the following information need to be provided:
-** High Level description of the connector. SalesForce connector could be use a template example: https://www.mulesoft.com/library#!/salesforce-integration-connector?types=connector
+** High Level description of the connector. 
+*** https://www.mulesoft.com/library#!/salesforce-integration-connector?types=connector[SalesForce Connector] could be use a template example. 
 ** URL to Release Notes
 ** URL to Functional documentation of the connector
 ** URL to DevKit generated documentation

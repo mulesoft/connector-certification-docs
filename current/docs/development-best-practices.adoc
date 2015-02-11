@@ -14,7 +14,7 @@ It's important to point out that in the following steps of the certification mos
 === Static Analysis Rules
 
 We have defined as set of static inspections rules that are enforced by SonarQube. This rules are aimed to detect potential bugs and bad coding practices.
-More details about this could be found in the section http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_static_code_analysis_with_sonarqube[Static Code Analysis & Code Coverage]
+More details about this could be found in the section <<static-code-analysis-and-coverage,Static Code Analysis & Code Coverage>>
 
 == Maven Conventions and Setup
 
@@ -25,7 +25,7 @@ Despite a connector's code could be 100% sure, and it works perfectly fine in an
 
 This means that a some constraints could apply, here are the key ones:
 
-* Follow Maven default name conventions http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html
+* Follow http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html[Maven default name conventions] 
 * Do not overwrite org.mule.tools.devkit:mule-devkit-parent properties.
 * Do not reference SNAPSHOT dependencies either in plugins or dependencies.
 
