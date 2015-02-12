@@ -12,7 +12,7 @@ This first stage consists mainly on the legal matters involving the development 
 
 === 1.1 Legal Engagement
 
-Both sides, MuleSoft and a Service Integrator (_SI_), state the guidelines and expected product before starting development. 
+Both sides, MuleSoft and a Service Integrator (_SI_), state the guidelines and expected product before starting development.
 
 
 //During the development process, MuleSoft and a third-party partner, based on a pre-existing partnership agreement, begin the development process.
@@ -43,7 +43,7 @@ Here is a set of useful links as a starting point:
 
 
 
-The development stage is one of the two major phases, mostly ocurring in the development team side. Since the Mulesoft team have relatively low control of this stage, we require every developer to follow a strict set of practices, which we called *Mandatory Practices*. 
+The development stage is one of the two major phases, mostly occurring in the development team side. Since the Mulesoft team have relatively low control of this stage, we require every developer to follow a strict set of practices, which we called *Mandatory Practices*.
 
 === 2.1 Design Specification Review
 
@@ -52,7 +52,7 @@ The _design specification review_ phase, within the development stage, primary a
 https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/designSpecificationTemplate.adoc[Design Specification Template]
 
 
-This design specification document is one of the two _Exit Criteria Documents_ needed by the Mulesoft team. The second document is a _Certification Checklist Document_, which corroborates that every mandatory practice have been accomplished and every deliverable have been issued. This ckecklist need to be completed before submitting the connector for certification. The checklist is available at: 
+This design specification document is one of the two _Exit Criteria Documents_ needed by the Mulesoft team. The second document is a _Certification Checklist Document_, which corroborates that every mandatory practice have been accomplished and every deliverable have been issued. This ckecklist need to be completed before submitting the connector for certification. The checklist is available at:
 
 https://drive.google.com/file/d/0B8N265C555thOG5HZDRTOTEtUXM/view?usp=sharing[Certification Checklist]
 
@@ -106,13 +106,13 @@ Before the Mulesoft team starts the certification stage, there are a set of prer
 
 === 3.2 Certification
 
-Once all the previous steps have been completed, The MuleSoft team will start the certification process, which is by nature an iterative process. The Mulesoft team in charge will reporte different recommendations, which should be taken into consideration by the connector developemnt team, otherwise the certification will fail.
+Once all the previous steps have been completed, The MuleSoft team will start the certification process, which is by nature an iterative process. The Mulesoft team in charge will reporte different recommendations, which should be taken into consideration by the connector development team, otherwise the certification will fail.
 
-The Mulesoft team will define a tentative starting date for the certification process, where we strongly recommend that the connector developer team allocate different time windows to respond to our recommendations. Once all the recommendations have been resolved and implemented, the certification process ends. However, if there is no active engagement in solving the reported recommendations within a seven-days period, the whole certification process will be suspended and a new tentative starting date will be defined. 
+The Mulesoft team will define a tentative starting date for the certification process, where we strongly recommend that the connector developer team allocate different time windows to respond to our recommendations. Once all the recommendations have been resolved and implemented, the certification process ends. However, if there is no active engagement in solving the reported recommendations within a seven-days period, the whole certification process will be suspended and a new tentative starting date will be defined.
 
 The Mulesoft team provides a CloudBees (http://www.cloudbees.com) dedicated account that the connector development team can use to monitor tests executions and static code analysis reports.
 
-It is important to mention that the main communication channel between the Mulesoft team and the connector team is the Mulesoft connector forum, part of the Mulesoft forum community. 
+It is important to mention that the main communication channel between the Mulesoft team and the connector team is the Mulesoft connector forum, part of the Mulesoft forum community.
 
 
 //MuleSoft reserves the right to conduct random tests on published connectors. If we find a connector that deviates from any of our requirements, we notify you and provide a //timeframe to remedy the issue. In extreme cases, we may remove the connector from our web site.
