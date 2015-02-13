@@ -32,16 +32,14 @@ The MuleSoft Anypoint™ Connector DevKit is the default tool for developing Any
 
 Here is a set of useful links as a starting point:
 
-    * Connector Development Essential: http://training.mulesoft.com/instructor-led-training/connector-development-essentials-private-class-ilt
-    * Official DevKit Documentation: http://www.mulesoft.org/documentation/display/current/Anypoint+Connector+DevKit
-    * DevKit Tutorial: http://www.mulesoft.org/documentation/display/current/Tutorial+-+Barn+Connector
-    * Community Forum: http://forum.mulesoft.org/mulesoft/products/mulesoft_anypoint_devkit
+    * http://training.mulesoft.com/instructor-led-training/connector-development-essentials-private-class-ilt[Connector Development Essential]
+    * http://www.mulesoft.org/documentation/display/current/Anypoint+Connector+DevKit[Official DevKit Documentation]
+    * http://www.mulesoft.org/documentation/display/current/Tutorial+-+Barn+Connector[DevKit Tutorial]
+    * http://forum.mulesoft.org/mulesoft/products/mulesoft_anypoint_devkit[Community Forum]
 
 // @Todo: Any ideas ?
 
 == Stage 2: Development
-
-
 
 The development stage is one of the two major phases, mostly occurring in the development team side. Since the Mulesoft team have relatively low control of this stage, we require every developer to follow a strict set of practices, which we called *Mandatory Practices*.
 
@@ -49,12 +47,12 @@ The development stage is one of the two major phases, mostly occurring in the de
 
 The _design specification review_ phase, within the development stage, primary assists developers and designers to clarify the functional behaviour of the connector, provides extensive use cases, ranging from normal ones to border-cases ones, and finally includes an overall architecture design. It is strongly recommended that developers, as well as designers, consider this step as mandatory, taking into consideration the _Design Specification Document_, available at:
 
-https://github.com/mulesoft/connector-certification-docs/blob/docs/current/attachments/templates/designSpecificationTemplate.adoc[Design Specification Template]
+link:attachments/designSpecificationTemplate.html[Design Specification Template]
 
 
 This design specification document is one of the two _Exit Criteria Documents_ needed by the Mulesoft team. The second document is a _Certification Checklist Document_, which corroborates that every mandatory practice have been accomplished and every deliverable have been issued. This ckecklist need to be completed before submitting the connector for certification. The checklist is available at:
 
-https://drive.google.com/file/d/0B8N265C555thOG5HZDRTOTEtUXM/view?usp=sharing[Certification Checklist]
+<<certification-checklist,Certification Checklist>>
 
 
 === 2.2 Mandatory Practices
@@ -144,8 +142,6 @@ It is important to mention that the main communication channel between the Mules
 == Stage 4: Publishing
 
 The final stage in the connector lifecycle model is Publishing, which is mainly carried out in the Mulesoft team side. Once the certification process has been successfully completed, the connector will be deployed and published in the Mulesoft Connector Library.
-
-
 
 
 == Release Re-Certification
