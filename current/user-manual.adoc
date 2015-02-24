@@ -10,9 +10,7 @@
 
 = Anypoint Connector Certification Process
 
-*version 0.9*
-
-
+*version 0.9.1*
 
 [[intro]]
 = Certification
@@ -63,9 +61,6 @@ include::docs/documentation.adoc[]
 
 include::docs/functional-tests-automation.adoc[]
 
-[[static-code-analysis-and-coverage]]
-= Development: Static Code Analysis and Coverage
-
 
 [[anypoint-studio-interoperability-testing]]
 = Development: Anypoint Studio Interoperability Testing
@@ -79,11 +74,6 @@ include::docs/anypoint-studio-interoperability-testing.adoc[]
 
 
 include::docs/cloudhub-interoperability-testing.adoc[]
-
-
-// [interoperability-test-plugin]
-= Development: Interoperability Testing using DevKit Plugin
-
 
 [[appendixes]]
 = Development: Appendixes
@@ -109,8 +99,6 @@ include::docs/cloudhub-interoperability-testing.adoc[]
 * link:attachments/usage-without-anypoint-studio.html[Usage without Anypoint Studio]
 * link:attachments/plugin-result-files.html[Plugin Result Files]
 * link:attachments/project-details.html[Project Details]
-
-
 
 == Development Appendix D: Anypoint Connectors Release Notes Template
 
