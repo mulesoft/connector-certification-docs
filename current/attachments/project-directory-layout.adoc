@@ -1,8 +1,7 @@
 
-== Appendix C
-=== Connector Project Directory Layout 
-. */demo*: Contains demo Mule application covering use cases functionality. 
-. */doc*: Contains documentation for the connector, such as descriptions of the service’s specific API calls or similar. The main file should be called 
+=== Connector Project Directory Layout
+. */demo*: Contains demo Mule application covering use cases functionality.
+. */doc*: Contains documentation for the connector, such as descriptions of the service’s specific API calls or similar. The main file should be called
 The documentation should be written using markdown follow the Documentation Template and it should be called user_manual.md.
 VIDEO_TRANSCRIPT.md (optional)
 Contains video tutorial transcription. The video tutorial highlights the connector functionality in a real use case scenario and is uploaded to MuleSoft‘s YouTube account
