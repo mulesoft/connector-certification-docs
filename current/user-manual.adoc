@@ -31,7 +31,7 @@ This document first introduces the entire *connector lifecycle model*, which inc
 . On-board: Takes into consideration the legal engagement between a third-party development group, or partner, and MuleSoft.
 . Development: Development phase, considering strictly testing methodologies.
 . Certification: The certification process per-se, carried out by a MuleSoft.
-. Publishing: Considers the final deployment of the certified connector within MuleSoft Connectors library. 
+. Publishing: Considers the final deployment of the certified connector within MuleSoft Connectors library.
 
 Within these stages, we only take into consideration the second and third: Development and Certification. The first stage in out of the scope of this document, while the last one hardly requires interaction from the developer's side and therefore it will be omitted.
 
@@ -63,8 +63,8 @@ include::docs/functional-tests-automation.adoc[]
 
 
 [[anypoint-studio-interoperability-testing]]
-= Development: Anypoint Studio Interoperability Testing
-
+// = Development: Anypoint Studio Interoperability Testing
+// TODO
 
 include::docs/anypoint-studio-interoperability-testing.adoc[]
 
@@ -74,6 +74,10 @@ include::docs/anypoint-studio-interoperability-testing.adoc[]
 
 
 include::docs/cloudhub-interoperability-testing.adoc[]
+
+// [interoperability-test-plugin]
+// = Development: Interoperability Testing using DevKit Plugin
+// TODO
 
 [[appendixes]]
 = Development: Appendixes

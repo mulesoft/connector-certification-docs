@@ -25,12 +25,100 @@ Despite a connector's code could be 100% sure, and it works perfectly fine in an
 
 This means that a some constraints could apply, here are the key ones:
 
-* Follow http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html[Maven default name conventions] 
+* Follow http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html[Maven default name conventions]
 * Do not overwrite org.mule.tools.devkit:mule-devkit-parent properties.
 * Do not reference SNAPSHOT dependencies either in plugins or dependencies.
 
-// == Multimodule Layout
-// @Todo: Alejandro: could you please complete this section ?
+=== Multi Module Layout
+In large maven projects, it is a common practice to divide the project in submodules. This means you may end up with a module for your connector and some other modules for utils, commons or other kind of modularized source code that will be consumed by the connector.
+This means you can have separated dependencies, different plugins and a different build configuration, no weird single jar references and consistent versioning. Also separate testing and easy-to-extend structure.
+
+For example, you may want to have:
+
+**Project parent pom**
+
+[source, xml]
+----
+<groupId>org.mule.modules</groupId>
+<artifactId>mule-module-sample-connector-parent</artifactId>
+<version>1.0.0-SNAPSHOT</version>
+<packaging>pom/packaging>
+
+<modules>
+    <module>some-util-lib</module>
+    <module>rehusable-service-adapter</module>
+    <module>my-mule-connector</module>
+</modules>
+----
+
+And in your connector's module pom.xml have:
+
+**Connector sibling dependencies**
+
+[source, xml]
+----
+<dependencies>
+    <dependency>
+        <groupId>org.mule.modules</groupId>
+        <artifactId>some-util-lib</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+        <groupId>org.mule.modules</groupId>
+        <artifactId>rehusable-service-adapter</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+</dependencies>
+----
+
+It is important that your connector's pom inherits from __mule-devkit-parent__, and also that each of the other sub-modules inherits from the projects parent. so, you'll have:
+
+**Extra modules's pom**
+
+[source, xml]
+----
+<artifactId>some-util-lib</artifactId>
+<packaging>jar</packaging>
+
+<parent>
+    <groupId>org.mule.modules</groupId>
+    <artifactId>mule-module-sample-connector-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+</parent>
+...
+----
+
+[source, xml]
+----
+<artifactId>rehusable-service-adapter</artifactId>
+<packaging>jar</packaging>
+
+<parent>
+    <groupId>org.mule.modules</groupId>
+    <artifactId>mule-module-sample-connector-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+</parent>
+...
+----
+
+**Connector's pom**
+
+[source, xml]
+----
+<artifactId>my-mule-connector</artifactId>
+<packaging>mule-module</packaging>
+
+<parent>
+    <groupId>org.mule.tools.devkit</groupId>
+    <artifactId>mule-devkit-parent</artifactId>
+    <version>3.6.0</version>
+</parent>
+
+----
+
+This mix of pom inheritance and agregation allows you to keep a general parent for your secondary modules, and control the compilation in a single point, while leaves the connector with the required devkit-parent, being sure that all the other modules will be installed in your local repository before building the connector.
+
+In multi-module projects, the deployment of the artifacts will vary depending on the connector's category. Rule of thumb is that the parent pom and all the secondary modules (not the connector module) should be deployed to a public nexus repository, while the connector artifact will override its parent dependencyManagement configuration with its own repository rules.
 
 === *Avoid caching*
 Connectors should not hold state, unless is strictly necessary. Several APIs are actually hosted in cloud environments, and therefore caching states ends up in having untrusted data in the connector.
@@ -139,7 +227,7 @@ Copy and paste the following snippets in your connector pom.xml:
                 <execution>
                     <phase>package</phase>
                     <goals>
-                        <goal>y</goal>
+                        <goal>validate</goal>
                     </goals>
                 </execution>
             </executions>
