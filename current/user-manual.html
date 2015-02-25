@@ -56,11 +56,7 @@
 <li><a href="#_transformers">Transformers</a></li>
 <li><a href="#_testing_inbound_endpoints_sources">Testing Inbound Endpoints (@Sources)</a></li>
 <li><a href="#_setting_up_oauth_authentication">Setting Up OAuth Authentication</a></li>
-</ul>
-</li>
-<li><a href="#anypoint-studio-interoperability-testing">Development: Anypoint Studio Interoperability Testing</a>
-<ul class="sectlevel1">
-<li><a href="#_purpose">Purpose</a></li>
+<li><a href="#anypoint-studio-interoperability-testing">Purpose</a></li>
 <li><a href="#_running_automated_interop_tests_using_devkit_plugin">Running Automated Interop Tests using DevKit Plugin</a></li>
 <li><a href="#_oauth_authentication">OAuth Authentication</a></li>
 <li><a href="#_anypoint_studio_interoperability_testing">Anypoint Studio Interoperability Testing</a></li>
@@ -497,6 +493,108 @@ More details about this could be found in the section <a href="#static-code-anal
 </div>
 </div>
 <div class="sect2">
+<h3 id="_multi_module_layout">Multi Module Layout</h3>
+<div class="paragraph">
+<p>In large maven projects, it is a common practice to divide the project in submodules. This means you may end up with a module for your connector and some other modules for utils, commons or other kind of modularized source code that will be consumed by the connector.
+This means you can have separated dependencies, different plugins and a different build configuration, no weird single jar references and consistent versioning. Also separate testing and easy-to-extend structure.</p>
+</div>
+<div class="paragraph">
+<p>For example, you may want to have:</p>
+</div>
+<div class="paragraph">
+<p><strong>Project parent pom</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;groupId&gt;</span>org.mule.modules<span class="tag">&lt;/groupId&gt;</span>
+<span class="tag">&lt;artifactId&gt;</span>mule-module-sample-connector-parent<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;packaging&gt;</span>pom/packaging<span class="error">&gt;</span>
+
+<span class="tag">&lt;modules&gt;</span>
+    <span class="tag">&lt;module&gt;</span>some-util-lib<span class="tag">&lt;/module&gt;</span>
+    <span class="tag">&lt;module&gt;</span>rehusable-service-adapter<span class="tag">&lt;/module&gt;</span>
+    <span class="tag">&lt;module&gt;</span>my-mule-connector<span class="tag">&lt;/module&gt;</span>
+<span class="tag">&lt;/modules&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And in your connector&#8217;s module pom.xml have:</p>
+</div>
+<div class="paragraph">
+<p><strong>Connector sibling dependencies</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependencies&gt;</span>
+    <span class="tag">&lt;dependency&gt;</span>
+        <span class="tag">&lt;groupId&gt;</span>org.mule.modules<span class="tag">&lt;/groupId&gt;</span>
+        <span class="tag">&lt;artifactId&gt;</span>some-util-lib<span class="tag">&lt;/artifactId&gt;</span>
+        <span class="tag">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;/dependency&gt;</span>
+    <span class="tag">&lt;dependency&gt;</span>
+        <span class="tag">&lt;groupId&gt;</span>org.mule.modules<span class="tag">&lt;/groupId&gt;</span>
+        <span class="tag">&lt;artifactId&gt;</span>rehusable-service-adapter<span class="tag">&lt;/artifactId&gt;</span>
+        <span class="tag">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;/dependency&gt;</span>
+<span class="tag">&lt;/dependencies&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is important that your connector&#8217;s pom inherits from <em>mule-devkit-parent</em>, and also that each of the other sub-modules inherits from the projects parent. so, you&#8217;ll have:</p>
+</div>
+<div class="paragraph">
+<p><strong>Extra modules&#8217;s pom</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;artifactId&gt;</span>some-util-lib<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;packaging&gt;</span>jar<span class="tag">&lt;/packaging&gt;</span>
+
+<span class="tag">&lt;parent&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.mule.modules<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>mule-module-sample-connector-parent<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;/parent&gt;</span>
+...</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;artifactId&gt;</span>rehusable-service-adapter<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;packaging&gt;</span>jar<span class="tag">&lt;/packaging&gt;</span>
+
+<span class="tag">&lt;parent&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.mule.modules<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>mule-module-sample-connector-parent<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;/parent&gt;</span>
+...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Connector&#8217;s pom</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;artifactId&gt;</span>my-mule-connector<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;packaging&gt;</span>mule-module<span class="tag">&lt;/packaging&gt;</span>
+
+<span class="tag">&lt;parent&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.mule.tools.devkit<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>mule-devkit-parent<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>3.6.0<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;/parent&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This mix of pom inheritance and agregation allows you to keep a general parent for your secondary modules, and control the compilation in a single point, while leaves the connector with the required devkit-parent, being sure that all the other modules will be installed in your local repository before building the connector.</p>
+</div>
+<div class="paragraph">
+<p>In multi-module projects, the deployment of the artifacts will vary depending on the connector&#8217;s category. Rule of thumb is that the parent pom and all the secondary modules (not the connector module) should be deployed to a public nexus repository, while the connector artifact will override its parent dependencyManagement configuration with its own repository rules.</p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="__strong_avoid_caching_strong"><strong>Avoid caching</strong></h3>
 <div class="paragraph">
 <p>Connectors should not hold state, unless is strictly necessary. Several APIs are actually hosted in cloud environments, and therefore caching states ends up in having untrusted data in the connector.
@@ -641,7 +739,7 @@ Copy and paste the following snippets in your connector pom.xml:</p>
                 <span class="tag">&lt;execution&gt;</span>
                     <span class="tag">&lt;phase&gt;</span>package<span class="tag">&lt;/phase&gt;</span>
                     <span class="tag">&lt;goals&gt;</span>
-                        <span class="tag">&lt;goal&gt;</span>y<span class="tag">&lt;/goal&gt;</span>
+                        <span class="tag">&lt;goal&gt;</span>validate<span class="tag">&lt;/goal&gt;</span>
                     <span class="tag">&lt;/goals&gt;</span>
                 <span class="tag">&lt;/execution&gt;</span>
             <span class="tag">&lt;/executions&gt;</span>
@@ -2246,9 +2344,8 @@ mvn -Dtest=GetDailyTrendsTestCases#testGetDailyTrendsParametrized test</code></p
 </div>
 </div>
 </div>
-<h1 id="anypoint-studio-interoperability-testing" class="sect0">Development: Anypoint Studio Interoperability Testing</h1>
 <div class="sect1">
-<h2 id="_purpose">Purpose</h2>
+<h2 id="anypoint-studio-interoperability-testing">Purpose</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Based on these guidelines, partners should analyze the connector under test and provide a test suite build from these generic test cases (only a document with general and operation­specific test cases titles) with all tests in "Passed" status.</p>
@@ -8120,7 +8217,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-02-24 08:54:06 EST
+Last updated 2015-02-25 14:36:32 EST
 </div>
 </div>
 </body>
