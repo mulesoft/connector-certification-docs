@@ -509,12 +509,13 @@ This means you can have separated dependencies, different plugins and a differen
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;groupId&gt;</span>org.mule.modules<span class="tag">&lt;/groupId&gt;</span>
 <span class="tag">&lt;artifactId&gt;</span>mule-module-sample-connector-parent<span class="tag">&lt;/artifactId&gt;</span>
 <span class="tag">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;name&gt;</span>Mule Sample Connector Parent<span class="tag">&lt;/name&gt;</span>
 <span class="tag">&lt;packaging&gt;</span>pom/packaging<span class="error">&gt;</span>
 
 <span class="tag">&lt;modules&gt;</span>
     <span class="tag">&lt;module&gt;</span>some-util-lib<span class="tag">&lt;/module&gt;</span>
     <span class="tag">&lt;module&gt;</span>rehusable-service-adapter<span class="tag">&lt;/module&gt;</span>
-    <span class="tag">&lt;module&gt;</span>my-mule-connector<span class="tag">&lt;/module&gt;</span>
+    <span class="tag">&lt;module&gt;</span>mule-connector-sample<span class="tag">&lt;/module&gt;</span>
 <span class="tag">&lt;/modules&gt;</span></code></pre>
 </div>
 </div>
@@ -577,7 +578,8 @@ This means you can have separated dependencies, different plugins and a differen
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;artifactId&gt;</span>my-mule-connector<span class="tag">&lt;/artifactId&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;artifactId&gt;</span>mule-connector-sample<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;name&gt;</span>Mule Sample Connector<span class="tag">&lt;/name&gt;</span>
 <span class="tag">&lt;packaging&gt;</span>mule-module<span class="tag">&lt;/packaging&gt;</span>
 
 <span class="tag">&lt;parent&gt;</span>
@@ -8217,7 +8219,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-02-25 14:36:32 EST
+Last updated 2015-02-26 10:08:06 EST
 </div>
 </div>
 </body>
