@@ -670,7 +670,16 @@ Follow the approach of adding specific flows containing processors with an inval
 Error message should relate to the connector domain.
 
 == Test Connection
+Test connection test cases are derived from the error handling logic on each of the connector strategy classes. Check the following example:
 
+- SalesforceBasicAuthStrategy.java class from the Salesforce Connector throws MalformedURLException and ConnectionExceptionCode (this exception can be break into many negative cases, like invalid credentials, expired credentials, etc)
+- Validations are applied to the API version through verifyApiVersion method
+
+The resulting cases should be taking into consideration and their corresponding test cases should be created.
+
+Assertions on the error messages should be applied to ensure that on error user is effectively informed of the cause of the problem.
+
+To add Test Connection test cases to your Functional Test Suite follow this steps:
 
 . Add the necessary config elements to support test configuration negative cases to the automation-test-flows.xml file. Config elements name convention is as follows: Test_Connection_Negative_<Particular_Case>. See an example below.
 
@@ -909,4 +918,3 @@ Or:
 ```
 mvn -Dtest=SmokeTestSuite -Dmule.test.timeoutSecs=180 -DSALESFORCE_CREDENTIALS=http://172.16.20.35/automation/salesforce/automation-credentials.properties test
 ```
-
