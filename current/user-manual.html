@@ -2027,6 +2027,28 @@ Follow the approach of adding specific flows containing processors with an inval
 <div class="sect1">
 <h2 id="_test_connection">Test Connection</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Test connection test cases are derived from the error handling logic on each of the connector strategy classes. Check the following example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SalesforceBasicAuthStrategy.java class from the Salesforce Connector throws MalformedURLException and ConnectionExceptionCode (this exception can be break into many negative cases, like invalid credentials, expired credentials, etc)</p>
+</li>
+<li>
+<p>Validations are applied to the API version through verifyApiVersion method</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The resulting cases should be taking into consideration and their corresponding test cases should be created.</p>
+</div>
+<div class="paragraph">
+<p>Assertions on the error messages should be applied to ensure that on error user is effectively informed of the cause of the problem.</p>
+</div>
+<div class="paragraph">
+<p>To add Test Connection test cases to your Functional Test Suite follow this steps:</p>
+</div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -8219,7 +8241,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-02-26 10:08:06 EST
+Last updated 2015-03-02 13:30:07 EST
 </div>
 </div>
 </body>
