@@ -177,18 +177,18 @@ So, a few constraints might apply, such as:
 
 === *Shading*
 For some corner cases, you might need to add a dependency that does collide with mule ones. For those scenarios, we strongly recommend you to use the same version of the library as mule does, and if this is an impossible task, then change your library to another one.
-If you still need that custom library that collides with mule, then shading could work for you. The support for shading has been added in devkit 3.5.2.
+If you still need that custom library that collides with mule, then shading could work for you. The support for shading has been added in devkit 3.5.3.
 
 You need to modify your connector's `pom.xml` file to add the shading plugin in order to achieve 2 things: 1) add the custom jar into the connector's one and 2) rename the packages of the library into a new one in order to avoid collisions.
 
-The following snippet should work when using a library with the groupId `org.some.library` and the artifactId `custom-artefact-id`
+The following snippet should work when using a library with the groupId `org.some.library` and the artifactId `custom-artifact-id`
 
 [source, xml]
 ----
 <dependencies>
     <dependency>
         <groupId>org.some.library</groupId>
-        <artifactId>custom-artefact-id</artifactId>
+        <artifactId>custom-artifact-id</artifactId>
         <version>2.0</version> <!-- version to be included in the connector jar -->
     </dependency>
 </dependencies>
@@ -205,7 +205,7 @@ The following snippet should work when using a library with the groupId `org.som
                 <!-- custom shade configuration -->
                 <artifactSet>
                     <includes>
-                        <include>org.some.library:custom-artefact-id</include>
+                        <include>org.some.library:custom-artifact-id</include>
                     </includes>
                 </artifactSet>
                 <relocations>
