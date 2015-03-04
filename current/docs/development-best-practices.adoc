@@ -188,8 +188,8 @@ The following snippet should work when using a library with the groupId `org.som
 <dependencies>
     <dependency>
         <groupId>org.some.library</groupId>
-			  <artifactId>custom-artefact-id</artifactId>
-			  <version>2.0</version> <!-- version to be included in the connector jar -->
+        <artifactId>custom-artefact-id</artifactId>
+        <version>2.0</version> <!-- version to be included in the connector jar -->
     </dependency>
 </dependencies>
 
