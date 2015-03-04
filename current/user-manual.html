@@ -691,7 +691,7 @@ If you still need that custom library that collides with mule, then shading coul
 <p>You need to modify your connector&#8217;s <code>pom.xml</code> file to add the shading plugin in order to achieve 2 things: 1) add the custom jar into the connector&#8217;s one and 2) rename the packages of the library into a new one in order to avoid collisions.</p>
 </div>
 <div class="paragraph">
-<p>The following snippet should work when using a library that the full qualified name of the packages are <code>org.some.library</code> and the artefact id is <code>custom-artefact-id</code></p>
+<p>The following snippet should work when using a library with the groupId <code>org.some.library</code> and the artifactId <code>custom-artefact-id</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -715,6 +715,9 @@ If you still need that custom library that collides with mule, then shading coul
     <span class="tag">&lt;/configuration&gt;</span>
 <span class="tag">&lt;/plugin&gt;</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Further explanation can be found <a href="http://maven.apache.org/plugins/maven-shade-plugin/examples/includes-excludes.html">here</a></p>
 </div>
 </div>
 <div class="sect2">
@@ -8241,7 +8244,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-03-02 13:30:07 EST
+Last updated 2015-03-04 12:50:37 EST
 </div>
 </div>
 </body>
