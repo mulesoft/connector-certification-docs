@@ -181,7 +181,7 @@ If you still need that custom library that collides with mule, then shading coul
 
 You need to modify your connector's `pom.xml` file to add the shading plugin in order to achieve 2 things: 1) add the custom jar into the connector's one and 2) rename the packages of the library into a new one in order to avoid collisions.
 
-The following snippet should work when using a library that the full qualified name of the packages are `org.some.library` and the artefact id is `custom-artefact-id`
+The following snippet should work when using a library with the groupId `org.some.library` and the artifactId `custom-artefact-id`
 
 [source, xml]
 ----
@@ -205,7 +205,7 @@ The following snippet should work when using a library that the full qualified n
     </configuration>
 </plugin>
 ----
-
+Further explanation can be found http://maven.apache.org/plugins/maven-shade-plugin/examples/includes-excludes.html[here]
 
 === Connector Structure
 
