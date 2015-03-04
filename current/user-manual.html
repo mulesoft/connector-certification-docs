@@ -684,36 +684,52 @@ So, a few constraints might apply, such as:</p>
 <div class="sect2">
 <h3 id="__strong_shading_strong"><strong>Shading</strong></h3>
 <div class="paragraph">
-<p>For some corner cases, you might need to add a dependency that does collide with mule ones. For those scenarios, we strongly recommend you to use the same version of the library as mule does, and if this is an impossible taks, then change your library to another one.
-If you still need that custom library that collides with mule, then shading could work for you.</p>
+<p>For some corner cases, you might need to add a dependency that does collide with mule ones. For those scenarios, we strongly recommend you to use the same version of the library as mule does, and if this is an impossible task, then change your library to another one.
+If you still need that custom library that collides with mule, then shading could work for you. The support for shading has been added in devkit 3.5.3.</p>
 </div>
 <div class="paragraph">
 <p>You need to modify your connector&#8217;s <code>pom.xml</code> file to add the shading plugin in order to achieve 2 things: 1) add the custom jar into the connector&#8217;s one and 2) rename the packages of the library into a new one in order to avoid collisions.</p>
 </div>
 <div class="paragraph">
-<p>The following snippet should work when using a library with the groupId <code>org.some.library</code> and the artifactId <code>custom-artefact-id</code></p>
+<p>The following snippet should work when using a library with the groupId <code>org.some.library</code> and the artifactId <code>custom-artifact-id</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
-    <span class="tag">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/groupId&gt;</span>
-    <span class="tag">&lt;artifactId&gt;</span>maven-shade-plugin<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>2.3<span class="tag">&lt;/version&gt;</span>
-    <span class="tag">&lt;configuration&gt;</span>
-        <span class="comment">&lt;!-- custom shade configuration --&gt;</span>
-        <span class="tag">&lt;artifactSet&gt;</span>
-            <span class="tag">&lt;includes&gt;</span>
-                <span class="tag">&lt;include&gt;</span>org.some.library:custom-artefact-id<span class="tag">&lt;/include&gt;</span>
-            <span class="tag">&lt;/includes&gt;</span>
-        <span class="tag">&lt;/artifactSet&gt;</span>
-        <span class="tag">&lt;relocations&gt;</span>
-            <span class="tag">&lt;relocation&gt;</span>
-                <span class="tag">&lt;pattern&gt;</span>org.some.library<span class="tag">&lt;/pattern&gt;</span>
-                <span class="tag">&lt;shadedPattern&gt;</span>org.some.library.new.pakage.name.shade<span class="tag">&lt;/shadedPattern&gt;</span>
-            <span class="tag">&lt;/relocation&gt;</span>
-        <span class="tag">&lt;/relocations&gt;</span>
-    <span class="tag">&lt;/configuration&gt;</span>
-<span class="tag">&lt;/plugin&gt;</span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependencies&gt;</span>
+    <span class="tag">&lt;dependency&gt;</span>
+        <span class="tag">&lt;groupId&gt;</span>org.some.library<span class="tag">&lt;/groupId&gt;</span>
+        <span class="tag">&lt;artifactId&gt;</span>custom-artifact-id<span class="tag">&lt;/artifactId&gt;</span>
+        <span class="tag">&lt;version&gt;</span>2.0<span class="tag">&lt;/version&gt;</span> <span class="comment">&lt;!-- version to be included in the connector jar --&gt;</span>
+    <span class="tag">&lt;/dependency&gt;</span>
+<span class="tag">&lt;/dependencies&gt;</span>
+
+<span class="error">&lt;</span>!- rest of the configuration --<span class="error">&gt;</span>
+
+<span class="tag">&lt;build&gt;</span>
+    <span class="tag">&lt;plugings&gt;</span>
+        <span class="tag">&lt;plugin&gt;</span>
+            <span class="tag">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/groupId&gt;</span>
+            <span class="tag">&lt;artifactId&gt;</span>maven-shade-plugin<span class="tag">&lt;/artifactId&gt;</span>
+            <span class="tag">&lt;version&gt;</span>2.3<span class="tag">&lt;/version&gt;</span>
+            <span class="tag">&lt;configuration&gt;</span>
+                <span class="comment">&lt;!-- custom shade configuration --&gt;</span>
+                <span class="tag">&lt;artifactSet&gt;</span>
+                    <span class="tag">&lt;includes&gt;</span>
+                        <span class="tag">&lt;include&gt;</span>org.some.library:custom-artifact-id<span class="tag">&lt;/include&gt;</span>
+                    <span class="tag">&lt;/includes&gt;</span>
+                <span class="tag">&lt;/artifactSet&gt;</span>
+                <span class="tag">&lt;relocations&gt;</span>
+                    <span class="tag">&lt;relocation&gt;</span>
+                        <span class="tag">&lt;pattern&gt;</span>org.some.library<span class="tag">&lt;/pattern&gt;</span>
+                        <span class="tag">&lt;shadedPattern&gt;</span>org.some.library.new.pakage.name.shade<span class="tag">&lt;/shadedPattern&gt;</span>
+                    <span class="tag">&lt;/relocation&gt;</span>
+                <span class="tag">&lt;/relocations&gt;</span>
+             <span class="tag">&lt;/configuration&gt;</span>
+        <span class="tag">&lt;/plugin&gt;</span>
+
+        <span class="comment">&lt;!-- Other plugins --&gt;</span>
+    <span class="tag">&lt;/plugins&gt;</span>
+<span class="tag">&lt;/build&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8244,7 +8260,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-03-04 12:50:37 EST
+Last updated 2015-03-04 17:43:43 EST
 </div>
 </div>
 </body>
