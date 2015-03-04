@@ -176,34 +176,50 @@ So, a few constraints might apply, such as:
 2. When adding artefacts that might collide with mule, choose the versions that are in the current mule version your connector is going to work with. Some of those artefacts are: cxf, jersey, spring, guava, etc.
 
 === *Shading*
-For some corner cases, you might need to add a dependency that does collide with mule ones. For those scenarios, we strongly recommend you to use the same version of the library as mule does, and if this is an impossible taks, then change your library to another one.
-If you still need that custom library that collides with mule, then shading could work for you.
+For some corner cases, you might need to add a dependency that does collide with mule ones. For those scenarios, we strongly recommend you to use the same version of the library as mule does, and if this is an impossible task, then change your library to another one.
+If you still need that custom library that collides with mule, then shading could work for you. The support for shading has been added in devkit 3.5.3.
 
 You need to modify your connector's `pom.xml` file to add the shading plugin in order to achieve 2 things: 1) add the custom jar into the connector's one and 2) rename the packages of the library into a new one in order to avoid collisions.
 
-The following snippet should work when using a library with the groupId `org.some.library` and the artifactId `custom-artefact-id`
+The following snippet should work when using a library with the groupId `org.some.library` and the artifactId `custom-artifact-id`
 
 [source, xml]
 ----
-<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-shade-plugin</artifactId>
-    <version>2.3</version>
-    <configuration>
-        <!-- custom shade configuration -->
-        <artifactSet>
-            <includes>
-                <include>org.some.library:custom-artefact-id</include>
-            </includes>
-        </artifactSet>
-        <relocations>
-            <relocation>
-                <pattern>org.some.library</pattern>
-                <shadedPattern>org.some.library.new.pakage.name.shade</shadedPattern>
-            </relocation>
-        </relocations>
-    </configuration>
-</plugin>
+<dependencies>
+    <dependency>
+        <groupId>org.some.library</groupId>
+        <artifactId>custom-artifact-id</artifactId>
+        <version>2.0</version> <!-- version to be included in the connector jar -->
+    </dependency>
+</dependencies>
+
+<!- rest of the configuration -->
+
+<build>
+    <plugings>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>2.3</version>
+            <configuration>
+                <!-- custom shade configuration -->
+                <artifactSet>
+                    <includes>
+                        <include>org.some.library:custom-artifact-id</include>
+                    </includes>
+                </artifactSet>
+                <relocations>
+                    <relocation>
+                        <pattern>org.some.library</pattern>
+                        <shadedPattern>org.some.library.new.pakage.name.shade</shadedPattern>
+                    </relocation>
+                </relocations>
+             </configuration>
+        </plugin>
+
+        <!-- Other plugins -->
+    </plugins>
+</build>
 ----
 Further explanation can be found http://maven.apache.org/plugins/maven-shade-plugin/examples/includes-excludes.html[here]
 
