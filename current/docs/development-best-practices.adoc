@@ -1,14 +1,3 @@
-== Code Conventions
-
-This sections covers the following areas:
-
-Standard Java Coding Conventions
-. DevKit Standards and Best Practices
-. Maven Conventions and Setup
-. Connector Demo Example
-
-It's important to point out that in the following steps of the certification most of this practices will be validated using automated tools such as SonarQue.
-
 == DevKit Versions
 
 Latest versions of DevKit must be used to develop your connector. The latest stable version is DevKit 3.6.1 but check DevKit releases for the latest updated.
@@ -21,6 +10,17 @@ It's mandatory that sanity tests must be performed every major Mule ESB version.
 
 There are four types of DevKit connector categories which have an corresponding support policy. Connector categories are defined here: https://www.mulesoft.com/downloads/legal/mule-esb-support-maintenance-term.
 Connector should define in the maven properties section the right category for it.
+
+== Code Conventions
+
+This sections covers the following areas:
+
+Standard Java Coding Conventions
+* DevKit Standards and Best Practices
+* Maven Conventions and Setup
+* Connector Demo Example
+
+It's important to point out that in the following steps of the certification most of this practices will be validated using automated tools such as SonarQue.
 
 == Standard Java Coding Conventions
 

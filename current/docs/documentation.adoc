@@ -1,10 +1,11 @@
-== Documentation
-
 This section provides additional insight on the documentation associated either to the connector or its lifecycle.
 
-Check the Appendixes section for templates on a connector documentation.
+== User Guide
 
-=== Connector Apidocs
+Check the Appendixes section for templates on a connector documentation.
+//@Todo: Comple ...
+
+== Connector Apidocs
 
 For each exposed connector method make sure that:
 
