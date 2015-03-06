@@ -27,9 +27,9 @@
 </li>
 <li><a href="#development-best-practices">Development: Coding Standards and Best Practices</a>
 <ul class="sectlevel1">
-<li><a href="#_code_conventions">Code Conventions</a></li>
 <li><a href="#_devkit_versions">DevKit Versions</a></li>
 <li><a href="#_connector_categories">Connector Categories</a></li>
+<li><a href="#_code_conventions">Code Conventions</a></li>
 <li><a href="#_standard_java_coding_conventions">Standard Java Coding Conventions</a></li>
 <li><a href="#_maven_conventions_and_setup">Maven Conventions and Setup</a></li>
 <li><a href="#_devkit_standards_and_best_practices">DevKit Standards and Best Practices</a></li>
@@ -38,7 +38,8 @@
 </li>
 <li><a href="#documentation">Documentation deliverables</a>
 <ul class="sectlevel1">
-<li><a href="#_documentation">Documentation</a></li>
+<li><a href="#_user_guide">User Guide</a></li>
+<li><a href="#_connector_apidocs">Connector Apidocs</a></li>
 </ul>
 </li>
 <li><a href="#functional_tests_automation">Development: Functional Tests Automation</a>
@@ -438,23 +439,6 @@ This section is about best development practices, these are a set of rules that 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_code_conventions">Code Conventions</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This sections covers the following areas:</p>
-</div>
-<div class="paragraph">
-<p>Standard Java Coding Conventions
-. DevKit Standards and Best Practices
-. Maven Conventions and Setup
-. Connector Demo Example</p>
-</div>
-<div class="paragraph">
-<p>It&#8217;s important to point out that in the following steps of the certification most of this practices will be validated using automated tools such as SonarQue.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="_devkit_versions">DevKit Versions</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -473,6 +457,23 @@ It&#8217;s mandatory that sanity tests must be performed every major Mule ESB ve
 <div class="paragraph">
 <p>There are four types of DevKit connector categories which have an corresponding support policy. Connector categories are defined here: <a href="https://www.mulesoft.com/downloads/legal/mule-esb-support-maintenance-term" class="bare">https://www.mulesoft.com/downloads/legal/mule-esb-support-maintenance-term</a>.
 Connector should define in the maven properties section the right category for it.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_code_conventions">Code Conventions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This sections covers the following areas:</p>
+</div>
+<div class="paragraph">
+<p>Standard Java Coding Conventions
+* DevKit Standards and Best Practices
+* Maven Conventions and Setup
+* Connector Demo Example</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s important to point out that in the following steps of the certification most of this practices will be validated using automated tools such as SonarQue.</p>
 </div>
 </div>
 </div>
@@ -935,17 +936,22 @@ Only use a map if your data:
 </div>
 </div>
 <h1 id="documentation" class="sect0">Documentation deliverables</h1>
-<div class="sect1">
-<h2 id="_documentation">Documentation</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This section provides additional insight on the documentation associated either to the connector or its lifecycle.</p>
+<div class="openblock partintro">
+<div class="content">
+This section provides additional insight on the documentation associated either to the connector or its lifecycle.
 </div>
+</div>
+<div class="sect1">
+<h2 id="_user_guide">User Guide</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Check the Appendixes section for templates on a connector documentation.</p>
 </div>
-<div class="sect2">
-<h3 id="_connector_apidocs">Connector Apidocs</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_connector_apidocs">Connector Apidocs</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>For each exposed connector method make sure that:</p>
 </div>
@@ -968,7 +974,6 @@ Only use a map if your data:
 <div class="paragraph">
 <p><a href="http://mulesoft.github.io/salesforce-connector/mule/sfdc-config.html#convert-lead">Salesforce Connector convert-lead Apidocs</a> or
 <a href="http://mulesoft.github.io/salesforce-connector/mule/sfdc-config.html#create">Salesforce Connector create Apidocs</a></p>
-</div>
 </div>
 </div>
 </div>
@@ -8284,7 +8289,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-03-06 09:32:01 EST
+Last updated 2015-03-06 13:32:33 EST
 </div>
 </div>
 </body>
