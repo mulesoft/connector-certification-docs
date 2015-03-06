@@ -28,6 +28,8 @@
 <li><a href="#development-best-practices">Development: Coding Standards and Best Practices</a>
 <ul class="sectlevel1">
 <li><a href="#_code_conventions">Code Conventions</a></li>
+<li><a href="#_devkit_versions">DevKit Versions</a></li>
+<li><a href="#_connector_categories">Connector Categories</a></li>
 <li><a href="#_standard_java_coding_conventions">Standard Java Coding Conventions</a></li>
 <li><a href="#_maven_conventions_and_setup">Maven Conventions and Setup</a></li>
 <li><a href="#_devkit_standards_and_best_practices">DevKit Standards and Best Practices</a></li>
@@ -449,6 +451,28 @@ This section is about best development practices, these are a set of rules that 
 </div>
 <div class="paragraph">
 <p>It&#8217;s important to point out that in the following steps of the certification most of this practices will be validated using automated tools such as SonarQue.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_devkit_versions">DevKit Versions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Latest versions of DevKit must be used to develop your connector. The latest stable version is DevKit 3.6.1 but check DevKit releases for the latest updated.</p>
+</div>
+<div class="paragraph">
+<p>DevKit 3.6.x warranty support that connector code will be compatible with Mule ESB 3.5.x and Mule ESB 3.6.x. Even the fact that DevKit provides code compatibility,
+there is not warranty that the libraries that the libraries used by the connector could have conflict with the different Mule ESB versions.
+It&#8217;s mandatory that sanity tests must be performed every major Mule ESB version.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_connector_categories">Connector Categories</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are four types of DevKit connector categories which have an corresponding support policy. Connector categories are defined here: <a href="https://www.mulesoft.com/downloads/legal/mule-esb-support-maintenance-term" class="bare">https://www.mulesoft.com/downloads/legal/mule-esb-support-maintenance-term</a>.
+Connector should define in the maven properties section the right category for it.</p>
 </div>
 </div>
 </div>
@@ -8260,7 +8284,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-03-04 17:43:43 EST
+Last updated 2015-03-06 09:32:01 EST
 </div>
 </div>
 </body>
