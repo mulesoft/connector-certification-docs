@@ -1,52 +1,53 @@
-== DevKit Versions
 
-Latest versions of DevKit must be used to develop your connector. The latest stable version is DevKit 3.6.1 but check DevKit releases for the latest updated.
+Development best practices and coding standars have been learned within the connector developemt community over time, leading to improve the quality of connectors. During the cerfitication process, most of these practices and standars are checked through automated tools, such as SonarQube.
 
-DevKit 3.6.x warranty support that connector code will be compatible with Mule ESB 3.5.x and Mule ESB 3.6.x. Even the fact that DevKit provides code compatibility,
-there is not warranty that the libraries that the libraries used by the connector could have conflict with the different Mule ESB versions.
-It's mandatory that sanity tests must be performed every major Mule ESB version.
 
-== Connector Categories
+== Anypoint™ Connector DevKit Version
 
-There are four types of DevKit connector categories which have an corresponding support policy. Connector categories are defined here: https://www.mulesoft.com/downloads/legal/mule-esb-support-maintenance-term.
-Connector should define in the maven properties section the right category for it.
+The last version of Anypoint™ Connector Devkit must be used to develop your connector. As of March 2015, the latest stable Devkit version is 3.6.1.
+
+DevKit 3.6.x assures that a connector will be compatible with Mule ESB 3.5.x and Mule ESB 3.6.x. However, external libraries employed by the connector might have conflicts with different Mule ESB versions. Samity checks are mandatory for every Mule ESB Version.
+
+== Connector Category
+
+There are four types of categories with different support policies: Premium, Select, Standard and Community. A connector should define its category within the Maven properties. Further information about connector categories can be found https://www.mulesoft.com/downloads/legal/mule-esb-support-maintenance-term[here].
 
 == Code Conventions
 
-This sections covers the following areas:
+This subsection covers the following areas:
 
-Standard Java Coding Conventions
-* DevKit Standards and Best Practices
+//* Standard Java Coding Conventions
 * Maven Conventions and Setup
+* DevKit Standards and Best Practices
 * Connector Demo Example
 
-It's important to point out that in the following steps of the certification most of this practices will be validated using automated tools such as SonarQue.
 
-== Standard Java Coding Conventions
 
-=== Static Analysis Rules
+//== Standard Java Coding Conventions
+    
+//=== Static Analysis Rules
 
-We have defined as set of static inspections rules that are enforced by SonarQube. This rules are aimed to detect potential bugs and bad coding practices.
-More details about this could be found in the section <<static-code-analysis-and-coverage,Static Code Analysis & Code Coverage>>
+//We have defined as set of static inspections rules that are enforced by SonarQube. This rules are aimed to detect potential bugs and bad coding practices.
+//More details about this could be found in the section <<static-code-analysis-and-coverage,Static Code Analysis & Code Coverage>>
 
 == Maven Conventions and Setup
 
 The following section describes set of conventions and best practices to follow at the time to define your connector Maven project structure.
 
 === Best Practices
-Despite a connector's code could be 100% sure, and it works perfectly fine in an isolated environment, every connector we build must work in a Mule environment.
+A connector tested in an isolated environment might not work in a Mule environment. Therefore, different constrains apply:
 
-This means that a some constraints could apply, here are the key ones:
-
-* Follow http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html[Maven default name conventions]
+* Follow http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html[Maven default name conventions].
 * Do not overwrite org.mule.tools.devkit:mule-devkit-parent properties.
-* Do not reference SNAPSHOT dependencies either in plugins or dependencies.
+* Do not reference SNAPSHOT dependencies in plugins or dependencies.
 
 === Multi Module Layout
-In large maven projects, it is a common practice to divide the project in submodules. This means you may end up with a module for your connector and some other modules for utils, commons or other kind of modularized source code that will be consumed by the connector.
-This means you can have separated dependencies, different plugins and a different build configuration, no weird single jar references and consistent versioning. Also separate testing and easy-to-extend structure.
+In large Maven projects, it is a common practice to divide the project in submodules. This means you may end up with a module for your connector and other modules for utils, commons or other kind of modularized source code that will be consumed by the connector.
 
-For example, you may want to have:
+
+//This means you can have separated dependencies, different plugins and a different build configuration, no weird single jar references and consistent versioning. Also separate testing and easy-to-extend structure.
+
+Consider the following use-case:
 
 **Project parent pom**
 
@@ -65,7 +66,7 @@ For example, you may want to have:
 </modules>
 ----
 
-And in your connector's module pom.xml have:
+In your connector's module pom.xml:
 
 **Connector sibling dependencies**
 
@@ -85,9 +86,9 @@ And in your connector's module pom.xml have:
 </dependencies>
 ----
 
-It is important that your connector's pom inherits from __mule-devkit-parent__, and also that each of the other sub-modules inherits from the projects parent. so, you'll have:
+It is important to notice that your connector's pom inherits from __mule-devkit-parent__, and that each of the other sub-modules inherits from the project parent. Therefore, you will have:
 
-**Extra modules's pom**
+**Pom extra modules**
 
 [source, xml]
 ----
@@ -131,68 +132,68 @@ It is important that your connector's pom inherits from __mule-devkit-parent__, 
 
 ----
 
-This mix of pom inheritance and agregation allows you to keep a general parent for your secondary modules, and control the compilation in a single point, while leaves the connector with the required devkit-parent, being sure that all the other modules will be installed in your local repository before building the connector.
+This mix of pom inheritance and agregation allows you to mantain a general parent pom for your secondary modules, and control the compilation in a single point, while leaves the connector with the required devkit-parent pom, making sure that all the other modules will be installed in your local repository before building the connector.
 
-In multi-module projects, the deployment of the artifacts will vary depending on the connector's category. Rule of thumb is that the parent pom and all the secondary modules (not the connector module) should be deployed to a public nexus repository, while the connector artifact will override its parent dependencyManagement configuration with its own repository rules.
+In multi-module projects, the deployment of the artifacts will vary depending on the connector's category. Rule-of-thumb is that the parent pom and all the secondary modules (not the connector module) should be deployed to a public nexus repository, while the connector artifact will override its parent dependency management configuration with its own repository rules.
 
 === *Avoid caching*
 Connectors should not hold state, unless is strictly necessary. Several APIs are actually hosted in cloud environments, and therefore caching states ends up in having untrusted data in the connector.
 There are a few cases where the connector might need to save some data of the current API while working on it, which leads into caching.
 
-For those scenarios where *the connector needs caching no matter what, the following code should be used*:
+For those scenarios where the connector needs caching, the following code should be used:
 
 [source,java]
 ----
-// 1) the connector ask for the manager of the Object Store
+// 1) The connector asks for the manager of the Object Store
 @Inject
 protected ObjectStoreManager objectStoreManager;
 ----
-And then use the manager to get/create a custom Object Store as follow:
+And then uses the manager to get/create a custom Object Store as follow:
 [source,java]
 ----
-// 2) the connector ask mule for the Object Store represented by "some ID"
-ObjectStore<? extends Serializable> os = objectStoreManager.getObjectStore("some ID");
-// 3) then it uses it
+// 2) The connector asks Mule for the Object Store represented by a "given ID"
+ObjectStore<? extends Serializable> os = objectStoreManager.getObjectStore("given ID");
+// 3) The connector uses it
 os.store("key", "value");
 ----
 
-Other way to achieve caching could be through temporal files, but it might depend on the use case.
+Other ways to achieve caching could be through temporal files, but it might depend on the use case.
 
-=== *Avoid spawning threads*
-Same as caching, spawning threads is not recommended in a connector as a common API lives in the cloud. This means that a connector won't improve its throughput with more threads, because every communication with the API means more HTTP requests/responses. Although we don't recommend using threads, as caching, there might be custom cases where they are actually needed.
+=== Avoid spawning threads
+Same as caching, spawning threads is not recommended within a connector as a common API lives in the cloud. This means that a connector will not improve its throughput with more threads, because every communication with the API means more HTTP requests/responses. Although we don't recommend using threads, as caching, there might be custom cases where they are actually needed.
 
-For those scenarios where *the connector needs to spawn threads* you should use a http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ExecutorService.html[Executor Service].
+For those scenarios where the connector needs to spawn threads you should use a http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ExecutorService.html[Executor Service].
 
-=== *Reading resources from within the connector*
-When reading resources that are bundled with the connector, the usual `getClass().getResourceAsStream("custom-file-to-read.txt")` will work great. But if the file `"custom-file-to-read.txt"` can actually be parametrized through the mule application, then other mechanism should be used.
+=== Reading resources from within the connector
+When reading resources that are bundled with the connector, the usual `getClass().getResourceAsStream("custom-file-to-read.txt")` will work. But, if the file `"custom-file-to-read.txt"` can actually be parametrized through the Mule application, then other mechanism should be used.
 
-Let's say that for your connector, a file can be feeded from the src/main/resources folder (again, this file comes from Studio, not from the connector), the following code should be used:
+Let's consider that for your connector, a file can be feeded from the src/main/resources folder (again, this file comes from Studio, not from the connector), the following code should be used:
 [source,java]
 ----
-// 1) the connector ask for the manager of the mule context
+// 1) The connector asks for the manager of the mule context
 @Inject
 protected MuleContext muleContext;
 ----
-Then read the resources as follow:
+Then reads the resources as follow:
 [source,java]
 ----
 ClassLoader classLoader = muleContext.getExecutionClassLoader();
 URL resourceURL = classLoader.getResource("custom-file-to-read.txt");
 ----
-Where `"custom-file-to-read.txt"` is the file to be read from the mule app in `src/main/resources/custom-file-to-read.txt`.
+Where `"custom-file-to-read.txt"` is the file to be read from the Mule app in `src/main/resources/custom-file-to-read.txt`.
 
-=== *Mule dependencies*
-Adding dependencies in your connector should be careful task, as it might collide with mule ones.
-So, a few constraints might apply, such as:
+=== Mule dependencies
+Adding dependencies in your connector should be carefully considered, since they might collide with Mule.
+A few constraints apply, such as:
 
-1. When adding mule artefacts, always use `<scope>provided</scope>`
-2. When adding artefacts that might collide with mule, choose the versions that are in the current mule version your connector is going to work with. Some of those artefacts are: cxf, jersey, spring, guava, etc.
+1. When adding Mule artifacts, always use `<scope>provided</scope>`.
+2. When adding artifacts that might collide with Mule, choose versions that are in the current Mule versios, for what your connector is going to work with. Some of those artifacts are: cxf, jersey, spring, guava, etc.
 
-=== *Shading*
-For some corner cases, you might need to add a dependency that does collide with mule ones. For those scenarios, we strongly recommend you to use the same version of the library as mule does, and if this is an impossible task, then change your library to another one.
-If you still need that custom library that collides with mule, then shading could work for you. The support for shading has been added in devkit 3.5.3.
+=== Shading
+For some corner cases, you might need to add a dependency that does collide with Mule. For those scenarios, we strongly recommend to use the same version of the library as Mule does, and if impossible, then change your library to another one.
+If you still need that custom library that collides with Mule, then shading could work for you. The support for shading has been added in devkit 3.5.3.
 
-You need to modify your connector's `pom.xml` file to add the shading plugin in order to achieve 2 things: 1) add the custom jar into the connector's one and 2) rename the packages of the library into a new one in order to avoid collisions.
+You need to modify your connector's `pom.xml` file to add the shading plugin in order to achieve two things: 1) add the custom jar into the connector's one and 2) rename the packages of the library into a new one in order to avoid collisions.
 
 The following snippet should work when using a library with the groupId `org.some.library` and the artifactId `custom-artifact-id`
 
@@ -234,14 +235,15 @@ The following snippet should work when using a library with the groupId `org.som
     </plugins>
 </build>
 ----
-Further explanation can be found http://maven.apache.org/plugins/maven-shade-plugin/examples/includes-excludes.html[here]
+Further explanation can be found http://maven.apache.org/plugins/maven-shade-plugin/examples/includes-excludes.html[here].
 
 === Connector Structure
 
-If you create your connector project using the DevKit Studio Plugin, the structure generates by default is the recommended approach.
-If you are interested in more details, the project directory structure are described in the __Appendix C__.
+If you create your connector project using the DevKit Studio Plugin, the generated project directory layout is the recommended approach.
+If you are interested in more details, the project directory structure is described link:attachments/project-directory-layout.html[here].
 
-In order to provide automatic enforcement of this rules, the following plugin must be configure as part of the connectors pom.xml. I will be responsible for validating the project structure.
+In order to provide automatic enforcement of this rules, the following plugin must be configure as part of the connectors pom.xml. We will be responsible for validating the project structure.
+
 Copy and paste the following snippets in your connector pom.xml:
 
 [source,xml]
@@ -270,9 +272,9 @@ Copy and paste the following snippets in your connector pom.xml:
 ----
 
 == DevKit Standards and Best Practices
-=== DataMapper Compliance
 
-To have the best experience in Anypoint Studio, connectors must be DataMapper compliant. To achieve this, all operations must follow these recommendations.
+=== DataMapper Compliance
+To have the best experience in Anypoint™ Studio, connectors must be DataMapper compliant. To achieve this, all operations must follow these recommendations.
 
 Any argument, returned or received, must be one of the following data types:
 . Map

@@ -1,0 +1,151 @@
+
+
+As previously mentioned, the connector lifecycle model consists in the following stages:
+
+image::{imagesdir}/certification-process-1.png[]
+
+== Stage 1: On-Board
+
+This first stage consists mainly on the legal matters involving the development of a connector for MuleSoft. This stage includes as well a learning phase of the default framework for developing connectors, the Anypoint™ Connector DevKit.
+
+=== 1.1 Legal Engagement
+
+Both sides, MuleSoft and a Service Integrator (_SI_), state the guidelines and expected product deliverable before starting the development stage.
+
+
+=== 1.2 Learning Anypoint™ Connector DevKit
+
+Anypoint™ Connector DevKit is the default tool for developing Anypoint™ connectors. It provides a vast set of features to help you develop and further mantain your connector. Features include, but are not limited to:
+
+. Visual design and implementation using Anypoint™ Studio with an Eclipse-oriented interface that simplifies and speed up development.
+. Maven support for development and building.
+. Connector development and packaging tools.
+. Authentication support for multiple types of authentication: OAuth and basic authentication.
+. DataSense support to acquire metadata in design time.
+. Extensive testing capability
+. Examples, training and support to ease startup.
+. Provides batch, query pagination, and DataSense Query Language support.
+
+Here is a set of useful links as a starting point:
+
+    * http://training.mulesoft.com/instructor-led-training/connector-development-essentials-private-class-ilt[Connector Development Essential]
+    * http://www.mulesoft.org/documentation/display/current/Anypoint+Connector+DevKit[Official DevKit Documentation]
+    * http://www.mulesoft.org/documentation/display/current/Tutorial+-+Barn+Connector[DevKit Tutorial]
+    * http://forum.mulesoft.org/mulesoft/products/mulesoft_anypoint_devkit[Community Forum]
+
+== Stage 2: Development
+
+The development stage is one of two major phases, mostly occurring in the development team side. Since the MuleSoft team has relatively low control of this stage, we require every developer to follow a strict set of practices, which we called *Mandatory Practices*.
+
+=== 2.1 Design Specification Review
+
+The _design specification review_ phase, within the development stage, primary assists developers and designers to clarify the functional behaviour of the connector, provides extensive use cases, ranging from normal to border-cases ones, and finally includes an overall architecture design. It is strongly recommended that developers, as well as designers, consider this step as mandatory, taking into consideration the _Design Specification Template, available at:
+
+link:attachments/designSpecificationTemplate.html[Design Specification Template]
+
+
+The design specification template is one of the two _Exit Criteria Documents_ from the development stage, needed by the MuleSoft team. The second document is a _Certification Checklist Document_, which corroborates that every mandatory practice has been accomplished and every deliverable has been issued. It can be downloaded https://drive.google.com/uc?export=download&id=0B8N265C555thOG5HZDRTOTEtUXM[here].
+
+Due to Interoperability QA Guidelines, this checklist has an _Manual Interoperability Test Run_ associated available https://drive.google.com/uc?export=download&id=0B8N265C555thNW0tMElvejlVVGc[here].
+
+
+//<<certification-checklist,Certification Checklist>>
+
+
+=== 2.2 Mandatory Practices
+
+These practices assure an overall product quality, ranging from coding standars to documentation. The MuleSoft team requires every practice to be strictly followed by the connector development team and to produce the required deliverables, such as release notes and a user guide. The following mandatory practices are detailed in following sections of this document.
+
+
+* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_coding_standards_and_best_practices[Coding Standards and Best Practices]
+* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_static_code_analysis_with_sonarqube[Static Code Analysis and Coverage]
+* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_automated_functional_testing[Functional Tests Automation]
+* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_studio_interoperability_qa[Anypoint™ Studio Interoperability Testing]
+* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_cloudhub-interoperability-testing[CloudHub Interoperability Testing]
+* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_templates[Connector Release Notes & Documentation]
+
+
+
+== Stage 3: Certification
+
+The certification stage, on the contrary to the development stage, occurs mostly in the MuleSoft side. This stage includes different high-level objectives, such as:
+
+. Automated code scan
+. Manual code review and black box testing
+. Manual and automated tests review
+. Repository structure review
+. Documentation review
+. Runtime-compatibility review
+. Static code analysis
+
+
+The certification stage requires different prerequisites, since a wide set of code properties are checked and validated. These properties include GitHub credentials, Maven dependencies and code versioning, among others.
+
+
+=== 3.1 Prerequisites
+
+Prerequisites to be satisfied:
+
+* *Design Specification Template Approved:* The Design Specification template has been approved and all suggested corrections have been taken into consideration by the development team.
+
+* *Source Code Access and Sandbox Credentials:* As part of the certification process, the MuleSoft team will internally run continue tests execution and run a set of code inspections to validate the quality of the connector. The following actions are required:
+** GitHub account read access must be granted to the user _connectors-cert-ci_ (connectors-cert-ci at mulesoft dot com).
+** In case of being required, provide the sandbox credentials used for tests execution.
+** Create a release branch containing all the bug fixes produced during the certification process. It should follow the naming convention "release/v<version-number>". Once the certification process has been completed, all the changes will be merged into the master branch and a tag, with all the changes, need to be created. It is strongly recommended to follow GitFlow branching practices.
+
+* *Maven Dependencies:*
+** The connector must be a final version: No SNAPSHOTS are allowed.
+** SNAPSHOT dependencies are not allowed.
+** External dependencies need to be located in well know public repositories.
+
+* *Presentation Demo:* The objective of this demo is to go over the functional aspects of the connector, the overview of the system to be connected and underlying integration technologies (REST/WSDL/SDK). The audience of this meeting will mainly be Product Managers, Connectors Engineers Leads and QA members.
+
+* *Complete the <<certification-checklist,Certification Checklist>>*
+
+* *Connector Documentation:* Access to the connector documentation is required.
+
+* *Versioning:* The Connector must follow the following versioning scheme. Given a version number MAJOR.MINOR.PATCH, only increment MAJOR version when you make incompatible API changes; increment MINOR version when you add functionality in a backwards-compatible manner; and increment PATCH version when you make backwards-compatible bug fixes.
+
+=== 3.2 Certification
+
+Once all the previous steps have been completed, The MuleSoft team will start the certification process, which is by nature an iterative process. The MuleSoft team in charge will reporte different recommendations, which need to be taken into consideration by the connector development team, otherwise the certification will fail.
+
+The MuleSoft team will define a tentative starting date for the certification process, where we strongly recommend to the connector development team to allocate different time windows, so as to respond to our recommendations. Once all the recommendations have been resolved and implemented, the certification process ends. However, if there is no active engagement in solving the proposed recommendations within a seven-days period, the whole certification process will be suspended and a new tentative starting date will be defined.
+
+The MuleSoft team provides a CloudBees dedicated account (http://www.cloudbees.com) that the connector development team can use to monitor tests executions and static code analysis reports.
+
+It is important to mention that the main communication channel between the MuleSoft team and the connector team is the MuleSoft connector forum, part of the Mulesoft forum community.
+
+
+// @Todo: Define new releases criteria.
+
+
+=== 3.3 Results
+
+
+* *Support Training:* Mule support team will provide T1 support and will help the customer to isolated the issue and identify it if the issue is a Mule issue or a connector issue.
+
+//The objective of this birth view training is to provide to the support team a general understanding of the connector and tools that help to isolate the problem.
+
+
+* *Upload to Mulesoft Connector Library:* Certified connectors will be uploaded in the https://www.mulesoft.com/library[Mule Connectors Library]. After your connector passes certification, MuleSoft sends you an estimated date for when your connector will appear on the MuleSoft library. As part of this process, the following information need to be provided:
+
+** High level description of the connector. The https://www.mulesoft.com/library#!/salesforce-integration-connector?types=connector[SalesForce connector] can be used as a template example. 
+
+** URL to release notes.
+
+** URL to functional documentation.
+
+** URL to Anypoint™ Connector DevKit generated documentation.
+
+
+== Stage 4: Publishing
+
+The final stage in the connector lifecycle model is publishing, which is mainly carried out in the MuleSoft team side. Once the certification process has been successfully completed, the connector will be deployed and published in the Mulesoft Connector Library.
+
+
+== Release Re-Certification
+
+Mule ESB and Anypoint™ Studio have a release cycle of three month, where the MuleSoft team needs to assure that previously published connectors are compatible with new releases. Due to class-loading issues and data-mapping problems, already published connectors might not work in new Mule ESB versions. Therefore, prior to Mule ESB and Anypoint™ Studio releases, regression tests need to be run in order to assure full forward compatibility.
+
+If regression testing fails, it is up to the connector development team to decide whether the connector will support or not newer versions of Mule ESB and Anypoint™ Studio.

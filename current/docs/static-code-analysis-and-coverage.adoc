@@ -45,7 +45,7 @@ mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install
 && mvn sonar:sonar
 ----
 
-This creates the project in your sonar installation, allowing you to use the Eclipse SonarQube plugin from inside your Anypoint Studio. Using this plugin is the recommended way, but is always possible to run the inspections manually with * mvn sonar:sonar *.
+This creates the project in your sonar installation, allowing you to use the Eclipse SonarQube plugin from inside your Anypoint™ Studio. Using this plugin is the recommended way, but is always possible to run the inspections manually with * mvn sonar:sonar *.
 
 If you are experiencing false positive issues, you can disable the inspection using //NOSONAR comment at the end of a line which has the issue on a case-by-case basis. Every use of //NOSONAR is recorded by SonarQube as an Info issue so you can track its usage in your connector’s code.
 
@@ -61,7 +61,7 @@ image::{imagesdir}/sonar-2.png[]
 
 == SonarQube Eclipse Plugin Setup
 
-. Open Anypoint Studio, then select Help > Install New Software.
+. Open Anypoint™ Studio, then select Help > Install New Software.
 
 image::{imagesdir}/sonar-3.png[]
 
@@ -73,8 +73,8 @@ image::{imagesdir}/sonar-4.png[]
 
 
 . Check the SonarQube Java option.
-. After completing the installation, restart Anypoint Studio.
-. Open Anypoint Studio’s preferences, and browse to the SonarQube section. Expand it, and select the Servers subsection. Click Add and fill in the URL and credentials for your server (by default, admin/admin).
+. After completing the installation, restart Anypoint™ Studio.
+. Open Anypoint™ Studio’s preferences, and browse to the SonarQube section. Expand it, and select the Servers subsection. Click Add and fill in the URL and credentials for your server (by default, admin/admin).
 
 image::{imagesdir}/sonar-5.png[]
 
@@ -102,7 +102,7 @@ SonarQube classifies each issue with a severity:
 * Minor: Correctness, clarity or performance issues that do not impact your connector’s functionality significantly.
 * Info: Keeps track of useful information that might otherwise go unnoticed.
 
-To see the full list of rules checked by SonarQube, browse to the Anypoint Connectors Certification quality profile through the web UI.
+To see the full list of rules checked by SonarQube, browse to the Anypoint™ Connectors Certification quality profile through the web UI.
 
 
 == Code Coverage
