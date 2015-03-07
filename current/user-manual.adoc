@@ -13,7 +13,7 @@
 *version 0.9.2*
 
 [[intro]]
-= Certification Process Introduction
+= Certification Process
 
 MuleSoft has expanded the Anypoint™ Connector platform enabling partners, from MuleSoft Partner Program, and third-party development groups, to develop Anypoint™ connectors.
 
@@ -42,27 +42,27 @@ include::docs/connector-lifecycle-model.adoc[]
 
 
 [[coding_standards_and_best_practices]]
-= Development: Coding Standards and Best Practices
+= Coding Standards and Best Practices
 include::docs/development-best-practices.adoc[]
 
 
 [[static-code-analysis-and-coverage]]
-= Development: Static Code Analysis and Coverage
+= Static Code Analysis and Coverage
 include::docs/static-code-analysis-and-coverage.adoc[]
 
 
 [[functional_tests_automation]]
-= Development: Functional Tests Automation
+= Functional Tests Automation
 include::docs/functional-tests-automation.adoc[]
 
 
 [[anypoint-studio-interoperability-testing]]
-= Development: Anypoint™ Studio Interoperability Testing
+= Anypoint™ Studio Interoperability Testing
 include::docs/anypoint-studio-interoperability-testing.adoc[]
 
 
 [[cloudhub-interoperability-testing]]
-= Development: CloudHub Interoperability Testing
+= CloudHub Interoperability Testing
 include::docs/cloudhub-interoperability-testing.adoc[]
 
 // [interoperability-test-plugin]
@@ -70,12 +70,12 @@ include::docs/cloudhub-interoperability-testing.adoc[]
 // TODO
 
 [[documentation]]
-= Development: Connector Release Notes & Documentation
+= Connector Release Notes & Documentation
 include::docs/documentation.adoc[]
 
 
 [[appendixes]]
-= Development: Templates
+= Templates
 
 This section gathers different templates used though out the development stage.
 

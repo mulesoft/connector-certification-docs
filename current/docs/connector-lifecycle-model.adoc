@@ -44,9 +44,13 @@ The _design specification review_ phase, within the development stage, primary a
 link:attachments/designSpecificationTemplate.html[Design Specification Template]
 
 
-The design specification template is one of the two _Exit Criteria Documents_ from the development stage, needed by the MuleSoft team. The second document is a _Certification Checklist Document_, which corroborates that every mandatory practice has been accomplished and every deliverable has been issued. It can be downloaded https://drive.google.com/uc?export=download&id=0B8N265C555thOG5HZDRTOTEtUXM[here].
+The design specification template is one of the two _Exit Criteria Documents_ from the development stage, needed by the MuleSoft team. The second document is a _Certification Checklist Document_, which corroborates that every mandatory practice has been accomplished and every deliverable has been issued. It can be downloaded at:
 
-Due to Interoperability QA Guidelines, this checklist has an _Manual Interoperability Test Run_ associated available https://drive.google.com/uc?export=download&id=0B8N265C555thNW0tMElvejlVVGc[here].
+https://drive.google.com/uc?export=download&id=0B8N265C555thOG5HZDRTOTEtUXM[Certification Checklist Document].
+
+Due to Interoperability QA Guidelines, this checklist has an _Manual Interoperability Test Run_ associated available at:
+
+https://drive.google.com/uc?export=download&id=0B8N265C555thNW0tMElvejlVVGc[Manual Interoperability Test Run].
 
 
 //<<certification-checklist,Certification Checklist>>
@@ -57,7 +61,7 @@ Due to Interoperability QA Guidelines, this checklist has an _Manual Interoperab
 These practices assure an overall product quality, ranging from coding standars to documentation. The MuleSoft team requires every practice to be strictly followed by the connector development team and to produce the required deliverables, such as release notes and a user guide. The following mandatory practices are detailed in following sections of this document.
 
 
-* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_coding_standards_and_best_practices[Coding Standards and Best Practices]
+* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#static-code-analysis-and-coverage[Coding Standards and Best Practices]
 * http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_static_code_analysis_with_sonarqube[Static Code Analysis and Coverage]
 * http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_automated_functional_testing[Functional Tests Automation]
 * http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_studio_interoperability_qa[Anypoint™ Studio Interoperability Testing]

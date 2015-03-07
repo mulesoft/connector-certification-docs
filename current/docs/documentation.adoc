@@ -15,8 +15,8 @@ In addition, an extra folder named _resources_ need to be created directly insid
 
 === User Guide
 
-The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. A template can be found link:attachments/documentationTemplate.html[here.
-
+The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. The documentation should be written using markdown and the resulting file called user_manual.md. A template can be found link:attachments/documentationTemplate.html[here].
+  
 
 
 === Release Notes
@@ -26,12 +26,6 @@ Release notes need to be highly descriptive, specially including backward compat
 === ReadMe
 
 A README.md template can be found link:attachments/readme.html[here].
-
-
-
-
-ver la parte de project layout
-
 
 
 == Connector Apidocs
