@@ -15,7 +15,7 @@
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel0">
-<li><a href="#intro">Certification Process Introduction</a>
+<li><a href="#intro">Certification Process</a>
 <ul class="sectlevel1">
 <li><a href="#connector-lifecycle-model">Connector Lifecycle Model</a></li>
 <li><a href="#_stage_1_on_board">Stage 1: On-Board</a></li>
@@ -25,7 +25,7 @@
 <li><a href="#_release_re_certification">Release Re-Certification</a></li>
 </ul>
 </li>
-<li><a href="#coding_standards_and_best_practices">Development: Coding Standards and Best Practices</a>
+<li><a href="#coding_standards_and_best_practices">Coding Standards and Best Practices</a>
 <ul class="sectlevel1">
 <li><a href="#_anypoint_connector_devkit_version">Anypoint™ Connector DevKit Version</a></li>
 <li><a href="#_connector_category">Connector Category</a></li>
@@ -35,7 +35,7 @@
 <li><a href="#_connector_demo_example">Connector Demo Example</a></li>
 </ul>
 </li>
-<li><a href="#static-code-analysis-and-coverage">Development: Static Code Analysis and Coverage</a>
+<li><a href="#static-code-analysis-and-coverage">Static Code Analysis and Coverage</a>
 <ul class="sectlevel1">
 <li><a href="#_installing_sonarqube">Installing SonarQube</a></li>
 <li><a href="#_performing_your_first_analysis">Performing Your First Analysis</a></li>
@@ -45,7 +45,7 @@
 <li><a href="#_code_quality_review_guideline">Code Quality Review Guideline</a></li>
 </ul>
 </li>
-<li><a href="#functional_tests_automation">Development: Functional Tests Automation</a>
+<li><a href="#functional_tests_automation">Functional Tests Automation</a>
 <ul class="sectlevel1">
 <li><a href="#_approach_explanation">Approach Explanation</a></li>
 <li><a href="#_mule_connector_test_framework">mule-connector-test framework</a></li>
@@ -64,7 +64,7 @@
 <li><a href="#_setting_up_oauth_authentication">Setting Up OAuth Authentication</a></li>
 </ul>
 </li>
-<li><a href="#anypoint-studio-interoperability-testing">Development: Anypoint™ Studio Interoperability Testing</a>
+<li><a href="#anypoint-studio-interoperability-testing">Anypoint™ Studio Interoperability Testing</a>
 <ul class="sectlevel1">
 <li><a href="#_purpose">Purpose</a></li>
 <li><a href="#_running_automated_interop_tests_using_devkit_plugin">Running Automated Interop Tests using DevKit Plugin</a></li>
@@ -83,18 +83,18 @@
 <li><a href="#_auto_paging_dsql_interoperability">Auto-Paging DSQL Interoperability</a></li>
 </ul>
 </li>
-<li><a href="#cloudhub-interoperability-testing">Development: CloudHub Interoperability Testing</a>
+<li><a href="#cloudhub-interoperability-testing">CloudHub Interoperability Testing</a>
 <ul class="sectlevel1">
 <li><a href="#_cloudhub_interoperability">CloudHub Interoperability</a></li>
 </ul>
 </li>
-<li><a href="#documentation">Development: Connector Release Notes &amp; Documentation</a>
+<li><a href="#documentation">Connector Release Notes &amp; Documentation</a>
 <ul class="sectlevel1">
 <li><a href="#_connector_built_in_documentation">Connector built-in documentation</a></li>
 <li><a href="#_connector_apidocs">Connector Apidocs</a></li>
 </ul>
 </li>
-<li><a href="#appendixes">Development: Templates</a>
+<li><a href="#appendixes">Templates</a>
 <ul class="sectlevel1">
 <li><a href="#documentation-templates">Anypoint™ Connectors Documentation Templates</a></li>
 <li><a href="#_functional_tests_automation_template">Functional Tests Automation Template</a></li>
@@ -114,7 +114,7 @@
 </div>
 </div>
 </div>
-<h1 id="intro" class="sect0">Certification Process Introduction</h1>
+<h1 id="intro" class="sect0">Certification Process</h1>
 <div class="openblock partintro">
 <div class="content">
 <div class="paragraph">
@@ -248,10 +248,16 @@
 <p><a href="attachments/designSpecificationTemplate.html">Design Specification Template</a></p>
 </div>
 <div class="paragraph">
-<p>The design specification template is one of the two <em>Exit Criteria Documents</em> from the development stage, needed by the MuleSoft team. The second document is a <em>Certification Checklist Document</em>, which corroborates that every mandatory practice has been accomplished and every deliverable has been issued. It can be downloaded <a href="https://drive.google.com/uc?export=download&amp;id=0B8N265C555thOG5HZDRTOTEtUXM">here</a>.</p>
+<p>The design specification template is one of the two <em>Exit Criteria Documents</em> from the development stage, needed by the MuleSoft team. The second document is a <em>Certification Checklist Document</em>, which corroborates that every mandatory practice has been accomplished and every deliverable has been issued. It can be downloaded at:</p>
 </div>
 <div class="paragraph">
-<p>Due to Interoperability QA Guidelines, this checklist has an <em>Manual Interoperability Test Run</em> associated available <a href="https://drive.google.com/uc?export=download&amp;id=0B8N265C555thNW0tMElvejlVVGc">here</a>.</p>
+<p><a href="https://drive.google.com/uc?export=download&amp;id=0B8N265C555thOG5HZDRTOTEtUXM">Certification Checklist Document</a>.</p>
+</div>
+<div class="paragraph">
+<p>Due to Interoperability QA Guidelines, this checklist has an <em>Manual Interoperability Test Run</em> associated available at:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://drive.google.com/uc?export=download&amp;id=0B8N265C555thNW0tMElvejlVVGc">Manual Interoperability Test Run</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -262,7 +268,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_coding_standards_and_best_practices">Coding Standards and Best Practices</a></p>
+<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#static-code-analysis-and-coverage">Coding Standards and Best Practices</a></p>
 </li>
 <li>
 <p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_static_code_analysis_with_sonarqube">Static Code Analysis and Coverage</a></p>
@@ -444,7 +450,7 @@
 </div>
 </div>
 </div>
-<h1 id="coding_standards_and_best_practices" class="sect0">Development: Coding Standards and Best Practices</h1>
+<h1 id="coding_standards_and_best_practices" class="sect0">Coding Standards and Best Practices</h1>
 <div class="openblock partintro">
 <div class="content">
 Development best practices and coding standars have been learned within the connector developemt community over time, leading to improve the quality of connectors. During the cerfitication process, most of these practices and standars are checked through automated tools, such as SonarQube.
@@ -934,7 +940,7 @@ Only use a map if your data:
 </div>
 </div>
 </div>
-<h1 id="static-code-analysis-and-coverage" class="sect0">Development: Static Code Analysis and Coverage</h1>
+<h1 id="static-code-analysis-and-coverage" class="sect0">Static Code Analysis and Coverage</h1>
 <div class="openblock partintro">
 <div class="content">
 <div class="paragraph">
@@ -1324,7 +1330,7 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 </div>
 </div>
 </div>
-<h1 id="functional_tests_automation" class="sect0">Development: Functional Tests Automation</h1>
+<h1 id="functional_tests_automation" class="sect0">Functional Tests Automation</h1>
 <div class="openblock partintro">
 <div class="content">
 This section explains how to automate functional test cases on Connectors.
@@ -2763,7 +2769,7 @@ mvn -Dtest=GetDailyTrendsTestCases#testGetDailyTrendsParametrized test</code></p
 </div>
 </div>
 </div>
-<h1 id="anypoint-studio-interoperability-testing" class="sect0">Development: Anypoint™ Studio Interoperability Testing</h1>
+<h1 id="anypoint-studio-interoperability-testing" class="sect0">Anypoint™ Studio Interoperability Testing</h1>
 <div class="sect1">
 <h2 id="_purpose">Purpose</h2>
 <div class="sectionbody">
@@ -8410,7 +8416,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 </div>
 </div>
-<h1 id="cloudhub-interoperability-testing" class="sect0">Development: CloudHub Interoperability Testing</h1>
+<h1 id="cloudhub-interoperability-testing" class="sect0">CloudHub Interoperability Testing</h1>
 <div class="sect1">
 <h2 id="_cloudhub_interoperability">CloudHub Interoperability</h2>
 <div class="sectionbody">
@@ -8540,7 +8546,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 </div>
 </div>
-<h1 id="documentation" class="sect0">Development: Connector Release Notes &amp; Documentation</h1>
+<h1 id="documentation" class="sect0">Connector Release Notes &amp; Documentation</h1>
 <div class="openblock partintro">
 <div class="content">
 Documentation is a vital part of the development stage, where the development team must follow strictly documentation standars.
@@ -8571,7 +8577,7 @@ Documentation is a vital part of the development stage, where the development te
 <div class="sect2">
 <h3 id="_user_guide">User Guide</h3>
 <div class="paragraph">
-<p>The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. A template can be found link:attachments/documentationTemplate.html[here.</p>
+<p>The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. The documentation should be written using markdown and the resulting file called user_manual.md. A template can be found <a href="attachments/documentationTemplate.html">here</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -8584,9 +8590,6 @@ Documentation is a vital part of the development stage, where the development te
 <h3 id="_readme">ReadMe</h3>
 <div class="paragraph">
 <p>A README.md template can be found <a href="attachments/readme.html">here</a>.</p>
-</div>
-<div class="paragraph">
-<p>ver la parte de project layout</p>
 </div>
 </div>
 </div>
@@ -8619,7 +8622,7 @@ Documentation is a vital part of the development stage, where the development te
 </div>
 </div>
 </div>
-<h1 id="appendixes" class="sect0">Development: Templates</h1>
+<h1 id="appendixes" class="sect0">Templates</h1>
 <div class="openblock partintro">
 <div class="content">
 This section gathers different templates used though out the development stage.
@@ -8709,7 +8712,7 @@ This section gathers different templates used though out the development stage.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-03-07 00:15:38 EST
+Last updated 2015-03-07 08:42:28 EST
 </div>
 </div>
 </body>
