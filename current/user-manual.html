@@ -18,10 +18,10 @@
 <li><a href="#intro">Certification Process</a>
 <ul class="sectlevel1">
 <li><a href="#connector-lifecycle-model">Connector Lifecycle Model</a></li>
-<li><a href="#_stage_1_on_board">Stage 1: On-Board</a></li>
-<li><a href="#_stage_2_development">Stage 2: Development</a></li>
-<li><a href="#_stage_3_certification">Stage 3: Certification</a></li>
-<li><a href="#_stage_4_publishing">Stage 4: Publishing</a></li>
+<li><a href="#on-board">Stage 1: On-Board</a></li>
+<li><a href="#development">Stage 2: Development</a></li>
+<li><a href="#certification">Stage 3: Certification</a></li>
+<li><a href="#publishing">Stage 4: Publishing</a></li>
 <li><a href="#_release_re_certification">Release Re-Certification</a></li>
 </ul>
 </li>
@@ -88,19 +88,19 @@
 <li><a href="#_cloudhub_interoperability">CloudHub Interoperability</a></li>
 </ul>
 </li>
-<li><a href="#documentation">Connector Release Notes &amp; Documentation</a>
+<li><a href="#documentation">Documentation &amp; Release Notes</a>
 <ul class="sectlevel1">
 <li><a href="#_connector_built_in_documentation">Connector built-in documentation</a></li>
 <li><a href="#_connector_apidocs">Connector Apidocs</a></li>
 </ul>
 </li>
-<li><a href="#appendixes">Templates</a>
+<li><a href="#appendixes">Appendixes &amp; Templates</a>
 <ul class="sectlevel1">
-<li><a href="#documentation-templates">Anypoint™ Connectors Documentation Templates</a></li>
-<li><a href="#_functional_tests_automation_template">Functional Tests Automation Template</a></li>
-<li><a href="#_anypoint_studio_interoperability_testing_template">Anypoint™ Studio Interoperability Testing Template</a></li>
+<li><a href="#documentation-templates">Documentation Templates</a></li>
+<li><a href="#_functional_tests_automation_howto">Functional Tests Automation: HowTo</a></li>
+<li><a href="#_anypoint_studio_interoperability_testing_howto">Anypoint™ Studio Interoperability Testing: HowTo</a></li>
 <li><a href="#_anypoint_connectors_manual_test_suite_template">Anypoint™ Connectors Manual Test Suite Template</a></li>
-<li><a href="#_certification_checklists">Certification Checklists</a></li>
+<li><a href="#certification-checklist">Certification Checklists</a></li>
 </ul>
 </li>
 </ul>
@@ -167,7 +167,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_stage_1_on_board">Stage 1: On-Board</h2>
+<h2 id="on-board">Stage 1: On-Board</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This first stage consists mainly on the legal matters involving the development of a connector for MuleSoft. This stage includes as well a learning phase of the default framework for developing connectors, the Anypoint™ Connector DevKit.</p>
@@ -234,7 +234,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_stage_2_development">Stage 2: Development</h2>
+<h2 id="development">Stage 2: Development</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The development stage is one of two major phases, mostly occurring in the development team side. Since the MuleSoft team has relatively low control of this stage, we require every developer to follow a strict set of practices, which we called <strong>Mandatory Practices</strong>.</p>
@@ -268,22 +268,22 @@
 <div class="ulist">
 <ul>
 <li>
-<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#static-code-analysis-and-coverage">Coding Standards and Best Practices</a></p>
+<p><a href="#coding_standards_and_best_practices">Coding Standards and Best Practices</a></p>
 </li>
 <li>
-<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_static_code_analysis_with_sonarqube">Static Code Analysis and Coverage</a></p>
+<p><a href="#static-code-analysis-and-coverage">Static Code Analysis and Coverage</a></p>
 </li>
 <li>
-<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_automated_functional_testing">Functional Tests Automation</a></p>
+<p><a href="#functional_tests_automation">Functional Tests Automation</a></p>
 </li>
 <li>
-<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_studio_interoperability_qa">Anypoint™ Studio Interoperability Testing</a></p>
+<p><a href="#anypoint-studio-interoperability-testing">Anypoint™ Studio Interoperability Testing</a></p>
 </li>
 <li>
-<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_cloudhub-interoperability-testing">CloudHub Interoperability Testing</a></p>
+<p><a href="#cloudhub-interoperability-testing">CloudHub Interoperability Testing</a></p>
 </li>
 <li>
-<p><a href="http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_templates">Connector Release Notes &amp; Documentation</a></p>
+<p><a href="#documentation">Documentation &amp; Release Notes</a></p>
 </li>
 </ul>
 </div>
@@ -291,7 +291,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_stage_3_certification">Stage 3: Certification</h2>
+<h2 id="certification">Stage 3: Certification</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The certification stage, on the contrary to the development stage, occurs mostly in the MuleSoft side. This stage includes different high-level objectives, such as:</p>
@@ -403,10 +403,6 @@
 <li>
 <p><strong>Support Training:</strong> Mule support team will provide T1 support and will help the customer to isolated the issue and identify it if the issue is a Mule issue or a connector issue.</p>
 </li>
-</ul>
-</div>
-<div class="ulist">
-<ul>
 <li>
 <p><strong>Upload to Mulesoft Connector Library:</strong> Certified connectors will be uploaded in the <a href="https://www.mulesoft.com/library">Mule Connectors Library</a>. After your connector passes certification, MuleSoft sends you an estimated date for when your connector will appear on the MuleSoft library. As part of this process, the following information need to be provided:</p>
 <div class="ulist">
@@ -432,7 +428,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_stage_4_publishing">Stage 4: Publishing</h2>
+<h2 id="publishing">Stage 4: Publishing</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The final stage in the connector lifecycle model is publishing, which is mainly carried out in the MuleSoft team side. Once the certification process has been successfully completed, the connector will be deployed and published in the Mulesoft Connector Library.</p>
@@ -8546,7 +8542,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 </div>
 </div>
-<h1 id="documentation" class="sect0">Connector Release Notes &amp; Documentation</h1>
+<h1 id="documentation" class="sect0">Documentation &amp; Release Notes</h1>
 <div class="openblock partintro">
 <div class="content">
 Documentation is a vital part of the development stage, where the development team must follow strictly documentation standars.
@@ -8622,14 +8618,14 @@ Documentation is a vital part of the development stage, where the development te
 </div>
 </div>
 </div>
-<h1 id="appendixes" class="sect0">Templates</h1>
+<h1 id="appendixes" class="sect0">Appendixes &amp; Templates</h1>
 <div class="openblock partintro">
 <div class="content">
-This section gathers different templates used though out the development stage.
+This section gathers different appendixes and templates used throughout the development stage.
 </div>
 </div>
 <div class="sect1">
-<h2 id="documentation-templates">Anypoint™ Connectors Documentation Templates</h2>
+<h2 id="documentation-templates">Documentation Templates</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -8653,7 +8649,7 @@ This section gathers different templates used though out the development stage.
 </div>
 </div>
 <div class="sect1">
-<h2 id="_functional_tests_automation_template">Functional Tests Automation Template</h2>
+<h2 id="_functional_tests_automation_howto">Functional Tests Automation: HowTo</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -8665,7 +8661,7 @@ This section gathers different templates used though out the development stage.
 </div>
 </div>
 <div class="sect1">
-<h2 id="_anypoint_studio_interoperability_testing_template">Anypoint™ Studio Interoperability Testing Template</h2>
+<h2 id="_anypoint_studio_interoperability_testing_howto">Anypoint™ Studio Interoperability Testing: HowTo</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -8695,7 +8691,7 @@ This section gathers different templates used though out the development stage.
 </div>
 </div>
 <div class="sect1">
-<h2 id="_certification_checklists">Certification Checklists</h2>
+<h2 id="certification-checklist">Certification Checklists</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -8712,7 +8708,7 @@ This section gathers different templates used though out the development stage.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-03-09 13:14:51 EDT
+Last updated 2015-03-09 16:37:54 EDT
 </div>
 </div>
 </body>
