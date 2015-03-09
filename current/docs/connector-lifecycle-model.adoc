@@ -1,9 +1,8 @@
-
-
 As previously mentioned, the connector lifecycle model consists in the following stages:
 
 image::{imagesdir}/certification-process-1.png[]
 
+[[on-board]]
 == Stage 1: On-Board
 
 This first stage consists mainly on the legal matters involving the development of a connector for MuleSoft. This stage includes as well a learning phase of the default framework for developing connectors, the Anypoint™ Connector DevKit.
@@ -33,6 +32,7 @@ Here is a set of useful links as a starting point:
     * http://www.mulesoft.org/documentation/display/current/Tutorial+-+Barn+Connector[DevKit Tutorial]
     * http://forum.mulesoft.org/mulesoft/products/mulesoft_anypoint_devkit[Community Forum]
 
+[[development]]
 == Stage 2: Development
 
 The development stage is one of two major phases, mostly occurring in the development team side. Since the MuleSoft team has relatively low control of this stage, we require every developer to follow a strict set of practices, which we called *Mandatory Practices*.
@@ -60,16 +60,14 @@ https://drive.google.com/uc?export=download&id=0B8N265C555thNW0tMElvejlVVGc[Manu
 
 These practices assure an overall product quality, ranging from coding standars to documentation. The MuleSoft team requires every practice to be strictly followed by the connector development team and to produce the required deliverables, such as release notes and a user guide. The following mandatory practices are detailed in following sections of this document.
 
+* <<coding_standards_and_best_practices,Coding Standards and Best Practices>>
+* <<static-code-analysis-and-coverage,Static Code Analysis and Coverage>>
+* <<functional_tests_automation,Functional Tests Automation>>
+* <<anypoint-studio-interoperability-testing,Anypoint™ Studio Interoperability Testing>>
+* <<cloudhub-interoperability-testing,CloudHub Interoperability Testing>>
+* <<documentation,Documentation & Release Notes>>
 
-* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#static-code-analysis-and-coverage[Coding Standards and Best Practices]
-* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_static_code_analysis_with_sonarqube[Static Code Analysis and Coverage]
-* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_automated_functional_testing[Functional Tests Automation]
-* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_studio_interoperability_qa[Anypoint™ Studio Interoperability Testing]
-* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_cloudhub-interoperability-testing[CloudHub Interoperability Testing]
-* http://mulesoft.github.io/connector-certification-docs/current/user-manual.html#_templates[Connector Release Notes & Documentation]
-
-
-
+[[certification]]
 == Stage 3: Certification
 
 The certification stage, on the contrary to the development stage, occurs mostly in the MuleSoft side. This stage includes different high-level objectives, such as:
@@ -129,9 +127,6 @@ It is important to mention that the main communication channel between the MuleS
 
 * *Support Training:* Mule support team will provide T1 support and will help the customer to isolated the issue and identify it if the issue is a Mule issue or a connector issue.
 
-//The objective of this birth view training is to provide to the support team a general understanding of the connector and tools that help to isolate the problem.
-
-
 * *Upload to Mulesoft Connector Library:* Certified connectors will be uploaded in the https://www.mulesoft.com/library[Mule Connectors Library]. After your connector passes certification, MuleSoft sends you an estimated date for when your connector will appear on the MuleSoft library. As part of this process, the following information need to be provided:
 
 ** High level description of the connector. The https://www.mulesoft.com/library#!/salesforce-integration-connector?types=connector[SalesForce connector] can be used as a template example. 
@@ -142,7 +137,7 @@ It is important to mention that the main communication channel between the MuleS
 
 ** URL to Anypoint™ Connector DevKit generated documentation.
 
-
+[[publishing]]
 == Stage 4: Publishing
 
 The final stage in the connector lifecycle model is publishing, which is mainly carried out in the MuleSoft team side. Once the certification process has been successfully completed, the connector will be deployed and published in the Mulesoft Connector Library.

@@ -70,17 +70,17 @@ include::docs/cloudhub-interoperability-testing.adoc[]
 // TODO
 
 [[documentation]]
-= Connector Release Notes & Documentation
+= Documentation & Release Notes
 include::docs/documentation.adoc[]
 
 
 [[appendixes]]
-= Templates
+= Appendixes & Templates
 
-This section gathers different templates used though out the development stage.
+This section gathers different appendixes and templates used throughout the development stage.
 
 [[documentation-templates]]
-== Anypoint™ Connectors Documentation Templates
+== Documentation Templates
 
 * link:attachments/documentationTemplate.html[Documentation Template]
 * link:attachments/readme.html[README.md Template]
@@ -90,12 +90,12 @@ This section gathers different templates used though out the development stage.
 
 
 
-== Functional Tests Automation Template
+== Functional Tests Automation: HowTo
 
 * link:attachments/debugging.html[Debugging]
 
 
-== Anypoint™ Studio Interoperability Testing Template
+== Anypoint™ Studio Interoperability Testing: HowTo
 
 * link:attachments/usage-without-anypoint-studio.html[Usage without Anypoint™ Studio]
 * link:attachments/plugin-result-files.html[Plugin Result Files]
@@ -107,12 +107,8 @@ This section gathers different templates used though out the development stage.
 * https://drive.google.com/uc?export=download&id=0B8N265C555thOGhVd1B6eXFiUDA[Manual Test Suite Template]
 
 
-//[[certification-checklist]]
+[[certification-checklist]]
 == Certification Checklists
-
-
-//Download and complete the Connector Certification Checklist and its related Manual Interop Test Run Checklist according to the cases derived from analising your connector //based on the Interoperability QA Guidelines.
-
 
 * https://drive.google.com/uc?export=download&id=0B8N265C555thOG5HZDRTOTEtUXM[Connector Certification Checklist]
 * https://drive.google.com/uc?export=download&id=0B8N265C555thNW0tMElvejlVVGc[Manual Interop Test Run Checklist]
