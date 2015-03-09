@@ -24,7 +24,7 @@ This subsection covers the following areas:
 
 
 //== Standard Java Coding Conventions
-    
+
 //=== Static Analysis Rules
 
 //We have defined as set of static inspections rules that are enforced by SonarQube. This rules are aimed to detect potential bugs and bad coding practices.
@@ -210,7 +210,7 @@ The following snippet should work when using a library with the groupId `org.som
 <!- rest of the configuration -->
 
 <build>
-    <plugings>
+    <plugins>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-shade-plugin</artifactId>
