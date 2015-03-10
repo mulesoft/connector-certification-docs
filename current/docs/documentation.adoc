@@ -15,7 +15,10 @@ In addition, an extra folder named _images_ need to be created directly inside t
 
 === User Guide
 
-The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. The documentation should be written using asciidoc syntax and the resulting file called user_manual.adoc. A template can be found https://drive.google.com/uc?export=download&id=0B-1b74eXfPFHckxzdzJNWmlHVUk[here].
+The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. The documentation should be written using asciidoc syntax and the resulting file called user_manual.adoc. A template can be found link:attachments/user-manual.adoc[here].
+
+
+//https://drive.google.com/uc?export=download&id=0B-1b74eXfPFHckxzdzJNWmlHVUk[here].
 
 
 
