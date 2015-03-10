@@ -1,13 +1,14 @@
-= Anypoint Connectors Release Notes Template
+= Anypoint™ Connectors User Guide Template
 
-The following is a proposed connector documentation template for documenting MuleSoft (and perhaps 3rd party) connectors. When completed, a tech writer will work with the development teams to bring existing and new connector documentation to this standard. Please review and add your comments. Thanks!  
+The following is a proposed connector user guide template for documenting MuleSoft, and 3rd party, connectors. When completed, a tech writer will work with the development teams to bring existing and new connector documentation to this standard. Please review and add your comments. Thanks!  
 
 Note: Horizontal lines show sections, but won’t be in the actual documents.
 
 ---
 
-= NameOf Connector
-One sentence description.
+= Connector Name
+
+The chosen name and one sentence for its description.
 
 ---
 
@@ -25,7 +26,7 @@ One sentence description.
 .. Configuring
 .. Upgrading from a Previous Version
 
-. Using This Connector
+. Using the Connector
 .. Use Cases
 .. Best Practices
 .. Tips
@@ -35,7 +36,7 @@ One sentence description.
 .. Increasing Performance
 
 . Example Use Case
-..  Anypoint Studio  Visual Editor | XML Editor
+..  Anypoint™ Studio  Visual Editor | XML Editor
 .. Example Code
 
 . See Also
@@ -139,4 +140,4 @@ Number code example lines and explain blocks of lines
 
 === See Also
 
- * Access full reference documentation for the ___ connector…
+ * Access full reference documentation for the connector.
