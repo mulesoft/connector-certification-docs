@@ -15,16 +15,17 @@ In addition, an extra folder named _images_ need to be created directly inside t
 
 === User Guide
 
-The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. The documentation should be written using asciidoc syntax and the resulting file called user_manual.adoc. A template can be found https://drive.google.com/file/d/0B-1b74eXfPFHckxzdzJNWmlHVUk/view?usp=sharing[here].
+The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. The documentation should be written using asciidoc syntax and the resulting file called user_manual.adoc. A template can be found https://drive.google.com/uc?export=download&id=0B-1b74eXfPFHckxzdzJNWmlHVUk[here].
+
 
 
 === Release Notes
 
-Release notes need to be highly descriptive, specially including backward compatibility of the released connector with previous versions. A template can be found https://drive.google.com/file/d/0B-1b74eXfPFHYXNtM1ZIRXdVOTQ/view?usp=sharing[here].
+Release notes need to be highly descriptive, specially including backward compatibility of the released connector with previous versions. A template can be found https://drive.google.com/uc?export=download&id=0B-1b74eXfPFHYXNtM1ZIRXdVOTQ[here].
 
 === ReadMe
 
-A README.md template can be found https://drive.google.com/file/d/0B-1b74eXfPFHYXNtM1ZIRXdVOTQ/view?usp=sharing[here].
+A README.md template can be found https://drive.google.com/uc?export=download&id=0B-1b74eXfPFHcHhWMUEwUFBzWE0[here].
 
 
 == Connector Apidocs

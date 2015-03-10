@@ -77,15 +77,15 @@ include::docs/documentation.adoc[]
 [[appendixes]]
 = Appendixes & Templates
 
-This section gathers different appendixes and templates used throughout the development stage.
 
-[[documentation-templates]]
-== Documentation Templates
+== Connector Project Directory Layout
 
-* link:attachments/documentationTemplate.html[Documentation Template]
-* link:attachments/readme.html[README.md Template]
-* link:attachments/releaseNotesTemplate.html[Release Notes Template]
 * link:attachments/project-directory-layout.html[Connector Project Directory Layout]
+
+
+
+== Common Public Attribution License Version 1.0 (CPAL)
+
 * link:attachments/CPAL.html[Common Public Attribution License Version 1.0 (CPAL)]
 
 
