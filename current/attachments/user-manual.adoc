@@ -38,7 +38,7 @@ The chosen name and one sentence for its description.
 . Example Use Case
 ..  Anypoint™ Studio  Visual Editor | XML Editor
 .. Example Code
-
+. F.A.Q
 . See Also
 
 ---
