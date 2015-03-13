@@ -137,6 +137,9 @@ Explain how to create this case with  Anypoint Studio  visual editor and XML edi
 Number code example lines and explain blocks of lines
  
 ---
+=== F.A.Q
+
+ * Add here a all the items you consider useful.
 
 === See Also
 
