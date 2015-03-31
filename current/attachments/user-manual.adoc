@@ -1,6 +1,6 @@
 = Anypoint™ Connectors User Guide Template
 
-The following is a proposed connector user guide template for documenting MuleSoft, and 3rd party, connectors. When completed, a tech writer will work with the development teams to bring existing and new connector documentation to this standard. Please review and add your comments. Thanks!  
+The following is a proposed connector user guide template for documenting MuleSoft and 3rd party connectors. When completed, a tech writer will work with the development teams to bring existing and new connector documentation to this standard. Please review and add your comments. Thanks!  
 
 Note: Horizontal lines show sections, but won’t be in the actual documents.
 
@@ -27,7 +27,7 @@ The chosen name and one sentence for its description.
 .. Upgrading from a Previous Version
 
 . Using the Connector
-.. Use Cases
+.. Use Cases and Demos
 .. Best Practices
 .. Tips
 .. Integration Patterns
@@ -38,6 +38,7 @@ The chosen name and one sentence for its description.
 . Example Use Case
 ..  Anypoint™ Studio  Visual Editor | XML Editor
 .. Example Code
+. Demo
 . F.A.Q
 . See Also
 
@@ -97,8 +98,9 @@ Are there configuration items for previous MuleSoft software for this connector?
 
 Outbound, inbound, streaming outbound  +
 
-=== Use Cases 
-List use cases for this connector +
+=== Use Cases and Demos
+List use cases for this connector, including a demo for every use case.+
+
 
 === Best Practices
 To take full advantage of the functionality … +
@@ -127,6 +129,8 @@ What can you set in the connector to increase performance?
 == Example Use Case
 
 Explain what this example is for. 
+
+It should contain a working fully functionaly Mule application as a demo, where the use case is considered. The demo needs to be simple and only considering a single use case.
 
 ===  Anypoint Studio  Visual Editor | XML Editor
 
