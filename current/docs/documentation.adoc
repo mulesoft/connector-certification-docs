@@ -1,4 +1,4 @@
-Documentation is a vital part of the development stage, where the development team must strictly follow Mulesoftdocumentation standards.
+Documentation is a vital part of the development stage. Your development team must strictly follow Mulesoft documentation standards described in this document.
 
 
 == Built-in Documentation
