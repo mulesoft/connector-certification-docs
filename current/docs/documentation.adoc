@@ -1,26 +1,26 @@
-Documentation is a vital part of the development stage, where the development team must follow strictly documentation standars.
+Documentation is a vital part of the development stage, where the development team must strictly follow Mulesoftdocumentation standards.
 
 
-== Built-in documentation
+== Built-in Documentation
 
-Part of the documentation must be packed within the connector source code. A _doc_ folder needs to be created directly in the root of the connector project, where the following documents need to be placed.
+Part of the documentation must be packed within the connector source code. Create a _doc_ folder in the root of the connector project in which the following documents reside.
 
 . User Guide
 . Release Notes
 . ReadMe
 
-In addition, an extra folder named _images_ need to be created directly inside the _doc_ folder. This resource folder will contain any resource (images, XMLs, etc.) used in the documentation.
+In addition, create an extra folder named _images_ inside the _doc_ folder. This resource folder contains any resources (images, XMLs, etc.) used in the documentation.
 
 
 
 === User Guide
 
-The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. The documentation should be written using asciidoc syntax and the resulting file called user_manual.adoc. A template can be found link:attachments/user-manual.adoc[here].
+The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. Write the documentation using AsciiDoc syntax so that the resulting file is called user_manual.adoc. A template can be found link:attachments/user-manual.adoc[here].
 
 
 === Release Notes
 
-Release notes need to be highly descriptive, specially including backward compatibility of the released connector with previous versions. A template can be found link:attachments/releaseNotesTemplate.adoc[here].
+Release notes need to be highly descriptive, including backward compatibility of the released connector with previous versions. A template can be found link:attachments/releaseNotesTemplate.adoc[here].
 
 === ReadMe
 
@@ -29,13 +29,13 @@ A README.adoc template can be found link:attachments/readme.adoc[here].
 
 == Connector Apidocs
 
-Each public connector require that:
+Each public connector requires:
 
-. The description provides a clear and a complete explanation of its purpose.
-. The XML sample is up-to-date with the method signature and can be directly pasted in Anypoint™ Studio.
-. The attributes that affect methods behaviour are documented in detail.
+. A description that provides a clear and a complete explanation of its purpose.
+. An XML sample that is up-to-date with the method signature and can be directly pasted into Anypoint™ Studio.
+. Attributes that affect methods behavior documented in detail.
 
-For further information, please refer to:
+For further information, refer to:
 	
 http://mulesoft.github.io/salesforce-connector/mule/sfdc-config.html#convert-lead[Salesforce Connector: convert-lead Apidocs].
 
