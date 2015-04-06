@@ -1,6 +1,6 @@
 == Purpose
 
-Based on these guidelines, partners should analyze the connector under test and provide a test suite build from these generic test cases (only a document with general and operation­specific test cases titles) with all tests in "Passed" status.
+Based on these guidelines, analyze the connector you're testing and provide a test suite build from these generic test cases (only a document with general and operation­specific test cases titles) with all tests in +Passed+ status.
 
 Specific test cases from the Interop Test guideline are automated and their execution in Anypoint Studio using the DevKit Plugin is described next.
 
@@ -16,26 +16,26 @@ include::devkit-plugin-run-interop-tests-action.adoc[]
 === OAuth - Global Configuration Element
 
 ==== Preconditions
-* Mule project was created and is open.
-* Connector code is available in order to review configurations.
+* Create and open a Mule Project using your connector.
+* Make connector code available to review configurations.
 
 ==== Steps
 * *Step 1:*
-.. Place an HTTP endpoint on the canvas
+.. In Anypoint Studio, search for and place an *HTTP* connector on the canvas
 .. Drop the desired connector inside the flow.
-.. Select it and click the Config Reference Edit button.
+.. Select the connector and click the Connector Configuration green plus symbol Edit button.
 
 ----
 Expected Result:
 
  * Connector class attributes marked as @Configurable display.
- * consumerKey and consumerSecret are annotated with @OAuthConsumerKey and @OAuthConsumerSecret.
+ * The consumerKey and consumerSecret are annotated with @OAuthConsumerKey and @OAuthConsumerSecret.
 ----
 
-* *Step 2:* Enter valid credentials and save.
+* *Step 2:* Enter valid access credentials and save.
 ----
 Expected Result:
-Global Configuration element is created and saved.
+Create and save global configuration element.
 ----
 
 
@@ -46,16 +46,15 @@ Build this test case to serve as the basis for the next set of test cases.
 ==== Preconditions
 
 * Global element was already created for the connector and valid OAuth credentials (consumerKey, consumerSecret, and callback URL) have been entered.
-*  Connector code is available in order to review configurations.
+* Make connector code available to review configurations.
 
 ==== Steps
 
 * *Step 1:* Arrange a flow in the following way:
-.. Place an HTTP endpoint on the canvas.
-.. Drop two consecutive connectors in the flow.
-.. Drop a Logger after the last connector.
-.. Finally, add a Set Payload element after the
-logger.
+.. Place an *HTTP* connector on the canvas.
+.. Place two consecutive connectors in the flow.
+.. Place a *Logger* after the last connector.
+.. Add a *Set Payload* element after the logger.
 
 ----
 Expected Result:
@@ -66,7 +65,7 @@ Flow arrangement looks similar to this:
 image::{imagesdir}/qa-guidelines/qa-guidelines-1.png[]
 
 
-* *Step 2:* On the HTTP endpoint, set a path value of "authorize".
+* *Step 2:* In the *HTTP* connector configuration, set the path value to *authorize*.
 * *Step 3:*
 .. Select the first connector.
 .. Look for the Authorize operation.
@@ -94,17 +93,17 @@ Expected Result:
 Each of the annotations on authorizationParameters are reflected in the Additional Authorization Parameters section. If none, the section is not displayed at all.
 ----
 
-* *Step 6:* In case of OAuth2m set a state value of "testState". Click *Save*
+* *Step 6:* In case of OAuth2m set a state value of +testState+. Click *Save*
 
-* *Step 7:* On the second connector, select any operation (besides Authorize and Unauthorize) and configure it. Then click *Save*.
+* *Step 7:* On the second connector, select any operation (besides Authorize and Unauthorize) and configure it. Click *Save*.
 
-* *Step 8:* Set "Operation payload is #[message.payload]" as the Logger message value. Then click *Save*.
+* *Step 8:* Set +Operation payload is #[message.payload]+ as the *Logger* message value. Then click *Save*.
 
 * *Step 9:* Arrange a flow in the following way:
-.. Place an HTTP endpoint on the canvas.
+.. Place an *HTTP* connector on the canvas.
 .. Drop a connector in the flow.
-.. Drop a Logger after the last connector.
-.. Finally, add a Set Payload element after the logger.
+.. Drop a *Logger* after the last connector.
+.. Finally, add a *Set Payload* element after the logger.
 
 ----
 Expected Result:
@@ -113,17 +112,17 @@ Flow arrangement looks similar to this:
 
 image::{imagesdir}/qa-guidelines/qa-guidelines-2.png[]
 
-* *Step 10:* On the HTTP endpoint, set a path value of "anoperation".
+* *Step 10:* On the *HTTP* connector, set a path value of +anoperation+.
 
-* *Step 11:* On the connector, select any operation (besides Authorize and Unauthorize) and configure it. Then click *Save*.
+* *Step 11:* On the connector, select any operation (besides Authorize and Unauthorize) and configure it. Click *Save*.
 
-* *Step 12:* Set "Operation payload is #[message.payload]" as the Logger message value. Then click *Save*.
+* *Step 12:* Set +Operation payload is #[message.payload]+ as the *Logger* message value. Click *Save*.
 
 * *Step 13:* Arrange a flow in the following way:
-.. Place an HTTP endpoint on the canvas.
+.. Place an *HTTP* connector on the canvas.
 .. Drop a connector in the flow.
-.. Drop a Logger after the last connector.
-.. Finally, add a Set Payload element after the
+.. Drop a *Logger* after the last connector.
+.. Finally, add a *Set Payload* element after the
 logger.
 
 ----
@@ -139,46 +138,49 @@ Expected Result:
 Unauthorize operation is found.
 ----
 
-* *Step 15:* Select the Unauthorize operation. Then click *Save*.
+* *Step 15:* Select the Unauthorize operation. Click *Save*.
 
-* *Step 16:* Set "Done." on all Set Payload elements Values. Then click *Save*.
+* *Step 16:* Set +Done.+ on all *Set Payload* elements Values. Click *Save*.
+
+Expected Result:
+
+Example of the project flows:
 
 [source,xml]
 ----
-Expected Result:
-
-Example of the flows on the project .mflow :
+<http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="8081" doc:name="HTTP Listener Configuration"/>
 
 <flow name="authorize" doc:name="authorize">
-	<http:inbound-endpoint exchange-pattern="request-response" host="localhost"
-	port="${http.port}" path="authorize" doc:name="HTTP"/>
 
-	<sfdc:authorize config-ref="Salesforce__OAuth_" display="POPUP"
-	doc:name="Authorize" />
+<http:listener config-ref="HTTP_Listener_Configuration" path="authorize" doc:name="HTTP"/>
 
-	<!-- <sfdc:authorize config-ref="Salesforce__OAuth_" display="POPUP"
-	doc:name="Authorize"/> -->
+    <sfdc:authorize config-ref="Salesforce__OAuth_" display="POPUP"
+    doc:name="Authorize" />
 
-	<sfdc:get-user-info config-ref="Salesforce__OAuth_" doc:name="Get user info" >
-	</sfdc:get-user-info>
+    <!-- <sfdc:authorize config-ref="Salesforce__OAuth_" display="POPUP"
+    doc:name="Authorize"/> -->
 
-	<logger message="#[message.payload]" level="INFO" doc:name="Logger"/>
-	<set-payload value="Done." doc:name="Set Payload"/>
+    <sfdc:get-user-info config-ref="Salesforce__OAuth_" doc:name="Get user info" >
+    </sfdc:get-user-info>
+
+    <logger message="#[message.payload]" level="INFO" doc:name="Logger"/>
+    <set-payload value="Done." doc:name="Set Payload"/>
 </flow>
 
 <flow name="aConnectorOperation" doc:name="aConnectorOperation">
-	<http:inbound-endpoint exchange-pattern="request-response"
-	host="localhost" port="8081" path="anoperation" doc:name="HTTP"/>
-	<sfdc:describe-global config-ref="Salesforce__OAuth_" doc:name="Describe global"/>
-	<logger message="#[message.payload]" level="INFO" doc:name="Logger"/>
-	<set-payload value="Done." doc:name="Set Payload"/>
+
+<http:listener config-ref="HTTP_Listener_Configuration" path="anoperation" doc:name="HTTP"/>
+    <sfdc:describe-global config-ref="Salesforce__OAuth_" doc:name="Describe global"/>
+    <logger message="#[message.payload]" level="INFO" doc:name="Logger"/>
+    <set-payload value="Done." doc:name="Set Payload"/>
 </flow>
 
+
 <flow name="unauthorize" doc:name="unauthorize">
-	<http:inbound-endpoint exchange-pattern="request-response"
-	host="localhost" port="8081" path="unauthorize" doc:name="HTTP"/>
-	<sfdc:unauthorize config-ref="Salesforce__OAuth_" doc:name="Unauthorize"/>
-	<set-payload value="Done." doc:name="Set Payload"/>
+
+<http:listener config-ref="HTTP_Listener_Configuration" path="unauthorize" doc:name="HTTP"/>
+    <sfdc:unauthorize config-ref="Salesforce__OAuth_" doc:name="Unauthorize"/>
+    <set-payload value="Done." doc:name="Set Payload"/>
  </flow>
 ----
 
@@ -187,7 +189,7 @@ Example of the flows on the project .mflow :
 
 * Global element was already created for the connector and valid OAuth credentials (consumerKey, consumerSecret and callback URL) have been entered.
 * OAuth ­ Project arrangement and configuration verifications test case was completed successfully
-* Connector code is available in order to review configurations.
+* Connector code is available to review configurations.
 
 ==== Steps
 
@@ -232,8 +234,8 @@ OAuth session is killed.
 === OAuth - Unauthorize Connector Requests
 ==== Preconditions
 * Global element was already created for the connector and valid OAuth credentials (consumerKey, consumerSecret and callback URL) have been entered.
-* OAuth ­ Project arrangement and configuration verifications test case was completed successfully
-* Connector code is available in order to review configurations.
+* OAuth ­Project arrangement and configuration verifications test case was completed successfully
+* Connector code is available to review configurations.
 
 ==== Steps
 * *Step 1:* Run the app and hit the anoperation endpoint.
@@ -278,7 +280,7 @@ Flow is run. No exception is thrown.
 ==== Preconditions
 * Global element was already created for the connector and valid OAuth credentials (consumerKey, consumerSecret and callback URL) have been entered.
 * OAuth ­ Project arrangement and configuration verifications test case completed successfully.
-* Connector code is available in order to review configurations.
+* Connector code is available to review configurations.
 * Regular expression for the expirationRegex parameter was specified on the OAuth2 annotation.
 
 ==== Steps
@@ -312,7 +314,7 @@ Operation payload is logged.
 ==== Preconditions
 * Global element was already created for the connector and valid OAuth credentials (consumerKey, consumerSecret and callback URL) have been entered.
 * OAuth ­ Project arrangement and configuration verifications test case was completed successfully.
-* Connector code is available in order to review configurations.
+* Connector code is available to review configurations.
 * Connector declares a @OAuthScope attribute.
 
 ==== Steps
@@ -384,7 +386,7 @@ Expected Result:
 Details text area updates to display connector information.
 ----
 
-* *Step 5:*: Check the connector version and click Next.
+* *Step 5:*: Check the connector version and click *Next*.
 ----
 Expected Result:
 Install Details step displays.
@@ -452,7 +454,7 @@ Expected Result:
 Select a version ... dialog appears.
 ----
 
-* *Step 3:* Click Use newest
+* *Step 3:* Click *Use newest*
 ----
 Expected Result:
 * Connector is added to the canvas.
@@ -461,7 +463,7 @@ Version corresponds to the 3.5.0 connector.
 ----
 image::{imagesdir}/qa-guidelines/qa-guidelines-6.png[]
 
-* *Step 4:* Secondary click on the connector and select remove libraries for project.
+* *Step 4:* Secondary click the connector and select remove libraries for project.
 ----
 Expected Result:
 Library is removed from project.
@@ -485,7 +487,7 @@ Version corresponds to the 3.5.x connector.
 image::{imagesdir}/qa-guidelines/qa-guidelines-7.png[]
 ----
 
-* *Step 7:*￼ Secondary click on the connector and select remove libraries for project.
+* *Step 7:*￼ Secondary click the connector and select remove libraries for project.
 ----
 Expected Result:
 Library is removed from the project.
@@ -509,7 +511,7 @@ Expected Result:
 image::{imagesdir}/qa-guidelines/qa-guidelines-8.png[]
 
 
-* *Step 9:* Randomly select one of options and click Ok.
+* *Step 9:* Randomly select one of options and click *OK*.
 ----
 Expected Result:
 Connector is added to the canvas. Check that the library version matches the one previously displayed for that version.
@@ -553,7 +555,7 @@ For the following tests, the connector has connectivity.
 |Step|Description|Expected Result
 
 |1|Open Global Configuration element.|Test connectivity ... button is available.
-|2|Populate all Connection mandatory fields with valid credentials and click the Test connectivity ... button.|Test connection successful is returned.
+|2|Populate all Connection mandatory fields with valid credentials and click the *Test connectivity* button.|Test connection successful is returned.
 |===
 
 ==== Connectivity - Non-OAuth Connectors - Positive - Placeholders as Credentials
@@ -567,7 +569,7 @@ For the following tests, the connector has connectivity.
 |Step|Description|Expected Result
 
 |1| Open Global Configuration element.| Test connectivity ... button is available.
-|2| Populate all Connection mandatory fields with property placeholders and click the Test connectivity ... button.| Test connection successful is returned.
+|2| Populate all Connection mandatory fields with property placeholders and click the *Test connectivity* button.| Test connection successful is returned.
 |===
 
 ==== Connectivity - Non-OAuth Connectors - Negative - Invalid Credentials
@@ -577,7 +579,7 @@ For the following tests, the connector has connectivity.
 |Step|Description|Expected Result
 
 |1|Open Global Configuration element.| Test connectivity ... button is available.
-|2|One at the time, enter an invalid value on each of the Connection mandatory fields and click the Test connectivity ... button.| Test connection failed is returned. org.mule.api.ConnectionException is raised stating a useful error message to the user.
+|2|One at the time, enter an invalid value on each of the Connection mandatory fields and click the *Test connectivity* button.| Test connection failed is returned. org.mule.api.ConnectionException is raised stating a useful error message to the user.
 |===
 
 ==== Connectivity - Non-OAuth Connectors - Negative - Empty Fields
@@ -587,7 +589,7 @@ For the following tests, the connector has connectivity.
 |Step|Description|Expected Result
 
 |1|Open Global Configuration element.| Test connectivity ... button is available.
-|2 | One at the time, leave empty the value of one of the Connection mandatory fields and click the Test connectivity ... button.| Test connection failed is returned. org.mule.api.ConnectionException is raised stating a useful error message to the user.
+|2 | One at the time, leave empty the value of one of the Connection mandatory fields and click the *Test connectivity* button.| Test connection failed is returned. org.mule.api.ConnectionException is raised stating a useful error message to the user.
 |===
 
 == Metadata
@@ -600,7 +602,7 @@ Supported by Non­OAuth connectors.
 |Step|Description|Expected Result
 
 |1|Open Global Configuration element.| Enable DataSense checkbox displays and is checked by default.
-|2|Populate all Connection mandatory fields with valid credentials and click Ok.| Getting DataSense metadata types finishes successfully and configuration is saved.
+|2|Populate all Connection mandatory fields with valid credentials and click *OK*.| Getting DataSense metadata types finishes successfully and configuration is saved.
 |===
 
 ==== Dynamic Metadata - Enable DataSense - Positive - Placeholders as Credentials
@@ -614,7 +616,7 @@ Supported by Non­OAuth connectors.
 |Step|Description|Expected Result
 
 |1|Open Global Configuration element.| Enable DataSense checkbox displays and is checked by default
-|2|Populate all Connection mandatory fields with property placeholders and click the Test connectivity ... button.| Getting DataSense metadata types finishes successfully and configuration is saved.
+|2|Populate all Connection mandatory fields with property placeholders and click the *Test connectivity* button.| Getting DataSense metadata types finishes successfully and configuration is saved.
 |===
 
 Run the following set of test cases at operation level. For each of the connector operations, evaluate which set of the following test cases applies. Also, take into account that more than one attribute of an operation supports this configuration.
@@ -623,7 +625,7 @@ Run the following set of test cases at operation level. For each of the connecto
 |Step|Description|Expected Result
 
 |1|Open Global Configuration element.| Enable DataSense checkbox displays and is checked by default.
-|2|Populate all Connection mandatory fields with property placeholders and click OK.| Getting DataSense metadata types doesn't display and the configuration is saved.
+|2|Populate all Connection mandatory fields with property placeholders and click *OK*.| Getting DataSense metadata types doesn't display and the configuration is saved.
 |===
 
 ==== Dynamic Metadata - Enable DataSense - Positive - Disable DataSense
@@ -645,7 +647,7 @@ Run the following set of test cases at operation level. For each of the connecto
 |Step|Description|Expected Result
 
 |1|Open Global Configuration element.|Enable DataSense checkbox displays and is checked by default.
-|2|One at the time, leave empty the value of one of the Connection mandatory fields and click OK.|Getting DataSense metadata types fails. org.mule.api.ConnectionException is raised stating a useful error message to the user.
+|2|One at the time, leave empty the value of one of the Connection mandatory fields and click *OK*.|Getting DataSense metadata types fails. org.mule.api.ConnectionException is raised stating a useful error message to the user.
 |===
 The http://mulesoft.github.io/marketo-connector/mule/marketo-config.html#sync-lead[sync­lead operation of the Marketo connector] is used to demonstrate.
 
@@ -665,8 +667,8 @@ The http://mulesoft.github.io/marketo-connector/mule/marketo-config.html#sync-le
 |1|On the General tab select the corresponding Config reference.|
 |2|Select the operation.|
 |3|Select an Object type (if not already defined by default by the operation) that's custom or has a custom field.|List of Object types display based on the retrieved metadata from the service.
-|4|For the child elements, select the Create Objects manually option and click the ... button.| Getting DataSense metadata ... popup displays. Object builder displays Objects fields. Defined custom field displays among them.
-|5|Populate the desired object fields and click OK.|
+|4|For the child elements, select the Create Objects manually option and click the ... (browse) button.| Getting DataSense metadata ... popup displays. Object builder displays Objects fields. Defined custom field displays among them.
+|5|Populate the desired object fields and click *OK*.|
 |6|Save and change to the *Configuration XML* view.|
 Operation configuration is reflected on the XML. Example XML:
 ----
@@ -713,7 +715,7 @@ Run the following set of test cases at operation level. For each of the connecto
 |2|Select the operation.|
 |3|Randomly select an Object type (if not already defined by default by the operation).| Object types are based on the metadata retrieved from the connector.
 |4|For the child elements, select the Create Objects manually option and click the ... (browse) button.|Getting DataSense metadata ... popup displays. Object builder displays Objects fields.
-|5|Populate the desired object fields and click OK.|
+|5|Populate the desired object fields and click *OK*.|
 |6|Save and change to the Configuration XML view.| Operation configuration is reflected on the XML.
 |===
 
@@ -762,9 +764,9 @@ Run the following set of test cases at operation level. For each of the connecto
 [source,xml]
 ----
 <code>
-	<marketo:sync-lead config-ref="Marketo" doc:name="Marketo">
-	<marketo:lead-record ref="#[flowVars['leadRecordRef']]"/>
-	</marketo:sync-lead>
+    <marketo:sync-lead config-ref="Marketo" doc:name="Marketo">
+    <marketo:lead-record ref="#[flowVars['leadRecordRef']]"/>
+    </marketo:sync-lead>
 </code>
 ----
 
@@ -821,7 +823,7 @@ Example XML:
 <sfdc:batch-info id="#[flowVars['id']]" jobId="#[flowVars['jobId']]" state="Completed"/>
 </sfdc:batch-info>
 ----
-* *Step 9:*  Return to the Message Flow view, click on the connector.
+* *Step 9:*  Return to the Message Flow view, click the connector.
 ----
 Expected Result:
 
@@ -884,7 +886,7 @@ Methods annotated with @Source(). They are common for connectors to services wit
 
 * Mule project was created and is open.
 * Global Configuration element is already created with valid credentials to the service.
-* Connector code is available in order to review configurations
+* Connector code is available to review configurations
 
 ==== Steps
 
@@ -896,8 +898,8 @@ Connector is created as endpoint to a flow.
 image::{imagesdir}/qa-guidelines/qa-guidelines-13.png[]
 
 * *Step 2:*
-.. Place a Logger next to it.
-.. Set "Message Source received `#[message.payload]" as its Message.`
+.. Place a *Logger* next to it.
+.. Set +Message Source received `#[message.payload]+ as its Message.`
 
 * *Step 3:*
 .. Set the Global Configuration Element to the connector.
@@ -1186,7 +1188,7 @@ Query Builder opens.
 |===
 |Steps|Description|Expected result
 
-|1|Select corresponding operation for message processor with attribute marked @Query and click on the Query Builder ...|Order By dropdown, Limit, and Offset fields are available.
+|1|Select corresponding operation for message processor with attribute marked @Query and click  *Query Builder*|Order By dropdown, Limit, and Offset fields are available.
 |2|Build a query that applies two filters and makes use of the Order By, Limit, and Offset values.
 Click *OK*.|Query Text is populated reflecting query values.
 |===
@@ -1201,7 +1203,7 @@ Click *OK*.|Query Text is populated reflecting query values.
 |===
 |Steps|Description|Expected result
 
-|1|Select corresponding operation for message processor with attribute marked @Query and click on the Query Builder ...|Order By dropdown, Limit, and Offset fields are available only if not passed as false to the annotation. Example: +
+|1|Select corresponding operation for message processor with attribute marked @Query and click  *Query Builder*|Order By dropdown, Limit, and Offset fields are available only if not passed as false to the annotation. Example: +
 `@Query(limit = false, offset = false, orderBy = false)`
 |2|Build a query that applies two filters. Click OK.|Query Text is populated. OR or AND operator is displayed between filters depending on configuration. Example:
 `@Query(disabledOperators = QueryOperator.OR)`
@@ -1229,7 +1231,7 @@ dynamicObject.addSimpleField(field.getName(), dataType).isOrderByCapable(f.isSor
 
 ==== Steps
 
-* *Step 1:* Select corresponding operation for message processor with attribute marked @Query and click on the *Query Builder ...*
+* *Step 1:* Select corresponding operation for message processor with attribute marked @Query and click *Query Builder*
 
 ----
 Expected Result:
@@ -1266,7 +1268,7 @@ SELECT, WHERE, OPERATORS and ORDERBY values can be overridden.
 |===
 |Steps|Description|Expected result
 
-|1|Select corresponding operation for message processor with attribute marked @Query and click on the Query Builder ...|Query Builder is displayed.
+|1|Select corresponding operation for message processor with attribute marked @Query and click   *Query Builder*|Query Builder is displayed.
 |2|Build queries using query builder that make use of clauses and operators whose values are been overridden by the connector.|Query Text is populated in DSQL format.
 |3|Change from DSQL to NQL and check that the translation has been made correctly.|Clauses and operators and correctly translated.
 |===
@@ -1280,7 +1282,7 @@ SELECT, WHERE, OPERATORS and ORDERBY values can be overridden.
 |===
 |Steps|Description|Expected result
 
-|1|Select corresponding operation for message processor with attribute marked @Query and click the Query Builder ...|Query Builder is displayed.
+|1|Select corresponding operation for message processor with attribute marked @Query and click  *Query Builder*|Query Builder is displayed.
 |2|Build a query using query builder that make use of clauses and operators whose values are been overridden by the connector.|Query Text is populated in DSQL format.
 |3| Run the Mule application. Then Hit the endpoint to retrieve results.|Take note of the query results
 |4|Stop the application.|
@@ -1329,11 +1331,11 @@ fetchSize attribute is on the operation XML.
 
 ==== Steps
 * *Step 1:* Arrange a flow as follows:
-.. Place an HTTP endpoint on the canvas.
+.. Place an *HTTP* connector on the canvas.
 .. Drop the desired connector in the flow.
-.. Next to the connector place a For Each scope.
-.. Inside the For Each place a Logger element.
-.. After the For Each place a Set Payload element.
+.. Next to the connector place a *For Each* scope.
+.. Inside the *For Each* place a *Logger* element.
+.. After the *For Each* place a *Set Payload* element.
 
 ----
 Expected Result:
@@ -1354,17 +1356,20 @@ Expected Result:
 Metadata is fetched for the selected operation.
 ----
 
-* *Step 3:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then click Save.
+* *Step 3:* Set +For element #[flowVars['counter']] payload is #[message.payload]+ as the *Logger* message value. Click *Save*.
 
-* *Step 4:* Set "Done." as the Set Payload element Value. Then Click Save.
+* *Step 4:* Set +Done.+ as the *Set Payload* element Value. Click *Save*.
+
+Example of a complete flow result:
+
 [source,xml]
 ----
-Example of a complete flow result:
+<http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="8081" doc:name="HTTP Listener Configuration"/>
 
 <flow name="features-autopaging-certFlow1"
 doc:name="features-autopaging-certFlow1">
-    <http:inbound-endpoint exchange-pattern="request-response"
-  host="localhost" port="8081" doc:name="HTTP" path="contacts"/>
+
+<http:listener config-ref="HTTP_Listener_Configuration" path="contacts" doc:name="HTTP"/>
 
     <google-contacts:authorize config-ref="Google_Contacts"
   doc:name="Authorize"/>
@@ -1396,12 +1401,12 @@ Verify that after processing current element, iteration is terminated.
 ==== Steps
 
 * *Step 1:* Arrange a flow as follows:
-.. Place an HTTP endpoint on the canvas.
+.. Place an *HTTP* connector on the canvas.
 .. Drop the desired connector in the flow.
-.. Next to the connector, place the Logger element.
-.. Next to the Logger put a For Each scope.
-.. Inside the For Each, place a Logger, a DataMapper, and another Logger.
-.. Following the For Each, place a Set Payload element.
+.. Next to the connector, place the *Logger* element.
+.. Next to the *Logger* put a *For Each* scope.
+.. Inside the *For Each*, place a *Logger*, a DataMapper, and another *Logger*.
+.. Following the *For Each*, place a *Set Payload* element.
 
 ----
 Expected Result:
@@ -1417,7 +1422,7 @@ PagingDelegate<SomeEntity>.
 .. Open Query Builder and generate a simple
 query such as: SELECT CreatedById,CreatedDate,Description, OwnerId FROM Account LIMIT 3.
 .. Set a fetchSize value of 1 or lower than the amount the amount of records been returned.
-.. Click Save.
+.. Click *Save*.
 
 ----
 Expected Result:
@@ -1425,33 +1430,35 @@ Expected Result:
 Metadata fetches for the selected operation.
 ----
 
-* *Step 3:*  Set "### Total amount of elements retrieved is
-#[message.payload.size()]" as the first
-Logger message value. Then click Save.
+* *Step 3:*  Set +### Total amount of elements retrieved is
+#[message.payload.size()]+ as the first
+*Logger* message value. Click *Save*.
 
-* *Step 4:* Select the For Each and set rootMessage as its "Root Message Variable Name". Then click Save.
+* *Step 4:* Select the *For Each* and set rootMessage as its +Root Message Variable Name+. Click *Save*.
 
-* *Step 5:* Set "Closing the iterator: #[flowVars['rootMessage'].getPayload ().close()]" as the message value for the first Logger within the For Each. Then click Save.
+* *Step 5:* Set +Closing the iterator: #[flowVars['rootMessage'].getPayload ().close()]+ as the message value for the first *Logger* within the *For Each*. Click *Save*.
 
 * *Step 6:*  On the DataMapper element, create a mapping to a Default `Map<k,v>` object.
 ----
 Expected Result:
 
-Mapping creates.
+Mapping is created.
 ----
 
-* *Step 7:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then click Save.
+* *Step 7:* Set +For element #[flowVars['counter']] payload is #[message.payload]+ as the *Logger* message value. Click *Save*.
 
-* *Step 8:* Set "Done." as the Set payload element Value. Then click Save.
+* *Step 8:* Set +Done.+ as the Set payload element Value. Click *Save*.
+
+Example of a complete result flow:
 
 [source,xml]
 ----
-Example of a complete result flow:
+<http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="8081" doc:name="HTTP Listener Configuration"/>
 
 <flow name="features-autopaging-salesforceFlow1"
 doc:name="features-autopaging-salesforceFlow1">
-   <http:inbound-endpoint exchange-pattern="request-response"
-   host="localhost" port="8081" path="apforeach" doc:name="HTTP"/>
+
+<http:listener config-ref="HTTP_Listener_Configuration" path="apforeach" doc:name="HTTP"/>
 
    <sfdc:query config-ref="Salesforce" query="dsql:SELECT CreatedById,CreatedDate,Description,OwnerId FROM Account LIMIT 3"
    doc:name="Query" fetchSize="2"/>
@@ -1461,7 +1468,7 @@ doc:name="features-autopaging-salesforceFlow1">
 
   <foreach doc:name="For Each">
      <data-mapper:transform config-ref="account_to_map" doc:name="Account To Map"/>
-     <logger message="For element #[flowVars['counter']]  payload is
+     <logger message="For element #[flowVars['counter']] payload is
     #[message.payload]" doc:name="Records"/>
   </foreach>
 
@@ -1490,7 +1497,7 @@ PagingDelegate is typed thus it's expected to work together with DataMapper.
 ==== Steps
 
 * *Step 1:* Arrange a flow as follows:
-.. Place an HTTP endpoint on the canvas.
+.. Place an *HTTP* connector on the canvas.
 .. Drop the desired connector in the flow.
 .. Next to the connector, place a DataMapper element.
 
@@ -1499,7 +1506,7 @@ Expected Result:
 ----
 image::{imagesdir}/qa-guidelines/qa-guidelines-21.png[]
 
-* *Step 2:* On the connector, select an operation whose return type is PagingDelegate<SomeEntity>. Then click Save.
+* *Step 2:* On the connector, select an operation whose return type is PagingDelegate<SomeEntity>. Click *Save*.
 
 ----
 Expected Result:
@@ -1537,10 +1544,10 @@ Mapping creates.
 ==== Steps
 
 * *Step 1:* Arrange a flow as follows:
-.. Place an HTTP endpoint on the canvas.
+.. Place an *HTTP* connector on the canvas.
 .. Drop the desired connector in the flow.
-.. Next to the connector, place a For Each scope.
-.. Inside the For Each, place a DataMapper element.
+.. Next to the connector, place a *For Each* scope.
+.. Inside the *For Each*, place a DataMapper element.
 
 ----
 Expected Result:
@@ -1548,7 +1555,7 @@ Expected Result:
 
 image::{imagesdir}/qa-guidelines/qa-guidelines-22.png[]
 
-* *Step 2:* On the connector, select an operation whose return type is PagingDelegate<SomeEntity>. Then click Save.
+* *Step 2:* On the connector, select an operation whose return type is PagingDelegate<SomeEntity>. Click *Save*.
 ----
 Expected Result:
 
@@ -1585,12 +1592,12 @@ Mapping creates.
 ==== Steps
 
 * *Step 1:* Arrange a flow as follows::
-.. Place an HTTP endpoint on the canvas.
+.. Place an *HTTP* connector on the canvas.
 .. Drop the desired connector in the flow.
-.. Next to the connector place Logger element.
-.. Next to the Logger put a For each element.
-.. Inside the For each place a DataMapper and then a Logger next to it.
-.. After the For Each place a Set payload element.
+.. Next to the connector place a *Logger* element.
+.. Next to the *Logger* put a For Each element.
+.. Inside the *For Each* place a DataMapper and then a *Logger* next to it.
+.. After the *For Each* place a *Set Payload* element.
 
 ----
 Expected Result
@@ -1603,7 +1610,7 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-23.png[]
 * *Step 2:*
 .. On the connector, select an operation whose return type is PagingDelegate<SomeEntity>.
 .. Set a fetchSize value of 1 or lower than the amount of records that's going to be retrieved.
-.. Click Save.
+.. Click *Save*.
 
 ----
 Expected Result:
@@ -1611,26 +1618,27 @@ Expected Result:
 Metadata fetches for the selected operation.
 ----
 
-* *Step 3:* Set "### Total amount of elements retrieved is
-#[message.payload.size()]" as the
-Logger message value. Then click Save.
+* *Step 3:* Set +### Total amount of elements retrieved is
+#[message.payload.size()]+ as the
+*Logger* message value. Click *Save*.
 
 * *Step 4:* On the DataMapper element, create a mapping to a Default Map<k,v> object.
 Mapping creates.
 
-* *Step 5:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then click Save.
+* *Step 5:* Set +For element #[flowVars['counter']] payload is #[message.payload]+ as the *Logger* message value. Click *Save*.
 
-* *Step 6:* Set "Done." as the Set Payload element Value. Then click Save.
+* *Step 6:* Set +Done.+ as the *Set Payload* element Value. Click *Save*.
+
+Example of a complete flow:
 
 [source,xml]
 ----
-Example of a complete flow:
+<http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="8081" doc:name="HTTP Listener Configuration"/>
 
 <flow name="features-autopaging-datamapper-complianceFlow3"
-doc:name="features-autopaging-datamapper-compl
-ianceFlow3">
-  <http:inbound-endpoint exchange-pattern="request-response"
-  host="localhost" port="8081" doc:name="HTTP" path="foreachdm"/>
+doc:name="features-autopaging-datamapper-complianceFlow3">
+
+<http:listener config-ref="HTTP_Listener_Configuration" path="foreachdm" doc:name="HTTP"/>
 
     <google-contacts:authorize config-ref="Google_Contacts"
     doc:name="Authorize"/>
@@ -1657,7 +1665,7 @@ ianceFlow3">
 ----
 Expected Result:
 
-For each record a "For element ... " message was logged displaying its payload.
+For each record a +For element ... + message was logged displaying its payload.
 ----
 
 * *Step 9:* Look for the message of the Size Logger on the console.
@@ -1677,12 +1685,12 @@ Note: You can override the getTotalResults() method in the connector in case of 
 ==== Steps
 
 * *Step 1:* Arrange a flow as follows::
-.. Place an HTTP endpoint on the canvas.
+.. Place an *HTTP* connector on the canvas.
 .. Drop the desired connector in the flow.
-.. Next to the connector, place a Logger element.
-.. Next to the Logger, place a For Each scope.
-.. Inside the For Each, place a DataMapper and then a Logger next to it.
-.. After the For Each, place a Set Payload element.
+.. Next to the connector, place a *Logger* element.
+.. Next to the *Logger*, place a *For Each* scope.
+.. Inside the *For Each*, place a DataMapper and then a *Logger* next to it.
+.. After the *For Each*, place a *Set Payload* element.
 ----
 Expected Result:
 
@@ -1694,15 +1702,15 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-24.png[]
 * *Step 2:*
 .. On the connector, select an operation whose return type is PagingDelegate<SomeEntity>.
 .. Set a fetchSize higher than amount of existing records.
-.. Click Save.
+.. Click *Save*.
 ----
 Expected Result:
 
 Metadata fetches for the selected operation.
 ----
-* *Step 3:*  Set "### Total amount of elements retrieved is
-#[message.payload.size()]" as the
-Logger message value. Then click Save.
+* *Step 3:*  Set +### Total amount of elements retrieved is
+#[message.payload.size()]+ as the
+*Logger* message value. Click *Save*.
 
 * *Step 4:* On the DataMapper element, create a mapping to a Default Map<k,v> object.
 ----
@@ -1711,41 +1719,36 @@ Expected Result:
 Mapping is created.
 ----
 
-* *Step 5:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then Click Save.
+* *Step 5:* Set +For element #[flowVars['counter']] payload is #[message.payload]+ as the *Logger* message value. Click *Save*.
 
-* *Step 6:*  Set "Done." as the Set Payload element Value. Then Click Save.
+* *Step 6:*  Set +Done.+ as the *Set Payload* element Value. Click *Save*.
+
+Example of a complete flow:
 
 [source,xml]
 ----
-Example of a complete flow:
+<http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="8081" doc:name="HTTP Listener Configuration"/>
 
-<flow name="features-autopaging-datamapper-complianc
-eFlow3"
-doc:name="features-autopaging-datamapper-compl
-ianceFlow3">
-    <http:inbound-endpoint
-  exchange-pattern="request-response"
-  host="localhost" port="8081" doc:name="HTTP"
-  path="foreachdm"/>
+<flow name="features-autopaging-datamapper-complianceFlow3"
+doc:name="features-autopaging-datamapper-complianceFlow3">
+
+<http:listener config-ref="HTTP_Listener_Configuration" path="foreachdm" doc:name="HTTP"/>
 
     <google-contacts:authorize
   config-ref="Google_Contacts"
   doc:name="Authorize"/>
 
     <google-contacts:get-groups
-  config-ref="Google_Contacts" doc:name="Get
-  groups"/>
+  config-ref="Google_Contacts" doc:name="Get groups"/>
 
-    <logger message="### Total amount of
-  elements retrieved is
+    <logger message="### Total amount of elements retrieved is
   #[message.payload.size()]" level="INFO"
   doc:name="Size"/>
 
   <foreach doc:name="For Each">
         <data-mapper:transform
       doc:name="DataMapper"/>
-        <logger message="For element
-      #[flowVars['counter']]  payload is
+        <logger message="For element #[flowVars['counter']]  payload is
       #[message.payload]" doc:name="Records"/>
   </foreach>
     <set-payload doc:name="Set Payload" value="Done."/>
@@ -1756,7 +1759,7 @@ ianceFlow3">
 ----
 Expected Result:
 
-For each record a "For element ... " message was logged displaying its payload.
+For each record a +For element ... + message was logged displaying its payload.
 ----
 
 * *Step 8:*  Look for the message of the Size Logger on the console.
@@ -1780,7 +1783,7 @@ An example that uses the Salesforce/NetSuite connectors.
 ==== Steps
 
 * *Step 1:* Arrange a flow as follows:
-.. Place an HTTP endpoint on the canvas.
+.. Place an *HTTP* connector on the canvas.
 .. Drop the desired connector in the flow.
 .. Next to the connector, place a DataMapper element.
 
@@ -1833,10 +1836,10 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-26.png[]
 ==== Steps
 
 * *Step 1:* Arrange a flow as follows:
-.. Place an HTTP endpoint on the canvas.
+.. Place an *HTTP* connector on the canvas.
 .. Drop the desired connector in the flow.
-.. Next to the connector, place a For Each scope.
-.. Inside the For each place a DataMapper element.
+.. Next to the connector, place a *For Each* scope.
+.. Inside the *For Each* place a DataMapper element.
 
 ----
 Expected Result:
@@ -1886,12 +1889,12 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-28.png[]
 ==== Steps
 
 * *Step 1:* Arrange a flow as follows:
-.. Place an HTTP endpoint on the canvas.
+.. Place an *HTTP* connector on the canvas.
 .. Drop the desired connector in the flow.
-.. Next to the connector place Logger element.
-.. Next to the Logger put a For Each scope.
-.. Inside the For Each place a DataMapper and then a Logger next to it.
-.. After the For Each, place a Set Payload element.
+.. Next to the connector place *Logger* element.
+.. Next to the *Logger* put a *For Each* scope.
+.. Inside the *For Each* place a DataMapper and then a *Logger* next to it.
+.. After the *For Each*, place a *Set Payload* element.
 ----
 Expected Result:
 
@@ -1912,9 +1915,9 @@ Metadata fetches for the selected operation.
 ----
 
 * *Step 3:*
-.. Set "### Total amount of elements retrieved is
-#[message.payload.size()]" as the
-Logger message value. Then Click Save.
+.. Set +### Total amount of elements retrieved is
+#[message.payload.size()]+ as the
+*Logger* message value. Click *Save*.
 
 * *Step 4:* On the DataMapper element creating a mapping to a Default Map<k,v> object.
 ----
@@ -1923,42 +1926,42 @@ Expected Result:
 Mapping creates.
 ----
 
-* *Step 5:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then Click Save.
+* *Step 5:* Set +For element #[flowVars['counter']] payload is #[message.payload]+ as the *Logger* message value. Click *Save*.
 
-* *Step 6:* Set "Done." as the Set Payload element Value. Then Click Save.
+* *Step 6:* Set +Done.+ as the *Set Payload* element Value. Click *Save*.
+
+Example of a complete flow:
 [source,xml]
 ----
-Example of a complete flow:
+<http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="8081" doc:name="HTTP Listener Configuration"/>
 
 <flow name="features-autopaging-salesforceFlow1"
 doc:name="features-autopaging-salesforceFlow1">
-    <http:inbound-endpoint
-  exchange-pattern="request-response"
-  host="localhost" port="8081" path="apforeach"
-  doc:name="HTTP"/>
 
-    <sfdc:query config-ref="Salesforce"
-  query="dsql:SELECT
-  CreatedById,CreatedDate,Description,OwnerId
-  FROM Account LIMIT 3" doc:name="Query"
-  fetchSize="2"/>
+<http:listener config-ref="HTTP_Listener_Configuration" path="apforeach" doc:name="HTTP"/>
 
-    <logger message="### Total amount of
-  elements retrieved is
-  #[message.payload.size()]" level="INFO"
-  doc:name="Size"/>
+ <sfdc:query config-ref="Salesforce"
+      query="dsql:SELECT
+      CreatedById,CreatedDate,Description,OwnerId
+      FROM Account LIMIT 3" doc:name="Query"
+      fetchSize="2"/>
 
-    <foreach doc:name="For Each">
+  <logger message="### Total amount of
+      elements retrieved is
+      #[message.payload.size()]" level="INFO"
+      doc:name="Size"/>
+
+  <foreach doc:name="For Each">
         <data-mapper:transform
-    config-ref="account_to_map" doc:name="Account
-    To Map"/>
+        config-ref="account_to_map" doc:name="Account
+        To Map"/>
 
-        <logger message="For element
-    #[flowVars['counter']]  payload is
-    #[message.payload]" doc:name="Records"/>
-    </foreach>
+            <logger message="For element
+        #[flowVars['counter']]  payload is
+        #[message.payload]" doc:name="Records"/>
+        </foreach>
 
-    <set-payload value="Done." doc:name="Set Payload"/>
+  <set-payload value="Done." doc:name="Set Payload"/>
 </flow>
 ----
 
@@ -1967,7 +1970,7 @@ doc:name="features-autopaging-salesforceFlow1">
 ----
 Expected Result:
 
-For each record a "For element ... " message was logged displaying its payload.
+For each record a +For element ... + message was logged displaying its payload.
 ----
 
 * *Step 9:*  Look for the message of the Size Logger on the console.
@@ -1986,13 +1989,13 @@ Amount of elements retrieved equals number of records returned.
 ==== Steps
 
 * *Step 1:* Arrange a flow as follows:
-.. Place an HTTP endpoint on the canvas.
+.. Place an *HTTP* connector on the canvas.
 .. Drop the desired connector in the flow.
-.. Next to the connector, place Logger element.
-.. Next to the Logger, place a For Each scope.
-.. Inside the For Each, place a DataMapper
-and then a Logger next to it.
-.. After the For Each, place a Set Payload
+.. Next to the connector, place *Logger* element.
+.. Next to the *Logger*, place a *For Each* scope.
+.. Inside the *For Each*, place a DataMapper
+and then a *Logger* next to it.
+.. After the *For Each*, place a *Set Payload*
 element.
 ----
 Expected Result:
@@ -2007,56 +2010,57 @@ PagingDelegate<SomeEntity>.
 .. Open Query Builder and generate a simple
 query such as: SELECT CreatedById,CreatedDate,Description, OwnerId FROM Account LIMIT 1
 .. Set a fetchSize value higher than the amount of records being returned.
-.. Click Save.
+.. Click *Save*.
 ----
 Expected Result:
 
 Metadata is fetched for the selected operation.
 ----
 
-* *Step 3:* Set "### Total amount of elements retrieved is
-#[message.payload.size()]" as the
-Logger message value. Then Click Save.
+* *Step 3:* Set +### Total amount of elements retrieved is
+#[message.payload.size()]+ as the
+*Logger* message value. Click *Save*.
 
-* *Step 4:* On the DataMapper element create a mapping to a Default Map<k,v> object.
+* *Step 4:* On the DataMapper element create a mapping to a Default +Map<k,v>+ object.
 ----
 Expected Result:
 
 Mapping creates.
 ----
 
-* *Step 5:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then Click Save.
+* *Step 5:* Set +For element #[flowVars['counter']] payload is #[message.payload]+ as the *Logger* message value. Click *Save*.
 
-* *Step 6:* Set "Done." as the Set Payload element Value. Then Click Save.
+* *Step 6:* Set +Done.+ as the *Set Payload* element Value. Click *Save*.
+
+Example of a complete flow:
+
 [source,xml]
 ----
-Example of a complete flow:
+<http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="8081" doc:name="HTTP Listener Configuration"/>
 
 <flow name="features-autopaging-salesforceFlow1"
 doc:name="features-autopaging-salesforceFlow1">
-    <http:inbound-endpoint
-  exchange-pattern="request-response"
-  host="localhost" port="8081" path="apforeach"
-  doc:name="HTTP"/>
 
-     <sfdc:query config-ref="Salesforce"
-  query="dsql:SELECT
-  CreatedById,CreatedDate,Description,OwnerId
-  FROM Account LIMIT 3" doc:name="Query"
-  fetchSize="2"/>
+<http:listener config-ref="HTTP_Listener_Configuration" path="apforeach" doc:name="HTTP"/>
 
-     <logger message="### Total amount of
-  elements retrieved is
-  #[message.payload.size()]" level="INFO"
-  doc:name="Size"/>
+  <sfdc:query config-ref="Salesforce"
+      query="dsql:SELECT
+      CreatedById,CreatedDate,Description,OwnerId
+      FROM Account LIMIT 3" doc:name="Query"
+      fetchSize="2"/>
+
+  <logger message="### Total amount of
+      elements retrieved is
+      #[message.payload.size()]" level="INFO"
+      doc:name="Size"/>
 
    <foreach doc:name="For Each">
        <data-mapper:transform
-    config-ref="account_to_map" doc:name="Account To Map"/>
+        config-ref="account_to_map" doc:name="Account To Map"/>
 
-      <logger message="For element
-    #[flowVars['counter']]  payload is
-    #[message.payload]" doc:name="Records"/>
+       <logger message="For element
+        #[flowVars['counter']]  payload is
+        #[message.payload]" doc:name="Records"/>
   </foreach>
 
   <set-payload value="Done." doc:name="Set
@@ -2069,7 +2073,7 @@ doc:name="features-autopaging-salesforceFlow1">
 ----
 Expected Result:
 
-For each record a "For element ... " message was logged displaying its payload.
+For each record a +For element ... + message was logged displaying its payload.
 ----
 
 * *Step 9:* Look for the message of the Size Logger on the console.
@@ -2089,7 +2093,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 * Global Configuration element was already created with valid credentials to the service.
 
 * *Step 1:* Arrange a flow as follows:
-.. Place an HTTP endpoint on the canvas.
+.. Place an *HTTP* connector on the canvas.
 .. Drop the desired connector in the flow.
 .. Next to the connector, place a DataMapper element.
 
@@ -2140,10 +2144,10 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-32.png[]
 * Global Configuration element was already created with valid credentials to the service.
 
 * *Step 1:* Arrange a flow as follows:
-.. Place an HTTP endpoint on the canvas.
+.. Place an *HTTP* connector on the canvas.
 .. Drop the desired connector in the flow.
-.. Next to the connector, place a For Each element.
-.. Inside the For Each place a DataMapper element.
+.. Next to the connector, place a *For Each* element.
+.. Inside the *For Each* place a DataMapper element.
 
 * *Step 2:* On the connector select an operation whose return type is PagingDelegate<SomeEntity> and has one of its parameters annotated with @Query.
 .. Select Native Query Language as Language.
@@ -2151,7 +2155,7 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-32.png[]
        AccountSource,BillingCity,BillingLon
        gitude,CreatedDate FROM Account
 .. As Return type, select the same Object as stated in the FROM field of the query.
-.. Click Save.
+.. Click *Save*.
 ----
 Expected Result:
 
@@ -2162,8 +2166,8 @@ Metadata is fetched for the selected operation.
 ----
 Expected Result:
 
-Mule automatically prescribes the output of the operation as List<SomeEntity>. The type is in the connector code, for example: PagingDelegate<Map<String, Object>>
-for an operation returns: PagingDelegate<Map<String, Object>>
+Mule automatically prescribes the output of the operation as List<SomeEntity>. The type is in the connector code, for example: +PagingDelegate<Map<String, Object>>+
+for an operation returns: +PagingDelegate<Map<String, Object>>+
 ----
 * *Step 4:*  In the Output Pane select:
 .. Type: Map<k,v>
@@ -2184,12 +2188,12 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-33.png[]
 * Global Configuration element was already created with valid credentials to the service.
 
 * *Step 1:*  Arrange a flow as follows:
-.. Place an HTTP endpoint on the canvas.
+.. Place an *HTTP* connector on the canvas.
 .. Drop the desired connector in the flow.
-.. Next to the connector, place a Logger element.
-.. Next to the Logger, place a For Each element.
-.. Inside the For Each, place a DataMapper and then a Logger next to it.
-.. After the For Each, place a Set Payload element.
+.. Next to the connector, place a *Logger* element.
+.. Next to the *Logger*, place a *For Each* element.
+.. Inside the *For Each*, place a DataMapper and then a *Logger* next to it.
+.. After the *For Each*, place a *Set Payload* element.
 ￼
 ----
 Flow arrangement looks similar to this:
@@ -2211,9 +2215,9 @@ Expected Result:
 Metadata is fetched for the selected operation.
 ----
 
-* *Step 3:* Set "### Total amount of elements retrieved is
-#[message.payload.size()]" as the
-Logger message value. Then Click Save.
+* *Step 3:* Set +### Total amount of elements retrieved is
+#[message.payload.size()]+ as the
+*Logger* message value. Click *Save*.
 
 * *Step 4:*  On the DataMapper element creating a mapping to a Default Map<k,v> object.
 ----
@@ -2222,9 +2226,9 @@ Expected Result:
 Mapping is created.
 ----
 
-* *Step 5:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then Click Save.
+* *Step 5:* Set +For element #[flowVars['counter']] payload is #[message.payload]+ as the *Logger* message value. Click *Save*.
 
-* *Step 6:* Set "Done." as the Set Payload element Value. Then Click Save.
+* *Step 6:* Set +Done.+ as the *Set Payload* element Value. Click *Save*.
 
 * *Step 7:* Run the app and hit the flow endpoint.
 
@@ -2232,7 +2236,7 @@ Mapping is created.
 ----
 Expected Result:
 
-For each record a "For element ... " message was logged displaying its payload.
+For each record a +For element ... + message was logged displaying its payload.
 ----
 
 * *Step 9:* Look for the message of the Size Logger on the console.
@@ -2249,12 +2253,12 @@ Amount of elements retrieved equals number of records returned.
 * Global Configuration element was already created with valid credentials to the service.
 
 * *Step 1:* Arrange a flow as follows:
-.. Place an HTTP endpoint on the canvas.
-.. Drop the desired connector in the flow.
-.. Next to the connector, place a Logger element.
-.. Next to the Logger, place a For Each element.
-.. Inside the For Each, place a DataMapper and then a Logger next to it.
-.. After the For Each, place a Set Payload element.
+.. In Studio, place an *HTTP* connector on the canvas.
+.. Place a connector in the flow.
+.. Next to the connector, place a *Logger* element.
+.. Next to the *Logger*, place a *For Each* element.
+.. Inside the *For Each*, place a *DataMapper* and then a *Logger* next to it.
+.. After the *For Each*, place a *Set Payload* element.
 ----
 Flow arrangement looks similar to this:
 
@@ -2263,40 +2267,40 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-35.png[]
 
 
 * *Step 2:*
-.. On the connector, select an operation whose return type is PagingDelegate<SomeEntity>.
+.. For your connector, select an operation whose return type is +PagingDelegate<SomeEntity>+.
 Metadata fetches for the selected operation.
-.. Open Query Builder and generate a simple query such as: SELECT CreatedById,CreatedDate,Descripti on,OwnerId FROM Account LIMIT 1
-.. Set a fetchSize value higher than the amount of records been returned.
-.. Click Save.
+.. Open Query Builder and generate a simple query such as: +SELECT CreatedById,CreatedDate,Description,OwnerId FROM Account LIMIT 1+
+.. Set a fetchSize value higher than the number of records that have been returned.
+.. Click *Save*.
 
 
-* *Step 3:* Set "### Amount of elements retrieved is #[message.payload.size()]" as the
-Logger message value. Then Click Save.
+* *Step 3:* Set +### Amount of elements retrieved is #[message.payload.size()]+ as the
+*Logger* message value. Click *Save*.
 
 
-* *Step 4:*  On the DataMapper element creating a mapping to a Default Map<k,v> object.
+* *Step 4:*  On the DataMapper element create a mapping to a Default +Map<k,v>+ object.
 
 ----
 Expected Result:
 
-Mapping creates.
+Mapping is created.
 ----
 
 
-* *Step 5:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then Click Save.
+* *Step 5:* Set +For element #[flowVars['counter']] payload is #[message.payload]+ as the *Logger* message value. Click *Save*.
 
-* *Step 6:* Set "Done." as the Set Payload element Value. Then Click Save.
+* *Step 6:* Set +Done.+ as the *Set Payload* element Value. Click *Save*.
+
+Example of a complete flow:
 
 [source,xml]
 ----
-Example of a complete flow:
+<http:listener-config name="HTTP_Listener_Configuration" host="localhost" port="8081" doc:name="HTTP Listener Configuration"/>
 
 <flow name="features-autopaging-salesforceFlow3"
 doc:name="features-autopaging-salesforceFlow3">
 
-    <http:inbound-endpoint
-  exchange-pattern="request-response"
-  host="localhost" port="8081" doc:name="HTTP"/>
+<http:listener config-ref="HTTP_Listener_Configuration" path="/" doc:name="HTTP"/>
 
     <sfdc:query config-ref="Salesforce"
   query="SELECT
@@ -2322,12 +2326,11 @@ doc:name="features-autopaging-salesforceFlow3">
 
 * *Step 7:* Run the app and hit the flow endpoint.
 
-
 * *Step 8:* Look for the messages logged by the Records Logger on the console.
 ----
 Expected Result:
 
-For each record a "For element ... " message was logged displaying its payload.
+For each record a +For element ... + message was logged displaying its payload.
 ----
 
 
