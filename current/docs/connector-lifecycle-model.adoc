@@ -39,18 +39,12 @@ The development stage is one of two major phases, mostly occurring in the develo
 
 === 2.1 Design Specification Review
 
-The _design specification review_ phase, within the development stage, primary assists developers and designers to clarify the functional behaviour of the connector, provides extensive use cases, ranging from normal to border-cases ones, and finally includes an overall architecture design. It is strongly recommended that developers, as well as designers, consider this step as mandatory, taking into consideration the _Design Specification Template, available at:
-
-link:attachments/designSpecificationTemplate.html[Design Specification Template]
+The _design specification review_ phase, within the development stage, primary assists developers and designers to clarify the functional behaviour of the connector, provides extensive use cases, ranging from normal to border-cases ones, and finally includes an overall architecture design. It is strongly recommended that developers, as well as designers, consider this step as mandatory, taking into consideration the Design Specification Template, available at: link:attachments/designSpecificationTemplate.html[Design Specification Template]
 
 
 The design specification template is one of the two _Exit Criteria Documents_ from the development stage, needed by the MuleSoft team. The second document is a _Certification Checklist Document_, which corroborates that every mandatory practice has been accomplished and every deliverable has been issued. It can be downloaded at:
 
 https://drive.google.com/uc?export=download&id=0B8N265C555thOG5HZDRTOTEtUXM[Certification Checklist Document].
-
-Due to Interoperability QA Guidelines, this checklist has an _Manual Interoperability Test Run_ associated available at:
-
-https://drive.google.com/uc?export=download&id=0B8N265C555thNW0tMElvejlVVGc[Manual Interoperability Test Run].
 
 
 //<<certification-checklist,Certification Checklist>>
@@ -104,8 +98,6 @@ Prerequisites to be satisfied:
 
 * *Complete the <<certification-checklist,Certification Checklist>>*
 
-* *Connector Documentation:* Access to the connector documentation is required.
-
 * *Versioning:* The Connector must follow the following versioning scheme. Given a version number MAJOR.MINOR.PATCH, only increment MAJOR version when you make incompatible API changes; increment MINOR version when you add functionality in a backwards-compatible manner; and increment PATCH version when you make backwards-compatible bug fixes.
 
 === 3.2 Certification
@@ -129,7 +121,7 @@ It is important to mention that the main communication channel between the MuleS
 
 * *Upload to Mulesoft Connector Library:* Certified connectors will be uploaded in the https://www.mulesoft.com/library[Mule Connectors Library]. After your connector passes certification, MuleSoft sends you an estimated date for when your connector will appear on the MuleSoft library. As part of this process, the following information need to be provided:
 
-** High level description of the connector. The https://www.mulesoft.com/library#!/salesforce-integration-connector?types=connector[SalesForce connector] can be used as a template example. 
+** High level description of the connector. The https://www.mulesoft.com/library#!/salesforce-integration-connector?types=connector[SalesForce connector] can be used as a template example.
 
 ** URL to release notes.
 
