@@ -925,15 +925,35 @@ Only use a map if your data:
 <p>A Mule application&#8217;s endpoints allow a user to interact with the service and API using the connector. Endpoints are committed to the GitHub repository along with source code. Use services or API use cases to determine which connector operations to select.</p>
 </div>
 <div class="paragraph">
-<p>Creation criteria:
-* Ensure that an app can be run by entering credentials without additional configuration or connector installation.
-* Use placeholders for credentials.
-* Ensure that flow names and message processors display names that make the use case easy to understand.
-* Provide instructions on how to run the app in the README.md file of the GitHub demo (example <a href="https://github.com/mulesoft/sqs-connector/tree/master/demo">SQS</a>).
-* Expose a set of endpoints that the user can access following the steps in the README.md to reproduce a use case. An example is the <a href="https://github.com/mulesoft/sqs-connector/tree/master/demo">SQS</a> demo.
-* Consider implementing a CRUD (or similar) use case with chained processors whose payloads get logged into the Studio console (for example, <a href="https://github.com/mulesoft/s3-connector/tree/master/demo/s3connectorstudiodemo">S3</a>).
-* Use DataMapper for Standard or Premium connectors' CRUD (or a similar) use case if API methods attributes and/or return types allow it.
-* Consider basic error handling in the Mule app.</p>
+<p>Guidelines to follow:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ensure that an app can be run by entering credentials without additional configuration or connector installation.</p>
+</li>
+<li>
+<p>Use placeholders for credentials.</p>
+</li>
+<li>
+<p>Ensure that flow names and message processors display names that make the use case easy to understand.</p>
+</li>
+<li>
+<p>Provide instructions on how to run the app in the README.md file of the GitHub demo (example <a href="https://github.com/mulesoft/sqs-connector/tree/master/demo">SQS</a>).</p>
+</li>
+<li>
+<p>Expose a set of endpoints that the user can access following the steps in the README.md to reproduce a use case. An example is the <a href="https://github.com/mulesoft/sqs-connector/tree/master/demo">SQS</a> demo.</p>
+</li>
+<li>
+<p>Consider implementing a CRUD (or similar) use case with chained processors whose payloads get logged into the Studio console (for example, <a href="https://github.com/mulesoft/s3-connector/tree/master/demo/s3connectorstudiodemo">S3</a>).</p>
+</li>
+<li>
+<p>Use DataMapper for Standard or Premium connectors' CRUD (or a similar) use case if API methods attributes and/or return types allow it.</p>
+</li>
+<li>
+<p>Consider basic error handling in the Mule app.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -8709,7 +8729,7 @@ Documentation is a vital part of the development stage, where the development te
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-04-07 14:12:28 EDT
+Last updated 2015-04-07 14:45:24 EDT
 </div>
 </div>
 </body>
