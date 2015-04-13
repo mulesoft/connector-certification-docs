@@ -349,7 +349,9 @@ A Mule application's endpoints allow a user to interact with the service and API
 
 Guidelines to follow:
 
-* Use a meaningful name for the project. Avoid things such as "MyConnector Demo". This name will be displayed in the ApiDoc site. Eg: http://mulesoft.github.io/salesforce-connector/ 
+* Use a meaningful name for the project. Avoid things such as "MyConnector Demo". This name will be displayed in the ApiDoc site. Eg: http://mulesoft.github.io/salesforce-connector/
+* Project folder name should be in lower case.
+* Don't add prefix such as "mule" or "app". Just the purpose of it.
 * Ensure that an app can be run by entering credentials without additional configuration or connector installation.
 * Use placeholders for credentials.
 * Ensure that flow names and message processors display names that make the use case easy to understand.
