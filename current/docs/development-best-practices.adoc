@@ -349,14 +349,15 @@ A Mule application's endpoints allow a user to interact with the service and API
 
 Guidelines to follow:
 
-* Use a meaningful name for the project. Avoid things such as "MyConnector Demo". This name will be displayed in the ApiDoc site. Eg: http://mulesoft.github.io/salesforce-connector/
-* Project folder name should be in lower case.
+* All demo projects *must* be isolated in a folder with a descriptive name (It does not matter if is just only one demo). Eg: https://github.com/mulesoft/magento-connector/tree/develop/demo
+* Use a meaningful name for the project. Avoid things such as "my-connector-demo" or "example-1". This name will be displayed in the ApiDoc site. Eg: http://mulesoft.github.io/salesforce-connector/
+* The demo name *must* have middle lines to separate the words in it and must be in lower case. example: "mail-service-demo" 
 * Don't add prefix such as "mule" or "app". Just the purpose of it.
 * Ensure that an app can be run by entering credentials without additional configuration or connector installation.
 * Use placeholders for credentials.
 * Ensure that flow names and message processors display names that make the use case easy to understand.
-* Provide instructions on how to run the app in the README.md file of the GitHub demo (example https://github.com/mulesoft/sqs-connector/tree/master/demo[SQS]).
-* Expose a set of endpoints that the user can access following the steps in the README.md to reproduce a use case. An example is the https://github.com/mulesoft/sqs-connector/tree/master/demo[SQS] demo.
-* Consider implementing a CRUD (or similar) use case with chained processors whose payloads get logged into the Studio console (for example, https://github.com/mulesoft/s3-connector/tree/master/demo/s3connectorstudiodemo[S3]).
+* Provide instructions on how to run the app in a README file (for example, https://github.com/mulesoft/s3-connector/tree/develop/demo/S3-connector-demo[S3]). 
+* Expose a set of endpoints that the user can access following the steps in the README to reproduce a use case.
+* Consider implementing a CRUD (or similar) use case with chained processors whose payloads get logged into the Studio console (for example, https://github.com/mulesoft/s3-connector/tree/develop/demo/S3-connector-demo[S3]).
 * Use DataMapper for Standard or Premium connectors' CRUD (or a similar) use case if API methods attributes and/or return types allow it.
 * Consider basic error handling in the Mule app.
