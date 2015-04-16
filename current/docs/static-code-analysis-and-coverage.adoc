@@ -62,16 +62,14 @@ image::{imagesdir}/sonar-2.png[]
 == SonarQube Eclipse Plugin Setup
 
 . Open Anypoint™ Studio, then select Help > Install New Software.
-
++
 image::{imagesdir}/sonar-3.png[]
-
-
++
 . In the Work with text box, fill in the update site URL:
 SonarQube Integration for Eclipse (update-site) - http://dist.sonar-ide.codehaus.org/eclipse/
-
++
 image::{imagesdir}/sonar-4.png[]
-
-
++
 . Check the SonarQube Java option.
 . After completing the installation, restart Anypoint™ Studio.
 . Open Anypoint™ Studio’s preferences, and browse to the SonarQube section. Expand it, and select the Servers subsection. Click Add and fill in the URL and credentials for your server (by default, admin/admin).
@@ -144,31 +142,32 @@ There are a number of ways of ignoring classes that you do not want inspected by
 
 * Method level ignore:
 ** Methods can be ignored by adding a //NOSONAR comment next to the method declaration. Example:
-
++
 [source,java]
 ----
 public void someMethodToNotInspect() { //NOSONAR
 ----
++
 * Class level ignore
 ** It may be the case that whole classes need to be ignored because they’re not in the control of the developer. As an example, the SFDC Connector contains classes from the SFDC JAR. These had to be modified slightly to include no-args constructors for DataSense reasons. As a result, these classes have to be ignored since the code quality is not in control of the SFDC Connector developer.
 
 ** Classes can be completely ignored by adding // NOSONAR next to the class level definition. Example:
-
++
 [source,java]
 ----
 public class MyClassThatShouldntBeInspected { // NOSONAR
 ----
-
++
 * Package level ignore
 ** Whole packages can be ignored by adding the “sonar.exclusions” property inside the pom.xml file. Example:
-
++
 [source,xml]
 ----
 <properties>
 	<sonar.exclusions>src/main/java/com/sforce/**/*</sonar.exclusions>
 </properties>
 ----
-
++
 This ignores any file under the com.sforce package under src/main/java.
 
 

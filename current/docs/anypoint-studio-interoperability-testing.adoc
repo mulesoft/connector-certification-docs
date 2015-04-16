@@ -25,6 +25,7 @@ include::devkit-plugin-run-interop-tests-action.adoc[]
 .. Drop the desired connector inside the flow.
 .. Select it and click the Config Reference Edit button.
 
++
 ----
 Expected Result:
 
@@ -33,6 +34,7 @@ Expected Result:
 ----
 
 * *Step 2:* Enter valid credentials and save.
++
 ----
 Expected Result:
 Global Configuration element is created and saved.
@@ -57,20 +59,22 @@ Build this test case to serve as the basis for the next set of test cases.
 .. Finally, add a Set Payload element after the
 logger.
 
++
 ----
 Expected Result:
 
 Flow arrangement looks similar to this:
 ----
-
++
 image::{imagesdir}/qa-guidelines/qa-guidelines-1.png[]
-
++
 
 * *Step 2:* On the HTTP endpoint, set a path value of "authorize".
 * *Step 3:*
 .. Select the first connector.
 .. Look for the Authorize operation.
 
++
 ----
 Expected Result:
 Authorize operation is found.
@@ -80,6 +84,7 @@ Authorize operation is found.
 .. Select the Authorize operation.
 .. Check the General section.
 
++
 ----
 Input fields are found for:
 * State (only for OAuth2)
@@ -89,6 +94,8 @@ Input fields are found for:
 
 
 * *Step 5:* Look for the authorizationParameters inside the OAuth annotation.
+
++
 ----
 Expected Result:
 Each of the annotations on authorizationParameters are reflected in the Additional Authorization Parameters section. If none, the section is not displayed at all.
@@ -106,6 +113,7 @@ Each of the annotations on authorizationParameters are reflected in the Addition
 .. Drop a Logger after the last connector.
 .. Finally, add a Set Payload element after the logger.
 
++
 ----
 Expected Result:
 Flow arrangement looks similar to this:
@@ -126,6 +134,7 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-2.png[]
 .. Finally, add a Set Payload element after the
 logger.
 
++
 ----
 Expected Result:
 
@@ -134,6 +143,7 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-3.png[]
 ----
 ￼
 * *Step 14:* On the connector, look for the Unauthorize operation.
++
 ----
 Expected Result:
 Unauthorize operation is found.
@@ -142,7 +152,7 @@ Unauthorize operation is found.
 * *Step 15:* Select the Unauthorize operation. Then click *Save*.
 
 * *Step 16:* Set "Done." on all Set Payload elements Values. Then click *Save*.
-
++
 [source,xml]
 ----
 Expected Result:
@@ -194,6 +204,8 @@ Example of the flows on the project .mflow :
 * *Step 1:*
 .. Run the app and hit the authorize endpoint.
 .. Complete the OAuth dance.
+
++
 ----
 Expected Result:
 * Redirects to the authorization URL of the service provider, which occurs according to authorizationParameters.
@@ -201,8 +213,8 @@ Expected Result:
 * Callback URL is shown in the browser address bar.
 ----
 
-* *Step 2:*
-Check the console.
+* *Step 2:* Check the console.
++
 ----
 Expected Result:
 Operation payload is logged.
@@ -213,6 +225,8 @@ Check the State parameter
 * *Step 3:*
 .. Hit the anoperation endpoint.
 .. Check the console.
+
++
 ----
 Expected Result:
 Operation payload is logged.
@@ -224,6 +238,7 @@ This implies that Mule included the access token (contained within the parameter
 .. Hit the unauthorize endpoint.
 .. Check the console.
 
++
 ----
 Expected Result:
 OAuth session is killed.
@@ -237,6 +252,7 @@ OAuth session is killed.
 
 ==== Steps
 * *Step 1:* Run the app and hit the anoperation endpoint.
++
 ----
 Expected Result:
 The consumer operation throws a NotAuthorizedException.
@@ -245,6 +261,8 @@ The consumer operation throws a NotAuthorizedException.
 .. Hit the authorize endpoint.
 .. Complete the OAuth dance.
 .. Check the console.
+
++
 ----
 Expected Result:
 Operation payload is logged.
@@ -253,6 +271,8 @@ Operation payload is logged.
 * *Step 3:*
 .. Hit the unauthorize endpoint.
 .. Check the console.
+
++
 ----
 Expected Result:
 OAuth session is killed.
@@ -261,6 +281,8 @@ OAuth session is killed.
 * *Step 4:*
 .. Hit the anoperation endpoint.
 .. Check the console.
+
++
 ----
 Expected Result:
 The consumer operation throws a NotAuthorizedException.
@@ -269,6 +291,8 @@ The consumer operation throws a NotAuthorizedException.
 * *Step 5:*
 .. Hit the unauthorize endpoint.
 .. Check the console.
+
++
 ----
 Expected Result:
 Flow is run. No exception is thrown.
@@ -286,6 +310,8 @@ Flow is run. No exception is thrown.
 .. Hit the authorize endpoint.
 .. Complete the OAuth dance.
 .. Check the console.
+
++
 ----
 Expected Result:
 Operation payload is logged.
@@ -294,6 +320,7 @@ Operation payload is logged.
 * *Step 2:* Meet access token expiration criteria.
 
 * *Step 3:* Hit the anoperation endpoint.
++
 ----
 Expected Result:
 Expiration is detected and OAuth dance is triggered.
@@ -303,6 +330,7 @@ Expiration is detected and OAuth dance is triggered.
 .. Complete the OAuth dance.
 .. Check the console.
 
++
 ----
 Expected Result:
 Operation payload is logged.
@@ -318,6 +346,7 @@ Operation payload is logged.
 ==== Steps
 
 * *Step 1:* Open the Global Configuration element of the Connector and set a valid Scope value that's not supported by the operation on the authorize flow.
++
 ----
 Expected Result:
 Scope value is overridden.
@@ -326,6 +355,8 @@ Scope value is overridden.
 * *Step 2:*
 .. Run the app and hit the authorize endpoint.
 .. Complete the OAuth dance.
+
++
 ----
 Expected Result:
 * Redirects to the authorization URL of the service provider that occurs according to authorizationParameters
@@ -335,6 +366,7 @@ address bar.
 ----
 
 * *Step 3:* Check the console.
++
 ----
 Expected Result:
 No permission to access resource error displays.
@@ -343,6 +375,8 @@ No permission to access resource error displays.
 * *Step 4:*
 .. Hit the unauthorize endpoint.
 .. Check the console.
+
++
 ----
 Expected Result:
 OAuth session is killed.
@@ -363,11 +397,13 @@ OAuth session is killed.
 * *Step 1:* In Anypoint Studio click *Help > Install New Software*
 
 * *Step 2:* From the *Work with* dropdown select *Anypoint Studio Connectors Update Site*
++
 ----
 Expected Result:
 Connector categories are listed.
 ----
 * *Step 3:* Search for the <connectorName>.
++
 ----
 Expected Result:
 Connector matching criteria displays. Format should be:
@@ -379,24 +415,28 @@ Refer to screenshot.
 image::{imagesdir}/qa-guidelines/qa-guidelines-4.png[]
 
 * *Step 4:* Click the connector.
++
 ----
 Expected Result:
 Details text area updates to display connector information.
 ----
 
 * *Step 5:*: Check the connector version and click Next.
++
 ----
 Expected Result:
 Install Details step displays.
 ----
 
 * *Step 6:* Click Next.
++
 ----
 Expected Result:
 Review Licenses step displays. The license text content loads and applies to the connector category.
 ----
 
 * *Step 7:* Click Finish.
++
 ----
 Expected Result:
 Installation starts. No unsigned content warning is displayed during installation.
@@ -406,6 +446,7 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-5.png[]
 
 
 * *Step 8:* After Anypoint Studio finishes loading, search for <connectorName>.
++
 ----
 Expected Result:
 Connector displays under the Connectors category.
@@ -418,18 +459,21 @@ Connector displays under the Connectors category.
 
 ==== Steps
 * *Step 1:* Search for the <connectorName>.
++
 ----
 Expected Result:
 Icon displays on the Palette, which relates to the service the connector connects to.
 ----
 
 * *Step 2:* Drop a Flow element on the canvas. Afterwards select the connector from the Palette and place it within the Flow.
++
 ----
 Expected Result:
 Icon displays and relates to the service the connector connects to.
 ----
 
 * *Step 3:* If MessageSources are supported by the connector drag the connector from the Palette to the Canvas.
++
 ----
 Expected Result:
 Message Source icon for the connector displays.
@@ -447,12 +491,14 @@ Message Source icon for the connector displays.
 .. Drop a Flow element on the canvas.
 
 * *Step 2:* Drag the connector from the Palette and place it within the Flow.
++
 ----
 Expected Result:
 Select a version ... dialog appears.
 ----
 
 * *Step 3:* Click Use newest
++
 ----
 Expected Result:
 * Connector is added to the canvas.
@@ -462,6 +508,7 @@ Version corresponds to the 3.5.0 connector.
 image::{imagesdir}/qa-guidelines/qa-guidelines-6.png[]
 
 * *Step 4:* Secondary click on the connector and select remove libraries for project.
++
 ----
 Expected Result:
 Library is removed from project.
@@ -470,12 +517,15 @@ Library is removed from project.
 * *Step 5:*
 .. Remove the connector from the canvas.
 .. Drag the connector from the Palette and place it within the Flow.
+
++
 ----
 Expected Result:
 Select a version ... dialog appears.
 ----
 
 * *Step 6:* Click Choose manually.
++
 ----
 Expected Result:
 * Connector is added to the canvas.
@@ -486,6 +536,7 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-7.png[]
 ----
 
 * *Step 7:*￼ Secondary click on the connector and select remove libraries for project.
++
 ----
 Expected Result:
 Library is removed from the project.
@@ -494,22 +545,27 @@ Library is removed from the project.
 * *Step 8:*
 .. Remove the connector from the canvas.
 .. Drag the connector from the Palette and place it within the Flow.
+
++
 ----
 Expected Result:
 Select a version ... dialog appears.
 ----
 
 * *Step 9:* Click Choose manually.
++
 ----
 Expected Result:
 * Select extension version screen displays.
 * For the 3.5.0 version, check that the library version matches the one previously displayed.
 * For the 3.4.x version, schema version displays.
 ----
++
 image::{imagesdir}/qa-guidelines/qa-guidelines-8.png[]
 
 
 * *Step 9:* Randomly select one of options and click Ok.
++
 ----
 Expected Result:
 Connector is added to the canvas. Check that the library version matches the one previously displayed for that version.
@@ -525,6 +581,7 @@ Connector is added to the canvas. Check that the library version matches the one
 
 * *Step 1:* Open Global Element.
 * *Step 2:* Populate password field.
++
 ----
 Expected Result:
 Password field’s text is hidden by default.
@@ -788,7 +845,7 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-9.png[]
 
 * *Step 5:*
 Save and change to the Configuration XML view.
-
++
 [source,xml]
 ----
 Expected Result: XML for the operation was generated using the ref attribute.
@@ -799,6 +856,7 @@ Example XML:
 ----
 
 * *Step 6:* Return to the Message Flow view, click the connector.
++
 ----
 Expected Result:
 
@@ -811,7 +869,7 @@ Example:
 image::{imagesdir}/qa-guidelines/qa-guidelines-10.png[]
 
 * *Step 8:* Save and change to the Configuration XML view.
-
++
 [source,xml]
 ----
 Expected Result:
@@ -822,6 +880,7 @@ Example XML:
 </sfdc:batch-info>
 ----
 * *Step 9:*  Return to the Message Flow view, click on the connector.
++
 ----
 Expected Result:
 
@@ -857,6 +916,7 @@ Order of operation attributes should be the same as in the API. Attributes gener
 * *Step 1:* On the General tab select the corresponding Config reference.
 
 * *Step 2:* Select the operation.
++
 ----
 Expected Result:
 Operation required attributes values display as missing.
@@ -864,13 +924,14 @@ Operation required attributes values display as missing.
 image::{imagesdir}/qa-guidelines/qa-guidelines-11.png[]
 
 * *Step 3:* Look for the operation in the API docs.
++
 ----
 Expected Result:
 Required attributes match with the ones marked as such in the Mule Properties View.
 ----
 
 * *Step 4:* Back in Anypoint Studio, change to the Problems tab.
-
++
 ----
 Expected Result:
 'Required attribute not defined' error is logged.
@@ -889,6 +950,7 @@ Methods annotated with @Source(). They are common for connectors to services wit
 ==== Steps
 
 * *Step 1:* Pull the desired connector to the canvas.
++
 ----
 Expected Result:
 Connector is created as endpoint to a flow.
@@ -902,6 +964,8 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-13.png[]
 * *Step 3:*
 .. Set the Global Configuration Element to the connector.
 .. Check the available operations.
+
++
 ----
 Expected Result:
 
@@ -909,7 +973,7 @@ Operations on the dropdown match to methods marked as @Source on the connector c
 ----
 
 * *Step 4:*  Select the Message Source under test and configure it appropriately.
-
++
 [source,xml]
 ----
 Expected Result:
@@ -924,6 +988,8 @@ Example of a Mule flow:
 * *Step 5:*
 .. Run the Mule app.
 .. Check the Console.
+
++
 ----
 Expected Result:
 
@@ -935,6 +1001,7 @@ INFO 2014-01-1317:59:17,210[HttpClient-29] org.mule.modules.salesforce.Salesforc
 .. Trigger the event the Message Source is expecting.
 .. Check the Console.
 
++
 ----
 Expected Result:
 
@@ -959,12 +1026,14 @@ If custom fields can be defined for objects in the service domain, choose them f
 ==== Steps
 
 * *Step 1:* Configure both connectors with the same operation.
++
 ----
 Expected Result:
 Metadata is fetched for both configurations.
 ----
 * *Step 2:* Select the DataMapper building block.
 * *Step 3:* Check the Input panel.
++
 [source,java]
 ----
 Expected Result:
@@ -980,6 +1049,7 @@ Check that values match the operation signature.
 ----
 
 * *Step 4:* Check the Output panel.
++
 [source,java]
 ----
 Expected Result:
@@ -994,6 +1064,7 @@ Mule automatically prescribes the input of the operation only for an attribute o
 Check that it's marked as `@Default("#[payload]")` (for connectors older than 3.5.0-M4). The correct annotations should be `@Optional @Default(“#[payload]”)`
 ----
 * *Step 5:*  Check the operation attributes in the API docs.
++
 ----
 Expected Result:
 The attribute marked as `@Default("#[payload]")` (for connectors older than 3.5.0-M4). The correct annotations should be `@Optional @Default(“#[payload]”)` (aka PRIMARY argument) should be:
@@ -1070,8 +1141,9 @@ This test case applies to connectors to services that support custom entities or
 
 * *Step 1:* Configure both connectors with the same operation. For type, select the custom entity under test or the entity for which custom fields were defined on the sandbox.
 For example:
++
 image::{imagesdir}/qa-guidelines/qa-guidelines-14.png[]
-
++
 ----
 Expected Result:
 
@@ -1079,6 +1151,7 @@ Metadata is fetched for both configurations.
 ----
 
 * *Step 2:* Select the DataMapper building block.
++
 ----
 Expected Result:
 
@@ -1088,7 +1161,7 @@ Values were pre­populated and relate to the entity under test.
 * *The following step is to be run for either the Output Panel/Input panel.*
 
 * *Step 3:* Generate a mapping (use a default map on the counter panel if necessary).
-
++
 ----
 Expected Result:
 
@@ -1124,15 +1197,15 @@ As example use the Dynamics connector (MessageProcessor expects XML thus everyth
 * Flow contains a connector building block that is on the canvas and its Global Configuration element was selected as Config Reference.
 
 * *Step 1:* Select corresponding operation for message processor with attribute marked @Query.
-
++
 ----
 Expected Result:
 
 * For attribute marked @Query only Native Query Language option in dropdown displays.
 ----
-
++
 image::{imagesdir}/qa-guidelines/qa-guidelines-16.png[]
-
++
 ----
 * Return type dropdown does not display.
 ----
@@ -1144,16 +1217,17 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-16.png[]
 * Flow contains a connector building block that is on the canvas and its Global Configuration element was selected as Config Reference.
 
 * *Step 1:* Select corresponding operation for message processor with attribute marked @Query.
-
++
 ----
 Expected Result:
 
 * For attribute marked @Query *Native Query Language* and *DataSense Query Language* option in dropdown displays.
 ----
-
++
 image::{imagesdir}/qa-guidelines/qa-guidelines-17.png[]
-
++
 * *Step 2:* Click the Query Builder ...
++
 ----
 Expected Result:
 
@@ -1230,7 +1304,7 @@ dynamicObject.addSimpleField(field.getName(), dataType).isOrderByCapable(f.isSor
 ==== Steps
 
 * *Step 1:* Select corresponding operation for message processor with attribute marked @Query and click on the *Query Builder ...*
-
++
 ----
 Expected Result:
 
@@ -1300,7 +1374,7 @@ Connector supports Auto­Paging if a least one of its operations is annotated as
 ==== Steps
 
 * *Step 1:* Select an operation whose return type is PagingDelegate<SomeEntity>.
-
++
 ----
 Expected Result:
 
@@ -1313,7 +1387,7 @@ Fetch Size value is 100 by default.
 
 
 * *Step 2:* Enter a Fetch Size value other than 100. Save and change to the Configuration XML view.
-
++
 [source,xml]
 ----
 Expected Result:
@@ -1323,7 +1397,7 @@ fetchSize attribute is on the operation XML.
 ----
 
 === Auto-Paging - Empty Collection
-====￼Preconditions
+==== ￼Preconditions
 
 * Global Configuration element was already crea
 
@@ -1335,11 +1409,13 @@ fetchSize attribute is on the operation XML.
 .. Inside the For Each place a Logger element.
 .. After the For Each place a Set Payload element.
 
++
 ----
 Expected Result:
 
 Flow arrangement looks similar to this:
 ----
++
 image::{imagesdir}/qa-guidelines/qa-guidelines-19.png[]
 
 
@@ -1348,15 +1424,17 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-19.png[]
 .. Set parameter values such as no records are returned by the operation.
 .. Click Save.
 
++
 ----
 Expected Result:
 
 Metadata is fetched for the selected operation.
 ----
 
-* *Step 3:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then click Save.
+* *Step 3:* Set "For element *#[flowVars['counter']]* payload is *#[message.payload]*" as the Logger message value. Then click *Save*.
 
 * *Step 4:* Set "Done." as the Set Payload element Value. Then Click Save.
++
 [source,xml]
 ----
 Example of a complete flow result:
@@ -1380,6 +1458,7 @@ doc:name="features-autopaging-certFlow1">
 ----
 
 * *Step 5:* Run the app and hit the flow endpoint. Check the console afterwards.
++
 ----
 Expected Result:
 
@@ -1389,7 +1468,8 @@ Logs to the console.
 
 === Auto-Paging - Abort Iteration
 Verify that after processing current element, iteration is terminated.
-====￼Preconditions
+
+==== ￼Preconditions
 
 * Global Configuration element has been created with valid credentials to the service.
 
@@ -1403,11 +1483,13 @@ Verify that after processing current element, iteration is terminated.
 .. Inside the For Each, place a Logger, a DataMapper, and another Logger.
 .. Following the For Each, place a Set Payload element.
 
++
 ----
 Expected Result:
 
 Flow arrangement looks similar to this:
 ----
+
 image::{imagesdir}/qa-guidelines/qa-guidelines-20.png[]
 
 
@@ -1419,6 +1501,7 @@ query such as: SELECT CreatedById,CreatedDate,Description, OwnerId FROM Account 
 .. Set a fetchSize value of 1 or lower than the amount the amount of records been returned.
 .. Click Save.
 
++
 ----
 Expected Result:
 
@@ -1434,6 +1517,7 @@ Logger message value. Then click Save.
 * *Step 5:* Set "Closing the iterator: #[flowVars['rootMessage'].getPayload ().close()]" as the message value for the first Logger within the For Each. Then click Save.
 
 * *Step 6:*  On the DataMapper element, create a mapping to a Default `Map<k,v>` object.
++
 ----
 Expected Result:
 
@@ -1443,7 +1527,7 @@ Mapping creates.
 * *Step 7:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then click Save.
 
 * *Step 8:* Set "Done." as the Set payload element Value. Then click Save.
-
++
 [source,xml]
 ----
 Example of a complete result flow:
@@ -1471,7 +1555,7 @@ doc:name="features-autopaging-salesforceFlow1">
 
 * *Step 10:*  Run the app and hit the flow endpoint.
 * *Step 11:*  Look for the messages logged by the Records Logger on the console.
-
++
 ----
 Expected Result:
 
@@ -1494,6 +1578,7 @@ PagingDelegate is typed thus it's expected to work together with DataMapper.
 .. Drop the desired connector in the flow.
 .. Next to the connector, place a DataMapper element.
 
++
 ----
 Expected Result:
 ----
@@ -1501,6 +1586,7 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-21.png[]
 
 * *Step 2:* On the connector, select an operation whose return type is PagingDelegate<SomeEntity>. Then click Save.
 
++
 ----
 Expected Result:
 
@@ -1516,12 +1602,14 @@ Mule automatically prescribes the output of the operation as List<SomeEntity>. T
 for an operation returns: `PagingDelegate<GoogleContactEntry>`
 ----
 
++
 * *Step 4:* In the Output Panel select:
 .. Type: Map<k,v>
 .. Click User Defined
 .. Click Generate default
 .. Click Create mapping
 
++
 ----
 Expected Result:
 
@@ -1542,13 +1630,15 @@ Mapping creates.
 .. Next to the connector, place a For Each scope.
 .. Inside the For Each, place a DataMapper element.
 
++
 ----
 Expected Result:
 ----
-
++
 image::{imagesdir}/qa-guidelines/qa-guidelines-22.png[]
 
 * *Step 2:* On the connector, select an operation whose return type is PagingDelegate<SomeEntity>. Then click Save.
++
 ----
 Expected Result:
 
@@ -1557,6 +1647,7 @@ Metadata fetches for the selected operation.w
 
 * *Step 3:*
 Click the DataMapper element.
++
 ----
 Expected Result:
 
@@ -1570,6 +1661,7 @@ The type is in the connector code, for example: `GoogleContactEntry` for an oper
 .. Click Generate default
 .. Click Create mapping
 
++
 ----
 Expected Result:
 
@@ -1592,6 +1684,7 @@ Mapping creates.
 .. Inside the For each place a DataMapper and then a Logger next to it.
 .. After the For Each place a Set payload element.
 
++
 ----
 Expected Result
 
@@ -1605,6 +1698,7 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-23.png[]
 .. Set a fetchSize value of 1 or lower than the amount of records that's going to be retrieved.
 .. Click Save.
 
++
 ----
 Expected Result:
 
@@ -1621,7 +1715,7 @@ Mapping creates.
 * *Step 5:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then click Save.
 
 * *Step 6:* Set "Done." as the Set Payload element Value. Then click Save.
-
++
 [source,xml]
 ----
 Example of a complete flow:
@@ -1654,6 +1748,7 @@ ianceFlow3">
 * *Step 7:* Run the app and hit the flow endpoint.
 
 * *Step 8:* Look for the messages logged by the Records Logger on the console.
++
 ----
 Expected Result:
 
@@ -1661,6 +1756,7 @@ For each record a "For element ... " message was logged displaying its payload.
 ----
 
 * *Step 9:* Look for the message of the Size Logger on the console.
++
 ----
 Expected Result:
 
@@ -1695,6 +1791,7 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-24.png[]
 .. On the connector, select an operation whose return type is PagingDelegate<SomeEntity>.
 .. Set a fetchSize higher than amount of existing records.
 .. Click Save.
++
 ----
 Expected Result:
 
@@ -1705,6 +1802,7 @@ Metadata fetches for the selected operation.
 Logger message value. Then click Save.
 
 * *Step 4:* On the DataMapper element, create a mapping to a Default Map<k,v> object.
++
 ----
 Expected Result:
 
@@ -1714,7 +1812,7 @@ Mapping is created.
 * *Step 5:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then Click Save.
 
 * *Step 6:*  Set "Done." as the Set Payload element Value. Then Click Save.
-
++
 [source,xml]
 ----
 Example of a complete flow:
@@ -1753,6 +1851,7 @@ ianceFlow3">
 ----
 
 * *Step 7:* Look for the messages logged by the Records Logger on the console.
++
 ----
 Expected Result:
 
@@ -1760,6 +1859,7 @@ For each record a "For element ... " message was logged displaying its payload.
 ----
 
 * *Step 8:*  Look for the message of the Size Logger on the console.
++
 ----
 Amount of elements retrieved equals number of records returned.
 
@@ -1784,9 +1884,8 @@ An example that uses the Salesforce/NetSuite connectors.
 .. Drop the desired connector in the flow.
 .. Next to the connector, place a DataMapper element.
 
-----
-Expected Result:
-----
++
+*Expected Result:*
 
 image::{imagesdir}/qa-guidelines/qa-guidelines-25.png[]
 
@@ -1795,7 +1894,7 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-25.png[]
 .. Select DataSense Query Language as Language.
 .. Using Object Builder create a simple query involving a couple of fields, for example: SELECT AccountSource,BillingCity,BillingLon gitude,CreatedDate FROM Account.
 .. Click Save.
-
+ +
 ----
 Expected Result:
 
@@ -1803,6 +1902,7 @@ Metadata is fetched for the selected operation.
 ----
 
 * *Step 3:* Click on the DataMapper element.
++
 ----
 Expected Result:
 
@@ -1816,6 +1916,7 @@ for an operation returns: PagingDelegate<Map<String, Object>>
 .. Click Generate default
 .. Click Create mapping
 
++
 ----
 Expected Result:
 
@@ -1838,9 +1939,9 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-26.png[]
 .. Next to the connector, place a For Each scope.
 .. Inside the For each place a DataMapper element.
 
-----
-Expected Result:
-----
++
+*Expected Result:*
+
 image::{imagesdir}/qa-guidelines/qa-guidelines-27.png[]
 
 
@@ -1850,6 +1951,8 @@ PagingDelegate<SomeEntity> and has one of its parameters annotated with @Query.
 .. Select DataSense Query Language as Language.
 .. Using Object Builder create a simple query involving a couple of fields, for example: SELECT AccountSource,BillingCity,BillingLon gitude,CreatedDate FROM Account
 .. Click Save.
+
++
 ----
 Expected Result:
 
@@ -1857,6 +1960,7 @@ Metadata fetches for the selected operation.
 ----
 
 * *Step 3:* Click the DataMapper element.
++
 ----
 Expected Result:
 
@@ -1870,6 +1974,7 @@ for an operation returns: PagingDelegate<Map<String, Object>>
 .. Click Generate default
 .. Click Create mapping
 
++
 ----
 Expected Result:
 
@@ -1892,6 +1997,8 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-28.png[]
 .. Next to the Logger put a For Each scope.
 .. Inside the For Each place a DataMapper and then a Logger next to it.
 .. After the For Each, place a Set Payload element.
+
++
 ----
 Expected Result:
 
@@ -1905,6 +2012,8 @@ image::{imagesdir}/qa-guidelines/qa-guidelines-29.png[]
 .. Open Query Builder and generate a simple query such as: SELECT. CreatedById,CreatedDate,Descripti on,OwnerId FROM Account LIMIT 3
 .. Set a fetchSize value of 1 or lower than the amount of records being returned.
 .. Click Save.
+
++
 ----
 Expected Result:
 ￼
@@ -1917,6 +2026,7 @@ Metadata fetches for the selected operation.
 Logger message value. Then Click Save.
 
 * *Step 4:* On the DataMapper element creating a mapping to a Default Map<k,v> object.
++
 ----
 Expected Result:
 
@@ -1926,6 +2036,7 @@ Mapping creates.
 * *Step 5:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then Click Save.
 
 * *Step 6:* Set "Done." as the Set Payload element Value. Then Click Save.
++
 [source,xml]
 ----
 Example of a complete flow:
@@ -1964,6 +2075,7 @@ doc:name="features-autopaging-salesforceFlow1">
 
 * *Step 7:* Run the app and hit the flow endpoint.
 * *Step 8:* Look for the messages logged by the Records Logger on the console.
++
 ----
 Expected Result:
 
@@ -1971,6 +2083,7 @@ For each record a "For element ... " message was logged displaying its payload.
 ----
 
 * *Step 9:*  Look for the message of the Size Logger on the console.
++
 ----
 Expected Result:
 
@@ -1994,6 +2107,8 @@ Amount of elements retrieved equals number of records returned.
 and then a Logger next to it.
 .. After the For Each, place a Set Payload
 element.
+
++
 ----
 Expected Result:
 
@@ -2019,6 +2134,8 @@ Metadata is fetched for the selected operation.
 Logger message value. Then Click Save.
 
 * *Step 4:* On the DataMapper element create a mapping to a Default Map<k,v> object.
+
++
 ----
 Expected Result:
 
@@ -2028,9 +2145,12 @@ Mapping creates.
 * *Step 5:* Set "For element #[flowVars['counter']] payload is #[message.payload]" as the Logger message value. Then Click Save.
 
 * *Step 6:* Set "Done." as the Set Payload element Value. Then Click Save.
++
+* Example of a complete flow:*
+
 [source,xml]
 ----
-Example of a complete flow:
+
 
 <flow name="features-autopaging-salesforceFlow1"
 doc:name="features-autopaging-salesforceFlow1">
