@@ -16,7 +16,7 @@ You need a server running Oracle JRE 6 or higher. (OpenJRE or other distribution
 . Log in with the following credentials:
 .. Username: admin
 .. Password: admin
-. Download our https://drive.google.com/uc?export=download&id=0B8N265C555thaXBSV256SkZtMlk[Custom Quality Profile]
+. Download our link:assets/quality-profile.xml[Custom Quality Profile]
 . Go to the *Quality Profiles* tab and Click *Create*.
 . Then choose the https://drive.google.com/uc?export=download&id=0B8N265C555thaXBSV256SkZtMlk[Quality Profile] file that you downloaded, name it "Anypoint Connectors Profile" and click *Create*.
 . When you see the profile in the list click in *Set as Default*.
