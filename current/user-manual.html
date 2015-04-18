@@ -945,7 +945,7 @@ Only use a map if your data:
 <p>Ensure that flow names and message processors display names that make the use case easy to understand.</p>
 </li>
 <li>
-<p>Provide instructions on how to run the app in a README file (for example, <a href="https://github.com/mulesoft/s3-connector/tree/develop/demo/S3-connector-demo">S3</a>).</p>
+<p>Provide instructions on how to run the app in a README file (for example, <a href="https://github.com/mulesoft/s3-connector/tree/develop/demo/S3-connector-demo">S3</a>). It is recommended to add in a description of the demo application, such as what it aims to demonstrate and what each step of the demo is responsible for. Where application, you can also mention where your demo fits in a larger usecase.</p>
 </li>
 <li>
 <p>Expose a set of endpoints that the user can access following the steps in the README to reproduce a use case.</p>
@@ -960,6 +960,137 @@ Only use a map if your data:
 <p>Consider basic error handling in the Mule app.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>There are two kinds of demos that you can create:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Single operation demos</p>
+</li>
+<li>
+<p>Workflow demos</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Single operation demos are used to invoke just one operation in the connector. Workflow demos are used to invoke a number of operations in the connector sequentially. These aim to show a simple usecase of the connector, such as a normal CRUD workflow. We provide two templates to help you create an interface for your demo, one for each kind of demo. You can find the template for single operation demos <a href="assets/single-operation-demo-template.html">here</a> and the template for the workflow demos <a href="assets/workflow-demo-template.html">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>The demo HTML pages above make use of Twitter Bootstrap to present a clean interface to the user. You should base your demo on this template. If you are not familiar with the Twitter Bootstrap library, it is highly suggested to look at <a href="http://getbootstrap.com/getting-started/">their documentation page</a>. Single operation demos only provide a form, whereas workflow demos provide an accordion, where one step leads to the next. In the latter case, any values retrieved by the first step should be used to autofill values in the second step where possible.</p>
+</div>
+<div class="paragraph">
+<p>As an example, let us take a CRUD workflow for a number of Twitter API calls. The first step will create a tweet and return a number of values pertaining to the tweet that was created. One of these values would be the Tweet ID. The second step would be the "read" operation. The tweet ID should be automatically filled in the second step so that the user is simply able to submit a "read" API call without any needed input. The final step of the workflow should present an alert (or a notification of some sort), that the workflow has ended, outputting any relevant information from the last step. An example of this would be a "Tweet Deleted" message if the workflow was completed successfully, and the tweet that was created in the first step is successfully removed.</p>
+</div>
+<div class="paragraph">
+<p>The following code snippets explain some parts of the above HTML page.
+The demo contains 3 parts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The JavaScript that handles asynchronous calls to the demo running on a Mule instance.</p>
+</li>
+<li>
+<p>The CSS that renders the HTML page</p>
+</li>
+<li>
+<p>The HTML itself</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>The JavaScript</strong></p>
+</div>
+<div class="paragraph">
+<p>The JavaScript for this demo is simply used to send AJAX calls to a Mule server that hosts your demo application. In the case of workflow demos, it is also used to collapse the accordions as the user goes from one step to the next.</p>
+</div>
+<div class="paragraph">
+<p>Initially, a reference to the &lt;div&gt; and &lt;form&gt; elements is obtained.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="keyword">var</span> createDiv   = <span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">#createDiv</span><span class="delimiter">'</span></span>);
+<span class="keyword">var</span> readDiv     = <span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">#readDiv</span><span class="delimiter">'</span></span>);
+<span class="keyword">var</span> updateDiv   = <span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">#updateDiv</span><span class="delimiter">'</span></span>);
+<span class="keyword">var</span> deleteDiv   = <span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">#deleteDiv</span><span class="delimiter">'</span></span>);
+
+<span class="keyword">var</span> createForm  = <span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">#createForm</span><span class="delimiter">'</span></span>);
+<span class="keyword">var</span> readForm    = <span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">#readForm</span><span class="delimiter">'</span></span>);
+<span class="keyword">var</span> updateForm  = <span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">#updateForm</span><span class="delimiter">'</span></span>);
+<span class="keyword">var</span> deleteForm  = <span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">#deleteForm</span><span class="delimiter">'</span></span>);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, each form is paired with a jQuery function sends an AJAX request whenever a form is submitted.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript">createForm.submit(<span class="keyword">function</span>() {
+  <span class="predefined">$</span>.ajax({
+    <span class="key">type</span>: <span class="string"><span class="delimiter">'</span><span class="content">POST</span><span class="delimiter">'</span></span>,                             <span class="comment">// Submit an HTTP POST request</span>
+    <span class="key">url</span>: <span class="string"><span class="delimiter">'</span><span class="content">/create</span><span class="delimiter">'</span></span>,                           <span class="comment">// The URL where your endpoint is listening</span>
+    <span class="key">data</span>: createForm.serialize(),             <span class="comment">// Serialized form URL-encoded input</span>
+    <span class="function">success</span>: <span class="keyword">function</span>(data) {                 <span class="comment">// Success function called if request succeeds</span>
+
+      <span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">input[name=message]</span><span class="delimiter">'</span></span>).val(data.message); <span class="comment">// Autofill data in the next workflow step as needed</span>
+
+      createDiv.collapse(<span class="string"><span class="delimiter">'</span><span class="content">hide</span><span class="delimiter">'</span></span>);             <span class="comment">// Hide current accordion window</span>
+      readDiv.collapse(<span class="string"><span class="delimiter">'</span><span class="content">show</span><span class="delimiter">'</span></span>);               <span class="comment">// Show next accordion window</span>
+    },
+    <span class="function">error</span>: <span class="keyword">function</span>(request, status, error){  <span class="comment">// Error function is executed if an exception occurs in the flow</span>
+      alert(request.responseText);            <span class="comment">// Alert the user of any errors</span>
+    }
+  });
+
+  <span class="keyword">return</span> <span class="predefined-constant">false</span>;                               <span class="comment">// Let jQuery handle the form submission</span>
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the case of a workflow demo, every form will represent a step in the workflow. The above code snippet should be repeated for every form you have in your workflow, applying changes as needed.</p>
+</div>
+<div class="paragraph">
+<p><strong>The CSS</strong></p>
+</div>
+<div class="paragraph">
+<p>The HTML page linked above comes with a number of CSS presets that you can use throughout your demo. A number of Bootstrap CSS classes are also used to build the accordion and the panels within it. For more information on how to build your own accordion, or even extend the one in the HTML template, please refer to the <a href="http://getbootstrap.com/javascript/#collapse-example-accordion">Bootstrap Accordion documentation page</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>The HTML</strong></p>
+</div>
+<div class="paragraph">
+<p>This part is what ties everything together. The HTML represents what your users will see when they open your demo to use your connector. Take this HTML snippet as an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="html"><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">panel-group</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">accordion</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">panel panel-default</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">panel-heading</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;h2</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">panel-title demo-heading</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                <span class="tag">&lt;a</span> <span class="attribute-name">data-toggle</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">collapse</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">data-parent</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#accordion</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#createDiv</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>Create<span class="tag">&lt;/a&gt;</span>
+            <span class="tag">&lt;/h2&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">createDiv</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">panel-collapse collapse in</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">panel-body</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                <span class="tag">&lt;form</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">createForm</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">demo-form</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">role</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">form</span><span class="delimiter">&quot;</span></span> <span class="tag">&gt;</span>
+                    <span class="tag">&lt;label&gt;</span>Message<span class="tag">&lt;/label&gt;</span>
+                    <span class="tag">&lt;input</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">message</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Hello from Mule!</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">required</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">form-control</span><span class="delimiter">&quot;</span></span> <span class="tag">&gt;</span><span class="tag">&lt;br&gt;</span>
+                    <span class="tag">&lt;input</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">btn btn-lg btn-primary btn-block</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">submit</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Create</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;br&gt;</span>
+                <span class="tag">&lt;/form&gt;</span>
+            <span class="tag">&lt;/div&gt;</span>
+        <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    ...
+<span class="tag">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above snippet of HTML is taken from the workflow demo template, it represents a single panel in the accordion. This panel is split into two parts: the header and the content. The header refers to the content through the anchor tag (&lt;a&gt;). When this header is clicked, the content is shown. On the other hand, the content is composed of a simple form that is used to submit requests to Mule. These requests are handled by the JavaScript shown above.</p>
+</div>
+<div class="paragraph">
+<p>For a complete example of a workflow demo, you can download a sample project that uses MongoDB <a href="assets/workflow-operations-demo.zip">here</a>.</p>
 </div>
 </div>
 </div>
@@ -8722,7 +8853,7 @@ Documentation is a vital part of the development stage. Your development team mu
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-04-18 14:31:25 EDT
+Last updated 2015-04-18 14:32:46 EDT
 </div>
 </div>
 </body>
