@@ -2,19 +2,18 @@
 
 The following is a proposed connector documentation template for documenting Release notes for MuleSoft connectors. 
 
-Note: Horizontal lines show sections, but won’t be in the actual documents.
 
 == References:
 
-. <System_Name>: The system the connector connects to, at the other end of the mule runtime, i.e. SalesForce, Workday Financials, 
+- <System_Name>: The system the connector connects to, at the other end of the mule runtime, i.e. SalesForce, Workday Financials, 
 
-. <Release_date>: The date in which the connector is released (not when the notes are written, mind you)
+- <Release_date>: The date in which the connector is released (not when the notes are written, mind you)
 
-. <Connector_Version>: Describes the connector version, such as “V2013”, “V4.0”, “V4.0.1-HF2” or whatever used for release
+- <Connector_Version>: Describes the connector version, such as “V2013”, “V4.0”, “V4.0.1-HF2” or whatever used for release
 
-. <Connector_Guide_Url>: Points to the mulesoft.org pages for documentation on the functional aspects of the connector. e.g.: http://www.mulesoft.org/documentation/display/current/Microsoft+SharePoint+2013+Connector
+- <Connector_Guide_Url>: Points to the mulesoft.org pages for documentation on the functional aspects of the connector. e.g.: http://www.mulesoft.org/documentation/display/current/Microsoft+SharePoint+2013+Connector
 
-. <Supported_Mule_Version> Indicates which versions of the Mule runtime are supported, i.e.: 3.5.1 and higher, 3.4.3 and Higher, 3.6.0, etc
+- <Supported_Mule_Version> Indicates which versions of the Mule runtime are supported, i.e.: 3.5.1 and higher, 3.4.3 and Higher, 3.6.0, etc
 
 
 == <System_Name> Connector Release Notes
@@ -22,11 +21,11 @@ Note: Horizontal lines show sections, but won’t be in the actual documents.
 
 === Contents
 
-. Compatibility
-. Features
-. Fixed in this Release
-. Known Issues
-. Support Resources
+- Compatibility
+- Features
+- Fixed in this Release
+- Known Issues
+- Support Resources
 
 Release Notes for version <Connector_Version> of the <System_Name> connector. These Release Notes accompany the  <Connector_Guide_URL> guide.
  
@@ -44,48 +43,49 @@ The <System_name> connector is compatible with:
 
 If you’re currently using connector <old_connector_version> to migrate to this connector you need to:
 
-. <step_1>
-. <step_2>
+- <step_1>
+- <step_2>
 
 If you’re currently using a connector version <old_connector_version_2> this connector is not compatible. Don’t upgrade to this connector unless you are sure you do the following:
 
-. <step_3>
-. <step_4>
+- <step_3>
+- <step_4>
 
 <Step_1 to N should be clear instructions that pertain to the migration path from one connector to the other.
 
-Examples might include
-. Specifying which version of the runtime is needed for the new connector
-. Changes in the version of the connected systems to be able to work
-. When the connector suffers structural changes (i.e monolythic connectors now many update sites) we should also inform the split and why and how to update from one to the other.
-. Specific instructions if the connector is running in CloudHub (like changing the Mule Runtime version, etc)
-. The first list of steps is for in-place upgrades, probably just updating via Maven or  Anypoint Studio  and re deploying.
-. The second list is for the connectors that are older and require additional steps.
-. Some of this might not apply (i.e. a connector is backwards compatible with all released versions or there is no previous version)
+//Examples might include
+
+//- Specifying which version of the runtime is needed for the new connector
+//- Changes in the version of the connected systems to be able to work
+//- When the connector suffers structural changes (i.e monolythic connectors now many update sites) we should also inform the split and why and how to update from one to //the other.
+//- Specific instructions if the connector is running in CloudHub (like changing the Mule Runtime version, etc)
+//- The first list of steps is for in-place upgrades, probably just updating via Maven or  Anypoint Studio  and re deploying.
+//- The second list is for the connectors that are older and require additional steps.
+//- Some of this might not apply (i.e. a connector is backwards compatible with all released versions or there is no previous version)
 
 
 === Features
 
-. <Feature_Title> - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+. <Feature_Title> - A description of the feature
 
-Example of a Feature listing:
+//Example of a Feature listing:
 
-NTLM Authentication - NTLM authentication is now more robust and widely compatible with more domain controller configurations. 
+//NTLM Authentication - NTLM authentication is now more robust and widely compatible with more domain controller configurations. 
 
 === Fixed in this Release
 
-. <Bug_Title> - <Conditions under which the bug used to happen, explain which was the result, which is now the fixed result> 
+- <Bug_Title> - <Conditions under which the bug used to happen, explain which was the result, which is now the fixed result> 
 
-Example of a Bug listing:
+//Example of a Bug listing:
 
-. Asyncronous processing now works when invoking via an External interface - Previously, when invoking an asyncronous service, the call could end up in a deadlock unless lock(object) was used. Now, the connector locks automatically and you don’t need to do it.
+//- Asyncronous processing now works when invoking via an External interface - Previously, when invoking an asyncronous service, the call could end up in a deadlock unless //lock(object) was used. Now, the connector locks automatically and you don’t need to do it.
 
-Example of what is NOT A BUG listing
+//Example of what is NOT A BUG listing
 
-. Fixed CLDCONNECT-XYZ (because projects are not public)
-. Functional tests XYZ now work (because functional testing or any other part of the development process is not visible to customers)
-. Increased Sonar coverage (ditto)
-. Resolved NPE (lacking information like scenarios under which it can be reproduced, what is NPE, etc)
+//- Fixed CLDCONNECT-XYZ (because projects are not public)
+//- Functional tests XYZ now work (because functional testing or any other part of the development process is not visible to customers)
+//- Increased Sonar coverage (ditto)
+//- Resolved NPE (lacking information like scenarios under which it can be reproduced, what is NPE, etc)
 
 === Known Issues
 
@@ -93,7 +93,7 @@ Example of what is NOT A BUG listing
 
 === Support Resources
 
-. Learn how to Install and Configure Anypoint Connectors in Anypoint Studio.
-. Access MuleSoft’s MuleForge forum to pose questions and get help from Mule’s broad community of users.
-. To access MuleSoft’s expert support team, subscribe to Mule ESB Enterprise and log in to MuleSoft’s Customer Portal.
+- Learn how to Install and Configure Anypoint Connectors in Anypoint Studio.
+- Access MuleSoft’s MuleForge forum to pose questions and get help from Mule’s broad community of users.
+- To access MuleSoft’s expert support team, subscribe to Mule ESB Enterprise and log in to MuleSoft’s Customer Portal.
 
