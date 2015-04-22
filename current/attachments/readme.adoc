@@ -1,8 +1,9 @@
-=== README.adoc Template
+= README.adoc Template
 
-----
-= [Name] Anypoint™ Connector
- ---
+
+== [Name] Anypoint™ Connector
+
+
 [Connector description including destination service or application]
 
 == Author
