@@ -4,6 +4,7 @@
 :toc: left
 :toclevels: 1
 :imagesdir: assets
+:assetsdir: assets/assets
 :compat-mode!:
 :linkcss:
 :source-highlighter: coderay

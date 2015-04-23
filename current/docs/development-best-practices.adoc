@@ -367,7 +367,7 @@ There are two kinds of demos that you can create:
 * Single operation demos
 * Workflow demos
 
-Single operation demos are used to invoke just one operation in the connector. Workflow demos are used to invoke a number of operations in the connector sequentially. These aim to show a simple usecase of the connector, such as a normal CRUD workflow. We provide two templates to help you create an interface for your demo, one for each kind of demo. You can find the template for single operation demos link:assets/single-operation-demo-template.html[here] and the template for the workflow demos link:assets/workflow-demo-template.html[here].
+Single operation demos are used to invoke just one operation in the connector. Workflow demos are used to invoke a number of operations in the connector sequentially. These aim to show a simple usecase of the connector, such as a normal CRUD workflow. We provide two templates to help you create an interface for your demo, one for each kind of demo. You can find the template for single operation demos link:{assetsdir}/single-operation-demo-template.html[here] and the template for the workflow demos link:{assetsdir}/workflow-demo-template.html[here].
 
 The demo HTML pages above make use of Twitter Bootstrap to present a clean interface to the user. You should base your demo on this template. If you are not familiar with the Twitter Bootstrap library, it is highly suggested to look at http://getbootstrap.com/getting-started/[their documentation page]. Single operation demos only provide a form, whereas workflow demos provide an accordion, where one step leads to the next. In the latter case, any values retrieved by the first step should be used to autofill values in the second step where possible.
 
@@ -459,4 +459,4 @@ This part is what ties everything together. The HTML represents what your users 
 
 The above snippet of HTML is taken from the workflow demo template, it represents a single panel in the accordion. This panel is split into two parts: the header and the content. The header refers to the content through the anchor tag (<a>). When this header is clicked, the content is shown. On the other hand, the content is composed of a simple form that is used to submit requests to Mule. These requests are handled by the JavaScript shown above.
 
-For a complete example of a workflow demo, you can download a sample project that uses MongoDB link:assets/workflow-operations-demo.zip[here].
+For a complete example of a workflow demo, you can download a sample project that uses MongoDB link:{assetsdir}/workflow-operations-demo.zip[here].
