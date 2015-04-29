@@ -804,13 +804,29 @@ If you are interested in more details, the project directory structure is descri
 <p>To have the best experience in Anypoint™ Studio, connectors must be DataMapper compliant. To achieve this, all operations must follow these recommendations.</p>
 </div>
 <div class="paragraph">
-<p>Any argument, returned or received, must be one of the following data types:
-. Map
-. POJO
-. List&lt;Map&gt;
-. List&lt;String&gt;
-. List&lt;POJO&gt;
-. List&lt;List&lt;String&gt;&gt;</p>
+<p>Any argument, returned or received, must be one of the following data types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Map</p>
+</li>
+<li>
+<p>POJO</p>
+</li>
+<li>
+<p>List&lt;Map&gt;</p>
+</li>
+<li>
+<p>List&lt;String&gt;</p>
+</li>
+<li>
+<p>List&lt;POJO&gt;</p>
+</li>
+<li>
+<p>List&lt;List&lt;String&gt;&gt;</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>These types must be part of the method signature so that DataMapper can auto-recognize the types in it&#8217;s mapping UI.</p>
@@ -900,9 +916,11 @@ Only use a map if your data:
 <div class="sect2">
 <h3 id="_no_warning_during_compilation">No Warning during compilation</h3>
 <div class="paragraph">
-<p>DevKit does a intensive analysis of the used annotations and semantic of them in conjunction with others. It’s important the the code is free of compilation warning to help on the maintainability of the code and to follow good practices.
-=== DevKit Generated API Doc</p>
+<p>DevKit does a intensive analysis of the used annotations and semantic of them in conjunction with others. It’s important the the code is free of compilation warning to help on the maintainability of the code and to follow good practices.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_devkit_generated_api_doc">DevKit Generated API Doc</h3>
 <div class="paragraph">
 <p>Connector documentation is composed of two different type of documentation: DevKit Generated DevKit API Doc and the Connector Documentation.</p>
 </div>
@@ -8853,7 +8871,7 @@ Documentation is a vital part of the development stage. Your development team mu
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-04-23 09:09:56 EDT
+Last updated 2015-04-29 10:09:55 EDT
 </div>
 </div>
 </body>
