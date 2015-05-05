@@ -462,7 +462,50 @@ Development best practices and coding standars have been learned within the conn
 <h2 id="_connector_category">Connector Category</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>There are four types of categories with different support policies: Premium, Select, Standard and Community. A connector should define its category within the Maven properties. Further information about connector categories can be found <a href="https://www.mulesoft.com/downloads/legal/mule-esb-support-maintenance-term">here</a>.</p>
+<p>There are four types of categories with different support policies:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Premium</p>
+</li>
+<li>
+<p>Select</p>
+</li>
+<li>
+<p>Standard</p>
+</li>
+<li>
+<p>Community</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Further information about connector categories can be found <a href="http://www.mulesoft.org/documentation/display/current/Anypoint+Connectors#AnypointConnectors-ConnectorCategories">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>A connector should define its category in the POM properties:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;groupId&gt;</span>org.mule.modules<span class="tag">&lt;/groupId&gt;</span>
+<span class="tag">&lt;artifactId&gt;</span>mule-module-sample-connector<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;name&gt;</span>Mule Sample Connector <span class="tag">&lt;/name&gt;</span>
+<span class="tag">&lt;packaging&gt;</span>pom/packaging<span class="error">&gt;</span>
+
+<span class="tag">&lt;properties&gt;</span>
+    <span class="tag">&lt;category&gt;</span>Select<span class="tag">&lt;/category&gt;</span>
+    <span class="tag">&lt;licensePath&gt;</span>LICENSE.md<span class="tag">&lt;/licensePath&gt;</span>
+    <span class="tag">&lt;devkit.studio.package.skip&gt;</span>false<span class="tag">&lt;/devkit.studio.package.skip&gt;</span>
+<span class="tag">&lt;/properties&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If a connector is categorized under <strong>Select</strong>, then the connector code must include the <strong>@RequiresEnterpriseLicense</strong> annotation.</p>
+</div>
+<div class="paragraph">
+<p>If a connector is categorized under <strong>Premium</strong>, then the connector code must include both the <strong>@RequiresEnterpriseLicense</strong> and the <strong>@RequiresEntitlement</strong> annotations.</p>
 </div>
 </div>
 </div>
@@ -8875,7 +8918,7 @@ Documentation is a vital part of the development stage. Your development team mu
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-04-29 10:20:22 EDT
+Last updated 2015-05-05 14:45:56 EDT
 </div>
 </div>
 </body>
