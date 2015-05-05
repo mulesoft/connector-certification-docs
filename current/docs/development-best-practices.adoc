@@ -10,7 +10,35 @@ DevKit 3.6.x assures that a connector will be compatible with Mule ESB 3.5.x and
 
 == Connector Category
 
-There are four types of categories with different support policies: Premium, Select, Standard and Community. A connector should define its category within the Maven properties. Further information about connector categories can be found https://www.mulesoft.com/downloads/legal/mule-esb-support-maintenance-term[here].
+There are four types of categories with different support policies:
+
+* Premium
+* Select
+* Standard
+* Community
+
+Further information about connector categories can be found http://www.mulesoft.org/documentation/display/current/Anypoint+Connectors#AnypointConnectors-ConnectorCategories[here].
+
+A connector should define its category in the POM properties:
+
+[source, xml]
+----
+<groupId>org.mule.modules</groupId>
+<artifactId>mule-module-sample-connector</artifactId>
+<version>1.0.0-SNAPSHOT</version>
+<name>Mule Sample Connector </name>
+<packaging>pom/packaging>
+
+<properties>
+    <category>Select</category>
+    <licensePath>LICENSE.md</licensePath>
+    <devkit.studio.package.skip>false</devkit.studio.package.skip>
+</properties>
+----
+
+If a connector is categorized under **Select**, then the connector code must include the **@RequiresEnterpriseLicense** annotation.
+
+If a connector is categorized under **Premium**, then the connector code must include both the **@RequiresEnterpriseLicense** and the **@RequiresEntitlement** annotations.
 
 == Code Conventions
 
