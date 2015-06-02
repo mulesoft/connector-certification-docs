@@ -12,14 +12,20 @@ CUT: Connector under test
 === Installation
 
 ==== Step 1: Check System Requirements
+
 . http://maven.apache.org/download.cgi[Maven 3.2] or Greater
 . http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html[Java 1.7]
 . http://www.mulesoft.org/download-mule-esb-community-edition[Anypoint Studio]
 
 ==== Step 2: Anypoint Devkit Plugin
 Follow these steps on the Runner Platform's Anypoint Studio installation:
+
 . Click Help > Install New Software.
-. Click Anypoint Addons Update Site from the Work with drop-down. Note: If this item is not in the dropdown, click Add and specify the name, and for the URL, use: http://studio.mulesoft.org/r3/addons/beta
+. Click Anypoint Addons Update Site from the drop-down. 
+
++
+NOTE: If this item is not in the dropdown, click Add and specify the name, and for the URL, use: http://studio.mulesoft.org/r4/addons/beta
+
 . Click the checkbox for Anypoint DevKit Plugin, and click *Next, Next, Finish*.
 . Restart Anypoint Studio when prompted.
 
