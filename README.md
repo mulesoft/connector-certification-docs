@@ -1,14 +1,16 @@
 # Anypoint Connector Certification Process 
-## Public Documentation here
-http://mulesoft.github.io/connector-certification-docs
+
+## Complete Certification Documentation here
+http://mulesoft.github.io/complete-connector-certification-docs
+
+## Complete Certification Documentation here
+http://mulesoft.github.io/basic-connector-certification-docs 
 
 ## Preparing your environment
 1. Install ruby.
-2. Install coderay: `sudo gem install coderay`.
-3. Install asciidoctor: `sudo gem install asciidoctor`.
+2. Install rake: `sudo gem install rake`.	
 
 ## Building the docs locally:
-1. Go to `[your_path]/connector-certification-docs/current` folder.
-2. Run the following command: `asciidoctor -a stylesheet=assets/mule.css user-manual.adoc`.
-3. Open the generated html file: `[your_path]/connector-certification-docs/current/user-manual.html`.
-4. Be amazed.
+1. Just run rake docs:build (docs:buildBasicCert for the basic certification docs) 
+2. An HTML file will be generated with 2 new folders: images and files.
+3. Open the HTML generated file and there you go.
