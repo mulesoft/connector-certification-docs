@@ -5,7 +5,6 @@ namespace :docs do
     Dir.glob("docs/*/images/*").each do |image|
       FileUtils.copy(image, "images/" + File.basename(image))
     end
-
     Dir.mkdir 'files' unless Dir.exists? 'files'
     Dir.glob("docs/*/files/*").each do |file|
       FileUtils.copy(file, "files/" + File.basename(file))
@@ -33,10 +32,48 @@ namespace :docs do
 
   end
 
+  task :package do
+    Dir.mkdir 'generated' unless Dir.exists? 'generated'
+    Dir.mkdir 'generated/images' unless Dir.exists? 'generated/images'
+    Dir.glob("images/*").each do |image|
+      FileUtils.copy(image, "generated/images/" + File.basename(image))
+    end
+    Dir.mkdir 'generated/files' unless Dir.exists? 'generated/files'
+    Dir.glob("files/*").each do |file|
+      FileUtils.copy(file, "generated/files/" + File.basename(file))
+    end
+    Dir.glob("*.html").each do |file|
+      FileUtils.copy(file, "generated/"+File.basename(file));
+    end
+  end
+
+  task :unpackage do
+    `rm -rf images`
+    `rm -rf files`
+    Dir.glob("*.html").each do |file|
+      FileUtils.rm file
+    end
+
+    Dir.mkdir 'images' unless Dir.exists? 'images'
+    Dir.glob("generated/images/*").each do |image|
+      FileUtils.copy(image, "images/" + File.basename(image))
+    end
+    Dir.mkdir 'files' unless Dir.exists? 'files'
+    Dir.glob("generated/files/*").each do |file|
+      FileUtils.copy(file, "files/" + File.basename(file))
+    end
+
+    Dir.glob("generated/*.html").each do |file|
+      FileUtils.copy(file, File.basename(file))
+    end
+
+  end
+
   desc 'push generated documents to the repository'
-  task :upload => :build do
+  task :upload => [:build, :package ] do
     puts "Uploading generated documentation"
     `git checkout gh-pages -f`
+     Rake::Task["docs:unpackage"].invoke
     `git add *.html && git add images/ && git add files/ && git commit -m 'Updated documentation'`
     `git push origin gh-pages -f`
     `git checkout develop -f`
@@ -45,9 +82,12 @@ namespace :docs do
 
   desc 'clean out generated formats'
   task :clean do
-    `rm *.html`
+    `rm -rf generated`
     `rm -rf images`
     `rm -rf files`
+    Dir.glob("*.html").each do |file|
+      FileUtils.rm file
+    end
   end
 
 end
