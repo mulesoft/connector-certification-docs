@@ -11,6 +11,6 @@ http://mulesoft.github.io/basic-connector-certification-docs
 2. Install rake: `sudo gem install rake`.	
 
 ## Building the docs locally:
-1. Just run rake docs:build (docs:buildBasicCert for the basic certification docs) 
-2. An HTML file will be generated with 2 new folders: images and files.
-3. Open the HTML generated file and there you go.
+1. Just run rake `docs:build` (`docs:buildBasicCert` for the basic certification docs) 
+2. An __HTML__ file will be generated with 2 new folders: __images and files__.
+3. Open the __HTML__ generated file and there you go.
