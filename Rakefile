@@ -1,16 +1,16 @@
 namespace :docs do
   desc 'prepare build'
   task :prebuild do
-    Dir.mkdir 'images' unless Dir.exists? 'images'
-    Dir.glob("docs/*/images/*").each do |image|
+    Dir.mkdir './images' unless Dir.exists? 'images'
+    Dir.glob("./docs/*/images/*").each do |image|
       FileUtils.copy(image, "images/" + File.basename(image))
     end
-    Dir.mkdir 'files' unless Dir.exists? 'files'
-    Dir.glob("docs/*/files/*").each do |file|
-      FileUtils.copy(file, "files/" + File.basename(file))
+    Dir.mkdir './files' unless Dir.exists? './files'
+    Dir.glob("./docs/*/files/*").each do |file|
+      FileUtils.copy(file, "./files/" + File.basename(file))
     end
 
-    Dir.glob("files/*.asc").each do |file|
+    Dir.glob("./files/*.asc").each do |file|
       `asciidoctor #{file}`
     end
   end
@@ -33,37 +33,37 @@ namespace :docs do
   end
 
   task :package do
-    Dir.mkdir 'generated' unless Dir.exists? 'generated'
-    Dir.mkdir 'generated/images' unless Dir.exists? 'generated/images'
-    Dir.glob("images/*").each do |image|
-      FileUtils.copy(image, "generated/images/" + File.basename(image))
+    Dir.mkdir './generated' unless Dir.exists? './generated'
+    Dir.mkdir './generated/images' unless Dir.exists? './generated/images'
+    Dir.glob("./images/*").each do |image|
+      FileUtils.copy(image, "./generated/images/" + File.basename(image))
     end
-    Dir.mkdir 'generated/files' unless Dir.exists? 'generated/files'
-    Dir.glob("files/*").each do |file|
-      FileUtils.copy(file, "generated/files/" + File.basename(file))
+    Dir.mkdir './generated/files' unless Dir.exists? './generated/files'
+    Dir.glob("./files/*").each do |file|
+      FileUtils.copy(file, "./generated/files/" + File.basename(file))
     end
-    Dir.glob("*.html").each do |file|
-      FileUtils.copy(file, "generated/"+File.basename(file));
+    Dir.glob("./*.html").each do |file|
+      FileUtils.copy(file, "./generated/"+File.basename(file));
     end
   end
 
   task :unpackage do
-    `rm -rf images`
-    `rm -rf files`
-    Dir.glob("*.html").each do |file|
+    `rm -rf ./images`
+    `rm -rf ./files`
+    Dir.glob("./*.html").each do |file|
       FileUtils.rm file
     end
 
-    Dir.mkdir 'images' unless Dir.exists? 'images'
-    Dir.glob("generated/images/*").each do |image|
-      FileUtils.copy(image, "images/" + File.basename(image))
+    Dir.mkdir './images' unless Dir.exists? './images'
+    Dir.glob("./generated/images/*").each do |image|
+      FileUtils.copy(image, "./images/" + File.basename(image))
     end
-    Dir.mkdir 'files' unless Dir.exists? 'files'
-    Dir.glob("generated/files/*").each do |file|
-      FileUtils.copy(file, "files/" + File.basename(file))
+    Dir.mkdir './files' unless Dir.exists? './files'
+    Dir.glob("./generated/files/*").each do |file|
+      FileUtils.copy(file, "./files/" + File.basename(file))
     end
 
-    Dir.glob("generated/*.html").each do |file|
+    Dir.glob("./generated/*.html").each do |file|
       FileUtils.copy(file, File.basename(file))
     end
 
@@ -85,7 +85,7 @@ namespace :docs do
     `rm -rf generated`
     `rm -rf images`
     `rm -rf files`
-    Dir.glob("*.html").each do |file|
+    Dir.glob("./*.html").each do |file|
       FileUtils.rm file
     end
   end
