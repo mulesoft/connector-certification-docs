@@ -12,10 +12,7 @@ gem 'asciidoctor-pdf', '1.5.0.alpha.5'
 gem 'coderay'
 gem 'pygments.rb'
 gem 'thread_safe'
-gem 'epubcheck'
-gem 'kindlegen'
 
 gem 'colorize'
 gem 'atlas-api'
 
-gem 'oily_png'

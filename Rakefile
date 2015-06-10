@@ -10,9 +10,9 @@ namespace :docs do
       FileUtils.copy(file, "./files/" + File.basename(file))
     end
 
-    # Dir.glob("./files/*.asc").each do |file|
-    #   `asciidoctor #{file}`
-    # end
+    Dir.glob("./files/*.asc").each do |file|
+      `asciidoctor #{file}`
+    end
   end
 
 
