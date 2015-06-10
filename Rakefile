@@ -74,9 +74,9 @@ namespace :docs do
     puts "Uploading generated documentation"
     `git checkout gh-pages -f`
      Rake::Task["docs:unpackage"].invoke
-    `git add *.html && git add images/ && git add files/ && git commit -m 'Updated documentation'`
+    `git add *.html && git add images/ && git add files/ && git commit -m 'Update Docs'`
     `git push origin gh-pages -f`
-    `git checkout develop -f`
+    `git checkout develop`
 
   end
 
