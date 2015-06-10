@@ -36,7 +36,8 @@ namespace :docs do
   desc 'push generated documents to the repository'
   task :upload => :build do
     puts "Uploading generated documentation"
-    `git add *.html && git add images/ && git commit -m 'Updated documentation'`
+    `git checkout gh-pages`
+    `git add *.html && git add images/ && git add files/ && git commit -m 'Updated documentation'`
     `git push origin develop -f`
   end
 
