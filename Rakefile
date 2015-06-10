@@ -11,7 +11,7 @@ namespace :docs do
     end
 
     Dir.glob("files/*.asc").each do |file|
-      `bundle exec asciidoctor #{file}`
+      `asciidoctor #{file}`
     end
   end
 
@@ -19,7 +19,7 @@ namespace :docs do
   task :build => :prebuild do
 
     puts "Converting to HTML..."
-    `bundle exec asciidoctor certification-docbook.asc -a stylesheet=theme/style.css`
+    `asciidoctor certification-docbook.asc -a stylesheet=theme/style.css`
     puts " -- HTML output at certification-docbook.html"
 
   end
@@ -27,7 +27,7 @@ namespace :docs do
   task :buildBasicCert => :prebuild do
 
     puts "Converting to HTML..."
-    `bundle exec asciidoctor basic-certification-docbook.asc -a stylesheet=theme/style.css`
+    `asciidoctor basic-certification-docbook.asc -a stylesheet=theme/style.css`
     puts " -- HTML output at basic-certification-docbook.html"
 
   end
