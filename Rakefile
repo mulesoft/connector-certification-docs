@@ -16,19 +16,19 @@ namespace :docs do
   end
 
 
-  task :build => :prebuild do
+  task :build, [:arg1] => :prebuild do |t, args|
+    args.with_defaults(:arg1 => 'complete')
+    puts "Converting to HTML - #{args[:arg1]} docs"
 
-    puts "Converting to HTML..."
-    `asciidoctor certification-docbook.asc -a stylesheet=theme/style.css`
-    puts " -- HTML output at certification-docbook.html"
+   if args[:arg1] ==  'complete'
+      `asciidoctor certification-docbook.asc -a stylesheet=theme/style.css`
+      puts " -- HTML output at certification-docbook.html"
+    end 
 
-  end
-
-  task :buildBasicCert => :prebuild do
-
-    puts "Converting to HTML..."
-    `asciidoctor basic-certification-docbook.asc -a stylesheet=theme/style.css`
-    puts " -- HTML output at basic-certification-docbook.html"
+    if args[:arg1] == 'basic'
+      `asciidoctor basic-certification-docbook.asc -a stylesheet=theme/style.css`
+      puts " -- HTML output at basic-certification-docbook.html"
+    end
 
   end
 
@@ -70,7 +70,7 @@ namespace :docs do
   end
 
   desc 'push generated documents to the repository'
-  task :upload => [:build, :package ] do
+  task :upload => [:build, :package] do
     puts "Uploading generated documentation"
     `git checkout gh-pages -f`
      Rake::Task["docs:unpackage"].invoke
