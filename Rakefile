@@ -43,7 +43,7 @@ namespace :docs do
       FileUtils.copy(file, "./generated/files/" + File.basename(file))
     end
     Dir.glob("./*.html").each do |file|
-      FileUtils.copy(file, "./generated/"+File.basename(file));
+      FileUtils.copy(file, "./generated/index.html);
     end
   end
 
