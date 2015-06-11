@@ -54,7 +54,7 @@ namespace :docs do
 
     `rm -rf #{args[:to]}images`
     `rm -rf #{args[:to]}files`
-    Dir.glob("#{args[:to]}*.html").each do |file|
+    Dir.glob(#{args[:to]}+"*.html").each do |file|
       FileUtils.rm file
     end
 
