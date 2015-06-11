@@ -47,24 +47,28 @@ namespace :docs do
     end
   end
 
-  task :unpackage do
-    `rm -rf ./images`
-    `rm -rf ./files`
-    Dir.glob("./*.html").each do |file|
+  task :unpackage, :to do |t, args|
+
+    args.with_defaults(:to => './')
+    args[:to]
+
+    `rm -rf #{args[:to]}images`
+    `rm -rf #{args[:to]}files`
+    Dir.glob("#{args[:to]}*.html").each do |file|
       FileUtils.rm file
     end
 
-    Dir.mkdir './images' unless Dir.exists? './images'
-    Dir.glob("./generated/images/*").each do |image|
-      FileUtils.copy(image, "./images/" + File.basename(image))
+    Dir.mkdir args[:to]+'images' unless Dir.exists? args[:to]+'images'
+    Dir.glob("generated/images/*").each do |image|
+      FileUtils.copy(image, "#{args[:to]}images/" + File.basename(image))
     end
-    Dir.mkdir './files' unless Dir.exists? './files'
-    Dir.glob("./generated/files/*").each do |file|
-      FileUtils.copy(file, "./files/" + File.basename(file))
+    Dir.mkdir args[:to]+'files' unless Dir.exists? args[:to]+'files'
+    Dir.glob("generated/files/*").each do |file|
+      FileUtils.copy(file, "#{args[:to]}files/" + File.basename(file))
     end
 
-    Dir.glob("./generated/*.html").each do |file|
-      FileUtils.copy(file, File.basename(file))
+    Dir.glob("generated/*.html").each do |file|
+      FileUtils.copy(file, args[:to]+File.basename(file))
     end
 
   end
