@@ -43,7 +43,7 @@ namespace :docs do
       FileUtils.copy(file, "./generated/files/" + File.basename(file))
     end
     Dir.glob("./*.html").each do |file|
-      FileUtils.copy(file, "./generated/index.html);
+      FileUtils.copy(file, "./generated/index.html");
     end
   end
 
@@ -54,7 +54,7 @@ namespace :docs do
 
     `rm -rf #{args[:to]}images`
     `rm -rf #{args[:to]}files`
-    Dir.glob(#{args[:to]}+"*.html").each do |file|
+    Dir.glob(args[:to]+"*.html").each do |file|
       FileUtils.rm file
     end
 
