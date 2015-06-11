@@ -145,6 +145,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
 #toc ul{font-family:"Ubuntu",sans-serif;list-style-type:none}
 #toc a{text-decoration:none}
+#toc>ul>li>a { font-weight: bold; color:#00A3E0; }
 #toc a:active{text-decoration:underline}
 #toctitle{color:#00A3E0;font-size:1.2em}
 @media only screen and (min-width:768px){#toctitle{font-size:1.375em}
