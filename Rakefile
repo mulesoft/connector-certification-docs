@@ -78,20 +78,18 @@ namespace :docs do
   desc 'push generated documents to the repository'
   task :upload, [:type] => [:package] do |t, args|
     args.with_defaults(:type => 'complete')
-    puts "Uploading generated documentation"
+
     `git checkout gh-pages -f`
     if args[:type] ==  'complete'
+      puts "Uploading generated COMPLETE documentation"
       Rake::Task["docs:unpackage"].invoke('complete')
-      `git add complete/`
     end
     if args[:type] ==  'basic'
+      puts "Uploading generated BASIC documentation"
       Rake::Task["docs:unpackage"].invoke('basic')
-      `git add basic/` 
     end
-    
+    `git add #{args[:type]}/`
     `git push origin gh-pages -f`
-    `git checkout develop`
-
   end
 
   desc 'clean out generated formats'
