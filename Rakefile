@@ -15,7 +15,7 @@ namespace :docs do
     end
   end
 
-
+  desc'build the documentation, specify basic or complete'
   task :build, [:arg1] => :prebuild do |t, args|
     args.with_defaults(:arg1 => 'complete')
     puts "Converting to HTML - #{args[:arg1]} docs"
@@ -32,6 +32,7 @@ namespace :docs do
 
   end
 
+  desc 'package the documents into the generated folder'
   task :package do
     Dir.mkdir './generated' unless Dir.exists? './generated'
     Dir.mkdir './generated/images' unless Dir.exists? './generated/images'
@@ -47,6 +48,7 @@ namespace :docs do
     end
   end
 
+  desc 'unpackage the docs in the specified folder'
   task :unpackage, :to do |t, args|
 
     args.with_defaults(:to => '.')
