@@ -90,8 +90,9 @@ namespace :docs do
       puts "Uploading generated BASIC documentation"
       Rake::Task["docs:unpackage"].invoke('basic')
     end
-    `git add #{args[:type]}/`
+    `git add #{args[:type]}/ && git commit -m "Update documentation" `
     `git push origin gh-pages -f`
+    `git checkout develop -f`
   end
 
   desc 'clean out generated formats'
