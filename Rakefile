@@ -49,36 +49,44 @@ namespace :docs do
 
   task :unpackage, :to do |t, args|
 
-    args.with_defaults(:to => './')
+    args.with_defaults(:to => '.')
     args[:to]
 
-    `rm -rf #{args[:to]}images`
-    `rm -rf #{args[:to]}files`
-    Dir.glob(args[:to]+"*.html").each do |file|
+    Dir.mkdir args[:to] unless Dir.exists? args[:to]
+
+    `rm -rf #{args[:to]}/images`
+    `rm -rf #{args[:to]}/files`
+    Dir.glob(args[:to]+"/*.html").each do |file|
       FileUtils.rm file
     end
 
-    Dir.mkdir args[:to]+'images' unless Dir.exists? args[:to]+'images'
+    Dir.mkdir args[:to]+'/images' unless Dir.exists? args[:to]+'/images'
     Dir.glob("generated/images/*").each do |image|
-      FileUtils.copy(image, "#{args[:to]}images/" + File.basename(image))
+      FileUtils.copy(image, "#{args[:to]}/images/" + File.basename(image))
     end
-    Dir.mkdir args[:to]+'files' unless Dir.exists? args[:to]+'files'
+    Dir.mkdir args[:to]+'/files' unless Dir.exists? args[:to]+'/files'
     Dir.glob("generated/files/*").each do |file|
-      FileUtils.copy(file, "#{args[:to]}files/" + File.basename(file))
+      FileUtils.copy(file, "#{args[:to]}/files/" + File.basename(file))
     end
 
     Dir.glob("generated/*.html").each do |file|
-      FileUtils.copy(file, args[:to]+File.basename(file))
+      FileUtils.copy(file, args[:to]+'/'+File.basename(file))
     end
 
   end
 
   desc 'push generated documents to the repository'
-  task :upload => [:build, :package] do
+  task :upload, [:type] => [:package] do
+    args.with_defaults(:type => 'complete')
     puts "Uploading generated documentation"
     `git checkout gh-pages -f`
-     Rake::Task["docs:unpackage"].invoke
-    `git add *.html && git add images/ && git add files/ && git commit -m 'Update Docs'`
+    if args[:type] ==  'complete'
+      Rake::Task["docs:unpackage['complete']"].invoke
+    end
+    if args[:type] ==  'basic'
+      Rake::Task["docs:unpackage['basic']"].invoke
+    end
+    `git add basic/ && git add complete/`
     `git push origin gh-pages -f`
     `git checkout develop`
 
