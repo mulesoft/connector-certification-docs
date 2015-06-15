@@ -1,9 +1,9 @@
 # Anypoint Connector Certification Process 
 
-## Complete Certification Documentation here
+## Complete Certification Documentation URL
 http://mulesoft.github.io/complete-connector-certification-docs
 
-## Basic Certification Documentation here
+## Basic Certification Documentation URL
 http://mulesoft.github.io/basic-connector-certification-docs 
 
 ## Preparing your environment
