@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<!-- JQuery will be required for this demo -->
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+	
+	<!-- Import Twitter bootstrap libs + css -->
+	<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.css">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.js"></script>
+</head>
+<body>
+	<!-- Keep this simple ... define CSS for this simple webpage in the same file -->
+	<style>
+		body {
+			padding-top: 40px;
+			padding-bottom: 40px;
+			background-color: #eee;
+		}
+		.demo-form {
+			max-width: 500px;
+			padding: 15px;
+			margin: 0 auto;
+		}
+		.demo-form .demo-heading,
+		.demo-form .checkbox {
+			margin-bottom: 10px;
+		}
+		.demo-form .checkbox {
+			font-weight: normal;
+		}
+		.demo-form .form-control {
+			position: relative;
+			height: auto;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			padding: 10px;
+			font-size: 16px;
+		}
+		.demo-form .form-control:focus {
+			z-index: 2;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready( function() {
+
+			var createDiv 	= $('#createDiv');
+			var readDiv 	= $('#readDiv');
+			var updateDiv 	= $('#updateDiv');
+			var deleteDiv 	= $('#deleteDiv');
+			
+			var createForm 	= $('#createForm');
+			var readForm 	= $('#readForm');
+			var updateForm 	= $('#updateForm');
+			var deleteForm 	= $('#deleteForm');
+			
+			createForm.submit(function() {
+              $.ajax({
+                type: 'POST',							  // Submit an HTTP POST request
+                url: '/create',							  // The URL where your endpoint is listening
+                data: createForm.serialize(),			  // Serialized form URL-encoded input
+                success: function(data) {				  // Success function called if request succeeds
+                  	
+                  $('input[name=message]').val(data.message); // Autofill data in the next workflow step as needed
+                  	
+                  createDiv.collapse('hide');			  // Hide current accordion window
+                  readDiv.collapse('show');				  // Show next accordion window
+                },
+                error: function(request, status, error){  // Error function is executed if an exception occurs in the flow
+              	  alert(request.responseText);			  // Alert the user of any errors
+              	}
+              });
+
+              return false;								  // Let jQuery handle the form submission
+            }); 
+
+			readForm.submit(function() {
+				$.ajax({
+					type: 'POST',
+					url: '/read',
+					data: readForm.serialize(),
+					success: function(data) {
+						$('input[name=updateObjectId]').val(data)
+						readDiv.collapse('hide');
+                        updateDiv.collapse('show');
+					},
+					error: function(request, status, error){
+	            		alert(request.responseText);
+	            	}
+				});
+				
+				return false;
+			});
+
+			updateForm.submit(function() {
+				$.ajax({
+					type: 'POST',
+					url: '/update',
+					data: updateForm.serialize(),
+					success: function(data) {
+						$('input[name=deleteObjectId]').val(data)
+						
+						updateDiv.collapse('hide');
+                        deleteDiv.collapse('show');
+					},
+					error: function(request, status, error){
+	            		alert(request.responseText);
+	            	}
+				});
+				
+				return false;
+			});
+			
+			deleteForm.submit(function() {
+				$.ajax({
+					type: 'POST',
+					url: '/delete',
+					data: deleteForm.serialize(),
+					success: function(data) {
+						if (data) {
+							alert("Entry was deleted from MongoDB!");
+						}
+					},
+					error: function(request, status, error){
+	            		alert(request.responseText);
+	            	}
+				});
+				
+				return false;
+			});
+		}); 
+	</script>
+	<div class="container">
+		<div class="panel-group" id="accordion">
+		
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title demo-heading">
+						<a data-toggle="collapse" data-parent="#accordion" href="#createDiv">Create</a>
+					</h2>
+				</div>
+				<div id="createDiv" class="panel-collapse collapse in">
+					<div class="panel-body">
+						<form id="createForm" class="demo-form" role="form" >
+							<label>Message</label>
+							<input type="text" name="message" value="Hello from Mule!" required class="form-control" ><br>
+							<input class="btn btn-lg btn-primary btn-block" type="submit" value="Create"><br>
+						</form>
+					</div>
+				</div>
+			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title demo-heading">
+						<a data-toggle="collapse" data-parent="#accordion" href="#readDiv">Read</a>
+					</h2>
+				</div>
+				<div id="readDiv" class="panel-collapse collapse">
+					<div class="panel-body">
+						<form id="readForm" class="demo-form" role="form">
+							<label>Query for entries having the following message:</label>
+							<input type="text" id="message" name="message" required class="form-control"><br>
+							<input class="btn btn-lg btn-primary btn-block" type="submit" value="Read"><br>
+						</form>
+					</div>
+				</div>
+			</div>
+			
+ 			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title demo-heading">
+						<a data-toggle="collapse" data-parent="#accordion" href="#updateDiv">Update</a>
+					</h2>
+				</div>
+				<div id="updateDiv" class="panel-collapse collapse">
+					<div class="panel-body">
+						<form id="updateForm" class="demo-form" role="form" >
+							<label>Object Id</label>
+							<input type="text" name="updateObjectId" placeholder="Object ID" readonly class="form-control"><br>
+							<label>Updated message</label>
+							<input type="text" name="updateValue" placeholder="Update value" required class="form-control"><br>
+							<input class="btn btn-lg btn-primary btn-block" type="submit" value="Update"><br>
+						</form>
+					</div>
+				</div>
+			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title demo-heading">
+						<a data-toggle="collapse" data-parent="#accordion" href="#deleteDiv">Delete</a>
+					</h2>
+				</div>
+				<div id="deleteDiv" class="panel-collapse collapse">
+					<div class="panel-body">
+						<form id="deleteForm" class="demo-form" role="form" >
+							<label>Object ID</label>
+							<input type="text" name="deleteObjectId" placeholder="Object ID" readonly class="form-control"><br>
+							<input class="btn btn-lg btn-primary btn-block" type="submit" value="Delete"><br>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
