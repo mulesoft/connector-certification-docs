@@ -1,5 +1,5 @@
 #Generated html files
-*.html
+/*.html
 
 #Coderay plugin in atom
 coderay-asciidoctor.css
