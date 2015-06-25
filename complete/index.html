@@ -529,9 +529,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_installing_sonarqube">3.1. Installing SonarQube</a></li>
 <li><a href="#_performing_your_first_analysis">3.2. Performing Your First Analysis</a></li>
 <li><a href="#_sonarqube_eclipse_plugin_setup">3.3. SonarQube Eclipse Plugin Setup</a></li>
-<li><a href="#_quality_profile_rules">3.4. Quality Profile Rules</a></li>
-<li><a href="#_code_coverage">3.5. Code Coverage</a></li>
-<li><a href="#_code_quality_review_guideline">3.6. Code Quality Review Guideline</a></li>
+<li><a href="#_code_coverage">3.4. Code Coverage</a></li>
+<li><a href="#_code_quality_review_guideline">3.5. Code Quality Review Guideline</a></li>
 </ul>
 </li>
 <li><a href="#_functional_tests_automation">4. Functional Tests Automation</a>
@@ -1643,13 +1642,13 @@ For guidelines on how to build your tests using this framework, see <a href="#fu
 </div>
 </li>
 <li>
-<p>Download our <a href="assets/assets/quality-profile.xml">Custom Quality Profile</a></p>
+<p>Download our <a href="files/quality-profile.xml">Custom Quality Profile</a></p>
 </li>
 <li>
 <p>Go to the <strong>Quality Profiles</strong> tab and Click <strong>Create</strong>.</p>
 </li>
 <li>
-<p>Then choose the <a href="https://drive.google.com/uc?export=download&amp;id=0B8N265C555thaXBSV256SkZtMlk">Quality Profile</a> file that you downloaded, name it "Anypoint Connectors Profile" and click <strong>Create</strong>.</p>
+<p>Then choose the <strong>Quality Profile</strong> file that you downloaded, name it "Anypoint Connectors Profile" and click <strong>Create</strong>.</p>
 </li>
 <li>
 <p>When you see the profile in the list click in <strong>Set as Default</strong>.</p>
@@ -1768,39 +1767,29 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 </li>
 <li>
 <p>To associate your project on the SonarQube server, perform a full analysis once. You can do this by running mvn sonar:sonar in your Connector project.</p>
-</li>
-</ul>
-</div>
 <div class="paragraph">
 <p>You should perform this full analysis from a machine that is on the same network as the SonarQube database, otherwise it might take very long to complete.</p>
 </div>
 <div class="paragraph">
 <p>When your project finishes analyzing, in Studio right-click your connector project and click <strong>Configure &gt; Associate with SonarQube</strong>. Because your project was analyzed with Maven, the association detects automatically.</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/sonar-6.png" alt="sonar 6">
+</div>
+</div>
+</li>
+<li>
+<p>After association, your project is analysed with SonarQube and the results are shown on the SonarQube issues tab. Also, the Package Explorer and file editor display error and warning icons according to the issues on your project.</p>
 <div class="paragraph">
-<p>+
-image::images/sonar-6.png[]</p>
+<p>New issues introduced since the previous analysis are marked as errors, while existing issues are marked as warnings. This is a cosmetic difference only, which helps to highlight new technical debt being introduced in your code before you check it in.</p>
 </div>
-<div class="paragraph">
-<p>+
-* After association, your project is analysed with SonarQube and the results are shown on the SonarQube issues tab. Also, the Package Explorer and file editor display error and warning icons according to the issues on your project.</p>
-</div>
-<div class="paragraph">
-<p>+
-New issues introduced since the previous analysis are marked as errors, while existing issues are marked as warnings. This is a cosmetic difference only, which helps to highlight new technical debt being introduced in your code before you check it in.</p>
-</div>
-<div class="paragraph">
-<p>+
-* To analyse your project again, right-click it and click <strong>SonarQube &gt; Analyse</strong>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_quality_profile_rules">3.4. Quality Profile Rules</h3>
-<div class="paragraph">
-<p>SonarQube classifies each issue with a severity:</p>
-</div>
-<div class="ulist">
-<ul>
+</li>
+<li>
+<p>To analyse your project again, right-click it and click <strong>SonarQube &gt; Analyse</strong>.
+=== Quality Profile Rules
+SonarQube classifies each issue with a severity:</p>
+</li>
 <li>
 <p>Blocker &amp; Critical: Bugs or unacceptable programming practices. Your connector cannot have blocker or Critical issues to be certified. You must correct all issues.</p>
 </li>
@@ -1820,7 +1809,7 @@ New issues introduced since the previous analysis are marked as errors, while ex
 </div>
 </div>
 <div class="sect2">
-<h3 id="_code_coverage">3.5. Code Coverage</h3>
+<h3 id="_code_coverage">3.4. Code Coverage</h3>
 <div class="paragraph">
 <p>SonarQube also lets you manage Code Coverage reports of your connector.</p>
 </div>
@@ -1861,7 +1850,7 @@ New issues introduced since the previous analysis are marked as errors, while ex
 <p>Every connector method must have unit or automation tests. A connector fails certification if it does not have all its message processors, message sources, and custom transformers covered by unit tests or automation tests. Also, all the utility classes that are part of a connector must have a high level of code coverage.</p>
 </div>
 <div class="sect3">
-<h4 id="_code_coverage_must_be_no_less_than_70">3.5.1. Code coverage must be no less than 70%.</h4>
+<h4 id="_code_coverage_must_be_no_less_than_70">3.4.1. Code coverage must be no less than 70%.</h4>
 <div class="paragraph">
 <p>Testing your processors gives you a good indication of the quality of your connector. When you build automation tests, you are using your own connector to connect to an API. If you find it hard to test all cases of a message processor, then consider separating your message processors into smaller ones, if possible.</p>
 </div>
@@ -1870,7 +1859,7 @@ New issues introduced since the previous analysis are marked as errors, while ex
 </div>
 </div>
 <div class="sect3">
-<h4 id="_ignoring_classes_from_testing">3.5.2. Ignoring Classes from Testing</h4>
+<h4 id="_ignoring_classes_from_testing">3.4.2. Ignoring Classes from Testing</h4>
 <div class="paragraph">
 <p>You should <strong>NEVER</strong> prevent classes from being tested unless there is good reason. If you feel that there is a need to ignore classes from inspection, contact either Mariano Quintela, or Paulo Gustavo Veiga. Unless explicitly stated in the code comments or in some form of internal documentation, assume that all code must be inspected. Any ignored classes or packages without proper explanation should be inspected and any blocker or critical issues that arise should be resolved, <strong>and tested</strong> by the developer before the connector is released.</p>
 </div>
@@ -1937,7 +1926,7 @@ New issues introduced since the previous analysis are marked as errors, while ex
 </div>
 </div>
 <div class="sect2">
-<h3 id="_code_quality_review_guideline">3.6. Code Quality Review Guideline</h3>
+<h3 id="_code_quality_review_guideline">3.5. Code Quality Review Guideline</h3>
 <div class="paragraph">
 <p>This is a hard area to tackle because typically, the person running certification is different from the one implementing the connector and writing tests for it. As a result, you might inspect the code and be completely lost.</p>
 </div>
@@ -8042,7 +8031,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 <p><a href="http://mulesoft.github.io/salesforce-connector/6.2.1/mule/sfdc-config.html#convert-lead">Salesforce Connector: convert-lead Apidocs</a>.</p>
 </div>
 <div class="paragraph">
-<p><a href="http://mulesoft.github.io/salesforce-connector/mule/sfdc-config.html#create">Salesforce Connector: create Apidocs</a>.</p>
+<p><a href="http://mulesoft.github.io/salesforce-connector/6.2.1/mule/sfdc-config.html#create">Salesforce Connector: create Apidocs</a>.</p>
 </div>
 </div>
 </div>
@@ -8124,7 +8113,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-06-25 11:29:14 EDT
+Last updated 2015-06-25 12:49:44 EDT
 </div>
 </div>
 </body>
