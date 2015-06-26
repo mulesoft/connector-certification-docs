@@ -15,15 +15,15 @@ namespace :docs do
     end
   end
 
-  desc'build the documentation, specify basic or complete'
+  desc'build the documentation, specify basic or advanced'
   task :build, [:arg1] => :prebuild do |t, args|
-    args.with_defaults(:arg1 => 'complete')
+    args.with_defaults(:arg1 => 'advanced')
     puts "Converting to HTML - #{args[:arg1]} docs"
 
-   if args[:arg1] ==  'complete'
+   if args[:arg1] ==  'advanced'
       `asciidoctor certification-docbook.asc -a stylesheet=theme/style.css`
       puts " -- HTML output at certification-docbook.html"
-    end 
+    end
 
     if args[:arg1] == 'basic'
       `asciidoctor basic-certification-docbook.asc -a stylesheet=theme/style.css`
@@ -79,12 +79,12 @@ namespace :docs do
 
   desc 'push generated documents to the repository'
   task :upload, [:type] => [:package] do |t, args|
-    args.with_defaults(:type => 'complete')
+    args.with_defaults(:type => 'advanced')
 
     `git checkout gh-pages -f`
-    if args[:type] ==  'complete'
-      puts "Uploading generated COMPLETE documentation"
-      Rake::Task["docs:unpackage"].invoke('complete')
+    if args[:type] ==  'advanced'
+      puts "Uploading generated advanced documentation"
+      Rake::Task["docs:unpackage"].invoke('advanced')
     end
     if args[:type] ==  'basic'
       puts "Uploading generated BASIC documentation"
