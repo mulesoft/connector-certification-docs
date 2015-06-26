@@ -529,8 +529,9 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_installing_sonarqube">3.1. Installing SonarQube</a></li>
 <li><a href="#_performing_your_first_analysis">3.2. Performing Your First Analysis</a></li>
 <li><a href="#_sonarqube_eclipse_plugin_setup">3.3. SonarQube Eclipse Plugin Setup</a></li>
-<li><a href="#_code_coverage">3.4. Code Coverage</a></li>
-<li><a href="#_code_quality_review_guideline">3.5. Code Quality Review Guideline</a></li>
+<li><a href="#_quality_profile_rules">3.4. Quality Profile Rules</a></li>
+<li><a href="#_code_coverage">3.5. Code Coverage</a></li>
+<li><a href="#_code_quality_review_guideline">3.6. Code Quality Review Guideline</a></li>
 </ul>
 </li>
 <li><a href="#_functional_tests_automation">4. Functional Tests Automation</a>
@@ -1786,10 +1787,18 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 </div>
 </li>
 <li>
-<p>To analyse your project again, right-click it and click <strong>SonarQube &gt; Analyse</strong>.
-=== Quality Profile Rules
-SonarQube classifies each issue with a severity:</p>
+<p>To analyse your project again, right-click it and click <strong>SonarQube &gt; Analyse</strong>.</p>
 </li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_quality_profile_rules">3.4. Quality Profile Rules</h3>
+<div class="paragraph">
+<p>SonarQube classifies each issue with a severity:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>Blocker &amp; Critical: Bugs or unacceptable programming practices. Your connector cannot have blocker or Critical issues to be certified. You must correct all issues.</p>
 </li>
@@ -1809,7 +1818,7 @@ SonarQube classifies each issue with a severity:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_code_coverage">3.4. Code Coverage</h3>
+<h3 id="_code_coverage">3.5. Code Coverage</h3>
 <div class="paragraph">
 <p>SonarQube also lets you manage Code Coverage reports of your connector.</p>
 </div>
@@ -1850,7 +1859,7 @@ SonarQube classifies each issue with a severity:</p>
 <p>Every connector method must have unit or automation tests. A connector fails certification if it does not have all its message processors, message sources, and custom transformers covered by unit tests or automation tests. Also, all the utility classes that are part of a connector must have a high level of code coverage.</p>
 </div>
 <div class="sect3">
-<h4 id="_code_coverage_must_be_no_less_than_70">3.4.1. Code coverage must be no less than 70%.</h4>
+<h4 id="_code_coverage_must_be_no_less_than_70">3.5.1. Code coverage must be no less than 70%.</h4>
 <div class="paragraph">
 <p>Testing your processors gives you a good indication of the quality of your connector. When you build automation tests, you are using your own connector to connect to an API. If you find it hard to test all cases of a message processor, then consider separating your message processors into smaller ones, if possible.</p>
 </div>
@@ -1859,7 +1868,7 @@ SonarQube classifies each issue with a severity:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_ignoring_classes_from_testing">3.4.2. Ignoring Classes from Testing</h4>
+<h4 id="_ignoring_classes_from_testing">3.5.2. Ignoring Classes from Testing</h4>
 <div class="paragraph">
 <p>You should <strong>NEVER</strong> prevent classes from being tested unless there is good reason. If you feel that there is a need to ignore classes from inspection, contact either Mariano Quintela, or Paulo Gustavo Veiga. Unless explicitly stated in the code comments or in some form of internal documentation, assume that all code must be inspected. Any ignored classes or packages without proper explanation should be inspected and any blocker or critical issues that arise should be resolved, <strong>and tested</strong> by the developer before the connector is released.</p>
 </div>
@@ -1926,7 +1935,7 @@ SonarQube classifies each issue with a severity:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_code_quality_review_guideline">3.5. Code Quality Review Guideline</h3>
+<h3 id="_code_quality_review_guideline">3.6. Code Quality Review Guideline</h3>
 <div class="paragraph">
 <p>This is a hard area to tackle because typically, the person running certification is different from the one implementing the connector and writing tests for it. As a result, you might inspect the code and be completely lost.</p>
 </div>
@@ -2950,25 +2959,21 @@ Each of the annotations on authorizationParameters are reflected in the Addition
 </li>
 <li>
 <p>Finally, add a <strong>Set Payload</strong> element after the logger.</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
+<div class="literalblock">
 <div class="content">
 <pre>Expected Result:
 Flow arrangement looks similar to this:</pre>
 </div>
-</div>
-</li>
-</ul>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/qa-guidelines-2.png" alt="qa guidelines 2">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p><strong>Step 10:</strong> On the <strong>HTTP</strong> connector, set a path value of anoperation.</p>
 </li>
@@ -2994,24 +2999,24 @@ Flow arrangement looks similar to this:</pre>
 <li>
 <p>Finally, add a <strong>Set Payload</strong> element after the
 logger.</p>
-</li>
-</ol>
-</div>
-<div class="listingblock">
+<div class="literalblock">
 <div class="content">
 <pre>Expected Result:
-
-Flow arrangement looks similar to this:
-image::images/qa-guidelines-3.png[]</pre>
+Flow arrangement looks similar to this:</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>￼</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/qa-guidelines-3.png" alt="qa guidelines 3">
+</div>
+</div>
+</li>
+</ol>
 </div>
 </li>
 <li>
 <p><strong>Step 14:</strong> On the connector, look for the Unauthorize operation.</p>
-<div class="listingblock">
+<div class="literalblock">
 <div class="content">
 <pre>Expected Result:
 Unauthorize operation is found.</pre>
@@ -3023,14 +3028,14 @@ Unauthorize operation is found.</pre>
 </li>
 <li>
 <p><strong>Step 16:</strong> Set Done. on all <strong>Set Payload</strong> elements Values. Click <strong>Save</strong>.</p>
+<div class="literalblock">
+<div class="content">
+<pre>Expected Result:
+Example of the project flows:</pre>
+</div>
+</div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>Expected Result:</p>
-</div>
-<div class="paragraph">
-<p>Example of the project flows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3506,16 +3511,12 @@ Mule &lt;connectorName&gt; Connector Anypoint Studio Extension
 Refer to screenshot.</pre>
 </div>
 </div>
-</li>
-</ul>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/qa-guidelines-4.png" alt="qa guidelines 4">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 4:</strong> Click the connector.</p>
 <div class="listingblock">
@@ -3560,14 +3561,14 @@ Anypoint Studio is restarted after installation.</pre>
 </li>
 <li>
 <p><strong>Step 8:</strong> After Anypoint Studio finishes loading, search for &lt;connectorName&gt;.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
 Connector displays under the Connectors category.</pre>
 </div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -3592,40 +3593,32 @@ Connector displays under the Connectors category.</pre>
 <ul>
 <li>
 <p><strong>Step 1:</strong> Search for the &lt;connectorName&gt;.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
 Icon displays on the Palette, which relates to the service the connector connects to.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 2:</strong> Drop a Flow element on the canvas. Afterwards select the connector from the Palette and place it within the Flow.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
 Icon displays and relates to the service the connector connects to.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 3:</strong> If MessageSources are supported by the connector drag the connector from the Palette to the Canvas.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
 Message Source icon for the connector displays.</pre>
 </div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -3662,22 +3655,15 @@ Message Source icon for the connector displays.</pre>
 </li>
 <li>
 <p><strong>Step 2:</strong> Drag the connector from the Palette and place it within the Flow.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
 Select a version ... dialog appears.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 3:</strong> Click <strong>Use newest</strong></p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -3691,21 +3677,16 @@ Version corresponds to the 3.5.0 connector.</pre>
 <img src="images/qa-guidelines-6.png" alt="qa guidelines 6">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 4:</strong> Secondary click the connector and select remove libraries for project.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
 Library is removed from project.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 5:</strong></p>
 <div class="olist loweralpha">
@@ -3715,50 +3696,41 @@ Library is removed from project.</pre>
 </li>
 <li>
 <p>Drag the connector from the Palette and place it within the Flow.</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
 Select a version ... dialog appears.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p><strong>Step 6:</strong> Click Choose manually.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
 * Connector is added to the canvas.
 * Connector related library is added to project.
-Version corresponds to the 3.5.x connector.
-
-image::images/qa-guidelines-7.png[]</pre>
+Version corresponds to the 3.5.x connector.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+<div class="imageblock">
+<div class="content">
+<img src="images/qa-guidelines-7.png" alt="qa guidelines 7">
+</div>
+</div>
+</li>
 <li>
 <p><strong>Step 7:</strong>￼ Secondary click the connector and select remove libraries for project.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
 Library is removed from the project.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 8:</strong></p>
 <div class="olist loweralpha">
@@ -3771,22 +3743,15 @@ Library is removed from the project.</pre>
 </li>
 </ol>
 </div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
 Select a version ... dialog appears.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 9:</strong> Click Choose manually.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -3800,8 +3765,7 @@ Select a version ... dialog appears.</pre>
 <img src="images/qa-guidelines-8.png" alt="qa guidelines 8">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 9:</strong> Randomly select one of options and click <strong>OK</strong>.</p>
 <div class="listingblock">
@@ -3915,10 +3879,10 @@ Password field’s text is hidden by default.</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>mule.properties file contains properties values that are under src/main/resources.</p>
+<p>mule.properties file contains properties values that are under <em>src/main/resources</em>.</p>
 </li>
 <li>
-<p>Property placeholder element referencing mule.properties was created.</p>
+<p>Property placeholder element referencing <em>mule.properties</em> was created.</p>
 </li>
 </ul>
 </div>
@@ -4552,32 +4516,34 @@ Password field’s text is hidden by default.</pre>
 <p><strong>Step 3:</strong> For the POJO no option is available by default.</p>
 </li>
 <li>
-<p><strong>Step 4:</strong> Select the Reference or expression option and enter #[flowVars[‘ref’]]as the value.
-Example:
-image::images/qa-guidelines-9.png[]</p>
+<p><strong>Step 4:</strong> Select the Reference or expression option and enter <code>#[flowVars[‘ref’]]`</code> as the value.</p>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/qa-guidelines-9.png" alt="qa guidelines 9">
+</div>
+</div>
 </li>
 <li>
 <p><strong>Step 5:</strong>
 Save and change to the Configuration XML view.</p>
-</li>
-</ul>
+<div class="listingblock">
+<div class="content">
+<pre>Expected Result: XML for the operation was generated using the ref attribute.
+Example XML:</pre>
+</div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml">Expected Result: XML for the operation was generated using the ref attribute.
-Example XML:
-
-<span class="tag">&lt;sfdc:batch-info</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Salesforce</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Salesforce</span><span class="delimiter">&quot;</span></span> <span class="tag">&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;sfdc:batch-info</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Salesforce</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Salesforce</span><span class="delimiter">&quot;</span></span> <span class="tag">&gt;</span>
 <span class="tag">&lt;sfdc:batch-info</span> <span class="attribute-name">ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">#[flowVars['batchInfoRef']]</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span> <span class="tag">&lt;/sfdc:batch-info&gt;</span></code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 6:</strong> Return to the Message Flow view, click the connector.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -4585,19 +4551,19 @@ Example XML:
 Same operation is selected, Reference or expression is selected for the POJO and the value was stored.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 7:</strong>
-￼For the same POJO select the Define attributes option and enter #[flowVars[‘pojoAttribute’]] for the Id and Job Id values.
-Example:
-image::images/qa-guidelines-10.png[]</p>
+￼For the same POJO select the Define attributes option and enter <code>#[flowVars[‘pojoAttribute’]]</code> for the Id and Job Id values.
+Example:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/qa-guidelines-10.png" alt="qa guidelines 10">
+</div>
+</div>
 </li>
 <li>
 <p><strong>Step 8:</strong> Save and change to the Configuration XML view.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml">Expected Result:
@@ -4608,19 +4574,18 @@ Example XML:
 <span class="tag">&lt;/sfdc:batch-info&gt;</span></code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 9:</strong>  Return to the Message Flow view, click the connector.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
 
 Same operation is selected, Define attributes is selected for the POJO and the attributes values were stored.</pre>
 </div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -4689,9 +4654,6 @@ public Gist getGist(String gistId) throws IOException {<br>
 </li>
 <li>
 <p><strong>Step 2:</strong> Select the operation.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -4703,26 +4665,18 @@ Operation required attributes values display as missing.</pre>
 <img src="images/qa-guidelines-11.png" alt="qa guidelines 11">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 3:</strong> Look for the operation in the API docs.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
 Required attributes match with the ones marked as such in the Mule Properties View.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 4:</strong> Back in Anypoint Studio, change to the Problems tab.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -4733,6 +4687,9 @@ Required attributes match with the ones marked as such in the Mule Properties Vi
 <div class="content">
 <img src="images/qa-guidelines-12.png" alt="qa guidelines 12">
 </div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -4763,9 +4720,6 @@ Required attributes match with the ones marked as such in the Mule Properties Vi
 <ul>
 <li>
 <p><strong>Step 1:</strong> Pull the desired connector to the canvas.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -4777,8 +4731,7 @@ Connector is created as endpoint to a flow.</pre>
 <img src="images/qa-guidelines-13.png" alt="qa guidelines 13">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 2:</strong></p>
 <div class="olist loweralpha">
@@ -4787,7 +4740,7 @@ Connector is created as endpoint to a flow.</pre>
 <p>Place a <strong>Logger</strong> next to it.</p>
 </li>
 <li>
-<p>Set Message Source received `#[message.payload] as its Message.`</p>
+<p>Set Message Source received <code>#[message.payload]</code> as its Message.</p>
 </li>
 </ol>
 </div>
@@ -4801,26 +4754,18 @@ Connector is created as endpoint to a flow.</pre>
 </li>
 <li>
 <p>Check the available operations.</p>
+<div class="listingblock">
+<div class="content">
+<pre>Expected Result:
+Operations on the dropdown match to methods marked as @Source on the connector code.</pre>
+</div>
+</div>
 </li>
 </ol>
 </div>
 </li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>Expected Result:
-
-Operations on the dropdown match to methods marked as @Source on the connector code.</pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
 <li>
 <p><strong>Step 4:</strong>  Select the Message Source under test and configure it appropriately.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml">Expected Result:
@@ -4832,8 +4777,7 @@ Example of a Mule flow:
 <span class="tag">&lt;/flow&gt;</span></code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 5:</strong></p>
 <div class="olist loweralpha">
@@ -4846,9 +4790,6 @@ Example of a Mule flow:
 </li>
 </ol>
 </div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -4857,8 +4798,7 @@ Initialization message is logged:
 INFO 2014-01-1317:59:17,210[HttpClient-29] org.mule.modules.salesforce.SalesforceBayeuxClient: subscribing /topic/ContactsDemo for the first time</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 6:</strong></p>
 <div class="olist loweralpha">
@@ -4871,15 +4811,15 @@ INFO 2014-01-1317:59:17,210[HttpClient-29] org.mule.modules.salesforce.Salesforc
 </li>
 </ol>
 </div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
 
 Message Source response was logged.</pre>
 </div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -4916,67 +4856,52 @@ Message Source response was logged.</pre>
 <ul>
 <li>
 <p><strong>Step 1:</strong> Configure both connectors with the same operation.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
 Metadata is fetched for both configurations.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 2:</strong> Select the DataMapper building block.</p>
 </li>
 <li>
 <p><strong>Step 3:</strong> Check the Input panel.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre>Expected Result:
- Mule automatically prescribes the output of the operation for any of the following return types:
-* Map
+<pre class="CodeRay highlight"><code data-lang="java">Expected <span class="predefined-type">Result</span>:
+ Mule automatically prescribes the output of the operation <span class="keyword">for</span> any of the following <span class="keyword">return</span> types:
+* <span class="predefined-type">Map</span>
 * POJO
-* List&lt;Map&gt;
-* List&lt;String&gt;
-* List&lt;POJO&gt;
-* List&lt;List&lt;String&gt;&gt;
+* <span class="predefined-type">List</span>&lt;<span class="predefined-type">Map</span>&gt;
+* <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt;
+* <span class="predefined-type">List</span>&lt;POJO&gt;
+* <span class="predefined-type">List</span>&lt;<span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt;&gt;
 
-Check that values match the operation signature.</pre>
+Check that values match the operation signature.</code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 4:</strong> Check the Output panel.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre>Expected Result:
-Mule automatically prescribes the input of the operation only for an attribute of the following type:
-* Map
+<pre class="CodeRay highlight"><code data-lang="java">Expected <span class="predefined-type">Result</span>:
+Mule automatically prescribes the input of the operation only <span class="keyword">for</span> an attribute of the following type:
+* <span class="predefined-type">Map</span>
 * POJO
-* List&lt;Map&gt;
-* List&lt;String&gt;
-* List&lt;POJO&gt;
-* List&lt;List&lt;String&gt;&gt;
+* <span class="predefined-type">List</span>&lt;<span class="predefined-type">Map</span>&gt;
+* <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt;
+* <span class="predefined-type">List</span>&lt;POJO&gt;
+* <span class="predefined-type">List</span>&lt;<span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt;&gt;
 
-Check that it's marked as `@Default("#[payload]")` (for connectors older than 3.5.0-M4). The correct annotations should be `@Optional @Default(“#[payload]”)`</pre>
+Check that it<span class="string"><span class="delimiter">'</span><span class="content">s marked as `@Default(&quot;#[payload]&quot;)` (for connectors older than 3.5.0-M4). The correct annotations should be `@Optional @Default(“#[payload]”)`</span></span></code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 5:</strong>  Check the operation attributes in the API docs.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -4984,6 +4909,9 @@ The attribute marked as `@Default("#[payload]")` (for connectors older than 3.5.
 * An entity related to the service in case more than one applies.
 * An entity that can't be created and is necessarily another operation return type (if applicable) .</pre>
 </div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -5211,46 +5139,36 @@ The attribute marked as `@Default("#[payload]")` (for connectors older than 3.5.
 <ul>
 <li>
 <p><strong>Step 1:</strong> Configure both connectors with the same operation. For type, select the custom entity under test or the entity for which custom fields were defined on the sandbox.
-For example:
-image::images/qa-guidelines-14.png[]</p>
-</li>
-</ul>
+For example:</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/qa-guidelines-14.png" alt="qa guidelines 14">
+</div>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Metadata is fetched for both configurations.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 2:</strong> Select the DataMapper building block.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Values were pre­populated and relate to the entity under test.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>The following step is to be run for either the Output Panel/Input panel.</strong></p>
 </li>
 <li>
 <p><strong>Step 3:</strong> Generate a mapping (use a default map on the counter panel if necessary).</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Relationship is established.
 DataMapper displays the custom entity or the custom fields of the entity under test.</pre>
 </div>
@@ -5259,6 +5177,9 @@ DataMapper displays the custom entity or the custom fields of the entity under t
 <div class="content">
 <img src="images/qa-guidelines-15.png" alt="qa guidelines 15">
 </div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -5332,9 +5253,6 @@ As example use the Dynamics connector (MessageProcessor expects XML thus everyth
 </li>
 <li>
 <p><strong>Step 1:</strong> Select corresponding operation for message processor with attribute marked @Query.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -5352,6 +5270,9 @@ As example use the Dynamics connector (MessageProcessor expects XML thus everyth
 <pre>* Return type dropdown does not display.</pre>
 </div>
 </div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -5365,13 +5286,9 @@ As example use the Dynamics connector (MessageProcessor expects XML thus everyth
 </li>
 <li>
 <p><strong>Step 1:</strong> Select corresponding operation for message processor with attribute marked @Query.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 * For attribute marked @Query *Native Query Language* and *DataSense Query Language* option in dropdown displays.</pre>
 </div>
 </div>
@@ -5380,19 +5297,17 @@ As example use the Dynamics connector (MessageProcessor expects XML thus everyth
 <img src="images/qa-guidelines-17.png" alt="qa guidelines 17">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 2:</strong> Click the Query Builder &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Query Builder opens.</pre>
 </div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -5569,21 +5484,17 @@ dynamicObject.addSimpleField(field.getName(), dataType).isOrderByCapable(f.isSor
 <ul>
 <li>
 <p><strong>Step 1:</strong> Select corresponding operation for message processor with attribute marked @Query and click <strong>Query Builder</strong></p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Query Builder opens.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 2:</strong> From service documentation derive equivalence classes such:</p>
-</li>
+<div class="ulist">
+<ul>
 <li>
 <p>Types not from­capable.</p>
 </li>
@@ -5598,18 +5509,20 @@ Query Builder opens.</pre>
 </li>
 <li>
 <p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
 <div class="paragraph">
 <p>Select a representative value for each class.</p>
+</div>
+</li>
+</ul>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Object Builder reflects values.</pre>
 </div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -5745,13 +5658,9 @@ SELECT, WHERE, OPERATORS and ORDERBY values can be overridden.</p>
 <ul>
 <li>
 <p><strong>Step 1:</strong> Select an operation whose return type is PagingDelegate&lt;SomeEntity&gt;.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Paging section containing a Fetch Size input field is displayed in the General tab of the connector view.</pre>
 </div>
 </div>
@@ -5760,6 +5669,9 @@ Paging section containing a Fetch Size input field is displayed in the General t
 <img src="images/qa-guidelines-18.png" alt="qa guidelines 18">
 </div>
 </div>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p>Fetch Size value is 100 by default.</p>
 </div>
@@ -5767,9 +5679,6 @@ Paging section containing a Fetch Size input field is displayed in the General t
 <ul>
 <li>
 <p><strong>Step 2:</strong> Enter a Fetch Size value other than 100. Save and change to the Configuration XML view.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml">Expected Result:
@@ -5778,13 +5687,17 @@ fetchSize attribute is on the operation XML.
 <span class="tag">&lt;google-contacts:get-contacts</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Google_Contacts</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Google Contacts</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">fetchSize</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">30</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
 </div>
 </div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_auto_paging_empty_collection">5.12.2. Auto-Paging - Empty Collection</h4>
-<div class="paragraph">
-<p>====￼Preconditions</p>
+
 </div>
+<div class="sect3">
+<h4 id="__preconditions">5.12.3. ￼Preconditions</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -5814,16 +5727,9 @@ fetchSize attribute is on the operation XML.
 </li>
 <li>
 <p>After the <strong>For Each</strong> place a <strong>Set Payload</strong> element.</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Flow arrangement looks similar to this:</pre>
 </div>
 </div>
@@ -5832,8 +5738,10 @@ Flow arrangement looks similar to this:</pre>
 <img src="images/qa-guidelines-19.png" alt="qa guidelines 19">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p><strong>Step 2:</strong></p>
 <div class="olist loweralpha">
@@ -5849,26 +5757,18 @@ Flow arrangement looks similar to this:</pre>
 </li>
 </ol>
 </div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Metadata is fetched for the selected operation.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 3:</strong> Set For element #[flowVars['counter']] payload is #[message.payload] as the <strong>Logger</strong> message value. Click <strong>Save</strong>.</p>
 </li>
 <li>
 <p><strong>Step 4:</strong> Set Done. as the <strong>Set Payload</strong> element Value. Click <strong>Save</strong>.</p>
-</li>
-</ul>
-</div>
 <div class="paragraph">
 <p>Example of a complete flow result:</p>
 </div>
@@ -5894,35 +5794,35 @@ Metadata is fetched for the selected operation.</pre>
 <span class="tag">&lt;/flow&gt;</span></code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 5:</strong> Run the app and hit the flow endpoint. Check the console afterwards.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 org.mule.routing.Foreach$CollectionMapSplitter: Splitter returns no results. If this is not expected, check your split expression.
 Logs to the console.</pre>
 </div>
 </div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_auto_paging_abort_iteration">5.12.3. Auto-Paging - Abort Iteration</h4>
+<h4 id="_auto_paging_abort_iteration">5.12.4. Auto-Paging - Abort Iteration</h4>
 <div class="paragraph">
-<p>Verify that after processing current element, iteration is terminated.
-====￼= Preconditions</p>
+<p>Verify that after processing current element, iteration is terminated.</p>
 </div>
+<div class="sect4">
+<h5 id="_preconditions_27">Preconditions</h5>
 <div class="ulist">
 <ul>
 <li>
 <p>Global Configuration element has been created with valid credentials to the service.</p>
 </li>
 </ul>
+</div>
 </div>
 <div class="sect4">
 <h5 id="_steps_18">Steps</h5>
@@ -5949,16 +5849,9 @@ Logs to the console.</pre>
 </li>
 <li>
 <p>Following the <strong>For Each</strong>, place a <strong>Set Payload</strong> element.</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Flow arrangement looks similar to this:</pre>
 </div>
 </div>
@@ -5967,8 +5860,10 @@ Flow arrangement looks similar to this:</pre>
 <img src="images/qa-guidelines-20.png" alt="qa guidelines 20">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p><strong>Step 2:</strong></p>
 <div class="olist loweralpha">
@@ -5989,21 +5884,16 @@ query such as: SELECT CreatedById,CreatedDate,Description, OwnerId FROM Account 
 </li>
 </ol>
 </div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Metadata fetches for the selected operation.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
-<p><strong>Step 3:</strong>  Set ### Total amount of elements retrieved is
-#[message.payload.size()] as the first
+<p><strong>Step 3:</strong>  Set <code># Total amount of elements retrieved is
+#[message.payload.size()]</code> as the first
 <strong>Logger</strong> message value. Click <strong>Save</strong>.</p>
 </li>
 <li>
@@ -6014,26 +5904,18 @@ Metadata fetches for the selected operation.</pre>
 </li>
 <li>
 <p><strong>Step 6:</strong>  On the DataMapper element, create a mapping to a Default <code>Map&lt;k,v&gt;</code> object.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Mapping is created.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 7:</strong> Set For element #[flowVars['counter']] payload is #[message.payload] as the <strong>Logger</strong> message value. Click <strong>Save</strong>.</p>
 </li>
 <li>
 <p><strong>Step 8:</strong> Set Done. as the Set payload element Value. Click <strong>Save</strong>.</p>
-</li>
-</ul>
-</div>
 <div class="paragraph">
 <p>Example of a complete result flow:</p>
 </div>
@@ -6062,8 +5944,7 @@ Mapping is created.</pre>
 <span class="tag">&lt;/flow&gt;</span></code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 10:</strong>  Run the app and hit the flow endpoint.</p>
 </li>
@@ -6090,15 +5971,17 @@ Only a message for the first record logs.</pre>
 <div class="sect3">
 <h4 id="_auto_paging_non_query_operation_auto_paged_output_handling_datamapper">5.13.1. Auto-Paging - Non-Query Operation - Auto-Paged Output Handling - DataMapper</h4>
 <div class="paragraph">
-<p>PagingDelegate is typed thus it&#8217;s expected to work together with DataMapper.
-===== ￼Preconditions</p>
+<p>PagingDelegate is typed thus it&#8217;s expected to work together with DataMapper.</p>
 </div>
+<div class="sect4">
+<h5 id="__preconditions_2">￼Preconditions</h5>
 <div class="ulist">
 <ul>
 <li>
 <p>Global Configuration element was already created with valid credentials to the service.</p>
 </li>
 </ul>
+</div>
 </div>
 <div class="sect4">
 <h5 id="_steps_19">Steps</h5>
@@ -6116,12 +5999,6 @@ Only a message for the first record logs.</pre>
 </li>
 <li>
 <p>Next to the connector, place a DataMapper element.</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:</pre>
@@ -6132,28 +6009,22 @@ Only a message for the first record logs.</pre>
 <img src="images/qa-guidelines-21.png" alt="qa guidelines 21">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p><strong>Step 2:</strong> On the connector, select an operation whose return type is PagingDelegate&lt;SomeEntity&gt;. Click <strong>Save</strong>.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Metadata fetches for the selected operation.w</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 3:</strong>
 Click the DataMapper element.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -6162,8 +6033,7 @@ Mule automatically prescribes the output of the operation as List&lt;SomeEntity&
 for an operation returns: `PagingDelegate&lt;GoogleContactEntry&gt;`</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 4:</strong> In the Output Panel select:</p>
 <div class="olist loweralpha">
@@ -6182,22 +6052,21 @@ for an operation returns: `PagingDelegate&lt;GoogleContactEntry&gt;`</pre>
 </li>
 </ol>
 </div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Mapping creates.</pre>
 </div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_auto_paging_non_query_operation_auto_paged_output_handling_foreach_combined_with_datamapper">5.13.2. Auto-Paging - Non-Query Operation - Auto-Paged Output Handling - Foreach Combined with DataMapper</h4>
 <div class="sect4">
-<h5 id="_preconditions_27">Preconditions</h5>
+<h5 id="_preconditions_28">Preconditions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -6225,12 +6094,6 @@ Mapping creates.</pre>
 </li>
 <li>
 <p>Inside the <strong>For Each</strong>, place a DataMapper element.</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:</pre>
@@ -6241,38 +6104,30 @@ Mapping creates.</pre>
 <img src="images/qa-guidelines-22.png" alt="qa guidelines 22">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p><strong>Step 2:</strong> On the connector, select an operation whose return type is PagingDelegate&lt;SomeEntity&gt;. Click <strong>Save</strong>.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Metadata fetches for the selected operation.w</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 3:</strong>
 Click the DataMapper element.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Mule automatically prescribes the output of the operation as `SomeEntity`.
 The type is in the connector code, for example: `GoogleContactEntry` for an operation returns: `PagingDelegate&lt;GoogleContactEntry&gt;`</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 4:</strong> In the Output Panel select:</p>
 <div class="olist loweralpha">
@@ -6291,22 +6146,21 @@ The type is in the connector code, for example: `GoogleContactEntry` for an oper
 </li>
 </ol>
 </div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Mapping creates.</pre>
 </div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_auto_paging_non_query_operation_pagination_is_applied">5.13.3. Auto-Paging - Non-Query Operation - Pagination is Applied</h4>
 <div class="sect4">
-<h5 id="_preconditions_28">Preconditions</h5>
+<h5 id="_preconditions_29">Preconditions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -6340,16 +6194,9 @@ Mapping creates.</pre>
 </li>
 <li>
 <p>After the <strong>For Each</strong> place a <strong>Set Payload</strong> element.</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result
-
 Flow arrangement looks similar to this:</pre>
 </div>
 </div>
@@ -6358,8 +6205,10 @@ Flow arrangement looks similar to this:</pre>
 <img src="images/qa-guidelines-23.png" alt="qa guidelines 23">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p><strong>Step 2:</strong></p>
 <div class="olist loweralpha">
@@ -6372,21 +6221,16 @@ Flow arrangement looks similar to this:</pre>
 </li>
 <li>
 <p>Click <strong>Save</strong>.</p>
+<div class="listingblock">
+<div class="content">
+<pre>Expected Result:
+Metadata fetches for the selected operation.</pre>
+</div>
+</div>
 </li>
 </ol>
 </div>
 </li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>Expected Result:
-
-Metadata fetches for the selected operation.</pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
 <li>
 <p><strong>Step 3:</strong> Set ### Total amount of elements retrieved is
 #[message.payload.size()] as the
@@ -6401,9 +6245,6 @@ Mapping creates.</p>
 </li>
 <li>
 <p><strong>Step 6:</strong> Set Done. as the <strong>Set Payload</strong> element Value. Click <strong>Save</strong>.</p>
-</li>
-</ul>
-</div>
 <div class="paragraph">
 <p>Example of a complete flow:</p>
 </div>
@@ -6435,45 +6276,37 @@ Mapping creates.</p>
 <span class="tag">&lt;/flow&gt;</span></code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 7:</strong> Run the app and hit the flow endpoint.</p>
 </li>
 <li>
 <p><strong>Step 8:</strong> Look for the messages logged by the Records Logger on the console.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 For each record a +For element ... + message was logged displaying its payload.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 9:</strong> Look for the message of the Size Logger on the console.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Amount of elements retrieved equals number of records returned.
-
 Note: You can override the getTotalResults() method in the connector in case of service constraints.For this case, a value of ­1 is returns if the size can't be provided.</pre>
 </div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_auto_paging_non_query_operation_pagination_is_not_applied">5.13.4. Auto-Paging - Non-Query Operation - Pagination is Not Applied</h4>
 <div class="sect4">
-<h5 id="_preconditions_29">Preconditions</h5>
+<h5 id="_preconditions_30">Preconditions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -6507,16 +6340,9 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </li>
 <li>
 <p>After the <strong>For Each</strong>, place a <strong>Set Payload</strong> element.</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Flow arrangement looks similar to this:</pre>
 </div>
 </div>
@@ -6525,8 +6351,10 @@ Flow arrangement looks similar to this:</pre>
 <img src="images/qa-guidelines-24.png" alt="qa guidelines 24">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p><strong>Step 2:</strong></p>
 <div class="olist loweralpha">
@@ -6539,12 +6367,6 @@ Flow arrangement looks similar to this:</pre>
 </li>
 <li>
 <p>Click <strong>Save</strong>.</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -6552,8 +6374,10 @@ Flow arrangement looks similar to this:</pre>
 Metadata fetches for the selected operation.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p><strong>Step 3:</strong>  Set ### Total amount of elements retrieved is
 #[message.payload.size()] as the
@@ -6561,9 +6385,6 @@ Metadata fetches for the selected operation.</pre>
 </li>
 <li>
 <p><strong>Step 4:</strong> On the DataMapper element, create a mapping to a Default Map&lt;k,v&gt; object.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -6571,16 +6392,12 @@ Metadata fetches for the selected operation.</pre>
 Mapping is created.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 5:</strong> Set For element #[flowVars['counter']] payload is #[message.payload] as the <strong>Logger</strong> message value. Click <strong>Save</strong>.</p>
 </li>
 <li>
 <p><strong>Step 6:</strong>  Set Done. as the <strong>Set Payload</strong> element Value. Click <strong>Save</strong>.</p>
-</li>
-</ul>
-</div>
 <div class="paragraph">
 <p>Example of a complete flow:</p>
 </div>
@@ -6614,13 +6431,9 @@ Mapping is created.</pre>
 <span class="tag">&lt;/flow&gt;</span></code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 7:</strong> Look for the messages logged by the Records Logger on the console.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -6628,19 +6441,28 @@ Mapping is created.</pre>
 For each record a +For element ... + message was logged displaying its payload.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 8:</strong>  Look for the message of the Size Logger on the console.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre>Amount of elements retrieved equals number of records returned.
-
-Note: You can override the getTotalResults() method in the connector in case of service constraints.For this case, a value of ­1 is returns if size can't be provided.</pre>
+<pre>Amount of elements retrieved equals number of records returned.</pre>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+You can override the getTotalResults() method in the connector in case of service constraints.For this case, a value of ­1 is returns if size can&#8217;t be provided.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -6657,7 +6479,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 <div class="sect3">
 <h4 id="_auto_paging_dsql_auto_paged_output_handling_datamapper">5.14.2. Auto-Paging - DSQL - Auto-Paged Output Handling - DataMapper</h4>
 <div class="sect4">
-<h5 id="_preconditions_30">Preconditions</h5>
+<h5 id="_preconditions_31">Preconditions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -6682,12 +6504,6 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </li>
 <li>
 <p>Next to the connector, place a DataMapper element.</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:</pre>
@@ -6698,8 +6514,10 @@ Note: You can override the getTotalResults() method in the connector in case of 
 <img src="images/qa-guidelines-25.png" alt="qa guidelines 25">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p><strong>Step 2:</strong></p>
 <div class="olist loweralpha">
@@ -6718,33 +6536,23 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </li>
 </ol>
 </div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Metadata is fetched for the selected operation.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 3:</strong> Click on the DataMapper element.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Mule automatically prescribes the output of the operation as List&lt;SomeEntity&gt;. The type is in the connector code, for example: PagingDelegate&lt;Map&lt;String, Object&gt;&gt;
 for an operation returns: PagingDelegate&lt;Map&lt;String, Object&gt;&gt;</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 4:</strong> In the Output Pane select:</p>
 <div class="olist loweralpha">
@@ -6760,16 +6568,9 @@ for an operation returns: PagingDelegate&lt;Map&lt;String, Object&gt;&gt;</pre>
 </li>
 <li>
 <p>Click Create mapping</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Mapping involving only the fields been queried is created.</pre>
 </div>
 </div>
@@ -6778,12 +6579,18 @@ Mapping involving only the fields been queried is created.</pre>
 <img src="images/qa-guidelines-26.png" alt="qa guidelines 26">
 </div>
 </div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_auto_paging_dsql_auto_paged_output_handling_foreach_combined_with_datamapper">5.14.3. Auto-Paging - DSQL - Auto-Paged Output Handling - Foreach Combined with DataMapper</h4>
 <div class="sect4">
-<h5 id="_preconditions_31">Preconditions</h5>
+<h5 id="_preconditions_32">Preconditions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -6811,12 +6618,6 @@ Mapping involving only the fields been queried is created.</pre>
 </li>
 <li>
 <p>Inside the <strong>For Each</strong> place a DataMapper element.</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:</pre>
@@ -6827,8 +6628,10 @@ Mapping involving only the fields been queried is created.</pre>
 <img src="images/qa-guidelines-27.png" alt="qa guidelines 27">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p><strong>Step 2:</strong></p>
 <div class="olist loweralpha">
@@ -6845,12 +6648,6 @@ PagingDelegate&lt;SomeEntity&gt; and has one of its parameters annotated with @Q
 </li>
 <li>
 <p>Click Save.</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -6858,13 +6655,12 @@ PagingDelegate&lt;SomeEntity&gt; and has one of its parameters annotated with @Q
 Metadata fetches for the selected operation.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p><strong>Step 3:</strong> Click the DataMapper element.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -6873,8 +6669,7 @@ Mule automatically prescribes the output of the operation as List&lt;SomeEntity&
 for an operation returns: PagingDelegate&lt;Map&lt;String, Object&gt;&gt;</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 4:</strong> In the Output Pane select:</p>
 <div class="olist loweralpha">
@@ -6890,12 +6685,6 @@ for an operation returns: PagingDelegate&lt;Map&lt;String, Object&gt;&gt;</pre>
 </li>
 <li>
 <p>Click Create mapping</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -6908,12 +6697,18 @@ Mapping involving only the fields being queried is created.</pre>
 <img src="images/qa-guidelines-28.png" alt="qa guidelines 28">
 </div>
 </div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_auto_paging_dsql_pagination_is_applied">5.14.4. Auto-Paging - DSQL - Pagination is Applied</h4>
 <div class="sect4">
-<h5 id="_preconditions_32">Preconditions</h5>
+<h5 id="_preconditions_33">Preconditions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -6947,12 +6742,6 @@ Mapping involving only the fields being queried is created.</pre>
 </li>
 <li>
 <p>After the <strong>For Each</strong>, place a <strong>Set Payload</strong> element.</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -6965,8 +6754,10 @@ Flow arrangement looks similar to this:</pre>
 <img src="images/qa-guidelines-29.png" alt="qa guidelines 29">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p><strong>Step 2:</strong></p>
 <div class="olist loweralpha">
@@ -6982,12 +6773,6 @@ Flow arrangement looks similar to this:</pre>
 </li>
 <li>
 <p>Click Save.</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -6995,8 +6780,10 @@ Flow arrangement looks similar to this:</pre>
 Metadata fetches for the selected operation.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p><strong>Step 3:</strong></p>
 <div class="olist loweralpha">
@@ -7011,9 +6798,6 @@ Metadata fetches for the selected operation.</pre>
 </li>
 <li>
 <p><strong>Step 4:</strong> On the DataMapper element creating a mapping to a Default Map&lt;k,v&gt; object.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -7021,16 +6805,12 @@ Metadata fetches for the selected operation.</pre>
 Mapping creates.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 5:</strong> Set For element #[flowVars['counter']] payload is #[message.payload] as the <strong>Logger</strong> message value. Click <strong>Save</strong>.</p>
 </li>
 <li>
 <p><strong>Step 6:</strong> Set Done. as the <strong>Set Payload</strong> element Value. Click <strong>Save</strong>.</p>
-</li>
-</ul>
-</div>
 <div class="paragraph">
 <p>Example of a complete flow:</p>
 </div>
@@ -7068,43 +6848,36 @@ Mapping creates.</pre>
 <span class="tag">&lt;/flow&gt;</span></code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 7:</strong> Run the app and hit the flow endpoint.</p>
 </li>
 <li>
 <p><strong>Step 8:</strong> Look for the messages logged by the Records Logger on the console.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 For each record a +For element ... + message was logged displaying its payload.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 9:</strong>  Look for the message of the Size Logger on the console.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Amount of elements retrieved equals number of records returned.</pre>
 </div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_auto_paging_dsql_pagination_is_not_applied">5.14.5. Auto-Paging - DSQL - Pagination is Not Applied</h4>
 <div class="sect4">
-<h5 id="_preconditions_33">Preconditions</h5>
+<h5 id="_preconditions_34">Preconditions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -7140,12 +6913,6 @@ and then a <strong>Logger</strong> next to it.</p>
 <li>
 <p>After the <strong>For Each</strong>, place a <strong>Set Payload</strong>
 element.</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -7158,8 +6925,10 @@ Flow arrangement looks similar to this:</pre>
 <img src="images/qa-guidelines-30.png" alt="qa guidelines 30">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p><strong>Step 2:</strong></p>
 <div class="olist loweralpha">
@@ -7177,12 +6946,6 @@ query such as: SELECT CreatedById,CreatedDate,Description, OwnerId FROM Account 
 </li>
 <li>
 <p>Click <strong>Save</strong>.</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -7190,8 +6953,10 @@ query such as: SELECT CreatedById,CreatedDate,Description, OwnerId FROM Account 
 Metadata is fetched for the selected operation.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p><strong>Step 3:</strong> Set ### Total amount of elements retrieved is
 #[message.payload.size()] as the
@@ -7199,9 +6964,6 @@ Metadata is fetched for the selected operation.</pre>
 </li>
 <li>
 <p><strong>Step 4:</strong> On the DataMapper element create a mapping to a Default Map&lt;k,v&gt; object.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -7209,16 +6971,12 @@ Metadata is fetched for the selected operation.</pre>
 Mapping creates.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 5:</strong> Set For element #[flowVars['counter']] payload is #[message.payload] as the <strong>Logger</strong> message value. Click <strong>Save</strong>.</p>
 </li>
 <li>
 <p><strong>Step 6:</strong> Set Done. as the <strong>Set Payload</strong> element Value. Click <strong>Save</strong>.</p>
-</li>
-</ul>
-</div>
 <div class="paragraph">
 <p>Example of a complete flow:</p>
 </div>
@@ -7256,30 +7014,21 @@ Mapping creates.</pre>
 <span class="tag">&lt;/flow&gt;</span></code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 7:</strong> Run the app and hit the flow endpoint.</p>
 </li>
 <li>
 <p><strong>Step 8:</strong> Look for the messages logged by the Records Logger on the console.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 For each record a +For element ... + message was logged displaying its payload.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 9:</strong> Look for the message of the Size Logger on the console.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -7287,6 +7036,9 @@ For each record a +For element ... + message was logged displaying its payload.<
 Amount of elements retrieved equals number of records returned.
 Note: You can override the getTotalResults() method in the connector in case of service constraints.</pre>
 </div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -7297,7 +7049,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 <div class="sect3">
 <h4 id="_auto_paging_nql_auto_paged_output_handling_datamapper">5.14.7. Auto-Paging - NQL - Auto-Paged Output Handling - DataMapper</h4>
 <div class="sect4">
-<h5 id="_preconditions_34">Preconditions</h5>
+<h5 id="_preconditions_35">Preconditions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -7315,12 +7067,6 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </li>
 <li>
 <p>Next to the connector, place a DataMapper element.</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:</pre>
@@ -7331,8 +7077,10 @@ Note: You can override the getTotalResults() method in the connector in case of 
 <img src="images/qa-guidelines-31.png" alt="qa guidelines 31">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p><strong>Step 2:</strong></p>
 <div class="olist loweralpha">
@@ -7398,12 +7146,6 @@ Mule automatically prescribes the output of the operation as List&lt;SomeEntity&
 </li>
 <li>
 <p>Click Create mapping</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -7416,12 +7158,18 @@ Mapping involving only the fields been queried is created.</pre>
 <img src="images/qa-guidelines-32.png" alt="qa guidelines 32">
 </div>
 </div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_auto_paging_nql_auto_paged_output_handling_foreach_combined_with_datamapper">5.14.8. Auto-Paging - NQL - Auto-Paged Output Handling - Foreach Combined with DataMapper</h4>
 <div class="sect4">
-<h5 id="_preconditions_35">Preconditions</h5>
+<h5 id="_preconditions_36">Preconditions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -7466,9 +7214,6 @@ gitude,CreatedDate FROM Account</p>
 </li>
 </ol>
 </div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -7476,13 +7221,9 @@ gitude,CreatedDate FROM Account</p>
 Metadata is fetched for the selected operation.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 3:</strong>  Click the DataMapper element.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -7491,8 +7232,7 @@ Mule automatically prescribes the output of the operation as List&lt;SomeEntity&
 for an operation returns: +PagingDelegate&lt;Map&lt;String, Object&gt;&gt;+</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 4:</strong>  In the Output Pane select:</p>
 <div class="olist loweralpha">
@@ -7508,12 +7248,6 @@ for an operation returns: +PagingDelegate&lt;Map&lt;String, Object&gt;&gt;+</pre
 </li>
 <li>
 <p>Click Create mapping</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -7526,12 +7260,18 @@ Mapping involving only the fields been queried is created.</pre>
 <img src="images/qa-guidelines-33.png" alt="qa guidelines 33">
 </div>
 </div>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_auto_paging_nql_pagination_is_applied">5.14.9. Auto-Paging - NQL - Pagination is Applied</h4>
 <div class="sect4">
-<h5 id="_preconditions_36">Preconditions</h5>
+<h5 id="_preconditions_37">Preconditions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -7559,12 +7299,6 @@ Mapping involving only the fields been queried is created.</pre>
 <li>
 <p>After the <strong>For Each</strong>, place a <strong>Set Payload</strong> element.
 ￼</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Flow arrangement looks similar to this:</pre>
@@ -7575,8 +7309,10 @@ Mapping involving only the fields been queried is created.</pre>
 <img src="images/qa-guidelines-34.png" alt="qa guidelines 34">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p><strong>Step 2:</strong></p>
 <div class="olist loweralpha">
@@ -7600,21 +7336,16 @@ gitude,CreatedDate FROM Account</p>
 </li>
 <li>
 <p>Click Save.</p>
+<div class="listingblock">
+<div class="content">
+<pre>Expected Result:
+Metadata is fetched for the selected operation.</pre>
+</div>
+</div>
 </li>
 </ol>
 </div>
 </li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>Expected Result:
-
-Metadata is fetched for the selected operation.</pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
 <li>
 <p><strong>Step 3:</strong> Set ### Total amount of elements retrieved is
 #[message.payload.size()] as the
@@ -7622,18 +7353,13 @@ Metadata is fetched for the selected operation.</pre>
 </li>
 <li>
 <p><strong>Step 4:</strong>  On the DataMapper element creating a mapping to a Default Map&lt;k,v&gt; object.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Mapping is created.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 5:</strong> Set For element #[flowVars['counter']] payload is #[message.payload] as the <strong>Logger</strong> message value. Click <strong>Save</strong>.</p>
 </li>
@@ -7645,36 +7371,30 @@ Mapping is created.</pre>
 </li>
 <li>
 <p><strong>Step 8:</strong>   Look for the messages logged by the Records Logger on the console.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 For each record a +For element ... + message was logged displaying its payload.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 9:</strong> Look for the message of the Size Logger on the console.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Amount of elements retrieved equals number of records returned.</pre>
 </div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_auto_paging_nql_pagination_is_not_applied">5.14.10. Auto-Paging - NQL - Pagination is Not Applied</h4>
 <div class="sect4">
-<h5 id="_preconditions_37">Preconditions</h5>
+<h5 id="_preconditions_38">Preconditions</h5>
 <div class="ulist">
 <ul>
 <li>
@@ -7701,12 +7421,6 @@ Amount of elements retrieved equals number of records returned.</pre>
 </li>
 <li>
 <p>After the <strong>For Each</strong>, place a <strong>Set Payload</strong> element.</p>
-</li>
-</ol>
-</div>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Flow arrangement looks similar to this:</pre>
@@ -7717,8 +7431,10 @@ Amount of elements retrieved equals number of records returned.</pre>
 <img src="images/qa-guidelines-35.png" alt="qa guidelines 35">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
+</ol>
+</div>
+</li>
 <li>
 <p><strong>Step 2:</strong></p>
 <div class="olist loweralpha">
@@ -7745,26 +7461,18 @@ Metadata fetches for the selected operation.</p>
 </li>
 <li>
 <p><strong>Step 4:</strong>  On the DataMapper element create a mapping to a Default Map&lt;k,v&gt; object.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 Mapping is created.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 5:</strong> Set For element #[flowVars['counter']] payload is #[message.payload] as the <strong>Logger</strong> message value. Click <strong>Save</strong>.</p>
 </li>
 <li>
 <p><strong>Step 6:</strong> Set Done. as the <strong>Set Payload</strong> element Value. Click <strong>Save</strong>.</p>
-</li>
-</ul>
-</div>
 <div class="paragraph">
 <p>Example of a complete flow:</p>
 </div>
@@ -7799,30 +7507,21 @@ Mapping is created.</pre>
 <span class="tag">&lt;/flow&gt;</span></code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 7:</strong> Run the app and hit the flow endpoint.</p>
 </li>
 <li>
 <p><strong>Step 8:</strong> Look for the messages logged by the Records Logger on the console.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
-
 For each record a +For element ... + message was logged displaying its payload.</pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p><strong>Step 9:</strong> Look for the message of the Size Logger on the console.</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre>Expected Result:
@@ -7830,6 +7529,9 @@ For each record a +For element ... + message was logged displaying its payload.<
 Amount of elements retrieved equals number of records returned.
 Note: You can override the getTotalResults() method in the connector in case of service constraints.</pre>
 </div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -8113,7 +7815,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-06-26 10:25:18 EDT
+Last updated 2015-06-26 12:56:32 EDT
 </div>
 </div>
 </body>
