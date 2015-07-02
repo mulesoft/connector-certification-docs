@@ -1952,7 +1952,7 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 <h2 id="_functional_tests_automation">4. Functional Tests Automation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section explains how to automate functional test cases on Anypoint MuleSoft Connectors.</p>
+<p>This section explains how to automate functional test cases for Anypoint MuleSoft Connectors.</p>
 </div>
 <div class="sect2">
 <h3 id="_intro">4.1. Introduction</h3>
@@ -1982,7 +1982,7 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 <p>Unit and Functional tests are ran separately. Unit tests are always run when executing <em>mvn clean install</em>, while functional tests are explicitly executed by means of a Test Suite, called <em>FunctionalTestSuite</em>.</p>
 </li>
 <li>
-<p>FunctionalTestSuite groups all functional tests with no exception, where every test is marked with the <em>FunctionalTest.class</em> category, available within the Connector Testing Framework.</p>
+<p>FunctionalTestSuite groups all functional tests with no exception, where every test is marked with the <em>FunctionalTest.class</em> category, available within Connector Testing Framework packages.</p>
 </li>
 </ol>
 </div>
@@ -1995,7 +1995,7 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 <p>Unit tests should follow JUnit naming conventions, normally ending with <em>Test</em>.</p>
 </li>
 <li>
-<p>Functional tests must end with <em>TestCases</em></p>
+<p>Functional tests must end with <em>TestCases</em>.</p>
 </li>
 </ol>
 </div>
@@ -2003,7 +2003,7 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 <div class="sect3">
 <h4 id="_test_data">4.1.4. Test data</h4>
 <div class="paragraph">
-<p>Test data must be contained within a <em>TestDataBuilder.java</em> class. This test data builder must generate all necessary test data for every single functional test. Developers are free to use whatever data input techniques within this class.</p>
+<p>Test data must be contained within a <em>TestDataBuilder.java</em> class. This test data builder must generate all necessary test data for every single functional test. Developers are free to use whatever data input techniques within this class(JSON, Beans, etc.).</p>
 </div>
 </div>
 </div>
@@ -2061,6 +2061,9 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 <ol class="arabic">
 <li>
 <p><strong>automation-credentials.properties</strong> stores the connector credentials and authenticated user related information.</p>
+</li>
+<li>
+<p><strong>required-libraries.properties</strong> stores the list of required external Jars.</p>
 </li>
 </ol>
 </div>
@@ -7815,7 +7818,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-07-02 02:48:21 EDT
+Last updated 2015-07-02 12:18:19 EDT
 </div>
 </div>
 </body>
