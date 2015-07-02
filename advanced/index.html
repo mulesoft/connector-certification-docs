@@ -895,12 +895,12 @@ table.CodeRay td.code>pre{padding:0}
 <h2 id="_coding_standars_and_best_practices">2. Coding Standards and Best Practices</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Development best practices and coding standars have been learned within the connector developemt community over time, leading to improve the quality of connectors. During the cerfitication process, most of these practices and standars are checked through automated tools, such as SonarQube.</p>
+<p>Development best practices and coding standards have been learned within the connector development community over time, leading to improve the quality of connectors. During the cerfitication process, most of these practices and standars are checked through automated tools, such as SonarQube.</p>
 </div>
 <div class="sect2">
 <h3 id="_anypoint_connector_devkit_version">2.1. Anypoint™ Connector DevKit Version</h3>
 <div class="paragraph">
-<p>The last version of Anypoint™ Connector Devkit must be used to develop your connector. As of March 2015, the latest stable Devkit version is 3.6.1.</p>
+<p>The last version of Anypoint™ Connector DevKit must be used to develop your connector. As of March 2015, the latest stable Devkit version is 3.6.1.</p>
 </div>
 <div class="paragraph">
 <p>DevKit 3.6.x assures that a connector will be compatible with Mule ESB 3.5.x and Mule ESB 3.6.x. However, external libraries employed by the connector might have conflicts with different Mule ESB versions. Samity checks are mandatory for every Mule ESB Version.</p>
@@ -1404,6 +1404,19 @@ This style can be imported in <strong>Eclipse, Studio and IntelliJ</strong>.</p>
 </div>
 <div class="paragraph">
 <p>Download the Connectors Style Format: <a href="files/connectors-style-convention.xml">Here</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="__config_friendly_names_conventions">2.5.6. @Config friendly names conventions</h4>
+<div class="paragraph">
+<p>In order to provide consistency across all the connectors, Global Element default name should a follow a convention:
+. If there is one single configuration, "Configuration" should be used as friendlyName
+. If there is more than one configuration, the following convention should be followed:
+.. "OAuth 2.0" for a OAuth Configurations
+.. In other other case, use a brief descriptions honoring the same terminology used in the system to integrate</p>
+</div>
+<div class="paragraph">
+<p>GlobalElement name is configured using the friendlyName attribute of the configuration class.</p>
 </div>
 </div>
 </div>
@@ -7818,7 +7831,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-07-02 12:18:19 EDT
+Last updated 2015-07-02 12:20:59 EDT
 </div>
 </div>
 </body>
