@@ -537,8 +537,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_functional_tests_automation">4. Tests Automation</a>
 <ul class="sectlevel2">
 <li><a href="#_functional_tests">4.1. Functional Tests</a></li>
-<li><a href="#_test_methods">4.2. Topics to Test</a></li>
-<li><a href="#_unit_tests">4.3. Unit Tests</a></li>
+<li><a href="#_unit_tests">4.2. Unit Tests</a></li>
 </ul>
 </li>
 <li><a href="#_anypoint_studio_iteroperability_testing">5. Anypoint™ Studio Interoperability Testing</a>
@@ -2256,7 +2255,20 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 <div class="sect4">
 <h5 id="_wsdl_operation_testing">WSDL Operation Testing</h5>
 <div class="paragraph">
-<p>Testing WSDL operations</p>
+<p>Testing WSDL operations is supported by CTF, achieving an easy testing mechanism. WSDL operations consume WSDL files mapped as XMLStreamReader files, which must be generated within the TestDataBuilder as usual.</p>
+</div>
+<div class="paragraph">
+<p>However, these WSDL files must be organized as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><em>src/test/resources/payloads.xml:</em> Must contain all required WSDL-XML files, which are consumed by the TestDataBuilder.</p>
+</li>
+<li>
+<p><em>WSDL_ID#Operation:</em> Every WSDL-XML file must be named as the WSDL ID following the separator <em>#</em> and ending with the operation name.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>Testing WSDL operations is supported by means of the following method:</p>
@@ -2273,215 +2285,84 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 
         ConnectorDispatcher&lt;Connector&gt; dispatcher = getDispatcher();
 
-        XMLStreamReader XMLStreamResult = dispatcher.invokeWsdlOperation(request, <span class="string"><span class="delimiter">&quot;</span><span class="content">incident</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">insert</span><span class="delimiter">&quot;</span></span>);
+        XMLStreamReader XMLStreamResult = dispatcher.invokeWsdlOperation(request, <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;WSDL_ID&gt;</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;OperationName&gt;</span><span class="delimiter">&quot;</span></span>);
 
         <span class="comment">//Asserts on XMLStreamResult</span>
     }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This is a simple example illustrating how the testing framework supports WSDL operations with a single method. The first parameter is a XMLStreamReader input. The second argument is the WSDL ID to be used, while the last one stands for the operation name. If your connector does not include multiple service definitions, you might opt for using a variant of the method without the WSDL ID.</p>
-</div>
-<div class="paragraph">
-<p>In this example a TestdataBuilder is used, which is defined as follows:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">javax.xml.stream.XMLStreamReader</span>;
-<span class="keyword">import</span> <span class="include">org.mule.tools.devkit.ctf.utils.XMLUtils</span>;
-
-<span class="directive">public</span> <span class="type">class</span> <span class="class">TestdataBuilder</span> {
-
-
-    <span class="directive">public</span> <span class="directive">static</span> XMLStreamReader getIncidentInsertRequest(){
-
-         XMLStreamReader request = XMLUtils.loadResource(<span class="string"><span class="delimiter">&quot;</span><span class="content">incident#insert-request.xml</span><span class="delimiter">&quot;</span></span>);
-
-         <span class="keyword">return</span> request;
-    }</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_test_methods">4.2. Topics to Test</h3>
-<div class="paragraph">
-<p>There are different aspects to tests, including: Metadata, Pagination and WSDL operations. Every approach is detailed within the documentation of the Connector Testing Framework.</p>
-</div>
-<div class="sect3">
-<h4 id="_metadata_testing_2">4.2.1. Metadata Testing</h4>
-<div class="paragraph">
-<p>DataSense allows a connector to gather metadata from the remote service in design time, enabling Anypoint developers to deal with actual object types and objects descriptions.</p>
-</div>
-<div class="paragraph">
-<p>In order to test DataSense, two operations are provided by the connector dispatcher. This scenario is illustrated in the following example.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">  <span class="annotation">@Category</span>({FunctionalTest.class})
-        <span class="annotation">@Test</span>
-        <span class="annotation">@MetadataTest</span>
-        <span class="directive">public</span> <span class="type">void</span> testGetMetaDataKeys() <span class="directive">throws</span> <span class="exception">Exception</span>{
-
-            <span class="predefined-type">Result</span>&lt;<span class="predefined-type">List</span>&lt;MetaDataKey&gt;&gt; metaDataKeysResult = dispatcher.fetchMetaDataKeys();
-
-                        assertTrue(<span class="predefined-type">Result</span>.Status.SUCCESS.equals(metaDataKeysResult.getStatus()));
-                <span class="predefined-type">List</span>&lt;MetaDataKey&gt; metaDataKeys = metaDataKeysResult.get();
-
-            <span class="keyword">for</span> (MetaDataKey key : metaDataKeys) {
-                    <span class="keyword">if</span> (accountKey == <span class="predefined-constant">null</span> &amp;&amp; key.getId().equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">Account</span><span class="delimiter">&quot;</span></span>)) {
-                            accountKey = key;
-                    }
-                    <span class="keyword">if</span> (contactKey == <span class="predefined-constant">null</span> &amp;&amp; key.getId().equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">Contact</span><span class="delimiter">&quot;</span></span>)) {
-                            contactKey = key;
-                    }
-            }
-
-            assertNotNull(accountKey);
-            assertNotNull(contactKey);
-
-            <span class="predefined-type">Result</span>&lt;MetaData&gt; accountKeyResult = dispatcher.fetchMetaData(accountKey);
-                        assertTrue(<span class="predefined-type">Result</span>.Status.SUCCESS.equals(accountKeyResult.getStatus()));
-
-                        <span class="predefined-type">Result</span>&lt;MetaData&gt; contactKeyResult = dispatcher.fetchMetaData(contactKey);
-                        assertTrue(<span class="predefined-type">Result</span>.Status.SUCCESS.equals(contactKeyResult.getStatus()));
-        }</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The connector dispatcher exposes two methods, <strong>fetchMetaDataKeys()</strong> and <strong>fetchMetaData(keyName)</strong>. The first one fetches all keys from the MetaData underlying service, while the second one retrieves the descriptor for a particular MetadataKey.</p>
-</div>
-<div class="paragraph">
-<p>It is important to notice that MetaData test cases need to be annotated with <strong>MetaDataTest</strong>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="__paginated_methods_2">4.2.2. @Paginated methods</h4>
-<div class="paragraph">
-<p>There are different features in Mule, such as pagination, that requires a slightly different approach when testing them.</p>
-</div>
-<div class="paragraph">
-<p>A connector method can be annotated as @Paged, which means that when calling that method, several calls to the underlying API will be generated so as to avoid retrieving a possible big set of results in one API call. As a result, the user will consume the entire set of results with a single call to the method, although Mule will automatically generate different API calls.</p>
-</div>
-<div class="paragraph">
-<p>Let&#8217;s consider that we have a <em>Query(..)</em> method, which is annotated as @Paged and defined as:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Processor</span>
-<span class="annotation">@OAuthProtected</span>
-<span class="annotation">@Category</span>(name = <span class="string"><span class="delimiter">&quot;</span><span class="content">Category name</span><span class="delimiter">&quot;</span></span>, description = <span class="string"><span class="delimiter">&quot;</span><span class="content">A description here.</span><span class="delimiter">&quot;</span></span>)
-<span class="annotation">@Paged</span>
-<span class="directive">public</span> ProviderAwarePagingDelegate&lt;<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;, Connector&gt; query(<span class="annotation">@Query</span> <span class="annotation">@Placement</span>(group = <span class="string"><span class="delimiter">&quot;</span><span class="content">Query</span><span class="delimiter">&quot;</span></span>) <span class="directive">final</span> <span class="predefined-type">String</span> query, <span class="directive">final</span> PagingConfiguration pagingConfiguration, <span class="annotation">@Placement</span>(group = <span class="string"><span class="delimiter">&quot;</span><span class="content">SOAP Headers</span><span class="delimiter">&quot;</span></span>) <span class="annotation">@FriendlyName</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">Headers</span><span class="delimiter">&quot;</span></span>) <span class="annotation">@Optional</span> <span class="directive">final</span> <span class="predefined-type">Map</span>&lt;Header, <span class="predefined-type">Object</span>&gt; headers) {
-...
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>In order to test this paginated method, we enable the following mechanism within the test:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Before</span>
-        <span class="directive">public</span> <span class="type">void</span> setUp() <span class="directive">throws</span> <span class="exception">Exception</span> {
-
-                JobInfo jobInfo = connector.createJob(OperationEnum.insert, <span class="string"><span class="delimiter">&quot;</span><span class="content">Account</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Id</span><span class="delimiter">&quot;</span></span>, ContentType.XML, ConcurrencyMode.Parallel);
-                jobId = jobInfo.getId();
-        }
-
-    <span class="annotation">@Category</span>({RegressionTest.class})
-        <span class="annotation">@Test</span>
-        <span class="directive">public</span> <span class="type">void</span> testQuery() {
-
-                <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; queriedRecordIds = sObjectsIds;
-                <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; returnedSObjectsIds = <span class="keyword">new</span> <span class="predefined-type">ArrayList</span>&lt;<span class="predefined-type">String</span>&gt;();
-
-                <span class="keyword">try</span> {
-                        <span class="predefined-type">Object</span><span class="type">[]</span> args = <span class="keyword">new</span> <span class="predefined-type">Object</span><span class="type">[]</span> { <span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT Id, Name, FROM Account WHERE BillingCity = 'Chicago'</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">null</span>, <span class="predefined-constant">null</span> };
-
-                        <span class="predefined-type">Collection</span>&lt;<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;&gt; list = (<span class="predefined-type">Collection</span>&lt;<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;&gt;) dispatcher.runPaginatedMethod(<span class="string"><span class="delimiter">&quot;</span><span class="content">query</span><span class="delimiter">&quot;</span></span>, args);
-
-                        <span class="type">int</span> count = <span class="integer">0</span>;
-                        <span class="predefined-type">Iterator</span>&lt;<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;&gt; iter = list.iterator();
-                        <span class="keyword">while</span> (iter.hasNext()) {
-                                <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; sObject = iter.next();
-                                returnedSObjectsIds.add(sObject.get(<span class="string"><span class="delimiter">&quot;</span><span class="content">Id</span><span class="delimiter">&quot;</span></span>).toString());
-                                count++;
-                        }
-
-                        assertTrue(returnedSObjectsIds.size() &gt; <span class="integer">0</span>);
-                        assertEquals(count,  list.size());
-
-                        <span class="keyword">for</span> (<span class="type">int</span> index = <span class="integer">0</span>; index &lt; queriedRecordIds.size(); index++) {
-                                assertTrue(returnedSObjectsIds.contains(queriedRecordIds.get(index).toString()));
-                     }
-
-                } <span class="keyword">catch</span> (<span class="exception">Exception</span> e) {
-                        fail(ConnectorTestUtils.getStackTrace(e));
-                }
-        }</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This test extract illustrates how pagination works. If we try to execute connector.Query(&#8230;&#8203;), a runtime exception <strong>UnsupportedMethodAnnotationException</strong> will be thrown by the testing framework. We need to used the dispatcher instead, which exposes a <strong>runPaginatedMethod(methodName, args)</strong>. The first parameter is the method name (camel-like), while the second is the list of parameter taken by the method in the same order as defined in its signature. In this case the first parameter is the query itself, while the last two parameters (a PagingConfiguration instance and a Map of headers) are not present.</p>
-</div>
-<div class="paragraph">
-<p>It is important to notice that we provide a mechanism to test operations annotated with @Paged, which indirectly tests the underlying pagination mechanism. However, testing how the pagination mechanisms works, <em>i.e.</em> testing the number of pages retrieved and the values within each page should not be performed with the testing framework, since most likely it is a unit test and not a functional test.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_wsdl_operation_testing_2">4.2.3. WSDL Operation Testing</h4>
-<div class="paragraph">
-<p>Testing WSDL operations is supported by means of the following method:</p>
+<p>This is a simple example illustrating how the testing framework supports WSDL operations with a single method. The first parameter is the XMLStreamReader input based on a specific WSDL-XML. The second argument is the WSDL_ID to be used, while the last one stands for the operation name. If your connector does not include multiple service definitions, you need to opt for using the variant of the method without the WSDL_ID as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">WSDLTestCase</span> <span class="directive">extends</span> AbstractTestCase {
 
-    <span class="annotation">@Category</span>({RegressionTests.class})
+    <span class="annotation">@Category</span>({FunctionalTest.class})
     <span class="annotation">@Test</span>
     <span class="directive">public</span> <span class="type">void</span> execute() <span class="directive">throws</span> <span class="exception">Exception</span> {
 
-        XMLStreamReader request = TestdataBuilder.getIncidentInsertRequest();
+        XMLStreamReader request = TestdataBuilder.getXMLStreamReaderForAParticularTest();
 
-        ConnectorDispatcher&lt;Connector&gt; dispatcher = <span class="local-variable">this</span>.getDispatcher();
+        ConnectorDispatcher&lt;Connector&gt; dispatcher = getDispatcher();
 
-        XMLStreamReader result = dispatcher.invokeWsdlOperation(request, <span class="string"><span class="delimiter">&quot;</span><span class="content">incident</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">insert</span><span class="delimiter">&quot;</span></span>);
+        XMLStreamReader XMLStreamResult = dispatcher.invokeWsdlOperation(request, <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;OperationName&gt;</span><span class="delimiter">&quot;</span></span>);
 
-        <span class="comment">//Asserts on result</span>
-
+        <span class="comment">//Asserts on XMLStreamResult</span>
     }</code></pre>
 </div>
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_how_to_run_multi_mule">4.1.4. How to run a connector in Multi-Mule Runtime Environments</h4>
 <div class="paragraph">
-<p>This is a simple example illustrating how the testing framework supports WSDL operations with a single method. The first parameter is a XMLStreamReader input. The second argument is the WSDL ID to be used, while the last one stands for the operation name. If your connector does not include multiple service definitions, you might opt for using a variant of the method without the WSDL ID.</p>
+<p>One critical point within the certification process and automation testing. In order to assure the correct behaviour of the connector when deployed within different Mule runtime environments.</p>
 </div>
 <div class="paragraph">
-<p>In this example a TestdataBuilder is used, which is defined as follows:</p>
+<p>This process assures that the entire set of operations of the connector execute in new Mule runtimes.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">javax.xml.stream.XMLStreamReader</span>;
-<span class="keyword">import</span> <span class="include">org.mule.tools.devkit.ctf.utils.XMLUtils</span>;
-
-<span class="directive">public</span> <span class="type">class</span> <span class="class">TestdataBuilder</span> {
-
-
-    <span class="directive">public</span> <span class="directive">static</span> XMLStreamReader getIncidentInsertRequest(){
-
-         XMLStreamReader request = XMLUtils.loadResource(<span class="string"><span class="delimiter">&quot;</span><span class="content">incident#insert-request.xml</span><span class="delimiter">&quot;</span></span>);
-
-         <span class="keyword">return</span> request;
-    }</code></pre>
+<div class="sect4">
+<h5 id="_required_test_configurations">Required Test configurations</h5>
+<div class="paragraph">
+<p>The connector must be tested with all available Mule runtimes environments from its MinMuleVersion to the latest runtime (MinMuleVersion is a parameter specifying which is the minimum supported Mule runtime for a given connector).</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><em>Mule Runtimes:</em> If a connector does not require an Enterprise Mule Runtime (<em>i.e.</em> it is not Premium nor Select) it must use <strong>Mule Community Edition Runtimes</strong>, such as 3.5.0, 3.6.0 or 3.7.0. Otherwise, it must use <strong>Mule Enterprise Edition Runtimes</strong>, such as 3.5.3 or 3.6.2.</p>
+</li>
+<li>
+<p><em>Java Versions:</em> Every Mule runtime environment needs to be bind with a particular Java version as follows: Mule runtimes 3.5.X must use Java 1.6, Mule runtimes 3.6.X must use Java 1.7 and Mule runtimes 3.7.X must use Java 1.8. This can be achieved by configuring the <em>wrapper.comf</em> file within the Mule runtime <em>conf</em> directory.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_testing_using_ctf">Testing using CTF</h5>
+<div class="paragraph">
+<p>The Connector Testing Framework allows to run test suites in a specific Mule runtime environment, as explained <a href="https://github.com/mulesoft/connector-testing-framework">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>Two extra test properties need to be added when running a test suite from the command line:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deployment Profile: By using <em>-Ddeploymentprofile=local</em>, CTF will run the test suite in a remote Mule runtime environment.</p>
+</li>
+<li>
+<p>Mule Directory: By using <em>-Dmuledirectory:&lt;mule-directory&gt;</em>, CTF will use the available mule runtime to run a test suite if <em>-Ddeploymentprofile=local</em> is used.</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_unit_tests">4.3. Unit Tests</h3>
+<h3 id="_unit_tests">4.2. Unit Tests</h3>
 <div class="sect3">
-<h4 id="_intro">4.3.1. Introduction</h4>
+<h4 id="_intro">4.2.1. Introduction</h4>
 <div class="paragraph">
 <p>Unit tests aim at assuring the correct behaviour of a particular code unit within the connector. Although not a mandatory step within the certification process, different aspects require unit tests instead of functional tests.</p>
 </div>
@@ -2504,11 +2385,33 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 </li>
 </ol>
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_test_methods_unit">4.2.2. Topics to Test using JUnit</h4>
 <div class="paragraph">
-<p>Sacar la parte de Functional y ponerle "Automation"</p>
+<p>There are a few scenarios that need to be tested by means of JUnit tests instead of Functional tests. This sections describes those scenarios.</p>
+</div>
+<div class="sect4">
+<h5 id="_test_connection">Test Connection</h5>
+<div class="paragraph">
+<p><em>Test connection</em> test cases are derived from the error handling logic on each of the connector strategy classes. Check the following example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>SalesforceBasicAuthStrategy.java class from the Salesforce Connector throws MalformedURLException and ConnectionExceptionCode (this exception can be break into many negative cases, like invalid credentials, expired credentials, etc)</p>
+</li>
+<li>
+<p>Validations are applied to the API version through verifyApiVersion method</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Dentro de Unit poner lo de testconnection</p>
+<p>The resulting cases should be taking into consideration and their corresponding <strong>unit test cases</strong> should be created. Assertions on the error messages should be applied to ensure that on error user is effectively informed of the cause of the problem.</p>
+</div>
+<div class="paragraph">
+<p>Different set of credentials need to be used when testing valid and invalid test cases.</p>
 </div>
 </div>
 </div>
@@ -8025,7 +7928,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-07-09 18:55:25 EDT
+Last updated 2015-07-10 14:28:35 EDT
 </div>
 </div>
 </body>
