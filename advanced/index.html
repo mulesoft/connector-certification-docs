@@ -2027,7 +2027,7 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 <p>All functional test cases classes must extend from a FunctionalTestParent, as explained in the Connector Testing Framework documentation. This functional test parent is kept within the connector testing framework, which can be extended if further behaviour is required.</p>
 </div>
 <div class="paragraph">
-<p><strong>AbstractTestCase.java</strong> is found within <em>org.mule.tools.devkit.ctf.junit</em> and implements all the initialization and shut down of the CTF by means of @BeforeClass and @AfterClass methods. <strong>Extending from this class is mandatory</strong>, since it assures the correct use of the CTF.</p>
+<p><strong>AbstractTestCase.java</strong> is found within <em>org.mule.tools.devkit.ctf.junit</em> and implements all the initialization and shut down of the CTF by means of @BeforeClass and @AfterClass methods. <strong>Extending from this class is mandatory</strong>, since it assures the correct use of the CTF. In case a sub-parent is needed, it must be named as *&lt;ConnectorName&gt;TestCase, which will extend from AbstractTestCase and add the required behaviour, such as @Before and @After methods.</p>
 </div>
 <div class="paragraph">
 <p>Every test case needs to be named as &lt;OperationName&gt;TestCases. These naming conventions avoid Maven to automatically run test cases, since tests require credentials and therefore automatically running them without the proper set of credentials will produce tests to fail.</p>
@@ -2263,7 +2263,7 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><em>src/test/resources/payloads.xml:</em> Must contain all required WSDL-XML files, which are consumed by the TestDataBuilder.</p>
+<p><em>src/test/resources/payloads.xml:</em> This directory must contain all required WSDL-XML files, which are consumed by the TestDataBuilder.</p>
 </li>
 <li>
 <p><em>WSDL_ID#Operation:</em> Every WSDL-XML file must be named as the WSDL ID following the separator <em>#</em> and ending with the operation name.</p>
@@ -2427,7 +2427,7 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 <p>Based on these guidelines, analyze the connector you&#8217;re testing and provide a test suite build from these generic test cases (only a document with general and operation­specific test cases titles) with all tests in Passed status.</p>
 </div>
 <div class="paragraph">
-<p>Specific test cases from the Interop Test guideline are automated and their execution in Anypoint Studio using the DevKit Plugin is described next.</p>
+<p>Specific test cases from the Interoperability Test guideline are automated and their execution in Anypoint Studio using the DevKit Plugin is described next.</p>
 </div>
 <div class="sect3">
 <h4 id="_introduction_2">5.1.1. Introduction</h4>
@@ -7928,7 +7928,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-07-10 14:28:35 EDT
+Last updated 2015-07-10 14:31:00 EDT
 </div>
 </div>
 </body>
