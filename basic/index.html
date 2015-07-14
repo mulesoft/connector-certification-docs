@@ -571,15 +571,15 @@ This document first introduces the entire <strong>Connector Lifecycle Model</str
 <h2 id="_coding_standars_and_best_practices">2. Coding Standards and Best Practices</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Development best practices and coding standars have been learned within the connector developemt community over time, leading to improve the quality of connectors. During the cerfitication process, most of these practices and standars are checked through automated tools, such as SonarQube.</p>
+<p>Development best practices and coding standards have been learned within the connector development community over time, leading to improve the quality of connectors. During the cerfitication process, most of these practices and standars are checked through automated tools, such as SonarQube.</p>
 </div>
 <div class="sect2">
 <h3 id="_anypoint_connector_devkit_version">2.1. Anypoint™ Connector DevKit Version</h3>
 <div class="paragraph">
-<p>The last version of Anypoint™ Connector Devkit must be used to develop your connector. As of March 2015, the latest stable Devkit version is 3.6.1.</p>
+<p>The last version of Anypoint™ Connector DevKit must be used to develop your connector. As of Jun 2015, the latest stable Devkit version is 3.7.0.</p>
 </div>
 <div class="paragraph">
-<p>DevKit 3.6.x assures that a connector will be compatible with Mule ESB 3.5.x and Mule ESB 3.6.x. However, external libraries employed by the connector might have conflicts with different Mule ESB versions. Samity checks are mandatory for every Mule ESB Version.</p>
+<p>DevKit 3.7.x assures that a connector will be compatible with Mule ESB 3.5.x, Mule ESB 3.6.x and Mule ESB 3.7.x. However, external libraries employed by the connector might have conflicts with different Mule ESB versions. Samity checks are mandatory for every Mule ESB Version.</p>
 </div>
 </div>
 <div class="sect2">
@@ -629,6 +629,141 @@ This document first introduces the entire <strong>Connector Lifecycle Model</str
 </div>
 <div class="paragraph">
 <p>If a connector is categorized under <strong>Premium</strong>, then the connector code must include both the <strong>@RequiresEnterpriseLicense</strong> and the <strong>@RequiresEntitlement</strong> annotations.</p>
+</div>
+<div class="sect3">
+<h4 id="_sources_deployment">2.2.1. Sources Deployment</h4>
+<div class="paragraph">
+<p>For Standard connectors, which are deployed to public repositories but its source code is closed, the following plugin must be added to the &lt;build&gt; element in order to avoid sources deployment:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>maven-source-plugin<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>2.1.2<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;executions&gt;</span>
+        <span class="tag">&lt;execution&gt;</span>
+            <span class="tag">&lt;id&gt;</span>attach-sources<span class="tag">&lt;/id&gt;</span>
+            <span class="tag">&lt;phase&gt;</span>none<span class="tag">&lt;/phase&gt;</span>
+        <span class="tag">&lt;/execution&gt;</span>
+    <span class="tag">&lt;/executions&gt;</span>
+<span class="tag">&lt;/plugin&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_distribution_management">2.2.2. Distribution Management</h4>
+<div class="paragraph">
+<p>Configuration of the distributionManagement element varies from connector to connector, depending on its category and the project structure.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Community and Standard:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;distributionManagement&gt;</span>
+    <span class="tag">&lt;repository&gt;</span>
+        <span class="tag">&lt;id&gt;</span>mulesoft-releases<span class="tag">&lt;/id&gt;</span>
+        <span class="tag">&lt;name&gt;</span>MuleSoft Repository<span class="tag">&lt;/name&gt;</span>
+        <span class="tag">&lt;url&gt;</span>http://repository-master.mulesoft.org/releases/<span class="tag">&lt;/url&gt;</span>
+    <span class="tag">&lt;/repository&gt;</span>
+    <span class="tag">&lt;snapshotRepository&gt;</span>
+        <span class="tag">&lt;id&gt;</span>mulesoft-snapshots<span class="tag">&lt;/id&gt;</span>
+        <span class="tag">&lt;name&gt;</span>MuleSoft Snapshot Repository<span class="tag">&lt;/name&gt;</span>
+        <span class="tag">&lt;url&gt;</span>http://repository-master.mulesoft.org/snapshots/<span class="tag">&lt;/url&gt;</span>
+        <span class="tag">&lt;uniqueVersion&gt;</span>false<span class="tag">&lt;/uniqueVersion&gt;</span>
+    <span class="tag">&lt;/snapshotRepository&gt;</span>
+<span class="tag">&lt;/distributionManagement&gt;</span></code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select and Premium:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;distributionManagement&gt;</span>
+    <span class="tag">&lt;repository&gt;</span>
+        <span class="tag">&lt;id&gt;</span>mule-ee-releases<span class="tag">&lt;/id&gt;</span>
+        <span class="tag">&lt;name&gt;</span>MuleEE Releases Repository<span class="tag">&lt;/name&gt;</span>
+        <span class="tag">&lt;url&gt;</span>https://repository-master.mulesoft.org/nexus/content/repositories/releases-ee/<span class="tag">&lt;/url&gt;</span>
+    <span class="tag">&lt;/repository&gt;</span>
+    <span class="tag">&lt;snapshotRepository&gt;</span>
+        <span class="tag">&lt;id&gt;</span>mule-ee-snapshots<span class="tag">&lt;/id&gt;</span>
+        <span class="tag">&lt;name&gt;</span>MuleEE Snapshots Repository<span class="tag">&lt;/name&gt;</span>
+        <span class="tag">&lt;url&gt;</span>https://repository-master.mulesoft.org/nexus/content/repositories/ci-snapshots/<span class="tag">&lt;/url&gt;</span>
+        <span class="tag">&lt;uniqueVersion&gt;</span>false<span class="tag">&lt;/uniqueVersion&gt;</span>
+    <span class="tag">&lt;/snapshotRepository&gt;</span>
+<span class="tag">&lt;/distributionManagement&gt;</span></code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Multi-module Select and Premium:</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If a Premium connector is part of a multi-module project, before the release we should verify that:
+The connector&#8217;s module is deployed to the private nexus (same distribution management as described above for Standard,  ci-releases).
+Parent pom of the connectors project has configured the distribution management for public or Community connectors.</p>
+</div>
+<div class="paragraph">
+<p>For example, in a project with a parent pom, a utils module and a connector module, if and only if the connector is Standard or Premium, then the parent pom should declared the public distributionManagement, and it should be override in the connectors pom with the private distributionManagement.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_distribution_management_matrix">2.2.3. Distribution Management Matrix:</h4>
+<table class="tableblock frame-topbot grid-all" style="width: 40%;">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Community &amp; Standard</th>
+<th class="tableblock halign-left valign-top">Select &amp; Premium</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No override, same as parent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://repository-master.mulesoft.org/nexus/content/repositories/releases-ee/" class="bare">https://repository-master.mulesoft.org/nexus/content/repositories/releases-ee/</a></p></td>
+</tr>
+</tfoot>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single Module</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://repository-master.mulesoft.org/releases/" class="bare">http://repository-master.mulesoft.org/releases/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://repository-master.mulesoft.org/nexus/content/repositories/releases-ee/" class="bare">https://repository-master.mulesoft.org/nexus/content/repositories/releases-ee/</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multi Module</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parent:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parent:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://repository-master.mulesoft.org/releases/" class="bare">http://repository-master.mulesoft.org/releases/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://repository-master.mulesoft.org/releases/" class="bare">http://repository-master.mulesoft.org/releases/</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Connector:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Connector:</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -964,13 +1099,29 @@ If you are interested in more details, the project directory structure is descri
 <p>To have the best experience in Anypoint™ Studio, connectors must be DataMapper compliant. To achieve this, all operations must follow these recommendations.</p>
 </div>
 <div class="paragraph">
-<p>Any argument, returned or received, must be one of the following data types:
-. Map
-. POJO
-. List&lt;Map&gt;
-. List&lt;String&gt;
-. List&lt;POJO&gt;
-. List&lt;List&lt;String&gt;&gt;</p>
+<p>Any argument, returned or received, must be one of the following data types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Map</p>
+</li>
+<li>
+<p>POJO</p>
+</li>
+<li>
+<p>List&lt;Map&gt;</p>
+</li>
+<li>
+<p>List&lt;String&gt;</p>
+</li>
+<li>
+<p>List&lt;POJO&gt;</p>
+</li>
+<li>
+<p>List&lt;List&lt;String&gt;&gt;</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>These types must be part of the method signature so that DataMapper can auto-recognize the types in it&#8217;s mapping UI.</p>
@@ -1080,6 +1231,19 @@ This style can be imported in <strong>Eclipse, Studio and IntelliJ</strong>.</p>
 </div>
 <div class="paragraph">
 <p>Download the Connectors Style Format: <a href="files/connectors-style-convention.xml">Here</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="__config_friendly_names_conventions">2.5.6. @Config friendly names conventions</h4>
+<div class="paragraph">
+<p>In order to provide consistency across all the connectors, Global Element default name should a follow a convention:
+. If there is one single configuration, "Configuration" should be used as friendlyName
+. If there is more than one configuration, the following convention should be followed:
+.. "OAuth 2.0" for a OAuth configurations
+.. In other other case, use a brief descriptions honoring the same terminology used in the system to integrate</p>
+</div>
+<div class="paragraph">
+<p>GlobalElement name is configured using the friendlyName attribute of the configuration class.</p>
 </div>
 </div>
 </div>
@@ -1369,7 +1533,7 @@ The demo contains 3 parts:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-07-13 17:15:29 EDT
+Last updated 2015-07-14 02:50:30 EDT
 </div>
 </div>
 </body>
