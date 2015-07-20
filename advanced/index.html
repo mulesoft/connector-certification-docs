@@ -2504,6 +2504,66 @@ All MetaData tests need to be annotated with @MetaDataTest. This will assure tha
 </div>
 </div>
 <div class="sect4">
+<h5 id="_testing_metadata_preferred_testing_approach_for_complex_domains">Testing MetaData: Preferred Testing Approach for Complex Domains</h5>
+<div class="paragraph">
+<p>When the domain of the connector is complex and its entities contain large and deep object structures, MetaData tests might end up being long, complicate to read and they might not even test the entire MetaData description.</p>
+</div>
+<div class="paragraph">
+<p>To deal with this scenario, the following approach is highly recommended:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Naming conventions is maintained, where a single metadata class <strong>per MetaDataCategory</strong> is accepted, named as <em>&lt;CategoryName&gt;MetaDataTestCases</em>.</p>
+</li>
+<li>
+<p>A MetaData abstract parent is introduced, named as <em>AbstractMetaDataTestCases.java</em> available <a href="files/AbstractMetaDataTestCases.java">here</a>. This method need to be parametrised with the connector class.</p>
+</li>
+<li>
+<p><em>AbstractMetaDataTestCases.java</em> uses a MetadataSerializer available <a href="files/MetadataSerializer.java">here</a>.</p>
+</li>
+<li>
+<p>Every <em>&lt;CategoryName&gt;MetaDataTestCases</em> need to extend from <em>AbstractMetaDataTestCases</em> and defines which entities must be tested as follows:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">java.util.ArrayList</span>;
+<span class="keyword">import</span> <span class="include">java.util.List</span>;
+
+<span class="directive">public</span> <span class="type">class</span> &lt;<span class="class">CategoryName</span>&gt;MetaDataTestCases <span class="directive">extends</span> AbstractMetaDataTestCases {
+
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; keys = <span class="keyword">new</span> <span class="predefined-type">ArrayList</span>&lt;<span class="predefined-type">String</span>&gt;();
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> METADATA_CATEGORY = <span class="string"><span class="delimiter">&quot;</span><span class="content">metadata</span><span class="delimiter">&quot;</span></span>;
+
+    <span class="directive">static</span> {
+        keys.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">ExternalDataSource</span><span class="delimiter">&quot;</span></span>);
+        keys.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">RemoteSiteSetting</span><span class="delimiter">&quot;</span></span>);
+        keys.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">CustomObject</span><span class="delimiter">&quot;</span></span>);
+        keys.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">PicklistValue</span><span class="delimiter">&quot;</span></span>);
+        keys.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">CustomField</span><span class="delimiter">&quot;</span></span>);
+        keys.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">FieldSet</span><span class="delimiter">&quot;</span></span>);
+        keys.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">ListView</span><span class="delimiter">&quot;</span></span>);
+        keys.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">RecordType</span><span class="delimiter">&quot;</span></span>);
+        keys.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">SharingReason</span><span class="delimiter">&quot;</span></span>);
+        keys.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">ValidationRule</span><span class="delimiter">&quot;</span></span>);
+        keys.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">WebLink</span><span class="delimiter">&quot;</span></span>);
+        keys.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">PermissionSet</span><span class="delimiter">&quot;</span></span>);
+        keys.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">Profile</span><span class="delimiter">&quot;</span></span>);
+    }
+
+    <span class="directive">public</span> &lt;CategoryName&gt;MetaDataTestCases() {
+        <span class="local-variable">super</span>(keys, METADATA_CATEGORY);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Thus, every MetaData test case defines within its category the important entities to test. The underlying implementation will only tests those categories and compare the results of the MetaData retrieved from the sandbox with JSON-based structures keep within the connector test resources. These structures are created the first time the test is ran and kept afterwards for future test executions.</p>
+</div>
+</div>
+<div class="sect4">
 <h5 id="_testing_wsdl_operation">Testing WSDL Operation</h5>
 <div class="paragraph">
 <p>Testing WSDL operations is easily supported by CTF. WSDL operations consume WSDL files mapped as XMLStreamReader files, which must be generated within the TestDataBuilder as usual.</p>
@@ -2649,7 +2709,7 @@ We provide a mechanism to test operations annotated with @Paged, which indirectl
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>Test Suites:</strong> <em>org.mule.modules.&lt;connector-project&gt;.automation.runner.SystemTestSuite</em> groups all Sysmte tests with no exception. In case two or more test suites are required (when grouping semantic similar tests for instance), a <em>FullSystemTestSuite</em> need to be used, grouping the remaining test suites.</p>
+<p><strong>Test Suites:</strong> <em>org.mule.modules.&lt;connector-project&gt;.automation.runner.SystemTestSuite</em> groups all System tests with no exception. In case two or more test suites are required (when grouping semantic similar tests for instance), a <em>FullSystemTestSuite</em> need to be used, grouping the remaining test suites.</p>
 </li>
 <li>
 <p><strong>Naming Convention:</strong> System tests must end with <em>TestCases</em>. Employing alternatives ending names is discouraged, specially endings such as <em>Test</em> or <em>TestCase</em>.</p>
@@ -2805,7 +2865,7 @@ The valid credentials need to be the same as with the functional tests, in this 
 <div class="title">Tip</div>
 </td>
 <td class="content">
-<em>ConfigurationUtils Java class</em> is available from <a href="files/ConfigurationUtils.java">here</a>.
+<em>ConfigurationUtils.Java class</em> is available from <a href="files/ConfigurationUtils.java">here</a>. Include it in your connector project.
 </td>
 </tr>
 </table>
@@ -8030,7 +8090,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-07-15 02:50:40 EDT
+Last updated 2015-07-20 14:11:34 EDT
 </div>
 </div>
 </body>
