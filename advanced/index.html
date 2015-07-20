@@ -2532,13 +2532,13 @@ All MetaData tests need to be annotated with @MetaDataTest. This will assure tha
 <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">java.util.ArrayList</span>;
 <span class="keyword">import</span> <span class="include">java.util.List</span>;
 
-<span class="directive">public</span> <span class="type">class</span> &lt;<span class="class">CategoryName</span>&gt;MetaDataTestCases <span class="directive">extends</span> AbstractMetaDataTestCases {
+<span class="directive">public</span> <span class="type">class</span> <span class="class">CookBookCategoryMetaDataTestCases</span> <span class="directive">extends</span> AbstractMetaDataTestCases {
 
     <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; keys = <span class="keyword">new</span> <span class="predefined-type">ArrayList</span>&lt;<span class="predefined-type">String</span>&gt;();
-    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> METADATA_CATEGORY = <span class="string"><span class="delimiter">&quot;</span><span class="content">metadata</span><span class="delimiter">&quot;</span></span>;
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> METADATA_CATEGORY = <span class="string"><span class="delimiter">&quot;</span><span class="content">CookBookCategory</span><span class="delimiter">&quot;</span></span>;
 
     <span class="directive">static</span> {
-        keys.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">Receipe</span><span class="delimiter">&quot;</span></span>);
+        keys.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">Recipe</span><span class="delimiter">&quot;</span></span>);
         keys.add(<span class="string"><span class="delimiter">&quot;</span><span class="content">Ingredient</span><span class="delimiter">&quot;</span></span>);
     }
 
@@ -2779,8 +2779,6 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
 <span class="include">public</span> <span class="include">class</span> <span class="include">ConnectivitySystemTestCases</span> {
 
   <span class="include">private</span> <span class="include">Properties</span> <span class="include">validCredentials</span>;
-
-  <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> CREDENTIALS_SYSTEM_PROPERTY = <span class="string"><span class="delimiter">&quot;</span><span class="content">automation-credentials.properties</span><span class="delimiter">&quot;</span></span>;
 
   <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Logger</span> logger = <span class="predefined-type">Logger</span>.getLogger(ConnectivitySystemTestCases.class);
 
@@ -8079,7 +8077,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-07-20 14:59:27 EDT
+Last updated 2015-07-20 15:04:34 EDT
 </div>
 </div>
 </body>
