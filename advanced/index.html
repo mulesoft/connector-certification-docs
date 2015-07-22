@@ -2299,7 +2299,7 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
 
    <span class="comment">//Method that invokes the connector operation under test and asserts on the return value.</span>
    <span class="annotation">@Test</span>
-   <span class="directive">public</span> <span class="type">void</span> test&lt;operationName&gt;() {
+   <span class="directive">public</span> <span class="type">void</span> &lt;UnitOfWork&gt;_&lt;StateUnderTest&gt;_&lt;ExpectedBehavior&gt;() {
       <span class="keyword">try</span> {
          ...
       } <span class="keyword">catch</span> (<span class="exception">Exception</span> e) {
@@ -2309,22 +2309,35 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
 }</code></pre>
 </div>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+Unit test naming convention is not mandatory, although &lt;UnitOfWork&gt;_&lt;StateUnderTest&gt;_&lt;ExpectedBehavior&gt; is a good practice. An example test might be as follows: <em>Parse_OnEmptyString_ExceptionThrown</em>.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>The exception might be managed within the test case if the required information is available or it might be thrown.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="__em_connectorname_testcase_em_class"><em>&lt;ConnectorName&gt;TestCase</em> Class</h5>
+<h5 id="__em_abstracttestcases_em_class"><em>AbstractTestCases</em> Class</h5>
 <div class="paragraph">
-<p>In case a sub-parent is needed, it must be named as &lt;ConnectorName&gt;TestCase, which will extend from AbstractTestCase and add the required behaviour, such as @Before and @After methods.</p>
+<p>In case a sub-parent is needed, it must be named as AbstractTestCases, which will extend from CTF AbstractTestCase and add the required behaviour, such as @Before and @After methods.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">org.mule.tools.devkit.ctf.junit.AbstractTestCase</span>;
+<pre class="CodeRay highlight"><code data-lang="java">&gt;
+<span class="keyword">package</span> <span class="namespace">org.mule.modules</span>.&lt;<span class="namespace">ConnectorName</span>&gt;.<span class="namespace">automation.functional</span>;
 
-<span class="directive">public</span> <span class="type">class</span> &lt;<span class="class">ConnectorName</span>&gt;TestCases <span class="directive">extends</span> AbstractTestCase&lt;&lt;ConnectorClassName&gt;&gt; {
+<span class="type">class</span> <span class="class">AbtractTestCases</span> <span class="directive">extends</span> org.mule.tools.devkit.ctf.junit.AbstractTestCase&lt;&lt;ConnectorClassName&gt;&gt; {
 
-   <span class="directive">public</span> &lt;ConnectorName&gt;TestCases(){
+   <span class="directive">public</span> AbstractTestCases(){
      <span class="comment">//This is required if running single tests as well as a test suite</span>
      setConnectorClass(&lt;ConnectorName&gt;TestCases.class);
    }
@@ -8077,7 +8090,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-07-20 15:04:34 EDT
+Last updated 2015-07-20 17:46:40 EDT
 </div>
 </div>
 </body>
