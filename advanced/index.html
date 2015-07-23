@@ -2299,7 +2299,7 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
 
    <span class="comment">//Method that invokes the connector operation under test and asserts on the return value.</span>
    <span class="annotation">@Test</span>
-   <span class="directive">public</span> <span class="type">void</span> &lt;UnitOfWork&gt;_&lt;StateUnderTest&gt;_&lt;ExpectedBehavior&gt;() {
+   <span class="directive">public</span> <span class="type">void</span> &lt;unitOfWork&gt;&lt;StateUnderTest&gt;&lt;ExpectedBehavior&gt;() {
       <span class="keyword">try</span> {
          ...
       } <span class="keyword">catch</span> (<span class="exception">Exception</span> e) {
@@ -2316,7 +2316,7 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
 <div class="title">Important</div>
 </td>
 <td class="content">
-Unit test naming convention is not mandatory, although &lt;UnitOfWork&gt;_&lt;StateUnderTest&gt;_&lt;ExpectedBehavior&gt; is a good practice. An example test might be as follows: <em>Parse_OnEmptyString_ExceptionThrown</em>.
+Unit test naming convention is not mandatory, although &lt;unitOfWork&gt;&lt;StateUnderTest&gt;&lt;ExpectedBehavior&gt; is a good practice. An example test might be as follows: parseOnEmptyStringExceptionThrown.
 </td>
 </tr>
 </table>
@@ -8090,7 +8090,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-07-23 02:48:22 EDT
+Last updated 2015-07-23 14:50:10 EDT
 </div>
 </div>
 </body>
