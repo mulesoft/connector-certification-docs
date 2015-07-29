@@ -1,25 +1,25 @@
-= README.md Template
+# README.md Template
 
 
-== [Name] Anypoint™ Connector
+## [Name] Anypoint™ Connector
 
 
 [Connector description including destination service or application]
 
-== Author
-Example:
+## Author
+Example: 
 MuleSoft Inc.
 
-== Supported Mule runtime versions
+## Supported Mule runtime versions
 Examples:
 Mule 3.4.x, 3.5.x
 Mule 3.4.1
 
-== [Destination service or application name] supported versions
+## [Destination service or application name] supported versions
 Example:
 Oracle E-Business Suite 12.1 and above.
 
-== Service or application supported modules
+## Service or application supported modules
 Example:
 Oracle CRM
 Oracle Financials
@@ -27,11 +27,11 @@ or
 Salesforce API v.24
 Salesforce Metadata API
 
-== Installation 
+## Installation 
 
 You can access the full documentation <here>.
 
-== Reporting Issues
+## Reporting Issues
 
 (Only for open source connectors)
 
