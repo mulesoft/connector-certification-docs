@@ -1,4 +1,4 @@
-= README.adoc Template
+= README.md Template
 
 
 == [Name] Anypoint™ Connector
