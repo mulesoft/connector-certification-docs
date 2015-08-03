@@ -522,6 +522,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_maven_conventions_and_setup">2.4. Maven Conventions and Setup</a></li>
 <li><a href="#_devkit_standars_best_practices">2.5. DevKit Standars and Best Practices</a></li>
 <li><a href="#_connector_demo_example">2.6. Connector Demo Example</a></li>
+<li><a href="#_third_party_licenses">2.7. Third-Party Licenses</a></li>
 </ul>
 </li>
 <li><a href="#_static_code_analysis_and_coverage">3. Static Code Analysis and Coverage</a>
@@ -566,7 +567,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_documentation">7. Documentation &amp; Release Notes</a>
 <ul class="sectlevel2">
 <li><a href="#_built_in_documentation">7.1. Built-in Documentation</a></li>
-<li><a href="#_connector_apidocs">7.2. Connector Apidocs</a></li>
+<li><a href="#_connector_apidocs">7.2. Connector ApiDocs</a></li>
 </ul>
 </li>
 <li><a href="#_appendixes">8. Appendixes &amp; Templates</a>
@@ -993,9 +994,6 @@ table.CodeRay td.code>pre{padding:0}
 <ol class="arabic">
 <li>
 <p>Community and Standard:</p>
-</li>
-</ol>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;distributionManagement&gt;</span>
@@ -1013,13 +1011,9 @@ table.CodeRay td.code>pre{padding:0}
 <span class="tag">&lt;/distributionManagement&gt;</span></code></pre>
 </div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
 <p>Select and Premium:</p>
-</li>
-</ol>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;distributionManagement&gt;</span>
@@ -1037,8 +1031,7 @@ table.CodeRay td.code>pre{padding:0}
 <span class="tag">&lt;/distributionManagement&gt;</span></code></pre>
 </div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
 <p>Multi-module Select and Premium:</p>
 </li>
@@ -1115,6 +1108,9 @@ Parent pom of the connectors project has configured the distribution management 
 </li>
 <li>
 <p>Connector Demo Example</p>
+</li>
+<li>
+<p>Third Party Licenses</p>
 </li>
 </ul>
 </div>
@@ -1407,7 +1403,7 @@ If you are interested in more details, the project directory structure is descri
        <span class="tag">&lt;plugin&gt;</span>
             <span class="tag">&lt;groupId&gt;</span>org.mule.certification<span class="tag">&lt;/groupId&gt;</span>
             <span class="tag">&lt;artifactId&gt;</span>project-structure-validation<span class="tag">&lt;/artifactId&gt;</span>
-            <span class="tag">&lt;version&gt;</span>1.0.4<span class="tag">&lt;/version&gt;</span>
+            <span class="tag">&lt;version&gt;</span>1.0.5<span class="tag">&lt;/version&gt;</span>
             <span class="tag">&lt;executions&gt;</span>
                 <span class="tag">&lt;execution&gt;</span>
                     <span class="tag">&lt;phase&gt;</span>package<span class="tag">&lt;/phase&gt;</span>
@@ -1759,6 +1755,89 @@ The demo contains 3 parts:</p>
 </div>
 <div class="paragraph">
 <p>For a complete example of a workflow demo, you can download a sample project that uses MongoDB <a href="files/workflow-operations-demo.zip">here</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_third_party_licenses">2.7. Third-Party Licenses</h3>
+<div class="paragraph">
+<p>As part of the certification, it&#8217;s important to validate that all the libraries used by the connector are Open Source friendly. A easy way to generated a report of this, is running the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mvn org.codehaus.mojo:license-maven-plugin:1.8:aggregate-add-third-party</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The current list of licenses approved for use by third-party code redistributed with Community Connector projects is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Apache Software License 1.1</p>
+</li>
+<li>
+<p>Apache Software License 2.0</p>
+</li>
+<li>
+<p>W3C Software License</p>
+</li>
+<li>
+<p>Common Public License Version 1.0</p>
+</li>
+<li>
+<p>IBM Public License 1.0</p>
+</li>
+<li>
+<p>Mozilla Public License Version 1.1</p>
+</li>
+<li>
+<p>Common Development and Distribution License (CDDL) Version 1.0</p>
+</li>
+<li>
+<p>GNU Free Documentation License Version 1.3</p>
+</li>
+<li>
+<p>BSD</p>
+</li>
+<li>
+<p>MIT</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Licenses that are not approved for use include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>GNU GPL 2.0</p>
+</li>
+<li>
+<p>GNU LGPL</p>
+</li>
+<li>
+<p>Sun Binary Code License Agreement</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_open_source_compliance_checklist">2.7.1. Open Source Compliance Checklist</h4>
+<div class="paragraph">
+<p>Check that :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>No not approved for use third-party libraries are been distributed with your project</p>
+</li>
+<li>
+<p>There are no dependencies with no license</p>
+</li>
+<li>
+<p>Approved third-party are compliant with their license requirements</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -2129,7 +2208,7 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 <p>This section explains how to automate test cases for Anypoint MuleSoft Connectors. Tests are <em>Functional Tests</em>, <em>System Tests</em> or <em>Unit Tests</em> depending which aspect of the connector is being tested.</p>
 </div>
 <div class="paragraph">
-<p>Functional tests aim at testing the connector with a particular Mule runtime environment, thus assuring backward and forward compatibility. System tests group those aspects were a connection is needed but no underlying Mule runtime, such as when testing valid/invalid credentials or different connection strategies. Finally, unit tests aim at verifying isolated components, or units, of the connector which do not require a valid connection nor a Mule runtime.</p>
+<p>Functional tests aim at testing the connector with a particular Mule runtime environment, thus assuring backward and forward compatibility. System tests group those aspects were a connection is needed but no underlying Mule runtime, such as when testing valid/invalid credentials or different connection configurations. Finally, unit tests aim at verifying isolated components, or units, of the connector which do not require a valid connection nor a Mule runtime.</p>
 </div>
 <div class="paragraph">
 <p>Once all tests have been engineered, a final test execution step is required. This execution step requires to run Functional tests with different Mule runtimes configurations, run System tests with valid/invalid credentials and finally run unit tests.</p>
@@ -2151,7 +2230,7 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://dist.sonar-ide
 <p><strong>Pagination:</strong> If the connector implements @Paged processors, then pagination need to be tested.</p>
 </li>
 <li>
-<p><strong>Test Connectivity:</strong> Every connection strategy need to be tested with valid/invalid credentials.</p>
+<p><strong>Test Connectivity:</strong> Every connection configuration need to be tested with valid/invalid credentials, wrong configuration values, etc.</p>
 </li>
 <li>
 <p><strong>WSDL Operations:</strong> Testing WSDL operations is required <strong>ONLY</strong> when your connector is SOAP Connect. As with MetaData, testing these kind of operations require a different approach than processors.</p>
@@ -2752,19 +2831,19 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>Test Connectivity:</strong> These tests aim at running the <em>TestConnectivity</em> operation by covering the internal logic of the method itself, which differs from testing the annotation used. A single test case is accepted, named as <em>ConnectivitySystemTestCases</em>, which will contains as many tests as set of credentials are used. These tests need to be named as &lt;CredentialsName&gt;ConnectivityTest.</p>
+<p><strong>Test Connectivity:</strong> These tests aim at running the <em>TestConnectivity</em> operation by covering the internal logic of the method itself, which differs from testing the annotation used. A single test case is accepted for each connection configuration, named as <em>&lt;ConfigName&gt;TestCases</em>, which will contains as many tests as set of credentials are used.</p>
 </li>
 </ol>
 </div>
 <div class="sect4">
 <h5 id="_test_connectivity">Test Connectivity</h5>
 <div class="paragraph">
-<p>These tests aim at testing the logic under the @TestConnectivity annotated method. To do so, let&#8217;s consider the following connector example and its connection strategy.</p>
+<p>These tests aim at testing the logic under the @TestConnectivity annotated method. To do so, let&#8217;s consider the following connector example and its connection configuration.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ConnectionManagement</span>(friendlyName=<span class="string"><span class="delimiter">&quot;</span><span class="content">CookBookConnector Connection</span><span class="delimiter">&quot;</span></span>, configElementNam=<span class="string"><span class="delimiter">&quot;</span><span class="content">cookbookconfig</span><span class="delimiter">&quot;</span></span>)
-<span class="directive">public</span> <span class="type">class</span> <span class="class">CookBookConnectionManagementStrategy</span>{
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ConnectionManagement</span>(friendlyName=<span class="string"><span class="delimiter">&quot;</span><span class="content">CookBookConnector Basic Connection</span><span class="delimiter">&quot;</span></span>, configElementNam=<span class="string"><span class="delimiter">&quot;</span><span class="content">cconfig</span><span class="delimiter">&quot;</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">CookBookBasicConfig</span> {
 
   <span class="annotation">@Connect</span>
   <span class="directive">public</span> <span class="type">void</span> connect(<span class="annotation">@ConnectionKey</span> <span class="predefined-type">String</span> username, <span class="annotation">@Password</span> <span class="predefined-type">String</span> password){
@@ -2784,21 +2863,21 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
 </div>
 </div>
 <div class="paragraph">
-<p>In order to test this connection strategy, the following test is required:</p>
+<p>In order to test this connection config, the following test is required:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span>
-<span class="include">public</span> <span class="include">class</span> <span class="include">ConnectivitySystemTestCases</span> {
+<span class="include">public</span> <span class="include">class</span> <span class="include">CookBookBasicConfigTestCases</span> {
 
   <span class="include">private</span> <span class="include">Properties</span> <span class="include">validCredentials</span>;
 
-  <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Logger</span> logger = <span class="predefined-type">Logger</span>.getLogger(ConnectivitySystemTestCases.class);
+  <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Logger</span> logger = <span class="predefined-type">Logger</span>.getLogger(CookBookBasicConfigTestCases.class);
 
   <span class="annotation">@Before</span>
   <span class="directive">public</span> <span class="type">void</span> setup(){
 
-    validCredentials = ConfigurationUtils.getAutomationCredentialsProperties();;
+    validCredentials = ConfigurationUtils.getAutomationCredentialsProperties();
   }
 
 
@@ -2807,13 +2886,13 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
 
     <span class="comment">//Add required extra behaviour here if necessary</span>
 
-    CookBookConnectionManagementStrategy connectorStrategy = <span class="keyword">new</span> CookBookConnectionManagementStrategy();
+    <span class="directive">final</span> CookBookBasicConfig config = <span class="keyword">new</span> CookBookBasicConfig();
 
-    <span class="predefined-type">String</span> username = validCredentials.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">cookbookconfig.username</span><span class="delimiter">&quot;</span></span>);
-    <span class="predefined-type">String</span> password = validCredentials.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">cookbookconfig.password</span><span class="delimiter">&quot;</span></span>);
+    <span class="predefined-type">String</span> username = validCredentials.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">cconfig.username</span><span class="delimiter">&quot;</span></span>);
+    <span class="predefined-type">String</span> password = validCredentials.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">cconfig.password</span><span class="delimiter">&quot;</span></span>);
 
     <span class="comment">//Call the @TestConnectivity</span>
-    connectorStrategy.testConnectivity(username, password);
+    config.testConnectivity(username, password);
    }
 
    <span class="annotation">@Test</span>
@@ -2821,10 +2900,10 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
 
     <span class="comment">//Add required extra behaviour here if necessary</span>
 
-    CookBookConnectionManagementStrategy connectorStrategy = <span class="keyword">new</span> CookBookConnectionManagementStrategy();
+    CookBookBasicConfig config = <span class="keyword">new</span> CookBookBasicConfig();
 
     <span class="comment">//Call the @TestConnectivity</span>
-    connectorStrategy.testConnectivity(<span class="string"><span class="delimiter">&quot;</span><span class="content">noUserName</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">noPassword</span><span class="delimiter">&quot;</span></span>);
+    config.testConnectivity(<span class="string"><span class="delimiter">&quot;</span><span class="content">noUserName</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">noPassword</span><span class="delimiter">&quot;</span></span>);
    }
 
    <span class="annotation">@Test</span>
@@ -2832,10 +2911,10 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
 
     <span class="comment">//Add required extra behaviour here if necessary</span>
 
-    CookBookConnectionManagementStrategy connectorStrategy = <span class="keyword">new</span> CookBookConnectionManagementStrategy();
+    CookBookBasicConfig config = <span class="keyword">new</span> CookBookBasicConfig();
 
     <span class="comment">//Call the @TestConnectivity</span>
-    connectorStrategy.testConnectivity(<span class="predefined-constant">null</span>, <span class="predefined-constant">null</span>);
+    config.testConnectivity(<span class="predefined-constant">null</span>, <span class="predefined-constant">null</span>);
    }
 }</code></pre>
 </div>
@@ -7946,7 +8025,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 <div class="sect2">
 <h3 id="_built_in_documentation">7.1. Built-in Documentation</h3>
 <div class="paragraph">
-<p>Part of the documentation must be packed within the connector source code. Create a <em>doc</em> folder in the root of the connector project in which the following documents reside.</p>
+<p>Part of the documentation must be packed within the connector source code. The mandatory files are:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -7967,24 +8046,26 @@ Note: You can override the getTotalResults() method in the connector in case of 
 <div class="sect3">
 <h4 id="_user_guide">7.1.1. User Guide</h4>
 <div class="paragraph">
-<p>The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. Write the documentation using AsciiDoc syntax so that the resulting file is called user_manual.adoc. A template can be found <a href="files/user-manual.asc">here</a>.</p>
+<p>The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. Write the documentation using AsciiDoc syntax so that the resulting file is called user_manual.adoc. A template can be found <a href="files/user-manual.adoc">here</a>.
+It should reside in <em>doc</em> folder in the root of the connector project.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_release_notes">7.1.2. Release Notes</h4>
 <div class="paragraph">
-<p>Release notes need to be highly descriptive, including backward compatibility of the released connector with previous versions. A template can be found <a href="files/releaseNotesTemplate.asc">here</a>.</p>
+<p>Release notes need to be highly descriptive, including backward compatibility of the released connector with previous versions. A template can be found <a href="files/release-notes.adoc">here</a>.
+It should reside in <em>doc</em> folder in the root of the connector project.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_readme">7.1.3. ReadMe</h4>
 <div class="paragraph">
-<p>A README.adoc template can be found <a href="files/readme.asc">here</a>.</p>
+<p>A README.md template can be found <a href="files/README.md">here</a>. It should reside in root of the connector project.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_connector_apidocs">7.2. Connector Apidocs</h3>
+<h3 id="_connector_apidocs">7.2. Connector ApiDocs</h3>
 <div class="paragraph">
 <p>Each public connector requires:</p>
 </div>
@@ -8090,7 +8171,7 @@ Note: You can override the getTotalResults() method in the connector in case of 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-07-27 02:48:32 EDT
+Last updated 2015-07-27 02:51:16 EDT
 </div>
 </div>
 </body>
