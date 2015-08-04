@@ -514,12 +514,13 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_maven_conventions_and_setup">2.4. Maven Conventions and Setup</a></li>
 <li><a href="#_devkit_standars_best_practices">2.5. DevKit Standars and Best Practices</a></li>
 <li><a href="#_connector_demo_example">2.6. Connector Demo Example</a></li>
+<li><a href="#_third_party_licenses">2.7. Third-Party Licenses</a></li>
 </ul>
 </li>
 <li><a href="#_documentation">3. Documentation &amp; Release Notes</a>
 <ul class="sectlevel2">
 <li><a href="#_built_in_documentation">3.1. Built-in Documentation</a></li>
-<li><a href="#_connector_apidocs">3.2. Connector Apidocs</a></li>
+<li><a href="#_connector_apidocs">3.2. Connector ApiDocs</a></li>
 </ul>
 </li>
 <li><a href="#_appendixes">4. Appendixes &amp; Templates</a>
@@ -666,9 +667,6 @@ This document first introduces the entire <strong>Connector Lifecycle Model</str
 <ol class="arabic">
 <li>
 <p>Community and Standard:</p>
-</li>
-</ol>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;distributionManagement&gt;</span>
@@ -686,13 +684,9 @@ This document first introduces the entire <strong>Connector Lifecycle Model</str
 <span class="tag">&lt;/distributionManagement&gt;</span></code></pre>
 </div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
 <p>Select and Premium:</p>
-</li>
-</ol>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;distributionManagement&gt;</span>
@@ -710,8 +704,7 @@ This document first introduces the entire <strong>Connector Lifecycle Model</str
 <span class="tag">&lt;/distributionManagement&gt;</span></code></pre>
 </div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+</li>
 <li>
 <p>Multi-module Select and Premium:</p>
 </li>
@@ -788,6 +781,9 @@ Parent pom of the connectors project has configured the distribution management 
 </li>
 <li>
 <p>Connector Demo Example</p>
+</li>
+<li>
+<p>Third Party Licenses</p>
 </li>
 </ul>
 </div>
@@ -1080,7 +1076,7 @@ If you are interested in more details, the project directory structure is descri
        <span class="tag">&lt;plugin&gt;</span>
             <span class="tag">&lt;groupId&gt;</span>org.mule.certification<span class="tag">&lt;/groupId&gt;</span>
             <span class="tag">&lt;artifactId&gt;</span>project-structure-validation<span class="tag">&lt;/artifactId&gt;</span>
-            <span class="tag">&lt;version&gt;</span>1.0.4<span class="tag">&lt;/version&gt;</span>
+            <span class="tag">&lt;version&gt;</span>1.0.5<span class="tag">&lt;/version&gt;</span>
             <span class="tag">&lt;executions&gt;</span>
                 <span class="tag">&lt;execution&gt;</span>
                     <span class="tag">&lt;phase&gt;</span>package<span class="tag">&lt;/phase&gt;</span>
@@ -1434,6 +1430,89 @@ The demo contains 3 parts:</p>
 <p>For a complete example of a workflow demo, you can download a sample project that uses MongoDB <a href="files/workflow-operations-demo.zip">here</a>.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_third_party_licenses">2.7. Third-Party Licenses</h3>
+<div class="paragraph">
+<p>As part of the certification, it&#8217;s important to validate that all the libraries used by the connector are Open Source friendly. A easy way to generated a report of this, is running the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mvn org.codehaus.mojo:license-maven-plugin:1.8:aggregate-add-third-party</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The current list of licenses approved for use by third-party code redistributed with Community Connector projects is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Apache Software License 1.1</p>
+</li>
+<li>
+<p>Apache Software License 2.0</p>
+</li>
+<li>
+<p>W3C Software License</p>
+</li>
+<li>
+<p>Common Public License Version 1.0</p>
+</li>
+<li>
+<p>IBM Public License 1.0</p>
+</li>
+<li>
+<p>Mozilla Public License Version 1.1</p>
+</li>
+<li>
+<p>Common Development and Distribution License (CDDL) Version 1.0</p>
+</li>
+<li>
+<p>GNU Free Documentation License Version 1.3</p>
+</li>
+<li>
+<p>BSD</p>
+</li>
+<li>
+<p>MIT</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Licenses that are not approved for use include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>GNU GPL 2.0</p>
+</li>
+<li>
+<p>GNU LGPL</p>
+</li>
+<li>
+<p>Sun Binary Code License Agreement</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_open_source_compliance_checklist">2.7.1. Open Source Compliance Checklist</h4>
+<div class="paragraph">
+<p>Check that :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>No not approved for use third-party libraries are been distributed with your project</p>
+</li>
+<li>
+<p>There are no dependencies with no license</p>
+</li>
+<li>
+<p>Approved third-party are compliant with their license requirements</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1445,7 +1524,7 @@ The demo contains 3 parts:</p>
 <div class="sect2">
 <h3 id="_built_in_documentation">3.1. Built-in Documentation</h3>
 <div class="paragraph">
-<p>Part of the documentation must be packed within the connector source code. Create a <em>doc</em> folder in the root of the connector project in which the following documents reside.</p>
+<p>Part of the documentation must be packed within the connector source code. The mandatory files are:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1466,24 +1545,26 @@ The demo contains 3 parts:</p>
 <div class="sect3">
 <h4 id="_user_guide">3.1.1. User Guide</h4>
 <div class="paragraph">
-<p>The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. Write the documentation using AsciiDoc syntax so that the resulting file is called user_manual.adoc. A template can be found <a href="files/user-manual.asc">here</a>.</p>
+<p>The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. Write the documentation using AsciiDoc syntax so that the resulting file is called user_manual.adoc. A template can be found <a href="files/user-manual.adoc">here</a>.
+It should reside in <em>doc</em> folder in the root of the connector project.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_release_notes">3.1.2. Release Notes</h4>
 <div class="paragraph">
-<p>Release notes need to be highly descriptive, including backward compatibility of the released connector with previous versions. A template can be found <a href="files/releaseNotesTemplate.asc">here</a>.</p>
+<p>Release notes need to be highly descriptive, including backward compatibility of the released connector with previous versions. A template can be found <a href="files/release-notes.adoc">here</a>.
+It should reside in <em>doc</em> folder in the root of the connector project.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_readme">3.1.3. ReadMe</h4>
 <div class="paragraph">
-<p>A README.adoc template can be found <a href="files/readme.asc">here</a>.</p>
+<p>A README.md template can be found <a href="files/README.md">here</a>. It should reside in root of the connector project.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_connector_apidocs">3.2. Connector Apidocs</h3>
+<h3 id="_connector_apidocs">3.2. Connector ApiDocs</h3>
 <div class="paragraph">
 <p>Each public connector requires:</p>
 </div>
@@ -1540,7 +1621,7 @@ The demo contains 3 parts:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-08-03 02:48:44 EDT
+Last updated 2015-08-04 02:50:45 EDT
 </div>
 </div>
 </body>
