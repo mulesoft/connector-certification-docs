@@ -1,17 +1,22 @@
 = Anypoint™ Connectors Release Notes Template
+:keywords: add_keywords_separated_by_commas
 
-The following is a proposed connector documentation template for documenting Release notes for MuleSoft connectors. 
+The following is a proposed connector documentation template for documenting Release notes for MuleSoft connectors.
 
 
 == References:
 
-- <System_Name>: The system the connector connects to, at the other end of the mule runtime, i.e. SalesForce, Workday Financials, 
+- <System_Name>: The system the connector connects to, at the other end of the mule runtime, i.e. SalesForce, Workday Financials,
 
 - <Release_date>: The date in which the connector is released (not when the notes are written, mind you)
 
 - <Connector_Version>: Describes the connector version, such as “V2013”, “V4.0”, “V4.0.1-HF2” or whatever used for release
 
-- <Connector_Guide_Url>: Points to the mulesoft.org pages for documentation on the functional aspects of the connector. e.g.: http://www.mulesoft.org/documentation/display/current/Microsoft+SharePoint+2013+Connector
+- <Connector_Guide_Link>: Points to the docs.mulesoft pages for documentation on the functional aspects of the connector. e.g.: link:/mule-user-guide/v/3.7/microsoft-sharepoint-2013-connector[Microsoft SharePoint 2013 Connector]
+
+////
+Note: existing MuleSoft documentation should be copied from right-hand column of link:https://github.com/mulesoft/mulesoft-docs/blob/master/links.csv. Links should always follow "link:"
+////
 
 - <Supported_Mule_Version> Indicates which versions of the Mule runtime are supported, i.e.: 3.5.1 and higher, 3.4.3 and Higher, 3.6.0, etc
 
@@ -20,6 +25,7 @@ The following is a proposed connector documentation template for documenting Rel
 === <Release_date>
 
 === Contents
+// Remove entire "Contents" section from the final version since page builds Contents automatically
 
 - Compatibility
 - Features
@@ -28,7 +34,7 @@ The following is a proposed connector documentation template for documenting Rel
 - Support Resources
 
 Release Notes for version <Connector_Version> of the <System_Name> connector. These Release Notes accompany the  <Connector_Guide_URL> guide.
- 
+
 === Compatibility
 The <System_name> connector is compatible with:
 
@@ -70,11 +76,11 @@ If you’re currently using a connector version <old_connector_version_2> this c
 
 //Example of a Feature listing:
 
-//NTLM Authentication - NTLM authentication is now more robust and widely compatible with more domain controller configurations. 
+//NTLM Authentication - NTLM authentication is now more robust and widely compatible with more domain controller configurations.
 
 === Fixed in this Release
 
-- <Bug_Title> - <Conditions under which the bug used to happen, explain which was the result, which is now the fixed result> 
+- <Bug_Title> - <Conditions under which the bug used to happen, explain which was the result, which is now the fixed result>
 
 //Example of a Bug listing:
 
@@ -93,7 +99,6 @@ If you’re currently using a connector version <old_connector_version_2> this c
 
 === Support Resources
 
-- Learn how to Install and Configure Anypoint Connectors in Anypoint Studio.
-- Access MuleSoft’s MuleForge forum to pose questions and get help from Mule’s broad community of users.
-- To access MuleSoft’s expert support team, subscribe to Mule ESB Enterprise and log in to MuleSoft’s Customer Portal.
-
+- Learn how to link:/mule-user-guide/v/3.7/installing-connectors[Install Anypoint Connectors] using Anypoint Exchange.
+- Access MuleSoft’s MuleForge link:http://forum.mulesoft.org/mulesoft[Forum] to pose questions and get help from Mule’s broad community of users.
+- To access MuleSoft’s expert support team, link:http://www.mulesoft.com/mule-esb-subscription[subscribe] to Mule ESB Enterprise and log in to MuleSoft’s link:http://www.mulesoft.com/support-login[Customer Portal].
