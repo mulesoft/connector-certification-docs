@@ -78,10 +78,7 @@ Edition)] and http://shop.oreilly.com/product/0636920025726.do[Getting
 Started with MuleSoft Cloud Connect]. Both are excellent resources to
 understand how to use and extend Mule.
 * MuleSoft's http://blogs.mulesoft.com/[blog]. The fastest way of
-knowing about new features in mule.
-* https://twitter.com/MuleSoft[@MuleSoft]'s twitter account. You might
-also want to check the https://twitter.com/hashtag/MuleESB[#MuleESB]
-hashtag.
+knowing about new features in MuleSoft Platform.
 
 [[visiting-the-community-meeting-points]]
 Visiting the Community Meeting Points
