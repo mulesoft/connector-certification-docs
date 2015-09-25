@@ -1021,12 +1021,12 @@ table.CodeRay td.code>pre{padding:0}
 </ol>
 </div>
 <div class="paragraph">
-<p>If a Premium connector is part of a multi-module project, before the release we should verify that:
-The connector&#8217;s module is deployed to the private nexus (same distribution management as described above for Standard,  ci-releases).
-Parent pom of the connectors project has configured the distribution management for public or Community connectors.</p>
+<p>If a Select or Premium connector is part of a multi-module project, before the release we should verify that:
+* The connector&#8217;s module is deployed to the private nexus (same distribution management as described above for Standard, ci-releases).
+* The parent pom and other non-connector modules of the multi-module project have the same distribution management as described above for public or Community connectors.</p>
 </div>
 <div class="paragraph">
-<p>For example, in a project with a parent pom, a utils module and a connector module, if and only if the connector is Standard or Premium, then the parent pom should declared the public distributionManagement, and it should be override in the connectors pom with the private distributionManagement.</p>
+<p>For example, in a project with a parent pom, a utils module and a connector module, if and only if the connector is Select or Premium, then the parent pom should declare the public distributionManagement, and then it should be overriden in the connectors' pom with the private distributionManagement.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1059,8 +1059,8 @@ Parent pom of the connectors project has configured the distribution management 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Multi Module</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Parent:</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Parent:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parent, Utils:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parent, Utils:</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
@@ -3467,7 +3467,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-09-25 14:43:55 EDT
+Last updated 2015-09-25 14:44:30 EDT
 </div>
 </div>
 </body>
