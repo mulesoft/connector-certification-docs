@@ -514,12 +514,13 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_maven_conventions_and_setup">2.4. Maven Conventions and Setup</a></li>
 <li><a href="#_devkit_standars_best_practices">2.5. DevKit Standars and Best Practices</a></li>
 <li><a href="#_connector_demo_example">2.6. Connector Demo Example</a></li>
+<li><a href="#_third_party_licenses">2.7. Third-Party Licenses</a></li>
 </ul>
 </li>
 <li><a href="#_documentation">3. Documentation &amp; Release Notes</a>
 <ul class="sectlevel2">
 <li><a href="#_built_in_documentation">3.1. Built-in Documentation</a></li>
-<li><a href="#_connector_apidocs">3.2. Connector Apidocs</a></li>
+<li><a href="#_connector_apidocs">3.2. Connector ApiDocs</a></li>
 </ul>
 </li>
 <li><a href="#_appendixes">4. Appendixes &amp; Templates</a>
@@ -532,6 +533,13 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>version 2.0</em></p>
+</div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="_introduction">1. Certification Process</h2>
 <div class="sectionbody">
@@ -630,6 +638,133 @@ This document first introduces the entire <strong>Connector Lifecycle Model</str
 <div class="paragraph">
 <p>If a connector is categorized under <strong>Premium</strong>, then the connector code must include both the <strong>@RequiresEnterpriseLicense</strong> and the <strong>@RequiresEntitlement</strong> annotations.</p>
 </div>
+<div class="sect3">
+<h4 id="_sources_deployment">2.2.1. Sources Deployment</h4>
+<div class="paragraph">
+<p>For Standard connectors, which are deployed to public repositories but its source code is closed, the following plugin must be added to the &lt;build&gt; element in order to avoid sources deployment:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>maven-source-plugin<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>2.1.2<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;executions&gt;</span>
+        <span class="tag">&lt;execution&gt;</span>
+            <span class="tag">&lt;id&gt;</span>attach-sources<span class="tag">&lt;/id&gt;</span>
+            <span class="tag">&lt;phase&gt;</span>none<span class="tag">&lt;/phase&gt;</span>
+        <span class="tag">&lt;/execution&gt;</span>
+    <span class="tag">&lt;/executions&gt;</span>
+<span class="tag">&lt;/plugin&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_distribution_management">2.2.2. Distribution Management</h4>
+<div class="paragraph">
+<p>Configuration of the distributionManagement element varies from connector to connector, depending on its category and the project structure.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Community and Standard:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;distributionManagement&gt;</span>
+    <span class="tag">&lt;repository&gt;</span>
+        <span class="tag">&lt;id&gt;</span>mulesoft-releases<span class="tag">&lt;/id&gt;</span>
+        <span class="tag">&lt;name&gt;</span>MuleSoft Repository<span class="tag">&lt;/name&gt;</span>
+        <span class="tag">&lt;url&gt;</span>http://repository-master.mulesoft.org/releases/<span class="tag">&lt;/url&gt;</span>
+    <span class="tag">&lt;/repository&gt;</span>
+    <span class="tag">&lt;snapshotRepository&gt;</span>
+        <span class="tag">&lt;id&gt;</span>mulesoft-snapshots<span class="tag">&lt;/id&gt;</span>
+        <span class="tag">&lt;name&gt;</span>MuleSoft Snapshot Repository<span class="tag">&lt;/name&gt;</span>
+        <span class="tag">&lt;url&gt;</span>http://repository-master.mulesoft.org/snapshots/<span class="tag">&lt;/url&gt;</span>
+        <span class="tag">&lt;uniqueVersion&gt;</span>false<span class="tag">&lt;/uniqueVersion&gt;</span>
+    <span class="tag">&lt;/snapshotRepository&gt;</span>
+<span class="tag">&lt;/distributionManagement&gt;</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Select and Premium:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;distributionManagement&gt;</span>
+    <span class="tag">&lt;repository&gt;</span>
+        <span class="tag">&lt;id&gt;</span>mule-ee-releases<span class="tag">&lt;/id&gt;</span>
+        <span class="tag">&lt;name&gt;</span>MuleEE Releases Repository<span class="tag">&lt;/name&gt;</span>
+        <span class="tag">&lt;url&gt;</span>https://repository-master.mulesoft.org/nexus/content/repositories/releases-ee/<span class="tag">&lt;/url&gt;</span>
+    <span class="tag">&lt;/repository&gt;</span>
+    <span class="tag">&lt;snapshotRepository&gt;</span>
+        <span class="tag">&lt;id&gt;</span>mule-ee-snapshots<span class="tag">&lt;/id&gt;</span>
+        <span class="tag">&lt;name&gt;</span>MuleEE Snapshots Repository<span class="tag">&lt;/name&gt;</span>
+        <span class="tag">&lt;url&gt;</span>https://repository-master.mulesoft.org/nexus/content/repositories/ci-snapshots/<span class="tag">&lt;/url&gt;</span>
+        <span class="tag">&lt;uniqueVersion&gt;</span>false<span class="tag">&lt;/uniqueVersion&gt;</span>
+    <span class="tag">&lt;/snapshotRepository&gt;</span>
+<span class="tag">&lt;/distributionManagement&gt;</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Multi-module Select and Premium:</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If a Premium connector is part of a multi-module project, before the release we should verify that:
+The connector&#8217;s module is deployed to the private nexus (same distribution management as described above for Standard,  ci-releases).
+Parent pom of the connectors project has configured the distribution management for public or Community connectors.</p>
+</div>
+<div class="paragraph">
+<p>For example, in a project with a parent pom, a utils module and a connector module, if and only if the connector is Standard or Premium, then the parent pom should declared the public distributionManagement, and it should be override in the connectors pom with the private distributionManagement.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_distribution_management_matrix">2.2.3. Distribution Management Matrix:</h4>
+<table class="tableblock frame-topbot grid-all" style="width: 40%;">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">Community &amp; Standard</th>
+<th class="tableblock halign-left valign-top">Select &amp; Premium</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No override, same as parent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://repository-master.mulesoft.org/nexus/content/repositories/releases-ee/" class="bare">https://repository-master.mulesoft.org/nexus/content/repositories/releases-ee/</a></p></td>
+</tr>
+</tfoot>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Single Module</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://repository-master.mulesoft.org/releases/" class="bare">http://repository-master.mulesoft.org/releases/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://repository-master.mulesoft.org/nexus/content/repositories/releases-ee/" class="bare">https://repository-master.mulesoft.org/nexus/content/repositories/releases-ee/</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multi Module</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parent:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parent:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://repository-master.mulesoft.org/releases/" class="bare">http://repository-master.mulesoft.org/releases/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://repository-master.mulesoft.org/releases/" class="bare">http://repository-master.mulesoft.org/releases/</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Connector:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Connector:</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_code_conventions">2.3. Code Conventions</h3>
@@ -646,6 +781,9 @@ This document first introduces the entire <strong>Connector Lifecycle Model</str
 </li>
 <li>
 <p>Connector Demo Example</p>
+</li>
+<li>
+<p>Third Party Licenses</p>
 </li>
 </ul>
 </div>
@@ -691,7 +829,7 @@ This document first introduces the entire <strong>Connector Lifecycle Model</str
 <span class="tag">&lt;artifactId&gt;</span>mule-module-sample-connector-parent<span class="tag">&lt;/artifactId&gt;</span>
 <span class="tag">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;name&gt;</span>Mule Sample Connector Parent<span class="tag">&lt;/name&gt;</span>
-<span class="tag">&lt;packaging&gt;</span>pom/packaging<span class="error">&gt;</span>
+<span class="tag">&lt;packaging&gt;</span>pom<span class="tag">&lt;/packaging&gt;</span>
 
 <span class="tag">&lt;modules&gt;</span>
     <span class="tag">&lt;module&gt;</span>some-util-lib<span class="tag">&lt;/module&gt;</span>
@@ -938,7 +1076,7 @@ If you are interested in more details, the project directory structure is descri
        <span class="tag">&lt;plugin&gt;</span>
             <span class="tag">&lt;groupId&gt;</span>org.mule.certification<span class="tag">&lt;/groupId&gt;</span>
             <span class="tag">&lt;artifactId&gt;</span>project-structure-validation<span class="tag">&lt;/artifactId&gt;</span>
-            <span class="tag">&lt;version&gt;</span>1.0.4<span class="tag">&lt;/version&gt;</span>
+            <span class="tag">&lt;version&gt;</span>1.0.5<span class="tag">&lt;/version&gt;</span>
             <span class="tag">&lt;executions&gt;</span>
                 <span class="tag">&lt;execution&gt;</span>
                     <span class="tag">&lt;phase&gt;</span>package<span class="tag">&lt;/phase&gt;</span>
@@ -964,13 +1102,29 @@ If you are interested in more details, the project directory structure is descri
 <p>To have the best experience in Anypoint™ Studio, connectors must be DataMapper compliant. To achieve this, all operations must follow these recommendations.</p>
 </div>
 <div class="paragraph">
-<p>Any argument, returned or received, must be one of the following data types:
-. Map
-. POJO
-. List&lt;Map&gt;
-. List&lt;String&gt;
-. List&lt;POJO&gt;
-. List&lt;List&lt;String&gt;&gt;</p>
+<p>Any argument, returned or received, must be one of the following data types:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Map</p>
+</li>
+<li>
+<p>POJO</p>
+</li>
+<li>
+<p>List&lt;Map&gt;</p>
+</li>
+<li>
+<p>List&lt;String&gt;</p>
+</li>
+<li>
+<p>List&lt;POJO&gt;</p>
+</li>
+<li>
+<p>List&lt;List&lt;String&gt;&gt;</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>These types must be part of the method signature so that DataMapper can auto-recognize the types in it&#8217;s mapping UI.</p>
@@ -1276,6 +1430,89 @@ The demo contains 3 parts:</p>
 <p>For a complete example of a workflow demo, you can download a sample project that uses MongoDB <a href="files/workflow-operations-demo.zip">here</a>.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_third_party_licenses">2.7. Third-Party Licenses</h3>
+<div class="paragraph">
+<p>As part of the certification, it&#8217;s important to validate that all the libraries used by the connector are Open Source friendly. A easy way to generated a report of this, is running the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mvn org.codehaus.mojo:license-maven-plugin:1.8:aggregate-add-third-party</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The current list of licenses approved for use by third-party code redistributed with Community Connector projects is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Apache Software License 1.1</p>
+</li>
+<li>
+<p>Apache Software License 2.0</p>
+</li>
+<li>
+<p>W3C Software License</p>
+</li>
+<li>
+<p>Common Public License Version 1.0</p>
+</li>
+<li>
+<p>IBM Public License 1.0</p>
+</li>
+<li>
+<p>Mozilla Public License Version 1.1</p>
+</li>
+<li>
+<p>Common Development and Distribution License (CDDL) Version 1.0</p>
+</li>
+<li>
+<p>GNU Free Documentation License Version 1.3</p>
+</li>
+<li>
+<p>BSD</p>
+</li>
+<li>
+<p>MIT</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Licenses that are not approved for use include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>GNU GPL 2.0</p>
+</li>
+<li>
+<p>GNU LGPL</p>
+</li>
+<li>
+<p>Sun Binary Code License Agreement</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_open_source_compliance_checklist">2.7.1. Open Source Compliance Checklist</h4>
+<div class="paragraph">
+<p>Check that :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>No not approved for use third-party libraries are been distributed with your project</p>
+</li>
+<li>
+<p>There are no dependencies with no license</p>
+</li>
+<li>
+<p>Approved third-party are compliant with their license requirements</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1287,7 +1524,7 @@ The demo contains 3 parts:</p>
 <div class="sect2">
 <h3 id="_built_in_documentation">3.1. Built-in Documentation</h3>
 <div class="paragraph">
-<p>Part of the documentation must be packed within the connector source code. Create a <em>doc</em> folder in the root of the connector project in which the following documents reside.</p>
+<p>Part of the documentation must be packed within the connector source code. The mandatory files are:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1308,24 +1545,26 @@ The demo contains 3 parts:</p>
 <div class="sect3">
 <h4 id="_user_guide">3.1.1. User Guide</h4>
 <div class="paragraph">
-<p>The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. Write the documentation using AsciiDoc syntax so that the resulting file is called user_manual.adoc. A template can be found <a href="files/user-manual.asc">here</a>.</p>
+<p>The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. Write the documentation using AsciiDoc syntax so that the resulting file is called user_manual.adoc. A template can be found <a href="files/user-manual.adoc">here</a>.
+It should reside in <em>doc</em> folder in the root of the connector project.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_release_notes">3.1.2. Release Notes</h4>
 <div class="paragraph">
-<p>Release notes need to be highly descriptive, including backward compatibility of the released connector with previous versions. A template can be found <a href="files/releaseNotesTemplate.asc">here</a>.</p>
+<p>Release notes need to be highly descriptive, including backward compatibility of the released connector with previous versions. A template can be found <a href="files/release-notes.adoc">here</a>.
+It should reside in <em>doc</em> folder in the root of the connector project.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_readme">3.1.3. ReadMe</h4>
 <div class="paragraph">
-<p>A README.adoc template can be found <a href="files/readme.asc">here</a>.</p>
+<p>A README.md template can be found <a href="files/README.md">here</a>. It should reside in root of the connector project.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_connector_apidocs">3.2. Connector Apidocs</h3>
+<h3 id="_connector_apidocs">3.2. Connector ApiDocs</h3>
 <div class="paragraph">
 <p>Each public connector requires:</p>
 </div>
@@ -1382,7 +1621,7 @@ The demo contains 3 parts:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-07-13 02:51:27 EDT
+Last updated 2015-09-25 14:44:24 EDT
 </div>
 </div>
 </body>
