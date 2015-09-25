@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,25 +58,38 @@
 			var updateForm 	= $('#updateForm');
 			var deleteForm 	= $('#deleteForm');
 			
-			createForm.submit(function() {
-              $.ajax({
-                type: 'POST',							  // Submit an HTTP POST request
-                url: '/create',							  // The URL where your endpoint is listening
-                data: createForm.serialize(),			  // Serialized form URL-encoded input
-                success: function(data) {				  // Success function called if request succeeds
-                  	
-                  $('input[name=message]').val(data.message); // Autofill data in the next workflow step as needed
-                  	
-                  createDiv.collapse('hide');			  // Hide current accordion window
-                  readDiv.collapse('show');				  // Show next accordion window
-                },
-                error: function(request, status, error){  // Error function is executed if an exception occurs in the flow
-              	  alert(request.responseText);			  // Alert the user of any errors
-              	}
-              });
+			var btn = null;
 
-              return false;								  // Let jQuery handle the form submission
-            }); 
+			$('button').click(function(){	
+				btn = $(this);
+				btn.button('loading');	// Triggers the loading spinner for every button that is clicked
+			});			
+			
+			$('input[type=text]').on('keyup change', function() { 		
+				var activeDiv = $('#accordion .in').attr('id');						// Retrieves de id of the active accordion
+				btn = $('#' + activeDiv).find('[type="submit"]');	// Retrieves de id of the submit button inside that accordion
+				$(btn).prop('disabled', this.value.trim().length==0);			// Enables the button when the user types some text or disables it if the input is empty
+			});
+			             
+			createForm.submit(function() {
+            	$.ajax({
+	                type: 'POST',							  // Submit an HTTP POST request
+	                url: '/create',							  // The URL where your endpoint is listening
+	                data: createForm.serialize(),			  // Serialized form URL-encoded input
+	                success: function(data) {				  // Success function called if request succeeds
+	                  $('input[name=message]').val(data.message); // Autofill data in the next workflow step as needed
+	                  	
+	                  createDiv.collapse('hide');			  // Hide current accordion window
+	                  readDiv.collapse('show');				  // Show next accordion window
+	                },
+	                error: function(request, status, error){  // Error function is executed if an exception occurs in the flow
+	              	  alert(request.responseText);			  // Alert the user of any errors
+	              	}	            
+	            }).always(function () {
+	            	btn.button('reset');
+	            });
+              	return false;								  // Let jQuery handle the form submission
+            });			
 
 			readForm.submit(function() {
 				$.ajax({
@@ -83,15 +97,17 @@
 					url: '/read',
 					data: readForm.serialize(),
 					success: function(data) {
-						$('input[name=updateObjectId]').val(data)
+						$('input[name=updateObjectId]').val(data);
+
 						readDiv.collapse('hide');
                         updateDiv.collapse('show');
 					},
 					error: function(request, status, error){
 	            		alert(request.responseText);
-	            	}
-				});
-				
+	            	}	            
+	            }).always(function () {
+	            	btn.button('reset');
+	            });				
 				return false;
 			});
 
@@ -101,7 +117,7 @@
 					url: '/update',
 					data: updateForm.serialize(),
 					success: function(data) {
-						$('input[name=deleteObjectId]').val(data)
+						$('input[name=deleteObjectId]').val(data);
 						
 						updateDiv.collapse('hide');
                         deleteDiv.collapse('show');
@@ -109,8 +125,9 @@
 					error: function(request, status, error){
 	            		alert(request.responseText);
 	            	}
-				});
-				
+	            }).always(function () {
+	            	btn.button('reset');
+	            });				
 				return false;
 			});
 			
@@ -127,8 +144,9 @@
 					error: function(request, status, error){
 	            		alert(request.responseText);
 	            	}
-				});
-				
+	            }).always(function () {
+	            	btn.button('reset');
+	            });				
 				return false;
 			});
 		}); 
@@ -147,7 +165,7 @@
 						<form id="createForm" class="demo-form" role="form" >
 							<label>Message</label>
 							<input type="text" name="message" value="Hello from Mule!" required class="form-control" ><br>
-							<input class="btn btn-lg btn-primary btn-block" type="submit" value="Create"><br>
+							<button type="submit" class="btn btn-lg btn-primary btn-block" data-loading-text="<img src='http://i.giphy.com/lijuimVKUcwRa.gif' height=16 width=16 /> Processing...">Create</button><br>
 						</form>
 					</div>
 				</div>
@@ -164,7 +182,7 @@
 						<form id="readForm" class="demo-form" role="form">
 							<label>Query for entries having the following message:</label>
 							<input type="text" id="message" name="message" required class="form-control"><br>
-							<input class="btn btn-lg btn-primary btn-block" type="submit" value="Read"><br>
+							<button type="submit" class="btn btn-lg btn-primary btn-block" disabled data-loading-text="<img src='http://i.giphy.com/lijuimVKUcwRa.gif' height=16 width=16 /> Processing...">Read</button><br>
 						</form>
 					</div>
 				</div>
@@ -183,7 +201,7 @@
 							<input type="text" name="updateObjectId" placeholder="Object ID" readonly class="form-control"><br>
 							<label>Updated message</label>
 							<input type="text" name="updateValue" placeholder="Update value" required class="form-control"><br>
-							<input class="btn btn-lg btn-primary btn-block" type="submit" value="Update"><br>
+							<button type="submit" class="btn btn-lg btn-primary btn-block" disabled data-loading-text="<img src='http://i.giphy.com/lijuimVKUcwRa.gif' height=16 width=16 /> Processing...">Update</button><br>
 						</form>
 					</div>
 				</div>
@@ -200,7 +218,7 @@
 						<form id="deleteForm" class="demo-form" role="form" >
 							<label>Object ID</label>
 							<input type="text" name="deleteObjectId" placeholder="Object ID" readonly class="form-control"><br>
-							<input class="btn btn-lg btn-primary btn-block" type="submit" value="Delete"><br>
+							<button type="submit" class="btn btn-lg btn-primary btn-block" data-loading-text="<img src='http://i.giphy.com/lijuimVKUcwRa.gif' height=16 width=16 /> Processing...">Delete</button><br>
 						</form>
 					</div>
 				</div>
