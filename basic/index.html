@@ -593,28 +593,6 @@ This document first introduces the entire <strong>Connector Lifecycle Model</str
 <div class="sect2">
 <h3 id="_connector_category">2.2. Connector Category</h3>
 <div class="paragraph">
-<p>There are four types of categories with different support policies:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Premium</p>
-</li>
-<li>
-<p>Select</p>
-</li>
-<li>
-<p>Standard</p>
-</li>
-<li>
-<p>Community</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Further information about connector categories can be found <a href="http://www.mulesoft.org/documentation/display/current/Anypoint+Connectors#AnypointConnectors-ConnectorCategories">here</a>.</p>
-</div>
-<div class="paragraph">
 <p>A connector should define its category in the POM properties:</p>
 </div>
 <div class="listingblock">
@@ -633,60 +611,17 @@ This document first introduces the entire <strong>Connector Lifecycle Model</str
 </div>
 </div>
 <div class="paragraph">
-<p>If a connector is categorized under <strong>Select</strong>, then the connector code must include the <strong>@RequiresEnterpriseLicense</strong> annotation.</p>
-</div>
-<div class="paragraph">
-<p>If a connector is categorized under <strong>Premium</strong>, then the connector code must include both the <strong>@RequiresEnterpriseLicense</strong> and the <strong>@RequiresEntitlement</strong> annotations.</p>
+<p>DevKit 3.7.x requires you to use <strong>Select</strong> in the category (i.e. &lt;category&gt;Select&lt;/category&gt;) and to inlcude the <strong>@RequiresEnterpriseLicense</strong>. In addition, you should use your own license validation mechanism.</p>
 </div>
 <div class="sect3">
-<h4 id="_sources_deployment">2.2.1. Sources Deployment</h4>
-<div class="paragraph">
-<p>For Standard connectors, which are deployed to public repositories but its source code is closed, the following plugin must be added to the &lt;build&gt; element in order to avoid sources deployment:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
-    <span class="tag">&lt;artifactId&gt;</span>maven-source-plugin<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>2.1.2<span class="tag">&lt;/version&gt;</span>
-    <span class="tag">&lt;executions&gt;</span>
-        <span class="tag">&lt;execution&gt;</span>
-            <span class="tag">&lt;id&gt;</span>attach-sources<span class="tag">&lt;/id&gt;</span>
-            <span class="tag">&lt;phase&gt;</span>none<span class="tag">&lt;/phase&gt;</span>
-        <span class="tag">&lt;/execution&gt;</span>
-    <span class="tag">&lt;/executions&gt;</span>
-<span class="tag">&lt;/plugin&gt;</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_distribution_management">2.2.2. Distribution Management</h4>
+<h4 id="_distribution_management">2.2.1. Distribution Management</h4>
 <div class="paragraph">
 <p>Configuration of the distributionManagement element varies from connector to connector, depending on its category and the project structure.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Community and Standard:</p>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;distributionManagement&gt;</span>
-    <span class="tag">&lt;repository&gt;</span>
-        <span class="tag">&lt;id&gt;</span>mulesoft-releases<span class="tag">&lt;/id&gt;</span>
-        <span class="tag">&lt;name&gt;</span>MuleSoft Repository<span class="tag">&lt;/name&gt;</span>
-        <span class="tag">&lt;url&gt;</span>http://repository-master.mulesoft.org/releases/<span class="tag">&lt;/url&gt;</span>
-    <span class="tag">&lt;/repository&gt;</span>
-    <span class="tag">&lt;snapshotRepository&gt;</span>
-        <span class="tag">&lt;id&gt;</span>mulesoft-snapshots<span class="tag">&lt;/id&gt;</span>
-        <span class="tag">&lt;name&gt;</span>MuleSoft Snapshot Repository<span class="tag">&lt;/name&gt;</span>
-        <span class="tag">&lt;url&gt;</span>http://repository-master.mulesoft.org/snapshots/<span class="tag">&lt;/url&gt;</span>
-        <span class="tag">&lt;uniqueVersion&gt;</span>false<span class="tag">&lt;/uniqueVersion&gt;</span>
-    <span class="tag">&lt;/snapshotRepository&gt;</span>
-<span class="tag">&lt;/distributionManagement&gt;</span></code></pre>
-</div>
-</div>
-</li>
-<li>
-<p>Select and Premium:</p>
+<p>Select:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;distributionManagement&gt;</span>
@@ -706,60 +641,53 @@ This document first introduces the entire <strong>Connector Lifecycle Model</str
 </div>
 </li>
 <li>
-<p>Multi-module Select and Premium:</p>
+<p>Multi-module Select:</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>If a Select or Premium connector is part of a multi-module project, before the release we should verify that:
+<p>If a Select connector is part of a multi-module project, before the release we should verify that:
 * The connector&#8217;s module is deployed to the private nexus (same distribution management as described above for Standard, ci-releases).
 * The parent pom and other non-connector modules of the multi-module project have the same distribution management as described above for public or Community connectors.</p>
 </div>
 <div class="paragraph">
-<p>For example, in a project with a parent pom, a utils module and a connector module, if and only if the connector is Select or Premium, then the parent pom should declare the public distributionManagement, and then it should be overriden in the connectors' pom with the private distributionManagement.</p>
+<p>For example, in a project with a parent pom, a utils module and a connector module, if and only if the connector is Select, then the parent pom should declare the public distributionManagement, and then it should be overriden in the connectors' pom with the private distributionManagement.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_distribution_management_matrix">2.2.3. Distribution Management Matrix:</h4>
+<h4 id="_distribution_management_matrix">2.2.2. Distribution Management Matrix:</h4>
 <table class="tableblock frame-topbot grid-all" style="width: 40%;">
 <colgroup>
-<col style="width: 33%;">
-<col style="width: 33%;">
-<col style="width: 33%;">
+<col style="width: 50%;">
+<col style="width: 50%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">Community &amp; Standard</th>
-<th class="tableblock halign-left valign-top">Select &amp; Premium</th>
+<th class="tableblock halign-left valign-top">Select</th>
 </tr>
 </thead>
 <tfoot>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">No override, same as parent</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://repository-master.mulesoft.org/nexus/content/repositories/releases-ee/" class="bare">https://repository-master.mulesoft.org/nexus/content/repositories/releases-ee/</a></p></td>
 </tr>
 </tfoot>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Single Module</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://repository-master.mulesoft.org/releases/" class="bare">http://repository-master.mulesoft.org/releases/</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://repository-master.mulesoft.org/nexus/content/repositories/releases-ee/" class="bare">https://repository-master.mulesoft.org/nexus/content/repositories/releases-ee/</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Multi Module</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Parent, Utils:</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Parent, Utils:</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://repository-master.mulesoft.org/releases/" class="bare">http://repository-master.mulesoft.org/releases/</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://repository-master.mulesoft.org/releases/" class="bare">http://repository-master.mulesoft.org/releases/</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Connector:</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Connector:</p></td>
 </tr>
 </tbody>
@@ -1621,7 +1549,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-09-27 02:51:27 EDT
+Last updated 2015-09-27 16:38:01 EDT
 </div>
 </div>
 </body>
