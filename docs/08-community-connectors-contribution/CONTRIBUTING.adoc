@@ -1,38 +1,11 @@
-= Thank you!
+= AnyPoint Community Connectors Contribution
 
-Really, thank you. Thank you for taking some of your precious time
+Thank you!. Really, thank you. Thank you for taking some of your precious time
 helping improve the *MuleSoft Anypoint Connectors*.
 
 This guide will help you get started with Anypoint Connector development
 environment. You will also learn the set of rules you are expected to
 follow in order to submit improvements and/or fixes to these projects.
-
----
-
-In this tutorial, you will find:
-
-* link:#before-you-begin[Before you begin]
-** link:#starting-points[Starting Points]
-** link:#visiting-the-community-meeting-points[Visiting the Community
-Meeting Points]
-** link:#understanding-the-extension-mechanisms[Understanding the
-Extension Mechanisms]
-* link:#setting-up-the-development-environment[Setting up the
-Development Environment]
-** link:#installing-prerequisites[Installing Prerequisites]
-*** link:#java[Java]
-*** link:#maven[Maven]
-** link:#getting-the-source-code[Getting the Source Code]
-* link:#configuring-the-ide[Configuring the IDE]
-** link:#working-with-anypoint-studio[Working with Anypoint Studio]
-*** link:#importing[Importing]
-*** link:#testing[Testing]
-*** link:#setting-startupt-parameters[Setting Startup Parameters]
-* link:#developing-your-contribution[Developing your contribution]
-** link:#creating-your-feature-branch[Creating Your Feature Branch]
-** link:#updating-your-feature-branch[Updating Your Feature Branch]
-** link:#submitting-a-pull-request[Submitting a Pull Request]
-* link:#summary[Summary]
 
 ---
 
