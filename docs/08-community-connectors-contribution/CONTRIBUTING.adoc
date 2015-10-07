@@ -1,8 +1,8 @@
 = Contributing to Anypoint Community Connectors
 :keywords: community, connectors, contributing
 
-Thank you!. Really, thank you. Thank you for taking some of your precious time
-to help improve *MuleSoft's Anypoint Connectors*.
+Thank you! Really, thank you for taking some of your precious time
+helping improve the *MuleSoft Anypoint Connectors*.
 
 This guide will help you get started with the Anypoint Connector development
 environment. You will also learn the set of rules you are expected to
@@ -68,7 +68,7 @@ Understanding the Extension Mechanisms
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Mule ESB* has two different extension mechanisms for writing modules and connectors.
-//TODO:rephrase: Avoiding adding functionality to the project. Rather, using one of the mechanisms to extend Mule is probably the more favorable option.
+Avoiding adding functionality to the project. Rather, using one of the mechanisms to extend Mule is probably the more favorable option.
 It is important to understand both.
 
 The *first* and more intuitive mechanism for extensions is the link:/anypoint-connector-devkit/v/3.7/index[Anypoint Connector DevKit], an *annotation based framework* for easy construction
