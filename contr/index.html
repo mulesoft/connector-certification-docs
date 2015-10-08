@@ -5,7 +5,8 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.0">
-<title>AnyPoint Community Connectors Contribution</title>
+<meta name="keywords" content="community, connectors, contributing">
+<title>Contributing to Anypoint Community Connectors</title>
 <style>
 
 @import "http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin";*/
@@ -501,11 +502,11 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>AnyPoint Community Connectors Contribution</h1>
+<h1>Contributing to Anypoint Community Connectors</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#before-you-begin">1. Before you begin</a>
+<li><a href="#before-you-begin">1. Before You Begin</a>
 <ul class="sectlevel2">
 <li><a href="#starting-points">1.1. Starting Points</a></li>
 <li><a href="#visiting-the-community-meeting-points">1.2. Visiting the Community Meeting Points</a></li>
@@ -518,7 +519,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#java">2.2. Java</a></li>
 <li><a href="#maven">2.3. Maven</a></li>
 <li><a href="#getting-the-source-code">2.4. Getting the Source Code</a></li>
-<li><a href="#understanding-the-build">2.5. Understanding the build</a></li>
+<li><a href="#understanding-the-build">2.5. Understanding the Build</a></li>
 </ul>
 </li>
 <li><a href="#configuring-the-ide">3. Configuring the IDE</a>
@@ -526,16 +527,16 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#working-with-anypoint-studio">3.1. Working with Anypoint Studio</a></li>
 </ul>
 </li>
-<li><a href="#developing-your-contribution">4. Developing your Contribution</a>
+<li><a href="#developing-your-contribution">4. Developing Your Contribution</a>
 <ul class="sectlevel2">
-<li><a href="#creating-your-feature-branch">4.1. Creating your Feature Branch</a></li>
-<li><a href="#updating-your-feature-branch">4.2. Updating your Feature Branch</a></li>
+<li><a href="#creating-your-feature-branch">4.1. Creating Your Feature Branch</a></li>
+<li><a href="#updating-your-feature-branch">4.2. Updating Your Feature Branch</a></li>
 <li><a href="#submitting-a-pull-request">4.3. Submitting a Pull Request</a></li>
 </ul>
 </li>
 <li><a href="#summary">5. Summary</a>
 <ul class="sectlevel3">
-<li><a href="#__strong_thank_you_strong_one_more_time_for_taking_the_time_to_understand_how_to_contribute_to_strong_mulesoft_anypoint_connectors_strong">5.1. <strong>Thank you</strong>, one more time, for taking the time to understand how to contribute to <strong>MuleSoft Anypoint Connectors</strong>.</a></li>
+<li><a href="#__strong_thank_you_strong_once_again_for_taking_the_time_to_to_contribute_to_strong_mulesoft_s_anypoint_connectors_strong">5.1. <strong>Thank you</strong>, once again, for taking the time to  to contribute to <strong>MuleSoft&#8217;s Anypoint Connectors</strong>.</a></li>
 </ul>
 </li>
 </ul>
@@ -545,11 +546,11 @@ table.CodeRay td.code>pre{padding:0}
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Thank you!. Really, thank you. Thank you for taking some of your precious time
+<p>Thank you! Really, thank you for taking some of your precious time
 helping improve the <strong>MuleSoft Anypoint Connectors</strong>.</p>
 </div>
 <div class="paragraph">
-<p>This guide will help you get started with Anypoint Connector development
+<p>This guide will help you get started with the Anypoint Connector development
 environment. You will also learn the set of rules you are expected to
 follow in order to submit improvements and/or fixes to these projects.</p>
 </div>
@@ -557,31 +558,27 @@ follow in order to submit improvements and/or fixes to these projects.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="before-you-begin">1. Before you begin</h2>
+<h2 id="before-you-begin">1. Before You Begin</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>MuleSoft Anypoint Connectors can range from very simple to very complex
+<p>MuleSoft&#8217;s Anypoint Connectors can range from very simple to very complex
 projects. Before contributing code to them, it is important to
 <strong>understand the domain of the target system</strong> that the connector is going
-to talk to.</p>
+to communicate with.</p>
 </div>
 <div class="paragraph">
-<p>Also, it is essential to have some <strong>knowledge of the
-Anypoint Connector DevKit</strong>, which is the backbone of the connector. It
-is also advisable that you internalize about the <strong>Connector Testing
-Framework</strong>, especially if you&#8217;re creating new functionality that needs
-to tested using that framework.</p>
+<p>Also, it is essential to have some knowledge of the
+<a href="/anypoint-connector-devkit/v/3.7/index">Anypoint Connector DevKit</a>, which is the backbone of the connector. We advise you to become familiar with the <a href="/anypoint-connector-devkit/v/3.7/connector-testing-framework">Connector Testing Framework</a>, especially if you are creating new functionality that needs
+to be tested using that framework.</p>
 </div>
 <div class="paragraph">
-<p>Finally, it would be very desirable to have some <strong>working experience
-with the MuleSoft platform</strong> itself. We will quickly give you some pointers for getting started into these
-topics.</p>
+<p>Lastly, having some <strong>experience working
+with the *Anypoint platform</strong> is a big advantage. We will give you some pointers to get started on each of these topics.</p>
 </div>
 <div class="sect2">
 <h3 id="starting-points">1.1. Starting Points</h3>
 <div class="paragraph">
-<p>There are many sources you can use to better understand MuleSoft and its
-features:</p>
+<p>There are many resources available to help you become familiar with Mule and its features:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -591,28 +588,21 @@ Tutorial</a>, a step-by-step guide for getting started with Connector
 Development.</p>
 </li>
 <li>
-<p>The official documentation around the usage of the
-<a href="https://docs.mulesoft.com/anypoint-connector-devkit">Anypoint
-Connector DevKit</a>.</p>
+<p>The official documentation around the usage of the <a href="/anypoint-connector-devkit/v/3.7/index">Anypoint Connector DevKit</a>.</p>
 </li>
 <li>
-<p>The official documentation around the
-<a href="https://docs.mulesoft.com/anypoint-connector-devkit/">Connector
-Testing Framework</a>.</p>
+<p>The official documentation for the <a href="c/anypoint-connector-devkit/v/3.7/connector-testing-framework">Connector Testing Framework</a>.</p>
 </li>
 <li>
-<p><a href="https://docs.mulesoft.com/mule-user-guide/">MuleSoft
-User Guide</a>, the official documentation around usage of MuleSoft ESB.</p>
+<p><a href="m/mule-user-guide/v/3.7/index">Mule User Guide</a>, the official documentation for Mule ESB.</p>
 </li>
 <li>
 <p>The books <a href="http://www.manning.com/dossot2/">MuleSoft in Action (2nd
 Edition)</a> and <a href="http://shop.oreilly.com/product/0636920025726.do">Getting
-Started with MuleSoft Cloud Connect</a>. Both are excellent resources to
-understand how to use and extend Mule.</p>
+Started with MuleSoft Cloud Connect</a>. Both are excellent resources for learning how to use and extend Mule.</p>
 </li>
 <li>
-<p>MuleSoft&#8217;s <a href="http://blogs.mulesoft.com/">blog</a>. The fastest way of
-knowing about new features in MuleSoft Platform.</p>
+<p>MuleSoft&#8217;s <a href="http://blogs.mulesoft.com/">blog</a>. The fastest way to learn about the new features in Anypoint Platform.</p>
 </li>
 </ul>
 </div>
@@ -620,8 +610,8 @@ knowing about new features in MuleSoft Platform.</p>
 <div class="sect2">
 <h3 id="visiting-the-community-meeting-points">1.2. Visiting the Community Meeting Points</h3>
 <div class="paragraph">
-<p>If you are here reading this document, you probably have already in mind
-a new feature or a bug fix to work on. This is great. However, there
+<p>If you have gotten this far, you probably already have
+a new feature or a bug fix in mind to work on. This is great! Note, however, that there
 could be other members of the community with the same idea.</p>
 </div>
 <div class="paragraph">
@@ -631,43 +621,37 @@ points to make sure someone else hasn&#8217;t already taken on your challenge:</
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Search for <strong>existing GitHub issues</strong> to see if a bug or feature
-request has already been submitted.</p>
+<p>Search for <strong>existing GitHub issues</strong> to see if a bug or feature request has already been submitted.</p>
 </li>
 <li>
 <p>Follow the <a href="http://forum.mulesoft.org/mulesoft">MuleSoft Forum</a>
-chatter to see if anyone else has started resolving the problem or
-initiated an improvement.</p>
+chatter to see if anyone else has started resolving the problem or initiated an improvement.</p>
 </li>
 <li>
-<p>Scan <a href="http://stackoverflow.com/questions/tagged/mule">StackOverflow</a>
-to see if there is already a proposed solution for your problem.</p>
+<p>Scan <a href="http://stackoverflow.com/questions/tagged/mule">StackOverflow</a> to see if there is already a proposed solution to your problem.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>If, in the above-listed resources, no-one else has initiated your
-improvement or fix, log the issue by creating a <strong>GitHub tracking
+<p>If no one else has made your
+improvement or fix in the above-listed resources, log the issue by creating a <strong>GitHub tracking
 issue</strong>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="understanding-the-extension-mechanisms">1.3. Understanding the Extension Mechanisms</h3>
 <div class="paragraph">
-<p><strong>MuleSoft ESB</strong> has two different extension mechanisms for writing
-modules and connectors. Avoiding to add functionality to this project
-and rather use one of those mechanisms to extend MuleSoft is probably
-the more favorable option. It is therefore important to understand both.</p>
+<p><strong>Mule ESB</strong> has two different extension mechanisms for writing modules and connectors.
+Avoiding adding functionality to the project. Rather, using one of the mechanisms to extend Mule is probably the more favorable option.
+It is important to understand both.</p>
 </div>
 <div class="paragraph">
-<p>The <strong>first</strong> and more intuitive mechanism for extensions is the
-<a href="https://docs.mulesoft.com/anypoint-connector-devkit/">Anypoint
-Connector DevKit</a>, an <strong>annotation based framework</strong> for easy construction
+<p>The <strong>first</strong> and more intuitive mechanism for extensions is the <a href="/anypoint-connector-devkit/v/3.7/index">Anypoint Connector DevKit</a>, an <strong>annotation based framework</strong> for easy construction
 of extensions. This is the one we will be focusing on in this document.</p>
 </div>
 <div class="paragraph">
-<p>The <strong>second</strong> choice is to extend MuleSoft through the
-<a href="https://developer.mulesoft.com/docs/display/current/Extending">Extensions</a>
+<p>The <strong>second</strong> choice is to extend Mule through the
+<a href="/mule-fundamentals/v/3.7/extending-mule">Extensions</a>
 mechanism.</p>
 </div>
 </div>
@@ -679,18 +663,15 @@ mechanism.</p>
 <div class="paragraph">
 <p>While getting ready to contribute to any piece of software, there are
 several <strong>prerequisite components</strong> you will have to install. Plus, you
-will need to obtain the <strong>preexisting source code</strong> there could be.</p>
+will need to obtain the <strong>preexisting source code</strong> there may exist.</p>
 </div>
 <div class="paragraph">
-<p>This section provides some guidelines to install those components and to
-download the source code.</p>
+<p>This section provides some guidelines for installing those components and downloading the source code.</p>
 </div>
 <div class="sect2">
 <h3 id="installing-prerequisites">2.1. Installing Prerequisites</h3>
 <div class="paragraph">
-<p>Before you get started, you need to set yourself up with an environment
-in which to develop MuleSoft Anypoint Connectors. Your dev environment
-needs a few things:</p>
+<p>Before you get started, you need to set yourself up with an environment in which to develop Anypoint Connectors. Your dev environment needs a few things:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -701,8 +682,7 @@ needs a few things:</p>
 <p>A recent version of <strong>Maven</strong>.</p>
 </li>
 <li>
-<p>A development environment tool or <strong>IDE</strong> (most preferably Anypoint
-Studio with DevKit plugin installed).</p>
+<p>A development environment tool or <strong>IDE</strong> (most preferably Anypoint Studio with DevKit plugin installed).</p>
 </li>
 <li>
 <p>A new <strong>branch</strong> of code to work on.</p>
@@ -727,12 +707,10 @@ Development Kit 7 (also known as Java SE)</em> or newer using the command
 <code>java -version</code>. Then skip to step 4 below.</p>
 </li>
 <li>
-<p>Create an environment variable called <code>JAVA_HOME</code>, setting it to the
-directory in which you installed the JDK.</p>
+<p>Create an environment variable called <code>JAVA_HOME</code>, setting it to the directory in which you installed the JDK.</p>
 </li>
 <li>
-<p>Update the <code>PATH</code> environment variable so that it includes the path
-to JDK binaries. Add the following to the <code>PATH</code> variable:</p>
+<p>Update the <code>PATH</code> environment variable so that it includes the path to JDK binaries. Add the following to the <code>PATH</code> variable:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -800,52 +778,37 @@ binaries:</p>
 <div class="sect2">
 <h3 id="getting-the-source-code">2.4. Getting the Source Code</h3>
 <div class="paragraph">
-<p><strong>MuleSoft Community Connectors</strong> source code lives in <strong>GitHub</strong>. Perform
-the following procedure to locate the code and get it into your local
-drive.</p>
+<p><strong>MuleSoft Community Connectors</strong> source code lives on <strong>GitHub</strong>. Perform
+the following procedure to locate the code and get it onto your local drive.</p>
 </div>
 <div class="paragraph">
-<p>If you are new to Git, consider reading <a href="http://git-scm.com/book">Pro Git</a>
-to absorb the basics. Just want a Read-Only version of the source code?</p>
+<p>If you are new to Git, consider reading <a href="http://git-scm.com/book">Pro Git</a> to learn the basics. Want a read-only version of the source code?</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><a href="https://help.github.com/articles/signing-up-for-a-new-github-account">Create</a>
-or log in to your GitHub account.</p>
+<p>link:<a href="https://help.github.com/articles/signing-up-for-a-new-github-account">Create</a> or log in to your GitHub account.</p>
 </li>
 <li>
-<p>If you haven&#8217;t already done so,
-<a href="https://help.github.com/articles/set-up-git">set up Git</a> on your local
+<p>If you haven&#8217;t already done so, <a href="https://help.github.com/articles/set-up-git">set up Git</a> on your local
 drive.</p>
 </li>
 <li>
-<p>Navigate to <a href="https://github.com/mulesoft"><strong>MuleSoft Connector&#8217;s
-GitHub</strong></a> page and select one of the listed repositories. For example,
-the <a href="https://github.com/mulesoft/twitter-connector.git"><strong>Twitter
-Connector</strong></a>.</p>
+<p>Navigate to <a href="https://github.com/mulesoft"><strong>MuleSoft&#8217;s
+GitHub Connector</strong></a> page and select one of the repositories listed. For example, the <a href="https://github.com/mulesoft/twitter-connector.git"><strong>Twitter Connector</strong></a>.</p>
 <div class="paragraph center text-center">
 <p><span class="image"><img src="images/cc_fork.png" alt="Fork"></span></p>
 </div>
 </li>
 <li>
-<p>Click the <strong>Fork</strong> button at the top right corner of the page, then
-select your own git repository into which GitHub inserts a copy of the
-repository.</p>
+<p>Click the <strong>Fork</strong> button at the top right corner of the page, then select your own git repository into which GitHub inserts a copy.</p>
 </li>
 <li>
-<p>Prepare to <strong>clone</strong> your forked repository from your GitHub account
-to your local drive via a secure file transfer connection. As per GitHub
-recommendation, we advise using HTTPS to transfer the source code files
-to your local drive. However, if you prefer to establish a secure
-connection for transferring the files via SSH, follow GitHub procedure
-to <a href="https://help.github.com/articles/generating-ssh-keys">generate SSH
-keys</a>.</p>
+<p>Prepare to <strong>Clone</strong> your forked repository from your GitHub account to your local drive via a secure file transfer connection. As per GitHub recommendation, we recommend using HTTPS to transfer the source code files
+to your local drive. However, if you prefer to establish a secure connection for transferring the files via SSH, follow GitHub procedure to <a href="https://help.github.com/articles/generating-ssh-keys">generate SSH keys</a>.</p>
 </li>
 <li>
-<p>From the <strong>command line</strong>, create or navigate to an existing folder
-on your local drive into which you wish to store your forked clone of
-the connector source code.</p>
+<p>From the <strong>command line</strong>, create or navigate to an existing folder on your local drive into which you wish to store your forked clone of the connector source code.</p>
 </li>
 <li>
 <p>Then, execute one of the following:</p>
@@ -871,9 +834,7 @@ the connector source code.</p>
 </div>
 </li>
 <li>
-<p>Add the <strong>upstream repository</strong> so that you can pull changes and stay
-updated with changes to the connector code branch. From
-the command line, execute one of the following:</p>
+<p>Add the <strong>upstream repository</strong> so that you can pull changes and stay updated with changes to the connector code branch. From the command line, execute one of the following:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -912,17 +873,16 @@ Read more about how to
 </div>
 </div>
 <div class="sect2">
-<h3 id="understanding-the-build">2.5. Understanding the build</h3>
+<h3 id="understanding-the-build">2.5. Understanding the Build</h3>
 <div class="paragraph">
-<p>This is a great moment to read the
+<p>This is a great moment to stop and read the
 <a href="http://mulesoft.github.io/mule-cookbook-tutorial/">MuleSoft Cookbook
-Tutorial</a>. A correct understanding of <strong>how a MuleSoft Connector project
-is organized and built</strong> is key for a productive development.</p>
+Tutorial</a>. A correct understanding of <strong>how a Anypoint Connector project
+is organized and built</strong> is key to a productive development process.</p>
 </div>
 <div class="paragraph">
-<p>We are ready to develop our improvements. However, instead of doing it
-manually, we may want to configure an IDE for better productivity. We
-will do this in the next section.</p>
+<p>We are ready to develop and implement our improvements. But, instead of doing it manually, we may want to configure an IDE for enhanced productivity. We
+will expand on this in the next section.</p>
 </div>
 </div>
 </div>
@@ -931,18 +891,13 @@ will do this in the next section.</p>
 <h2 id="configuring-the-ide">3. Configuring the IDE</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section offers tips for importing and working on the Connector
-source code in <strong>Anypoint Studio</strong>. There are no restrictions on the
-type of integration development environment you use to develop MuleSoft
-Anypoint Connectors. We simply opted for the <strong>Anypoint Studio with
-DevKit plugin installed</strong>, which is the preferred choice since it adds a
-lot of support tools.</p>
+<p>This section offers tips for importing and working on connector source code in <strong>Anypoint Studio</strong>. There are no restrictions on the type of integration development environment you use to develop Anypoint Connectors. We simply opted for the <strong>Anypoint Studio with
+DevKit plugin installed</strong>, which is the preferred choice since it adds a lot of support tools.</p>
 </div>
 <div class="sect2">
 <h3 id="working-with-anypoint-studio">3.1. Working with Anypoint Studio</h3>
 <div class="paragraph">
-<p>Use Anypoint Studio to modify or add to your cloned version of MuleSoft
-Connector source code.</p>
+<p>Use Anypoint Studio to modify or add to your cloned version of the connector source code.</p>
 </div>
 <div class="sect3">
 <h4 id="importing">3.1.1. Importing</h4>
@@ -961,12 +916,10 @@ drive.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>From the <strong>Help</strong> menu in Anypoint Studio, click <strong>Install New
-Software</strong>.</p>
+<p>From the <strong>Help</strong> menu in Anypoint Studio, click <strong>Install New Software</strong>.</p>
 </li>
 <li>
-<p>Open the <strong>Work with</strong> drop-down menu and select the <strong>Anypoint Addons
-Update Site</strong>.</p>
+<p>Open the <strong>Work with</strong> drop-down menu and select the <strong>Anypoint Addons Update Site</strong>.</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -974,8 +927,7 @@ Update Site</strong>.</p>
 <div class="title">Note</div>
 </td>
 <td class="content">
-If the Anypoint Addons Update Site is not available in the dropdown
-list, click <strong>Add</strong> and <strong>copy</strong> the following URL to the repository
+If the Anypoint Addons Update Site is not available in the dropdown list, click <strong>Add</strong> and then <strong>copy</strong> the following URL to the repository
 location: <em>*http://studio.mulesoft.org/r4/addons/beta*</em>
 </td>
 </tr>
@@ -1004,15 +956,13 @@ Location</strong>, then click <strong>Next</strong>.</p>
 </li>
 <li>
 <p>In the <strong>Select root directory</strong> field, use the <strong>Browse</strong> button to
-navigate to the directory into which you downloaded the cloned fork of
-source code from your GitHub account.</p>
+navigate to the directory into which you downloaded the cloned fork of the source code from your GitHub account.</p>
 </li>
 <li>
-<p>Ensure the project is checked, then click <strong>Finish</strong> and wait for
-Studio to import the source code. This step may take a while as it will need to download all dependencies from the Maven repository.</p>
+<p>Ensure the project is checked, then click <strong>Finish</strong> and wait for Studio to import the source code. This step may take a while as it needs to download all dependencies from the Maven repository.</p>
 </li>
 <li>
-<p>Open source code files as you need to edit or add content.</p>
+<p>Open source code files when you need to edit or add content.</p>
 </li>
 <li>
 <p>Click the <strong>Save</strong> icon to save locally.</p>
@@ -1023,7 +973,7 @@ Studio to import the source code. This step may take a while as it will need to 
 <div class="sect3">
 <h4 id="testing">3.1.2. Testing</h4>
 <div class="paragraph">
-<p>Use Maven to run unit test on your project using the command:</p>
+<p>Use Maven to run unit tests on your project using the command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1031,7 +981,7 @@ Studio to import the source code. This step may take a while as it will need to 
 </div>
 </div>
 <div class="paragraph">
-<p>In addition to the unit tests, the MuleSoft Connector project is
+<p>In addition to the unit tests, the Anypoint Connector project is
 normally packaged with a handful of functional tests. These tests are
 part of a <strong>JUnit Test Suite</strong>, called <em>FunctionalTestSuite</em>.</p>
 </div>
@@ -1044,7 +994,7 @@ part of a <strong>JUnit Test Suite</strong>, called <em>FunctionalTestSuite</em>
 </div>
 </div>
 <div class="paragraph">
-<p>On occasions, some tests (that are not testing processors on the connector) require connectivity to the external system. These would be all bundled together in a special test suite called SystemTestSuite. You can run those tests with:</p>
+<p>On occasion, some tests (that are not testing processors on the connector) require connectivity to the external system. These would be bundled together in a special test suite called SystemTestSuite. You can run those tests with:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1054,8 +1004,8 @@ part of a <strong>JUnit Test Suite</strong>, called <em>FunctionalTestSuite</em>
 <div class="paragraph">
 <p>In these last two cases, you need to provide a file containing the
 credentials that allow the connector to talk to the remote system.
-Please place a file named <code>automation-credentials.properties</code> inside
-<code>src/test/resources</code> in your project. This file is Git-ignored, so it
+Place a file named <code>automation-credentials.properties</code> in the
+<code>src/test/resources</code> folder in your project. This file is "Git-ignored" and
 should never be added to the repository.</p>
 </div>
 <div class="admonitionblock note">
@@ -1077,7 +1027,7 @@ Testing Conventions</a>.
 <h4 id="setting-startup-parameters">3.1.3. Setting Startup Parameters</h4>
 <div class="paragraph">
 <p>The table below lists a number of command-line parameters you can use to
-alter Anypoint Studio startup behavior, if you wish. Simply edit the
+alter Anypoint Studio startup behavior, if you wish to. Simply edit the
 bundled file <code>AnypointStudio.ini</code>.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
@@ -1106,7 +1056,7 @@ bundled file <code>AnypointStudio.ini</code>.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-vm</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Examples that come with the full MuleSoft distribution.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Examples that come with the full Mule distribution.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-vmargs</code></p></td>
@@ -1119,12 +1069,12 @@ bundled file <code>AnypointStudio.ini</code>.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="developing-your-contribution">4. Developing your Contribution</h2>
+<h2 id="developing-your-contribution">4. Developing Your Contribution</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Working directly on the <code><strong>master</strong></code> version of MuleSoft source code is <strong>strongly discouraged</strong>, since it would
-likely result in <strong>merge conflicts</strong> with the original <code><strong>master</strong></code> repository. Instead, the recommended approach for contributing to any source code is to host your changes in
-<code><strong>feature</strong></code> branch. MuleSoft Anypoint Connectors code is developed following the
+<p>Working directly on the <code><strong>master</strong></code> version of source code is <strong>strongly discouraged</strong>, since it would
+likely result in <strong>merge conflicts</strong> with the original <code><strong>master</strong></code> repository. Instead, the recommended approach for contributing to any source code is to host your changes in the
+<code><strong>feature</strong></code> branch. Anypoint Connector code is developed following the
 <strong>GitFlow</strong> branching model.</p>
 </div>
 <div class="admonitionblock note">
@@ -1140,7 +1090,7 @@ The articles <a href="http://nvie.com/posts/a-successful-git-branching-model/">A
 </table>
 </div>
 <div class="sect2">
-<h3 id="creating-your-feature-branch">4.1. Creating your Feature Branch</h3>
+<h3 id="creating-your-feature-branch">4.1. Creating Your Feature Branch</h3>
 <div class="paragraph">
 <p>Open a command line window and perform the following steps:</p>
 </div>
@@ -1155,8 +1105,7 @@ The articles <a href="http://nvie.com/posts/a-successful-git-branching-model/">A
 </div>
 </li>
 <li>
-<p>Create a new branch in which you can work on your bug fix or
-improvement using the command:</p>
+<p>Create a new branch in which you can work on your bug fix or improvement using the command:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>git checkout -b feature/yourGitHubIssueNumber</code></pre>
@@ -1166,11 +1115,8 @@ improvement using the command:</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Now you should be able to make your very first compilation of the
-MuleSoft Connector source code. Unless you are using Anypoint Studio,
-you just need to instruct Maven to download all the dependent libraries
-and compile the project, which can be achieved by executing the following
-command within the directory into which you cloned the source code:</p>
+<p>Now you should be able to compile your very first version of the connector source code. Unless you are using Anypoint Studio, you need only to instruct Maven to download all the libraries that are dependencies
+and compile the project, which can be achieved by executing the following command in the directory into which you cloned the source code:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1184,28 +1130,24 @@ command within the directory into which you cloned the source code:</p>
 <div class="title">Note</div>
 </td>
 <td class="content">
-If this is your first time using Maven, the download may take
-several minutes to complete.
+If this is your first time using Maven, the download may take several minutes to complete.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Now that you are all set with a local development environment and your
-own branch of the source code, you&#8217;re ready get kicking!</p>
+<p>Now that you are all set with a local development environment and your own branch of the source code, you&#8217;re ready get going!</p>
 </div>
 <div class="paragraph">
-<p>The following steps briefly outline the development life-cycle to follow
-to develop and commit your changes in <strong>preparation for submission</strong>.</p>
+<p>The following steps briefly outline the development life-cycle to follow in order to develop and commit your changes in <strong>preparation for submission</strong>.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>If you are using Anypoint Studio, make sure you read the previous
-section about <a href="#configuring-the-ide">IDE configuration</a>.</p>
+<p>If you are using Anypoint Studio, make sure you read the previous section about <a href="#configuring-the-ide">IDE configuration</a>.</p>
 </li>
 <li>
-<p>Make sure you <strong>format</strong> your source code using the following
+<p>Make sure you <strong>format</strong> your source code using the
 <a href="https://github.com/mulesoft/connector-certification-docs/blob/develop/docs/02-coding-standards-best-practices/files/connectors-style-convention.xml">Formatting settings</a>. This is to ensure you <strong>adhere
 to source code standards</strong>, thus increasing the likelihood that your
 changes will be merged into the connector source code.</p>
@@ -1221,8 +1163,7 @@ choice), then work on your changes, fixes or improvements.</p>
 <p><strong>Save</strong> your changes locally.</p>
 </li>
 <li>
-<p><strong>Prepare</strong> your changes for a <em>Pull Request</em> by first squashing your
-changes into a single commit on your branch using the command:</p>
+<p><strong>Prepare</strong> your changes for a <em>Pull Request</em> by first squashing your changes into a single commit on your branch using the command:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>git rebase -i</code></pre>
@@ -1243,11 +1184,11 @@ the <code><strong>develop</strong></code> branch (remember this is the repositor
 </div>
 </div>
 <div class="sect2">
-<h3 id="updating-your-feature-branch">4.2. Updating your Feature Branch</h3>
+<h3 id="updating-your-feature-branch">4.2. Updating Your Feature Branch</h3>
 <div class="paragraph">
 <p>To ensure that your cloned version of source code remains <strong>up-to-date</strong>
 with any changes uploaded to the connector branch, you
-should regularly update your branch to <strong>rebase off</strong> the latest version
+should regularly update your branch to <strong>rebase</strong> off of the latest version
 of the <code><strong>develop</strong></code>.</p>
 </div>
 <div class="ulist">
@@ -1293,8 +1234,7 @@ git push origin --tags</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Access your <code><strong>feature</strong></code> branch once again (to continue coding), using the
-command:</p>
+<p>Access your <code><strong>feature</strong></code> branch once again (to continue coding), using the command:</p>
 </li>
 </ul>
 </div>
@@ -1322,8 +1262,7 @@ the following command:</p>
 <p><strong>Resolve</strong> any conflicts on your feature branch that may appear.</p>
 </li>
 <li>
-<p><strong>Push</strong> the newly-rebased branch back to your fork on your git
-repository using the following command:</p>
+<p><strong>Push</strong> the newly-rebased branch back to your fork on your git repository using the following command:</p>
 </li>
 </ul>
 </div>
@@ -1336,8 +1275,7 @@ repository using the following command:</p>
 <div class="sect2">
 <h3 id="submitting-a-pull-request">4.3. Submitting a Pull Request</h3>
 <div class="paragraph">
-<p>Ready to submit your patch for review and merging? Initiate a <strong>Pull
-Request (PR)</strong> on GitHub!</p>
+<p>Ready to submit your patch for review and merging? Initiate a <strong>Pull Request (PR)</strong> on GitHub!</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1368,31 +1306,31 @@ contributors project with your name.</p>
 Once you access the <strong>MuleSoft Contributor&#8217;s Agreement web site</strong>, perform these actions:
 <br>
 <br>
-	1. Hit the <strong>Play notebook</strong> button (or the Run link) and follow the
+	. Hit the <strong>Play notebook</strong> button (or the Run link) and follow the
 	instructions as you are prompted through the screens.
 <br>
 	<span class="image"><img src="images/cc_agreement_2.png" alt="Agreement - Run Script"></span>
 <br>
 <br>
-	2. Authenticate
+	. Authenticate
 <br>
 <br>
 	<span class="image"><img src="images/cc_agreement_3.png" alt="Agreement - Authenticate"></span>
 <br>
 <br>
-	3. Register Your Name
+	. Register Your Name
 <br>
 <br>
 	<span class="image"><img src="images/cc_agreement_4.png" alt="Agreement - Register Your Name"></span>
 <br>
 <br>
-	4. Accept the Agreement
+	. Accept the Agreement
 <br>
 <br>
 	<span class="image"><img src="images/cc_agreement_5.png" alt="Agreement - Accept"></span>
 <br>
 <br>
-	5. Now you&#8217;re ready to contribute!
+	. Now you&#8217;re ready to contribute!
 <br>
 <br>
 	<span class="image"><img src="images/cc_agreement_6.png" alt="Agreement - Success"></span>
@@ -1475,7 +1413,7 @@ Once we had them ready, we downloaded the
 <div class="paragraph">
 <p>At that point we were almost ready to develop improvements. We just
 needed to <a href="#configuring-the-ide">configure Anypoint Studio</a> to
-develop or debug MuleSoft Anypoint Conntectors code.</p>
+develop or debug MuleSoft Anypoint Connectors code.</p>
 </div>
 <div class="paragraph">
 <p>Afterwards, we were ready to <a href="#developing-your-contribution">develop
@@ -1487,7 +1425,7 @@ request</a> to the main MuleSoft Anypoint Conntectors repository.</p>
 </div>
 <hr>
 <div class="sect3">
-<h4 id="__strong_thank_you_strong_one_more_time_for_taking_the_time_to_understand_how_to_contribute_to_strong_mulesoft_anypoint_connectors_strong">5.1. <strong>Thank you</strong>, one more time, for taking the time to understand how to contribute to <strong>MuleSoft Anypoint Connectors</strong>.</h4>
+<h4 id="__strong_thank_you_strong_once_again_for_taking_the_time_to_to_contribute_to_strong_mulesoft_s_anypoint_connectors_strong">5.1. <strong>Thank you</strong>, once again, for taking the time to  to contribute to <strong>MuleSoft&#8217;s Anypoint Connectors</strong>.</h4>
 <hr>
 </div>
 </div>
@@ -1495,7 +1433,7 @@ request</a> to the main MuleSoft Anypoint Conntectors repository.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-10-08 13:41:47 EDT
+Last updated 2015-10-08 13:53:32 EDT
 </div>
 </div>
 </body>
