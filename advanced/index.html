@@ -518,11 +518,11 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel2">
 <li><a href="#_anypoint_connector_devkit_version">2.1. Anypoint™ Connector DevKit Version</a></li>
 <li><a href="#_connector_category">2.2. Connector Category</a></li>
-<li><a href="#_code_conventions">2.3. Code Conventions</a></li>
-<li><a href="#_maven_conventions_and_setup">2.4. Maven Conventions and Setup</a></li>
-<li><a href="#_devkit_standars_best_practices">2.5. DevKit Standars and Best Practices</a></li>
-<li><a href="#_connector_demo_example">2.6. Connector Demo Example</a></li>
-<li><a href="#_third_party_licenses">2.7. Third-Party Licenses</a></li>
+<li><a href="#_maven_conventions_and_setup">2.3. Maven Conventions and Setup</a></li>
+<li><a href="#_devkit_standars_best_practices">2.4. DevKit Standars and Best Practices</a></li>
+<li><a href="#_connector_demo_example">2.5. Connector Demo Example</a></li>
+<li><a href="#_third_party_licenses">2.6. Third-Party Licenses</a></li>
+<li><a href="#_connector_icon">2.7. Connector Icon</a></li>
 </ul>
 </li>
 <li><a href="#_static_code_analysis_and_coverage">3. Static Code Analysis and Coverage</a>
@@ -1005,34 +1005,12 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect2">
-<h3 id="_code_conventions">2.3. Code Conventions</h3>
-<div class="paragraph">
-<p>This subsection covers the following areas:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Maven Conventions and Setup</p>
-</li>
-<li>
-<p>DevKit Standards and Best Practices</p>
-</li>
-<li>
-<p>Connector Demo Example</p>
-</li>
-<li>
-<p>Third Party Licenses</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_maven_conventions_and_setup">2.4. Maven Conventions and Setup</h3>
+<h3 id="_maven_conventions_and_setup">2.3. Maven Conventions and Setup</h3>
 <div class="paragraph">
 <p>The following section describes set of conventions and best practices to follow at the time to define your connector Maven project structure.</p>
 </div>
 <div class="sect3">
-<h4 id="_best_practices">2.4.1. Best Practices</h4>
+<h4 id="_best_practices">2.3.1. Best Practices</h4>
 <div class="paragraph">
 <p>A connector tested in an isolated environment might not work in a Mule environment. Therefore, different constrains apply:</p>
 </div>
@@ -1051,7 +1029,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect3">
-<h4 id="_multi_module_layout">2.4.2. Multi Module Layout</h4>
+<h4 id="_multi_module_layout">2.3.2. Multi Module Layout</h4>
 <div class="paragraph">
 <p>In large Maven projects, it is a common practice to divide the project in submodules. This means you may end up with a module for your connector and other modules for utils, commons or other kind of modularized source code that will be consumed by the connector.</p>
 </div>
@@ -1154,7 +1132,7 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect3">
-<h4 id="__strong_avoid_caching_strong">2.4.3. <strong>Avoid caching</strong></h4>
+<h4 id="__strong_avoid_caching_strong">2.3.3. <strong>Avoid caching</strong></h4>
 <div class="paragraph">
 <p>Connectors should not hold state, unless is strictly necessary. Several APIs are actually hosted in cloud environments, and therefore caching states ends up in having untrusted data in the connector.
 There are a few cases where the connector might need to save some data of the current API while working on it, which leads into caching.</p>
@@ -1185,7 +1163,7 @@ os.store(<span class="string"><span class="delimiter">&quot;</span><span class="
 </div>
 </div>
 <div class="sect3">
-<h4 id="_avoid_spawning_threads">2.4.4. Avoid spawning threads</h4>
+<h4 id="_avoid_spawning_threads">2.3.4. Avoid spawning threads</h4>
 <div class="paragraph">
 <p>Same as caching, spawning threads is not recommended within a connector as a common API lives in the cloud. This means that a connector will not improve its throughput with more threads, because every communication with the API means more HTTP requests/responses. Although we don&#8217;t recommend using threads, as caching, there might be custom cases where they are actually needed.</p>
 </div>
@@ -1194,7 +1172,7 @@ os.store(<span class="string"><span class="delimiter">&quot;</span><span class="
 </div>
 </div>
 <div class="sect3">
-<h4 id="_reading_resources_from_within_the_connector">2.4.5. Reading resources from within the connector</h4>
+<h4 id="_reading_resources_from_within_the_connector">2.3.5. Reading resources from within the connector</h4>
 <div class="paragraph">
 <p>When reading resources that are bundled with the connector, the usual <code>getClass().getResourceAsStream("custom-file-to-read.txt")</code> will work. But, if the file <code>"custom-file-to-read.txt"</code> can actually be parametrized through the Mule application, then other mechanism should be used.</p>
 </div>
@@ -1222,7 +1200,7 @@ os.store(<span class="string"><span class="delimiter">&quot;</span><span class="
 </div>
 </div>
 <div class="sect3">
-<h4 id="_mule_dependencies">2.4.6. Mule dependencies</h4>
+<h4 id="_mule_dependencies">2.3.6. Mule dependencies</h4>
 <div class="paragraph">
 <p>Adding dependencies in your connector should be carefully considered, since they might collide with Mule.
 A few constraints apply, such as:</p>
@@ -1239,7 +1217,7 @@ A few constraints apply, such as:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_shading">2.4.7. Shading</h4>
+<h4 id="_shading">2.3.7. Shading</h4>
 <div class="paragraph">
 <p>For some corner cases, you might need to add a dependency that does collide with Mule. For those scenarios, we strongly recommend to use the same version of the library as Mule does, and if impossible, then change your library to another one.
 If you still need that custom library that collides with Mule, then shading could work for you. The support for shading has been added in devkit 3.5.3.</p>
@@ -1294,7 +1272,7 @@ If you still need that custom library that collides with Mule, then shading coul
 </div>
 </div>
 <div class="sect3">
-<h4 id="_connector_structure">2.4.8. Connector Structure</h4>
+<h4 id="_connector_structure">2.3.8. Connector Structure</h4>
 <div class="paragraph">
 <p>If you create your connector project using the DevKit Studio Plugin, the generated project directory layout is the recommended approach.
 If you are interested in more details, the project directory structure is described <a href="files/project-directory-layout.html">here</a>.</p>
@@ -1333,9 +1311,9 @@ If you are interested in more details, the project directory structure is descri
 </div>
 </div>
 <div class="sect2">
-<h3 id="_devkit_standars_best_practices">2.5. DevKit Standars and Best Practices</h3>
+<h3 id="_devkit_standars_best_practices">2.4. DevKit Standars and Best Practices</h3>
 <div class="sect3">
-<h4 id="_datamapper_compliance">2.5.1. DataMapper Compliance</h4>
+<h4 id="_datamapper_compliance">2.4.1. DataMapper Compliance</h4>
 <div class="paragraph">
 <p>To have the best experience in Anypoint™ Studio, connectors must be DataMapper compliant. To achieve this, all operations must follow these recommendations.</p>
 </div>
@@ -1438,7 +1416,7 @@ Only use a map if your data:
 </table>
 </div>
 <div class="sect3">
-<h4 id="_annotations">2.5.2. Annotations</h4>
+<h4 id="_annotations">2.4.2. Annotations</h4>
 <div class="paragraph">
 <p>If you have multiple arguments, annotate the Primary argument with:</p>
 </div>
@@ -1450,13 +1428,13 @@ Only use a map if your data:
 </div>
 </div>
 <div class="sect3">
-<h4 id="_no_warning_during_compilation">2.5.3. No Warning during compilation</h4>
+<h4 id="_no_warning_during_compilation">2.4.3. No Warning during compilation</h4>
 <div class="paragraph">
 <p>DevKit does a intensive analysis of the used annotations and semantic of them in conjunction with others. It’s important the the code is free of compilation warning to help on the maintainability of the code and to follow good practices.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_devkit_generated_api_doc">2.5.4. DevKit Generated API Doc</h4>
+<h4 id="_devkit_generated_api_doc">2.4.4. DevKit Generated API Doc</h4>
 <div class="paragraph">
 <p>Connector documentation is composed of two different type of documentation: DevKit Generated DevKit API Doc and the Connector Documentation.</p>
 </div>
@@ -1465,7 +1443,7 @@ Only use a map if your data:
 </div>
 </div>
 <div class="sect3">
-<h4 id="_connectors_code_convention">2.5.5. Connectors Code Convention</h4>
+<h4 id="_connectors_code_convention">2.4.5. Connectors Code Convention</h4>
 <div class="paragraph">
 <p>We provide a file with a recommended code styling format for connectors.  This is an important aspect of the connectors code quality and most of the connectors uses this standar format.
 This style can be imported in <strong>Eclipse, Studio and IntelliJ</strong>.</p>
@@ -1475,7 +1453,7 @@ This style can be imported in <strong>Eclipse, Studio and IntelliJ</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="__config_friendly_names_conventions">2.5.6. @Config friendly names conventions</h4>
+<h4 id="__config_friendly_names_conventions">2.4.6. @Config friendly names conventions</h4>
 <div class="paragraph">
 <p>In order to provide consistency across all the connectors, Global Element default name should a follow a convention:
 . If there is one single configuration, "Configuration" should be used as friendlyName
@@ -1489,7 +1467,7 @@ This style can be imported in <strong>Eclipse, Studio and IntelliJ</strong>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_connector_demo_example">2.6. Connector Demo Example</h3>
+<h3 id="_connector_demo_example">2.5. Connector Demo Example</h3>
 <div class="paragraph">
 <p>A Mule application&#8217;s endpoints allow a user to interact with the service and API using the connector. Endpoints are committed to the GitHub repository along with source code. Use services or API use cases to determine which connector operations to select.</p>
 </div>
@@ -1669,7 +1647,7 @@ The demo contains 3 parts:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_third_party_licenses">2.7. Third-Party Licenses</h3>
+<h3 id="_third_party_licenses">2.6. Third-Party Licenses</h3>
 <div class="paragraph">
 <p>As part of the certification, it&#8217;s important to validate that all the libraries used by the connector are Open Source friendly. A easy way to generated a report of this, is running the following command:</p>
 </div>
@@ -1732,7 +1710,7 @@ The demo contains 3 parts:</p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_open_source_compliance_checklist">2.7.1. Open Source Compliance Checklist</h4>
+<h4 id="_open_source_compliance_checklist">2.6.1. Open Source Compliance Checklist</h4>
 <div class="paragraph">
 <p>Check that :</p>
 </div>
@@ -1749,6 +1727,27 @@ The demo contains 3 parts:</p>
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_connector_icon">2.7. Connector Icon</h3>
+<div class="paragraph">
+<p>We recommend your connector have a consistent look-and-feel with existing connectors in Anypoint Studio. You can replace existing icons in {your connector project}/icons with proper ones.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example: Slack Connector</strong></p>
+</div>
+<div class="paragraph">
+<p>Slack Small Icon</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://github.com/mulesoft/connector-certification-docs/tree/develop/docs/02-coding-standards-best-practices/files/slack-connector-24x16.png " alt="slack-connector-24x16" title="Slack Small Icon"></span></p>
+</div>
+<div class="paragraph">
+<p>Slack Large Icon</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://github.com/mulesoft/connector-certification-docs/tree/develop/docs/02-coding-standards-best-practices/files/slack-connector-48x32.png " alt="slack-connector-48x32" title="Slack Large Icon"></span></p>
 </div>
 </div>
 </div>
@@ -3395,7 +3394,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-10-08 13:22:38 EDT
+Last updated 2015-10-08 13:25:07 EDT
 </div>
 </div>
 </body>
