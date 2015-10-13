@@ -1,97 +1,81 @@
-= AnyPoint Community Connectors Contribution
+= Contributing to Anypoint Community Connectors
+:keywords: community, connectors, contributing
 
-Thank you!. Really, thank you. Thank you for taking some of your precious time
+Thank you! Really, thank you for taking some of your precious time
 helping improve the *MuleSoft Anypoint Connectors*.
 
-This guide will help you get started with Anypoint Connector development
+This guide will help you get started with the Anypoint Connector development
 environment. You will also learn the set of rules you are expected to
 follow in order to submit improvements and/or fixes to these projects.
 
 ---
 
 [[before-you-begin]]
-Before you begin
+Before You Begin
 ----------------
 
-MuleSoft Anypoint Connectors can range from very simple to very complex
+MuleSoft's Anypoint Connectors can range from very simple to very complex
 projects. Before contributing code to them, it is important to
 *understand the domain of the target system* that the connector is going
-to talk to. 
+to communicate with.
 
-Also, it is essential to have some **knowledge of the
-Anypoint Connector DevKit**, which is the backbone of the connector. It
-is also advisable that you internalize about the **Connector Testing
-Framework**, especially if you're creating new functionality that needs
-to tested using that framework.
+Also, it is essential to have some knowledge of the
+link:/anypoint-connector-devkit/v/3.7/index[Anypoint Connector DevKit], which is the backbone of the connector. We advise you to become familiar with the link:/anypoint-connector-devkit/v/3.7/connector-testing-framework[Connector Testing Framework], especially if you are creating new functionality that needs
+to be tested using that framework.
 
-Finally, it would be very desirable to have some *working experience
-with the MuleSoft platform* itself. We will quickly give you some pointers for getting started into these
-topics.
+Lastly, having some *experience working
+with the *Anypoint platform* is a big advantage. We will give you some pointers to get started on each of these topics.
 
 [[starting-points]]
 Starting Points
 ~~~~~~~~~~~~~~~
 
-There are many sources you can use to better understand MuleSoft and its
-features:
+There are many resources available to help you become familiar with Mule and its features:
 
 * http://mulesoft.github.io/mule-cookbook-tutorial/[MuleSoft Cookbook
 Tutorial], a step-by-step guide for getting started with Connector
 Development.
-* The official documentation around the usage of the
-https://docs.mulesoft.com/anypoint-connector-devkit[Anypoint
-Connector DevKit].
-* The official documentation around the
-https://docs.mulesoft.com/anypoint-connector-devkit/[Connector
-Testing Framework].
-* https://docs.mulesoft.com/mule-user-guide/[MuleSoft
-User Guide], the official documentation around usage of MuleSoft ESB.
-* The books http://www.manning.com/dossot2/[MuleSoft in Action (2nd
-Edition)] and http://shop.oreilly.com/product/0636920025726.do[Getting
-Started with MuleSoft Cloud Connect]. Both are excellent resources to
-understand how to use and extend Mule.
-* MuleSoft's http://blogs.mulesoft.com/[blog]. The fastest way of
-knowing about new features in MuleSoft Platform.
+* The official documentation around the usage of the link:/anypoint-connector-devkit/v/3.7/index[Anypoint Connector DevKit].
+* The official documentation for the link:c/anypoint-connector-devkit/v/3.7/connector-testing-framework[Connector Testing Framework].
+* link:m/mule-user-guide/v/3.7/index[Mule User Guide], the official documentation for Mule ESB.
+* The books link:http://www.manning.com/dossot2/[MuleSoft in Action (2nd
+Edition)] and link:http://shop.oreilly.com/product/0636920025726.do[Getting
+Started with MuleSoft Cloud Connect]. Both are excellent resources for learning how to use and extend Mule.
+* MuleSoft's link:http://blogs.mulesoft.com/[blog]. The fastest way to learn about the new features in Anypoint Platform.
 
 [[visiting-the-community-meeting-points]]
 Visiting the Community Meeting Points
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you are here reading this document, you probably have already in mind
-a new feature or a bug fix to work on. This is great. However, there
+If you have gotten this far, you probably already have
+a new feature or a bug fix in mind to work on. This is great! Note, however, that there
 could be other members of the community with the same idea.
 
 Before you begin, please take a few minutes to review community meeting
 points to make sure someone else hasn't already taken on your challenge:
 
-1.  Search for *existing GitHub issues* to see if a bug or feature
-request has already been submitted.
-2.  Follow the http://forum.mulesoft.org/mulesoft[MuleSoft Forum]
-chatter to see if anyone else has started resolving the problem or
-initiated an improvement.
-3.  Scan http://stackoverflow.com/questions/tagged/mule[StackOverflow]
-to see if there is already a proposed solution for your problem.
+. Search for *existing GitHub issues* to see if a bug or feature request has already been submitted.
+. Follow the http://forum.mulesoft.org/mulesoft[MuleSoft Forum]
+chatter to see if anyone else has started resolving the problem or initiated an improvement.
+. Scan http://stackoverflow.com/questions/tagged/mule[StackOverflow] to see if there is already a proposed solution to your problem.
 
-If, in the above-listed resources, no-one else has initiated your
-improvement or fix, log the issue by creating a **GitHub tracking
+If no one else has made your
+improvement or fix in the above-listed resources, log the issue by creating a **GitHub tracking
 issue**.
 
 [[understanding-the-extension-mechanisms]]
 Understanding the Extension Mechanisms
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-*MuleSoft ESB* has two different extension mechanisms for writing
-modules and connectors. Avoiding to add functionality to this project
-and rather use one of those mechanisms to extend MuleSoft is probably
-the more favorable option. It is therefore important to understand both.
+*Mule ESB* has two different extension mechanisms for writing modules and connectors.
+Avoiding adding functionality to the project. Rather, using one of the mechanisms to extend Mule is probably the more favorable option.
+It is important to understand both.
 
-The *first* and more intuitive mechanism for extensions is the
-https://docs.mulesoft.com/anypoint-connector-devkit/[Anypoint
-Connector DevKit], an *annotation based framework* for easy construction
+The *first* and more intuitive mechanism for extensions is the link:/anypoint-connector-devkit/v/3.7/index[Anypoint Connector DevKit], an *annotation based framework* for easy construction
 of extensions. This is the one we will be focusing on in this document.
 
-The *second* choice is to extend MuleSoft through the
-https://developer.mulesoft.com/docs/display/current/Extending[Extensions]
+The *second* choice is to extend Mule through the
+link:/mule-fundamentals/v/3.7/extending-mule[Extensions]
 mechanism.
 
 [[setting-up-the-development-environment]]
@@ -100,23 +84,19 @@ Setting up the Development Environment
 
 While getting ready to contribute to any piece of software, there are
 several *prerequisite components* you will have to install. Plus, you
-will need to obtain the *preexisting source code* there could be.
+will need to obtain the *preexisting source code* there may exist.
 
-This section provides some guidelines to install those components and to
-download the source code.
+This section provides some guidelines for installing those components and downloading the source code.
 
 [[installing-prerequisites]]
 Installing Prerequisites
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-Before you get started, you need to set yourself up with an environment
-in which to develop MuleSoft Anypoint Connectors. Your dev environment
-needs a few things:
+Before you get started, you need to set yourself up with an environment in which to develop Anypoint Connectors. Your dev environment needs a few things:
 
 * A **Java SDK**.
 * A recent version of **Maven**.
-* A development environment tool or *IDE* (most preferably Anypoint
-Studio with DevKit plugin installed).
+* A development environment tool or *IDE* (most preferably Anypoint Studio with DevKit plugin installed).
 * A new *branch* of code to work on.
 
 [[java]]
@@ -124,7 +104,7 @@ Studio with DevKit plugin installed).
 
 . If you are working with *Windows* or **Linux**, install one of the
 following
-http://www.oracle.com/technetwork/java/javase/downloads/index.html[Java
+link:http://www.oracle.com/technetwork/java/javase/downloads/index.html[Java
 Development Kits] on your local drive.
 
 . If you are working on a **Mac**,
@@ -132,11 +112,9 @@ simply confirm that the JDK shipped with your Mac OS X is _Java SE
 Development Kit 7 (also known as Java SE)_ or newer using the command
 `java -version`. Then skip to step 4 below.
 
-.  Create an environment variable called `JAVA_HOME`, setting it to the
-directory in which you installed the JDK.
+. Create an environment variable called `JAVA_HOME`, setting it to the directory in which you installed the JDK.
 
-.  Update the `PATH` environment variable so that it includes the path
-to JDK binaries. Add the following to the `PATH` variable:
+. Update the `PATH` environment variable so that it includes the path to JDK binaries. Add the following to the `PATH` variable:
 
 
 * On *Windows*
@@ -155,7 +133,7 @@ $JAVA_HOME/bin
 === Maven
 
 1.  Download the Maven distribution from the
-http://maven.apache.org/download.cgi[Maven web site], then unpack it to
+link:http://maven.apache.org/download.cgi[Maven web site], then unpack it to
 a convenient folder on your local drive.
 2.  Create an environment variable called `M2_HOME`, then set it to the
 folder into which you unpacked Maven.
@@ -176,37 +154,22 @@ $M2_HOME/bin
 Getting the Source Code
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-*MuleSoft Community Connectors* source code lives in **GitHub**. Perform
-the following procedure to locate the code and get it into your local
-drive.
+*MuleSoft Community Connectors* source code lives on **GitHub**. Perform
+the following procedure to locate the code and get it onto your local drive.
 
-If you are new to Git, consider reading http://git-scm.com/book[Pro Git]
-to absorb the basics. Just want a Read-Only version of the source code?
+If you are new to Git, consider reading http://git-scm.com/book[Pro Git] to learn the basics. Want a read-only version of the source code?
 
-1.  https://help.github.com/articles/signing-up-for-a-new-github-account[Create]
-or log in to your GitHub account.
-2.  If you haven't already done so,
-https://help.github.com/articles/set-up-git[set up Git] on your local
+1.  link:link:https://help.github.com/articles/signing-up-for-a-new-github-account[Create] or log in to your GitHub account.
+2.  If you haven't already done so, link:https://help.github.com/articles/set-up-git[set up Git] on your local
 drive.
-3.  Navigate to https://github.com/mulesoft[*MuleSoft Connector's
-GitHub*] page and select one of the listed repositories. For example,
-the https://github.com/mulesoft/twitter-connector.git[*Twitter
-Connector*].
+3.  Navigate to link:https://github.com/mulesoft[*MuleSoft's
+GitHub Connector*] page and select one of the repositories listed. For example, the link:https://github.com/mulesoft/twitter-connector.git[*Twitter Connector*].
 [.center.text-center]
 image:images/cc_fork.png[Fork]
-4.  Click the *Fork* button at the top right corner of the page, then
-select your own git repository into which GitHub inserts a copy of the
-repository.
-5.  Prepare to *clone* your forked repository from your GitHub account
-to your local drive via a secure file transfer connection. As per GitHub
-recommendation, we advise using HTTPS to transfer the source code files
-to your local drive. However, if you prefer to establish a secure
-connection for transferring the files via SSH, follow GitHub procedure
-to https://help.github.com/articles/generating-ssh-keys[generate SSH
-keys].
-6.  From the **command line**, create or navigate to an existing folder
-on your local drive into which you wish to store your forked clone of
-the connector source code.
+4.  Click the *Fork* button at the top right corner of the page, then select your own git repository into which GitHub inserts a copy.
+5.  Prepare to *Clone* your forked repository from your GitHub account to your local drive via a secure file transfer connection. As per GitHub recommendation, we recommend using HTTPS to transfer the source code files
+to your local drive. However, if you prefer to establish a secure connection for transferring the files via SSH, follow GitHub procedure to link:https://help.github.com/articles/generating-ssh-keys[generate SSH keys].
+6.  From the **command line**, create or navigate to an existing folder on your local drive into which you wish to store your forked clone of the connector source code.
 7.  Then, execute one of the following:
 * For *HTTPS*
 +
@@ -220,9 +183,7 @@ git clone https://github.com/<username>/<repo-name>
 git clone git@github.com:<username>/<repo-name>.git
 ```
 
-8.  Add the *upstream repository* so that you can pull changes and stay
-updated with changes to the connector code branch. From
-the command line, execute one of the following:
+8.  Add the *upstream repository* so that you can pull changes and stay updated with changes to the connector code branch. From the command line, execute one of the following:
 * For *HTTPS*
 +
 ```
@@ -236,82 +197,71 @@ git remote add upstream git@github.com:mulesoft/<repo-name>.git
 ```
 
 NOTE: Read more about how to
-https://help.github.com/articles/fork-a-repo/[Fork a Repo] on GitHub.
+link:https://help.github.com/articles/fork-a-repo/[Fork a Repo] on GitHub.
 
 [[understanding-the-build]]
-=== Understanding the build
+=== Understanding the Build
 
-This is a great moment to read the
+This is a great moment to stop and read the
 http://mulesoft.github.io/mule-cookbook-tutorial/[MuleSoft Cookbook
-Tutorial]. A correct understanding of *how a MuleSoft Connector project
-is organized and built* is key for a productive development.
+Tutorial]. A correct understanding of *how a Anypoint Connector project
+is organized and built* is key to a productive development process.
 
-We are ready to develop our improvements. However, instead of doing it
-manually, we may want to configure an IDE for better productivity. We
-will do this in the next section.
+We are ready to develop and implement our improvements. But, instead of doing it manually, we may want to configure an IDE for enhanced productivity. We
+will expand on this in the next section.
 
 [[configuring-the-ide]]
 == Configuring the IDE
 
-This section offers tips for importing and working on the Connector
-source code in **Anypoint Studio**. There are no restrictions on the
-type of integration development environment you use to develop MuleSoft
-Anypoint Connectors. We simply opted for the **Anypoint Studio with
-DevKit plugin installed**, which is the preferred choice since it adds a
-lot of support tools.
+This section offers tips for importing and working on connector source code in **Anypoint Studio**. There are no restrictions on the type of integration development environment you use to develop Anypoint Connectors. We simply opted for the **Anypoint Studio with
+DevKit plugin installed**, which is the preferred choice since it adds a lot of support tools.
 
 [[working-with-anypoint-studio]]
 === Working with Anypoint Studio
 
-Use Anypoint Studio to modify or add to your cloned version of MuleSoft
-Connector source code.
+Use Anypoint Studio to modify or add to your cloned version of the connector source code.
 
 [[importing]]
 ==== Importing
 
 . Download and install
-https://www.mulesoft.com/platform/studio[Anypoint Studio] on your local
+link:https://www.mulesoft.com/platform/studio[Anypoint Studio] on your local
 drive.
 . Launch it.
 . Install **Anypoint DevKit Plugin**.
 
-* From the *Help* menu in Anypoint Studio, click **Install New
-Software**.
-* Open the *Work with* drop-down menu and select the **Anypoint Addons
-Update Site**.
+* From the *Help* menu in Anypoint Studio, click **Install New Software**.
+* Open the *Work with* drop-down menu and select the **Anypoint Addons Update Site**.
 +
-NOTE: If the Anypoint Addons Update Site is not available in the dropdown
-list, click *Add* and *copy* the following URL to the repository
+NOTE: If the Anypoint Addons Update Site is not available in the dropdown list, click *Add* and then *copy* the following URL to the repository
 location: _*http://studio.mulesoft.org/r4/addons/beta*_
 
 * Check the *Anypoint DevKit Plugin* option and click **Next**.
 * Proceed through the remaining steps in the wizard to install.
 * Restart Studio.
 
-. Select **File > Import**.
+. Select *File > Import*.
 . In the *Import* wizard, click to expand the *Anypoint Studio*
 folder, then select **Anypoint Connector Project from External
 Location**, then click **Next**.
 . In the *Select root directory* field, use the *Browse* button to
-navigate to the directory into which you downloaded the cloned fork of
-source code from your GitHub account.
-. Ensure the project is checked, then click *Finish* and wait for
-Studio to import the source code. This step may take a while as it will need to download all dependencies from the Maven repository.
-. Open source code files as you need to edit or add content.
+navigate to the directory into which you downloaded the cloned fork of the source code from your GitHub account.
+. Ensure the project is checked, then click *Finish* and wait for Studio to import the source code. This step may take a while as it needs to download all dependencies from the Maven repository.
+. Open source code files when you need to edit or add content.
 . Click the *Save* icon to save locally.
 
 [[testing]]
 ==== Testing
 
-Use Maven to run unit test on your project using the command:
+Use Maven to run unit tests on your project using the command:
 
 ```
 mvn test
 ```
 
-In addition to the unit tests, the MuleSoft Connector project is
+In addition to the unit tests, the Anypoint Connector project is
 normally packaged with a handful of functional tests. These tests are
-part of a **JUnit Test Suite**, called __FunctionalTestSuite__.
+part of a *JUnit Test Suite*, called __FunctionalTestSuite__.
 
 To run these tests, you can use the following command:
 
@@ -319,7 +269,7 @@ To run these tests, you can use the following command:
 mvn test -Dtest=FunctionalTestSuite
 ```
 
-On occasions, some tests (that are not testing processors on the connector) require connectivity to the external system. These would be all bundled together in a special test suite called SystemTestSuite. You can run those tests with:
+On occasion, some tests (that are not testing processors on the connector) require connectivity to the external system. These would be bundled together in a special test suite called SystemTestSuite. You can run those tests with:
 
 ```
 mvn test -Dtest=SystemTestSuite
@@ -327,19 +277,19 @@ mvn test -Dtest=SystemTestSuite
 
 In these last two cases, you need to provide a file containing the
 credentials that allow the connector to talk to the remote system.
-Please place a file named `automation-credentials.properties` inside
-`src/test/resources` in your project. This file is Git-ignored, so it
+Place a file named `automation-credentials.properties` in the
+`src/test/resources` folder in your project. This file is "Git-ignored" and
 should never be added to the repository.
 
-NOTE: Read more about 
-http://mulesoft.github.io/connector-certification-docs/advanced/index.html#_functional_tests_automation[MuleSoft's
+NOTE: Read more about
+link:http://mulesoft.github.io/connector-certification-docs/advanced/index.html#_functional_tests_automation[MuleSoft's
 Testing Conventions].
 
 [[setting-startup-parameters]]
 ==== Setting Startup Parameters
 
 The table below lists a number of command-line parameters you can use to
-alter Anypoint Studio startup behavior, if you wish. Simply edit the
+alter Anypoint Studio startup behavior, if you wish to. Simply edit the
 bundled file `AnypointStudio.ini`.
 
 [cols="1,4",options="header"]
@@ -348,22 +298,22 @@ bundled file `AnypointStudio.ini`.
 |`-clean`|Enables clean registration of plug-in (some plug-ins do not always register themselves properly after a restart).
 |`-nosplash`|Does not show Anypoint Studio or plug-in splash screens.
 |`-showlocation`|Allows you to explicitly set which JDK to use.
-|`-vm`|Examples that come with the full MuleSoft distribution.
+|`-vm`|Examples that come with the full Mule distribution.
 |`-vmargs`|Allows you to pass in standard VM arguments.
 |===
 
 [[developing-your-contribution]]
-== Developing your Contribution
+== Developing Your Contribution
 
-Working directly on the `*master*` version of MuleSoft source code is *strongly discouraged*, since it would
-likely result in *merge conflicts* with the original `*master*` repository. Instead, the recommended approach for contributing to any source code is to host your changes in 
-`*feature*` branch. MuleSoft Anypoint Connectors code is developed following the 
+Working directly on the `*master*` version of source code is *strongly discouraged*, since it would
+likely result in *merge conflicts* with the original `*master*` repository. Instead, the recommended approach for contributing to any source code is to host your changes in the
+`*feature*` branch. Anypoint Connector code is developed following the
 *GitFlow* branching model.
 
-NOTE: The articles http://nvie.com/posts/a-successful-git-branching-model/[A successful Git branching model] (by Vincent Driessen) and http://www.clock.co.uk/blog/release-management-with-gitflow-the-clock-way/[Release Management with Gitflow] (by Paul Serby) provide excellent starting points for getting familiar with *GitFlow*.
+NOTE: The articles link:http://nvie.com/posts/a-successful-git-branching-model/[A successful Git branching model] (by Vincent Driessen) and link:http://www.clock.co.uk/blog/release-management-with-gitflow-the-clock-way/[Release Management with Gitflow] (by Paul Serby) provide excellent starting points for getting familiar with *GitFlow*.
 
 [[creating-your-feature-branch]]
-=== Creating your Feature Branch
+=== Creating Your Feature Branch
 
 Open a command line window and perform the following steps:
 
@@ -373,35 +323,27 @@ Open a command line window and perform the following steps:
 git checkout develop
 ```
 
-* Create a new branch in which you can work on your bug fix or
-improvement using the command:
+* Create a new branch in which you can work on your bug fix or improvement using the command:
 +
 ```
 git checkout -b feature/yourGitHubIssueNumber
 ```
 
-Now you should be able to make your very first compilation of the
-MuleSoft Connector source code. Unless you are using Anypoint Studio,
-you just need to instruct Maven to download all the dependent libraries
-and compile the project, which can be achieved by executing the following
-command within the directory into which you cloned the source code:
+Now you should be able to compile your very first version of the connector source code. Unless you are using Anypoint Studio, you need only to instruct Maven to download all the libraries that are dependencies
+and compile the project, which can be achieved by executing the following command in the directory into which you cloned the source code:
 
 ```
 mvn -DskipTests package
 ```
 
-NOTE: If this is your first time using Maven, the download may take
-several minutes to complete.
+NOTE: If this is your first time using Maven, the download may take several minutes to complete.
 
-Now that you are all set with a local development environment and your
-own branch of the source code, you're ready get kicking!
+Now that you are all set with a local development environment and your own branch of the source code, you're ready get going!
 
-The following steps briefly outline the development life-cycle to follow
-to develop and commit your changes in **preparation for submission**.
+The following steps briefly outline the development life-cycle to follow in order to develop and commit your changes in **preparation for submission**.
 
-* If you are using Anypoint Studio, make sure you read the previous
-section about link:#configuring-the-ide[IDE configuration].
-* Make sure you *format* your source code using the following
+* If you are using Anypoint Studio, make sure you read the previous section about link:#configuring-the-ide[IDE configuration].
+* Make sure you *format* your source code using the
 link:https://github.com/mulesoft/connector-certification-docs/blob/develop/docs/02-coding-standards-best-practices/files/connectors-style-convention.xml[Formatting settings]. This is to ensure you **adhere
 to source code standards**, thus increasing the likelihood that your
 changes will be merged into the connector source code.
@@ -409,8 +351,7 @@ changes will be merged into the connector source code.
 choice), then work on your changes, fixes or improvements.
 * *Debug* and test your local version, resolving any issues that arise.
 * *Save* your changes locally.
-* *Prepare* your changes for a _Pull Request_ by first squashing your
-changes into a single commit on your branch using the command:
+* *Prepare* your changes for a _Pull Request_ by first squashing your changes into a single commit on your branch using the command:
 +
 ```
 git rebase -i
@@ -423,18 +364,18 @@ documentation] for details on how to commit your changes.
 the `*develop*` branch (remember this is the repository that will contain the latest changes of the connector). Refer to details below.
 
 [[updating-your-feature-branch]]
-=== Updating your Feature Branch
+=== Updating Your Feature Branch
 
 To ensure that your cloned version of source code remains *up-to-date*
 with any changes uploaded to the connector branch, you
-should regularly update your branch to *rebase off* the latest version
+should regularly update your branch to *rebase* off of the latest version
 of the `*develop*`.
 
 * *Pull* the latest changes from the _upstream_ `*develop*` branch using the following commands:
 
 ```
 git fetch upstream
-git fetch upstream --tags 
+git fetch upstream --tags
 ```
 
 * *Merge* the latest changes and updates from the `*develop*` branch to
@@ -452,8 +393,7 @@ git push origin feature/yourGitHubIssueNumber
 git push origin --tags
 ```
 
-* Access your `*feature*` branch once again (to continue coding), using the
-command:
+* Access your `*feature*` branch once again (to continue coding), using the command:
 
 ```
 git checkout dev/yourRepoName/bug/yourGitHubIssueNumber
@@ -468,8 +408,7 @@ git rebase develop
 
 * *Resolve* any conflicts on your feature branch that may appear.
 
-* *Push* the newly-rebased branch back to your fork on your git
-repository using the following command:
+* *Push* the newly-rebased branch back to your fork on your git repository using the following command:
 
 ```
 git push origin dev/yourRepoName/feature/yourGitHubIssueNumber -f
@@ -478,14 +417,13 @@ git push origin dev/yourRepoName/feature/yourGitHubIssueNumber -f
 [[submitting-a-pull-request]]
 === Submitting a Pull Request
 
-Ready to submit your patch for review and merging? Initiate a *Pull
-Request (PR)* on GitHub!
+Ready to submit your patch for review and merging? Initiate a *Pull Request (PR)* on GitHub!
 
 * Review the
-http://www.mulesoft.org/legal/contributor-agreement.html[MuleSoft
+link:http://www.mulesoft.org/legal/contributor-agreement.html[MuleSoft
 Contributor's Agreement]. Before any contribution is accepted, we need
 you to *run* the following notebook
-https://api-notebook.anypoint.mulesoft.com/notebooks#bc1cf75a0284268407e4[script].
+link:https://api-notebook.anypoint.mulesoft.com/notebooks#bc1cf75a0284268407e4[script].
 
 image:images/cc_agreement_1.png[Agreement Site]
 
@@ -496,31 +434,31 @@ contributors project with your name.
 NOTE: Once you access the *MuleSoft Contributor's Agreement web site*, perform these actions:
 	+
 	+
-	1. Hit the *Play notebook* button (or the Run link) and follow the
+	. Hit the *Play notebook* button (or the Run link) and follow the
 	instructions as you are prompted through the screens.
 	+
 	image:images/cc_agreement_2.png[Agreement - Run Script]
 	+
 	+
-	2. Authenticate
+	. Authenticate
 	+
 	+
 	image:images/cc_agreement_3.png[Agreement - Authenticate]
 	+
 	+
-	3. Register Your Name
+	. Register Your Name
 	+
 	+
 	image:images/cc_agreement_4.png[Agreement - Register Your Name]
 	+
 	+
-	4. Accept the Agreement
+	. Accept the Agreement
 	+
 	+
 	image:images/cc_agreement_5.png[Agreement - Accept]
 	+
 	+
-	5. Now you're ready to contribute!
+	. Now you're ready to contribute!
 	+
 	+
 	image:images/cc_agreement_6.png[Agreement - Success]
@@ -533,7 +471,7 @@ description of your changes.
 Request__.
 +
 NOTE: Refer to GitHub's
-https://help.github.com/articles/using-pull-requests[detailed
+link:https://help.github.com/articles/using-pull-requests[detailed
 instructions] for submitting a pull request.
 
 * *MuleSoft's Connectors Developer Team* will review the PR and may
@@ -565,7 +503,7 @@ link:#getting-the-source-code[source code].
 
 At that point we were almost ready to develop improvements. We just
 needed to link:#configuring-the-ide[configure Anypoint Studio] to
-develop or debug MuleSoft Anypoint Conntectors code.
+develop or debug MuleSoft Anypoint Connectors code.
 
 Afterwards, we were ready to link:#developing-your-contribution[develop
 our contribution]: we created our very own
@@ -575,5 +513,5 @@ it updated] in order to submit a link:#submitting-a-pull-request[pull
 request] to the main MuleSoft Anypoint Conntectors repository.
 
 ---
-==== *Thank you*, one more time, for taking the time to understand how to contribute to **MuleSoft Anypoint Connectors**.
+==== *Thank you*, once again, for taking the time to  to contribute to **MuleSoft's Anypoint Connectors**.
 ---
