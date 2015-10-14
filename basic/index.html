@@ -909,11 +909,14 @@ A few constraints apply, such as:</p>
 <div class="sect3">
 <h4 id="_shading">2.3.7. Shading</h4>
 <div class="paragraph">
-<p>For some corner cases, you might need to add a dependency that does collide with Mule. For those scenarios, we strongly recommend to use the same version of the library as Mule does, and if impossible, then change your library to another one.
-If you still need that custom library that collides with Mule, then shading could work for you. The support for shading has been added in devkit 3.5.3.</p>
+<p>For some corner cases, you might need to add a dependency that does collide with Mule either directly or in a transitive dependency. For those scenarios, we strongly recommend to use the same version of the library as Mule does or, if possible, change your library to another one equivalent.
+If none of the options above are available, and you still need that custom library that collides with Mule, then shading could work for you. The support for shading has been added in devkit 3.5.3.</p>
 </div>
 <div class="paragraph">
-<p>You need to modify your connector&#8217;s <code>pom.xml</code> file to add the shading plugin in order to achieve two things: 1) add the custom jar into the connector&#8217;s one and 2) rename the packages of the library into a new one in order to avoid collisions.</p>
+<p>You need to modify your connector&#8217;s <code>pom.xml</code> file to add the shading plugin in order to achieve two things: 1) add the custom jar into the connector and 2) rename the packages of the library into a new one in order to avoid collisions.</p>
+</div>
+<div class="paragraph">
+<p>For simple cases, were the coliding libraries are explicitly declared (for example, you directly require a different jersey version than the one packaged with mule), shade only those dependencies.</p>
 </div>
 <div class="paragraph">
 <p>The following snippet should work when using a library with the groupId <code>org.some.library</code> and the artifactId <code>custom-artifact-id</code></p>
@@ -924,7 +927,8 @@ If you still need that custom library that collides with Mule, then shading coul
     <span class="tag">&lt;dependency&gt;</span>
         <span class="tag">&lt;groupId&gt;</span>org.some.library<span class="tag">&lt;/groupId&gt;</span>
         <span class="tag">&lt;artifactId&gt;</span>custom-artifact-id<span class="tag">&lt;/artifactId&gt;</span>
-        <span class="tag">&lt;version&gt;</span>2.0<span class="tag">&lt;/version&gt;</span> <span class="comment">&lt;!-- version to be included in the connector jar --&gt;</span>
+        <span class="tag">&lt;version&gt;</span>${some.lib.version}<span class="tag">&lt;/version&gt;</span> <span class="comment">&lt;!-- version to be included in the connector jar --&gt;</span>
+        <span class="comment">&lt;!-- default scope is required--&gt;</span>
     <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;/dependencies&gt;</span>
 
@@ -946,7 +950,7 @@ If you still need that custom library that collides with Mule, then shading coul
                 <span class="tag">&lt;relocations&gt;</span>
                     <span class="tag">&lt;relocation&gt;</span>
                         <span class="tag">&lt;pattern&gt;</span>org.some.library<span class="tag">&lt;/pattern&gt;</span>
-                        <span class="tag">&lt;shadedPattern&gt;</span>org.some.library.new.pakage.name.shade<span class="tag">&lt;/shadedPattern&gt;</span>
+                        <span class="tag">&lt;shadedPattern&gt;</span>org.some.${some.lib.version}.library<span class="tag">&lt;/shadedPattern&gt;</span>
                     <span class="tag">&lt;/relocation&gt;</span>
                 <span class="tag">&lt;/relocations&gt;</span>
              <span class="tag">&lt;/configuration&gt;</span>
@@ -958,7 +962,60 @@ If you still need that custom library that collides with Mule, then shading coul
 </div>
 </div>
 <div class="paragraph">
-<p>Further explanation can be found <a href="http://maven.apache.org/plugins/maven-shade-plugin/examples/includes-excludes.html">here</a>.</p>
+<p>Some other cases are more complex, since the issue appear with a transitive dependency. Let&#8217;s say you need an sdk <code>my-sdk</code> that uses some other dependency <code>common-lib</code> internally, if then mule uses an incompatible version of this <code>common-lib</code>, Classloader issue might appear.
+For this case, you need to shade not only the sdk, but also the transitive dependency, that will now be explicitly declared as follow:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependencies&gt;</span>
+    <span class="tag">&lt;dependency&gt;</span>
+        <span class="tag">&lt;groupId&gt;</span>org.some.library<span class="tag">&lt;/groupId&gt;</span>
+        <span class="tag">&lt;artifactId&gt;</span>custom-artifact-id<span class="tag">&lt;/artifactId&gt;</span>
+        <span class="tag">&lt;version&gt;</span>${some.lib.version}<span class="tag">&lt;/version&gt;</span> <span class="comment">&lt;!-- version to be included in the connector jar --&gt;</span>
+        <span class="comment">&lt;!-- default scope is required--&gt;</span>
+    <span class="tag">&lt;/dependency&gt;</span>
+
+    <span class="tag">&lt;dependency&gt;</span>
+        <span class="tag">&lt;groupId&gt;</span>com.commons.lib<span class="tag">&lt;/groupId&gt;</span>
+        <span class="tag">&lt;artifactId&gt;</span>commons-utils<span class="tag">&lt;/artifactId&gt;</span>
+        <span class="tag">&lt;version&gt;</span>${common.utils.version}<span class="tag">&lt;/version&gt;</span> <span class="comment">&lt;!-- version used by the sdk --&gt;</span>
+        <span class="comment">&lt;!-- default scope is required--&gt;</span>
+    <span class="tag">&lt;/dependency&gt;</span>
+<span class="tag">&lt;/dependencies&gt;</span>
+
+<span class="tag">&lt;build&gt;</span>
+    <span class="tag">&lt;plugins&gt;</span>
+        <span class="tag">&lt;plugin&gt;</span>
+            <span class="tag">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/groupId&gt;</span>
+            <span class="tag">&lt;artifactId&gt;</span>maven-shade-plugin<span class="tag">&lt;/artifactId&gt;</span>
+            <span class="tag">&lt;version&gt;</span>2.3<span class="tag">&lt;/version&gt;</span>
+            <span class="tag">&lt;configuration&gt;</span>
+                <span class="comment">&lt;!-- custom shade configuration --&gt;</span>
+                <span class="tag">&lt;artifactSet&gt;</span>
+                    <span class="tag">&lt;includes&gt;</span>
+                        <span class="tag">&lt;include&gt;</span>org.some.library:custom-artifact-id<span class="tag">&lt;/include&gt;</span>
+                        <span class="tag">&lt;include&gt;</span>com.commons.lib:commons-utils<span class="tag">&lt;/include&gt;</span>
+                    <span class="tag">&lt;/includes&gt;</span>
+                <span class="tag">&lt;/artifactSet&gt;</span>
+                <span class="tag">&lt;relocations&gt;</span>
+                    <span class="comment">&lt;!-- as a best practice, rename packages using the dependency version--&gt;</span>
+                    <span class="tag">&lt;relocation&gt;</span>
+                        <span class="tag">&lt;pattern&gt;</span>org.some.library<span class="tag">&lt;/pattern&gt;</span>
+                        <span class="tag">&lt;shadedPattern&gt;</span>org.some.${some.lib.version}.library<span class="tag">&lt;/shadedPattern&gt;</span>
+                    <span class="tag">&lt;/relocation&gt;</span>
+                    <span class="tag">&lt;relocation&gt;</span>
+                        <span class="tag">&lt;pattern&gt;</span>com.commons.lib<span class="tag">&lt;/pattern&gt;</span>
+                        <span class="tag">&lt;shadedPattern&gt;</span>com.commons.${common.utils.version}.lib<span class="tag">&lt;/shadedPattern&gt;</span>
+                    <span class="tag">&lt;/relocation&gt;</span>
+                <span class="tag">&lt;/relocations&gt;</span>
+             <span class="tag">&lt;/configuration&gt;</span>
+        <span class="tag">&lt;/plugin&gt;</span>
+    <span class="tag">&lt;/plugins&gt;</span>
+<span class="tag">&lt;/build&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Further explanation regardin maven-shade-plugin can be found <a href="http://maven.apache.org/plugins/maven-shade-plugin/examples/includes-excludes.html">here</a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1548,7 +1605,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-10-14 02:51:06 EDT
+Last updated 2015-10-14 10:39:38 EDT
 </div>
 </div>
 </body>
