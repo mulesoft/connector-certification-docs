@@ -32,11 +32,11 @@ Points to the docs.mulesoft pages for documentation on the functional aspects of
 
 === Compatibility
 
+[width="100%", cols=",", options="header"]
 |===
-|Application/Service|Version
-
-|Mule Runtime|<Supported_Mule_Version> Indicates which versions of the Mule runtime are supported, i.e.: 3.5.1 and higher, 3.4.3 and Higher, 3.6.0, etc
-|<System_Name>|<System_Version>
+|Software |Version
+|Mule Runtime |<Put_Minimum_Mule_Version_Here>
+|<Service_Or_App_Name> |<version>
 |===
 
 === Migrating from Older Versions
