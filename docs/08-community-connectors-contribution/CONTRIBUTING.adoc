@@ -491,19 +491,17 @@ This guide started with pointing to different
 link:#getting-to-know-better-mule[sources of information] around
 MuleSoft and the Mule's
 link:#visiting-the-community-meeting-points[community meeting points] on
-the net. These were useful to understand were MuleSoft is moving to and
-to have contact mechanisms with the rest of the community for help or
-discussion.
+the web. These were useful for understanding where MuleSoft is going and to have contact with the rest of the community for help or to spark discussion.
 
 In order to set up our
 link:#setting-up-the-development-environment[development environment],
-we got to link:#installing-prerequisites[install some prerequisites].
-Once we had them ready, we downloaded the
+we went to link:#installing-prerequisites[install some prerequisites].
+Once we had those ready, we downloaded the
 link:#getting-the-source-code[source code].
 
-At that point we were almost ready to develop improvements. We just
+At that point we were almost ready to develop our improvements. We just
 needed to link:#configuring-the-ide[configure Anypoint Studio] to
-develop or debug MuleSoft Anypoint Connectors code.
+develop or debug MuleSoft Anypoint Connector code.
 
 Afterwards, we were ready to link:#developing-your-contribution[develop
 our contribution]: we created our very own
