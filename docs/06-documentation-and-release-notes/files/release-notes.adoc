@@ -1,4 +1,4 @@
-= Anypoint™ Connectors Release Notes Template
+= Anypoint Connector Release Notes Template
 
 The following is a proposed connector documentation template for documenting Release notes for MuleSoft connectors. The latest release should appear at the top of each connector's release notes page and the oldest section at the bottom.
 
