@@ -1,4 +1,4 @@
-= Anypoint™ Connectors User Guide Template
+= Anypoint Connectors User Guide Template
 
 The following is a proposed connector user guide template for documenting MuleSoft and 3rd party connectors. When completed, a tech writer will work with the development teams to bring existing and new connector documentation to this standard. Please review and add your comments. Thanks!
 
