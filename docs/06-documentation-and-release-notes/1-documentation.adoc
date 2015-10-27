@@ -1,8 +1,8 @@
 [[_documentation]]
-== Documentation & Release Notes
+= Documentation & Release Notes
 Documentation is a vital part of the development stage. Your development team must strictly follow Mulesoft documentation standards described in this document.
 
-=== Built-in Documentation
+== Built-in Documentation
 
 Part of the documentation must be packed within the connector source code. The mandatory files are:
 
@@ -10,24 +10,24 @@ Part of the documentation must be packed within the connector source code. The m
 . Release Notes
 . ReadMe
 
-In addition, create an extra folder named _images_ inside the _doc_ folder. This resource folder contains any resources (images, XMLs, etc.) used in the documentation.
+In addition, create an extra folder named __images_ inside the _doc_ folder. This resource folder contains any resources (images, XMLs, etc.) used in the documentation.
 
-==== User Guide
+== User Guide
 
 The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. Write the documentation using AsciiDoc syntax so that the resulting file is called user_manual.adoc. A template can be found link:files/user-manual.adoc[here].
 It should reside in _doc_ folder in the root of the connector project.
 
 
-==== Release Notes
+== Release Notes
 
 Release notes need to be highly descriptive, including backward compatibility of the released connector with previous versions. A template can be found link:files/release-notes.adoc[here].
 It should reside in _doc_ folder in the root of the connector project.
 
-==== ReadMe
+== ReadMe
 
 A README.md template can be found link:files/README.md[here]. It should reside in root of the connector project.
 
-=== Connector ApiDocs
+== Connector ApiDocs
 
 Each public connector requires:
 
