@@ -517,16 +517,19 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_connector_icon">2.7. Connector Icon</a></li>
 </ul>
 </li>
-<li><a href="#_documentation">3. Documentation &amp; Release Notes</a>
+<li><a href="#_documentation">Documentation &amp; Release Notes</a>
+<ul class="sectlevel1">
+<li><a href="#_built_in_documentation">3. Built-in Documentation</a></li>
+<li><a href="#_user_guide">4. User Guide</a></li>
+<li><a href="#_release_notes">5. Release Notes</a></li>
+<li><a href="#_readme">6. ReadMe</a></li>
+<li><a href="#_connector_apidocs">7. Connector ApiDocs</a></li>
+<li><a href="#_appendixes">8. Appendixes &amp; Templates</a>
 <ul class="sectlevel2">
-<li><a href="#_built_in_documentation">3.1. Built-in Documentation</a></li>
-<li><a href="#_connector_apidocs">3.2. Connector ApiDocs</a></li>
+<li><a href="#_connector_project_directory_layout">8.1. Connector Project Directory Layout</a></li>
+<li><a href="#_common_public_attribution_license_version_1_0_cpal">8.2. Common Public Attribution License Version 1.0 (CPAL)</a></li>
 </ul>
 </li>
-<li><a href="#_appendixes">4. Appendixes &amp; Templates</a>
-<ul class="sectlevel2">
-<li><a href="#_connector_project_directory_layout">4.1. Connector Project Directory Layout</a></li>
-<li><a href="#_common_public_attribution_license_version_1_0_cpal">4.2. Common Public Attribution License Version 1.0 (CPAL)</a></li>
 </ul>
 </li>
 </ul>
@@ -1505,14 +1508,15 @@ The demo contains 3 parts:</p>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="_documentation">3. Documentation &amp; Release Notes</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Documentation is a vital part of the development stage. Your development team must strictly follow MuleSoft documentation standards described in this document.</p>
+<h1 id="_documentation" class="sect0">Documentation &amp; Release Notes</h1>
+<div class="openblock partintro">
+<div class="content">
+Documentation is a vital part of the development stage. Your development team must strictly follow Mulesoft documentation standards described in this document.
 </div>
-<div class="sect2">
-<h3 id="_built_in_documentation">3.1. Built-in Documentation</h3>
+</div>
+<div class="sect1">
+<h2 id="_built_in_documentation">3. Built-in Documentation</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Part of the documentation must be packed within the connector source code. The mandatory files are:</p>
 </div>
@@ -1530,31 +1534,39 @@ The demo contains 3 parts:</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>In addition, create an extra folder named <em>images</em> inside the <em>doc</em> folder. This resource folder contains any resources (images, XMLs, etc.) used in the documentation.</p>
+<p>In addition, create an extra folder named <em>_images</em> inside the <em>doc</em> folder. This resource folder contains any resources (images, XMLs, etc.) used in the documentation.</p>
 </div>
-<div class="sect3">
-<h4 id="_user_guide">3.1.1. User Guide</h4>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_user_guide">4. User Guide</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. Write the documentation using AsciiDoc syntax so that the resulting file is called <em>user_manual.adoc</em>. A template can be found <a href="files/user-manual.adoc">here</a>.
 It should reside in <em>doc</em> folder in the root of the connector project.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_release_notes">3.1.2. Release Notes</h4>
+</div>
+<div class="sect1">
+<h2 id="_release_notes">5. Release Notes</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Release notes need to be highly descriptive, including backward compatibility of the released connector with previous versions. A template can be found <a href="files/release-notes.adoc">here</a>.
 It should reside in <em>doc</em> folder in the root of the connector project.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_readme">3.1.3. ReadMe</h4>
+</div>
+<div class="sect1">
+<h2 id="_readme">6. ReadMe</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>A README.md template can be found <a href="files/README.md">here</a>. It should reside in the root of the connector project.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_connector_apidocs">3.2. Connector ApiDocs</h3>
+<div class="sect1">
+<h2 id="_connector_apidocs">7. Connector ApiDocs</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Each public connector requires:</p>
 </div>
@@ -1582,12 +1594,11 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 </div>
-</div>
 <div class="sect1">
-<h2 id="_appendixes">4. Appendixes &amp; Templates</h2>
+<h2 id="_appendixes">8. Appendixes &amp; Templates</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_connector_project_directory_layout">4.1. Connector Project Directory Layout</h3>
+<h3 id="_connector_project_directory_layout">8.1. Connector Project Directory Layout</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1597,7 +1608,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="_common_public_attribution_license_version_1_0_cpal">4.2. Common Public Attribution License Version 1.0 (CPAL)</h3>
+<h3 id="_common_public_attribution_license_version_1_0_cpal">8.2. Common Public Attribution License Version 1.0 (CPAL)</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1611,7 +1622,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-11-10 12:55:38 EST
+Last updated 2015-11-10 13:02:48 EST
 </div>
 </div>
 </body>
