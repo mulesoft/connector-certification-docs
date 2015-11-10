@@ -2,7 +2,7 @@
 
 The following is a proposed connector user guide template for documenting MuleSoft and 3rd party connectors. When completed, a tech writer will work with the development teams to bring existing and new connector documentation to this standard. Please review and add your comments. Thanks!
 
-Note: Horizontal lines show sections, but won’t be in the actual documents.
+Note: Horizontal lines show section breaks, but won’t be in the actual documents.
 
 ---
 
