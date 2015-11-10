@@ -624,7 +624,7 @@ This document first introduces the entire <strong>Connector Lifecycle Model</str
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Select:</p>
+<p>Certified:</p>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;distributionManagement&gt;</span>
@@ -644,17 +644,17 @@ This document first introduces the entire <strong>Connector Lifecycle Model</str
 </div>
 </li>
 <li>
-<p>Multi-module Select:</p>
+<p>Multi-module Certified:</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>If a Select connector is part of a multi-module project, before the release we should verify that:
+<p>If a MuleSoft Certified (Certified) connector is part of a multi-module project, before the release we should verify that:
 * The connector&#8217;s module is deployed to the private nexus (same distribution management as described above for Standard, ci-releases).
 * The parent pom and other non-connector modules of the multi-module project have the same distribution management as described above for public or Community connectors.</p>
 </div>
 <div class="paragraph">
-<p>For example, in a project with a parent pom, a utils module and a connector module, if and only if the connector is Select, then the parent pom should declare the public distributionManagement, and then it should be overriden in the connectors' pom with the private distributionManagement.</p>
+<p>For example, in a project with a parent pom, a utils module and a connector module, if and only if the connector is Certified, then the parent pom should declare the public distributionManagement, and then it should be overriden in the connectors' pom with the private distributionManagement.</p>
 </div>
 </div>
 <div class="sect3">
@@ -667,7 +667,7 @@ This document first introduces the entire <strong>Connector Lifecycle Model</str
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">Select</th>
+<th class="tableblock halign-left valign-top">Certified</th>
 </tr>
 </thead>
 <tfoot>
@@ -1630,7 +1630,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-11-10 15:32:17 EST
+Last updated 2015-11-10 15:42:57 EST
 </div>
 </div>
 </body>
