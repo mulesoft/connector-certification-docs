@@ -511,7 +511,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_anypoint_connector_devkit_version">2.1. Anypoint™ Connector DevKit Version</a></li>
 <li><a href="#_connector_category">2.2. Connector Category</a></li>
 <li><a href="#_maven_conventions_and_setup">2.3. Maven Conventions and Setup</a></li>
-<li><a href="#_devkit_standars_best_practices">2.4. DevKit Standars and Best Practices</a></li>
+<li><a href="#_devkit_standars_best_practices">2.4. DevKit Standards and Best Practices</a></li>
 <li><a href="#_connector_demo_example">2.5. Connector Demo Example</a></li>
 <li><a href="#_third_party_licenses">2.6. Third-Party Licenses</a></li>
 <li><a href="#_connector_icon">2.7. Connector Icon</a></li>
@@ -1069,7 +1069,7 @@ If you are interested in more details, the project directory structure is descri
 </div>
 </div>
 <div class="sect2">
-<h3 id="_devkit_standars_best_practices">2.4. DevKit Standars and Best Practices</h3>
+<h3 id="_devkit_standars_best_practices">2.4. DevKit Standards and Best Practices</h3>
 <div class="sect3">
 <h4 id="_datamapper_compliance">2.4.1. DataMapper Compliance</h4>
 <div class="paragraph">
@@ -1106,7 +1106,7 @@ If you are interested in more details, the project directory structure is descri
 <div class="paragraph">
 <p><em>Important</em>: Only use a map if you cannot use a POJO.
 Only use a map if your data:
-. Is schemaless, for example if created using MongoDB.
+. Is schema-less, for example if created using MongoDB.
 . Has user customizable schemas, if created with Salesforce.
 . Has unknown content.</p>
 </div>
@@ -1174,7 +1174,13 @@ Only use a map if your data:
 </table>
 </div>
 <div class="sect3">
-<h4 id="_annotations">2.4.2. Annotations</h4>
+<h4 id="_java_version">2.4.2. Java Version</h4>
+<div class="paragraph">
+<p>A connector needs to define its target JDK version according to its compatibility with Mule runtimes. Mule runtimes 3.5.X must use Java 1.6, Mule runtimes 3.6.X must use Java 1.7, Mule runtimes 3.7.X must use Java 1.7 and Mule runtimes 3.8.X must use Java 1.7/1.8. This can be achieved by overwriting the POM property <em>jdk.version</em> with the desired version.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_annotations">2.4.3. Annotations</h4>
 <div class="paragraph">
 <p>If you have multiple arguments, annotate the Primary argument with:</p>
 </div>
@@ -1186,13 +1192,13 @@ Only use a map if your data:
 </div>
 </div>
 <div class="sect3">
-<h4 id="_no_warning_during_compilation">2.4.3. No Warning during compilation</h4>
+<h4 id="_no_warning_during_compilation">2.4.4. No Warning during compilation</h4>
 <div class="paragraph">
 <p>DevKit does a intensive analysis of the used annotations and semantic of them in conjunction with others. It’s important the the code is free of compilation warning to help on the maintainability of the code and to follow good practices.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_devkit_generated_api_doc">2.4.4. DevKit Generated API Doc</h4>
+<h4 id="_devkit_generated_api_doc">2.4.5. DevKit Generated API Doc</h4>
 <div class="paragraph">
 <p>Connector documentation is composed of two different type of documentation: DevKit Generated DevKit API Doc and the Connector Documentation.</p>
 </div>
@@ -1201,9 +1207,9 @@ Only use a map if your data:
 </div>
 </div>
 <div class="sect3">
-<h4 id="_connectors_code_convention">2.4.5. Connectors Code Convention</h4>
+<h4 id="_connectors_code_convention">2.4.6. Connectors Code Convention</h4>
 <div class="paragraph">
-<p>We provide a file with a recommended code styling format for connectors.  This is an important aspect of the connectors code quality and most of the connectors uses this standar format.
+<p>We provide a file with a recommended code styling format for connectors.  This is an important aspect of the connectors code quality and most of the connectors uses this standard format.
 This style can be imported in <strong>Eclipse, Studio and IntelliJ</strong>.</p>
 </div>
 <div class="paragraph">
@@ -1211,7 +1217,7 @@ This style can be imported in <strong>Eclipse, Studio and IntelliJ</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="__config_friendly_names_conventions">2.4.6. @Config friendly names conventions</h4>
+<h4 id="__config_friendly_names_conventions">2.4.7. @Config friendly names conventions</h4>
 <div class="paragraph">
 <p>In order to provide consistency across all the connectors, Global Element default name should a follow a convention:
 . If there is one single configuration, "Configuration" should be used as friendlyName
@@ -1630,7 +1636,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-11-16 12:39:54 EST
+Last updated 2015-11-16 13:04:28 EST
 </div>
 </div>
 </body>
