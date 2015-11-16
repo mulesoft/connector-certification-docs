@@ -167,4 +167,4 @@ Number code example lines and explain blocks of lines
 
 === See Also
 
-* Access full reference documentation for the connector.
+* Access the link:/release-notes/xyz-connecotr-release-notes[XYZ Connector Release Notes].
