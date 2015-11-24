@@ -613,8 +613,25 @@ This document first introduces the entire <strong>Connector Lifecycle Model</str
 <span class="tag">&lt;/properties&gt;</span></code></pre>
 </div>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>For MuleSoft certified connectors (if you&#8217;re a partner building a connector, this is your category) DevKit 3.7.2 or above requires you to use <strong>Certified</strong> in the category.</p>
+</li>
+<li>
+<p>For <strong>Select</strong> connectors, please use <strong>Select</strong> as the category.</p>
+</li>
+<li>
+<p>For <strong>Premium</strong> connectors, please use <strong>Premium</strong> as the category.</p>
+</li>
+</ul>
+</div>
 <div class="paragraph">
-<p>DevKit 3.7.2 or above requires you to use <strong>Certified</strong> in the category (i.e. &lt;category&gt;Certified&lt;/category&gt;) and to include the <strong>@RequiresEnterpriseLicense</strong>. In addition, you should use your own license validation mechanism.</p>
+<p>Using this as a reference, please use <strong>&lt;category&gt;&lt;/category&gt;</strong> as the element for</p>
+</div>
+<div class="paragraph">
+<p>All connectors except <strong>Community</strong> requires that you include the <strong>@RequiresEnterpriseLicense</strong> attribute to the connector. In addition, if you are building a <strong>Premium</strong> connector, you should use your own license validation mechanism and make sure that you enforce the legal use of your connector in the way you see fit.
+MuleSoft will not be liable for errors in your code that could lead to people using your connector without a proper license.</p>
 </div>
 <div class="sect3">
 <h4 id="_distribution_management">2.2.1. Distribution Management</h4>
@@ -1636,7 +1653,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-11-24 02:50:55 EST
+Last updated 2015-11-24 10:47:17 EST
 </div>
 </div>
 </body>
