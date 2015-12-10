@@ -545,23 +545,31 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_test_execution">4.6. Test Execution</a></li>
 </ul>
 </li>
-<li><a href="#_anypoint_studio_iteroperability_testing">5. Anypoint™ Studio Interoperability Testing</a></li>
-<li><a href="#_cloudhub_interoperability">6. CloudHub Interoperability</a></li>
+<li><a href="#_deployment_profile_configuration">5. Deployment Profile Configuration</a>
+<ul class="sectlevel2">
+<li><a href="#_embedded_mode">5.1. Embedded Mode</a></li>
+<li><a href="#_local_mode">5.2. Local Mode</a></li>
+<li><a href="#_cloudhub_mode">5.3. CloudHub Mode</a></li>
+</ul>
+</li>
+<li><a href="#_optional_parameters">6. Optional Parameters</a></li>
+<li><a href="#_anypoint_studio_iteroperability_testing">7. Anypoint™ Studio Interoperability Testing</a></li>
+<li><a href="#_cloudhub_interoperability">8. CloudHub Interoperability</a></li>
 <li><a href="#_documentation">Documentation &amp; Release Notes</a>
 <ul class="sectlevel1">
-<li><a href="#_built_in_documentation">7. Built-in Documentation</a></li>
-<li><a href="#_user_guide">8. User Guide</a></li>
-<li><a href="#_release_notes">9. Release Notes</a></li>
-<li><a href="#_readme">10. ReadMe</a></li>
-<li><a href="#_connector_apidocs">11. Connector ApiDocs</a></li>
-<li><a href="#_appendixes">12. Appendixes &amp; Templates</a>
+<li><a href="#_built_in_documentation">9. Built-in Documentation</a></li>
+<li><a href="#_user_guide">10. User Guide</a></li>
+<li><a href="#_release_notes">11. Release Notes</a></li>
+<li><a href="#_readme">12. ReadMe</a></li>
+<li><a href="#_connector_apidocs">13. Connector ApiDocs</a></li>
+<li><a href="#_appendixes">14. Appendixes &amp; Templates</a>
 <ul class="sectlevel2">
-<li><a href="#_connector_project_directory_layout">12.1. Connector Project Directory Layout</a></li>
-<li><a href="#_common_public_attribution_license_version_1_0_cpal">12.2. Common Public Attribution License Version 1.0 (CPAL)</a></li>
-<li><a href="#_functional_tests_automation_howto">12.3. Functional Tests Automation: HowTo</a></li>
-<li><a href="#_anypoint_studio_interoperability_testing_howto">12.4. Anypoint™ Studio Interoperability Testing: HowTo</a></li>
-<li><a href="#_anypoint_connectors_manual_test_suite_template">12.5. Anypoint™ Connectors Manual Test Suite Template</a></li>
-<li><a href="#certification-checklist">12.6. Certification Checklists</a></li>
+<li><a href="#_connector_project_directory_layout">14.1. Connector Project Directory Layout</a></li>
+<li><a href="#_common_public_attribution_license_version_1_0_cpal">14.2. Common Public Attribution License Version 1.0 (CPAL)</a></li>
+<li><a href="#_functional_tests_automation_howto">14.3. Functional Tests Automation: HowTo</a></li>
+<li><a href="#_anypoint_studio_interoperability_testing_howto">14.4. Anypoint™ Studio Interoperability Testing: HowTo</a></li>
+<li><a href="#_anypoint_connectors_manual_test_suite_template">14.5. Anypoint™ Connectors Manual Test Suite Template</a></li>
+<li><a href="#certification-checklist">14.6. Certification Checklists</a></li>
 </ul>
 </li>
 </ul>
@@ -3057,12 +3065,12 @@ Overriding package organization is only accepted if a unit test need to be conta
 <p><strong>System Tests</strong>: Connectivity tests need to be executed with valid and invalid credentials, covering both success and error cases.</p>
 </li>
 <li>
-<p><strong>Unit Tests:</strong> All unit tests need to be ran with <em>mvn tests</em>.</p>
+<p><strong>Unit Tests:</strong> All unit tests need to be run with <em>mvn tests</em>.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>The whole set of test can be executed <em>mvn test -Dtest="*Test,*TestSuite"</em>.</p>
+<p>The whole set of test can be executed as <em>mvn test -Dtest="*Test,*TestSuite"</em>.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -3079,10 +3087,10 @@ Overriding package organization is only accepted if a unit test need to be conta
 <div class="sect3">
 <h4 id="_running_functional_tests">4.6.1. Running Functional Tests</h4>
 <div class="paragraph">
-<p>The overall idea of functional tests is to assure backward and forward compatibility in every aspect of a connector. Therefore, the main goal is to execute the functional test suite in different Mule runtime environments.</p>
+<p>The overall idea of functional tests is to ensure backward and forward compatibility in every aspect of a connector. Therefore, the main goal is to execute the functional test suite in as many different Mule runtime environments as possible.</p>
 </div>
 <div class="sect4">
-<h5 id="_test_setup">Test SetUp</h5>
+<h5 id="_test_setup">Test Setup</h5>
 <div class="paragraph">
 <p>There are a few things to consider before running the functional test suite:</p>
 </div>
@@ -3116,9 +3124,9 @@ Be careful of excluding these files when committing changes.
 </div>
 </div>
 <div class="sect4">
-<h5 id="_required_test_configurations">Required Test configurations</h5>
+<h5 id="_required_test_configurations">Required Test Configurations</h5>
 <div class="paragraph">
-<p>The connector must be tested with all available Mule runtimes environments from its <em>MinMuleVersion</em> to the latest runtime (MinMuleVersion is a parameter specifying which is the minimum supported Mule runtime for a given connector).</p>
+<p>The connector must be tested with all available Mule runtimes environments from the <em>MinMuleVersion</em> to the latest runtime (MinMuleVersion is a parameter specifying the minimum supported Mule runtime for a given connector).</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -3132,12 +3140,12 @@ Be careful of excluding these files when committing changes.
 </div>
 </div>
 <div class="sect4">
-<h5 id="_testing_using_ctf">Testing using CTF</h5>
+<h5 id="_testing_using_ctf">Testing Using CTF</h5>
 <div class="paragraph">
-<p>The Connector Testing Framework allows to run test suites in a specific Mule runtime environment, as explained <a href="https://mulesoft.github.io/connector-testing-framework/">here</a>.</p>
+<p>The Connector Testing Framework allows you to run test suites in a specific Mule runtime environment, as explained <a href="https://mulesoft.github.io/connector-testing-framework/">here</a>.</p>
 </div>
 <div class="paragraph">
-<p>Two extra test properties need to be added when running a test suite from the command line:</p>
+<p>Two extra test properties should be added when running a test suite from the command line:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -3149,13 +3157,126 @@ Be careful of excluding these files when committing changes.
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>Using a simple Maven command from the connector&#8217;s root folder, and with <strong>Devkit 3.8.0 enabled</strong> you can perform tests on the connector in the runtime specified in your <strong>local profile</strong>, <strong>embedded runtime</strong> or an <strong>available CloudHub runtime</strong> version.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The fact that libraries change on CloudHub increases the potential for <strong>incompatibility</strong> between the Mule runtime version and your DevKit-based connector.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_anypoint_studio_iteroperability_testing">5. Anypoint™ Studio Interoperability Testing</h2>
+<h2 id="_deployment_profile_configuration">5. Deployment Profile Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pass the desired connector application deployment details as arguments to a single Maven command, specifying the environments you want to test your connector in. All arguments should be in lowercase.</p>
+</div>
+<div class="paragraph">
+<p>If you do not specify <code>-Ddeploymentprofile</code>, the CTF runs by default in embedded mode.</p>
+</div>
+<div class="sect2">
+<h3 id="_embedded_mode">5.1. Embedded Mode</h3>
+<div class="paragraph">
+<p>Specifying only <code>mvn clean test</code> would run the functional tests in <em>embedded</em> mode, depending on the DevKit version. You are not required to have a Mule server to run the application in this mode.</p>
+</div>
+<div class="paragraph">
+<p>Running `mvn clean test `is the same as running:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mvn clean test -Ddeploymentprofile=embedded</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_local_mode">5.2. Local Mode</h3>
+<div class="paragraph">
+<p>Running CTF in Local mode means loading the Mule application deployment specification from your user profile and running the test remotely. To test a connector using your local profile&#8217;s runtime, the argument <code>-Ddeploymentprofile</code> <strong>must</strong> be set in the <code>/local</code> folder. For example, the command would be structured like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mvn clean test -Ddeploymentprofile= -Dmuledirectory=/local/usr/mule_3.6.3</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cloudhub_mode">5.3. CloudHub Mode</h3>
+<div class="paragraph">
+<p>As of DevKit 3.8.0, CTF support for a CloudHub deployment profile is available, allowing you to test your connector in a more dynamic environment, a clear advantage to deploying a Mule application in a classic standalone environment. The two required parameters, besides specifying <code>-Ddeploymentprofile=cloudhub</code>, are your CloudHub username <code>-Dcloudhubuser=</code> and <code>-Dcloudhubpassword=</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mvn clean test -Ddeploymentprofile=cloudhub -Dcloudhubuser=&lt;your_username&gt; -Dcloudhubpassword=&lt;your_password&gt;</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_optional_parameters">6. Optional Parameters</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When testing on CloudHub, you may specify the Mule version to run connector tests on, as well as the CloudHub URL and the CloudHub worker type for your instance. See the example below that includes all the required <em>and</em> optional parameters:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: %;">
+<col style="width: %;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Optional Parameters</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>muleversion</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configure the Mule runtime to be used on CloudHub</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudhuburl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gives the capability of change the CloudHub instance, by default the CTF deploys to <a href="http://anypoint.mulesoft.com/cloudhub/" class="bare">http://anypoint.mulesoft.com/cloudhub/</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudhubworkertype</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows you to configure the desired amount of vCores for the Mule application to be generated. The available options are:
+<code>micro</code> (0.1vCores),
+<code>small</code> (0.2vCores), <code>medium</code> (1vCore), <code>large</code> (2vCores), <code>xlarge</code> (4vCores)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cloudhubtimeout</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows you to configure the timeout of the CloudHub instance where the Mule application is deployed</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Example CTF test command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mvn clean test -Ddeploymentprofile=cloudhub -Dcloudhubuser=&lt;your_username&gt; -Dcloudhubpassword=&lt;your_password&gt;
+-Dmuleversion=3.7.2
+-DcloudhubURL=http://qa.anypointplatform.mulesoft.com/cloudhub
+-Dcloudhubworkertype=small</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_anypoint_studio_iteroperability_testing">7. Anypoint™ Studio Interoperability Testing</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Based on these guidelines, analyze the connector you&#8217;re testing and focus on processors that exercise the most representative cases</p>
@@ -3222,7 +3343,7 @@ Be careful of excluding these files when committing changes.
 </div>
 </div>
 <div class="sect1">
-<h2 id="_cloudhub_interoperability">6. CloudHub Interoperability</h2>
+<h2 id="_cloudhub_interoperability">8. CloudHub Interoperability</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>These items apply exclusively for connectors supporting OAuth authentication.</p>
@@ -3352,7 +3473,7 @@ Documentation is a vital part of the development stage. Your development team mu
 </div>
 </div>
 <div class="sect1">
-<h2 id="_built_in_documentation">7. Built-in Documentation</h2>
+<h2 id="_built_in_documentation">9. Built-in Documentation</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Part of the documentation must be packed within the connector source code. The mandatory files are:</p>
@@ -3376,7 +3497,7 @@ Documentation is a vital part of the development stage. Your development team mu
 </div>
 </div>
 <div class="sect1">
-<h2 id="_user_guide">8. User Guide</h2>
+<h2 id="_user_guide">10. User Guide</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. Write the documentation using AsciiDoc syntax so that the resulting file is called <em>user_manual.adoc</em>. A template can be found <a href="files/user-manual.adoc">here</a>.
@@ -3385,7 +3506,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect1">
-<h2 id="_release_notes">9. Release Notes</h2>
+<h2 id="_release_notes">11. Release Notes</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Release notes need to be highly descriptive, including backward compatibility of the released connector with previous versions. A template can be found <a href="files/release-notes.adoc">here</a>.
@@ -3394,7 +3515,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect1">
-<h2 id="_readme">10. ReadMe</h2>
+<h2 id="_readme">12. ReadMe</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>A README.md template can be found <a href="files/README.md">here</a>. It should reside in the root of the connector project.</p>
@@ -3402,7 +3523,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect1">
-<h2 id="_connector_apidocs">11. Connector ApiDocs</h2>
+<h2 id="_connector_apidocs">13. Connector ApiDocs</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Each public connector requires:</p>
@@ -3432,10 +3553,10 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect1">
-<h2 id="_appendixes">12. Appendixes &amp; Templates</h2>
+<h2 id="_appendixes">14. Appendixes &amp; Templates</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_connector_project_directory_layout">12.1. Connector Project Directory Layout</h3>
+<h3 id="_connector_project_directory_layout">14.1. Connector Project Directory Layout</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3445,7 +3566,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="_common_public_attribution_license_version_1_0_cpal">12.2. Common Public Attribution License Version 1.0 (CPAL)</h3>
+<h3 id="_common_public_attribution_license_version_1_0_cpal">14.2. Common Public Attribution License Version 1.0 (CPAL)</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3455,7 +3576,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="_functional_tests_automation_howto">12.3. Functional Tests Automation: HowTo</h3>
+<h3 id="_functional_tests_automation_howto">14.3. Functional Tests Automation: HowTo</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3465,7 +3586,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="_anypoint_studio_interoperability_testing_howto">12.4. Anypoint™ Studio Interoperability Testing: HowTo</h3>
+<h3 id="_anypoint_studio_interoperability_testing_howto">14.4. Anypoint™ Studio Interoperability Testing: HowTo</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3481,7 +3602,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="_anypoint_connectors_manual_test_suite_template">12.5. Anypoint™ Connectors Manual Test Suite Template</h3>
+<h3 id="_anypoint_connectors_manual_test_suite_template">14.5. Anypoint™ Connectors Manual Test Suite Template</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3491,7 +3612,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="certification-checklist">12.6. Certification Checklists</h3>
+<h3 id="certification-checklist">14.6. Certification Checklists</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3508,7 +3629,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-12-09 02:48:45 EST
+Last updated 2015-12-09 20:25:29 EST
 </div>
 </div>
 </body>
