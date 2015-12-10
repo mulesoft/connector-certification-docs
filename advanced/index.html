@@ -545,31 +545,23 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_test_execution">4.6. Test Execution</a></li>
 </ul>
 </li>
-<li><a href="#_deployment_profile_configuration">5. Deployment Profile Configuration</a>
-<ul class="sectlevel2">
-<li><a href="#_embedded_mode">5.1. Embedded Mode</a></li>
-<li><a href="#_local_mode">5.2. Local Mode</a></li>
-<li><a href="#_cloudhub_mode">5.3. CloudHub Mode</a></li>
-</ul>
-</li>
-<li><a href="#_optional_parameters">6. Optional Parameters</a></li>
-<li><a href="#_anypoint_studio_iteroperability_testing">7. Anypoint™ Studio Interoperability Testing</a></li>
-<li><a href="#_cloudhub_interoperability">8. CloudHub Interoperability</a></li>
+<li><a href="#_anypoint_studio_iteroperability_testing">5. Anypoint™ Studio Interoperability Testing</a></li>
+<li><a href="#_cloudhub_interoperability">6. CloudHub Interoperability</a></li>
 <li><a href="#_documentation">Documentation &amp; Release Notes</a>
 <ul class="sectlevel1">
-<li><a href="#_built_in_documentation">9. Built-in Documentation</a></li>
-<li><a href="#_user_guide">10. User Guide</a></li>
-<li><a href="#_release_notes">11. Release Notes</a></li>
-<li><a href="#_readme">12. ReadMe</a></li>
-<li><a href="#_connector_apidocs">13. Connector ApiDocs</a></li>
-<li><a href="#_appendixes">14. Appendixes &amp; Templates</a>
+<li><a href="#_built_in_documentation">7. Built-in Documentation</a></li>
+<li><a href="#_user_guide">8. User Guide</a></li>
+<li><a href="#_release_notes">9. Release Notes</a></li>
+<li><a href="#_readme">10. ReadMe</a></li>
+<li><a href="#_connector_apidocs">11. Connector ApiDocs</a></li>
+<li><a href="#_appendixes">12. Appendixes &amp; Templates</a>
 <ul class="sectlevel2">
-<li><a href="#_connector_project_directory_layout">14.1. Connector Project Directory Layout</a></li>
-<li><a href="#_common_public_attribution_license_version_1_0_cpal">14.2. Common Public Attribution License Version 1.0 (CPAL)</a></li>
-<li><a href="#_functional_tests_automation_howto">14.3. Functional Tests Automation: HowTo</a></li>
-<li><a href="#_anypoint_studio_interoperability_testing_howto">14.4. Anypoint™ Studio Interoperability Testing: HowTo</a></li>
-<li><a href="#_anypoint_connectors_manual_test_suite_template">14.5. Anypoint™ Connectors Manual Test Suite Template</a></li>
-<li><a href="#certification-checklist">14.6. Certification Checklists</a></li>
+<li><a href="#_connector_project_directory_layout">12.1. Connector Project Directory Layout</a></li>
+<li><a href="#_common_public_attribution_license_version_1_0_cpal">12.2. Common Public Attribution License Version 1.0 (CPAL)</a></li>
+<li><a href="#_functional_tests_automation_howto">12.3. Functional Tests Automation: HowTo</a></li>
+<li><a href="#_anypoint_studio_interoperability_testing_howto">12.4. Anypoint™ Studio Interoperability Testing: HowTo</a></li>
+<li><a href="#_anypoint_connectors_manual_test_suite_template">12.5. Anypoint™ Connectors Manual Test Suite Template</a></li>
+<li><a href="#certification-checklist">12.6. Certification Checklists</a></li>
 </ul>
 </li>
 </ul>
@@ -3173,21 +3165,17 @@ The fact that libraries change on CloudHub increases the potential for <strong>i
 </table>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_deployment_profile_configuration">5. Deployment Profile Configuration</h2>
-<div class="sectionbody">
+<div class="sect4">
+<h5 id="_deployment_profile_configuration">Deployment Profile Configuration</h5>
 <div class="paragraph">
 <p>Pass the desired connector application deployment details as arguments to a single Maven command, specifying the environments you want to test your connector in. All arguments should be in lowercase.</p>
 </div>
 <div class="paragraph">
 <p>If you do not specify <code>-Ddeploymentprofile</code>, the CTF runs by default in embedded mode.</p>
 </div>
-<div class="sect2">
-<h3 id="_embedded_mode">5.1. Embedded Mode</h3>
+</div>
+<div class="sect4">
+<h5 id="_embedded_mode">Embedded Mode</h5>
 <div class="paragraph">
 <p>Specifying only <code>mvn clean test</code> would run the functional tests in <em>embedded</em> mode, depending on the DevKit version. You are not required to have a Mule server to run the application in this mode.</p>
 </div>
@@ -3200,8 +3188,8 @@ The fact that libraries change on CloudHub increases the potential for <strong>i
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_local_mode">5.2. Local Mode</h3>
+<div class="sect4">
+<h5 id="_local_mode">Local Mode</h5>
 <div class="paragraph">
 <p>Running CTF in Local mode means loading the Mule application deployment specification from your user profile and running the test remotely. To test a connector using your local profile&#8217;s runtime, the argument <code>-Ddeploymentprofile</code> <strong>must</strong> be set in the <code>/local</code> folder. For example, the command would be structured like:</p>
 </div>
@@ -3211,8 +3199,8 @@ The fact that libraries change on CloudHub increases the potential for <strong>i
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_cloudhub_mode">5.3. CloudHub Mode</h3>
+<div class="sect4">
+<h5 id="_cloudhub_mode">CloudHub Mode</h5>
 <div class="paragraph">
 <p>As of DevKit 3.8.0, CTF support for a CloudHub deployment profile is available, allowing you to test your connector in a more dynamic environment, a clear advantage to deploying a Mule application in a classic standalone environment. The two required parameters, besides specifying <code>-Ddeploymentprofile=cloudhub</code>, are your CloudHub username <code>-Dcloudhubuser=</code> and <code>-Dcloudhubpassword=</code>.</p>
 </div>
@@ -3223,10 +3211,8 @@ The fact that libraries change on CloudHub increases the potential for <strong>i
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_optional_parameters">6. Optional Parameters</h2>
-<div class="sectionbody">
+<div class="sect3">
+<h4 id="_optional_parameters">4.6.2. Optional Parameters</h4>
 <div class="paragraph">
 <p>When testing on CloudHub, you may specify the Mule version to run connector tests on, as well as the CloudHub URL and the CloudHub worker type for your instance. See the example below that includes all the required <em>and</em> optional parameters:</p>
 </div>
@@ -3275,8 +3261,10 @@ The fact that libraries change on CloudHub increases the potential for <strong>i
 </div>
 </div>
 </div>
+</div>
+</div>
 <div class="sect1">
-<h2 id="_anypoint_studio_iteroperability_testing">7. Anypoint™ Studio Interoperability Testing</h2>
+<h2 id="_anypoint_studio_iteroperability_testing">5. Anypoint™ Studio Interoperability Testing</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Based on these guidelines, analyze the connector you&#8217;re testing and focus on processors that exercise the most representative cases</p>
@@ -3343,7 +3331,7 @@ The fact that libraries change on CloudHub increases the potential for <strong>i
 </div>
 </div>
 <div class="sect1">
-<h2 id="_cloudhub_interoperability">8. CloudHub Interoperability</h2>
+<h2 id="_cloudhub_interoperability">6. CloudHub Interoperability</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>These items apply exclusively for connectors supporting OAuth authentication.</p>
@@ -3473,7 +3461,7 @@ Documentation is a vital part of the development stage. Your development team mu
 </div>
 </div>
 <div class="sect1">
-<h2 id="_built_in_documentation">9. Built-in Documentation</h2>
+<h2 id="_built_in_documentation">7. Built-in Documentation</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Part of the documentation must be packed within the connector source code. The mandatory files are:</p>
@@ -3497,7 +3485,7 @@ Documentation is a vital part of the development stage. Your development team mu
 </div>
 </div>
 <div class="sect1">
-<h2 id="_user_guide">10. User Guide</h2>
+<h2 id="_user_guide">8. User Guide</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. Write the documentation using AsciiDoc syntax so that the resulting file is called <em>user_manual.adoc</em>. A template can be found <a href="files/user-manual.adoc">here</a>.
@@ -3506,7 +3494,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect1">
-<h2 id="_release_notes">11. Release Notes</h2>
+<h2 id="_release_notes">9. Release Notes</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Release notes need to be highly descriptive, including backward compatibility of the released connector with previous versions. A template can be found <a href="files/release-notes.adoc">here</a>.
@@ -3515,7 +3503,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect1">
-<h2 id="_readme">12. ReadMe</h2>
+<h2 id="_readme">10. ReadMe</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>A README.md template can be found <a href="files/README.md">here</a>. It should reside in the root of the connector project.</p>
@@ -3523,7 +3511,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect1">
-<h2 id="_connector_apidocs">13. Connector ApiDocs</h2>
+<h2 id="_connector_apidocs">11. Connector ApiDocs</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Each public connector requires:</p>
@@ -3553,10 +3541,10 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect1">
-<h2 id="_appendixes">14. Appendixes &amp; Templates</h2>
+<h2 id="_appendixes">12. Appendixes &amp; Templates</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_connector_project_directory_layout">14.1. Connector Project Directory Layout</h3>
+<h3 id="_connector_project_directory_layout">12.1. Connector Project Directory Layout</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3566,7 +3554,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="_common_public_attribution_license_version_1_0_cpal">14.2. Common Public Attribution License Version 1.0 (CPAL)</h3>
+<h3 id="_common_public_attribution_license_version_1_0_cpal">12.2. Common Public Attribution License Version 1.0 (CPAL)</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3576,7 +3564,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="_functional_tests_automation_howto">14.3. Functional Tests Automation: HowTo</h3>
+<h3 id="_functional_tests_automation_howto">12.3. Functional Tests Automation: HowTo</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3586,7 +3574,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="_anypoint_studio_interoperability_testing_howto">14.4. Anypoint™ Studio Interoperability Testing: HowTo</h3>
+<h3 id="_anypoint_studio_interoperability_testing_howto">12.4. Anypoint™ Studio Interoperability Testing: HowTo</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3602,7 +3590,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="_anypoint_connectors_manual_test_suite_template">14.5. Anypoint™ Connectors Manual Test Suite Template</h3>
+<h3 id="_anypoint_connectors_manual_test_suite_template">12.5. Anypoint™ Connectors Manual Test Suite Template</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3612,7 +3600,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="certification-checklist">14.6. Certification Checklists</h3>
+<h3 id="certification-checklist">12.6. Certification Checklists</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3629,7 +3617,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-12-10 02:48:51 EST
+Last updated 2015-12-10 17:37:09 EST
 </div>
 </div>
 </body>
