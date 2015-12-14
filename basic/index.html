@@ -587,10 +587,10 @@ This document first introduces the entire <strong>Connector Lifecycle Model</str
 <div class="sect2">
 <h3 id="_anypoint_connector_devkit_version">2.1. Anypoint™ Connector DevKit Version</h3>
 <div class="paragraph">
-<p>The last version of Anypoint™ Connector DevKit must be used to develop your connector. As of 2015, the latest stable DevKit version is 3.7.X.</p>
+<p>The last version of Anypoint™ Connector DevKit must be used to develop your connector. As of 2015, the latest stable DevKit version is 3.8.0.</p>
 </div>
 <div class="paragraph">
-<p>DevKit 3.7.x assures that a connector will be compatible with Mule ESB 3.5.x, Mule ESB 3.6.x and Mule ESB 3.7.x. However, external libraries employed by the connector might have conflicts with different Mule ESB versions. Sanity checks are mandatory for every Mule ESB version.</p>
+<p>DevKit 3.8.0 assures that a connector will be compatible with Mule ESB 3.5.x, Mule ESB 3.6.x and Mule ESB 3.7.x. However, external libraries employed by the connector might have conflicts with different Mule ESB versions. Sanity checks are mandatory for every Mule ESB version.</p>
 </div>
 </div>
 <div class="sect2">
@@ -604,7 +604,7 @@ This document first introduces the entire <strong>Connector Lifecycle Model</str
 <span class="tag">&lt;artifactId&gt;</span>mule-module-sample-connector<span class="tag">&lt;/artifactId&gt;</span>
 <span class="tag">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;name&gt;</span>Mule Sample Connector <span class="tag">&lt;/name&gt;</span>
-<span class="tag">&lt;packaging&gt;</span>pom/packaging<span class="error">&gt;</span>
+<span class="tag">&lt;packaging&gt;</span>pom<span class="tag">&lt;/packaging&gt;</span>
 
 <span class="tag">&lt;properties&gt;</span>
     <span class="tag">&lt;category&gt;</span>Certified<span class="tag">&lt;/category&gt;</span>
@@ -616,7 +616,7 @@ This document first introduces the entire <strong>Connector Lifecycle Model</str
 <div class="ulist">
 <ul>
 <li>
-<p>For MuleSoft certified connectors (if you&#8217;re a partner building a connector, this is your category) DevKit 3.7.2 or above requires you to use <strong>Certified</strong> in the category.</p>
+<p>For <strong>MuleSoft Certified</strong> connectors (if you&#8217;re a partner building a connector, this is your category) DevKit 3.7.2 or above requires you to use <strong>Certified</strong> in the category.</p>
 </li>
 <li>
 <p>For <strong>Select</strong> connectors, please use <strong>Select</strong> as the category.</p>
@@ -630,8 +630,10 @@ This document first introduces the entire <strong>Connector Lifecycle Model</str
 <p>Using this as a reference, please use <strong>&lt;category&gt;&lt;/category&gt;</strong> as the element for indicating the needed category.</p>
 </div>
 <div class="paragraph">
-<p>All connectors except <strong>Community</strong> requires that you include the <strong>@RequiresEnterpriseLicense</strong> attribute to the connector. In addition, if you are building a <strong>Premium</strong> connector, you should use your own license validation mechanism and make sure that you enforce the legal use of your connector in the way you see fit.
-MuleSoft will not be liable for errors in your code that could lead to people using your connector without a proper license.</p>
+<p>All connectors except <strong>Community</strong> requires that you include the <strong>@RequiresEnterpriseLicense</strong> attribute to the connector. In addition, if you are building a <strong>paid</strong> connector as a <strong>MuleSoft Certified</strong> connector, <strong>DevKit 3.8.0 or above</strong> supports <a href="https://docs.mulesoft.com/anypoint-connector-devkit/v/3.8/certified-connector-license-management">license validation natively</a>, but you can also use your own license validation mechanism and make sure that you enforce the legal use of your connector in the way you see fit.</p>
+</div>
+<div class="paragraph">
+<p><em>MuleSoft will not be liable for errors in your code that could lead to people using your connector without a proper license.</em></p>
 </div>
 <div class="sect3">
 <h4 id="_distribution_management">2.2.1. Distribution Management</h4>
@@ -666,12 +668,20 @@ MuleSoft will not be liable for errors in your code that could lead to people us
 </ol>
 </div>
 <div class="paragraph">
-<p>If a MuleSoft Certified (Certified) connector is part of a multi-module project, before the release we should verify that:
-* The connector&#8217;s module is deployed to the private nexus (same distribution management as described above for Standard, ci-releases).
-* The parent pom and other non-connector modules of the multi-module project have the same distribution management as described above for public or Community connectors.</p>
+<p>If a MuleSoft Certified (Certified) connector is part of a multi-module project, before the release we should verify that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The connector&#8217;s module is deployed to the private nexus (same distribution management as described above for Standard, ci-releases).</p>
+</li>
+<li>
+<p>The parent pom and other non-connector modules of the multi-module project have the same distribution management as described above for public or Community connectors.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>For example, in a project with a parent pom, a utils module and a connector module, if and only if the connector is Certified, then the parent pom should declare the public distributionManagement, and then it should be overriden in the connectors' pom with the private distributionManagement.</p>
+<p>For example, in a project with a parent pom, a utils module and a connector module, if and only if the connector is Certified, then the parent pom should declare the public distributionManagement, and then it should be overridden in the connectors' pom with the private distributionManagement.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1653,7 +1663,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-12-13 02:51:08 EST
+Last updated 2015-12-14 00:29:45 EST
 </div>
 </div>
 </body>
