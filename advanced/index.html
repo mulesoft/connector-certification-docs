@@ -547,23 +547,23 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#_anypoint_studio_iteroperability_testing">5. Anypoint™ Studio Interoperability Testing</a></li>
 <li><a href="#_cloudhub_interoperability">6. CloudHub Interoperability</a></li>
-<li><a href="#_documentation">Documentation &amp; Release Notes</a>
-<ul class="sectlevel1">
-<li><a href="#_built_in_documentation">7. Built-in Documentation</a></li>
-<li><a href="#_user_guide">8. User Guide</a></li>
-<li><a href="#_release_notes">9. Release Notes</a></li>
-<li><a href="#_readme">10. ReadMe</a></li>
-<li><a href="#_connector_apidocs">11. Connector ApiDocs</a></li>
-<li><a href="#_appendixes">12. Appendixes &amp; Templates</a>
+<li><a href="#_documentation">7. Documentation &amp; Release Notes</a>
 <ul class="sectlevel2">
-<li><a href="#_connector_project_directory_layout">12.1. Connector Project Directory Layout</a></li>
-<li><a href="#_common_public_attribution_license_version_1_0_cpal">12.2. Common Public Attribution License Version 1.0 (CPAL)</a></li>
-<li><a href="#_functional_tests_automation_howto">12.3. Functional Tests Automation: HowTo</a></li>
-<li><a href="#_anypoint_studio_interoperability_testing_howto">12.4. Anypoint™ Studio Interoperability Testing: HowTo</a></li>
-<li><a href="#_anypoint_connectors_manual_test_suite_template">12.5. Anypoint™ Connectors Manual Test Suite Template</a></li>
-<li><a href="#certification-checklist">12.6. Certification Checklists</a></li>
+<li><a href="#_built_in_documentation">7.1. Built-in Documentation</a></li>
+<li><a href="#_user_guide">7.2. User Guide</a></li>
+<li><a href="#_release_notes">7.3. Release Notes</a></li>
+<li><a href="#_readme">7.4. README</a></li>
+<li><a href="#_connector_apidocs">7.5. Connector ApiDocs</a></li>
 </ul>
 </li>
+<li><a href="#_appendixes">8. Appendixes &amp; Templates</a>
+<ul class="sectlevel2">
+<li><a href="#_connector_project_directory_layout">8.1. Connector Project Directory Layout</a></li>
+<li><a href="#_common_public_attribution_license_version_1_0_cpal">8.2. Common Public Attribution License Version 1.0 (CPAL)</a></li>
+<li><a href="#_functional_tests_automation_howto">8.3. Functional Tests Automation: HowTo</a></li>
+<li><a href="#_anypoint_studio_interoperability_testing_howto">8.4. Anypoint™ Studio Interoperability Testing: HowTo</a></li>
+<li><a href="#_anypoint_connectors_manual_test_suite_template">8.5. Anypoint™ Connectors Manual Test Suite Template</a></li>
+<li><a href="#certification-checklist">8.6. Certification Checklists</a></li>
 </ul>
 </li>
 </ul>
@@ -3464,15 +3464,14 @@ The fact that libraries change on CloudHub increases the potential for <strong>i
 </div>
 </div>
 </div>
-<h1 id="_documentation" class="sect0">Documentation &amp; Release Notes</h1>
-<div class="openblock partintro">
-<div class="content">
-Documentation is a vital part of the development stage. Your development team must strictly follow Mulesoft documentation standards described in this document.
-</div>
-</div>
 <div class="sect1">
-<h2 id="_built_in_documentation">7. Built-in Documentation</h2>
+<h2 id="_documentation">7. Documentation &amp; Release Notes</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Documentation is a vital part of the development stage. Your development team must strictly follow Mulesoft documentation standards described in this document.</p>
+</div>
+<div class="sect2">
+<h3 id="_built_in_documentation">7.1. Built-in Documentation</h3>
 <div class="paragraph">
 <p>Part of the documentation must be packed within the connector source code. The mandatory files are:</p>
 </div>
@@ -3493,36 +3492,28 @@ Documentation is a vital part of the development stage. Your development team mu
 <p>In addition, create an extra folder named <em>_images</em> inside the <em>doc</em> folder. This resource folder contains any resources (images, XMLs, etc.) used in the documentation.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_user_guide">8. User Guide</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_user_guide">7.2. User Guide</h3>
 <div class="paragraph">
 <p>The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. Write the documentation using AsciiDoc syntax so that the resulting file is called <em>user_manual.adoc</em>. A template can be found <a href="files/user-manual.adoc">here</a>.
 It should reside in <em>doc</em> folder in the root of the connector project.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_release_notes">9. Release Notes</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_release_notes">7.3. Release Notes</h3>
 <div class="paragraph">
 <p>Release notes need to be highly descriptive, including backward compatibility of the released connector with previous versions. A template can be found <a href="files/release-notes.adoc">here</a>.
 It should reside in <em>doc</em> folder in the root of the connector project.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_readme">10. ReadMe</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_readme">7.4. README</h3>
 <div class="paragraph">
 <p>A README.md template can be found <a href="files/README.md">here</a>. It should reside in the root of the connector project.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_connector_apidocs">11. Connector ApiDocs</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_connector_apidocs">7.5. Connector ApiDocs</h3>
 <div class="paragraph">
 <p>Each public connector requires:</p>
 </div>
@@ -3550,11 +3541,12 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
-<h2 id="_appendixes">12. Appendixes &amp; Templates</h2>
+<h2 id="_appendixes">8. Appendixes &amp; Templates</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_connector_project_directory_layout">12.1. Connector Project Directory Layout</h3>
+<h3 id="_connector_project_directory_layout">8.1. Connector Project Directory Layout</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3564,7 +3556,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="_common_public_attribution_license_version_1_0_cpal">12.2. Common Public Attribution License Version 1.0 (CPAL)</h3>
+<h3 id="_common_public_attribution_license_version_1_0_cpal">8.2. Common Public Attribution License Version 1.0 (CPAL)</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3574,7 +3566,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="_functional_tests_automation_howto">12.3. Functional Tests Automation: HowTo</h3>
+<h3 id="_functional_tests_automation_howto">8.3. Functional Tests Automation: HowTo</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3584,7 +3576,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="_anypoint_studio_interoperability_testing_howto">12.4. Anypoint™ Studio Interoperability Testing: HowTo</h3>
+<h3 id="_anypoint_studio_interoperability_testing_howto">8.4. Anypoint™ Studio Interoperability Testing: HowTo</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3600,7 +3592,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="_anypoint_connectors_manual_test_suite_template">12.5. Anypoint™ Connectors Manual Test Suite Template</h3>
+<h3 id="_anypoint_connectors_manual_test_suite_template">8.5. Anypoint™ Connectors Manual Test Suite Template</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3610,7 +3602,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="certification-checklist">12.6. Certification Checklists</h3>
+<h3 id="certification-checklist">8.6. Certification Checklists</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -3627,7 +3619,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-01-07 19:39:12 EST
+Last updated 2016-01-07 19:53:27 EST
 </div>
 </div>
 </body>
