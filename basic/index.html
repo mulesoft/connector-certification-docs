@@ -731,12 +731,12 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect2">
 <h3 id="_maven_conventions_and_setup">2.3. Maven Conventions and Setup</h3>
 <div class="paragraph">
-<p>The following section describes set of conventions and best practices to follow at the time to define your connector Maven project structure.</p>
+<p>The following section describes a set of conventions and best practices to follow when defining your connector&#8217;s Maven configuration.</p>
 </div>
 <div class="sect3">
 <h4 id="_best_practices">2.3.1. Best Practices</h4>
 <div class="paragraph">
-<p>A connector tested in an isolated environment might not work in a Mule environment. Therefore, different constrains apply:</p>
+<p>A connector tested in an isolated environment might not work in a Mule environment. Therefore, different constraints apply:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -744,7 +744,7 @@ table.CodeRay td.code>pre{padding:0}
 <p>Follow <a href="http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html">Maven default name conventions</a>.</p>
 </li>
 <li>
-<p>Do not overwrite org.mule.tools.devkit:mule-devkit-parent properties.</p>
+<p>Do not overwrite <code>org.mule.tools.devkit:mule-devkit-parent</code> properties.</p>
 </li>
 <li>
 <p>Do not reference SNAPSHOT dependencies in plugins or dependencies.</p>
@@ -753,20 +753,20 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect3">
-<h4 id="_do_not_define_custom_repositories">2.3.2. Do not define custom repositories</h4>
+<h4 id="_do_not_define_custom_repositories">2.3.2. Do Not Define Custom Repositories</h4>
 <div class="paragraph">
-<p>If your connector makes use of dependencies not available in standard maven either repos or MuleSoft repo, do not add additional repositories to pom.xml.
-Adding custom maven repositories could bring several issues when the Mule application is mavenized. If you make us of this type of dependencies, we will host them as part of you connector.
-As part of the hand over for the certification, these jars need to be provided with all the required info such as groupId, artifactId and verision.</p>
+<p>If your connector makes use of dependencies not available in standard Maven or MuleSoft repos, do not add additional repositories to pom.xml.
+Adding custom Maven repositories could cause several issues when the Mule application is mavenized. If you require this type of dependency, we will host the dependencies as part of you connector.
+As part of the hand-off for certification, these JARs need to be provided with all the required info such as groupId, artifactId and version.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_multi_module_layout">2.3.3. Multi Module Layout</h4>
 <div class="paragraph">
-<p>In large Maven projects, it is a common practice to divide the project in submodules. This means you may end up with a module for your connector and other modules for utils, commons or other kind of modularized source code that will be consumed by the connector.</p>
+<p>In large Maven projects, it is common practice to divide the project into submodules. This means you may end up with a module for your connector and other modules for utils, commons or other kinds of modularized source code that will be consumed by the connector.</p>
 </div>
 <div class="paragraph">
-<p>Consider the following use-case:</p>
+<p>Consider the following use case:</p>
 </div>
 <div class="paragraph">
 <p><strong>Project parent pom</strong></p>
@@ -787,7 +787,7 @@ As part of the hand over for the certification, these jars need to be provided w
 </div>
 </div>
 <div class="paragraph">
-<p>In your connector&#8217;s module pom.xml:</p>
+<p>In your connector module&#8217;s pom.xml:</p>
 </div>
 <div class="paragraph">
 <p><strong>Connector sibling dependencies</strong></p>
@@ -809,10 +809,7 @@ As part of the hand over for the certification, these jars need to be provided w
 </div>
 </div>
 <div class="paragraph">
-<p>It is important to notice that your connector&#8217;s pom inherits from <em>mule-devkit-parent</em>, and that each of the other sub-modules inherits from the project parent. Therefore, you will have:</p>
-</div>
-<div class="paragraph">
-<p><strong>Pom extra modules</strong></p>
+<p>It is important to note that your connector&#8217;s pom inherits from <em>mule-devkit-parent</em>, and that each of the other sub-modules inherits from the project parent. Therefore, you will have artifacts inherited from the <code>mule-devkit-parent</code> pom and the connector pom:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -841,7 +838,7 @@ As part of the hand over for the certification, these jars need to be provided w
 </div>
 </div>
 <div class="paragraph">
-<p><strong>Connector&#8217;s pom</strong></p>
+<p><strong>Connector pom</strong></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -857,20 +854,20 @@ As part of the hand over for the certification, these jars need to be provided w
 </div>
 </div>
 <div class="paragraph">
-<p>This mix of pom inheritance and agregation allows you to mantain a general parent pom for your secondary modules, and control the compilation in a single point, while leaves the connector with the required devkit-parent pom, making sure that all the other modules will be installed in your local repository before building the connector.</p>
+<p>This mix of pom inheritance and aggregation allows you to maintain a general parent pom for your secondary modules, to control the compilation from a single point, while providing the connector with the required devkit-parent pom, ensuring that all the other modules will be installed in your local repository before building the connector.</p>
 </div>
 <div class="paragraph">
-<p>In multi-module projects, the deployment of the artifacts will vary depending on the connector&#8217;s category. Rule-of-thumb is that the parent pom and all the secondary modules (not the connector module) should be deployed to a public nexus repository, while the connector artifact will override its parent dependency management configuration with its own repository rules.</p>
+<p>In multi-module projects, the deployment of the artifacts vary depending on the connector "category". Rule-of-thumb is that the parent pom and all the secondary modules (not the connector module) should be deployed to a public nexus repository, while the connector artifact will override its parent dependency management configuration with its own repository rules.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="__strong_avoid_caching_strong">2.3.4. <strong>Avoid caching</strong></h4>
+<h4 id="__strong_avoid_caching_strong">2.3.4. <strong>Avoid Caching</strong></h4>
 <div class="paragraph">
-<p>Connectors should not hold state, unless is strictly necessary. Several APIs are actually hosted in cloud environments, and therefore caching states ends up in having untrusted data in the connector.
-There are a few cases where the connector might need to save some data of the current API while working on it, which leads into caching.</p>
+<p>Connectors should not hold state, unless strictly necessary. Several APIs are actually hosted in cloud environments, and therefore caching states ends up exposing untrusted data in the connector.
+There are a few cases where the connector might need to save some data from the current API while working on it, which leads to caching.</p>
 </div>
 <div class="paragraph">
-<p>For those scenarios where the connector needs caching, the following code should be used:</p>
+<p>For scenarios where the connector must use a cache, the following code should be used:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -880,7 +877,7 @@ There are a few cases where the connector might need to save some data of the cu
 </div>
 </div>
 <div class="paragraph">
-<p>And then uses the manager to get/create a custom Object Store as follow:</p>
+<p>And then the <code>objectStoreManager</code> can get/create a custom Object Store as follow:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -891,25 +888,25 @@ os.store(<span class="string"><span class="delimiter">&quot;</span><span class="
 </div>
 </div>
 <div class="paragraph">
-<p>Other ways to achieve caching could be through temporal files, but it might depend on the use case.</p>
+<p>Another way to cache is to use temporary files, but it might depend on the use case.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_avoid_spawning_threads">2.3.5. Avoid spawning threads</h4>
+<h4 id="_avoid_spawning_threads">2.3.5. Avoid Spawning Threads</h4>
 <div class="paragraph">
-<p>Same as caching, spawning threads is not recommended within a connector as a common API lives in the cloud. This means that a connector will not improve its throughput with more threads, because every communication with the API means more HTTP requests/responses. Although we don&#8217;t recommend using threads, as caching, there might be custom cases where they are actually needed.</p>
+<p>Like caching, spawning threads within a connector is not recommended, since the common API lives in the cloud. This means that a connector will not improve its throughput with more threads, because every communication with the API means more HTTP requests/responses. Although we don&#8217;t recommend using threads, or caching, there may be custom cases requiring them.</p>
 </div>
 <div class="paragraph">
-<p>For those scenarios where the connector needs to spawn threads you should use a <a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ExecutorService.html">Executor Service</a>.</p>
+<p>For scenarios where the connector needs to spawn threads you should use a <a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ExecutorService.html">Executor Service</a>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_reading_resources_from_within_the_connector">2.3.6. Reading resources from within the connector</h4>
+<h4 id="_reading_resources_from_within_the_connector">2.3.6. Reading Resources From Within the Connector</h4>
 <div class="paragraph">
-<p>When reading resources that are bundled with the connector, the usual <code>getClass().getResourceAsStream("custom-file-to-read.txt")</code> will work. But, if the file <code>"custom-file-to-read.txt"</code> can actually be parametrized through the Mule application, then other mechanism should be used.</p>
+<p>When reading resources that are bundled with the connector, the usual <code>getClass().getResourceAsStream("custom-file-to-read.txt")</code> will work. But, if the file <code>"custom-file-to-read.txt"</code> can actually be parametrized through the Mule application, then there is another mechanism to use.</p>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s consider that for your connector, a file can be feeded from the src/main/resources folder (again, this file comes from Studio, not from the connector), the following code should be used:</p>
+<p>Consider that for your connector, a file can be fed from the <code>src/main/resources</code> folder (again, this file comes from Studio, not from the connector), the following code should be used:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -919,7 +916,7 @@ os.store(<span class="string"><span class="delimiter">&quot;</span><span class="
 </div>
 </div>
 <div class="paragraph">
-<p>Then reads the resources as follow:</p>
+<p>which allows the resources to be read as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -932,10 +929,10 @@ os.store(<span class="string"><span class="delimiter">&quot;</span><span class="
 </div>
 </div>
 <div class="sect3">
-<h4 id="_mule_dependencies">2.3.7. Mule dependencies</h4>
+<h4 id="_mule_dependencies">2.3.7. Mule Dependencies</h4>
 <div class="paragraph">
-<p>Adding dependencies in your connector should be carefully considered, since they might collide with Mule.
-A few constraints apply, such as:</p>
+<p>Adding dependencies to your connector should be carefully considered, since they might collide with Mule.
+A few constraints apply:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -943,7 +940,7 @@ A few constraints apply, such as:</p>
 <p>When adding Mule artifacts, always use <code>&lt;scope&gt;provided&lt;/scope&gt;</code>.</p>
 </li>
 <li>
-<p>When adding artifacts that might collide with Mule, choose versions that are in the current Mule versios, for what your connector is going to work with. Some of those artifacts are: cxf, jersey, spring, guava, etc.</p>
+<p>When adding artifacts that might collide with Mule, choose versions that are in the current Mule versions, for what your connector is going to work with. Some of those artifacts are: cxf, jersey, spring, guava, etc.</p>
 </li>
 </ol>
 </div>
@@ -951,14 +948,14 @@ A few constraints apply, such as:</p>
 <div class="sect3">
 <h4 id="_shading">2.3.8. Shading</h4>
 <div class="paragraph">
-<p>For some corner cases, you might need to add a dependency that does collide with Mule either directly or in a transitive dependency. For those scenarios, we strongly recommend to use the same version of the library as Mule does or, if possible, change your library to another one equivalent.
-If none of the options above are available, and you still need that custom library that collides with Mule, then shading could work for you. The support for shading has been added in devkit 3.5.3.</p>
+<p>For some corner cases, you might need to add a dependency that does collide with Mule either directly or in a transitive dependency. For those scenarios, we strongly recommend using the same version of the library as Mule does or, if possible, change your library to another equivalent.
+If none of the options above are available, and you still need that custom library that collides with Mule, then shading could work for you. Support for shading has been added in Devkit 3.5.3.</p>
 </div>
 <div class="paragraph">
 <p>You need to modify your connector&#8217;s <code>pom.xml</code> file to add the shading plugin in order to achieve two things: 1) add the custom jar into the connector and 2) rename the packages of the library into a new one in order to avoid collisions.</p>
 </div>
 <div class="paragraph">
-<p>For simple cases, were the coliding libraries are explicitly declared (for example, you directly require a different jersey version than the one packaged with mule), shade only those dependencies.</p>
+<p>For simple cases, were the colliding libraries are explicitly declared (for example, you require a different jersey version than the one packaged with Mule), shade only those dependencies.</p>
 </div>
 <div class="paragraph">
 <p>The following snippet should work when using a library with the groupId <code>org.some.library</code> and the artifactId <code>custom-artifact-id</code></p>
@@ -1004,8 +1001,8 @@ If none of the options above are available, and you still need that custom libra
 </div>
 </div>
 <div class="paragraph">
-<p>Some other cases are more complex, since the issue appear with a transitive dependency. Let&#8217;s say you need an sdk <code>my-sdk</code> that uses some other dependency <code>common-lib</code> internally, if then mule uses an incompatible version of this <code>common-lib</code>, Classloader issue might appear.
-For this case, you need to shade not only the sdk, but also the transitive dependency, that will now be explicitly declared as follow:</p>
+<p>Some other cases are more complex, since the issue appears with a transitive dependency. Let&#8217;s say you need an sdk <code>my-sdk</code> that uses some other dependency <code>common-lib</code> internally, and then if Mule uses an incompatible version of this <code>common-lib</code>, a classloader issue might result.
+For this case, you need to shade not only the sdk, but also the transitive dependency, that will now be explicitly declared as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1057,7 +1054,7 @@ For this case, you need to shade not only the sdk, but also the transitive depen
 </div>
 </div>
 <div class="paragraph">
-<p>Further explanation regardin maven-shade-plugin can be found <a href="http://maven.apache.org/plugins/maven-shade-plugin/examples/includes-excludes.html">here</a>.</p>
+<p>Further explanation regarding the maven-shade-plugin can be found <a href="http://maven.apache.org/plugins/maven-shade-plugin/examples/includes-excludes.html">here</a>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1067,10 +1064,10 @@ For this case, you need to shade not only the sdk, but also the transitive depen
 If you are interested in more details, the project directory structure is described <a href="files/project-directory-layout.html">here</a>.</p>
 </div>
 <div class="paragraph">
-<p>In order to provide automatic enforcement of this rules, the following plugin must be configure as part of the connectors pom.xml. We will be responsible for validating the project structure.</p>
+<p>In order to provide automated enforcement of these rules, the following plugin must be configured as part of the connectors pom.xml. We will be responsible for validating the project structure.</p>
 </div>
 <div class="paragraph">
-<p>Copy and paste the following snippets in your connector pom.xml:</p>
+<p>Copy and paste the following snippets into your connector pom.xml:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1104,7 +1101,7 @@ If you are interested in more details, the project directory structure is descri
 <div class="sect3">
 <h4 id="_datamapper_compliance">2.4.1. DataMapper Compliance</h4>
 <div class="paragraph">
-<p>To have the best experience in Anypoint™ Studio, connectors must be DataMapper compliant. To achieve this, all operations must follow these recommendations.</p>
+<p>To have the best experience in Anypoint™ Studio, connectors must be DataMapper-compliant. To achieve this, all operations must follow these recommendations.</p>
 </div>
 <div class="paragraph">
 <p>Any argument, returned or received, must be one of the following data types:</p>
@@ -1134,12 +1131,35 @@ If you are interested in more details, the project directory structure is descri
 <div class="paragraph">
 <p>These types must be part of the method signature so that DataMapper can auto-recognize the types in it&#8217;s mapping UI.</p>
 </div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
 <div class="paragraph">
-<p><em>Important</em>: Only use a map if you cannot use a POJO.
-Only use a map if your data:
-. Is schema-less, for example if created using MongoDB.
-. Has user customizable schemas, if created with Salesforce.
-. Has unknown content.</p>
+<p>Only use a map if you cannot use a POJO.</p>
+</div>
+<div class="paragraph">
+<p>Use a map only if your data:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Is schema-less, for example if created using MongoDB.</p>
+</li>
+<li>
+<p>Has user customizable schemas, if created with Salesforce.</p>
+</li>
+<li>
+<p>Has unknown content.</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -1163,7 +1183,7 @@ Only use a map if your data:
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Invoice getInvoice(String id)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Object get(String id, Class typeToCreate)
+<td class="tableblock halign-left valign-top"><p class="tableblock">Object get(String id, Class typeToCreate)<br>
 </p><p class="tableblock">All operations must have a single object to take input from DataMapper. The object must be a single object, not multiple arguments. This object is called the Primary argument.</p></td>
 </tr>
 </tbody>
@@ -1190,16 +1210,15 @@ Only use a map if your data:
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">GetTaxResult getTax(TaxRequest request)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>public GetTaxResult getTax(String companyCode,<br>
-    AvalaraDocumentType docType,<br>
-    @Optional String docCode,<br>
-    Date docDate,<br>
-    @Optional String salespersonCode,<br>
-    String customerCode,<br>
-    @Optional String customerUsageType,<br>
-    String discount,<br>
-    @Optional String purchaseOrderNo)<br>
-</code></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>public GetTaxResult getTax(String companyCode,
+    AvalaraDocumentType docType,
+    @Optional String docCode,
+    Date docDate,
+    @Optional String salespersonCode,
+    String customerCode,
+    @Optional String customerUsageType,
+    String discount,
+    @Optional String purchaseOrderNo)</code></p></td>
 </tr>
 </tbody>
 </table>
@@ -1207,7 +1226,7 @@ Only use a map if your data:
 <div class="sect3">
 <h4 id="_java_version">2.4.2. Java Version</h4>
 <div class="paragraph">
-<p>A connector needs to define its target JDK version according to its compatibility with Mule runtimes. Mule runtimes 3.5.X must use Java 1.6, Mule runtimes 3.6.X must use Java 1.7, Mule runtimes 3.7.X must use Java 1.7 and Mule runtimes 3.8.X must use Java 1.7/1.8. This can be achieved by overwriting the POM property <em>jdk.version</em> with the desired version.</p>
+<p>A connector needs to define its target JDK version according to its compatibility with Mule runtimes. Mule runtimes 3.5.X must use Java 1.6, Mule runtimes 3.6.X must use Java 1.7, Mule runtimes 3.7.X must use Java 1.7 and Mule runtimes 3.8.X must use Java 1.7/1.8. This can be achieved by overwriting the POM property <code>&lt;jdk.version&gt;</code> with the desired version.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1223,38 +1242,54 @@ Only use a map if your data:
 </div>
 </div>
 <div class="sect3">
-<h4 id="_no_warning_during_compilation">2.4.4. No Warning during compilation</h4>
+<h4 id="_no_warning_during_compilation">2.4.4. No Warning During Compilation</h4>
 <div class="paragraph">
-<p>DevKit does a intensive analysis of the used annotations and semantic of them in conjunction with others. It’s important the the code is free of compilation warning to help on the maintainability of the code and to follow good practices.</p>
+<p>DevKit does a intensive analysis of the used annotations and semantic of them in conjunction with others. It’s important the code is free of compilation warning to help on the maintainability of the code and to follow good practices.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_devkit_generated_api_doc">2.4.5. DevKit Generated API Doc</h4>
 <div class="paragraph">
-<p>Connector documentation is composed of two different type of documentation: DevKit Generated DevKit API Doc and the Connector Documentation.</p>
+<p>Connector documentation is composed of two different types of documentation: DevKit Generated DevKit API Doc and the Connector Documentation.</p>
 </div>
 <div class="paragraph">
-<p>DevKit API Doc is automatically generated by DevKit based on the JavaDoc documentation at the connector class. This is one of the most important information used by the developer at the time of using the connector.</p>
+<p>DevKit API Doc is automatically generated by DevKit based on the JavaDoc documentation at the connector class. This is one of the most important information sources used by the developer when using the connector.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_connectors_code_convention">2.4.6. Connectors Code Convention</h4>
+<h4 id="_connector_code_convention">2.4.6. Connector Code Convention</h4>
 <div class="paragraph">
 <p>We provide a file with a recommended code styling format for connectors.  This is an important aspect of the connectors code quality and most of the connectors uses this standard format.
 This style can be imported in <strong>Eclipse, Studio and IntelliJ</strong>.</p>
 </div>
 <div class="paragraph">
-<p>Download the Connectors Style Format: <a href="files/connectors-style-convention.xml">Here</a>.</p>
+<p>Download the Connector Style Format <a href="files/connectors-style-convention.xml">here</a>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="__config_friendly_names_conventions">2.4.7. @Config friendly names conventions</h4>
+<h4 id="__config_friendly_name_conventions">2.4.7. @Config Friendly Name Conventions</h4>
 <div class="paragraph">
-<p>In order to provide consistency across all the connectors, Global Element default name should a follow a convention:
-. If there is one single configuration, "Configuration" should be used as friendlyName
-. If there is more than one configuration, the following convention should be followed:
-.. "OAuth 2.0" for a OAuth configurations
-.. In other other case, use a brief descriptions honoring the same terminology used in the system to integrate</p>
+<p>In order to provide consistency across all the connectors, Global Element default name should a follow a convention:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>If there is one single configuration, "Configuration" should be used as friendlyName</p>
+</li>
+<li>
+<p>If there is more than one configuration, the following convention should be followed:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>"OAuth 2.0" for OAuth configurations</p>
+</li>
+<li>
+<p>In other cases, use a brief description following the same terminology used in the system to integrate.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
 <p>GlobalElement name is configured using the friendlyName attribute of the configuration class.</p>
@@ -1659,7 +1694,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-01-13 02:51:07 EST
+Last updated 2016-01-13 14:51:25 EST
 </div>
 </div>
 </body>
