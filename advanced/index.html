@@ -2393,10 +2393,10 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
 <div class="sect3">
 <h4 id="_connector_testing_framework">4.3.4. Connector Testing Framework</h4>
 <div class="paragraph">
-<p>The main objective is to test the connector with different Mule runtime environments through the Connector Testing Framework, allowing to detect possible conflicts, such as class loading issues. The default functional testing framework is called CTF (<em>Connector Testing Framework</em>).</p>
+<p>The main objective is to test the connector with different Mule runtime environments through the Connector Testing Framework, allowing to detect possible conflicts, such as class loading issues. The default functional testing framework is called CTF (<em>Connector Testing Framework</em>). Documentation of CTF is available <a href="http://mulesoft.github.io/connector-testing-framework/">here</a></p>
 </div>
 <div class="paragraph">
-<p>Documentation of the Connector Testing Framework is available <a href="http://mulesoft.github.io/connector-testing-framework/">here</a>. This framework eases the creation of connector functional tests, where the developer is not necessarily involved with Mule&#8217;s internals, such as flows, configurations and Spring beans. The objective of this framework is twofold. On the one hand, we decouple how Mule works and how functional tests are written. On the other hand, we enable a runtime platform to run connector tests with multiple Mule versions by executing the tests in remote Mule instances, achieving a decoupled runtime environment.</p>
+<p>This framework eases the creation of connector functional tests, where the developer is not necessarily involved with Mule&#8217;s internals, such as flows, configurations and Spring beans. The objective of this framework is twofold. On the one hand, we decouple how Mule works and how functional tests are written. On the other hand, we enable a runtime platform to run connector tests with multiple Mule versions by executing the tests in remote Mule instances, achieving a decoupled runtime environment.</p>
 </div>
 <div class="paragraph">
 <p>Any other approach for carrying out functional tests is highly discouraged. However, certain aspects of functional testing is not cover within CTF and thus custom approaches might be used. The following sections described which aspects can and can not be tested with CTF.</p>
@@ -2544,6 +2544,9 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
 </li>
 <li>
 <p><strong>Pagination</strong></p>
+</li>
+<li>
+<p><strong>Sources</strong></p>
 </li>
 </ol>
 </div>
@@ -2796,7 +2799,7 @@ Testing WSDL operations is only required when the connector under test is a SOAP
 </div>
 </div>
 <div class="sect4">
-<h5 id="__paginated_methods">@Paginated methods</h5>
+<h5 id="_testing_paginated_methods">Testing @Paginated methods</h5>
 <div class="paragraph">
 <p>A connector method can be annotated as @Paged, which means that when calling that method, several calls to the underlying API will be generated so as to avoid retrieving a possible big set of results in one API call. As a result, the user will consume the entire set of results with a single call to the method, although Mule will automatically generate different API calls.</p>
 </div>
@@ -2853,6 +2856,67 @@ We provide a mechanism to test operations annotated with @Paged, which indirectl
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_testing_sources">Testing Sources</h5>
+<div class="paragraph">
+<p>CTF provides a simple approach to test source operations within a connector. The dispatcher provides three methods: initializeSource, getSourceMessages and shutDownSource. The following example introduces source testing with CTF, considering a simply source implementation as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">  <span class="annotation">@Source</span>(sourceStrategy = SourceStrategy.POLLING, pollingPeriod = <span class="integer">1000</span>)
+    <span class="directive">public</span> <span class="type">void</span> retrieveEvents(<span class="directive">final</span> SourceCallback sourceCallback, <span class="predefined-type">String</span> message) <span class="directive">throws</span> <span class="exception">Exception</span> {
+        sourceCallback.process(message);
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following test case depicts how CTF enables source testing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">org.mule.modules.automation.testcases</span>;
+
+<span class="keyword">import</span> <span class="include">java.util.List</span>;
+<span class="keyword">import</span> <span class="include">org.junit.After</span>;
+<span class="keyword">import</span> <span class="include">org.junit.Before</span>;
+<span class="keyword">import</span> <span class="include">org.junit.Test</span>;
+<span class="keyword">import</span> <span class="include">org.mule.modules.automation.TestConnectorAbstractTestCase</span>;
+<span class="keyword">import</span> <span class="include">static</span> <span class="include">org.junit.Assert</span>.*;
+
+<span class="directive">public</span> <span class="type">class</span> <span class="class">SourceTestCases</span> <span class="directive">extends</span> TestConnectorAbstractTestCase {
+
+        <span class="directive">private</span> <span class="predefined-type">String</span> testMessage;
+
+        <span class="annotation">@Before</span>
+        <span class="directive">public</span> <span class="type">void</span> setUp() <span class="directive">throws</span> <span class="predefined-type">Throwable</span>{
+                testMessage = <span class="string"><span class="delimiter">&quot;</span><span class="content">testMessage</span><span class="delimiter">&quot;</span></span>;
+                <span class="predefined-type">Object</span><span class="type">[]</span> signature = {<span class="predefined-constant">null</span>, testMessage};
+                getDispatcher().initializeSource(<span class="string"><span class="delimiter">&quot;</span><span class="content">retrieveEvents</span><span class="delimiter">&quot;</span></span>, signature);
+        }
+
+        <span class="annotation">@Test</span>
+        <span class="directive">public</span> <span class="type">void</span> testSource(){
+                <span class="predefined-type">List</span>&lt;<span class="predefined-type">Object</span>&gt; events = getDispatcher().getSourceMessages(<span class="string"><span class="delimiter">&quot;</span><span class="content">retrieveEvents</span><span class="delimiter">&quot;</span></span>);
+                assertTrue(events.contains(testMessage));
+        }
+
+        <span class="annotation">@After</span>
+        <span class="directive">public</span> <span class="type">void</span> tearDown() <span class="directive">throws</span> <span class="predefined-type">Throwable</span>{
+                getDispatcher().shutDownSource(<span class="string"><span class="delimiter">&quot;</span><span class="content">retrieveEvents</span><span class="delimiter">&quot;</span></span>);
+        }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To test a particular source, we need to initialize it first by means of its name and the array of parameters, similar as testing @Paged operations. It is important to consider that the SourceCallback parameter, which is mandatory when implementing a source, must be set to <strong>null</strong> in the array of parameters.</p>
+</div>
+<div class="paragraph">
+<p>Once the source has been initialized, it will start receiving messages. These messages will be store by the CTF. The dispatcher allows to retrieve these messages to further assert whether a particular message has been received by the source or not. Finally, the source needs to be properly shutdown using the dispatcher as shown.</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s important to notice that once the source has been initialized, it will start gathering events. However, if the remote endpoint takes time to produce those messages, it is a good idea to explicitly wait an amount of time before gathering the received messages with <strong>getDispatcher().getSourceMessages(&#8230;&#8203;)</strong>.</p>
 </div>
 </div>
 </div>
@@ -3648,7 +3712,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-19 02:49:12 EST
+Last updated 2016-02-19 16:18:04 EST
 </div>
 </div>
 </body>
