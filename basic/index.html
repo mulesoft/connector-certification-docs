@@ -639,6 +639,25 @@ table.CodeRay td.code>pre{padding:0}
 <div class="paragraph">
 <p><em>MuleSoft will not be liable for errors in your code that could lead to people using your connector without a proper license.</em></p>
 </div>
+<div class="paragraph">
+<p>For <strong>Select</strong> or <strong>MuleSoft Certified Connectors</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>@RequiresEnterpriseLicense(allowEval = true)
+public class SalesforceConnector {</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For <strong>Premium Connectors</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>@RequiresEnterpriseLicense(allowEval = true)
+@RequiresEntitlement(name = "oracleebs-connector")
+public class OracleEBSConnector {</code></pre>
+</div>
+</div>
 <div class="sect3">
 <h4 id="_distribution_management">2.2.1. Distribution Management</h4>
 <div class="paragraph">
@@ -1694,7 +1713,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-08 02:51:31 EST
+Last updated 2016-03-08 18:30:45 EST
 </div>
 </div>
 </body>
