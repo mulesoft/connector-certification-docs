@@ -30,6 +30,11 @@ namespace :docs do
       puts " -- HTML output at basic-certification-docbook.html"
     end
 
+    if args[:arg1] == 'contr'
+      `asciidoctor contributing.asc -a stylesheet=theme/style.css`
+      puts " -- HTML output at contributing.html"
+    end
+
   end
 
   desc 'package the documents into the generated folder'
@@ -89,6 +94,10 @@ namespace :docs do
     if args[:type] ==  'basic'
       puts "Uploading generated BASIC documentation"
       Rake::Task["docs:unpackage"].invoke('basic')
+    end
+    if args[:type] ==  'contr'
+      puts "Uploading contributing file"
+      Rake::Task["docs:unpackage"].invoke('contr')
     end
     `git add #{args[:type]}/ && git commit -m "Update documentation" `
     `git push origin gh-pages -f`
