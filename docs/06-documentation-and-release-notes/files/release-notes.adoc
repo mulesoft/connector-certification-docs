@@ -1,3 +1,7 @@
+////
+The following is the approved connector release notes template for documenting MuleSoft Supported Connectors.
+////
+
 = <System_Name> Connector Release Notes
 ////
 [<System_Name>: The system the connector connects to, at the other end of the mule runtime, i.e. SalesForce, Workday Financials]
@@ -7,7 +11,7 @@
 
 Sentences describing the connector's functionality and basic information that applies to all connector versions.
 
-link:/xyz-connector[xyz Connector User Guide]
+link:/<System_Name>-connector[<System_Name> Connector User Guide]
 ////
 Points to the docs.mulesoft pages for documentation on the functional aspects of the connector. e.g.: link:/mule-user-guide/v/3.7/microsoft-sharepoint-2013-connector[Microsoft SharePoint 2013 Connector]
 ////
