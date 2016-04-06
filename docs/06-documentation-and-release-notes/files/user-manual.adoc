@@ -6,14 +6,13 @@ The following is the approved connector user guide template for documenting Mule
 :keywords: add_keywords_separated_by_commas
 :imagesdir: ./_images
 :toc: macro
-:toc-title: Contents
 :toclevels: 2
 
 
 toc::[]
 
 ////
-Links should always follow "link:"
+URLs should always follow "link:"
 ////
 
 
@@ -29,6 +28,7 @@ Describe in a second paragraph, or as you see fit, the main concepts or architec
 MuleSoft has designated the connector as a link:/mule-user-guide/v/3.7/anypoint-connectors#connector-categories[_Insert Category_] connector.
 
 link:/link-to-github.io-or-internal-section[Technical Reference]
+
 link:/release-notes/xyz-connector-release-notes[Release Notes]
 
 === Prerequisites
