@@ -29,7 +29,7 @@ MuleSoft has designated the connector as a link:/mule-user-guide/v/3.7/anypoint-
 
 link:/link-to-github.io-or-internal-section[Technical Reference]
 
-link:/release-notes/xyz-connector-release-notes[Release Notes]
+link:/release-notes/<System_Name>-connector-release-notes[Release Notes]
 
 === Prerequisites
 
@@ -138,4 +138,4 @@ Number code example lines and explain blocks of lines
 
 === See Also
 
-* Access the link:/release-notes/xyz-connector-release-notes[XYZ Connector Release Notes].
+* Access the link:/release-notes/<System_Name>-connector-release-notes[<System_Name> Connector Release Notes].
