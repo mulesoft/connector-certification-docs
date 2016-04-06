@@ -1,18 +1,13 @@
-= Anypoint Connector Release Notes Template
-
-The following is a proposed connector documentation template for documenting Release notes for MuleSoft connectors. The latest release should appear at the top of each connector's release notes page and the oldest section at the bottom.
-
 = <System_Name> Connector Release Notes
 ////
 [<System_Name>: The system the connector connects to, at the other end of the mule runtime, i.e. SalesForce, Workday Financials]
 ////
 :keywords: add_keywords_separated_by_commas
 
-_If applicable, label the connector either: Premium / Select / Standard / or Community_
 
-One to three sentences describing the connector's functionality and basic information that applies to all connector versions. For a new version of an existing connector, you do not need to modify this blurb.
+Sentences describing the connector's functionality and basic information that applies to all connector versions.
 
-*Guide:* <Connector_Guide_Link>
+link:/xyz-connector[xyz Connector User Guide]
 ////
 Points to the docs.mulesoft pages for documentation on the functional aspects of the connector. e.g.: link:/mule-user-guide/v/3.7/microsoft-sharepoint-2013-connector[Microsoft SharePoint 2013 Connector]
 ////
@@ -22,13 +17,6 @@ Points to the docs.mulesoft pages for documentation on the functional aspects of
 <Connector_Version> : Describes the connector version, such as “V2013”, “V4.0”, “V4.0.1-HF2” or whatever used for release]
 <Release_date> : The date on which the connector is released (not when the notes are written, mind you)
 ////
-=== Contents
-
-- Compatibility
-- Features
-- Fixed in this Release
-- Known Issues
-- Support Resources
 
 === Compatibility
 
