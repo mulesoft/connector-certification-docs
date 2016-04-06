@@ -6,7 +6,6 @@ The following is the approved connector user guide template for documenting Mule
 :keywords: add_keywords_separated_by_commas
 :imagesdir: ./_images
 :toc: macro
-:toc-title: Contents
 :toclevels: 2
 
 
@@ -22,14 +21,11 @@ Links should always follow "link:"
 == Introduction
 
 First sentence introduces the connector and describes its basic function.
-//Global rule: the word "connector" should be lower case except when appearing in titles
+//Global rule: the word "connector" should be lower case except when appearing in titles and after a MuleSoft tradename such as "Anypoint".
 
-Describe in a second paragraph, or as you see fit, the main concepts or architecture of the system the connector hooks into.
+Read through this user guide to understand how to set up and configure a basic flow using the connector. Track feature additions, compatibility, limitations and API version updates with each release of the connector version using the link:/release-notes/xyz-connector-release-notes[Release Notes]. Review the connector operations and see how they work using the link:/link-to-github.io-or-internal-section[Technical Reference] and the link:https://www.mulesoft.com/exchange#!/?filters=Salesforce&sortBy=rank[demo applications].
 
-MuleSoft has designated the connector as a link:/mule-user-guide/v/3.7/anypoint-connectors#connector-categories[_Insert Category_] connector.
-
-link:/link-to-github.io-or-internal-section[Technical Reference]
-link:/release-notes/xyz-connector-release-notes[Release Notes]
+MuleSoft maintains this connector under the link:/mule-user-guide/v/3.7/anypoint-connectors#connector-categories[_Insert Category_] support policy.
 
 === Prerequisites
 
