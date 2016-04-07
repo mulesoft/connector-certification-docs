@@ -23,7 +23,7 @@ URLs should always follow "link:"
 First sentence introduces the connector and describes its basic function.
 //Global rule: the word "connector" should be lower case except when appearing in titles and after a MuleSoft tradename such as "Anypoint".
 
-Read through this user guide to understand how to set up and configure a basic flow using the connector. Track feature additions, compatibility, limitations and API version updates with each release of the connector version using the link:/release-notes/xyz-connector-release-notes[Release Notes]. Review the connector operations and see how they work using the link:/link-to-github.io-or-internal-section[Technical Reference] and the link:https://www.mulesoft.com/exchange#!/?filters=Salesforce&sortBy=rank[demo applications].
+Read through this user guide to understand how to set up and configure a basic flow using the connector. Track feature additions, compatibility, limitations and API version updates with each release of the connector using the link:/release-notes/xyz-connector-release-notes[Connector Release Notes]. Review the connector operations and see how they work be reviewing the link:/link-to-github.io-or-internal-section[Connector Technical Reference] alongside the link:https://www.mulesoft.com/exchange#!/?filters=Salesforce&sortBy=rank[demo applications].
 
 MuleSoft maintains this connector under the link:/mule-user-guide/v/3.7/anypoint-connectors#connector-categories[_Insert Category_] support policy.
 
@@ -48,7 +48,35 @@ What versions of JAR files and MS software is required  ?. What is the version s
 *Consumers* +
 What software is required to user this connector?
 
-=== Compatibility Matrix
+=== Namespace
+
+[source, xml]
+----
+
+----
+
+=== Schema Location
+
+[source, code, linenums]
+----
+xsi:schemaLocation="
+...
+
+----
+
+For example:
+
+[source, xml, linenums]
+----
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+
+  
+      <!-- Insert your configuration elements and your flow here -->
+</mule>
+----
+
+
+=== Compatibility
 What system versions is supported ?. Patches/APIs versions
 
 ---
