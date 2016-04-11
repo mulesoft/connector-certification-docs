@@ -7,23 +7,20 @@ The following is the approved connector user guide template for documenting Mule
 :imagesdir: ./_images
 :toc: macro
 :toclevels: 2
-
-
-toc::[]
-
 ////
+Image names follow "image:". Identify images using the connector name, preferably without the word "connector"
 URLs should always follow "link:"
 ////
 
+toc::[]
 
----
 
 == Introduction
 
 First sentence introduces the connector and describes its basic function.
 //Global rule: the word "connector" should be lower case except when appearing in titles, important URL anchor, and after a MuleSoft tradename such as "Anypoint".
 
-Read through this user guide to understand how to set up and configure a basic flow using the connector. Track feature additions, compatibility, limitations and API version updates with each release of the connector using the link:/release-notes/xyz-connector-release-notes[Connector Release Notes]. Review the connector operations and see how they work by reviewing the link:/link-to-github.io-or-internal-section[Connector Technical Reference] alongside the link:https://www.mulesoft.com/exchange#!/?filters=Salesforce&sortBy=rank[demo applications].
+Read through this user guide to understand how to set up and configure a basic flow using the connector. Track feature additions, compatibility, limitations and API version updates with each release of the connector using the link:/release-notes/xyz-connector-release-notes[Connector Release Notes]. Review the connector operations and functionality using the link:/link-to-github.io-or-internal-section[ Technical Reference] alongside the link:https://www.mulesoft.com/exchange#!/?filters=Salesforce&sortBy=rank[demo applications].
 
 MuleSoft maintains this connector under the link:/mule-user-guide/v/3.7/anypoint-connectors#connector-categories[_Insert Category_] support policy.
 
@@ -38,7 +35,9 @@ To use this connector, … +
 Hardware, software, and technical requirements.
 
 === Dependencies
-
+////
+optional
+////
 What MuleSoft software is required to get this connector to work? +
 
 *Versions* +
@@ -102,43 +101,14 @@ Are there configuration items for previous MuleSoft software for this connector?
 
 Outbound, inbound, streaming outbound  +
 
-=== Use Cases and Demos
-List use cases for this connector, including a demo for every use case. +
-
-
-=== Best Practices
-To take full advantage of the functionality … +
-
-=== Tips
-* <Information from Support>
-
-=== Integration Patterns
-
-___ recognizes these integration patterns for connecting with other systems…
-
-=== Adding to a Flow
-
-Use a ____ Connector in your application -> flowchart +
-
-=== Query Types
-
-If talking to a database, what queries are allowed by this connector? +
-
-=== Increasing Performance
-
-What can you set in the connector to increase performance?
-
----
-
 == Example Use Case
-
-Explain what this example is for.
+List use cases for this connector, including a demo for every use case. Explain what this example is for.
 
 It should contain a fully functional Mule application as a demo, where the use case is considered. The demo needs to be simple and only considering a single use case.
 
 ===  Anypoint Studio Visual Editor | XML Editor
 
-Explain how to create this case with  Anypoint Studio  visual editor and XML editor +
+Explain how to create this case with Anypoint Studio  visual editor and XML editor +
 
 [tabs]
 -----
@@ -152,12 +122,58 @@ Explain how to create this case with  Anypoint Studio  visual editor and XML edi
 ....
 -----
 
-=== Code Example
+=== Example Use Case Code
 
-Number code example lines and explain blocks of lines
+=== Demos
+////
+optional
+////
+
+=== Best Practices
+////
+optional
+////
+To take full advantage of the functionality … +
+
+=== Tips
+////
+optional
+////
+* <Information from Support>
+
+=== Integration Patterns
+////
+optional
+////
+
+___ recognizes these integration patterns for connecting with other systems…
+
+=== Adding to a Flow
+////
+optional
+////
+Use a ____ Connector in your application -> flowchart +
+
+=== Query Types
+////
+optional
+////
+If talking to a database, what queries are allowed by this connector? +
+
+=== Increasing Performance
+////
+optional
+////
+What can you set in the connector to increase performance?
+
+---
+
 
 ---
 === F.A.Q
+////
+optional
+////
 
 * Add here all the items you consider useful.
 
