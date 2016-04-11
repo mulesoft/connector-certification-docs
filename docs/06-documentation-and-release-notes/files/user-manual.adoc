@@ -25,7 +25,7 @@ Read through this user guide to understand how to set up and configure a basic f
 MuleSoft maintains this connector under the link:/mule-user-guide/v/3.7/anypoint-connectors#connector-categories[_Insert Category_] support policy.
 
 
-=== Prerequisites
+== Prerequisites
 
 This document assumes that you are familiar with Mule,
 ////
@@ -34,7 +34,7 @@ examples:
 link:/mule-user-guide/v/3.7/anypoint-connectors[Anypoint Connectors], and
 link:/mule-fundamentals/v/3.7/anypoint-studio-essentials[Anypoint Studio Essentials]. To increase your familiarity with Studio, consider completing one or more link:/mule-fundamentals/v/3.7/basic-studio-tutorial[Basic Studio Tutorial]. This page assumes you understand link:/mule-fundamentals/v/3.7/mule-concepts[Mule Concepts], link:/mule-fundamentals/v/3.7/elements-in-a-mule-flow[Elements in a Mule Flow], and link:/mule-fundamentals/v/3.7/global-elements[Global Elements].
 
-=== Requirements
+== Requirements
 
 For hardware and software requirements, please visit link:/mule-user-guide/v/3.7/hardware-and-software-requirements[Mule Hardware and Software Requirements] page.
 
