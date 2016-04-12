@@ -106,14 +106,13 @@ Are there configuration items for previous MuleSoft software for this connector?
 Outbound, inbound, streaming outbound  +
 
 == Example Use Case
-List use cases for this connector, including a demo for every use case. Explain what this example is for.
 
-It should contain a fully functional Mule application as a demo, where the use case is considered. The demo needs to be simple and only considering a single use case.
+List potential use cases for this connector. Explain what this example is for.
 
-===  Anypoint Studio Visual Editor | XML Editor
+The section should contain a fully functional Mule application as a demo, where the use case is considered. Explain how to create this case with Anypoint Studio Visual editor and what the XML looks like, using a numbered list.
 
-Explain how to create this case with Anypoint Studio  visual editor and XML editor +
-
+////
+optional
 [tabs]
 -----
 [tab,title="Studio Visual Editor"]
@@ -125,8 +124,16 @@ Explain how to create this case with Anypoint Studio  visual editor and XML edit
 [tab content goes here]
 ....
 -----
+////
 
 === Example Use Case Code
+
+Paste this into Anypoint Studio to interact with the example use case application discussed in this guide.
+
+[source,xml,linenums]
+----
+
+----
 
 === Demos
 ////
