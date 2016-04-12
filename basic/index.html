@@ -524,7 +524,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#_user_guide">3.2. User Guide</a></li>
 <li><a href="#_release_notes">3.3. Release Notes</a></li>
 <li><a href="#_readme">3.4. README</a></li>
-<li><a href="#_connector_apidoc">3.5. Connector ApiDoc</a></li>
+<li><a href="#_connector_apidoc">3.5. Connector APIdoc</a></li>
 </ul>
 </li>
 <li><a href="#_appendixes">4. Appendixes &amp; Templates</a>
@@ -1638,7 +1638,7 @@ The demo contains 3 parts:</p>
 <div class="sect2">
 <h3 id="_built_in_documentation">3.1. Built-in Documentation</h3>
 <div class="paragraph">
-<p>Part of the documentation must be packed within the connector source code. The mandatory files are:</p>
+<p>Part of the documentation must be packaged within the connector source code. The mandatory files are:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1649,25 +1649,25 @@ The demo contains 3 parts:</p>
 <p>Release Notes</p>
 </li>
 <li>
-<p>ReadMe</p>
+<p>README</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>In addition, create an extra folder named <em>_images</em> inside the <em>doc</em> folder. This resource folder contains any resources (images, XMLs, etc.) used in the documentation.</p>
+<p>In addition, create a folder named <em>images_ for image resources used in the documentation, one called </em>attachments_ for user-downloadable content such as a JSON file or WSDL XML file, and one called <em>_sources</em> for management of any code samples presented in the connector documentation, especially those which have associated Mule flow screenshots. It is important to give the corresponding image and Mule XML code the same name. The only thing that should differ are the file extensions, for example, connector-flow`.img` and connector-flow`.xml`.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_user_guide">3.2. User Guide</h3>
 <div class="paragraph">
-<p>The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. Write the documentation using AsciiDoc syntax so that the resulting file is called <em>user_manual.adoc</em>. A template can be found <a href="files/user-manual.adoc">here</a>.
+<p>The user guide needs to be fully descriptive and easy to read, including not only technical documentation but use cases and error solutions. Write the documentation using AsciiDoc syntax so that the resulting file is called <em>user-manual.adoc</em>. Closely follow the template found <a href="files/user-manual.adoc">here</a>.
 It should reside in <em>doc</em> folder in the root of the connector project.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_release_notes">3.3. Release Notes</h3>
 <div class="paragraph">
-<p>Release notes need to be highly descriptive, including backward compatibility of the released connector with previous versions. A template can be found <a href="files/release-notes.adoc">here</a>.
+<p>Release notes need to be highly descriptive, including backward compatibility of the released connector with previous versions. Closely follow the template found <a href="files/release-notes.adoc">here</a>.
 It should reside in <em>doc</em> folder in the root of the connector project.</p>
 </div>
 </div>
@@ -1678,9 +1678,9 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 </div>
 <div class="sect2">
-<h3 id="_connector_apidoc">3.5. Connector ApiDoc</h3>
+<h3 id="_connector_apidoc">3.5. Connector APIdoc</h3>
 <div class="paragraph">
-<p>Each public connector requires:</p>
+<p>Each connector requires:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1688,10 +1688,10 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 <p>A description that provides a clear and a complete explanation of its purpose.</p>
 </li>
 <li>
-<p>An XML sample that is up-to-date with the method signature and can be directly pasted into Anypoint™ Studio.</p>
+<p>XML samples of connector Configs (connection configurations) and Processors (the code that backs connector operations)</p>
 </li>
 <li>
-<p>Attributes that affect methods behavior documented in detail.</p>
+<p>Attributes that affect connector method behavior must be documented in detail.</p>
 </li>
 </ol>
 </div>
@@ -1699,7 +1699,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 <p>For further information, refer to:</p>
 </div>
 <div class="paragraph">
-<p><a href="http://mulesoft.github.io/salesforce-connector/7.0.1/apidocs/sfdc-apidoc.html">Salesforce Connector ApiDoc</a>.</p>
+<p><a href="http://mulesoft.github.io/salesforce-connector/7.0.1/apidocs/sfdc-apidoc.html">Salesforce Connector APIDoc</a>.</p>
 </div>
 </div>
 </div>
@@ -1732,7 +1732,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-04-11 20:32:21 EDT
+Last updated 2016-04-11 20:39:11 EDT
 </div>
 </div>
 </body>
