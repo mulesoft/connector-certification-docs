@@ -1,6 +1,6 @@
-= Anypoint Connector Release Notes Template
-
-The following is a proposed connector documentation template for documenting Release notes for MuleSoft connectors. The latest release should appear at the top of each connector's release notes page and the oldest section at the bottom.
+////
+The following is the approved connector release notes template for documenting MuleSoft Supported Connectors.
+////
 
 = <System_Name> Connector Release Notes
 ////
@@ -8,11 +8,10 @@ The following is a proposed connector documentation template for documenting Rel
 ////
 :keywords: add_keywords_separated_by_commas
 
-_If applicable, label the connector either: Premium / Select / Standard / or Community_
 
-One to three sentences describing the connector's functionality and basic information that applies to all connector versions. For a new version of an existing connector, you do not need to modify this blurb.
+Sentences describing the connector's functionality and basic information that applies to all connector versions.
 
-*Guide:* <Connector_Guide_Link>
+link:/<System_Name>-connector[<System_Name> Connector User Guide]
 ////
 Points to the docs.mulesoft pages for documentation on the functional aspects of the connector. e.g.: link:/mule-user-guide/v/3.7/microsoft-sharepoint-2013-connector[Microsoft SharePoint 2013 Connector]
 ////
@@ -22,15 +21,8 @@ Points to the docs.mulesoft pages for documentation on the functional aspects of
 <Connector_Version> : Describes the connector version, such as “V2013”, “V4.0”, “V4.0.1-HF2” or whatever used for release]
 <Release_date> : The date on which the connector is released (not when the notes are written, mind you)
 ////
-=== Contents
 
-- Compatibility
-- Features
-- Fixed in this Release
-- Known Issues
-- Support Resources
-
-=== Compatibility
+=== Version <Connector_Version> Compatibility
 
 [width="100%", cols=",", options="header"]
 |===
@@ -40,7 +32,9 @@ Points to the docs.mulesoft pages for documentation on the functional aspects of
 |===
 
 === Migrating from Older Versions
-
+////
+optional
+////
 If you’re currently using connector <old_connector_version> to migrate to this connector you need to:
 
 - <step_1>
@@ -72,7 +66,7 @@ If you’re currently using a connector version <old_connector_version_2> this c
 
 //NTLM Authentication - NTLM authentication is now more robust and widely compatible with more domain controller configurations.
 
-=== Fixed in this Release
+=== <Connector_Version> Fixed in this Release
 
 - <Bug_Title> - <Conditions under which the bug used to happen, explain which was the result, which is now the fixed result>
 
@@ -87,12 +81,14 @@ If you’re currently using a connector version <old_connector_version_2> this c
 //- Increased Sonar coverage (ditto)
 //- Resolved NPE (lacking information like scenarios under which it can be reproduced, what is NPE, etc)
 
-=== Known Issues
+=== <Connector_Version> Known Issues
 
 <Connector_Issues, use the same format as Bug listings>
 
 === Support Resources
-
-- Learn how to link:/mule-user-guide/v/3.7/installing-connectors[Install Anypoint Connectors] using Anypoint Exchange.
-- Access MuleSoft’s MuleForge link:http://forum.mulesoft.org/mulesoft[Forum] to pose questions and get help from Mule’s broad community of users.
-- To access MuleSoft’s expert support team, link:http://www.mulesoft.com/mule-esb-subscription[subscribe] to Mule ESB Enterprise and log in to MuleSoft’s link:http://www.mulesoft.com/support-login[Customer Portal].
+////
+could also be named See Also
+////
+* Learn how to link:/mule-user-guide/v/3.7/installing-connectors[Install Anypoint Connectors] using Anypoint Exchange.
+* Access MuleSoft’s MuleForge link:http://forum.mulesoft.org/mulesoft[Forum] to pose questions and get help from Mule’s broad community of users.
+* To access MuleSoft’s expert support team, link:http://www.mulesoft.com/mule-esb-subscription[subscribe] to Mule ESB Enterprise and log in to MuleSoft’s link:http://www.mulesoft.com/support-login[Customer Portal].
