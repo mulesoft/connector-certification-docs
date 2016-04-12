@@ -1,76 +1,47 @@
-= Anypoint Connectors User Guide Template
-
-The following is a proposed connector user guide template for documenting MuleSoft and 3rd party connectors. When completed, a tech writer will work with the development teams to bring existing and new connector documentation to this standard. Please review and add your comments. Thanks!
-
-Note: Horizontal lines show section breaks, but won’t be in the actual documents.
-
----
+////
+The following is the approved connector user guide template for documenting MuleSoft Supported Connectors.
+////
 
 = Connector Name
 :keywords: add_keywords_separated_by_commas
-
-The chosen name and one sentence for its description.
-
-*Release Notes:* link:/release-notes/xyz-connector-release-notes[Link to Release Notes]
-
+:imagesdir: ./_images
+:toc: macro
+:toclevels: 2
 ////
-Note: existing MuleSoft documentation should be copied from right-hand column of link:https://github.com/mulesoft/mulesoft-docs/blob/master/links.csv. Links should always follow "link:"
+Image names follow "image:". Identify images using the connector name, preferably without the word "connector"
+URLs should always follow "link:"
 ////
 
----
+toc::[]
 
-== Contents:
-// Remove entire "Contents" section from the final version since page builds Contents automatically
-
-. Introduction
-.. Prerequisites
-.. Requirements
-.. Dependencies
-... Versions
-... Consumers
-
-. Installing & Configuring
-.. Installing
-.. Configuring
-.. Upgrading from a Previous Version
-
-. Using the Connector
-.. Use Cases and Demos
-.. Best Practices
-.. Tips
-.. Integration Patterns
-.. Adding to a Flow
-.. Query Types
-.. Increasing Performance
-
-. Example Use Case
-..  Anypoint™ Studio Visual Editor | XML Editor
-.. Example Code
-. Demo
-. F.A.Q
-. See Also
-
----
 
 == Introduction
 
-Description and concepts.
-Overview of the system.
-High level description how the connector is providing the connectivity. SOAP/REST/Proprietary protocol. ?
-Description of the main concepts of the system.
-Integration with other MS capabilities
+First sentence introduces the connector and describes its basic function.
+//Global rule: the word "connector" should be lower case except when appearing in titles, important URL anchors, and after a MuleSoft tradename such as "Anypoint".
 
-=== Prerequisites
+Read through this user guide to understand how to set up and configure a basic flow using the connector. Track feature additions, compatibility, limitations and API version updates with each release of the connector using the link:/release-notes/xyz-connector-release-notes[Connector Release Notes]. Review the connector operations and functionality using the link:/link-to-github.io-or-internal-section[ Technical Reference] alongside the link:https://www.mulesoft.com/exchange#!/?filters=Salesforce&sortBy=rank[demo applications].
 
-This document assumes that you are familiar with … +
-To use this connector, … +
+MuleSoft maintains this connector under the link:/mule-user-guide/v/3.7/anypoint-connectors#connector-categories[_Insert Category_] support policy.
 
-=== Requirements
 
-Hardware, software, and technical requirements.
+== Prerequisites
+
+This document assumes that you are familiar with Mule,
+////
+examples:
+////
+link:/mule-user-guide/v/3.7/anypoint-connectors[Anypoint Connectors], and
+link:/mule-fundamentals/v/3.7/anypoint-studio-essentials[Anypoint Studio Essentials]. To increase your familiarity with Studio, consider completing one or more link:/mule-fundamentals/v/3.7/basic-studio-tutorial[Basic Studio Tutorial]. This page assumes you understand link:/mule-fundamentals/v/3.7/mule-concepts[Mule Concepts], link:/mule-fundamentals/v/3.7/elements-in-a-mule-flow[Elements in a Mule Flow], and link:/mule-fundamentals/v/3.7/global-elements[Global Elements].
+
+== Requirements
+
+For hardware and software requirements, please visit link:/mule-user-guide/v/3.7/hardware-and-software-requirements[Mule Hardware and Software Requirements] page.
 
 === Dependencies
-
+////
+optional
+////
 What MuleSoft software is required to get this connector to work? +
 
 *Versions* +
@@ -80,7 +51,35 @@ What versions of JAR files and MS software is required  ?. What is the version s
 *Consumers* +
 What software is required to user this connector?
 
-=== Compatibility Matrix
+=== Namespace
+
+[source, xml]
+----
+
+----
+
+=== Schema Location
+
+[source, code, linenums]
+----
+xsi:schemaLocation="
+...
+
+----
+
+For example:
+
+[source, xml, linenums]
+----
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+
+  
+      <!-- Insert your configuration elements and your flow here -->
+</mule>
+----
+
+
+=== Compatibility
 What system versions is supported ?. Patches/APIs versions
 
 ---
@@ -106,44 +105,14 @@ Are there configuration items for previous MuleSoft software for this connector?
 
 Outbound, inbound, streaming outbound  +
 
-=== Use Cases and Demos
-List use cases for this connector, including a demo for every use case. +
-
-
-=== Best Practices
-To take full advantage of the functionality … +
-
-=== Tips
-* <Information from Support>
-
-=== Integration Patterns
-
-___ recognizes these integration patterns for connecting with other systems…
-
-=== Adding to a Flow
-
-Use a ____ Connector in your application -> flowchart +
-
-=== Query Types
-
-If talking to a database, what queries are allowed by this connector? +
-
-=== Increasing Performance
-
-What can you set in the connector to increase performance?
-
----
-
 == Example Use Case
 
-Explain what this example is for.
+List potential use cases for this connector. Explain what this example is for.
 
-It should contain a fully functional Mule application as a demo, where the use case is considered. The demo needs to be simple and only considering a single use case.
+The section should contain a fully functional Mule application as a demo, where the use case is considered. Explain how to create this case with Anypoint Studio Visual editor and what the XML looks like, using a numbered list.
 
-===  Anypoint Studio Visual Editor | XML Editor
-
-Explain how to create this case with  Anypoint Studio  visual editor and XML editor +
-
+////
+optional
 [tabs]
 -----
 [tab,title="Studio Visual Editor"]
@@ -155,16 +124,70 @@ Explain how to create this case with  Anypoint Studio  visual editor and XML edi
 [tab content goes here]
 ....
 -----
+////
 
-=== Code Example
+=== Example Use Case Code
 
-Number code example lines and explain blocks of lines
+Paste this into Anypoint Studio to interact with the example use case application discussed in this guide.
+
+[source,xml,linenums]
+----
+
+----
+
+=== Demos
+////
+optional
+////
+
+=== Best Practices
+////
+optional
+////
+To take full advantage of the functionality … +
+
+=== Tips
+////
+optional
+////
+* <Information from Support>
+
+=== Integration Patterns
+////
+optional
+////
+
+___ recognizes these integration patterns for connecting with other systems…
+
+=== Adding to a Flow
+////
+optional
+////
+Use a ____ Connector in your application -> flowchart +
+
+=== Query Types
+////
+optional
+////
+If talking to a database, what queries are allowed by this connector? +
+
+=== Increasing Performance
+////
+optional
+////
+What can you set in the connector to increase performance?
+
+---
+
 
 ---
 === F.A.Q
+////
+optional
+////
 
 * Add here all the items you consider useful.
 
 === See Also
 
-* Access the link:/release-notes/xyz-connector-release-notes[XYZ Connector Release Notes].
+* Access the link:/release-notes/<System_Name>-connector-release-notes[<System_Name> Connector Release Notes].
