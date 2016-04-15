@@ -53,16 +53,16 @@ What software is required to user this connector?
 
 === Namespace and Schema
 
-[TIP]
-When designing your application in Studio, the act of dragging the connector from the palette onto the Anypoint Studio canvas should populate the XML code with the connector *namespace* and *schema location* to be included in your application.
+When designing your application in Studio, the act of dragging the connector from the palette onto the Anypoint Studio canvas should automatically populate the XML code with the connector *namespace* and *schema location*, so the connector's dependencies are accessible to your application.
 
-However, if you are coding the Mule application in Studio's XML editor or other text editor, paste these into the header of your *Configuration XML* in the locations specified below.
+[TIP]
+If you are manually coding the Mule application in Studio's XML editor or other text editor, paste these into the header of your *Configuration XML* inside the tags specified below.
 
 ==== Namespace
 
 [source, xml]
 ----
-
+xmlns:connector-name="http://www.mulesoft.org/schema/mule/connector-name
 ----
 
 ==== Schema Location
