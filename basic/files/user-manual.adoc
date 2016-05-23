@@ -22,7 +22,7 @@ First sentence introduces the connector and describes its basic function.
 
 Read through this user guide to understand how to set up and configure a basic flow using the connector. Track feature additions, compatibility, limitations and API version updates with each release of the connector using the link:/release-notes/xyz-connector-release-notes[Connector Release Notes]. Review the connector operations and functionality using the link:/link-to-github.io-or-internal-section[ Technical Reference] alongside the link:https://www.mulesoft.com/exchange#!/?filters=Salesforce&sortBy=rank[demo applications].
 
-MuleSoft maintains this connector under the link:/mule-user-guide/v/3.7/anypoint-connectors#connector-categories[_Insert Category_] support policy.
+MuleSoft maintains this connector under the link:/mule-user-guide/v/3.8/anypoint-connectors#connector-categories[_Insert Category_] support policy.
 
 
 == Prerequisites
@@ -31,12 +31,12 @@ This document assumes that you are familiar with Mule,
 ////
 examples:
 ////
-link:/mule-user-guide/v/3.7/anypoint-connectors[Anypoint Connectors], and
-link:/mule-fundamentals/v/3.7/anypoint-studio-essentials[Anypoint Studio Essentials]. To increase your familiarity with Studio, consider completing one or more link:/mule-fundamentals/v/3.7/basic-studio-tutorial[Basic Studio Tutorial]. This page assumes you understand link:/mule-fundamentals/v/3.7/mule-concepts[Mule Concepts], link:/mule-fundamentals/v/3.7/elements-in-a-mule-flow[Elements in a Mule Flow], and link:/mule-fundamentals/v/3.7/global-elements[Global Elements].
+link:/mule-user-guide/v/3.8/anypoint-connectors[Anypoint Connectors], and
+link:/mule-fundamentals/v/3.8/anypoint-studio-essentials[Anypoint Studio Essentials]. To increase your familiarity with Studio, consider completing one or more link:/mule-fundamentals/v/3.8/basic-studio-tutorial[Basic Studio Tutorial]. This page assumes you understand link:/mule-fundamentals/v/3.8/mule-concepts[Mule Concepts], link:/mule-fundamentals/v/3.8/elements-in-a-mule-flow[Elements in a Mule Flow], and link:/mule-fundamentals/v/3.8/global-elements[Global Elements].
 
 == Requirements
 
-For hardware and software requirements, please visit link:/mule-user-guide/v/3.7/hardware-and-software-requirements[Mule Hardware and Software Requirements] page.
+For hardware and software requirements, please visit link:/mule-user-guide/v/3.8/hardware-and-software-requirements[Mule Hardware and Software Requirements] page.
 
 === Dependencies
 ////
@@ -58,7 +58,7 @@ When designing your application in Studio, the act of dragging the connector fro
 [TIP]
 If you are manually coding the Mule application in Studio's XML editor or other text editor, paste these into the header of your *Configuration XML*, inside the `<mule>` tag.
 
-[source, xml]
+[source, xml,linenums]
 ----
 <mule xmlns:connector="http://www.mulesoft.org/schema/mule/connector"
   ...
@@ -70,6 +70,17 @@ If you are manually coding the Mule application in Studio's XML editor or other 
 </mule>
 ----
 
+== Maven Dependency
+
+If coding the Mule project by hand, include this Maven dependency XML snippet in your `pom.xml` file.
+
+[source,xml,linenums]
+----
+
+----
+
+[NOTE]
+The latest version of the Object Store connector is 2.0.0
 
 === Compatibility
 What system versions is supported ?. Patches/APIs versions
