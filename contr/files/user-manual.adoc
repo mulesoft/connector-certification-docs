@@ -70,13 +70,17 @@ If you are manually coding the Mule application in Studio's XML editor or other 
 </mule>
 ----
 
-== Maven Dependency
+== Using the Connector in a Mavenized Mule App
 
-If coding the Mule project by hand, include this Maven dependency XML snippet in your `pom.xml` file.
+If you are coding a Mavenized Mule application, this XML snippet must be included in your `pom.xml` file.
 
 [source,xml,linenums]
 ----
-
+<dependency>
+  <groupId></groupId>
+  <artifactId></artifactId>
+  <version></version>
+</dependency>
 ----
 
 [NOTE]
@@ -113,6 +117,14 @@ We recommend that you keep Studio up to date with its latest version. 
 == Using This Connector
 
 Outbound, inbound, streaming outbound  +
+
+See the technical reference documentation for the operations to learn about the data types that the connector expects and returns.
+
+== Managing the Connection Pool
+
+To define the pooling profile for the connector manually, access the *Pooling Profile* tab in the applicable global element for the connector.
+
+For background information on pooling, see link:/mule-user-guide/v/3.8/tuning-performance[Tuning Performance].
 
 == Example Use Case
 
