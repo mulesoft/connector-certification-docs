@@ -12,6 +12,9 @@ Image names follow "image:". Identify images using the connector name, preferabl
 URLs should always follow "link:"
 ////
 
+// Dropdown for Connector Version
+//  Children: Technical Reference / Demos 
+
 toc::[]
 
 
@@ -74,6 +77,8 @@ If you are manually coding the Mule application in Studio's XML editor or other 
 
 If you are coding a Mavenized Mule application, this XML snippet must be included in your `pom.xml` file.
 
+Inside the `<version>` tags, put the desired version number, `RELEASE` for the latest release, or `SNAPSHOT` for the latest available version.
+
 [source,xml,linenums]
 ----
 <dependency>
@@ -118,7 +123,8 @@ We recommend that you keep Studio up to date with its latest version. 
 
 Outbound, inbound, streaming outbound  +
 
-See the technical reference documentation for the operations to learn about the data types that the connector expects and returns.
+[NOTE]
+See the full list of operations for the latest version of the connector link:http://mulesoft.github.io/sns-connector/3.0.0/apidocs/mule/sns-config.html[here].
 
 == Managing the Connection Pool
 
