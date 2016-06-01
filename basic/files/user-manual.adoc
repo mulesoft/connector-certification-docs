@@ -22,7 +22,7 @@ First sentence introduces the connector and describes its basic function.
 
 Read through this user guide to understand how to set up and configure a basic flow using the connector. Track feature additions, compatibility, limitations and API version updates with each release of the connector using the link:/release-notes/xyz-connector-release-notes[Connector Release Notes]. Review the connector operations and functionality using the link:/link-to-github.io-or-internal-section[ Technical Reference] alongside the link:https://www.mulesoft.com/exchange#!/?filters=Salesforce&sortBy=rank[demo applications].
 
-MuleSoft maintains this connector under the link:/mule-user-guide/v/3.7/anypoint-connectors#connector-categories[_Insert Category_] support policy.
+MuleSoft maintains this connector under the link:/mule-user-guide/v/3.8/anypoint-connectors#connector-categories[_Insert Category_] support policy.
 
 
 == Prerequisites
@@ -31,12 +31,12 @@ This document assumes that you are familiar with Mule,
 ////
 examples:
 ////
-link:/mule-user-guide/v/3.7/anypoint-connectors[Anypoint Connectors], and
-link:/mule-fundamentals/v/3.7/anypoint-studio-essentials[Anypoint Studio Essentials]. To increase your familiarity with Studio, consider completing one or more link:/mule-fundamentals/v/3.7/basic-studio-tutorial[Basic Studio Tutorial]. This page assumes you understand link:/mule-fundamentals/v/3.7/mule-concepts[Mule Concepts], link:/mule-fundamentals/v/3.7/elements-in-a-mule-flow[Elements in a Mule Flow], and link:/mule-fundamentals/v/3.7/global-elements[Global Elements].
+link:/mule-user-guide/v/3.8/anypoint-connectors[Anypoint Connectors], and
+link:/mule-fundamentals/v/3.8/anypoint-studio-essentials[Anypoint Studio Essentials]. To increase your familiarity with Studio, consider completing one or more link:/mule-fundamentals/v/3.8/basic-studio-tutorial[Basic Studio Tutorial]. This page assumes you understand link:/mule-fundamentals/v/3.8/mule-concepts[Mule Concepts], link:/mule-fundamentals/v/3.8/elements-in-a-mule-flow[Elements in a Mule Flow], and link:/mule-fundamentals/v/3.8/global-elements[Global Elements].
 
 == Requirements
 
-For hardware and software requirements, please visit link:/mule-user-guide/v/3.7/hardware-and-software-requirements[Mule Hardware and Software Requirements] page.
+For hardware and software requirements, please visit link:/mule-user-guide/v/3.8/hardware-and-software-requirements[Mule Hardware and Software Requirements] page.
 
 === Dependencies
 ////
@@ -56,24 +56,35 @@ What software is required to user this connector?
 When designing your application in Studio, the act of dragging the connector from the palette onto the Anypoint Studio canvas should automatically populate the XML code with the connector *namespace* and *schema location*.
 
 [TIP]
-If you are manually coding the Mule application in Studio's XML editor or other text editor, paste these into the header of your *Configuration XML* inside the tags specified below.
+If you are manually coding the Mule application in Studio's XML editor or other text editor, paste these into the header of your *Configuration XML*, inside the `<mule>` tag.
 
-=== Namespace
-
-[source, xml]
+[source, xml,linenums]
 ----
-xmlns:connector-name="http://www.mulesoft.org/schema/mule/connector-name
-----
-
-=== Schema Location
-
-[source, xml]
-----
-xsi:schemaLocation="
-...
-
+<mule xmlns:connector="http://www.mulesoft.org/schema/mule/connector"
+  ...
+  xsi:schemaLocation="http://www.mulesoft.org/schema/mule/connector http://www.mulesoft.org/schema/mule/connector/current/mule-connector.xsd">
+  ...
+  <flow name="yourFlow">
+  ...
+  </flow>
+</mule>
 ----
 
+== Using the Connector in a Mavenized Mule App
+
+If you are coding a Mavenized Mule application, this XML snippet must be included in your `pom.xml` file.
+
+[source,xml,linenums]
+----
+<dependency>
+  <groupId></groupId>
+  <artifactId></artifactId>
+  <version></version>
+</dependency>
+----
+
+[NOTE]
+The latest version of the Object Store connector is 2.0.0
 
 === Compatibility
 What system versions is supported ?. Patches/APIs versions
@@ -106,6 +117,14 @@ We recommend that you keep Studio up to date with its latest version. 
 == Using This Connector
 
 Outbound, inbound, streaming outbound  +
+
+See the technical reference documentation for the operations to learn about the data types that the connector expects and returns.
+
+== Managing the Connection Pool
+
+To define the pooling profile for the connector manually, access the *Pooling Profile* tab in the applicable global element for the connector.
+
+For background information on pooling, see link:/mule-user-guide/v/3.8/tuning-performance[Tuning Performance].
 
 == Example Use Case
 
