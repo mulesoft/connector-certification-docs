@@ -13,7 +13,7 @@ URLs should always follow "link:"
 ////
 
 // Dropdown for Connector Version
-//  Children: Technical Reference / Demos 
+//  Children: Technical Reference / Demos
 
 toc::[]
 
@@ -35,11 +35,11 @@ This document assumes that you are familiar with Mule,
 examples:
 ////
 link:/mule-user-guide/v/3.8/anypoint-connectors[Anypoint Connectors], and
-link:/mule-fundamentals/v/3.8/anypoint-studio-essentials[Anypoint Studio Essentials]. To increase your familiarity with Studio, consider completing one or more link:/mule-fundamentals/v/3.8/basic-studio-tutorial[Basic Studio Tutorial]. This page assumes you understand link:/mule-fundamentals/v/3.8/mule-concepts[Mule Concepts], link:/mule-fundamentals/v/3.8/elements-in-a-mule-flow[Elements in a Mule Flow], and link:/mule-fundamentals/v/3.8/global-elements[Global Elements].
+link:/mule-fundamentals/v/3.8/anypoint-studio-essentials[Anypoint Studio Essentials]. To increase your familiarity with Studio, consider completing a link:/mule-fundamentals/v/3.8/basic-studio-tutorial[Anypoint Studio Tutorial]. This page requires some basic knowledge of link:/mule-fundamentals/v/3.8/mule-concepts[Mule Concepts], link:/mule-fundamentals/v/3.8/elements-in-a-mule-flow[Elements in a Mule Flow], and link:/mule-fundamentals/v/3.8/global-elements[Global Elements].
 
 == Requirements
 
-For hardware and software requirements, please visit link:/mule-user-guide/v/3.8/hardware-and-software-requirements[Mule Hardware and Software Requirements] page.
+For hardware and software requirements, please visit the link:/mule-user-guide/v/3.8/hardware-and-software-requirements[Hardware and Software Requirements] page.
 
 === Dependencies
 ////
@@ -77,7 +77,7 @@ If you are manually coding the Mule application in Studio's XML editor or other 
 
 If you are coding a Mavenized Mule application, this XML snippet must be included in your `pom.xml` file.
 
-Inside the `<version>` tags, put the desired version number, `RELEASE` for the latest release, or `SNAPSHOT` for the latest available version.
+Inside the `<version>` tags, put the desired version number, the word `RELEASE` for the latest release, or `SNAPSHOT` for the latest available version.
 
 [source,xml,linenums]
 ----
