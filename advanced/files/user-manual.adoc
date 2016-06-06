@@ -77,8 +77,6 @@ If you are manually coding the Mule application in Studio's XML editor or other 
 
 If you are coding a Mavenized Mule application, this XML snippet must be included in your `pom.xml` file.
 
-Inside the `<version>` tags, put the desired version number, the word `RELEASE` for the latest release, or `SNAPSHOT` for the latest available version.
-
 [source,xml,linenums]
 ----
 <dependency>
@@ -88,8 +86,9 @@ Inside the `<version>` tags, put the desired version number, the word `RELEASE` 
 </dependency>
 ----
 
-[NOTE]
-The latest version of the Object Store connector is 2.0.0
+[TIP]
+Inside the `<version>` tags, put the desired version number, the word `RELEASE` for the latest release, or `SNAPSHOT` for the latest available version.
+
 
 === Compatibility
 What system versions is supported ?. Patches/APIs versions
