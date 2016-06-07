@@ -117,15 +117,12 @@ Outbound, inbound, streaming outbound  +
 [NOTE]
 See the full list of operations for the latest version of the connector link:http://mulesoft.github.io/sns-connector/3.0.0/apidocs/mule/sns-config.html[here].
 
-== Performance
-
-To define the pooling profile for the connector manually, access the *Pooling Profile* tab in the applicable global element for the connector.
-
-For background information on pooling, see link:/mule-user-guide/v/3.8/tuning-performance[Tuning Performance].
 
 == Example Use Case
+// Limit to 10 steps
+// Do NOT provide a parallel XML walkthrough
 
-List potential use cases for this connector. Explain what this example is for.
+List potential use cases for this connector. Explain what this example is for
 
 The section should contain a fully functional Mule application as a demo, where the use case is considered. Explain how to create this case with Anypoint Studio Visual editor and what the XML looks like, using a numbered list.
 
@@ -144,7 +141,7 @@ optional
 -----
 ////
 
-=== Example Use Case Code
+=== Example Use Case - XML
 
 Paste this into Anypoint Studio to interact with the example use case application discussed in this guide.
 
@@ -155,8 +152,24 @@ Paste this into Anypoint Studio to interact with the example use case applicatio
 
 === Demos
 ////
+add links to demos
+////
+
+
+
+=== Integration Patterns
+////
 optional
 ////
+
+___ recognizes these integration patterns for connecting with other systems…
+
+
+== Augment Connector Performance
+
+To define the pooling profile for the connector manually, access the *Pooling Profile* tab in the applicable global element for the connector.
+
+For background information on pooling, see link:/mule-user-guide/v/3.8/tuning-performance[Tuning Performance].
 
 === Best Practices
 ////
@@ -169,42 +182,6 @@ To take full advantage of the functionality … +
 optional
 ////
 * <Information from Support>
-
-=== Integration Patterns
-////
-optional
-////
-
-___ recognizes these integration patterns for connecting with other systems…
-
-=== Adding to a Flow
-////
-optional
-////
-Use a ____ Connector in your application -> flowchart +
-
-=== Query Types
-////
-optional
-////
-If talking to a database, what queries are allowed by this connector? +
-
-=== Increasing Performance
-////
-optional
-////
-What can you set in the connector to increase performance?
-
----
-
-
----
-=== F.A.Q
-////
-optional
-////
-
-* Add here all the items you consider useful.
 
 === See Also
 
