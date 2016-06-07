@@ -152,7 +152,7 @@ add links to demos
 
 === Example Use Case
 // Limit to 10 steps
-// Do NOT provide a parallel XML walkthrough
+// Do NOT provide a parallel XML walkthrough. Weave any XML details into steps. Also avoid any unnecessary or marginally helpful screenshots
 
 List potential use cases for this connector. Explain what this example is for
 
