@@ -150,7 +150,7 @@ Paste this into Anypoint Studio to interact with the example use case applicatio
 
 ----
 
-=== Demos
+=== Demo Mule Applications Using Connector
 ////
 add links to demos
 ////
@@ -165,7 +165,7 @@ optional
 ___ recognizes these integration patterns for connecting with other systems…
 
 
-== Augment Connector Performance
+== Connector Performance
 
 To define the pooling profile for the connector manually, access the *Pooling Profile* tab in the applicable global element for the connector.
 
