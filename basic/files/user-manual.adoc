@@ -37,10 +37,6 @@ examples:
 link:/mule-user-guide/v/3.8/anypoint-connectors[Anypoint Connectors], and
 link:/mule-fundamentals/v/3.8/anypoint-studio-essentials[Anypoint Studio Essentials]. To increase your familiarity with Studio, consider completing a link:/mule-fundamentals/v/3.8/basic-studio-tutorial[Anypoint Studio Tutorial]. This page requires some basic knowledge of link:/mule-fundamentals/v/3.8/mule-concepts[Mule Concepts], link:/mule-fundamentals/v/3.8/elements-in-a-mule-flow[Elements in a Mule Flow], and link:/mule-fundamentals/v/3.8/global-elements[Global Elements].
 
-== Requirements
-
-For hardware and software requirements, please visit the link:/mule-user-guide/v/3.8/hardware-and-software-requirements[Hardware and Software Requirements] page.
-
 === Dependencies
 ////
 optional
@@ -54,7 +50,7 @@ What versions of JAR files and MS software is required  ?. What is the version s
 *Consumers* +
 What software is required to user this connector?
 
-== Namespace and Schema
+== Connector Namespace and Schema
 
 When designing your application in Studio, the act of dragging the connector from the palette onto the Anypoint Studio canvas should automatically populate the XML code with the connector *namespace* and *schema location*.
 
@@ -93,15 +89,13 @@ Inside the `<version>` tags, put the desired version number, the word `RELEASE` 
 === Compatibility
 What system versions is supported ?. Patches/APIs versions
 
----
 
-== Installing and Configuring
+== Install the Connector
 
-=== Installing
+You can install the connector in Anypoint Studio using the instructions in
+link:/mule-fundamentals/v/3.8/anypoint-exchange#installing-a-connector-from-anypoint-exchange[Installing a Connector from Anypoint Exchange].
 
-How do you install this connector?
-
-=== Configuring
+== Configure the Connector Global Element
 
 What do you set on configuration? +
 
@@ -114,9 +108,7 @@ If you’re currently using an older version of the connector, a small popup app
 . *Restart* Studio when prompted. 
 . After restarting, when creating a flow and using the Object Store Connector, if you have several versions of the connector installed, you may be asked which version you would like to use. Choose the version you would like to use.
 
-We recommend that you keep Studio up to date with its latest version. 
-
----
+Additionally, we recommend that you keep Studio up to date with its latest version. 
 
 == Using This Connector
 
@@ -125,7 +117,7 @@ Outbound, inbound, streaming outbound  +
 [NOTE]
 See the full list of operations for the latest version of the connector link:http://mulesoft.github.io/sns-connector/3.0.0/apidocs/mule/sns-config.html[here].
 
-== Managing the Connection Pool
+== Performance
 
 To define the pooling profile for the connector manually, access the *Pooling Profile* tab in the applicable global element for the connector.
 
