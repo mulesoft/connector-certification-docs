@@ -102,7 +102,7 @@ If you are manually coding the Mule application in Studio's XML editor or other 
                http://www.mulesoft.org/schema/mule/sns
                http://www.mulesoft.org/schema/mule/connector/current/mule-connector.xsd">
 
-      <!-- here go your global configuration elements and flows -->
+      <!-- put your global configuration elements and flows here -->
 
 </mule>
 ----
@@ -122,7 +122,10 @@ If you are coding a Mavenized Mule application, this XML snippet must be include
 ----
 
 [TIP]
-Inside the `<version>` tags, put the desired version number, the word `RELEASE` for the latest release, or `SNAPSHOT` for the latest available version.
+Inside the `<version>` tags, put the desired version number, the word `RELEASE` for the latest release, or `SNAPSHOT` for the latest available version. The available versions to date are:
+
+* *x.y.z*
+
 
 == Demo Mule Applications Using Connector
 ////
