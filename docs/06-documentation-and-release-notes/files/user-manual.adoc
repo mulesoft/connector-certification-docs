@@ -102,7 +102,7 @@ If you are manually coding the Mule application in Studio's XML editor or other 
                http://www.mulesoft.org/schema/mule/sns
                http://www.mulesoft.org/schema/mule/connector/current/mule-connector.xsd">
 
-      <!-- here go your global configuration elements and flows -->
+      <!-- put your global configuration elements and flows here -->
 
 </mule>
 ----
