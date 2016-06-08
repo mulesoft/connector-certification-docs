@@ -97,7 +97,7 @@ What do you set on configuration? +
 Outbound, inbound, streaming outbound  +
 
 [NOTE]
-See the full list of operations for the latest version of the connector link:http://mulesoft.github.io/sns-connector/3.0.0/apidocs/mule/sns-config.html[here].
+See the full list of operations for the latest version of the connector link:[here].
 
 
 === Using the Connector in a Mavenized Mule App
