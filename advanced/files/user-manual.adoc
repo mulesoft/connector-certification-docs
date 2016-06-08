@@ -53,27 +53,6 @@ What versions of JAR files and MS software is required  ?. What is the version s
 *Consumers* +
 What software is required to user this connector?
 
-=== Connector Namespace and Schema
-
-When designing your application in Studio, the act of dragging the connector from the palette onto the Anypoint Studio canvas should automatically populate the XML code with the connector *namespace* and *schema location*.
-
-*Namespace:* `http://www.mulesoft.org/schema/mule/connector`
-*Schema Location:* `http://www.mulesoft.org/schema/mule/s3/current/mule-connector.xsd`
-
-[TIP]
-If you are manually coding the Mule application in Studio's XML editor or other text editor, paste these into the header of your *Configuration XML*, inside the `<mule>` tag.
-
-[source, xml,linenums]
-----
-<mule xmlns:connector="http://www.mulesoft.org/schema/mule/connector"
-  ...
-  xsi:schemaLocation="http://www.mulesoft.org/schema/mule/connector http://www.mulesoft.org/schema/mule/connector/current/mule-connector.xsd">
-  ...
-  <flow name="yourFlow">
-  ...
-  </flow>
-</mule>
-----
 
 == Install the Connector
 
@@ -102,6 +81,28 @@ Outbound, inbound, streaming outbound  +
 [NOTE]
 See the full list of operations for the latest version of the connector link:[here].
 
+=== Connector Namespace and Schema
+
+When designing your application in Studio, the act of dragging the connector from the palette onto the Anypoint Studio canvas should automatically populate the XML code with the connector *namespace* and *schema location*.
+
+*Namespace:* `http://www.mulesoft.org/schema/mule/connector`
+*Schema Location:* `http://www.mulesoft.org/schema/mule/s3/current/mule-connector.xsd`
+
+[TIP]
+If you are manually coding the Mule application in Studio's XML editor or other text editor, paste these into the header of your *Configuration XML*, inside the `<mule>` tag.
+
+[source, xml,linenums]
+----
+<mule xmlns:connector="http://www.mulesoft.org/schema/mule/connector"
+  ...
+  xsi:schemaLocation="http://www.mulesoft.org/schema/mule/connector http://www.mulesoft.org/schema/mule/connector/current/mule-connector.xsd">
+  ...
+  <flow name="yourFlow">
+  ...
+  </flow>
+</mule>
+----
+
 
 === Using the Connector in a Mavenized Mule App
 
@@ -118,34 +119,6 @@ If you are coding a Mavenized Mule application, this XML snippet must be include
 
 [TIP]
 Inside the `<version>` tags, put the desired version number, the word `RELEASE` for the latest release, or `SNAPSHOT` for the latest available version.
-
-
-== Connector Performance
-
-To define the pooling profile for the connector manually, access the *Pooling Profile* tab in the applicable global element for the connector.
-
-For background information on pooling, see link:/mule-user-guide/v/3.8/tuning-performance[Tuning Performance].
-
-
-=== Integration Patterns
-////
-optional
-////
-
-___ recognizes these integration patterns for connecting with other systems…
-
-=== Best Practices
-////
-optional
-////
-To take full advantage of the functionality … +
-
-=== Tips
-////
-optional
-////
-* <Information from Support>
-
 
 == Demo Mule Applications Using Connector
 ////
@@ -185,6 +158,34 @@ Paste this into Anypoint Studio to interact with the example use case applicatio
 
 ----
 
-=== See Also
+
+== Connector Performance
+
+To define the pooling profile for the connector manually, access the *Pooling Profile* tab in the applicable global element for the connector.
+
+For background information on pooling, see link:/mule-user-guide/v/3.8/tuning-performance[Tuning Performance].
+
+
+=== Integration Patterns
+////
+optional
+////
+
+___ recognizes these integration patterns for connecting with other systems…
+
+=== Best Practices
+////
+optional
+////
+To take full advantage of the functionality … +
+
+=== Tips
+////
+optional
+////
+* <Information from Support>
+
+
+== Resources
 
 * Access the link:/release-notes/<System_Name>-connector-release-notes[<System_Name> Connector Release Notes].
