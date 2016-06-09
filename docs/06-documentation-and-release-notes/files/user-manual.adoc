@@ -31,9 +31,6 @@ MuleSoft maintains this connector under the link:/mule-user-guide/v/3.8/anypoint
 == Prerequisites
 
 This document assumes that you are familiar with Mule,
-////
-examples:
-////
 link:/mule-user-guide/v/3.8/anypoint-connectors[Anypoint Connectors], and
 link:/mule-fundamentals/v/3.8/anypoint-studio-essentials[Anypoint Studio Essentials]. To increase your familiarity with Studio, consider completing a link:/mule-fundamentals/v/3.8/basic-studio-tutorial[Anypoint Studio Tutorial]. This page requires some basic knowledge of link:/mule-fundamentals/v/3.8/mule-concepts[Mule Concepts], link:/mule-fundamentals/v/3.8/elements-in-a-mule-flow[Elements in a Mule Flow], and link:/mule-fundamentals/v/3.8/global-elements[Global Elements].
 
@@ -79,14 +76,14 @@ What do you set on configuration? +
 Outbound, inbound, streaming outbound  +
 
 [NOTE]
-See the full list of operations for the latest version of the connector link:[here].
+See a full list of operations for any version of the connector link:[here].
 
 === Connector Namespace and Schema
 
 When designing your application in Studio, the act of dragging the connector from the palette onto the Anypoint Studio canvas should automatically populate the XML code with the connector *namespace* and *schema location*.
 
 *Namespace:* `http://www.mulesoft.org/schema/mule/connector`
-*Schema Location:* `http://www.mulesoft.org/schema/mule/s3/current/mule-connector.xsd`
+*Schema Location:* `http://www.mulesoft.org/schema/mule/connector/current/mule-connector.xsd`
 
 [TIP]
 If you are manually coding the Mule application in Studio's XML editor or other text editor, paste these into the header of your *Configuration XML*, inside the `<mule>` tag.
