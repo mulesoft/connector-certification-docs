@@ -35,6 +35,13 @@ link:/mule-user-guide/v/3.8/anypoint-connectors[Anypoint Connectors], and
 link:/mule-fundamentals/v/3.8/anypoint-studio-essentials[Anypoint Studio Essentials]. To increase your familiarity with Studio, consider completing a link:/mule-fundamentals/v/3.8/basic-studio-tutorial[Anypoint Studio Tutorial]. This page requires some basic knowledge of link:/mule-fundamentals/v/3.8/mule-concepts[Mule Concepts], link:/mule-fundamentals/v/3.8/elements-in-a-mule-flow[Elements in a Mule Flow], and link:/mule-fundamentals/v/3.8/global-elements[Global Elements].
 
 
+[[requirements]]
+=== Hardware and Software Requirements
+
+For hardware and software requirements, please visit the link:/mule-user-guide/v/3.8/hardware-and-software-requirements[Hardware and Software Requirements] page.
+
+
+
 === Compatibility
 
 What system versions is supported ?. Patches/APIs versions
@@ -69,7 +76,7 @@ Additionally, we recommend that you keep Studio up to date with its latest versi
 
 == Configure the Connector Global Element
 
-To use the <connector> connector in your Mule application, you must configure a global <connector> element that can be used by the <connector> connector (read more about  link:/mule-fundamentals/v/3.8/global-elements[Global Elements].) The <connector> connector offers the following global configuration(s), requiring the following credentials: *Username*, *Password*...
+To use the <connector> connector in your Mule application, you must configure a global <connector> element that can be used by the <connector> connector (read more about  link:/mule-fundamentals/v/3.8/global-elements[Global Elements]). The <connector> connector offers the following global configuration(s), requiring the following credentials: *Username*, *Password*...
 
 [width="100a",cols="50a,50a",options="header",]
 |===
