@@ -69,7 +69,17 @@ Additionally, we recommend that you keep Studio up to date with its latest versi
 
 == Configure the Connector Global Element
 
-What do you set on configuration? +
+To use the <connector> connector in your Mule application, you must configure a global <connector> element that can be used by the <connector> connector (read more about  link:/mule-fundamentals/v/3.8/global-elements[Global Elements].) The <connector> connector offers the following global configuration(s), requiring the following credentials: *Username*, *Password*...
+
+[width="100a",cols="50a,50a",options="header",]
+|===
+|Field |Description
+|*Username* |Enter the username to log into <>.
+|*Password* |Enter the corresponding password.
+
+|===
+
+//image:<connector>-global-element-props.png[<connector>-config]
 
 == Using the Connector
 
@@ -86,7 +96,7 @@ When designing your application in Studio, the act of dragging the connector fro
 *Schema Location:* `http://www.mulesoft.org/schema/mule/connector/current/mule-connector.xsd`
 
 [TIP]
-If you are manually coding the Mule application in Studio's XML editor or other text editor, paste these into the header of your *Configuration XML*, inside the `<mule>` tag.
+If you are manually coding the Mule application in Studio's XML editor or other text editor, define the namespace and schema location in the header of your *Configuration XML*, inside the `<mule>` tag.
 
 [source, xml,linenums]
 ----
