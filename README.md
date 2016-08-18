@@ -15,4 +15,4 @@ http://mulesoft.github.io/connector-certification-docs/
 4. Open the __HTML__ generated file and there you go.
 
 ## Push to `gh-pages`
-5. `rake docs:upload` performs a forced update of `gh-pages`
+5. While in the `develop` branch`, run `rake docs:upload`. This performs a forced update of `gh-pages` remote
