@@ -24,7 +24,7 @@ Points to the docs.mulesoft pages for documentation on the functional aspects of
 
 === Version <Connector_Version> Compatibility
 
-[width="100%", cols=",", options="header"]
+[%header%autowidth]
 |===
 |Software |Version
 |Mule Runtime |<Put_Minimum_Mule_Version_Here>
