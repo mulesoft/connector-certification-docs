@@ -1,7 +1,10 @@
 # README.md Template
 
+[IMPORTANT]
+See the user-manual.adoc or the release-notes.adoc templates for documentation format guidance.
 
-## [Name] Anypoint™ Connector
+
+## Anypoint™ Connector for [Name] 
 
 
 [Connector description including destination service or application]
