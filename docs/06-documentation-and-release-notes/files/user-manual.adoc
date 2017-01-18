@@ -28,7 +28,7 @@ Read through this user guide to understand how to set up and configure a basic f
 MuleSoft maintains this connector under the link:/mule-user-guide/v/3.8/anypoint-connectors#connector-categories[_Insert Category_] support policy.
 
 
-== Prerequisites
+== Important Concepts
 
 This document assumes that you are familiar with Mule,
 link:/mule-user-guide/v/3.8/anypoint-connectors[Anypoint Connectors], and
@@ -36,27 +36,9 @@ link:/anypoint-studio/v/6[Anypoint Studio]. To increase your familiarity with St
 
 
 [[requirements]]
-=== Hardware and Software Requirements
+== Hardware and Software Requirements
 
-For hardware and software requirements, please visit the link:/mule-user-guide/v/3.8/hardware-and-software-requirements[Hardware and Software Requirements] page.
-
-
-
-=== Compatibility
-
-What system versions is supported ?. Patches/APIs versions
-////
-optional
-////
-What MuleSoft software is required to get this connector to work? +
-
-*Versions* +
-
-What versions of JAR files and MS software is required  ?. What is the version sandbox version during the testing ? +
-
-*Consumers* +
-What software is required to user this connector?
-
+For hardware and software requirements, please visit the link:/release-notes/connector[Connector Release Notes].
 
 == How to Install
 
@@ -74,26 +56,12 @@ If you’re currently using an older version of the connector, a small popup app
 
 Additionally, we recommend that you keep Studio up to date with its latest version.
 
-== How to Configure
-
-To use the <connector> connector in your Mule application, you must configure a global <connector> element that can be used by the <connector> connector (read more about  link:/mule-user-guide/v/3.8/global-elements[Global Elements]). The <connector> connector offers the following global configuration(s), requiring the following credentials: *Username*, *Password*...
-
-[%header,cols="50a,50a"]
-|===
-|Field |Description
-|*Username* |Enter the username to log into <>.
-|*Password* |Enter the corresponding password.
-
-|===
-
-//image:<connector>-global-element-props.png[<connector>-config]
-
 == Connector Namespace and Schema
 
 When designing your application in Studio, the act of dragging the connector from the palette onto the Anypoint Studio canvas should automatically populate the XML code with the connector *namespace* and *schema location*.
 
-*Namespace:* `http://www.mulesoft.org/schema/mule/connector`
-*Schema Location:* `http://www.mulesoft.org/schema/mule/connector/current/mule-connector.xsd`
+*Namespace:* `+http://www.mulesoft.org/schema/mule/connector+`
+*Schema Location:* `+http://www.mulesoft.org/schema/mule/connector/current/mule-connector.xsd+`
 
 [TIP]
 If you are manually coding the Mule application in Studio's XML editor or other text editor, define the namespace and schema location in the header of your *Configuration XML*, inside the `<mule>` tag.
@@ -134,6 +102,20 @@ Inside the `<version>` tags, put the desired version number, the word `RELEASE` 
 
 * *x.y.z*
 ====
+
+== How to Configure
+
+To use the <connector> connector in your Mule application, you must configure a global <connector> element that can be used by the <connector> connector (read more about  link:/mule-user-guide/v/3.8/global-elements[Global Elements]). The <connector> connector offers the following global configuration(s), requiring the following credentials: *Username*, *Password*...
+
+[%header,cols="50a,50a"]
+|===
+|Field |Description
+|*Username* |Enter the username to log into <>.
+|*Password* |Enter the corresponding password.
+
+|===
+
+//image:<connector>-global-element-props.png[<connector>-config]
 
 
 == Operations
