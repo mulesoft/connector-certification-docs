@@ -88,7 +88,7 @@ To use the <connector> connector in your Mule application, you must configure a 
 
 //image:<connector>-global-element-props.png[<connector>-config]
 
-=== Required Connector Namespace and Schema
+== Required Connector Namespace and Schema
 
 When designing your application in Studio, the act of dragging the connector from the palette onto the Anypoint Studio canvas should automatically populate the XML code with the connector *namespace* and *schema location*.
 
@@ -115,7 +115,7 @@ If you are manually coding the Mule application in Studio's XML editor or other 
 ----
 
 
-=== Maven Dependency Information
+== Maven Dependency Information
 
 Maven is backing the application, this XML snippet must be included in your `pom.xml` file.
 
