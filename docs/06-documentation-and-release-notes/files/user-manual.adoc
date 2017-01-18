@@ -18,7 +18,7 @@ URLs should always follow "link:"
 toc::[]
 
 
-== What is the Connector?
+== About
 
 First sentence introduces the connector and describes its basic function.
 //Global rule: the word "connector" should be lower case except when appearing in titles, important URL anchors, and after a MuleSoft tradename such as "Anypoint".
