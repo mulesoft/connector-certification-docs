@@ -74,7 +74,7 @@ If you’re currently using an older version of the connector, a small popup app
 
 Additionally, we recommend that you keep Studio up to date with its latest version.
 
-== Configuring the Connector Global Element
+== How to Configure
 
 To use the <connector> connector in your Mule application, you must configure a global <connector> element that can be used by the <connector> connector (read more about  link:/mule-user-guide/v/3.8/global-elements[Global Elements]). The <connector> connector offers the following global configuration(s), requiring the following credentials: *Username*, *Password*...
 
@@ -88,14 +88,7 @@ To use the <connector> connector in your Mule application, you must configure a 
 
 //image:<connector>-global-element-props.png[<connector>-config]
 
-== Using the Connector
-
-Outbound, inbound, streaming outbound  +
-
-[NOTE]
-See a full list of operations for any version of the connector link:[here].
-
-=== Connector Namespace and Schema
+=== Required Connector Namespace and Schema
 
 When designing your application in Studio, the act of dragging the connector from the palette onto the Anypoint Studio canvas should automatically populate the XML code with the connector *namespace* and *schema location*.
 
@@ -122,7 +115,7 @@ If you are manually coding the Mule application in Studio's XML editor or other 
 ----
 
 
-=== Using the Connector in a Mavenized Mule App
+=== Using in a Mavenized Mule App
 
 If you are coding a Mavenized Mule application, this XML snippet must be included in your `pom.xml` file.
 
@@ -143,43 +136,36 @@ Inside the `<version>` tags, put the desired version number, the word `RELEASE` 
 ====
 
 
-== Demo Mule Applications Using Connector
-////
-add links to demos
-////
+== Operations
+
+Outbound, inbound, streaming outbound  +
+
+[NOTE]
+See a full list of operations for any version of the connector link:[here].
 
 
-=== Example Use Case
+== Common Use Cases
+
+Explain the common and less intuitive use cases and provide links to them in the bullets.
+//These may include an example app that can be deployed in Mule or links to Exchange
+
+* link:#use-case-1[Configure Connector to ...]
+* link:#use-case-2[Configure Authentication via ...]
+
+
+[use-case-1]
+=== Configure Connector to ...
 // Limit to 10 steps
 // Do NOT provide a parallel XML walkthrough. Weave any XML details into steps. Also avoid any unnecessary or marginally helpful screenshots
 
-List potential use cases for this connector. Explain what this example is for
+Explain what the use case and provide an example if possible.
 
-The section should contain a fully functional Mule application as a demo, where the use case is considered. Explain how to create this case with Anypoint Studio Visual editor and what the XML looks like, using a numbered list.
+The section should contain a fully functional Mule application as a demo, where the use case is considered. Explain how to create this case with Anypoint Studio Visual editor and provide the app.
 
-////
-optional
-[tabs]
------
-[tab,title="Studio Visual Editor"]
-....
-[tab content goes here]
-....
-[tab,title="XML Editor"]
-....
-[tab content goes here]
-....
------
-////
+Download the deployable app archive and import into Anypoint Studio to interact with the example application.
 
-=== Example Use Case - XML
-
-Paste this into Anypoint Studio to interact with the example use case application discussed in this guide.
-
-[source,xml,linenums]
-----
-
-----
+[use-case-2]
+=== Configure Authentication via ...
 
 
 == Connector Performance
