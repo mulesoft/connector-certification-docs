@@ -58,7 +58,7 @@ What versions of JAR files and MS software is required  ?. What is the version s
 What software is required to user this connector?
 
 
-== Installing the Connector
+== How to Install
 
 You can install the connector in Anypoint Studio using the instructions in
 link:/getting-started/anypoint-exchange#installing-a-connector-from-anypoint-exchange[Installing a Connector from Anypoint Exchange].
