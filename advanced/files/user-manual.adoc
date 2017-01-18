@@ -18,7 +18,7 @@ URLs should always follow "link:"
 toc::[]
 
 
-== Introduction
+== What is the Connector?
 
 First sentence introduces the connector and describes its basic function.
 //Global rule: the word "connector" should be lower case except when appearing in titles, important URL anchors, and after a MuleSoft tradename such as "Anypoint".
@@ -32,7 +32,7 @@ MuleSoft maintains this connector under the link:/mule-user-guide/v/3.8/anypoint
 
 This document assumes that you are familiar with Mule,
 link:/mule-user-guide/v/3.8/anypoint-connectors[Anypoint Connectors], and
-link:/mule-fundamentals/v/3.8/anypoint-studio-essentials[Anypoint Studio Essentials]. To increase your familiarity with Studio, consider completing a link:/mule-fundamentals/v/3.8/basic-studio-tutorial[Anypoint Studio Tutorial]. This page requires some basic knowledge of link:/mule-fundamentals/v/3.8/mule-concepts[Mule Concepts], link:/mule-fundamentals/v/3.8/elements-in-a-mule-flow[Elements in a Mule Flow], and link:/mule-fundamentals/v/3.8/global-elements[Global Elements].
+link:/anypoint-studio/v/6[Anypoint Studio]. To increase your familiarity with Studio, consider completing a link:/anypoint-studio/v/6/basic-studio-tutorial[Anypoint Studio Tutorial]. This page requires some basic knowledge of link:/mule-user-guide/v/3.8/mule-concepts[Mule Concepts], link:/mule-user-guide/v/3.8/elements-in-a-mule-flow[Elements in a Mule Flow], and link:/mule-user-guide/v/3.8/global-elements[Global Elements].
 
 
 [[requirements]]
@@ -58,10 +58,10 @@ What versions of JAR files and MS software is required  ?. What is the version s
 What software is required to user this connector?
 
 
-== Installing the Connector
+== How to Install
 
 You can install the connector in Anypoint Studio using the instructions in
-link:/mule-fundamentals/v/3.8/anypoint-exchange#installing-a-connector-from-anypoint-exchange[Installing a Connector from Anypoint Exchange].
+link:/getting-started/anypoint-exchange#installing-a-connector-from-anypoint-exchange[Installing a Connector from Anypoint Exchange].
 
 === Upgrading from an Older Version
 
@@ -74,11 +74,11 @@ If you’re currently using an older version of the connector, a small popup app
 
 Additionally, we recommend that you keep Studio up to date with its latest version.
 
-== Configuring the Connector Global Element
+== How to Configure
 
-To use the <connector> connector in your Mule application, you must configure a global <connector> element that can be used by the <connector> connector (read more about  link:/mule-fundamentals/v/3.8/global-elements[Global Elements]). The <connector> connector offers the following global configuration(s), requiring the following credentials: *Username*, *Password*...
+To use the <connector> connector in your Mule application, you must configure a global <connector> element that can be used by the <connector> connector (read more about  link:/mule-user-guide/v/3.8/global-elements[Global Elements]). The <connector> connector offers the following global configuration(s), requiring the following credentials: *Username*, *Password*...
 
-[width="100a",cols="50a,50a",options="header",]
+[%header,cols="50a,50a"]
 |===
 |Field |Description
 |*Username* |Enter the username to log into <>.
@@ -88,14 +88,7 @@ To use the <connector> connector in your Mule application, you must configure a 
 
 //image:<connector>-global-element-props.png[<connector>-config]
 
-== Using the Connector
-
-Outbound, inbound, streaming outbound  +
-
-[NOTE]
-See a full list of operations for any version of the connector link:[here].
-
-=== Connector Namespace and Schema
+=== Required Connector Namespace and Schema
 
 When designing your application in Studio, the act of dragging the connector from the palette onto the Anypoint Studio canvas should automatically populate the XML code with the connector *namespace* and *schema location*.
 
@@ -122,9 +115,9 @@ If you are manually coding the Mule application in Studio's XML editor or other 
 ----
 
 
-=== Using the Connector in a Mavenized Mule App
+=== Maven Dependency Information
 
-If you are coding a Mavenized Mule application, this XML snippet must be included in your `pom.xml` file.
+Maven is backing the application, this XML snippet must be included in your `pom.xml` file.
 
 [source,xml,linenums]
 ----
@@ -143,43 +136,36 @@ Inside the `<version>` tags, put the desired version number, the word `RELEASE` 
 ====
 
 
-== Demo Mule Applications Using Connector
-////
-add links to demos
-////
+== Operations
+
+Outbound, inbound, streaming outbound  +
+
+[NOTE]
+See a full list of operations for any version of the connector link:[here].
 
 
-=== Example Use Case
+== Common Use Cases
+
+Explain the common and less intuitive use cases and provide links to them in the bullets.
+//These may include an example app that can be deployed in Mule or links to Exchange
+
+* link:#use-case-1[Configure Connector to ...]
+* link:#use-case-2[Configure Authentication via ...]
+
+
+[use-case-1]
+=== Configure Connector to ...
 // Limit to 10 steps
 // Do NOT provide a parallel XML walkthrough. Weave any XML details into steps. Also avoid any unnecessary or marginally helpful screenshots
 
-List potential use cases for this connector. Explain what this example is for
+Explain what the use case and provide an example if possible.
 
-The section should contain a fully functional Mule application as a demo, where the use case is considered. Explain how to create this case with Anypoint Studio Visual editor and what the XML looks like, using a numbered list.
+The section should contain a fully functional Mule application as a demo, where the use case is considered. Explain how to create this case with Anypoint Studio Visual editor and provide the app.
 
-////
-optional
-[tabs]
------
-[tab,title="Studio Visual Editor"]
-....
-[tab content goes here]
-....
-[tab,title="XML Editor"]
-....
-[tab content goes here]
-....
------
-////
+Download the deployable app archive and import into Anypoint Studio to interact with the example application.
 
-=== Example Use Case - XML
-
-Paste this into Anypoint Studio to interact with the example use case application discussed in this guide.
-
-[source,xml,linenums]
-----
-
-----
+[use-case-2]
+=== Configure Authentication via ...
 
 
 == Connector Performance

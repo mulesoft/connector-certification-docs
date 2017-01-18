@@ -13,7 +13,7 @@ Sentences describing the connector's functionality and basic information that ap
 
 link:/<System_Name>-connector[<System_Name> Connector User Guide]
 ////
-Points to the docs.mulesoft pages for documentation on the functional aspects of the connector. e.g.: link:/mule-user-guide/v/3.7/microsoft-sharepoint-2013-connector[Microsoft SharePoint 2013 Connector]
+Points to the docs.mulesoft pages for documentation on the functional aspects of the connector. e.g.: link:/mule-user-guide/v/3.8/connector-x[Connector X User Guide]
 ////
 
 == <Connector_Version> - <Release_date>
@@ -24,7 +24,7 @@ Points to the docs.mulesoft pages for documentation on the functional aspects of
 
 === Version <Connector_Version> Compatibility
 
-[width="100%", cols=",", options="header"]
+[%header%autowidth]
 |===
 |Software |Version
 |Mule Runtime |<Put_Minimum_Mule_Version_Here>
@@ -89,6 +89,6 @@ If you’re currently using a connector version <old_connector_version_2> this c
 ////
 could also be named See Also
 ////
-* Learn how to link:/mule-user-guide/v/3.7/installing-connectors[Install Anypoint Connectors] using Anypoint Exchange.
-* Access MuleSoft’s MuleForge link:http://forum.mulesoft.org/mulesoft[Forum] to pose questions and get help from Mule’s broad community of users.
-* To access MuleSoft’s expert support team, link:http://www.mulesoft.com/mule-esb-subscription[subscribe] to Mule ESB Enterprise and log in to MuleSoft’s link:http://www.mulesoft.com/support-login[Customer Portal].
+* Learn how to link:/mule-user-guide/v/3.8/installing-connectors[Install Anypoint Connectors] using Anypoint Exchange.
+* Access the link:http://forum.mulesoft.org/mulesoft[MuleSoft Forum] to pose questions and get help from Mule’s broad community of users.
+* To access MuleSoft’s expert support team, link:http://www.mulesoft.com/mule-esb-subscription[subscribe] and log in to MuleSoft’s link:http://www.mulesoft.com/support-login[Customer Portal].
