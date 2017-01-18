@@ -115,9 +115,9 @@ If you are manually coding the Mule application in Studio's XML editor or other 
 ----
 
 
-=== Using in a Mavenized Mule App
+=== Maven Dependency Information
 
-If you are coding a Mavenized Mule application, this XML snippet must be included in your `pom.xml` file.
+Maven is backing the application, this XML snippet must be included in your `pom.xml` file.
 
 [source,xml,linenums]
 ----
