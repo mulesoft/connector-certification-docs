@@ -18,7 +18,7 @@ URLs should always follow "link:"
 toc::[]
 
 
-== Introduction
+== What is the Connector?
 
 First sentence introduces the connector and describes its basic function.
 //Global rule: the word "connector" should be lower case except when appearing in titles, important URL anchors, and after a MuleSoft tradename such as "Anypoint".
@@ -32,7 +32,7 @@ MuleSoft maintains this connector under the link:/mule-user-guide/v/3.8/anypoint
 
 This document assumes that you are familiar with Mule,
 link:/mule-user-guide/v/3.8/anypoint-connectors[Anypoint Connectors], and
-link:/mule-fundamentals/v/3.8/anypoint-studio-essentials[Anypoint Studio Essentials]. To increase your familiarity with Studio, consider completing a link:/mule-fundamentals/v/3.8/basic-studio-tutorial[Anypoint Studio Tutorial]. This page requires some basic knowledge of link:/mule-fundamentals/v/3.8/mule-concepts[Mule Concepts], link:/mule-fundamentals/v/3.8/elements-in-a-mule-flow[Elements in a Mule Flow], and link:/mule-fundamentals/v/3.8/global-elements[Global Elements].
+link:/anypoint-studio/v/6[Anypoint Studio]. To increase your familiarity with Studio, consider completing a link:/anypoint-studio/v/6/basic-studio-tutorial[Anypoint Studio Tutorial]. This page requires some basic knowledge of link:/mule-user-guide/v/3.8/mule-concepts[Mule Concepts], link:/mule-user-guide/v/3.8/elements-in-a-mule-flow[Elements in a Mule Flow], and link:/mule-user-guide/v/3.8/global-elements[Global Elements].
 
 
 [[requirements]]
@@ -61,7 +61,7 @@ What software is required to user this connector?
 == Installing the Connector
 
 You can install the connector in Anypoint Studio using the instructions in
-link:/mule-fundamentals/v/3.8/anypoint-exchange#installing-a-connector-from-anypoint-exchange[Installing a Connector from Anypoint Exchange].
+link:/getting-started/anypoint-exchange#installing-a-connector-from-anypoint-exchange[Installing a Connector from Anypoint Exchange].
 
 === Upgrading from an Older Version
 
@@ -76,7 +76,7 @@ Additionally, we recommend that you keep Studio up to date with its latest versi
 
 == Configuring the Connector Global Element
 
-To use the <connector> connector in your Mule application, you must configure a global <connector> element that can be used by the <connector> connector (read more about  link:/mule-fundamentals/v/3.8/global-elements[Global Elements]). The <connector> connector offers the following global configuration(s), requiring the following credentials: *Username*, *Password*...
+To use the <connector> connector in your Mule application, you must configure a global <connector> element that can be used by the <connector> connector (read more about  link:/mule-user-guide/v/3.8/global-elements[Global Elements]). The <connector> connector offers the following global configuration(s), requiring the following credentials: *Username*, *Password*...
 
 [%header,cols="50a,50a"]
 |===
