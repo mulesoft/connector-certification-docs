@@ -109,6 +109,8 @@ Inside the `<version>` tags, put the desired version number, the word `RELEASE` 
 [[configure]]
 == How to Configure
 
+Place the connector into your flow as applicable for your use case.
+
 To use the <connector> connector in your Mule application, you must configure a global <connector> element that can be used by the <connector> connector (read more about  link:/mule-user-guide/v/3.8/global-elements[Global Elements]). The <connector> connector offers the following global configuration(s), requiring the following credentials: *Username*, *Password*...
 
 [%header,cols="50a,50a"]
