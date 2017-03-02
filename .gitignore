@@ -1,6 +1,10 @@
 #Generated html files
 /*.html
 
+#Other generated files
+files/
+images/
+
 #Coderay plugin in atom
 coderay-asciidoctor.css
 
