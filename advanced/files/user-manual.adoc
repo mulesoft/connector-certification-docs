@@ -17,86 +17,57 @@ URLs should always follow "link:"
 
 toc::[]
 
-
-== What is the Connector?
+[[overview]]
+== Overview
 
 First sentence introduces the connector and describes its basic function.
 //Global rule: the word "connector" should be lower case except when appearing in titles, important URL anchors, and after a MuleSoft tradename such as "Anypoint".
 
-Read through this user guide to understand how to set up and configure a basic flow using the connector. Track feature additions, compatibility, limitations and API version updates with each release of the connector using the link:/release-notes/xyz-connector-release-notes[Connector Release Notes]. Review the connector operations and functionality using the link:/link-to-github.io-or-internal-section[ Technical Reference] alongside the link:https://www.mulesoft.com/exchange#!/?filters=Salesforce&sortBy=rank[demo applications].
+Read through this user guide to understand how to set up and configure a basic flow using the connector. Track feature additions, compatibility, limitations, and API version updates with each release of the connector using the link:/release-notes/xyz-connector-release-notes[Connector Release Notes]. Review the connector operations and functionality using the link:/link-to-github.io-or-internal-section[Technical Reference] along side the link:https://www.mulesoft.com/exchange#!/?filters=Salesforce&sortBy=rank[demo applications].
 
 MuleSoft maintains this connector under the link:/mule-user-guide/v/3.8/anypoint-connectors#connector-categories[_Insert Category_] support policy.
 
-
-== Prerequisites
+[[important-concepts]]
+== Important Concepts
 
 This document assumes that you are familiar with Mule,
 link:/mule-user-guide/v/3.8/anypoint-connectors[Anypoint Connectors], and
-link:/anypoint-studio/v/6[Anypoint Studio]. To increase your familiarity with Studio, consider completing a link:/anypoint-studio/v/6/basic-studio-tutorial[Anypoint Studio Tutorial]. This page requires some basic knowledge of link:/mule-user-guide/v/3.8/mule-concepts[Mule Concepts], link:/mule-user-guide/v/3.8/elements-in-a-mule-flow[Elements in a Mule Flow], and link:/mule-user-guide/v/3.8/global-elements[Global Elements].
+link:/anypoint-studio/v/6[Anypoint Studio]. To increase your familiarity with Studio, consider completing a link:/anypoint-studio/v/6/basic-studio-tutorial[Anypoint Studio Tutorial]. This page requires basic knowledge of link:/mule-user-guide/v/3.8/mule-concepts[Mule Concepts], link:/mule-user-guide/v/3.8/elements-in-a-mule-flow[Elements in a Mule Flow], and link:/mule-user-guide/v/3.8/global-elements[Global Elements].
 
 
 [[requirements]]
-=== Hardware and Software Requirements
+== Hardware and Software Requirements
 
-For hardware and software requirements, please visit the link:/mule-user-guide/v/3.8/hardware-and-software-requirements[Hardware and Software Requirements] page.
+For hardware and software requirements, visit the link:/release-notes/connector[Connector Release Notes].
 
-
-
-=== Compatibility
-
-What system versions is supported ?. Patches/APIs versions
-////
-optional
-////
-What MuleSoft software is required to get this connector to work? +
-
-*Versions* +
-
-What versions of JAR files and MS software is required  ?. What is the version sandbox version during the testing ? +
-
-*Consumers* +
-What software is required to user this connector?
-
-
+[[install]]
 == How to Install
 
 You can install the connector in Anypoint Studio using the instructions in
 link:/getting-started/anypoint-exchange#installing-a-connector-from-anypoint-exchange[Installing a Connector from Anypoint Exchange].
 
+[[upgrading]]
 === Upgrading from an Older Version
 
 If you’re currently using an older version of the connector, a small popup appears in the bottom right corner of Anypoint Studio with an "Updates Available" message.
 
 . Click the popup and check for available updates. 
-. Click the Connector version checkbox and click *Next* and follow the instructions provided by the user interface. 
+. Click the Connector version checkbox, click *Next*, and follow the instructions provided by the user interface. 
 . *Restart* Studio when prompted. 
 . After restarting, when creating a flow and using the connector, if you have several versions of the connector installed, you may be asked which version you would like to use. Choose the version you would like to use.
 
 Additionally, we recommend that you keep Studio up to date with its latest version.
 
-== How to Configure
+[[ns-schema]]
+== Connector Namespace and Schema
 
-To use the <connector> connector in your Mule application, you must configure a global <connector> element that can be used by the <connector> connector (read more about  link:/mule-user-guide/v/3.8/global-elements[Global Elements]). The <connector> connector offers the following global configuration(s), requiring the following credentials: *Username*, *Password*...
+When designing your application in Anypoint Studio, when you drag the connector from the palette onto the Anypoint Studio canvas, Studio automatically populates the XML code with the connector *namespace* and *schema location*.
 
-[%header,cols="50a,50a"]
-|===
-|Field |Description
-|*Username* |Enter the username to log into <>.
-|*Password* |Enter the corresponding password.
-
-|===
-
-//image:<connector>-global-element-props.png[<connector>-config]
-
-=== Required Connector Namespace and Schema
-
-When designing your application in Studio, the act of dragging the connector from the palette onto the Anypoint Studio canvas should automatically populate the XML code with the connector *namespace* and *schema location*.
-
-*Namespace:* `http://www.mulesoft.org/schema/mule/connector`
-*Schema Location:* `http://www.mulesoft.org/schema/mule/connector/current/mule-connector.xsd`
+*Namespace:* `+http://www.mulesoft.org/schema/mule/connector+` +
+*Schema Location:* `+http://www.mulesoft.org/schema/mule/connector/current/mule-connector.xsd+`
 
 [TIP]
-If you are manually coding the Mule application in Studio's XML editor or other text editor, define the namespace and schema location in the header of your *Configuration XML*, inside the `<mule>` tag.
+If you are manually coding the Mule application in Studio's XML editor or another text editor, define the namespace and schema location in the header of your *Configuration XML*, inside the `<mule>` tag.
 
 [source, xml,linenums]
 ----
@@ -114,10 +85,12 @@ If you are manually coding the Mule application in Studio's XML editor or other 
 </mule>
 ----
 
+*Note:* Use `current` in the schema path. Studio interprets this to the current Mule version.
 
-=== Maven Dependency Information
+[[maven]]
+== Maven Dependency Information
 
-Maven is backing the application, this XML snippet must be included in your `pom.xml` file.
+For Maven dependency management, include this XML snippet in your `pom.xml` file.
 
 [source,xml,linenums]
 ----
@@ -130,12 +103,29 @@ Maven is backing the application, this XML snippet must be included in your `pom
 
 [TIP]
 ====
-Inside the `<version>` tags, put the desired version number, the word `RELEASE` for the latest release, or `SNAPSHOT` for the latest available version. The available versions to date are:
+Inside the `<version>` tags, put the desired version number, the word `RELEASE` for the latest release, or `SNAPSHOT` for the latest available version. The available versions are:
 
 * *x.y.z*
 ====
 
+[[configure]]
+== How to Configure
 
+Place the connector in your flow as applicable for your use case.
+
+To use the <connector> connector in your Mule application, you must configure a global <connector> element that can be used by the <connector> connector (read more about  link:/mule-user-guide/v/3.8/global-elements[Global Elements]). The <connector> connector provides the following global configuration(s), requiring the following credentials: *Username*, *Password*...
+
+[%header%autowidth.spread]
+|===
+|Field |Description
+|*Username* |Enter the username to log in with.
+|*Password* |Enter the corresponding password.
+
+|===
+
+//image:<connector>-global-element-props.png[<connector>-config]
+
+[[operations]]
 == Operations
 
 Outbound, inbound, streaming outbound  +
@@ -155,17 +145,18 @@ Explain the common and less intuitive use cases and provide links to them in the
 
 [use-case-1]
 === Configure Connector to ...
+
 // Limit to 10 steps
 // Do NOT provide a parallel XML walkthrough. Weave any XML details into steps. Also avoid any unnecessary or marginally helpful screenshots
 
-Explain what the use case and provide an example if possible.
+Explain the use case and provide a complete working example if possible.
 
-The section should contain a fully functional Mule application as a demo, where the use case is considered. Explain how to create this case with Anypoint Studio Visual editor and provide the app.
+The section should contain a fully functional Mule application as a demo, where the use case is considered. Explain how to create this case with the Anypoint Studio Visual editor and list the app.
 
 Download the deployable app archive and import into Anypoint Studio to interact with the example application.
 
 [use-case-2]
-=== Configure Authentication via ...
+=== Configure Authentication Using ...
 
 
 == Connector Performance
