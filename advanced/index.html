@@ -540,10 +540,9 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel2">
 <li><a href="#_how_to_start">4.1. How to Start?</a></li>
 <li><a href="#_best_practices_2">4.2. Best Practices</a></li>
-<li><a href="#_functional_tests">4.3. Functional Tests</a></li>
-<li><a href="#_system_tests">4.4. System Tests</a></li>
-<li><a href="#_unit_tests">4.5. Unit Tests</a></li>
-<li><a href="#_test_execution">4.6. Test Execution</a></li>
+<li><a href="#_integration_tests">4.3. Integration tests</a></li>
+<li><a href="#_unit_tests_optional">4.4. Unit Tests (optional)</a></li>
+<li><a href="#_test_execution">4.5. Test execution</a></li>
 </ul>
 </li>
 <li><a href="#_anypoint_studio_iteroperability_testing">5. Anypoint™ Studio Interoperability Testing</a></li>
@@ -909,10 +908,10 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sect2">
 <h3 id="_anypoint_connector_devkit_version">2.1. Anypoint™ Connector DevKit Version</h3>
 <div class="paragraph">
-<p>The last version of Anypoint™ Connector DevKit must be used to develop your connector. As of August 2016, the latest stable DevKit version is 3.9.0.</p>
+<p>The last version of Anypoint™ Connector DevKit must be used to develop your connector. As of May 2017, the latest stable DevKit version is 3.9.1.</p>
 </div>
 <div class="paragraph">
-<p>DevKit 3.8.0 ensures that a connector will be compatible with Mule ESB 3.5.x, Mule ESB 3.6.x, Mule ESB 3.7.x and Mule ESB 3.8.x. However, external libraries employed by the connector might have conflicts with different Mule ESB versions. Sanity checks are mandatory for every Mule ESB version.</p>
+<p>DevKit 3.9.1 ensures that a connector will be compatible with Mule ESB 3.5.x, Mule ESB 3.6.x, Mule ESB 3.7.x and Mule ESB 3.8.x. However, external libraries employed by the connector might have conflicts with different Mule ESB versions. Sanity checks are mandatory for every Mule ESB version.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1011,7 +1010,7 @@ public class OracleEBSConnector {</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>The connector&#8217;s module is deployed to the private nexus (same distribution management as described above for Standard, CI-releases).</p>
+<p>The connector&#8217;s module is deployed to the private Nexus (same distribution management as described above for Standard, CI-releases).</p>
 </li>
 <li>
 <p>The parent pom and other non-connector modules of the multi-module project have the same distribution management as described above for public or Community connectors.</p>
@@ -1081,7 +1080,7 @@ public class OracleEBSConnector {</code></pre>
 <p>Follow <a href="http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html">Maven default name conventions</a>.</p>
 </li>
 <li>
-<p>Do not overwrite <code>org.mule.tools.devkit:mule-devkit-parent</code> properties.</p>
+<p>Do not overwrite <code>org.mule.tools.devkit:certified-mule-connector-parent</code> or <code>org.mule.tools.devkit:mule-devkit-parent</code> properties.</p>
 </li>
 <li>
 <p>Do not reference SNAPSHOT dependencies in plugins or dependencies.</p>
@@ -1118,7 +1117,7 @@ As part of the hand-off for certification, these JARs need to be provided with a
 
 <span class="tag">&lt;modules&gt;</span>
     <span class="tag">&lt;module&gt;</span>some-util-lib<span class="tag">&lt;/module&gt;</span>
-    <span class="tag">&lt;module&gt;</span>rehusable-service-adapter<span class="tag">&lt;/module&gt;</span>
+    <span class="tag">&lt;module&gt;</span>reusable-service-adapter<span class="tag">&lt;/module&gt;</span>
     <span class="tag">&lt;module&gt;</span>mule-connector-sample<span class="tag">&lt;/module&gt;</span>
 <span class="tag">&lt;/modules&gt;</span></code></pre>
 </div>
@@ -1139,14 +1138,14 @@ As part of the hand-off for certification, these JARs need to be provided with a
     <span class="tag">&lt;/dependency&gt;</span>
     <span class="tag">&lt;dependency&gt;</span>
         <span class="tag">&lt;groupId&gt;</span>org.mule.modules<span class="tag">&lt;/groupId&gt;</span>
-        <span class="tag">&lt;artifactId&gt;</span>rehusable-service-adapter<span class="tag">&lt;/artifactId&gt;</span>
+        <span class="tag">&lt;artifactId&gt;</span>reusable-service-adapter<span class="tag">&lt;/artifactId&gt;</span>
         <span class="tag">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
     <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;/dependencies&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>It is important to note that your connector&#8217;s pom inherits from <em>mule-devkit-parent</em>, and that each of the other sub-modules inherits from the project parent. Therefore, you will have artifacts inherited from the <code>mule-devkit-parent</code> pom and the connector pom:</p>
+<p>It is important to note that your connector&#8217;s pom must inherit from <em>certified-mule-connector-parent</em>, and that each of the other sub-modules inherits from the project parent. Therefore, you will have artifacts inherited from the <code>certified-mule-connector-parent</code> pom and the connector pom:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1163,7 +1162,7 @@ As part of the hand-off for certification, these JARs need to be provided with a
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;artifactId&gt;</span>rehusable-service-adapter<span class="tag">&lt;/artifactId&gt;</span>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;artifactId&gt;</span>reusable-service-adapter<span class="tag">&lt;/artifactId&gt;</span>
 <span class="tag">&lt;packaging&gt;</span>jar<span class="tag">&lt;/packaging&gt;</span>
 
 <span class="tag">&lt;parent&gt;</span>
@@ -1185,8 +1184,8 @@ As part of the hand-off for certification, these JARs need to be provided with a
 
 <span class="tag">&lt;parent&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.mule.tools.devkit<span class="tag">&lt;/groupId&gt;</span>
-    <span class="tag">&lt;artifactId&gt;</span>mule-devkit-parent<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>3.9.0<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>certified-mule-connector-parent<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>3.9.1<span class="tag">&lt;/version&gt;</span>
 <span class="tag">&lt;/parent&gt;</span></code></pre>
 </div>
 </div>
@@ -1466,7 +1465,7 @@ If you are interested in more details, the project directory structure is descri
 </ul>
 </div>
 <div class="paragraph">
-<p>These types must be part of the method signature so that DataMapper can auto-recognize the types in it&#8217;s mapping UI.</p>
+<p>These types must be part of the method signature so that DataMapper can auto-recognize the types in its mapping UI.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -2184,7 +2183,7 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://downloads.sona
 </div>
 </li>
 <li>
-<p>After association, your project is analysed with SonarQube and the results are shown on the SonarQube issues tab. Also, the Package Explorer and file editor display error and warning icons according to the issues on your project.</p>
+<p>After association, your project is analyzed with SonarQube and the results are shown on the SonarQube issues tab. Also, the Package Explorer and file editor display error and warning icons according to the issues on your project.</p>
 <div class="paragraph">
 <p>New issues introduced since the previous analysis are marked as errors, while existing issues are marked as warnings. This is a cosmetic difference only, which helps to highlight new technical debt being introduced in your code before you check it in.</p>
 </div>
@@ -2355,10 +2354,11 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://downloads.sona
 <h2 id="_functional_tests_automation">4. Tests Automation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section explains how to automate test cases for Anypoint MuleSoft Connectors. Tests are <em>Functional Tests</em>, <em>System Tests</em> or <em>Unit Tests</em> depending which aspect of the connector is being tested.</p>
+<p>This section explains how to automate test cases for Anypoint MuleSoft Connectors. Tests can be either <em>integration tests</em> or <em>unit tests</em> depending which aspect of the connector is being tested.</p>
 </div>
 <div class="paragraph">
-<p>Functional tests aim at testing the connector with a particular Mule runtime environment, thus assuring backward and forward compatibility. System tests group those aspects were a connection is needed but no underlying Mule runtime is required, such as when testing valid/invalid credentials or different connection configurations. Finally, unit tests aim at verifying isolated components, or units, of the connector which do not require a valid connection nor a Mule runtime.</p>
+<p>Integration tests at testing the interaction between the code and an external system. These tests allow to verify aspects such as the validity of credentials, different connection configurations or the entire processor operation. Hence, a Mule runtime environment is provided, thus assuring backward and forward compatibility.
+Unit tests aim at verifying isolated components of the connector which do not require neither a valid connection nor a Mule runtime.</p>
 </div>
 <div class="paragraph">
 <p>Once all tests have been engineered, a final test execution step is required. This execution step requires to run functional tests with different Mule runtimes configurations, run System tests with valid/invalid credentials and finally run unit tests.</p>
@@ -2371,24 +2371,21 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://downloads.sona
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>Processors:</strong> For each processor, a functional test is required.</p>
+<p><strong>Processors:</strong> for each processor, an integration test is required.</p>
 </li>
 <li>
 <p><strong>MetaData:</strong> MetaData requires functional tests as well, but employing a slightly different approach than processors.</p>
 </li>
 <li>
-<p><strong>Pagination:</strong> If the connector implements @Paged processors, then pagination has to be tested.</p>
+<p><strong>Pagination:</strong> if the connector implements @Paged processors, then pagination has to be tested.</p>
 </li>
 <li>
-<p><strong>Test Connectivity:</strong> Every connection configuration has to be tested with valid/invalid credentials, wrong configuration values, etc.</p>
+<p><strong>Test Connectivity:</strong> every connection configuration has to be tested with valid/invalid credentials, wrong configuration values, etc.</p>
 </li>
 <li>
-<p><strong>WSDL Operations:</strong> Testing WSDL operations is required <strong>ONLY</strong> when your connector is SOAP Connect. As with MetaData, testing these kind of operations require a different approach than processors.</p>
+<p><strong>WSDL Operations:</strong> testing WSDL operations is required <strong>ONLY</strong> when your connector is SOAP Connect. As with MetaData, testing these kind of operations require a different approach than processors.</p>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p>For functional tests, DevKit Plugin generates functional tests scaffolding, as explained <a href="https://developer.mulesoft.com/docs/display/current/Developing+DevKit+Connector+Tests">here</a>. This scaffolding generates a functional test per available processor, which covers the functional testing part. System and Unit tests need to be written entirely from scratch.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2402,74 +2399,56 @@ SonarQube Integration for Eclipse (update-site) - <a href="http://downloads.sona
 <p>Always clean the connector sandbox after running either Functional or System tests.</p>
 </li>
 <li>
-<p><strong>setup():</strong> If @Before behavior is required, this method must be defined and annotated accordingly.</p>
+<p><strong>setup():</strong> if @Before behavior is required, this method must be defined and annotated accordingly.</p>
 </li>
 <li>
-<p><strong>tearDown():</strong> If @After behavior is required, this method must be defined and annotated accordingly. Normally all <em>cleaning behaviour</em> regarding the sandbox should go here.</p>
+<p><strong>tearDown():</strong> if @After behavior is required, this method must be defined and annotated accordingly. Normally all <em>cleaning behaviour</em> regarding the sandbox should go here.</p>
 </li>
 <li>
-<p><strong>.gitignore:</strong> Automations credentials and any sensitive data should be added to this file to avoid any mistake when committing the connector project.</p>
+<p><strong>.gitignore:</strong> automations credentials and any sensitive data should be added to this file to avoid versioning them.</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_functional_tests">4.3. Functional Tests</h3>
+<h3 id="_integration_tests">4.3. Integration tests</h3>
 <div class="paragraph">
-<p>Functional tests aim at assuring the correct behavior of the connector within a particular Mule runtime environment, particular testing how well the connector integrates with Mule architecture.</p>
+<p>Integration tests aim at assuring the correct behavior of the connector with external systems. These can make use of a provided Mule runtime environment, for testing the integration with the Mule architecture.</p>
 </div>
 <div class="paragraph">
-<p>Functional testing is a <em>mandatory</em> step within the certification process and need to be carried out following strict practices, who are detailed throughout this section.</p>
+<p>These tests are <em>mandatory</em> within the certification process, and need to be carried out following strict practices, who are detailed throughout this section.</p>
 </div>
 <div class="sect3">
-<h4 id="_intro">4.3.1. Tests Organization</h4>
+<h4 id="_intro">4.3.1. Tests organization</h4>
 <div class="paragraph">
-<p>Functional tests need to be engineered and organized as follows:</p>
+<p>Integration tests need to be organized as follows:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>Test Suites:</strong> <em>FunctionalTestSuite</em> groups all functional tests with no exception. In case two or more test suites are required (when grouping semantic similar tests for instance), a <em>FullFunctionalTestSuite</em> need to be used, grouping the remaining test suites.</p>
+<p><strong>Naming convention:</strong> integration test classes must end with <em>IT</em>. Alternatives ending names are discouraged, and will require a special configuration for them to be run.</p>
 </li>
 <li>
-<p><strong>Naming Convention:</strong> Functional tests must end with <em>TestCases</em>. Employing alternatives ending names is discouraged, specially endings such as <em>Test</em> or <em>TestCase</em>.</p>
+<p><strong>Test suites</strong> and <strong>Test Categories</strong> might be used if needed, although are discouraged.</p>
 </li>
 <li>
-<p><strong>Test Categories:</strong> Tests categories might be used if needed, although are discouraged. However, if used, they need to be named as <em>FunctionalTest.class</em>.</p>
-</li>
-</ol>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Tip</div>
-</td>
-<td class="content">
-When not using test categories, a test suite might use <strong>@RunWith(Suite.class)</strong> before the list of classes within the suite itself. Thus, all listed test classes are executed and any test category is needed.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_packages_and_files">4.3.2. Packages and Files</h4>
-<div class="paragraph">
-<p>Test files need to be kept in specific packages as follows:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
+<p>The following package organization is encouraged:</p>
+<div class="ulist">
+<ul>
 <li>
-<p><strong>org.mule.modules.&lt;connector-project&gt;.automation.runner</strong> contains the test runner (FunctionalTestSuite).</p>
+<p><strong>org.mule.modules.&lt;connector-project&gt;.automation.functional</strong> for integration tests that make use of the Connector Testing Framework.</p>
 </li>
 <li>
-<p><strong>org.mule.modules.&lt;connector-project&gt;.automation.functional</strong> contains the functional test cases exclusively.</p>
+<p><strong>org.mule.modules.&lt;connector-project&gt;.automation.system</strong> for all those tests that require a connection but do not use CTF.</p>
+</li>
+</ul>
+</div>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_test_data">4.3.3. Test Data</h4>
+<h4 id="_test_data">4.3.2. Test Data</h4>
 <div class="paragraph">
 <p>Test data must be contained within a <em>org.mule.modules.&lt;connector-project&gt;.automation.functional.TestDataBuilder.java</em> class. This test data builder must generate all necessary test data for every single functional test. Developers are free to use whatever data input techniques within this data builder (JSON, Beans, etc.).</p>
 </div>
@@ -2478,7 +2457,7 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
 </div>
 </div>
 <div class="sect3">
-<h4 id="_connector_testing_framework">4.3.4. Connector Testing Framework</h4>
+<h4 id="_connector_testing_framework">4.3.3. Connector Testing Framework</h4>
 <div class="paragraph">
 <p>The main objective is to test the connector with different Mule runtime environments through the Connector Testing Framework, allowing to detect possible conflicts, such as class loading issues. The default functional testing framework is called CTF (<em>Connector Testing Framework</em>). Documentation of CTF is available <a href="http://mulesoft.github.io/connector-testing-framework/">here</a></p>
 </div>
@@ -2486,33 +2465,35 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
 <p>This framework eases the creation of connector functional tests, where the developer is not necessarily involved with Mule&#8217;s internals, such as flows, configurations and Spring beans. The objective of this framework is twofold. On the one hand, we decouple how Mule works and how functional tests are written. On the other hand, we enable a runtime platform to run connector tests with multiple Mule versions by executing the tests in remote Mule instances, achieving a decoupled runtime environment.</p>
 </div>
 <div class="paragraph">
-<p>Any other approach for carrying out functional tests is highly discouraged. However, certain aspects of functional testing is not cover within CTF and thus custom approaches might be used. The following sections described which aspects can and can not be tested with CTF.</p>
+<p>Any other approach for carrying out functional tests is highly discouraged. However, certain aspects of functional testing is not covered within CTF and thus custom approaches might be used. The following sections described which aspects can and can not be tested with CTF.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_framework_and_test_suite_components">4.3.5. CTF Components</h4>
+<h4 id="_framework_and_test_suite_components">4.3.4. CTF Components</h4>
 <div class="paragraph">
 <p>All functional test cases classes must extend from a AbstractTestCase&lt;T&gt;, which is parametrized with the connector type under tests.</p>
 </div>
 <div class="paragraph">
-<p><strong>AbstractTestCase&lt;T&gt;.java</strong> is found within <em>org.mule.tools.devkit.ctf.junit</em> and implements all the initialization and shut down of the CTF by means of @BeforeClass and @AfterClass methods. <strong>Extending from this class is mandatory</strong>, since it assures the correct use of the CTF.</p>
+<p><strong>AbstractTestCase&lt;T&gt;.java</strong> is found within <em>org.mule.tools.devkit.ctf.junit</em>. <strong>Extending from this class is mandatory</strong>, since it assures the correct use of the CTF as it implements all the initialization and shut down of the framework.</p>
 </div>
 <div class="paragraph">
-<p>Every test case needs to be named as &lt;OperationName&gt;TestCases. These naming conventions avoid Maven to automatically run test cases, since tests require credentials and therefore automatically running them without the proper set of credentials will produce tests to fail.</p>
+<p>Every test case needs to be named as &lt;OperationName&gt;IT. This naming convention provide a uniform template for all connectors in the Mule ecosystem, and allows the framework to run on the <code>validate</code> Maven phase.</p>
 </div>
 <div class="sect4">
-<h5 id="__em_operationname_testcases_em_class"><em>&lt;OperationName&gt;TestCases</em> Class</h5>
+<h5 id="__em_operationname_it_em_class"><em>&lt;OperationName&gt;IT</em> class</h5>
 <div class="paragraph">
-<p>Each connector operation, which has its own processor, has an <strong>&lt;OperationName&gt;TestCases.java</strong> class that contains its related test cases.</p>
+<p>Each connector processor must have an associated <strong>&lt;OperationName&gt;IT.java</strong> class that contains its related test cases.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> ...
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">org.mule.modules</span>.&lt;<span class="namespace">connector</span>-<span class="namespace">project</span>&gt;.<span class="namespace">automation.functional</span>;
+
+<span class="keyword">import</span> ...
 <span class="include">import</span> <span class="include">org.mule.tools.devkit.ctf.junit.AbstractTestCase</span>;
 
-<span class="directive">public</span> <span class="type">class</span> &lt;<span class="class">OperationName</span>&gt;TestCases <span class="directive">extends</span> &lt;&lt;ConnectorClass&gt;&gt;AbstractTestCase {
+<span class="directive">public</span> <span class="type">class</span> &lt;<span class="class">OperationName</span>&gt;IT <span class="directive">extends</span> &lt;&lt;ConnectorClass&gt;&gt;AbstractTestCase {
 
-   <span class="comment">// private attributes used as auxiliary fields for storing test run values</span>
+   <span class="comment">// Private attributes used as auxiliary fields for storing test run values.</span>
    <span class="directive">private</span> <span class="predefined-type">Integer</span> leadRecordId;
 
    <span class="comment">// Use to create required data for the test.</span>
@@ -2521,13 +2502,13 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
      ...
    }
 
-   <span class="comment">//returns the sandbox to its original state</span>
+   <span class="comment">// Returns the sandbox to its original state.</span>
    <span class="annotation">@After</span>
    <span class="directive">public</span> <span class="type">void</span> tearDown() <span class="directive">throws</span> <span class="exception">Exception</span> {
       ...
    }
 
-   <span class="comment">//Method that invokes the connector operation under test and asserts on the return value.</span>
+   <span class="comment">// Method that invokes the connector operation under test and asserts on the return value.</span>
    <span class="annotation">@Test</span>
    <span class="directive">public</span> <span class="type">void</span> &lt;testName&gt; <span class="directive">throws</span> <span class="exception">Exception</span> {
      <span class="comment">// Test code</span>
@@ -2541,7 +2522,7 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
 </div>
 </div>
 <div class="sect4">
-<h5 id="__em_a_href_connectorclass_connectorclass_a_abstracttestcase_em_class"><em><a href="#ConnectorClass">[ConnectorClass]</a>AbstractTestCase</em> Class</h5>
+<h5 id="__em_a_href_connectorclass_connectorclass_a_abstracttestcase_em_class"><em><a href="#ConnectorClass">[ConnectorClass]</a>AbstractTestCase</em> class</h5>
 <div class="paragraph">
 <p>In case a sub-parent is needed, it must be named as <a href="#ConnectorClass">[ConnectorClass]</a>AbstractTestCase, which will extend from CTF AbstractTestCase and add the required behavior, such as @Before and @After methods.</p>
 </div>
@@ -2553,7 +2534,7 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
 <span class="type">class</span> &lt;&lt;<span class="class">ConnectorClassName</span>&gt;&gt;AbtractTestCases <span class="directive">extends</span> AbstractTestCase&lt;ConnectorClass&gt; {
 
    <span class="directive">public</span> &lt;&lt;ConnectorClassName&gt;&gt;AbtractTestCases(){
-     <span class="comment">//This is required if running single tests as well as a test suite</span>
+     <span class="comment">// This is required if running single tests as well as a test suite.</span>
      <span class="local-variable">super</span>(ConnectorClass.class);
    }
 
@@ -2572,39 +2553,17 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
 </div>
 </div>
 <div class="sect4">
-<h5 id="__em_functionaltestsuite_em_class"><em>FunctionalTestSuite</em> Class</h5>
-<div class="paragraph">
-<p>This suite groups all functional tests with no exception and also manages the lifecycle of the Mule platform.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">FunctionalTestSuite</span> {
-
-    <span class="annotation">@BeforeClass</span>
-    <span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> initialiseSuite() {
-        ConnectorTestContext.initialize(&lt;ConnectorName&gt;.class);
-    }
-
-    <span class="annotation">@AfterClass</span>
-    <span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> shutdownSuite() <span class="directive">throws</span> <span class="exception">Exception</span> {
-        ConnectorTestContext.shutDown();
-    }
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_ctf_em_connector_em_and_em_dispatcher_em">CTF <em>Connector</em> and <em>Dispatcher</em></h5>
+<h5 id="_ctf_em_connector_em_and_em_dispatcher_em">CTF <em>connector</em> and <em>dispatcher</em></h5>
 <div class="paragraph">
 <p>The AbstractTestCase class provides getters for the following objects:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>Connector:</strong> This CTF component enables testing on every connector processor, mocking the real connector under tests. Thus, all the underlying Mule logic is kept within CTF and not exposed to the test developer.</p>
+<p><strong>Connector:</strong> this CTF component enables testing on every connector processor, mocking the real connector under tests. Thus, all the underlying Mule logic is kept within CTF and not exposed to the test developer.</p>
 </li>
 <li>
-<p><strong>Dispatcher:</strong> This second CTF component enables testing on particular aspects of a connector, such as <em>Pagination</em>, <em>WSDL Operations</em> and <em>MetaData</em>.</p>
+<p><strong>Dispatcher:</strong> this second CTF component enables testing on particular aspects of a connector, such as <em>pagination</em>, <em>WSDL operations</em> and <em>MetaData</em>.</p>
 </li>
 </ol>
 </div>
@@ -2614,9 +2573,9 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
 </div>
 </div>
 <div class="sect3">
-<h4 id="_test_methods">4.3.6. Topics to Test using CTF</h4>
+<h4 id="_test_methods">4.3.5. Topics to test</h4>
 <div class="paragraph">
-<p>CTF enables testing of the following aspects:</p>
+<p>The integration tests should cover the following:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -2635,6 +2594,9 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
 <li>
 <p><strong>Sources</strong></p>
 </li>
+<li>
+<p><strong>Test Connectivity:</strong></p>
+</li>
 </ol>
 </div>
 <div class="admonitionblock tip">
@@ -2650,7 +2612,7 @@ We will use throughout these examples the <em>CookBook Connector</em>, a test co
 </table>
 </div>
 <div class="sect4">
-<h5 id="_testing_processors">Testing Processors</h5>
+<h5 id="_testing_processors">Testing processors</h5>
 <div class="paragraph">
 <p>CTF enables testing of processors in a simple manner. By means of a mocked connector, we can call every connector operation with its actual parameters, without dealing with Mule internals (Spring beans, Mule flows, etc.).</p>
 </div>
@@ -2659,19 +2621,19 @@ We will use throughout these examples the <em>CookBook Connector</em>, a test co
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> ...
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">org.mule.modules.cookbook.automation.functional</span>;
+
+<span class="keyword">import</span> ...
 <span class="include">import</span> <span class="include">org.mule.tools.devkit.ctf.junit.AbstractTestCase</span>;
 
-<span class="directive">public</span> <span class="type">class</span> <span class="class">GetRecentlyAddedTestCases</span> <span class="directive">extends</span> AbstractTestCase&lt;CookBookConnector&gt; {
+<span class="directive">public</span> <span class="type">class</span> <span class="class">GetRecentlyAddedIT</span> <span class="directive">extends</span> AbstractTestCase&lt;CookBookConnector&gt; {
 
-  <span class="comment">//No @Before or @After methods required</span>
+    <span class="comment">// No @Before or @After methods required.</span>
 
         <span class="annotation">@Test</span>
         <span class="directive">public</span> <span class="type">void</span> testGetRecentlyAdded() <span class="directive">throws</span> <span class="exception">Exception</span>{
-
-    <span class="predefined-type">List</span>&lt;Recipe&gt; resultList = getConnector().getRecentlyAdded();
-
-    <span class="comment">//Assert on resultList</span>
+        <span class="predefined-type">List</span>&lt;Recipe&gt; resultList = getConnector().getRecentlyAdded();
+        <span class="comment">// Assert on resultList.</span>
         }
 }</code></pre>
 </div>
@@ -2686,26 +2648,28 @@ We will use throughout these examples the <em>CookBook Connector</em>, a test co
 <p><em>Anypoint Studio DataSense</em> allows a connector to gather metadata from the remote service in design time, enabling Anypoint developers to deal with actual object types and descriptions instead of generic types.</p>
 </div>
 <div class="paragraph">
-<p>A single metadata class <strong>per MetaDataCategory</strong> is accepted, named as <em>&lt;CategoryName&gt;MetaDataTestCases</em>, which will include two tests: <em>testMetaDataKeys</em> and <em>testMetaData</em> for that specific category. CTF provides <em>getDispatcher()</em>, which exposes two methods for fetching MetaDataKeys and MetaData, <strong>fetchMetaDataKeys()</strong> and <strong>fetchMetaData(keyName)</strong>. The first one fetches all keys from the MetaData underlying service, while the second one retrieves the descriptor for a particular MetadataKey.</p>
+<p>A single metadata class <strong>per MetaDataCategory</strong> is accepted, named as <em>&lt;CategoryName&gt;MetaDataIT</em>, which will include two tests: <em>testMetaDataKeys</em> and <em>testMetaData</em> for that specific category. CTF provides <em>getDispatcher()</em>, which exposes two methods for fetching MetaDataKeys and MetaData, <strong>fetchMetaDataKeys()</strong> and <strong>fetchMetaData(keyName)</strong>. The first one fetches all keys from the MetaData underlying service, while the second one retrieves the descriptor for a particular MetadataKey.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> ...
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">org.mule.modules.cookbook.automation.functional</span>;
+
+<span class="keyword">import</span> ...
 <span class="include">import</span> <span class="include">org.mule.tools.devkit.ctf.junit.AbstractTestCase</span>;
 
-<span class="directive">public</span> <span class="type">class</span> <span class="class">CookBookMetadataCategoryMetaDataTestCases</span> <span class="directive">extends</span> AbstractTestCase&lt;CookBookConnector&gt; {
+<span class="directive">public</span> <span class="type">class</span> <span class="class">CookBookMetadataCategoryMetaDataIT</span> <span class="directive">extends</span> AbstractTestCase&lt;CookBookConnector&gt; {
 
         <span class="annotation">@Test</span>
         <span class="annotation">@MetaDataTest</span>
         <span class="directive">public</span> <span class="type">void</span> testMetaDataKeys() <span class="directive">throws</span> <span class="exception">Exception</span>{
 
-            <span class="predefined-type">Result</span>&lt;<span class="predefined-type">List</span>&lt;MetaDataKey&gt;&gt; metaDataKeysResult = dispatcher.fetchMetaDataKeys();
-                        assertTrue(<span class="predefined-type">Result</span>.Status.SUCCESS.equals(metaDataKeysResult.getStatus()));
+        <span class="predefined-type">Result</span>&lt;<span class="predefined-type">List</span>&lt;MetaDataKey&gt;&gt; metaDataKeysResult = dispatcher.fetchMetaDataKeys();
+        assertTrue(<span class="predefined-type">Result</span>.Status.SUCCESS.equals(metaDataKeysResult.getStatus()));
 
-      <span class="predefined-type">List</span>&lt;MetaDataKey&gt; metaDataKeys = metaDataKeysResult.get();
+        <span class="predefined-type">List</span>&lt;MetaDataKey&gt; metaDataKeys = metaDataKeysResult.get();
 
-      MetaDataKey recipeKey;
-      MetaDataKey ingredientKey;
+        MetaDataKey recipeKey;
+        MetaDataKey ingredientKey;
 
             <span class="keyword">for</span> (MetaDataKey key : metaDataKeys) {
                     <span class="keyword">if</span> (recipeKey == <span class="predefined-constant">null</span> &amp;&amp; key.getId().equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">Recipe</span><span class="delimiter">&quot;</span></span>))
@@ -2714,22 +2678,22 @@ We will use throughout these examples the <em>CookBook Connector</em>, a test co
                             ingredientKey = key;
             }
 
-      <span class="comment">//Assert on MetaDataKeys</span>
-            assertNotNull(recipeKey);
-            assertNotNull(ingredientKey);
+        <span class="comment">//Assert on MetaDataKeys</span>
+        assertNotNull(recipeKey);
+        assertNotNull(ingredientKey);
         }
 
-  <span class="annotation">@Test</span>
+    <span class="annotation">@Test</span>
         <span class="annotation">@MetadataTest</span>
         <span class="directive">public</span> <span class="type">void</span> testMetaData() <span class="directive">throws</span> <span class="exception">Exception</span>{
 
             <span class="predefined-type">Result</span>&lt;<span class="predefined-type">List</span>&lt;MetaDataKey&gt;&gt; metaDataKeysResult = dispatcher.fetchMetaDataKeys();
-                        assertTrue(<span class="predefined-type">Result</span>.Status.SUCCESS.equals(metaDataKeysResult.getStatus()));
+        assertTrue(<span class="predefined-type">Result</span>.Status.SUCCESS.equals(metaDataKeysResult.getStatus()));
 
-      <span class="predefined-type">List</span>&lt;MetaDataKey&gt; metaDataKeys = metaDataKeysResult.get();
+        <span class="predefined-type">List</span>&lt;MetaDataKey&gt; metaDataKeys = metaDataKeysResult.get();
 
-      MetaDataKey recipeKey;
-      MetaDataKey ingredientKey;
+        MetaDataKey recipeKey;
+        MetaDataKey ingredientKey;
 
             <span class="keyword">for</span> (MetaDataKey key : metaDataKeys) {
                     <span class="keyword">if</span> (recipeKey == <span class="predefined-constant">null</span> &amp;&amp; key.getId().equals(<span class="string"><span class="delimiter">&quot;</span><span class="content">Recipe</span><span class="delimiter">&quot;</span></span>))
@@ -2738,12 +2702,12 @@ We will use throughout these examples the <em>CookBook Connector</em>, a test co
                             ingredientKey = key;
             }
 
-      <span class="comment">//Asserts on MetaData</span>
+        <span class="comment">//Asserts on MetaData</span>
             <span class="predefined-type">Result</span>&lt;MetaData&gt; recipeKeyResult = dispatcher.fetchMetaData(recipeKey);
-                        assertTrue(<span class="predefined-type">Result</span>.Status.SUCCESS.equals(recipeKeyResult.getStatus()));
+        assertTrue(<span class="predefined-type">Result</span>.Status.SUCCESS.equals(recipeKeyResult.getStatus()));
 
-                        <span class="predefined-type">Result</span>&lt;MetaData&gt; ingredientKeyResult = dispatcher.fetchMetaData(ingredientKey);
-                        assertTrue(<span class="predefined-type">Result</span>.Status.SUCCESS.equals(ingredientKeyResult.getStatus()));
+        <span class="predefined-type">Result</span>&lt;MetaData&gt; ingredientKeyResult = dispatcher.fetchMetaData(ingredientKey);
+        assertTrue(<span class="predefined-type">Result</span>.Status.SUCCESS.equals(ingredientKeyResult.getStatus()));
         }
 }</code></pre>
 </div>
@@ -2762,9 +2726,9 @@ All metadata tests need to be annotated with @MetaDataTest. This assures that me
 </div>
 </div>
 <div class="sect4">
-<h5 id="_testing_metadata_preferred_testing_approach_for_complex_domains">Testing MetaData: Preferred Testing Approach for Complex Domains</h5>
+<h5 id="_testing_metadata_preferred_testing_approach_for_complex_domains">Testing MetaData: preferred testing approach for complex domains</h5>
 <div class="paragraph">
-<p>When the domain of the connector is complex and its entities contain large and deep object structures, MetaData tests might end up being long, complicate to read and they might not even test the entire MetaData description.</p>
+<p>When the domain of the connector is complex and its entities contain large and deep object structures, MetaData tests might end up being long, complicated to read and they might not even test the entire MetaData description.</p>
 </div>
 <div class="paragraph">
 <p>To deal with this scenario, the following approach is highly recommended:</p>
@@ -2772,24 +2736,26 @@ All metadata tests need to be annotated with @MetaDataTest. This assures that me
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Naming conventions is maintained, where a single metadata class <strong>per MetaDataCategory</strong> is accepted, named as <em>&lt;CategoryName&gt;MetaDataTestCases</em>.</p>
+<p>Naming conventions is maintained, where a single metadata class <strong>per MetaDataCategory</strong> is accepted, named as <em>&lt;CategoryName&gt;MetaDataIT</em>.</p>
 </li>
 <li>
 <p>A MetaData abstract parent is introduced, named as <em>AbstractMetaDataTestCase.java</em> available within CTF packages. This method need to be parametrized with the connector class.</p>
 </li>
 <li>
-<p>Every <em>&lt;CategoryName&gt;MetaDataTestCases</em> need to extend from <em>AbstractMetaDataTestCase</em> and defines which keys/entities must be tested as follows:</p>
+<p>Every <em>&lt;CategoryName&gt;MetaDataIT</em> need to extend from <em>AbstractMetaDataTestCase</em> and defines which keys/entities must be tested as follows:</p>
 </li>
 </ol>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> ...
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">org.mule.modules.cookbook.automation.functional</span>;
+
+<span class="keyword">import</span> ...
 <span class="include">import</span> <span class="include">org.mule.tools.devkit.ctf.junit.AbstractMetaDataTestCase</span>;
 <span class="keyword">import</span> <span class="include">java.util.ArrayList</span>;
 <span class="keyword">import</span> <span class="include">java.util.List</span>;
 
-<span class="directive">public</span> <span class="type">class</span> <span class="class">CookBookMetaDataCategoryMetaDataTestCases</span> <span class="directive">extends</span> AbstractMetaDataTestCase&lt;CookBookConnector&gt; {
+<span class="directive">public</span> <span class="type">class</span> <span class="class">CookBookMetaDataCategoryMetaDataIT</span> <span class="directive">extends</span> AbstractMetaDataTestCase&lt;CookBookConnector&gt; {
 
     <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; keys = <span class="keyword">new</span> <span class="predefined-type">ArrayList</span>&lt;<span class="predefined-type">String</span>&gt;();
 
@@ -2805,7 +2771,7 @@ All metadata tests need to be annotated with @MetaDataTest. This assures that me
 </div>
 </div>
 <div class="paragraph">
-<p>Thus, every metadata test case defines within its category the important entities to test. The underlying implementation will only tests those categories and compare the results of the MetaData retrieved from the sandbox with JSON-based structures keep within the connector test resources. These structures are created the first time the test is ran and kept afterwards for future test executions.</p>
+<p>Thus, every metadata test case defines within its category the important entities to test. The underlying implementation will only tests those categories and compare the results of the MetaData retrieved from the sandbox with JSON-based structures kept within the connector test resources. These structures are created the first time the test is ran and kept afterwards for future test executions.</p>
 </div>
 </div>
 <div class="sect4">
@@ -2820,7 +2786,7 @@ All metadata tests need to be annotated with @MetaDataTest. This assures that me
 <div class="title">Important</div>
 </td>
 <td class="content">
-Testing WSDL operations is only required when the connector under test is a SOAP Connect-based connector, opposite to a SDK-based connector.
+Testing WSDL operations is only required when the connector under test is a SOAP Connect-based connector, opposite to an SDK-based connector.
 </td>
 </tr>
 </table>
@@ -2843,7 +2809,9 @@ Testing WSDL operations is only required when the connector under test is a SOAP
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> ...
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">org.mule.modules.cookbook.automation.functional</span>;
+
+<span class="keyword">import</span> ...
 <span class="include">import</span> <span class="include">org.mule.tools.devkit.ctf.junit.AbstractTestCase</span>;
 
 <span class="directive">public</span> <span class="type">class</span> <span class="class">WSDLTestCases</span> <span class="directive">extends</span> AbstractTestCase&lt;CookBookConnector&gt; {
@@ -2857,7 +2825,7 @@ Testing WSDL operations is only required when the connector under test is a SOAP
 
         XMLStreamReader XMLStreamResult = dispatcher.invokeWsdlOperation(request, <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;WSDL_ID&gt;</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;OperationName&gt;</span><span class="delimiter">&quot;</span></span>);
 
-        <span class="comment">//Asserts on XMLStreamResult</span>
+        <span class="comment">// Asserts on XMLStreamResult</span>
     }</code></pre>
 </div>
 </div>
@@ -2866,10 +2834,12 @@ Testing WSDL operations is only required when the connector under test is a SOAP
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> ...
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">org.mule.modules.cookbook.automation.functional</span>;
+
+<span class="keyword">import</span> ...
 <span class="include">import</span> <span class="include">org.mule.tools.devkit.ctf.junit.AbstractTestCase</span>;
 
-<span class="directive">public</span> <span class="type">class</span> <span class="class">WSDLTestCases</span> <span class="directive">extends</span> AbstractTestCase&lt;CookBookConnector&gt; {
+<span class="directive">public</span> <span class="type">class</span> <span class="class">WSDLIT</span> <span class="directive">extends</span> AbstractTestCase&lt;CookBookConnector&gt; {
 
     <span class="annotation">@Test</span>
     <span class="directive">public</span> <span class="type">void</span> testWSDL&lt;OperationName&gt;() <span class="directive">throws</span> <span class="exception">Exception</span> {
@@ -2880,7 +2850,7 @@ Testing WSDL operations is only required when the connector under test is a SOAP
 
         XMLStreamReader XMLStreamResult = dispatcher.invokeWsdlOperation(request, <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;OperationName&gt;</span><span class="delimiter">&quot;</span></span>);
 
-        <span class="comment">//Asserts on XMLStreamResult</span>
+        <span class="comment">// Asserts on XMLStreamResult</span>
     }</code></pre>
 </div>
 </div>
@@ -2895,14 +2865,14 @@ Testing WSDL operations is only required when the connector under test is a SOAP
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Processor</span>
-   <span class="annotation">@ReconnectOn</span>(exceptions = { SessionExpiredException.class })
-   <span class="annotation">@Paged</span>
-   <span class="directive">public</span> ProviderAwarePagingDelegate&lt;<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;, CookbookConnector&gt; queryPaginated(
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="annotation">@Processor</span>
+    <span class="annotation">@ReconnectOn</span>(exceptions = { SessionExpiredException.class })
+    <span class="annotation">@Paged</span>
+    <span class="directive">public</span> ProviderAwarePagingDelegate&lt;<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;, CookbookConnector&gt; queryPaginated(
            <span class="directive">final</span> <span class="predefined-type">String</span> query, <span class="directive">final</span> PagingConfiguration pagingConfiguration)
            <span class="directive">throws</span> SessionExpiredException {
        <span class="keyword">return</span> <span class="keyword">new</span> CookbookPagingDelegate(query, pagingConfiguration.getFetchSize());
-   }</code></pre>
+    }</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2910,21 +2880,22 @@ Testing WSDL operations is only required when the connector under test is a SOAP
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> ...
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">org.mule.modules.cookbook.automation.functional</span>;
+
+<span class="keyword">import</span> ...
 <span class="include">import</span> <span class="include">org.mule.tools.devkit.ctf.junit.AbstractTestCase</span>;
 
-<span class="directive">public</span> <span class="type">class</span> <span class="class">QueryPaginatedTestCases</span> <span class="directive">extends</span> AbstractTestCase&lt;CookBookConnector&gt; {
+<span class="directive">public</span> <span class="type">class</span> <span class="class">QueryPaginatedIT</span> <span class="directive">extends</span> AbstractTestCase&lt;CookBookConnector&gt; {
 
-  <span class="comment">//No @Before or @After methods required</span>
+    <span class="comment">//No @Before or @After methods required</span>
 
-        <span class="annotation">@Test</span>
-        <span class="directive">public</span> <span class="type">void</span> testQueryPaginated() <span class="directive">throws</span> <span class="exception">Exception</span>{
+    <span class="annotation">@Test</span>
+    <span class="directive">public</span> <span class="type">void</span> testQueryPaginated() <span class="directive">throws</span> <span class="exception">Exception</span> {
+        <span class="predefined-type">Object</span><span class="type">[]</span> args = <span class="keyword">new</span> <span class="predefined-type">Object</span><span class="type">[]</span> { <span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT Id FROM Recipes</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">null</span> };
 
-                <span class="predefined-type">Object</span><span class="type">[]</span> args = <span class="keyword">new</span> <span class="predefined-type">Object</span><span class="type">[]</span> { <span class="string"><span class="delimiter">&quot;</span><span class="content">SELECT Id FROM Recipes</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">null</span> };
+        <span class="predefined-type">Collection</span>&lt;<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;&gt; listResult = (<span class="predefined-type">Collection</span>&lt;<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;&gt;) dispatcher.runPaginatedMethod(<span class="string"><span class="delimiter">&quot;</span><span class="content">queryPaginated</span><span class="delimiter">&quot;</span></span>, args);
 
-                <span class="predefined-type">Collection</span>&lt;<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;&gt; listResult = (<span class="predefined-type">Collection</span>&lt;<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;&gt;) dispatcher.runPaginatedMethod(<span class="string"><span class="delimiter">&quot;</span><span class="content">queryPaginated</span><span class="delimiter">&quot;</span></span>, args);
-
-    <span class="comment">//Assert on listResult</span>
+        <span class="comment">// Assert on listResult</span>
         }
 }</code></pre>
 </div>
@@ -2952,7 +2923,7 @@ We provide a mechanism to test operations annotated with @Paged, which indirectl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">  <span class="annotation">@Source</span>(sourceStrategy = SourceStrategy.POLLING, pollingPeriod = <span class="integer">1000</span>)
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="annotation">@Source</span>(sourceStrategy = SourceStrategy.POLLING, pollingPeriod = <span class="integer">1000</span>)
     <span class="directive">public</span> <span class="type">void</span> retrieveEvents(<span class="directive">final</span> SourceCallback sourceCallback, <span class="predefined-type">String</span> message) <span class="directive">throws</span> <span class="exception">Exception</span> {
         sourceCallback.process(message);
     }</code></pre>
@@ -2963,7 +2934,7 @@ We provide a mechanism to test operations annotated with @Paged, which indirectl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">org.mule.modules.automation.testcases</span>;
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">org.mule.modules.automation.functional</span>;
 
 <span class="keyword">import</span> <span class="include">java.util.List</span>;
 <span class="keyword">import</span> <span class="include">org.junit.After</span>;
@@ -2972,25 +2943,25 @@ We provide a mechanism to test operations annotated with @Paged, which indirectl
 <span class="keyword">import</span> <span class="include">org.mule.modules.automation.TestConnectorAbstractTestCase</span>;
 <span class="keyword">import</span> <span class="include">static</span> <span class="include">org.junit.Assert</span>.*;
 
-<span class="directive">public</span> <span class="type">class</span> <span class="class">SourceTestCases</span> <span class="directive">extends</span> TestConnectorAbstractTestCase {
+<span class="directive">public</span> <span class="type">class</span> <span class="class">SourceIT</span> <span class="directive">extends</span> TestConnectorAbstractTestCase {
 
         <span class="directive">private</span> <span class="predefined-type">String</span> testMessage;
 
         <span class="annotation">@Before</span>
-        <span class="directive">public</span> <span class="type">void</span> setUp() <span class="directive">throws</span> <span class="predefined-type">Throwable</span>{
+        <span class="directive">public</span> <span class="type">void</span> setUp() <span class="directive">throws</span> <span class="exception">Exception</span> {
                 testMessage = <span class="string"><span class="delimiter">&quot;</span><span class="content">testMessage</span><span class="delimiter">&quot;</span></span>;
                 <span class="predefined-type">Object</span><span class="type">[]</span> signature = {<span class="predefined-constant">null</span>, testMessage};
                 getDispatcher().initializeSource(<span class="string"><span class="delimiter">&quot;</span><span class="content">retrieveEvents</span><span class="delimiter">&quot;</span></span>, signature);
         }
 
         <span class="annotation">@Test</span>
-        <span class="directive">public</span> <span class="type">void</span> testSource(){
+        <span class="directive">public</span> <span class="type">void</span> testSource() {
                 <span class="predefined-type">List</span>&lt;<span class="predefined-type">Object</span>&gt; events = getDispatcher().getSourceMessages(<span class="string"><span class="delimiter">&quot;</span><span class="content">retrieveEvents</span><span class="delimiter">&quot;</span></span>);
                 assertTrue(events.contains(testMessage));
         }
 
         <span class="annotation">@After</span>
-        <span class="directive">public</span> <span class="type">void</span> tearDown() <span class="directive">throws</span> <span class="predefined-type">Throwable</span>{
+        <span class="directive">public</span> <span class="type">void</span> tearDown() <span class="directive">throws</span> <span class="exception">Exception</span> {
                 getDispatcher().shutDownSource(<span class="string"><span class="delimiter">&quot;</span><span class="content">retrieveEvents</span><span class="delimiter">&quot;</span></span>);
         }
 }</code></pre>
@@ -3006,89 +2977,32 @@ We provide a mechanism to test operations annotated with @Paged, which indirectl
 <p>It&#8217;s important to notice that once the source has been initialized, it will start gathering events. However, if the remote endpoint takes time to produce those messages, it is a good idea to explicitly wait an amount of time before gathering the received messages with <strong>getDispatcher().getSourceMessages(&#8230;&#8203;)</strong>.</p>
 </div>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_system_tests">4.4. System Tests</h3>
-<div class="paragraph">
-<p>This category must group all those tests that <strong>required a connection</strong>. All those tests that are not functional, but require a connection must go within this category.</p>
-</div>
-<div class="sect3">
-<h4 id="_test_organization">4.4.1. Test Organization</h4>
-<div class="paragraph">
-<p>System tests need to be engineered and organized as follows:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><strong>Test Suites:</strong> <em>org.mule.modules.&lt;connector-project&gt;.automation.runner.SystemTestSuite</em> groups all System tests with no exception. In case two or more test suites are required (when grouping semantic similar tests for instance), a <em>FullSystemTestSuite</em> need to be used, grouping the remaining test suites.</p>
-</li>
-<li>
-<p><strong>Naming Convention:</strong> System tests must end with <em>TestCases</em>. Employing alternatives ending names is discouraged, specially endings such as <em>Test</em> or <em>TestCase</em>.</p>
-</li>
-<li>
-<p><strong>Test Categories:</strong> Tests categories might be used if needed, although are discouraged. However, if used, they need to be named as <em>SystemTest.class</em>.</p>
-</li>
-</ol>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Tip</div>
-</td>
-<td class="content">
-When not using test categories, a test suite might use <strong>@RunWith(Suite.class)</strong> before the list of classes within the suite itself. Thus, all listed test classes are executed and any test category is needed.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_packages_and_files_2">4.4.2. Packages and Files</h4>
-<div class="paragraph">
-<p>System test files need to be kept in specific packages as follows:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><strong>org.mule.modules.&lt;connector-project&gt;.automation.system</strong> contains the system test cases exclusively.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_topic_to_tests_with_system_tests">4.4.3. Topic to Tests with System Tests</h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><strong>Test Connectivity:</strong> These tests aim at running the <em>TestConnectivity</em> operation by covering the internal logic of the method itself, which differs from testing the annotation used. A single test case is accepted for each connection configuration, named as <em>&lt;ConfigName&gt;TestCases</em>, which will contains as many tests as set of credentials are used.</p>
-</li>
-</ol>
-</div>
 <div class="sect4">
 <h5 id="_test_connectivity">Test Connectivity</h5>
 <div class="paragraph">
-<p>These tests aim at testing the logic under the @TestConnectivity annotated method. To do so, let&#8217;s consider the following connector example and its connection configuration.</p>
+<p>These tests aim at testing the logic under the @TestConnectivity annotated method by covering the internal logic of the method itself, which differs from testing the annotation used. A single test case is accepted for each connection configuration, named as <em>&lt;ConfigName&gt;IT</em>, which will contains as many tests as set of credentials are used.
+As the connectivity tests don&#8217;t require the use of the CTF, they should be placed in the <strong>org.mule.modules.&lt;connector-project&gt;.automation.system</strong> package.</p>
+</div>
+<div class="paragraph">
+<p>To do so, let&#8217;s consider the following connector example and its connection configuration.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@ConnectionManagement</span>(friendlyName=<span class="string"><span class="delimiter">&quot;</span><span class="content">CookBookConnector Basic Connection</span><span class="delimiter">&quot;</span></span>, configElementNam=<span class="string"><span class="delimiter">&quot;</span><span class="content">config</span><span class="delimiter">&quot;</span></span>)
 <span class="directive">public</span> <span class="type">class</span> <span class="class">CookBookBasicConfig</span> {
 
-  <span class="annotation">@Connect</span>
-  <span class="directive">public</span> <span class="type">void</span> connect(<span class="annotation">@ConnectionKey</span> <span class="predefined-type">String</span> username, <span class="annotation">@Password</span> <span class="predefined-type">String</span> password){
-     ...
-  }
+    <span class="annotation">@Connect</span>
+    <span class="directive">public</span> <span class="type">void</span> connect(<span class="annotation">@ConnectionKey</span> <span class="predefined-type">String</span> username, <span class="annotation">@Password</span> <span class="predefined-type">String</span> password){
+        ...
+    }
 
-  <span class="annotation">@TestConnectivity</span>
-  <span class="directive">public</span> <span class="type">void</span> testConnectivity(<span class="annotation">@ConnectionKey</span> <span class="predefined-type">String</span> username, <span class="annotation">@Password</span> <span class="predefined-type">String</span> password){
+    <span class="annotation">@TestConnectivity</span>
+    <span class="directive">public</span> <span class="type">void</span> testConnectivity(<span class="annotation">@ConnectionKey</span> <span class="predefined-type">String</span> username, <span class="annotation">@Password</span> <span class="predefined-type">String</span> password){
+        <span class="comment">// Always call the connect method somewhere within the @TestConnectivity method</span>
+        <span class="local-variable">this</span>.connect(username, password);
 
-    <span class="comment">//Always call the connect method somewhere within the @TestConnectivity method</span>
-    <span class="local-variable">this</span>.connect(username, password);
-
-    <span class="comment">//Add extra behavior when testing the connection</span>
-  }
+        <span class="comment">// Add extra behavior when testing the connection</span>
+    }
 ...
 }</code></pre>
 </div>
@@ -3098,55 +3012,49 @@ When not using test categories, a test suite might use <strong>@RunWith(Suite.cl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span>
-<span class="include">public</span> <span class="include">class</span> <span class="include">CookBookBasicConfigTestCases</span> {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CookBookBasicConfigTestCases</span> {
 
-  <span class="include">private</span> <span class="include">Properties</span> <span class="include">validCredentials</span>;
+    <span class="directive">private</span> <span class="predefined-type">Properties</span> validCredentials;
 
-  <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Logger</span> logger = <span class="predefined-type">Logger</span>.getLogger(CookBookBasicConfigTestCases.class);
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Logger</span> logger = <span class="predefined-type">Logger</span>.getLogger(CookBookBasicConfigTestCases.class);
 
-  <span class="annotation">@Before</span>
-  <span class="directive">public</span> <span class="type">void</span> setup(){
+    <span class="annotation">@Before</span>
+    <span class="directive">public</span> <span class="type">void</span> setup(){
+        validCredentials = ConfigurationUtils.getAutomationCredentialsProperties();
+    }
 
-    validCredentials = ConfigurationUtils.getAutomationCredentialsProperties();
-  }
+    <span class="annotation">@Test</span>
+    <span class="directive">public</span> <span class="type">void</span> validCredentialsConnectivityTest <span class="directive">throws</span> <span class="exception">Exception</span> {
+        <span class="comment">// Add required extra behavior here if necessary.</span>
 
+        <span class="directive">final</span> CookBookBasicConfig config = <span class="keyword">new</span> CookBookBasicConfig();
 
-   <span class="annotation">@Test</span>
-   <span class="directive">public</span> <span class="type">void</span> validCredentialsConnectivityTest <span class="directive">throws</span> <span class="exception">Exception</span> {
+        <span class="predefined-type">String</span> username = validCredentials.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">config.username</span><span class="delimiter">&quot;</span></span>);
+        <span class="predefined-type">String</span> password = validCredentials.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">config.password</span><span class="delimiter">&quot;</span></span>);
 
-    <span class="comment">//Add required extra behavior here if necessary</span>
+        <span class="comment">// Call the @TestConnectivity.</span>
+        config.testConnectivity(username, password);
+    }
 
-    <span class="directive">final</span> CookBookBasicConfig config = <span class="keyword">new</span> CookBookBasicConfig();
+    <span class="annotation">@Test</span>
+    <span class="directive">public</span> <span class="type">void</span> invalidCredentialsConnectivityTest <span class="directive">throws</span> <span class="exception">Exception</span> {
+        <span class="comment">// Add required extra behavior here if necessary.</span>
 
-    <span class="predefined-type">String</span> username = validCredentials.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">config.username</span><span class="delimiter">&quot;</span></span>);
-    <span class="predefined-type">String</span> password = validCredentials.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">config.password</span><span class="delimiter">&quot;</span></span>);
+        CookBookBasicConfig config = <span class="keyword">new</span> CookBookBasicConfig();
 
-    <span class="comment">//Call the @TestConnectivity</span>
-    config.testConnectivity(username, password);
-   }
+        <span class="comment">// Call the @TestConnectivity.</span>
+        config.testConnectivity(<span class="string"><span class="delimiter">&quot;</span><span class="content">noUserName</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">noPassword</span><span class="delimiter">&quot;</span></span>);
+    }
 
-   <span class="annotation">@Test</span>
-   <span class="directive">public</span> <span class="type">void</span> invalidCredentialsConnectivityTest <span class="directive">throws</span> <span class="exception">Exception</span> {
+    <span class="annotation">@Test</span>
+    <span class="directive">public</span> <span class="type">void</span> nullCredentialsConnectivityTest <span class="directive">throws</span> <span class="exception">Exception</span> {
+        <span class="comment">// Add required extra behavior here if necessary.</span>
 
-    <span class="comment">//Add required extra behavior here if necessary</span>
+        CookBookBasicConfig config = <span class="keyword">new</span> CookBookBasicConfig();
 
-    CookBookBasicConfig config = <span class="keyword">new</span> CookBookBasicConfig();
-
-    <span class="comment">//Call the @TestConnectivity</span>
-    config.testConnectivity(<span class="string"><span class="delimiter">&quot;</span><span class="content">noUserName</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">noPassword</span><span class="delimiter">&quot;</span></span>);
-   }
-
-   <span class="annotation">@Test</span>
-   <span class="directive">public</span> <span class="type">void</span> nullCredentialsConnectivityTest <span class="directive">throws</span> <span class="exception">Exception</span> {
-
-    <span class="comment">//Add required extra behavior here if necessary</span>
-
-    CookBookBasicConfig config = <span class="keyword">new</span> CookBookBasicConfig();
-
-    <span class="comment">//Call the @TestConnectivity</span>
-    config.testConnectivity(<span class="predefined-constant">null</span>, <span class="predefined-constant">null</span>);
-   }
+        <span class="comment">// Call the @TestConnectivity.</span>
+        config.testConnectivity(<span class="predefined-constant">null</span>, <span class="predefined-constant">null</span>);
+    }
 }</code></pre>
 </div>
 </div>
@@ -3184,31 +3092,28 @@ The valid credentials need to be the same as with the functional tests, in this 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_unit_tests">4.5. Unit Tests</h3>
+<h3 id="_unit_tests_optional">4.4. Unit Tests (optional)</h3>
 <div class="paragraph">
 <p>Unit tests aim at assuring the correct behavior of a particular code unit within the connector. Although not a mandatory step within the certification process, different aspects require unit tests instead of functional tests.</p>
 </div>
 <div class="sect3">
-<h4 id="_test_organization_2">4.5.1. Test Organization</h4>
+<h4 id="_test_organization">4.4.1. Test Organization</h4>
 <div class="paragraph">
-<p>Functional tests need to be engineered and organized as follows:</p>
+<p>Unit tests need to be engineered and organized as follows:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>Test Suites:</strong> Tests suites are not required for unit tests.</p>
+<p><strong>Naming convention:</strong> unit tests should follow JUnit naming conventions, normally ending with <em>Test</em> or <em>TestCase</em>. Any other ending will produce the Maven Surfire plugin to skip these tests during installation.</p>
 </li>
 <li>
-<p><strong>Naming Convention:</strong> Unit tests should follow JUnit naming conventions, normally ending with <em>Test</em> or <em>TestCase</em>. Any other ending will produce Maven Surfire plugin to skip these tests during installation.</p>
-</li>
-<li>
-<p><strong>Test Categories:</strong> Tests categories are not required for unit tests.</p>
+<p><strong>Test suites</strong> and <strong>Test categories</strong> are not required for unit tests.</p>
 </li>
 </ol>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_packages_and_files_3">4.5.2. Packages and Files</h4>
+<h4 id="_packages_and_files">4.4.2. Packages and files</h4>
 <div class="paragraph">
 <p>Test files need to be kept in specific packages as follows:</p>
 </div>
@@ -3234,25 +3139,32 @@ Overriding package organization is only accepted if a unit test need to be conta
 </div>
 </div>
 <div class="sect2">
-<h3 id="_test_execution">4.6. Test Execution</h3>
+<h3 id="_test_execution">4.5. Test execution</h3>
 <div class="paragraph">
 <p>Once all tests have been engineered, they must be executed following a few guidelines:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>Functional Tests:</strong> Functional tests must be executed with different Mule runtime environments, assuring the correct integration of the connector with older and current Mule runtimes.</p>
+<p><strong>Integration Tests:</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Test that use the CTF (functional tests) must be executed with different Mule runtime environments, assuring the correct integration of the connector with older and current Mule runtimes.</p>
 </li>
 <li>
-<p><strong>System Tests</strong>: Connectivity tests need to be executed with valid and invalid credentials, covering both success and error cases.</p>
+<p>Connectivity tests need to be executed with valid and invalid credentials, covering both success and error cases.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p><strong>Unit Tests:</strong> All unit tests need to be run with <em>mvn tests</em>.</p>
+<p><strong>Unit Tests:</strong> all unit tests need to be run with <em>mvn test</em>.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>The whole set of test can be executed as <em>mvn test -Dtest="*Test,*TestSuite"</em>.</p>
+<p>The whole set of test can be executed as <em>mvn verify</em>.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -3267,7 +3179,7 @@ Overriding package organization is only accepted if a unit test need to be conta
 </table>
 </div>
 <div class="sect3">
-<h4 id="_running_functional_tests">4.6.1. Running Functional Tests</h4>
+<h4 id="_running_functional_tests">4.5.1. Running Functional Tests</h4>
 <div class="paragraph">
 <p>The overall idea of functional tests is to ensure backward and forward compatibility in every aspect of a connector. Therefore, the main goal is to execute the functional test suite in as many different Mule runtime environments as possible.</p>
 </div>
@@ -3323,7 +3235,7 @@ Be careful of excluding these files when committing changes.
 </div>
 </div>
 <div class="sect3">
-<h4 id="_testing_using_ctf">4.6.2. Testing Using CTF</h4>
+<h4 id="_testing_using_ctf">4.5.2. Testing Using CTF</h4>
 <div class="paragraph">
 <p>The Connector Testing Framework allows you to run test suites in a specific Mule runtime environment, as explained <a href="https://mulesoft.github.io/connector-testing-framework/">here</a>.</p>
 </div>
@@ -3402,7 +3314,7 @@ The fact that libraries change on CloudHub increases the potential for <strong>i
 </div>
 </div>
 <div class="sect3">
-<h4 id="_optional_parameters">4.6.3. Optional Parameters</h4>
+<h4 id="_optional_parameters">4.5.3. Optional Parameters</h4>
 <div class="paragraph">
 <p>When testing on CloudHub, you may specify the Mule version to run connector tests on, as well as the CloudHub URL and the CloudHub worker type for your instance. See the example below that includes all the required <em>and</em> optional parameters:</p>
 </div>
@@ -3669,7 +3581,7 @@ The fact that libraries change on CloudHub increases the potential for <strong>i
 </ol>
 </div>
 <div class="paragraph">
-<p>In addition, create a folder named <em>images_ for image resources used in the documentation, one called </em>attachments_ for user-downloadable content such as a JSON file or WSDL XML file, and one called <em>_sources</em> for management of any code samples presented in the connector documentation, especially those which have associated Mule flow screenshots. It is important to give the corresponding image and Mule XML code the same name. The only thing that should differ are the file extensions, for example, connector-flow`.img` and connector-flow`.xml`.</p>
+<p>In addition, create a folder named <strong>_images</strong> for image resources used in the documentation, one called <em>attachments_ for user-downloadable content such as a JSON file or WSDL XML file, and one called </em>sources_ for management of any code samples presented in the connector documentation, especially those which have associated Mule flow screenshots. It is important to give the corresponding image and Mule XML code the same name. The only thing that should differ are the file extensions, for example, connector-flow`.img` and connector-flow`.xml`.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3714,7 +3626,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 <p>For further information, refer to:</p>
 </div>
 <div class="paragraph">
-<p><a href="http://mulesoft.github.io/salesforce-connector/7.0.1/apidocs/sfdc-apidoc.html">Salesforce Connector APIDoc</a>.</p>
+<p><a href="http://mulesoft.github.io/salesforce-connector/8.3.0/apidocs/sfdc-apidoc.html">Salesforce Connector APIDoc</a>.</p>
 </div>
 </div>
 </div>
@@ -3796,7 +3708,7 @@ It should reside in <em>doc</em> folder in the root of the connector project.</p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-10-20 14:47:07 ART
+Last updated 2017-04-28 12:21:16 ART
 </div>
 </div>
 </body>
