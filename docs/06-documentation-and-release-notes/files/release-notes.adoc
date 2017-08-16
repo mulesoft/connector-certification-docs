@@ -20,6 +20,7 @@ Points to the docs.mulesoft pages for documentation on the functional aspects of
 ////
 <Connector_Version> : Describes the connector version, such as “V2013”, “V4.0”, “V4.0.1-HF2” or whatever used for release]
 <Release_date> : The date on which the connector is released (not when the notes are written, mind you)
+Example: 1.0.0 - August 10, 2017
 ////
 
 === Version <Connector_Version> Compatibility
@@ -57,7 +58,6 @@ If you’re currently using a connector version <old_connector_version_2> this c
 //- The second list is for the connectors that are older and require additional steps.
 //- Some of this might not apply (i.e. a connector is backwards compatible with all released versions or there is no previous version)
 
-
 === Features
 
 . <Feature_Title> - A description of the feature
@@ -66,7 +66,11 @@ If you’re currently using a connector version <old_connector_version_2> this c
 
 //NTLM Authentication - NTLM authentication is now more robust and widely compatible with more domain controller configurations.
 
-=== <Connector_Version> Fixed in this Release
+//If there are no features to be added, put:
+
+//* None.
+
+=== Fixed in this Release
 
 - <Bug_Title> - <Conditions under which the bug used to happen, explain which was the result, which is now the fixed result>
 
@@ -81,9 +85,17 @@ If you’re currently using a connector version <old_connector_version_2> this c
 //- Increased Sonar coverage (ditto)
 //- Resolved NPE (lacking information like scenarios under which it can be reproduced, what is NPE, etc)
 
-=== <Connector_Version> Known Issues
+//If there are no fixes to be added, put:
+
+//* None.
+
+=== Known Issues
 
 <Connector_Issues, use the same format as Bug listings>
+
+//If there are no issues to be added, put:
+
+//* None.
 
 === Support Resources
 ////
